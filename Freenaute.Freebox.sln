@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{CD319827-3E7F-4236-B69B-0677E353E074}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandbox", "Sandbox", "{6FD6EA5C-9174-4D0A-95CF-4411B03D898C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{E8EE53C9-456E-4A66-8239-CF403D2029E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freenaute.Freebox.Mapper", "Libs\Freenaute.Freebox.Mapper\Freenaute.Freebox.Mapper.csproj", "{5B853688-4310-4226-8951-F2E044837A82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B853688-4310-4226-8951-F2E044837A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B853688-4310-4226-8951-F2E044837A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B853688-4310-4226-8951-F2E044837A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B853688-4310-4226-8951-F2E044837A82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B853688-4310-4226-8951-F2E044837A82} = {E8EE53C9-456E-4A66-8239-CF403D2029E8}
+	EndGlobalSection
+EndGlobal
