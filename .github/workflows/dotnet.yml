@@ -22,7 +22,7 @@ jobs:
         configuration: [Debug, Release]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v5
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
           cache: true
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v5
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
       - run: dotnet restore Samples/Freenaute.Freebox.AotSmoke -r linux-x64 --locked-mode
