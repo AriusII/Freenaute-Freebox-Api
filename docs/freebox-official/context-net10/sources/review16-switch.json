@@ -1,0 +1,507 @@
+{
+  "module": {
+    "module": "switch",
+    "title": "Switch",
+    "category": "reseau",
+    "path": "docs/reference/reseau/switch.md",
+    "http_signatures": 4,
+    "objects": 3,
+    "properties": 39,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#switch",
+    "source_pre_blocks": 13,
+    "markdown_code_blocks": 13,
+    "source_tables": 6
+  },
+  "endpoints": [
+    {
+      "module": "switch",
+      "method": "GET",
+      "documented_path": "/api/v8/switch/status/",
+      "path_template": "/api/v{major}/switch/status/",
+      "documented_major": 8,
+      "title": "Get the current switch status",
+      "id": "get--api-v8-switch-status-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-switch-status-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/switch.md#get--api-v8-switch-status-",
+      "referenced_objects": [
+        "SwitchPortStatus"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-switch-status-"
+    },
+    {
+      "module": "switch",
+      "method": "GET",
+      "documented_path": "/api/v8/switch/port/{id}",
+      "path_template": "/api/v{major}/switch/port/{id}",
+      "documented_major": 8,
+      "title": "Get a port configuration",
+      "id": "get--api-v8-switch-port-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-switch-port-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/switch.md#get--api-v8-switch-port-id",
+      "referenced_objects": [
+        "SwitchPortConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-switch-port-id"
+    },
+    {
+      "module": "switch",
+      "method": "PUT",
+      "documented_path": "/api/v8/switch/port/{id}",
+      "path_template": "/api/v{major}/switch/port/{id}",
+      "documented_major": 8,
+      "title": "Update a port configuration",
+      "id": "put--api-v8-switch-port-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-switch-port-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/switch.md#put--api-v8-switch-port-id",
+      "referenced_objects": [
+        "SwitchPortConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-switch-port-id"
+    },
+    {
+      "module": "switch",
+      "method": "GET",
+      "documented_path": "/api/v8/switch/port/{id}/stats",
+      "path_template": "/api/v{major}/switch/port/{id}/stats",
+      "documented_major": 8,
+      "title": "Get a port stats",
+      "id": "get--api-v8-switch-port-id-stats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-switch-port-id-stats",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/switch.md#get--api-v8-switch-port-id-stats",
+      "referenced_objects": [
+        "SwitchPortStats"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-switch-port-id-stats"
+    }
+  ],
+  "objects": [
+    {
+      "module": "switch",
+      "name": "SwitchPortStatus",
+      "id": "SwitchPortStatus",
+      "properties": [
+        "SwitchPortStatus.id",
+        "SwitchPortStatus.link",
+        "SwitchPortStatus.duplex",
+        "SwitchPortStatus.speed",
+        "SwitchPortStatus.mode",
+        "SwitchPortStatus.mac_list"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus"
+    },
+    {
+      "module": "switch",
+      "name": "SwitchPortConfig",
+      "id": "SwitchPortConfig",
+      "properties": [
+        "SwitchPortConfig.id",
+        "SwitchPortConfig.duplex",
+        "SwitchPortConfig.speed"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortConfig",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortConfig"
+    },
+    {
+      "module": "switch",
+      "name": "SwitchPortStats",
+      "id": "SwitchPortStats",
+      "properties": [
+        "SwitchPortStats.rx_bad_bytes",
+        "SwitchPortStats.rx_broadcast_packets",
+        "SwitchPortStats.rx_bytes_rate",
+        "SwitchPortStats.rx_err_packets",
+        "SwitchPortStats.rx_fcs_packets",
+        "SwitchPortStats.rx_fragments_packets",
+        "SwitchPortStats.rx_good_bytes",
+        "SwitchPortStats.rx_good_packets",
+        "SwitchPortStats.rx_jabber_packets",
+        "SwitchPortStats.rx_multicast_packets",
+        "SwitchPortStats.rx_oversize_packets",
+        "SwitchPortStats.rx_packets_rate",
+        "SwitchPortStats.rx_pause",
+        "SwitchPortStats.rx_undersize_packets",
+        "SwitchPortStats.rx_unicast_packets",
+        "SwitchPortStats.tx_broadcast_packets",
+        "SwitchPortStats.tx_bytes",
+        "SwitchPortStats.tx_bytes_rate",
+        "SwitchPortStats.tx_collisions",
+        "SwitchPortStats.tx_deferred",
+        "SwitchPortStats.tx_excessive",
+        "SwitchPortStats.tx_fcs",
+        "SwitchPortStats.tx_late",
+        "SwitchPortStats.tx_multicast_packets",
+        "SwitchPortStats.tx_multiple",
+        "SwitchPortStats.tx_packets",
+        "SwitchPortStats.tx_packets_rate",
+        "SwitchPortStats.tx_pause",
+        "SwitchPortStats.tx_single",
+        "SwitchPortStats.tx_unicast_packets"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats"
+    }
+  ],
+  "properties": [
+    {
+      "module": "switch",
+      "id": "SwitchPortStatus.id",
+      "signature": "id int Read-only",
+      "description": "switch port id",
+      "source_id": "SwitchPortStatus.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus.id",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus.id"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStatus.link",
+      "signature": "link enum Read-only",
+      "description": "link Description up port is up down port is down",
+      "source_id": "SwitchPortStatus.link",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus.link",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus.link"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStatus.duplex",
+      "signature": "duplex enum",
+      "description": "duplex Description half force in half duplex mode full force in full duplex mode",
+      "source_id": "SwitchPortStatus.duplex",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus.duplex",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus.duplex"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStatus.speed",
+      "signature": "speed enum",
+      "description": "duplex Description 10 10Base-T 100 100Base-TX 1000 1000Base-T",
+      "source_id": "SwitchPortStatus.speed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus.speed",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus.speed"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStatus.mode",
+      "signature": "mode string Read-only",
+      "description": "display form of speed and duplex mode",
+      "source_id": "SwitchPortStatus.mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus.mode",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus.mode"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStatus.mac_list",
+      "signature": "mac_list [] array of object Read-only",
+      "description": "list of { mac, name } of hosts connected to this port",
+      "source_id": "SwitchPortStatus.mac_list",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus.mac_list",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus.mac_list"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortConfig.id",
+      "signature": "id int Read-only",
+      "description": "switch port id",
+      "source_id": "SwitchPortConfig.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortConfig.id",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortConfig.id"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortConfig.duplex",
+      "signature": "duplex enum",
+      "description": "duplex Description auto auto negotiate duplex mode half force in half duplex mode full force in full duplex mode",
+      "source_id": "SwitchPortConfig.duplex",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortConfig.duplex",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortConfig.duplex"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortConfig.speed",
+      "signature": "speed enum",
+      "description": "duplex Description auto auto negotiate speed 10 10Base-T 100 100Base-TX 1000 1000Base-T",
+      "source_id": "SwitchPortConfig.speed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortConfig.speed",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortConfig.speed"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_bad_bytes",
+      "signature": "rx_bad_bytes int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_bad_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_bad_bytes",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_bad_bytes"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_broadcast_packets",
+      "signature": "rx_broadcast_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_broadcast_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_broadcast_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_broadcast_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_bytes_rate",
+      "signature": "rx_bytes_rate int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_bytes_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_bytes_rate",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_bytes_rate"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_err_packets",
+      "signature": "rx_err_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_err_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_err_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_err_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_fcs_packets",
+      "signature": "rx_fcs_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_fcs_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_fcs_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_fcs_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_fragments_packets",
+      "signature": "rx_fragments_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_fragments_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_fragments_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_fragments_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_good_bytes",
+      "signature": "rx_good_bytes int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_good_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_good_bytes",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_good_bytes"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_good_packets",
+      "signature": "rx_good_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_good_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_good_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_good_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_jabber_packets",
+      "signature": "rx_jabber_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_jabber_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_jabber_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_jabber_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_multicast_packets",
+      "signature": "rx_multicast_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_multicast_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_multicast_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_multicast_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_oversize_packets",
+      "signature": "rx_oversize_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_oversize_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_oversize_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_oversize_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_packets_rate",
+      "signature": "rx_packets_rate int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_packets_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_packets_rate",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_packets_rate"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_pause",
+      "signature": "rx_pause int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_pause",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_pause",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_pause"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_undersize_packets",
+      "signature": "rx_undersize_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_undersize_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_undersize_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_undersize_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.rx_unicast_packets",
+      "signature": "rx_unicast_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.rx_unicast_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.rx_unicast_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.rx_unicast_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_broadcast_packets",
+      "signature": "tx_broadcast_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_broadcast_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_broadcast_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_broadcast_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_bytes",
+      "signature": "tx_bytes int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_bytes",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_bytes"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_bytes_rate",
+      "signature": "tx_bytes_rate int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_bytes_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_bytes_rate",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_bytes_rate"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_collisions",
+      "signature": "tx_collisions int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_collisions",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_collisions",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_collisions"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_deferred",
+      "signature": "tx_deferred int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_deferred",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_deferred",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_deferred"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_excessive",
+      "signature": "tx_excessive int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_excessive",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_excessive",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_excessive"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_fcs",
+      "signature": "tx_fcs int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_fcs",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_fcs",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_fcs"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_late",
+      "signature": "tx_late int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_late",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_late",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_late"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_multicast_packets",
+      "signature": "tx_multicast_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_multicast_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_multicast_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_multicast_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_multiple",
+      "signature": "tx_multiple int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_multiple",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_multiple",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_multiple"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_packets",
+      "signature": "tx_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_packets"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_packets_rate",
+      "signature": "tx_packets_rate int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_packets_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_packets_rate",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_packets_rate"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_pause",
+      "signature": "tx_pause int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_pause",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_pause",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_pause"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_single",
+      "signature": "tx_single int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_single",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_single",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_single"
+    },
+    {
+      "module": "switch",
+      "id": "SwitchPortStats.tx_unicast_packets",
+      "signature": "tx_unicast_packets int Read-only",
+      "description": "",
+      "source_id": "SwitchPortStats.tx_unicast_packets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats.tx_unicast_packets",
+      "markdown": "docs/reference/reseau/switch.md#SwitchPortStats.tx_unicast_packets"
+    }
+  ],
+  "events": []
+}

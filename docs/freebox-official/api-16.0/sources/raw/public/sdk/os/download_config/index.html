@@ -1,0 +1,656 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Download Configuration &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="File System" href="../fs/" />
+    <link rel="prev" title="Download Feeds" href="../download_feeds/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="download-configuration">
+<h1>Download Configuration<a class="headerlink" href="#download-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-configuration-object">
+<h2>Download configuration object<a class="headerlink" href="#download-configuration-object" title="Permalink to this headline">¶</a></h2>
+<p>The download configuration is a singleton used to store the downloader
+preferences.</p>
+<div class="section" id="global-config">
+<h3>Global config<a class="headerlink" href="#global-config" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DownloadConfiguration">
+<code class="descname">DownloadConfiguration</code><a class="headerlink" href="#DownloadConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadConfiguration.max_downloading_tasks">
+<code class="descname">max_downloading_tasks</code><span> </span>int<a class="headerlink" href="#DownloadConfiguration.max_downloading_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>max concurrent download tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.download_dir">
+<code class="descname">download_dir</code><span> </span>string<a class="headerlink" href="#DownloadConfiguration.download_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>the default path where downloads will be stored (base64 encoded)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.watch_dir">
+<code class="descname">watch_dir</code><span> </span>string<a class="headerlink" href="#DownloadConfiguration.watch_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>special folder that will be monitored. When a new supported file
+(.nzb, .torrent) is copied in that folder, the task is
+automatically added to the download queue.</p>
+<p>(base64 encoded)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.use_watch_dir">
+<code class="descname">use_watch_dir</code><span> </span>bool<a class="headerlink" href="#DownloadConfiguration.use_watch_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>if set to false, the watch_dir will not be monitored</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.throttling">
+<code class="descname">throttling</code><span> </span><a class="reference internal" href="#DlThrottlingConfig" title="DlThrottlingConfig">DlThrottlingConfig</a><a class="headerlink" href="#DownloadConfiguration.throttling" title="Permalink to this definition">¶</a></dt>
+<dd><p>throttling configuration</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.news">
+<code class="descname">news</code><span> </span><a class="reference internal" href="#DlNewsConfig" title="DlNewsConfig">DlNewsConfig</a><a class="headerlink" href="#DownloadConfiguration.news" title="Permalink to this definition">¶</a></dt>
+<dd><p>newsgroups configuration</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.bt">
+<code class="descname">bt</code><span> </span><a class="reference internal" href="#DlBtConfig" title="DlBtConfig">DlBtConfig</a><a class="headerlink" href="#DownloadConfiguration.bt" title="Permalink to this definition">¶</a></dt>
+<dd><p>bittorrent configuration</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.feed">
+<code class="descname">feed</code><span> </span><a class="reference internal" href="#DlFeedConfig" title="DlFeedConfig">DlFeedConfig</a><a class="headerlink" href="#DownloadConfiguration.feed" title="Permalink to this definition">¶</a></dt>
+<dd><p>RSS feed configuration</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.blocklist">
+<code class="descname">blocklist</code><span> </span><a class="reference internal" href="#DlBlockListConfig" title="DlBlockListConfig">DlBlockListConfig</a><a class="headerlink" href="#DownloadConfiguration.blocklist" title="Permalink to this definition">¶</a></dt>
+<dd><p>block list configuration</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.dns1">
+<code class="descname">dns1</code><span> </span>string<a class="headerlink" href="#DownloadConfiguration.dns1" title="Permalink to this definition">¶</a></dt>
+<dd><p>dns server ip to use for downloader (leave blank for default dns server)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadConfiguration.dns2">
+<code class="descname">dns2</code><span> </span>string<a class="headerlink" href="#DownloadConfiguration.dns2" title="Permalink to this definition">¶</a></dt>
+<dd><p>dns server ip to use for downloader</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="throttling-config">
+<h3>Throttling config<a class="headerlink" href="#throttling-config" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DlThrottlingConfig">
+<code class="descname">DlThrottlingConfig</code><a class="headerlink" href="#DlThrottlingConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DlThrottlingConfig.normal">
+<code class="descname">normal</code><span> </span><a class="reference internal" href="#DlRate" title="DlRate">DlRate</a><a class="headerlink" href="#DlThrottlingConfig.normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>download rate for normal time slot (in B/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlThrottlingConfig.slow">
+<code class="descname">slow</code><span> </span><a class="reference internal" href="#DlRate" title="DlRate">DlRate</a><a class="headerlink" href="#DlThrottlingConfig.slow" title="Permalink to this definition">¶</a></dt>
+<dd><p>download rate for normal slow slot (in B/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlThrottlingConfig.schedule">
+<code class="descname">schedule</code><span> </span>enum[168]<a class="headerlink" href="#DlThrottlingConfig.schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>The schedule array represent the list of week hours timeslot,
+starting on monday a midnight.  Therefore the complete week is
+represented in a array of 168 elements (24 * 7)</p>
+<p>Each slot can have the following value:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>normal</td>
+<td>downloads will use normal DlRate config for this timeslot</td>
+</tr>
+<tr class="row-odd"><td>slow</td>
+<td>downloads will use slow DlRate config for this timeslot</td>
+</tr>
+<tr class="row-even"><td>hibernate</td>
+<td>downloads will be paused for this timeslot</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlThrottlingConfig.mode">
+<code class="descname">mode</code><span> </span>enum<a class="headerlink" href="#DlThrottlingConfig.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Throttling mode can have to following values</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>normal</td>
+<td>force use of normal rate limits (not using the scheduler)</td>
+</tr>
+<tr class="row-odd"><td>slow</td>
+<td>force use of slow rate limits (not using the scheduler)</td>
+</tr>
+<tr class="row-even"><td>hibernate</td>
+<td>force hibernate (not using the scheduler)</td>
+</tr>
+<tr class="row-odd"><td>schedule</td>
+<td>use scheduded rate limit</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="DlRate">
+<code class="descname">DlRate</code><a class="headerlink" href="#DlRate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DlRate.tx_rate">
+<code class="descname">tx_rate</code><span> </span>int<a class="headerlink" href="#DlRate.tx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>maximum transmit rate (in byte/s)
+0 means no limit</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlRate.rx_rate">
+<code class="descname">rx_rate</code><span> </span>int<a class="headerlink" href="#DlRate.rx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>maximum receive rate (in byte/s)
+0 means no limit</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="newsgroups-config">
+<h3>Newsgroups config<a class="headerlink" href="#newsgroups-config" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DlNewsConfig">
+<code class="descname">DlNewsConfig</code><a class="headerlink" href="#DlNewsConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DlNewsConfig.server">
+<code class="descname">server</code><span> </span>string<a class="headerlink" href="#DlNewsConfig.server" title="Permalink to this definition">¶</a></dt>
+<dd><p>NNTP server hostname</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.port">
+<code class="descname">port</code><span> </span>int<a class="headerlink" href="#DlNewsConfig.port" title="Permalink to this definition">¶</a></dt>
+<dd><p>NNTP server port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.ssl">
+<code class="descname">ssl</code><span> </span>bool<a class="headerlink" href="#DlNewsConfig.ssl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use SSL to connect to server if set to true</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.user">
+<code class="descname">user</code><span> </span>string<a class="headerlink" href="#DlNewsConfig.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>NNTP auth username (can be empty if no auth is required)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.password">
+<code class="descname">password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#DlNewsConfig.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>NNTP auth password (can be empty if no auth is required)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.nthreads">
+<code class="descname">nthreads</code><span> </span>int<a class="headerlink" href="#DlNewsConfig.nthreads" title="Permalink to this definition">¶</a></dt>
+<dd><p>maximum concurrent connections to the NNTP server</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.auto_repair">
+<code class="descname">auto_repair</code><span> </span>bool<a class="headerlink" href="#DlNewsConfig.auto_repair" title="Permalink to this definition">¶</a></dt>
+<dd><p>automatically check and repair downloaded files using the
+provided par2 files</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.lazy_par2">
+<code class="descname">lazy_par2</code><span> </span>bool<a class="headerlink" href="#DlNewsConfig.lazy_par2" title="Permalink to this definition">¶</a></dt>
+<dd><p>if set to true the downloader will download the par2 files only
+if the download is corrupted</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.auto_extract">
+<code class="descname">auto_extract</code><span> </span>bool<a class="headerlink" href="#DlNewsConfig.auto_extract" title="Permalink to this definition">¶</a></dt>
+<dd><p>automatically attempt to extract downloaded files</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlNewsConfig.erase_tmp">
+<code class="descname">erase_tmp</code><span> </span>bool<a class="headerlink" href="#DlNewsConfig.erase_tmp" title="Permalink to this definition">¶</a></dt>
+<dd><p>if auto_extract is enabled, delete archive files once
+successfully extracted</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="bittorrent-config">
+<h3>Bittorrent config<a class="headerlink" href="#bittorrent-config" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DlBtConfig">
+<code class="descname">DlBtConfig</code><a class="headerlink" href="#DlBtConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DlBtConfig.max_peers">
+<code class="descname">max_peers</code><span> </span>int<a class="headerlink" href="#DlBtConfig.max_peers" title="Permalink to this definition">¶</a></dt>
+<dd><p>maximum number of peers at a given time</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.stop_ratio">
+<code class="descname">stop_ratio</code><span> </span>int<a class="headerlink" href="#DlBtConfig.stop_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>default stop_ratio for bt <a class="reference internal" href="../download/#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> tasks</p>
+<p><strong>This value is scaled by a factor 100</strong>, for instance a
+stop_ratio of 200 means that the task will stop once
+tx_bytes = 2 * size</p>
+<p>A value of 0 means that the task will continue seeding until it
+is manually stopped</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.crypto_support">
+<code class="descname">crypto_support</code><span> </span>enum<a class="headerlink" href="#DlBtConfig.crypto_support" title="Permalink to this definition">¶</a></dt>
+<dd><p>The crypto_support can have the following values</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>unsupported</td>
+<td>will never use bittorrent crypto</td>
+</tr>
+<tr class="row-odd"><td>allowed</td>
+<td>will select plain during handshake</td>
+</tr>
+<tr class="row-even"><td>preferred</td>
+<td>will select crypto during handshake</td>
+</tr>
+<tr class="row-odd"><td>required</td>
+<td>will allow plain bittorrent</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.enable_dht">
+<code class="descname">enable_dht</code><span> </span>bool<a class="headerlink" href="#DlBtConfig.enable_dht" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable the dht protocol</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.enable_pex">
+<code class="descname">enable_pex</code><span> </span>bool<a class="headerlink" href="#DlBtConfig.enable_pex" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable the peer exchange protocol</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.announce_timeout">
+<code class="descname">announce_timeout</code><span> </span>int<a class="headerlink" href="#DlBtConfig.announce_timeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>timeout in seconds for announcing to tracker</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.main_port">
+<code class="descname">main_port</code><span> </span>int<a class="headerlink" href="#DlBtConfig.main_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>main bittorrent port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlBtConfig.dht_port">
+<code class="descname">dht_port</code><span> </span>int<a class="headerlink" href="#DlBtConfig.dht_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>bittorrent dht port</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="rss-feeds-config">
+<h3>Rss Feeds config<a class="headerlink" href="#rss-feeds-config" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DlFeedConfig">
+<code class="descname">DlFeedConfig</code><a class="headerlink" href="#DlFeedConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DlFeedConfig.fetch_interval">
+<code class="descname">fetch_interval</code><span> </span>int<a class="headerlink" href="#DlFeedConfig.fetch_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>interval between automatic RSS refresh (in minutes)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DlFeedConfig.max_items">
+<code class="descname">max_items</code><span> </span>int<a class="headerlink" href="#DlFeedConfig.max_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>maximum feed item to keep</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="blocklist-config">
+<h3>BlockList config<a class="headerlink" href="#blocklist-config" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DlBlockListConfig">
+<code class="descname">DlBlockListConfig</code><a class="headerlink" href="#DlBlockListConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DlBlockListConfig.sources[]">
+<code class="descname">sources[]</code><span> </span>string<a class="headerlink" href="#DlBlockListConfig.sources[]" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of block list URL source</p>
+<p>The block list should be in cidr format</p>
+<p>e.g.: <a class="reference external" href="http://list.iblocklist.com/?list=bt_level1&amp;fileformat=cidr&amp;archiveformat=">http://list.iblocklist.com/?list=bt_level1&amp;fileformat=cidr&amp;archiveformat=</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="get-the-current-download-configuration">
+<h2>Get the current Download configuration<a class="headerlink" href="#get-the-current-download-configuration" title="Permalink to this headline">¶</a></h2>
+<dl class="get">
+<dt id="get--api-v4-downloads-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/config/</code><a class="headerlink" href="#get--api-v4-downloads-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#DownloadConfiguration" title="DownloadConfiguration"><code class="xref json json-object docutils literal"><span class="pre">DownloadConfiguration</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+       <span class="s2">&quot;feed&quot;</span><span class="o">:</span> <span class="p">{</span>
+           <span class="s2">&quot;max_items&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s2">&quot;fetch_interval&quot;</span><span class="o">:</span> <span class="mi">60</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;use_watch_dir&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+       <span class="s2">&quot;watch_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvLnF1ZXVl&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/.queue */</span>
+       <span class="s2">&quot;news&quot;</span><span class="o">:</span> <span class="p">{</span>
+           <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;erase_tmp&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+           <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mi">119</span><span class="p">,</span>
+           <span class="s2">&quot;nthreads&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+           <span class="s2">&quot;auto_repair&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+           <span class="s2">&quot;ssl&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+           <span class="s2">&quot;auto_extract&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+           <span class="s2">&quot;lazy_par2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+           <span class="s2">&quot;server&quot;</span><span class="o">:</span> <span class="s2">&quot;news.free.fr&quot;</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;bt&quot;</span><span class="o">:</span> <span class="p">{</span>
+           <span class="s2">&quot;max_peers&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+           <span class="s2">&quot;stop_ratio&quot;</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span>
+           <span class="s2">&quot;crypto_support&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+       <span class="p">},</span>
+       <span class="s2">&quot;max_downloading_tasks&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+       <span class="s2">&quot;download_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Téléchargements/ */</span>
+       <span class="s2">&quot;throttling&quot;</span><span class="o">:</span> <span class="p">{</span>
+           <span class="s2">&quot;normal&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+               <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span>
+           <span class="p">},</span>
+           <span class="s2">&quot;slow&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">512</span><span class="p">,</span>
+               <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">42</span>
+           <span class="p">},</span>
+           <span class="s2">&quot;schedule&quot;</span><span class="o">:</span> <span class="p">[</span>
+               <span class="s2">&quot;slow&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+
+                <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+               <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;slow&quot;</span>
+           <span class="p">],</span>
+           <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;normal&quot;</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-download-configuration">
+<h2>Update the Download configuration<a class="headerlink" href="#update-the-download-configuration" title="Permalink to this headline">¶</a></h2>
+<dl class="put">
+<dt id="put--api-v4-downloads-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/config/</code><a class="headerlink" href="#put--api-v4-downloads-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#DownloadConfiguration" title="DownloadConfiguration"><code class="xref json json-object docutils literal"><span class="pre">DownloadConfiguration</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>PUT /api/v4/downloads/config/ HTTP/1.1
+Host: mafreebox.freebox.fr
+
+{
+    &quot;throttling&quot;: {
+        &quot;normal&quot;: {
+            &quot;rx_rate&quot;: 512,
+            &quot;tx_rate&quot;: 40
+        },
+        &quot;slow&quot;: {
+            &quot;rx_rate&quot;: 128,
+            &quot;tx_rate&quot;: 10
+        },
+        &quot;mode&quot;: &quot;normal&quot;,
+        &quot;schedule&quot;: [
+            &quot;slow&quot;,
+            &quot;normal&quot;,
+            &quot;normal&quot;,
+
+            [ ... ]
+
+            &quot;normal&quot;,
+            &quot;normal&quot;,
+            &quot;normal&quot;,
+            &quot;normal&quot;,
+            &quot;slow&quot;
+        ]
+    },
+    &quot;max_downloading_tasks&quot;: 5,
+    &quot;download_dir&quot;: &quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv&quot;, /* /Disque dur/Téléchargements/ */
+    &quot;use_watch_dir&quot;: true,
+    &quot;watch_dir&quot;: &quot;L0Rpc3F1ZSBkdXIvLnF1ZXVl&quot;, /* /Disque dur/.queue */
+    &quot;news&quot;: {
+        &quot;server&quot;: &quot;news.free.fr&quot;,
+        &quot;port&quot;: &quot;119&quot;,
+        &quot;ssl&quot;: false,
+        &quot;nthreads&quot;: 1,
+        &quot;user&quot;: &quot;&quot;,
+        &quot;lazy_par2&quot;: true,
+        &quot;auto_repair&quot;: true,
+        &quot;auto_extract&quot;: true,
+        &quot;erase_tmp&quot;: true
+    },
+    &quot;bt&quot;: {
+        &quot;max_peers&quot;: 50,
+        &quot;stop_ratio&quot;: 150,
+        &quot;crypto_support&quot;: &quot;allowed&quot;
+    },
+    &quot;feed&quot;: {
+        &quot;fetch_interval&quot;: 60
+    }
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;feed&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;max_items&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;fetch_interval&quot;</span><span class="o">:</span> <span class="mi">60</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;use_watch_dir&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;watch_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvLnF1ZXVl&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/.queue */</span>
+        <span class="s2">&quot;news&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;erase_tmp&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mi">119</span><span class="p">,</span>
+            <span class="s2">&quot;nthreads&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;auto_repair&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;ssl&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;auto_extract&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;lazy_par2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;server&quot;</span><span class="o">:</span> <span class="s2">&quot;news.free.fr&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;bt&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;max_peers&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+            <span class="s2">&quot;stop_ratio&quot;</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span>
+            <span class="s2">&quot;crypto_support&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;max_downloading_tasks&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;download_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Téléchargements/ */</span>
+        <span class="s2">&quot;throttling&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;normal&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">512</span><span class="p">,</span>
+                <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">40</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;slow&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">128</span><span class="p">,</span>
+                <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">10</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;schedule&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;slow&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+
+                <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+                <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;slow&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;normal&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="updating-the-current-throttling-mode">
+<h3>Updating the current Throttling mode<a class="headerlink" href="#updating-the-current-throttling-mode" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-downloads-throttling">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/throttling</code><a class="headerlink" href="#put--api-v4-downloads-throttling" title="Permalink to this definition">¶</a></dt>
+<dd><p>You can force the throttling mode using this method.  You can use
+any of the throttling modes defined in
+<a class="reference internal" href="#DlThrottlingConfig" title="DlThrottlingConfig"><code class="xref json json-object docutils literal"><span class="pre">DlThrottlingConfig</span></code></a>.  Setting to schedule will
+automatically set correct throttling mode.  Other values will force
+the throttling mode until you set it back to schedule.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>PUT /api/v4/downloads/throttling HTTP/1.1
+Host: mafreebox.freebox.fr
+
+{
+    throttling: &quot;slow&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;is_scheduled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;throttling&quot;</span><span class="o">:</span> <span class="s2">&quot;slow&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

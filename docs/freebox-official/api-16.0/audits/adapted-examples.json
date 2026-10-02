@@ -1,0 +1,44 @@
+[
+  {
+    "module": "wifi",
+    "operation_id": "get--api-v9-wifi-bss-",
+    "section_id": "get-the-bss-list",
+    "original_sha256": "2d61104d7838bef19da27f23e270b75b0f37e689fa88037b5f3b307539230f39",
+    "adapted_sha256": "7066eb507f32ad8b324955183c713759c40442238749f59b86d1ba03e127b92a"
+  },
+  {
+    "module": "wifi",
+    "operation_id": "get--api-v9-wifi-bss-id",
+    "section_id": "get-a-particular-bss",
+    "original_sha256": "c0fe626d2ae49f0062000e7998c97baa4d45db9df17c2700fda92c811ee1a907",
+    "adapted_sha256": "b4bad2354bf6ae03f9d6d70ff4d6639d491ab3b94cd264c3d90d52f182e60128"
+  },
+  {
+    "module": "wifi",
+    "operation_id": "put--api-v9-wifi-bss-id",
+    "section_id": "update-an-bss",
+    "original_sha256": "b987e8ede6db178b20245e5b79098342ce187e40bf7b27709d5e31636d0bd010",
+    "adapted_sha256": "61a3485a99f450334e1e7d6042e2c5e1702fc7dd1e05061ed0ee3b4b0189d064"
+  },
+  {
+    "module": "download",
+    "operation_id": "get--api-v8-downloads-task_id-files",
+    "section_id": "get-the-list-of-files-for-a-given-download",
+    "original_sha256": "eae14dccca7bf247458a49f3308d2a719fb857821aa0a40cf081ddc34b9011ac",
+    "adapted_sha256": "7188d48ae989b5729c0cc3328cc35b80f87787b21d4a002fb5e9219ef23ad999"
+  },
+  {
+    "module": "rrd",
+    "operation_id": "post--api-v8-rrd-",
+    "section_id": "get-rrd-stats-unstable",
+    "original_sha256": "bb8cb5e46cf53e7460cf155a6bfcc6e16019ff618f14a5fbe847941dae77b4cc",
+    "adapted_sha256": "bd60e086b0a89d083d4a2b3b3a8dab9b346c5dadd2e8ff15811dc511da885845"
+  },
+  {
+    "module": "rrd",
+    "operation_id": "post--api-v8-rrd-",
+    "section_id": "get-rrd-stats-unstable",
+    "original_sha256": "218718de904c2e509cb37845977a7e02b7a9085866990708f0403d3746c8961d",
+    "adapted_sha256": "77239cf0bf6d2841965c97972081787e67d806bcdb69f4cebfd1c15e66653113"
+  }
+]

@@ -1,0 +1,698 @@
+{
+  "module": {
+    "module": "vm",
+    "title": "VM API [UNSTABLE]",
+    "category": "stockage-vm",
+    "path": "docs/reference/stockage-vm/vm.md",
+    "http_signatures": 18,
+    "objects": 6,
+    "properties": 34,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#vm-api-unstable",
+    "source_pre_blocks": 0,
+    "markdown_code_blocks": 0,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/info/",
+      "path_template": "/api/v{major}/vm/info/",
+      "documented_major": 8,
+      "title": "Get VM System Info",
+      "id": "get--api-v8-vm-info-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-info-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-info-",
+      "referenced_objects": [
+        "VmSystemInfo"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-info-"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/distros/",
+      "path_template": "/api/v{major}/vm/distros/",
+      "documented_major": 8,
+      "title": "Get Installable VM distributions",
+      "id": "get--api-v8-vm-distros-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-distros-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-distros-",
+      "referenced_objects": [
+        "VmDistribution"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-distros-"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/",
+      "path_template": "/api/v{major}/vm/",
+      "documented_major": 8,
+      "title": "Get the list of all VMs",
+      "id": "get--api-v8-vm-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-",
+      "referenced_objects": [
+        "VM"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/{id}",
+      "path_template": "/api/v{major}/vm/{id}",
+      "documented_major": 8,
+      "title": "Get a VM",
+      "id": "get--api-v8-vm-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-id",
+      "referenced_objects": [
+        "VM"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-id"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/",
+      "path_template": "/api/v{major}/vm/",
+      "documented_major": 8,
+      "title": "Add a VM",
+      "id": "post--api-v8-vm-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-",
+      "referenced_objects": [
+        "VM"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-"
+    },
+    {
+      "module": "vm",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vm/{id}",
+      "path_template": "/api/v{major}/vm/{id}",
+      "documented_major": 8,
+      "title": "Delete a VM",
+      "id": "delete--api-v8-vm-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vm-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#delete--api-v8-vm-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-vm-id"
+    },
+    {
+      "module": "vm",
+      "method": "PUT",
+      "documented_path": "/api/v8/vm/{id}",
+      "path_template": "/api/v{major}/vm/{id}",
+      "documented_major": 8,
+      "title": "Update a VM",
+      "id": "put--api-v8-vm-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vm-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#put--api-v8-vm-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-vm-id"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/start",
+      "path_template": "/api/v{major}/vm/{id}/start",
+      "documented_major": 8,
+      "title": "Start a VM",
+      "id": "post--api-v8-vm-id-start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-start",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-id-start",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-id-start"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/powerbutton",
+      "path_template": "/api/v{major}/vm/{id}/powerbutton",
+      "documented_major": 8,
+      "title": "Send a powerbutton signal to a VM",
+      "id": "post--api-v8-vm-id-powerbutton",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-powerbutton",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-id-powerbutton",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-id-powerbutton"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/stop",
+      "path_template": "/api/v{major}/vm/{id}/stop",
+      "documented_major": 8,
+      "title": "Stop a VM",
+      "id": "post--api-v8-vm-id-stop",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-stop",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-id-stop",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-id-stop"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/restart",
+      "path_template": "/api/v{major}/vm/{id}/restart",
+      "documented_major": 8,
+      "title": "Reset a VM",
+      "id": "post--api-v8-vm-id-restart",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-restart",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-id-restart",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-id-restart"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/{id}/console",
+      "path_template": "/api/v{major}/vm/{id}/console",
+      "documented_major": 8,
+      "title": "VM virtual console",
+      "id": "get--api-v8-vm-id-console",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id-console",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-id-console",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-id-console"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/{id}/vnc",
+      "path_template": "/api/v{major}/vm/{id}/vnc",
+      "documented_major": 8,
+      "title": "VM virtual screen",
+      "id": "get--api-v8-vm-id-vnc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id-vnc",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-id-vnc",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-id-vnc"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/disk/info",
+      "path_template": "/api/v{major}/vm/disk/info",
+      "documented_major": 8,
+      "title": "Get information on a virtual disk",
+      "id": "post--api-v8-vm-disk-info",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-info",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-disk-info",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-disk-info"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/disk/create",
+      "path_template": "/api/v{major}/vm/disk/create",
+      "documented_major": 8,
+      "title": "Create a virtual disk",
+      "id": "post--api-v8-vm-disk-create",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-create",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-disk-create",
+      "referenced_objects": [
+        "VM.disk_type"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-disk-create"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/disk/resize",
+      "path_template": "/api/v{major}/vm/disk/resize",
+      "documented_major": 8,
+      "title": "Resize a virtual disk",
+      "id": "post--api-v8-vm-disk-resize",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-resize",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#post--api-v8-vm-disk-resize",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vm-disk-resize"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/disk/task/{id}",
+      "path_template": "/api/v{major}/vm/disk/task/{id}",
+      "documented_major": 8,
+      "title": "Get a virtual disk task",
+      "id": "get--api-v8-vm-disk-task-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-disk-task-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#get--api-v8-vm-disk-task-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vm-disk-task-id"
+    },
+    {
+      "module": "vm",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vm/disk/task/{id}",
+      "path_template": "/api/v{major}/vm/disk/task/{id}",
+      "documented_major": 8,
+      "title": "Delete a virtual disk task",
+      "id": "delete--api-v8-vm-disk-task-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vm-disk-task-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/vm.md#delete--api-v8-vm-disk-task-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-vm-disk-task-id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "vm",
+      "name": "VM",
+      "id": "VM",
+      "properties": [
+        "VM.id",
+        "VM.name",
+        "VM.disk_path",
+        "VM.disk_type",
+        "VM.cd_path",
+        "VM.memory",
+        "VM.vcpus",
+        "VM.status",
+        "VM.enable_screen",
+        "VM.bind_usb_ports",
+        "VM.enable_cloudinit",
+        "VM.cloudinit_hostname",
+        "VM.cloudinit_userdata",
+        "VM.mac",
+        "VM.os"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM"
+    },
+    {
+      "module": "vm",
+      "name": "VmSystemInfo",
+      "id": "VmSystemInfo",
+      "properties": [
+        "VmSystemInfo.total_memory",
+        "VmSystemInfo.used_memory",
+        "VmSystemInfo.total_cpus",
+        "VmSystemInfo.used_cpus",
+        "VmSystemInfo.usb_ports",
+        "VmSystemInfo.usb_used"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo"
+    },
+    {
+      "module": "vm",
+      "name": "VmDistribution",
+      "id": "VmDistribution",
+      "properties": [
+        "VmDistribution.name",
+        "VmDistribution.url",
+        "VmDistribution.hash",
+        "VmDistribution.os"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDistribution"
+    },
+    {
+      "module": "vm",
+      "name": "VmDiskInfo",
+      "id": "VmDiskInfo",
+      "properties": [
+        "VmDiskInfo.type",
+        "VmDiskInfo.actual_size",
+        "VmDiskInfo.virtual_size"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskInfo",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskInfo"
+    },
+    {
+      "module": "vm",
+      "name": "VmDiskTask",
+      "id": "VmDiskTask",
+      "properties": [
+        "VmDiskTask.id",
+        "VmDiskTask.type",
+        "VmDiskTask.done",
+        "VmDiskTask.error"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskTask"
+    },
+    {
+      "module": "vm",
+      "name": "VmStateChange",
+      "id": "VmStateChange",
+      "properties": [
+        "VmStateChange.id",
+        "VmStateChange.status"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmStateChange",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmStateChange"
+    }
+  ],
+  "properties": [
+    {
+      "module": "vm",
+      "id": "VM.id",
+      "signature": "id int Read-only",
+      "description": "unique id of this VM",
+      "source_id": "VM.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.id",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.id"
+    },
+    {
+      "module": "vm",
+      "id": "VM.name",
+      "signature": "name string",
+      "description": "Name of this VM. Max 31 characters.",
+      "source_id": "VM.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.name",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.name"
+    },
+    {
+      "module": "vm",
+      "id": "VM.disk_path",
+      "signature": "disk_path string",
+      "description": "Base64-encoded path to the hard disk image of this VM.",
+      "source_id": "VM.disk_path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.disk_path",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.disk_path"
+    },
+    {
+      "module": "vm",
+      "id": "VM.disk_type",
+      "signature": "disk_type enum",
+      "description": "Type of disk image. disk_type Description raw Raw disk data qcow2 Qcow2 image type. Usually qcow version 3. Note: not all features are supported. In particular, reference to other images is disabled.",
+      "source_id": "VM.disk_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.disk_type",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.disk_type"
+    },
+    {
+      "module": "vm",
+      "id": "VM.cd_path",
+      "signature": "cd_path string Optionnal",
+      "description": "Base64-encoded path to CDROM device ISO image. Optional.",
+      "source_id": "VM.cd_path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.cd_path",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.cd_path"
+    },
+    {
+      "module": "vm",
+      "id": "VM.memory",
+      "signature": "memory int",
+      "description": "Memory allocated to this VM in megabytes.",
+      "source_id": "VM.memory",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.memory",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.memory"
+    },
+    {
+      "module": "vm",
+      "id": "VM.vcpus",
+      "signature": "vcpus int",
+      "description": "Number of virtual CPUs to allocate to this VM.",
+      "source_id": "VM.vcpus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.vcpus",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.vcpus"
+    },
+    {
+      "module": "vm",
+      "id": "VM.status",
+      "signature": "status enum Read-only",
+      "description": "VM status status Description stopped VM is stopped running VM is running starting VM is starting up. Transitional state stopping VM is being stopped. Transitional state",
+      "source_id": "VM.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.status",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.status"
+    },
+    {
+      "module": "vm",
+      "id": "VM.enable_screen",
+      "signature": "enable_screen bool",
+      "description": "Whether or not this VM should have a virtual screen, to use with the VNC websocket protocol.",
+      "source_id": "VM.enable_screen",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.enable_screen",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.enable_screen"
+    },
+    {
+      "module": "vm",
+      "id": "VM.bind_usb_ports",
+      "signature": "bind_usb_ports [] array of enum",
+      "description": "List of ports that should be bound to this VM. Only one VM can use USB at given time, whether is uses only one or all USB ports. The list of system USB ports is available in VmSystemInfo . For example: \u201Cusb-external-type-a\u201D, \u201Cusb-external-type-c\u201D.",
+      "source_id": "VM.bind_usb_ports",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.bind_usb_ports",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.bind_usb_ports"
+    },
+    {
+      "module": "vm",
+      "id": "VM.enable_cloudinit",
+      "signature": "enable_cloudinit bool",
+      "description": "Whether or not to enable passing data through cloudinit. This uses the NoCloud iso image method; it will add a virtual cdrom drive (distinct from the one passed by cd_path) with the data in cloudinit_userdata and cloudinit_hostname when enabled.",
+      "source_id": "VM.enable_cloudinit",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.enable_cloudinit",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.enable_cloudinit"
+    },
+    {
+      "module": "vm",
+      "id": "VM.cloudinit_hostname",
+      "signature": "cloudinit_hostname string",
+      "description": "When cloudinit is enabled, hostname desired for this VM. Max 59 characters.",
+      "source_id": "VM.cloudinit_hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.cloudinit_hostname",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.cloudinit_hostname"
+    },
+    {
+      "module": "vm",
+      "id": "VM.cloudinit_userdata",
+      "signature": "cloudinit_userdata string",
+      "description": "When cloudinit is enabled, raw yaml to be passed in the user-data file. Maximum 32767 characters.",
+      "source_id": "VM.cloudinit_userdata",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.cloudinit_userdata",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.cloudinit_userdata"
+    },
+    {
+      "module": "vm",
+      "id": "VM.mac",
+      "signature": "mac string Read-only",
+      "description": "VM ethernet interface MAC address.",
+      "source_id": "VM.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.mac",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.mac"
+    },
+    {
+      "module": "vm",
+      "id": "VM.os",
+      "signature": "os string",
+      "description": "Type of OS used for this VM. Only used to set an icon for now. Example values: unknown fedora debian ubuntu freebsd opensuse centos jeedom homebridge",
+      "source_id": "VM.os",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM.os",
+      "markdown": "docs/reference/stockage-vm/vm.md#VM.os"
+    },
+    {
+      "module": "vm",
+      "id": "VmSystemInfo.total_memory",
+      "signature": "total_memory int Read-only",
+      "description": "Total memory available to VMs.",
+      "source_id": "VmSystemInfo.total_memory",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo.total_memory",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo.total_memory"
+    },
+    {
+      "module": "vm",
+      "id": "VmSystemInfo.used_memory",
+      "signature": "used_memory int Read-only",
+      "description": "Currently used memory by all VMs.",
+      "source_id": "VmSystemInfo.used_memory",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo.used_memory",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo.used_memory"
+    },
+    {
+      "module": "vm",
+      "id": "VmSystemInfo.total_cpus",
+      "signature": "total_cpus int Read-only",
+      "description": "Total number of vCPUs available to VMs.",
+      "source_id": "VmSystemInfo.total_cpus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo.total_cpus",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo.total_cpus"
+    },
+    {
+      "module": "vm",
+      "id": "VmSystemInfo.used_cpus",
+      "signature": "used_cpus int Read-only",
+      "description": "Currently used vCPUs by all VMs.",
+      "source_id": "VmSystemInfo.used_cpus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo.used_cpus",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo.used_cpus"
+    },
+    {
+      "module": "vm",
+      "id": "VmSystemInfo.usb_ports",
+      "signature": "usb_ports [] array of string Read-only",
+      "description": "List of USB ports available on this system",
+      "source_id": "VmSystemInfo.usb_ports",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo.usb_ports",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo.usb_ports"
+    },
+    {
+      "module": "vm",
+      "id": "VmSystemInfo.usb_used",
+      "signature": "usb_used bool Read-only",
+      "description": "Whether a VM is currently using USB. (only one can use USB at a given time)",
+      "source_id": "VmSystemInfo.usb_used",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo.usb_used",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo.usb_used"
+    },
+    {
+      "module": "vm",
+      "id": "VmDistribution.name",
+      "signature": "name string Read-only",
+      "description": "Name of downloadable distribution image.",
+      "source_id": "VmDistribution.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution.name",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDistribution.name"
+    },
+    {
+      "module": "vm",
+      "id": "VmDistribution.url",
+      "signature": "url string Read-only",
+      "description": "URL of distribution. Usually an arm64 qcow2 cloud image, supporting EFI boot and cloud-init.",
+      "source_id": "VmDistribution.url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution.url",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDistribution.url"
+    },
+    {
+      "module": "vm",
+      "id": "VmDistribution.hash",
+      "signature": "hash string Read-only",
+      "description": "Hash in the format sha256:\u003Chash\u003E or sha512:\u003Chash\u003E; or a URL to a SHA256SUMS or SHA512SUMS file (used by Ubuntu, Debian), or to a -CHECKSUM file (used by Fedora). It is designed to be passed as-is to the download add API .",
+      "source_id": "VmDistribution.hash",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution.hash",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDistribution.hash"
+    },
+    {
+      "module": "vm",
+      "id": "VmDistribution.os",
+      "signature": "os string Read-only",
+      "description": "OS of this distribution image; to be passed as a os type in the VM .",
+      "source_id": "VmDistribution.os",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution.os",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDistribution.os"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskInfo.type",
+      "signature": "type enum Read-only",
+      "description": "Type of disk, just like in VM.disk_type",
+      "source_id": "VmDiskInfo.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskInfo.type",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskInfo.type"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskInfo.actual_size",
+      "signature": "actual_size int Read-only",
+      "description": "Space used by virtual image on disk. This is how much filesystem space is consumed on the box.",
+      "source_id": "VmDiskInfo.actual_size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskInfo.actual_size",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskInfo.actual_size"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskInfo.virtual_size",
+      "signature": "virtual_size int Read-only",
+      "description": "Size of virtual disk. This is the size the disk will appear inside the VM.",
+      "source_id": "VmDiskInfo.virtual_size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskInfo.virtual_size",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskInfo.virtual_size"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskTask.id",
+      "signature": "id int Read-only",
+      "description": "Task id.",
+      "source_id": "VmDiskTask.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask.id",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskTask.id"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskTask.type",
+      "signature": "type enum Read-only",
+      "description": "Type of disk operation: create resize",
+      "source_id": "VmDiskTask.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask.type",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskTask.type"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskTask.done",
+      "signature": "done bool Read-only",
+      "description": "Is task done",
+      "source_id": "VmDiskTask.done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask.done",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskTask.done"
+    },
+    {
+      "module": "vm",
+      "id": "VmDiskTask.error",
+      "signature": "error bool Read-only",
+      "description": "Is task in error",
+      "source_id": "VmDiskTask.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask.error",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmDiskTask.error"
+    },
+    {
+      "module": "vm",
+      "id": "VmStateChange.id",
+      "signature": "id int Read-only",
+      "description": "VM id.",
+      "source_id": "VmStateChange.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmStateChange.id",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmStateChange.id"
+    },
+    {
+      "module": "vm",
+      "id": "VmStateChange.status",
+      "signature": "status enum Read-only",
+      "description": "New VM.status .",
+      "source_id": "VmStateChange.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmStateChange.status",
+      "markdown": "docs/reference/stockage-vm/vm.md#VmStateChange.status"
+    }
+  ],
+  "events": []
+}

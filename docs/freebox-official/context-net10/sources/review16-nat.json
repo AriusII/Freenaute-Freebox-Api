@@ -1,0 +1,445 @@
+{
+  "module": {
+    "module": "nat",
+    "title": "NAT",
+    "category": "reseau",
+    "path": "docs/reference/reseau/nat.md",
+    "http_signatures": 10,
+    "objects": 3,
+    "properties": 23,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#nat",
+    "source_pre_blocks": 31,
+    "markdown_code_blocks": 31,
+    "source_tables": 4
+  },
+  "endpoints": [
+    {
+      "module": "nat",
+      "method": "GET",
+      "documented_path": "/api/v8/fw/dmz/",
+      "path_template": "/api/v{major}/fw/dmz/",
+      "documented_major": 8,
+      "title": "Get the current Dmz configuration",
+      "id": "get--api-v8-fw-dmz-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-fw-dmz-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#get--api-v8-fw-dmz-",
+      "referenced_objects": [
+        "DmzConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-fw-dmz-"
+    },
+    {
+      "module": "nat",
+      "method": "PUT",
+      "documented_path": "/api/v8/fw/dmz/",
+      "path_template": "/api/v{major}/fw/dmz/",
+      "documented_major": 8,
+      "title": "Update the current Dmz configuration",
+      "id": "put--api-v8-fw-dmz-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-fw-dmz-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#put--api-v8-fw-dmz-",
+      "referenced_objects": [
+        "LanConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-fw-dmz-"
+    },
+    {
+      "module": "nat",
+      "method": "GET",
+      "documented_path": "/api/v8/fw/redir/",
+      "path_template": "/api/v{major}/fw/redir/",
+      "documented_major": 8,
+      "title": "Getting the list of port forwarding",
+      "id": "get--api-v8-fw-redir-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-fw-redir-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#get--api-v8-fw-redir-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-fw-redir-"
+    },
+    {
+      "module": "nat",
+      "method": "GET",
+      "documented_path": "/api/v8/fw/redir/{redir_id}",
+      "path_template": "/api/v{major}/fw/redir/{redir_id}",
+      "documented_major": 8,
+      "title": "Getting a specific port forwarding",
+      "id": "get--api-v8-fw-redir-redir_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-fw-redir-redir_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#get--api-v8-fw-redir-redir_id",
+      "referenced_objects": [
+        "PortForwardingConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-fw-redir-redir_id"
+    },
+    {
+      "module": "nat",
+      "method": "PUT",
+      "documented_path": "/api/v8/fw/redir/{redir_id}",
+      "path_template": "/api/v{major}/fw/redir/{redir_id}",
+      "documented_major": 8,
+      "title": "Updating a port forwarding",
+      "id": "put--api-v8-fw-redir-redir_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-fw-redir-redir_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#put--api-v8-fw-redir-redir_id",
+      "referenced_objects": [
+        "PortForwardingConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-fw-redir-redir_id"
+    },
+    {
+      "module": "nat",
+      "method": "POST",
+      "documented_path": "/api/v8/fw/redir/",
+      "path_template": "/api/v{major}/fw/redir/",
+      "documented_major": 8,
+      "title": "Add a port forwarding",
+      "id": "post--api-v8-fw-redir-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-fw-redir-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#post--api-v8-fw-redir-",
+      "referenced_objects": [
+        "PortForwardingConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-fw-redir-"
+    },
+    {
+      "module": "nat",
+      "method": "DELETE",
+      "documented_path": "/api/v8/fw/redir/{redir_id}",
+      "path_template": "/api/v{major}/fw/redir/{redir_id}",
+      "documented_major": 8,
+      "title": "Delete a port forwarding",
+      "id": "delete--api-v8-fw-redir-redir_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-fw-redir-redir_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#delete--api-v8-fw-redir-redir_id",
+      "referenced_objects": [
+        "PortForwardingConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-fw-redir-redir_id"
+    },
+    {
+      "module": "nat",
+      "method": "GET",
+      "documented_path": "/api/v8/fw/incoming/",
+      "path_template": "/api/v{major}/fw/incoming/",
+      "documented_major": 8,
+      "title": "Getting the list of incoming ports",
+      "id": "get--api-v8-fw-incoming-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-fw-incoming-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#get--api-v8-fw-incoming-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-fw-incoming-"
+    },
+    {
+      "module": "nat",
+      "method": "GET",
+      "documented_path": "/api/v8/fw/incoming/{port_id}",
+      "path_template": "/api/v{major}/fw/incoming/{port_id}",
+      "documented_major": 8,
+      "title": "Getting a specific incoming port",
+      "id": "get--api-v8-fw-incoming-port_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-fw-incoming-port_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#get--api-v8-fw-incoming-port_id",
+      "referenced_objects": [
+        "IncomingPortConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-fw-incoming-port_id"
+    },
+    {
+      "module": "nat",
+      "method": "PUT",
+      "documented_path": "/api/v8/fw/incoming/{port_id}",
+      "path_template": "/api/v{major}/fw/incoming/{port_id}",
+      "documented_major": 8,
+      "title": "Updating an incoming port",
+      "id": "put--api-v8-fw-incoming-port_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-fw-incoming-port_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/nat.md#put--api-v8-fw-incoming-port_id",
+      "referenced_objects": [
+        "IncomingPortConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-fw-incoming-port_id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "nat",
+      "name": "DmzConfig",
+      "id": "DmzConfig",
+      "properties": [
+        "DmzConfig.ip",
+        "DmzConfig.enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DmzConfig",
+      "markdown": "docs/reference/reseau/nat.md#DmzConfig"
+    },
+    {
+      "module": "nat",
+      "name": "PortForwardingConfig",
+      "id": "PortForwardingConfig",
+      "properties": [
+        "PortForwardingConfig.id",
+        "PortForwardingConfig.enabled",
+        "PortForwardingConfig.ip_proto",
+        "PortForwardingConfig.wan_port_start",
+        "PortForwardingConfig.wan_port_end",
+        "PortForwardingConfig.lan_ip",
+        "PortForwardingConfig.lan_port",
+        "PortForwardingConfig.hostname",
+        "PortForwardingConfig.host",
+        "PortForwardingConfig.src_ip",
+        "PortForwardingConfig.comment"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig"
+    },
+    {
+      "module": "nat",
+      "name": "IncomingPortConfig",
+      "id": "IncomingPortConfig",
+      "properties": [
+        "IncomingPortConfig.id",
+        "IncomingPortConfig.enabled",
+        "IncomingPortConfig.active",
+        "IncomingPortConfig.type",
+        "IncomingPortConfig.in_port",
+        "IncomingPortConfig.netns",
+        "propriete-sans-ancre-nat-20",
+        "IncomingPortConfig.min_port",
+        "IncomingPortConfig.max_port",
+        "IncomingPortConfig.readonly"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "nat",
+      "id": "DmzConfig.ip",
+      "signature": "ip string",
+      "description": "dmz host IP",
+      "source_id": "DmzConfig.ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DmzConfig.ip",
+      "markdown": "docs/reference/reseau/nat.md#DmzConfig.ip"
+    },
+    {
+      "module": "nat",
+      "id": "DmzConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is dmz enabled",
+      "source_id": "DmzConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DmzConfig.enabled",
+      "markdown": "docs/reference/reseau/nat.md#DmzConfig.enabled"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.id",
+      "signature": "id int",
+      "description": "forwarding id",
+      "source_id": "PortForwardingConfig.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.id",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.id"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is forwarding enabled",
+      "source_id": "PortForwardingConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.enabled",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.enabled"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.ip_proto",
+      "signature": "ip_proto enum",
+      "description": "ip_proto Description tcp TCP udp UDP",
+      "source_id": "PortForwardingConfig.ip_proto",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.ip_proto",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.ip_proto"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.wan_port_start",
+      "signature": "wan_port_start string",
+      "description": "forwarding range start",
+      "source_id": "PortForwardingConfig.wan_port_start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.wan_port_start",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.wan_port_start"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.wan_port_end",
+      "signature": "wan_port_end int",
+      "description": "forwarding range end",
+      "source_id": "PortForwardingConfig.wan_port_end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.wan_port_end",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.wan_port_end"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.lan_ip",
+      "signature": "lan_ip string",
+      "description": "forwarding target on LAN",
+      "source_id": "PortForwardingConfig.lan_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.lan_ip",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.lan_ip"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.lan_port",
+      "signature": "lan_port int",
+      "description": "forwarding target start port on LAN, (last port is lan_port \u002B wan_port_end - wan_port_start)",
+      "source_id": "PortForwardingConfig.lan_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.lan_port",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.lan_port"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.hostname",
+      "signature": "hostname string Read-only",
+      "description": "forwarding target host name",
+      "source_id": "PortForwardingConfig.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.hostname",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.hostname"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.host",
+      "signature": "host LanHost Read-only",
+      "description": "forwarding target host information (see: LanHost )",
+      "source_id": "PortForwardingConfig.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.host",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.host"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.src_ip",
+      "signature": "src_ip string",
+      "description": "if src_ip == 0.0.0.0 this rule will apply to any src ip otherwise it will only apply to the specified ip address",
+      "source_id": "PortForwardingConfig.src_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.src_ip",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.src_ip"
+    },
+    {
+      "module": "nat",
+      "id": "PortForwardingConfig.comment",
+      "signature": "comment string",
+      "description": "comment",
+      "source_id": "PortForwardingConfig.comment",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig.comment",
+      "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig.comment"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.id",
+      "signature": "id string Read-only",
+      "description": "incoming port id id Description http http port for remote access to Freebox OS https https port for tls remote access to Freebox OS bittorrent-main main bittorrent port for Freebox downloader bittorrent-dht bittorrent port for DHT openvpn_routed routed openvpn port openvpn_bridge bridged openvpn port ipsec_ike ipsec ikev2 vpn port ipsec_nat ipsec nat vpn port pptp pptp vpn server port ftp ftp control port for FTP remote access ftp_pasv ftp data port for FTP remote access",
+      "source_id": "IncomingPortConfig.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.id",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.id"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is the port binding allowed",
+      "source_id": "IncomingPortConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.enabled",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.enabled"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.active",
+      "signature": "active bool Read-only",
+      "description": "is the port binding currently active",
+      "source_id": "IncomingPortConfig.active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.active",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.active"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.type",
+      "signature": "type enum Read-only",
+      "description": "ip_proto Description tcp TCP udp UDP tcp_udp both TCP and UDP",
+      "source_id": "IncomingPortConfig.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.type",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.type"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.in_port",
+      "signature": "in_port int",
+      "description": "binding port",
+      "source_id": "IncomingPortConfig.in_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.in_port",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.in_port"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.netns",
+      "signature": "netns string Read-only",
+      "description": "network namespace. The service may be running on a different namespace (for instance if the service uses the vpn client).",
+      "source_id": "IncomingPortConfig.netns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.netns",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.netns"
+    },
+    {
+      "module": "nat",
+      "id": "propriete-sans-ancre-nat-20",
+      "signature": "in_port int",
+      "description": "binding port",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#incoming-port-config",
+      "markdown": "docs/reference/reseau/nat.md#propriete-sans-ancre-nat-20"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.min_port",
+      "signature": "min_port int Read-only",
+      "description": "This field indicate the minimum possible value for in_port (see ConnectionStatus ipv4_port_range)",
+      "source_id": "IncomingPortConfig.min_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.min_port",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.min_port"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.max_port",
+      "signature": "max_port int Read-only",
+      "description": "This field indicate the maximum possible value for in_port (see ConnectionStatus ipv4_port_range)",
+      "source_id": "IncomingPortConfig.max_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.max_port",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.max_port"
+    },
+    {
+      "module": "nat",
+      "id": "IncomingPortConfig.readonly",
+      "signature": "readonly bool Read-only",
+      "description": "If set to true, the in_port field cannot be changed because of the underlying protocol does not allow it",
+      "source_id": "IncomingPortConfig.readonly",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig.readonly",
+      "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig.readonly"
+    }
+  ],
+  "events": []
+}

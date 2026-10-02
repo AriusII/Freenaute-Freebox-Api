@@ -1,0 +1,49 @@
+name: .NET
+
+on:
+  push:
+    branches: [main, 'feature/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+          cache: true
+          cache-dependency-path: '**/packages.lock.json'
+      - run: dotnet restore Freenaute.Freebox.sln --locked-mode
+      - run: dotnet test Freenaute.Freebox.sln -c ${{ matrix.configuration }} --no-restore
+      - run: dotnet run --project Tools/Freenaute.Freebox.Documentation -c ${{ matrix.configuration }} --no-build -- verify
+      - run: dotnet run --project Tools/Freenaute.Freebox.Documentation -c ${{ matrix.configuration }} --no-build -- coverage --output artifacts/documentation-coverage
+      - run: dotnet pack Libs/Freenaute.Freebox.Client -c ${{ matrix.configuration }} --no-build
+      - run: dotnet pack Libs/Freenaute.Freebox.Mapper -c ${{ matrix.configuration }} --no-build
+
+  native-aot:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+      - run: dotnet restore Samples/Freenaute.Freebox.AotSmoke -r linux-x64 --locked-mode
+      - run: dotnet publish Samples/Freenaute.Freebox.AotSmoke -c Release -r linux-x64 --no-restore
+      - run: artifacts/publish/Freenaute.Freebox.AotSmoke/release_linux-x64/Freenaute.Freebox.AotSmoke
+      - run: dotnet restore Tools/Freenaute.Freebox.Documentation -r linux-x64 --locked-mode
+      - run: dotnet publish Tools/Freenaute.Freebox.Documentation -c Release -r linux-x64 --no-restore -p:PublishAot=true
+      - run: artifacts/publish/Freenaute.Freebox.Documentation/release_linux-x64/Freenaute.Freebox.Documentation verify

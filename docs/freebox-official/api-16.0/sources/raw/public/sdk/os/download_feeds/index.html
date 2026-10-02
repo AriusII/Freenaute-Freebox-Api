@@ -1,0 +1,660 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Download Feeds &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Download Configuration" href="../download_config/" />
+    <link rel="prev" title="Download" href="../download/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="download-feeds">
+<h1>Download Feeds<a class="headerlink" href="#download-feeds" title="Permalink to this headline">¶</a></h1>
+<p>The Freebox downloader supports subscribing to RSS feeds, for
+automatic content download.</p>
+<div class="section" id="download-feed-object">
+<h2>Download Feed object<a class="headerlink" href="#download-feed-object" title="Permalink to this headline">¶</a></h2>
+<p>Download Feeds have the following attributes:</p>
+<dl class="object">
+<dt id="DownloadFeed">
+<code class="descname">DownloadFeed</code><a class="headerlink" href="#DownloadFeed" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadFeed.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.status">
+<code class="descname">status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>The feed can have the following status</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ready</td>
+<td>feed is up to date</td>
+</tr>
+<tr class="row-odd"><td>fetching</td>
+<td>feed is updating</td>
+</tr>
+<tr class="row-even"><td>error</td>
+<td>there was an error trying to refresh this feed, see error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.url">
+<code class="descname">url</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feed URL</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.title">
+<code class="descname">title</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feed title (extracted from the RSS)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.desc">
+<code class="descname">desc</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feed description (extracted from the RSS)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.image_url">
+<code class="descname">image_url</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.image_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Feed image URL (extracted from the RSS)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.nb_read">
+<code class="descname">nb_read</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.nb_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of read items in the feed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.nb_unread">
+<code class="descname">nb_unread</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.nb_unread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of unread items in the feed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.auto_download">
+<code class="descname">auto_download</code><span> </span>bool<a class="headerlink" href="#DownloadFeed.auto_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>If set to true, the downloader will automatically download new
+items</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.fetch_ts">
+<code class="descname">fetch_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.fetch_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Last time the feed was fetched</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.pub_ts">
+<code class="descname">pub_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.pub_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Last time the feed was published on remote server</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeed.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeed.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error code (same as used in <a class="reference internal" href="../download/#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> or
+<a class="reference internal" href="../download/#DownloadFile" title="DownloadFile"><code class="xref json json-object docutils literal"><span class="pre">DownloadFile</span></code></a>).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="download-feed-errors">
+<h2>Download Feed Errors<a class="headerlink" href="#download-feed-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the download feed API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>feed_not_found</td>
+<td>No feed was found with the given id</td>
+</tr>
+<tr class="row-odd"><td>item_not_found</td>
+<td>No feed item was found with the given id</td>
+</tr>
+<tr class="row-even"><td>feed_is_recent</td>
+<td>You are trying to update a feed that is already up to date</td>
+</tr>
+<tr class="row-odd"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="download-feed-api">
+<h2>Download Feed API<a class="headerlink" href="#download-feed-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-all-download-feeds">
+<h3>Get the list of all download Feeds<a class="headerlink" href="#get-the-list-of-all-download-feeds" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-feeds-">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/feeds/</code><a class="headerlink" href="#get--api-v4-downloads-feeds-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a> feeds</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/feeds/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;auto_download&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;Custom RSS feed based off search filters.&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;nb_read&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;ezRSS - Search Results&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;image_url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://ezrss.it/images/ezrssit.png&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.ezrss.it/search/index.php?show_name=Ubuntu&amp;mode=rss&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;nb_unread&quot;</span><span class="o">:</span> <span class="mi">29</span><span class="p">,</span>
+          <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">1349885023</span><span class="p">,</span>
+          <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350583600</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;auto_download&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;Latest nzb for Debian&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;nb_read&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Debian NZB RSS&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;image_url&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.nzb-rss.com/rss/Debian.rss&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;nb_unread&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+          <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">1350469391</span><span class="p">,</span>
+          <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350583600</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-download-feed">
+<h3>Get a download Feed<a class="headerlink" href="#get-a-download-feed" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-feeds-id">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/feeds/{id}</code><a class="headerlink" href="#get--api-v4-downloads-feeds-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/feeds/2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;auto_download&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;Latest nzb for Debian&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;nb_read&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Debian NZB RSS&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;image_url&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.nzb-rss.com/rss/Debian.rss&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;nb_unread&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+          <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">1350469391</span><span class="p">,</span>
+          <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350583600</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-download-feed">
+<h3>Add a Download Feed<a class="headerlink" href="#add-a-download-feed" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-downloads-feeds-">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/feeds/</code><a class="headerlink" href="#post--api-v4-downloads-feeds-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a>.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/feeds/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.nzb-rss.com/rss/Debian-unstable.rss&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;auto_download&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_read&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;image_url&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feed_id&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.nzb-rss.com/rss/Debian-unstable.rss&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_unread&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350583600</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-download-feed">
+<h3>Delete Download Feed<a class="headerlink" href="#delete-download-feed" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-downloads-feeds-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/downloads/feeds/{id}</code><a class="headerlink" href="#delete--api-v4-downloads-feeds-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a> and all the associated items.</p>
+<p>This will not alter the <a class="reference internal" href="../download/#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> tasks.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/downloads/feeds/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-download-feed">
+<h3>Update a Download Feed<a class="headerlink" href="#update-a-download-feed" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-downloads-feeds-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/feeds/{id}</code><a class="headerlink" href="#put--api-v4-downloads-feeds-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/downloads/feeds/2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;auto_download&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;auto_download&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;Latest nzb for Debian&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Debian NZB RSS&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_read&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;image_url&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;feed_id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.nzb-rss.com/rss/Debian.rss&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_unread&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">1350583674</span><span class="p">,</span>
+        <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350583600</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="refresh-a-download-feed">
+<h3>Refresh a Download Feed<a class="headerlink" href="#refresh-a-download-feed" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-downloads-feeds-id-fetch">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/feeds/{id}/fetch</code><a class="headerlink" href="#post--api-v4-downloads-feeds-id-fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remotely fetches the RSS feed and updates it.</p>
+<p>Note that if the remote feed specifies a TTL, trying to update
+before the ttl will result in feed_is_recent error</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/feeds/2/fetch</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="refresh-all-download-feeds">
+<h3>Refresh all Download Feeds<a class="headerlink" href="#refresh-all-download-feeds" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-downloads-feeds-fetch">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/feeds/fetch</code><a class="headerlink" href="#post--api-v4-downloads-feeds-fetch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remotely fetches all the RSS feeds.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/feeds/fetch</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="download-feed-item-object">
+<h2>Download Feed Item object<a class="headerlink" href="#download-feed-item-object" title="Permalink to this headline">¶</a></h2>
+<p>Each RSS <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a> contains feed items object</p>
+<dl class="object">
+<dt id="DownloadFeedItem">
+<code class="descname">DownloadFeedItem</code><a class="headerlink" href="#DownloadFeedItem" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadFeedItem.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.feed_id">
+<code class="descname">feed_id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.feed_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id of the <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a></p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.title">
+<code class="descname">title</code><span> </span>string[ro]<a class="headerlink" href="#DownloadFeedItem.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>item title</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.desc">
+<code class="descname">desc</code><span> </span>string[ro]<a class="headerlink" href="#DownloadFeedItem.desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>item description</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.author">
+<code class="descname">author</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.author" title="Permalink to this definition">¶</a></dt>
+<dd><p>item author</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.link">
+<code class="descname">link</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL of the RSS feed attachment</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.is_read">
+<code class="descname">is_read</code><span> </span>bool<a class="headerlink" href="#DownloadFeedItem.is_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>you can mark the item as read manually, or it is marked as read
+automatically when the item is downloaded</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.is_downloaded">
+<code class="descname">is_downloaded</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.is_downloaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>mark downloaded items, automatically set to true when RSS item
+is downloaded</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.fetch_ts">
+<code class="descname">fetch_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.fetch_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of the item creation</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.pub_ts">
+<code class="descname">pub_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.pub_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>item publish timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.enclosure_url">
+<code class="descname">enclosure_url</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.enclosure_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>enclosure URL (if specified in RSS feed)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.enclosure_type">
+<code class="descname">enclosure_type</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.enclosure_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>enclosure mime type (if specified in RSS feed)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFeedItem.enclosure_length">
+<code class="descname">enclosure_length</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFeedItem.enclosure_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>enclosure size in bytes (if specified in RSS feed)</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="get-the-items-of-a-given-rss-feed">
+<h3>Get the items of a given RSS feed<a class="headerlink" href="#get-the-items-of-a-given-rss-feed" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-feeds-feed_id-items-">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/feeds/{feed_id}/items/</code><a class="headerlink" href="#get--api-v4-downloads-feeds-feed_id-items-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <code class="xref json json-object docutils literal"><span class="pre">DownloadFeedItems</span></code> for
+a given <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/feeds/2/items/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350657300</span><span class="p">,</span>
+       <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">1350657317</span><span class="p">,</span>
+       <span class="s2">&quot;is_read&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+       <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;debian-6.0.4-amd64-CD-1.iso&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="s2">&quot;http://bttracker.debian.org:6969/file/debian-6.0.4-amd64-CD-1.iso.torrent?info_hash=95ce23e889cc26901740f87ac25270da725bfd36&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2845</span><span class="p">,</span>
+       <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;debian&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;feed_id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+       <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+     <span class="p">},</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;pub_ts&quot;</span><span class="o">:</span> <span class="mi">1350657300</span><span class="p">,</span>
+       <span class="s2">&quot;fetch_ts&quot;</span><span class="o">:</span> <span class="mi">1350657318</span><span class="p">,</span>
+       <span class="s2">&quot;is_read&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+       <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;debian-6.0.4-amd64-CD-2.iso&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="s2">&quot;http://bttracker.debian.org:6969/file/debian-6.0.4-amd64-CD-2.iso.torrent?info_hash=34583a8e25ef1528a8bfce99d24f401acb24d982&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2846</span><span class="p">,</span>
+       <span class="s2">&quot;author&quot;</span><span class="o">:</span> <span class="s2">&quot;debian&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;feed_id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+       <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+     <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-feed-item">
+<h3>Update a feed item<a class="headerlink" href="#update-a-feed-item" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-downloads-feeds-feed_id-items-item_id">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/feeds/{feed_id}/items/{item_id}</code><a class="headerlink" href="#put--api-v4-downloads-feeds-feed_id-items-item_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <code class="xref json json-object docutils literal"><span class="pre">DownloadFeedItems</span></code> for
+a given <a class="reference internal" href="#DownloadFeed" title="DownloadFeed"><code class="xref json json-object docutils literal"><span class="pre">DownloadFeed</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/downloads/feeds/2/items/2846</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;is_read&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="download-a-feed-item">
+<h3>Download a feed item<a class="headerlink" href="#download-a-feed-item" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-downloads-feeds-feed_id-items-item_id-download">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/feeds/{feed_id}/items/{item_id}/download</code><a class="headerlink" href="#post--api-v4-downloads-feeds-feed_id-items-item_id-download" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will enqueue the RSS item to the download list</p>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/feeds/2/items/2846/download</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="mark-all-items-as-read">
+<h3>Mark all items as read<a class="headerlink" href="#mark-all-items-as-read" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-downloads-feeds-feed_id-items-mark_all_as_read">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/feeds/{feed_id}/items/mark_all_as_read</code><a class="headerlink" href="#post--api-v4-downloads-feeds-feed_id-items-mark_all_as_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method will mark each items as read</p>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/feeds/2/items/mark_all_as_read</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

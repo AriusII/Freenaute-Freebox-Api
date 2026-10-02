@@ -1,0 +1,85 @@
+{
+  "module": {
+    "module": "tftp",
+    "title": "TFTP",
+    "category": "services",
+    "path": "docs/reference/services/tftp.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 2,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#tftp",
+    "source_pre_blocks": 7,
+    "markdown_code_blocks": 7,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "tftp",
+      "method": "GET",
+      "documented_path": "/api/v16/tftp/config/",
+      "path_template": "/api/v{major}/tftp/config/",
+      "documented_major": 16,
+      "title": "Get the current TFTP configuration",
+      "id": "get--api-v16-tftp-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-tftp-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/tftp.md#get--api-v16-tftp-config-",
+      "referenced_objects": [
+        "TftpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-tftp-config-"
+    },
+    {
+      "module": "tftp",
+      "method": "PUT",
+      "documented_path": "/api/latest/tftp/config/",
+      "path_template": "/api/latest/tftp/config/",
+      "documented_major": null,
+      "title": "Update the TFTP configuration",
+      "id": "put--api-latest-tftp-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-latest-tftp-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/tftp.md#put--api-latest-tftp-config-",
+      "referenced_objects": [
+        "TftpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-latest-tftp-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "tftp",
+      "name": "TftpConfig",
+      "id": "TftpConfig",
+      "properties": [
+        "TftpConfig.enabled",
+        "TftpConfig.root"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TftpConfig",
+      "markdown": "docs/reference/services/tftp.md#TftpConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "tftp",
+      "id": "TftpConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is the TFTP server enabled",
+      "source_id": "TftpConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TftpConfig.enabled",
+      "markdown": "docs/reference/services/tftp.md#TftpConfig.enabled"
+    },
+    {
+      "module": "tftp",
+      "id": "TftpConfig.root",
+      "signature": "root string",
+      "description": "is the base64 encoded absolute path to the root directory exposed by the server. This path points to a folder inside the storage device (My Freebox).",
+      "source_id": "TftpConfig.root",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TftpConfig.root",
+      "markdown": "docs/reference/services/tftp.md#TftpConfig.root"
+    }
+  ],
+  "events": []
+}

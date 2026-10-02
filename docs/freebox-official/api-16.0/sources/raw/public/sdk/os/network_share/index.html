@@ -1,0 +1,350 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Network Share &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="UPnP AV" href="../upnpav/" />
+    <link rel="prev" title="LCD" href="../lcd/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="network-share">
+<h1>Network Share<a class="headerlink" href="#network-share" title="Permalink to this headline">¶</a></h1>
+<p>The network share API allow you to control the file sharing services
+running on the Freebox.</p>
+<div class="section" id="network-share-errors">
+<h2>Network Share Errors<a class="headerlink" href="#network-share-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access this API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>invalid_workgroup_name</td>
+<td>Invalid workgroup name</td>
+</tr>
+<tr class="row-odd"><td>invalid_logon_user</td>
+<td>Invalid samba user name</td>
+</tr>
+<tr class="row-even"><td>invalid_logon_password</td>
+<td>Invalid samba user password</td>
+</tr>
+<tr class="row-odd"><td>invalid_afp_login_name</td>
+<td>Invalid AFP user name</td>
+</tr>
+<tr class="row-even"><td>invalid_afp_login_password</td>
+<td>Invalid AFP user password</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="samba-config">
+<h2>Samba Config<a class="headerlink" href="#samba-config" title="Permalink to this headline">¶</a></h2>
+<p>SambaConfig has the following attributes:</p>
+<dl class="object">
+<dt id="SambaConfig">
+<code class="descname">SambaConfig</code><a class="headerlink" href="#SambaConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="SambaConfig.file_share_enabled">
+<code class="descname">file_share_enabled</code><span> </span>bool<a class="headerlink" href="#SambaConfig.file_share_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is file sharing enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SambaConfig.print_share_enabled">
+<code class="descname">print_share_enabled</code><span> </span>bool<a class="headerlink" href="#SambaConfig.print_share_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is printer sharing enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SambaConfig.logon_enabled">
+<code class="descname">logon_enabled</code><span> </span>bool<a class="headerlink" href="#SambaConfig.logon_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is login/password required to access shares</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SambaConfig.logon_user">
+<code class="descname">logon_user</code><span> </span>string<a class="headerlink" href="#SambaConfig.logon_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>samba user name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SambaConfig.logon_password">
+<code class="descname">logon_password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#SambaConfig.logon_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>samba user password</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SambaConfig.workgroup">
+<code class="descname">workgroup</code><span> </span>string<a class="headerlink" href="#SambaConfig.workgroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the workgroup</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="samba-config-api">
+<h2>Samba config API<a class="headerlink" href="#samba-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-samba-configuration">
+<h3>Get the current Samba configuration<a class="headerlink" href="#get-the-current-samba-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-netshare-samba-">
+<code class="descname">GET </code><code class="descname">/api/v4/netshare/samba/</code><a class="headerlink" href="#get--api-v4-netshare-samba-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#SambaConfig" title="SambaConfig"><code class="xref json json-object docutils literal"><span class="pre">SambaConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/netshare/samba/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;workgroup&quot;</span><span class="o">:</span> <span class="s2">&quot;WORKGROUP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;print_share_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;file_share_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;logon_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;logon_user&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-samba-configuration">
+<h3>Update the Samba configuration<a class="headerlink" href="#update-the-samba-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-netshare-samba-">
+<code class="descname">PUT </code><code class="descname">/api/v4/netshare/samba/</code><a class="headerlink" href="#put--api-v4-netshare-samba-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#SambaConfig" title="SambaConfig"><code class="xref json json-object docutils literal"><span class="pre">SambaConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/netshare/samba/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;print_share_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;workgroup&quot;</span><span class="o">:</span> <span class="s2">&quot;WORKGROUP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;print_share_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;file_share_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;logon_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;logon_user&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="afp-config">
+<h2>Afp Config<a class="headerlink" href="#afp-config" title="Permalink to this headline">¶</a></h2>
+<p>AfpConfig has the following attributes:</p>
+<dl class="object">
+<dt id="AfpConfig">
+<code class="descname">AfpConfig</code><a class="headerlink" href="#AfpConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="AfpConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#AfpConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is afp service enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AfpConfig.guest_allow">
+<code class="descname">guest_allow</code><span> </span>bool<a class="headerlink" href="#AfpConfig.guest_allow" title="Permalink to this definition">¶</a></dt>
+<dd><p>allow guest to access shared files</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AfpConfig.server_type">
+<code class="descname">server_type</code><span> </span>enum<a class="headerlink" href="#AfpConfig.server_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Afp server type (to display proper icon) in MacOS</p>
+<p>valid server types are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">server_type</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>powerbook</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>powermac</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>macmini</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>imac</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>macbook</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>macbookpro</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>macbookair</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>macpro</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>appletv</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>airport</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>xserve</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="AfpConfig.login_name">
+<code class="descname">login_name</code><span> </span>string<a class="headerlink" href="#AfpConfig.login_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Afp user name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AfpConfig.login_password">
+<code class="descname">login_password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#AfpConfig.login_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Afp user password</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="afp-config-api">
+<h2>Afp config API<a class="headerlink" href="#afp-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-afp-configuration">
+<h3>Get the current Afp configuration<a class="headerlink" href="#get-the-current-afp-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-netshare-afp-">
+<code class="descname">GET </code><code class="descname">/api/v4/netshare/afp/</code><a class="headerlink" href="#get--api-v4-netshare-afp-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#AfpConfig" title="AfpConfig"><code class="xref json json-object docutils literal"><span class="pre">AfpConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/netshare/afp/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;guest_allow&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;login_name&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;server_type&quot;</span><span class="o">:</span> <span class="s2">&quot;airport&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-afp-configuration">
+<h3>Update the Afp configuration<a class="headerlink" href="#update-the-afp-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-netshare-afp-">
+<code class="descname">PUT </code><code class="descname">/api/v4/netshare/afp/</code><a class="headerlink" href="#put--api-v4-netshare-afp-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#AfpConfig" title="AfpConfig"><code class="xref json json-object docutils literal"><span class="pre">AfpConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/netshare/afp/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;guest_allow&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;guest_allow&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;login_name&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;server_type&quot;</span><span class="o">:</span> <span class="s2">&quot;airport&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

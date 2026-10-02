@@ -1,0 +1,917 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Contacts &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Connection API" href="../connection/" />
+    <link rel="prev" title="Call" href="../call/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="contacts">
+<h1>Contacts<a class="headerlink" href="#contacts" title="Permalink to this headline">¶</a></h1>
+<p>The contact API allow to interact with the contact list stored on the
+Freebox</p>
+<div class="section" id="contacts-errors">
+<h2>Contacts Errors<a class="headerlink" href="#contacts-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the contact API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>noent</td>
+<td>no entry with this id</td>
+</tr>
+<tr class="row-odd"><td>exists</td>
+<td>an entry already exists</td>
+</tr>
+<tr class="row-even"><td>no_match</td>
+<td>no entry matched your request</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="contact-objects">
+<h2>Contact Objects<a class="headerlink" href="#contact-objects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="contact-entry">
+<h3>Contact Entry<a class="headerlink" href="#contact-entry" title="Permalink to this headline">¶</a></h3>
+<p>Contact entries have the following properties</p>
+<dl class="object">
+<dt id="ContactEntry">
+<code class="descname">ContactEntry</code><a class="headerlink" href="#ContactEntry" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ContactEntry.id">
+<code class="descname">id</code><span> </span>int<a class="headerlink" href="#ContactEntry.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.display_name">
+<code class="descname">display_name</code><span> </span>string<a class="headerlink" href="#ContactEntry.display_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact display name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.first_name">
+<code class="descname">first_name</code><span> </span>string<a class="headerlink" href="#ContactEntry.first_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact first name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.last_name">
+<code class="descname">last_name</code><span> </span>string<a class="headerlink" href="#ContactEntry.last_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact last name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.company">
+<code class="descname">company</code><span> </span>string<a class="headerlink" href="#ContactEntry.company" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact company name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.photo_url">
+<code class="descname">photo_url</code><span> </span>string<a class="headerlink" href="#ContactEntry.photo_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact photo URL</p>
+<p><em>NOTE</em> the photo URL can be embedded (for instance
+&#8220;<a class="reference external" href="data:image/jpeg;base64,/9j/4AA">data:image/jpeg;base64,/9j/4AA</a> [ ... ]&#8221;)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.last_update">
+<code class="descname">last_update</code><span> </span>timestamp<a class="headerlink" href="#ContactEntry.last_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact last modification timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.notes">
+<code class="descname">notes</code><span> </span>string<a class="headerlink" href="#ContactEntry.notes" title="Permalink to this definition">¶</a></dt>
+<dd><p>contact last modification timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.addresses">
+<code class="descname">addresses</code><span>[] array of </span><a class="reference internal" href="#ContactAddress" title="ContactAddress">ContactAddress</a><a class="headerlink" href="#ContactEntry.addresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of contact postal addresses</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.emails">
+<code class="descname">emails</code><span>[] array of </span><a class="reference internal" href="#ContactEmail" title="ContactEmail">ContactEmail</a><a class="headerlink" href="#ContactEntry.emails" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of contact email addresses</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.numbers">
+<code class="descname">numbers</code><span>[] array of </span><a class="reference internal" href="#ContactNumber" title="ContactNumber">ContactNumber</a><a class="headerlink" href="#ContactEntry.numbers" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of contact phone numbers</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEntry.urls">
+<code class="descname">urls</code><span>[] array of </span><a class="reference internal" href="#ContactUrl" title="ContactUrl">ContactUrl</a><a class="headerlink" href="#ContactEntry.urls" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of contact URL</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="contact-number">
+<h3>Contact Number<a class="headerlink" href="#contact-number" title="Permalink to this headline">¶</a></h3>
+<p>Contact number have the following properties</p>
+<dl class="object">
+<dt id="ContactNumber">
+<code class="descname">ContactNumber</code><a class="headerlink" href="#ContactNumber" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ContactNumber.id">
+<code class="descname">id</code><span> </span>int<a class="headerlink" href="#ContactNumber.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>address id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactNumber.contact_id">
+<code class="descname">contact_id</code><span> </span>int<a class="headerlink" href="#ContactNumber.contact_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id of the related contact</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactNumber.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#ContactNumber.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of number</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>fixed</td>
+<td>fixed phone</td>
+</tr>
+<tr class="row-odd"><td>mobile</td>
+<td>mobile phone</td>
+</tr>
+<tr class="row-even"><td>work</td>
+<td>work</td>
+</tr>
+<tr class="row-odd"><td>fax</td>
+<td>fax</td>
+</tr>
+<tr class="row-even"><td>other</td>
+<td>other</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactNumber.number">
+<code class="descname">number</code><span> </span>string<a class="headerlink" href="#ContactNumber.number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="ContactNumber.is_default">
+<code class="descname">is_default</code><span> </span>bool<a class="headerlink" href="#ContactNumber.is_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>is this number the preferred contact phone number</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactNumber.is_own">
+<code class="descname">is_own</code><span> </span>bool<a class="headerlink" href="#ContactNumber.is_own" title="Permalink to this definition">¶</a></dt>
+<dd><p>is this number the Freebox owner number</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="contact-address">
+<h3>Contact Address<a class="headerlink" href="#contact-address" title="Permalink to this headline">¶</a></h3>
+<p>Contact address have the following properties</p>
+<dl class="object">
+<dt id="ContactAddress">
+<code class="descname">ContactAddress</code><a class="headerlink" href="#ContactAddress" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ContactAddress.id">
+<code class="descname">id</code><span> </span>int<a class="headerlink" href="#ContactAddress.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>address id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.contact_id">
+<code class="descname">contact_id</code><span> </span>int<a class="headerlink" href="#ContactAddress.contact_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id of the related contact</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#ContactAddress.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of email</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>home</td>
+<td>home address</td>
+</tr>
+<tr class="row-odd"><td>work</td>
+<td>work address</td>
+</tr>
+<tr class="row-even"><td>other</td>
+<td>other</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.number">
+<code class="descname">number</code><span> </span>string<a class="headerlink" href="#ContactAddress.number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.street">
+<code class="descname">street</code><span> </span>string<a class="headerlink" href="#ContactAddress.street" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.street2">
+<code class="descname">street2</code><span> </span>string<a class="headerlink" href="#ContactAddress.street2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.city">
+<code class="descname">city</code><span> </span>string<a class="headerlink" href="#ContactAddress.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.zipcode">
+<code class="descname">zipcode</code><span> </span>string<a class="headerlink" href="#ContactAddress.zipcode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="ContactAddress.country">
+<code class="descname">country</code><span> </span>string<a class="headerlink" href="#ContactAddress.country" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="contact-url">
+<h3>Contact Url<a class="headerlink" href="#contact-url" title="Permalink to this headline">¶</a></h3>
+<p>Contact URL have the following properties</p>
+<dl class="object">
+<dt id="ContactUrl">
+<code class="descname">ContactUrl</code><a class="headerlink" href="#ContactUrl" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ContactUrl.id">
+<code class="descname">id</code><span> </span>int<a class="headerlink" href="#ContactUrl.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>address id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactUrl.contact_id">
+<code class="descname">contact_id</code><span> </span>int<a class="headerlink" href="#ContactUrl.contact_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id of the related contact</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactUrl.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#ContactUrl.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of URL</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>profile</td>
+<td>profile address</td>
+</tr>
+<tr class="row-odd"><td>blog</td>
+<td>blog address</td>
+</tr>
+<tr class="row-even"><td>site</td>
+<td>website address</td>
+</tr>
+<tr class="row-odd"><td>other</td>
+<td>other</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactUrl.url">
+<code class="descname">url</code><span> </span>string<a class="headerlink" href="#ContactUrl.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL address</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="contact-email">
+<h3>Contact Email<a class="headerlink" href="#contact-email" title="Permalink to this headline">¶</a></h3>
+<p>Contact email have the following properties</p>
+<dl class="object">
+<dt id="ContactEmail">
+<code class="descname">ContactEmail</code><a class="headerlink" href="#ContactEmail" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ContactEmail.id">
+<code class="descname">id</code><span> </span>int<a class="headerlink" href="#ContactEmail.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>address id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEmail.contact_id">
+<code class="descname">contact_id</code><span> </span>int<a class="headerlink" href="#ContactEmail.contact_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id of the related contact</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEmail.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#ContactEmail.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of address</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>home</td>
+<td>home address</td>
+</tr>
+<tr class="row-odd"><td>work</td>
+<td>work address</td>
+</tr>
+<tr class="row-even"><td>other</td>
+<td>other</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ContactEmail.email">
+<code class="descname">email</code><span> </span>string<a class="headerlink" href="#ContactEmail.email" title="Permalink to this definition">¶</a></dt>
+<dd><p>email address</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="contact-api">
+<h2>Contact API<a class="headerlink" href="#contact-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-a-list-of-contacts">
+<h3>Get a list of contacts<a class="headerlink" href="#get-a-list-of-contacts" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-contact-">
+<code class="descname">GET </code><code class="descname">/api/v4/contact/</code><a class="headerlink" href="#get--api-v4-contact-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#ContactEntry" title="ContactEntry"><code class="xref json json-object docutils literal"><span class="pre">ContactEntry</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<em>int</em>) &#8211; Offset</li>
+<li><strong>limit</strong> (<em>int</em>) &#8211; Limit of contact to return (-1 means no limit)</li>
+<li><strong>group_id</strong> (<em>int</em>) &#8211; Return only the contacts that belong to this group</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/contact/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Niel&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="s2">&quot;Free&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;photo_url&quot;</span><span class="o">:</span> <span class="s2">&quot;data:image/jpeg;base64,/9j/4AA [ ... ]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;birthday&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1363964483</span><span class="p">,</span>
+            <span class="s2">&quot;display_name&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;emails&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;rocket@launchpad.free&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;urls&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;http://www.free.fr/&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;site&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;notes&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Xavier&quot;</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">],</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mamie&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Kipic&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;photo_url&quot;</span><span class="o">:</span> <span class="s2">&quot;data:image/jpeg;base64,/9j/4A [ ... ] &quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;birthday&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;numbers&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1363973599</span><span class="p">,</span>
+            <span class="s2">&quot;display_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mamie&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;emails&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;mamie@example.org&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;urls&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+                    <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;ftp://free.fr&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;site&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;addresses&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;street2&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;country&quot;</span><span class="o">:</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;street&quot;</span><span class="o">:</span> <span class="s2">&quot;8 rue du pont&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;city&quot;</span><span class="o">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;zipcode&quot;</span><span class="o">:</span> <span class="s2">&quot;75008&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;11&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;notes&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="access-a-given-contact-entry">
+<h3>Access a given contact entry<a class="headerlink" href="#access-a-given-contact-entry" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-contact-id">
+<code class="descname">GET </code><code class="descname">/api/v4/contact/{id}</code><a class="headerlink" href="#get--api-v4-contact-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#ContactEntry" title="ContactEntry"><code class="xref json json-object docutils literal"><span class="pre">ContactEntry</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/contact/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mamie&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Kipic&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;photo_url&quot;</span><span class="o">:</span> <span class="s2">&quot;data:image/jpeg;base64,/9j/4A [ ... ] &quot;</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">&quot;birthday&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;numbers&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;0612345678&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+              <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+          <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1363973599</span><span class="p">,</span>
+      <span class="s2">&quot;display_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Mamie&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;emails&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;mamie@example.org&quot;</span>
+          <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;urls&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+              <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;url&quot;</span><span class="o">:</span> <span class="s2">&quot;ftp://free.fr&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;site&quot;</span>
+          <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;addresses&quot;</span><span class="o">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;street2&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;country&quot;</span><span class="o">:</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;street&quot;</span><span class="o">:</span> <span class="s2">&quot;8 rue du pont&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s2">&quot;city&quot;</span><span class="o">:</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;zipcode&quot;</span><span class="o">:</span> <span class="s2">&quot;75008&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;11&quot;</span>
+          <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;notes&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="create-a-contact">
+<h3>Create a contact<a class="headerlink" href="#create-a-contact" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-contact-">
+<code class="descname">POST </code><code class="descname">/api/v4/contact/</code><a class="headerlink" href="#post--api-v4-contact-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#ContactEntry" title="ContactEntry"><code class="xref json json-object docutils literal"><span class="pre">ContactEntry</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/contact/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;display_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Sandy Kilo&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Sandy&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;last_name&quot;</span><span class="o">:</span><span class="s2">&quot;Kilo&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Kilo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;photo_url&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;birthday&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1372433423</span><span class="p">,</span>
+        <span class="s2">&quot;display_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Sandy Kilo&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;notes&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Sandy&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-contact">
+<h3>Delete a contact<a class="headerlink" href="#delete-a-contact" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-contact-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/contact/{id}</code><a class="headerlink" href="#delete--api-v4-contact-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#ContactEntry" title="ContactEntry"><code class="xref json json-object docutils literal"><span class="pre">ContactEntry</span></code></a> with the given id.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/contact/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-contact-entry">
+<h3>Update a contact entry<a class="headerlink" href="#update-a-contact-entry" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-contact-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/contact/{id}</code><a class="headerlink" href="#put--api-v4-contact-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#ContactEntry" title="ContactEntry"><code class="xref json json-object docutils literal"><span class="pre">ContactEntry</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/contact/4</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;last_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Anderson&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;company&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;photo_url&quot;</span><span class="o">:</span> <span class="s2">&quot;data:image/jpeg;base64,/9j/4AAQ [ ... ]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;birthday&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1363977825</span><span class="p">,</span>
+        <span class="s2">&quot;display_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Thomas A. Anderson&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;emails&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;home&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="s2">&quot;neo@matrix.com&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;notes&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;first_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Thomas&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="contact-related-objects-api">
+<h2>Contact Related objects API<a class="headerlink" href="#contact-related-objects-api" title="Permalink to this headline">¶</a></h2>
+<p>Contact related entries such as phone numbers, addresses, URLs and
+emails are all handled the same way.</p>
+<p>Below we&#8217;ll document the numbers API, you can use the same calls with
+addresses, URL and emails.</p>
+<div class="section" id="get-the-list-of-numbers-for-a-given-contact">
+<h3>Get the list of numbers for a given contact<a class="headerlink" href="#get-the-list-of-numbers-for-a-given-contact" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-contact-contact_id-[numbers|addresses|urls|emails]-">
+<code class="descname">GET </code><code class="descname">/api/v4/contact/{contact_id}/[numbers|addresses|urls|emails]/</code><a class="headerlink" href="#get--api-v4-contact-contact_id-[numbers|addresses|urls|emails]-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#ContactNumber" title="ContactNumber"><code class="xref json json-object docutils literal"><span class="pre">ContactNumber</span></code></a> for a
+given contact</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/contact/4/numbers/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;+13374242&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;0611223344&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mobile&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="access-a-given-contact-number">
+<h3>Access a given contact number<a class="headerlink" href="#access-a-given-contact-number" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-[number,address,url,email]-id">
+<code class="descname">GET </code><code class="descname">/api/v4/[number,address,url,email]/{id}</code><a class="headerlink" href="#get--api-v4-[number,address,url,email]-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#ContactNumber" title="ContactNumber"><code class="xref json json-object docutils literal"><span class="pre">ContactNumber</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/number/6</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;+13374242&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="create-a-contact-number">
+<h3>Create a contact number<a class="headerlink" href="#create-a-contact-number" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-[number,address,url,email]-">
+<code class="descname">POST </code><code class="descname">/api/v4/[number,address,url,email]/</code><a class="headerlink" href="#post--api-v4-[number,address,url,email]-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the <a class="reference internal" href="#ContactNumber" title="ContactNumber"><code class="xref json json-object docutils literal"><span class="pre">ContactNumber</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/number/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span><span class="mi">9</span><span class="p">,</span>
+   <span class="s2">&quot;number&quot;</span><span class="o">:</span><span class="s2">&quot;0144456789&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;fixed&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;0144456789&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">18</span><span class="p">,</span>
+        <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
+        <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-contact-number">
+<h3>Delete a contact number<a class="headerlink" href="#delete-a-contact-number" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-[number,address,url,email]-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/[number,address,url,email]/{id}</code><a class="headerlink" href="#delete--api-v4-[number,address,url,email]-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#ContactNumber" title="ContactNumber"><code class="xref json json-object docutils literal"><span class="pre">ContactNumber</span></code></a> with the given id.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/number/6</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-contact-number">
+<h3>Update a contact number<a class="headerlink" href="#update-a-contact-number" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-[number,address,url,email]-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/[number,address,url,email]/{id}</code><a class="headerlink" href="#put--api-v4-[number,address,url,email]-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#ContactNumber" title="ContactNumber"><code class="xref json json-object docutils literal"><span class="pre">ContactNumber</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/number/5</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;0655667788&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mobile&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="s2">&quot;0655667788&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mobile&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;contact_id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;is_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;is_own&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

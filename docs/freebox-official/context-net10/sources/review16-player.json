@@ -1,0 +1,481 @@
+{
+  "module": {
+    "module": "player",
+    "title": "Player [UNSTABLE]",
+    "category": "multimedia",
+    "path": "docs/reference/multimedia/player.md",
+    "http_signatures": 6,
+    "objects": 5,
+    "properties": 32,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#player-unstable",
+    "source_pre_blocks": 25,
+    "markdown_code_blocks": 25,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "player",
+      "method": "GET",
+      "documented_path": "/api/v8/player",
+      "path_template": "/api/v{major}/player",
+      "documented_major": 8,
+      "title": "List every player devices",
+      "id": "get--api-v8-player",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-player",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/player.md#get--api-v8-player",
+      "referenced_objects": [
+        "Player"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-player"
+    },
+    {
+      "module": "player",
+      "method": "GET",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/status/",
+      "path_template": "/api/v{major}/player/{id_player}/api/v{major}/status/",
+      "documented_major": 8,
+      "title": "Get player device status",
+      "id": "get--api-v8-player-id_player-api-v6-status-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-player-id_player-api-v6-status-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/player.md#get--api-v8-player-id_player-api-v6-status-",
+      "referenced_objects": [
+        "Player"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-player-id_player-api-v6-status-"
+    },
+    {
+      "module": "player",
+      "method": "POST",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/mediactrl/",
+      "path_template": "/api/v{major}/player/{id_player}/api/v{major}/control/mediactrl/",
+      "documented_major": 8,
+      "title": "Control the active media player of a device",
+      "id": "post--api-v8-player-id_player-api-v6-control-mediactrl-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-mediactrl-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/player.md#post--api-v8-player-id_player-api-v6-control-mediactrl-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-player-id_player-api-v6-control-mediactrl-"
+    },
+    {
+      "module": "player",
+      "method": "GET",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/volume/",
+      "path_template": "/api/v{major}/player/{id_player}/api/v{major}/control/volume/",
+      "documented_major": 8,
+      "title": "Control the playback volume of the device",
+      "id": "get--api-v8-player-id_player-api-v6-control-volume-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-player-id_player-api-v6-control-volume-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/player.md#get--api-v8-player-id_player-api-v6-control-volume-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-player-id_player-api-v6-control-volume-"
+    },
+    {
+      "module": "player",
+      "method": "PUT",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/volume/",
+      "path_template": "/api/v{major}/player/{id_player}/api/v{major}/control/volume/",
+      "documented_major": 8,
+      "title": "Control the playback volume of the device",
+      "id": "put--api-v8-player-id_player-api-v6-control-volume-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-player-id_player-api-v6-control-volume-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/player.md#put--api-v8-player-id_player-api-v6-control-volume-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-player-id_player-api-v6-control-volume-"
+    },
+    {
+      "module": "player",
+      "method": "POST",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/open",
+      "path_template": "/api/v{major}/player/{id_player}/api/v{major}/control/open",
+      "documented_major": 8,
+      "title": "Open a url on a player device",
+      "id": "post--api-v8-player-id_player-api-v6-control-open",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-open",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/player.md#post--api-v8-player-id_player-api-v6-control-open",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-player-id_player-api-v6-control-open"
+    }
+  ],
+  "objects": [
+    {
+      "module": "player",
+      "name": "Player",
+      "id": "Player",
+      "properties": [
+        "Player.id",
+        "Player.device_name",
+        "Player.uid",
+        "Player.reachable",
+        "Player.api_version",
+        "Player.api_available"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player",
+      "markdown": "docs/reference/multimedia/player.md#Player"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatusForegroundApp",
+      "id": "PlayerStatusForegroundApp",
+      "properties": [
+        "PlayerStatusForegroundApp.package_id",
+        "PlayerStatusForegroundApp.cur_url",
+        "PlayerStatusForegroundApp.context",
+        "PlayerStatusForegroundApp.package"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusForegroundApp"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatusCapabilities",
+      "id": "PlayerStatusCapabilities",
+      "properties": [
+        "PlayerStatusCapabilities.play",
+        "PlayerStatusCapabilities.pause",
+        "PlayerStatusCapabilities.stop",
+        "PlayerStatusCapabilities.next",
+        "PlayerStatusCapabilities.prev",
+        "PlayerStatusCapabilities.record",
+        "PlayerStatusCapabilities.record_stop",
+        "PlayerStatusCapabilities.seek_forward",
+        "PlayerStatusCapabilities.seek_backward",
+        "PlayerStatusCapabilities.seek_to",
+        "PlayerStatusCapabilities.shuffle",
+        "PlayerStatusCapabilities.repeat_all",
+        "PlayerStatusCapabilities.repeat_one",
+        "PlayerStatusCapabilities.select_stream",
+        "PlayerStatusCapabilities.select_audio_track",
+        "PlayerStatusCapabilities.select_srt_track"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatusInformations",
+      "id": "PlayerStatusInformations",
+      "properties": [
+        "PlayerStatusInformations.name",
+        "PlayerStatusInformations.last_activity",
+        "PlayerStatusInformations.capabilities"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusInformations",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusInformations"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatus",
+      "id": "PlayerStatus",
+      "properties": [
+        "PlayerStatus.power_state",
+        "PlayerStatus.player",
+        "PlayerStatus.foreground_app"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatus",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatus"
+    }
+  ],
+  "properties": [
+    {
+      "module": "player",
+      "id": "Player.id",
+      "signature": "id int",
+      "description": "",
+      "source_id": "Player.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player.id",
+      "markdown": "docs/reference/multimedia/player.md#Player.id"
+    },
+    {
+      "module": "player",
+      "id": "Player.device_name",
+      "signature": "device_name string",
+      "description": "",
+      "source_id": "Player.device_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player.device_name",
+      "markdown": "docs/reference/multimedia/player.md#Player.device_name"
+    },
+    {
+      "module": "player",
+      "id": "Player.uid",
+      "signature": "uid string",
+      "description": "",
+      "source_id": "Player.uid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player.uid",
+      "markdown": "docs/reference/multimedia/player.md#Player.uid"
+    },
+    {
+      "module": "player",
+      "id": "Player.reachable",
+      "signature": "reachable bool",
+      "description": "",
+      "source_id": "Player.reachable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player.reachable",
+      "markdown": "docs/reference/multimedia/player.md#Player.reachable"
+    },
+    {
+      "module": "player",
+      "id": "Player.api_version",
+      "signature": "api_version string",
+      "description": "",
+      "source_id": "Player.api_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player.api_version",
+      "markdown": "docs/reference/multimedia/player.md#Player.api_version"
+    },
+    {
+      "module": "player",
+      "id": "Player.api_available",
+      "signature": "api_available bool",
+      "description": "",
+      "source_id": "Player.api_available",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player.api_available",
+      "markdown": "docs/reference/multimedia/player.md#Player.api_available"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusForegroundApp.package_id",
+      "signature": "package_id id",
+      "description": "",
+      "source_id": "PlayerStatusForegroundApp.package_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp.package_id",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusForegroundApp.package_id"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusForegroundApp.cur_url",
+      "signature": "cur_url string",
+      "description": "",
+      "source_id": "PlayerStatusForegroundApp.cur_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp.cur_url",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusForegroundApp.cur_url"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusForegroundApp.context",
+      "signature": "context object",
+      "description": "",
+      "source_id": "PlayerStatusForegroundApp.context",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp.context",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusForegroundApp.context"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusForegroundApp.package",
+      "signature": "package string",
+      "description": "",
+      "source_id": "PlayerStatusForegroundApp.package",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp.package",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusForegroundApp.package"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.play",
+      "signature": "play bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.play",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.play",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.play"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.pause",
+      "signature": "pause bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.pause",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.pause",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.pause"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.stop",
+      "signature": "stop bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.stop",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.stop",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.stop"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.next",
+      "signature": "next bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.next",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.next",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.next"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.prev",
+      "signature": "prev bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.prev",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.prev",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.prev"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.record",
+      "signature": "record bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.record",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.record",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.record"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.record_stop",
+      "signature": "record_stop bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.record_stop",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.record_stop",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.record_stop"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.seek_forward",
+      "signature": "seek_forward bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.seek_forward",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.seek_forward",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.seek_forward"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.seek_backward",
+      "signature": "seek_backward bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.seek_backward",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.seek_backward",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.seek_backward"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.seek_to",
+      "signature": "seek_to bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.seek_to",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.seek_to",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.seek_to"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.shuffle",
+      "signature": "shuffle bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.shuffle",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.shuffle",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.shuffle"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.repeat_all",
+      "signature": "repeat_all bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.repeat_all",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.repeat_all",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.repeat_all"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.repeat_one",
+      "signature": "repeat_one bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.repeat_one",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.repeat_one",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.repeat_one"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.select_stream",
+      "signature": "select_stream bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.select_stream",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.select_stream",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.select_stream"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.select_audio_track",
+      "signature": "select_audio_track bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.select_audio_track",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.select_audio_track",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.select_audio_track"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusCapabilities.select_srt_track",
+      "signature": "select_srt_track bool",
+      "description": "",
+      "source_id": "PlayerStatusCapabilities.select_srt_track",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities.select_srt_track",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities.select_srt_track"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusInformations.name",
+      "signature": "name string",
+      "description": "",
+      "source_id": "PlayerStatusInformations.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusInformations.name",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusInformations.name"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusInformations.last_activity",
+      "signature": "last_activity long",
+      "description": "",
+      "source_id": "PlayerStatusInformations.last_activity",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusInformations.last_activity",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusInformations.last_activity"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatusInformations.capabilities",
+      "signature": "capabilities PlayerStatusCapabilities",
+      "description": "",
+      "source_id": "PlayerStatusInformations.capabilities",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusInformations.capabilities",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatusInformations.capabilities"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatus.power_state",
+      "signature": "power_state string",
+      "description": "",
+      "source_id": "PlayerStatus.power_state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatus.power_state",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatus.power_state"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatus.player",
+      "signature": "player PlayerStatusInformations",
+      "description": "State of the active media player on the device.",
+      "source_id": "PlayerStatus.player",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatus.player",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatus.player"
+    },
+    {
+      "module": "player",
+      "id": "PlayerStatus.foreground_app",
+      "signature": "foreground_app PlayerStatusForegroundApp",
+      "description": "The context of the currently running application. The fields exposed in this object are left to the discretion of the application author, and thus subject to change at any time.",
+      "source_id": "PlayerStatus.foreground_app",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatus.foreground_app",
+      "markdown": "docs/reference/multimedia/player.md#PlayerStatus.foreground_app"
+    }
+  ],
+  "events": []
+}

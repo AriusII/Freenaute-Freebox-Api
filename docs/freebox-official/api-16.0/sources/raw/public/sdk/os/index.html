@@ -1,0 +1,538 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Developper API Documentation &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/fbx.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="#" />
+    <link rel="next" title="Api changes from version 1.1 to 2.0" href="api_changes_1_1_to_2_0/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="developper-api-documentation">
+<h1>Developper API Documentation<a class="headerlink" href="#developper-api-documentation" title="Permalink to this headline">¶</a></h1>
+<p>FreeboxOS Gateway APi allow access to Freebox Server settings and
+apps.</p>
+<p>This API can be used to develop companion apps for Smartphone, or
+provide an alternative to FreeboxOS web app.</p>
+<div class="section" id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="api-version">
+<h3>API Version<a class="headerlink" href="#api-version" title="Permalink to this headline">¶</a></h3>
+<p>Api version will always use the following format : &#8220;major.minor&#8221; where major and minor are integers</p>
+<p>Current API version is &#8220;4.0&#8221;
+Current major API version is: 4</p>
+<p>When an API is marked as <em>unstable</em>, you can use it but it may change
+or disappear at any time!</p>
+<p>When an API is not documented you should not use it!</p>
+<p>Other API will be maintained for at least 1 Freebox release.</p>
+</div>
+<div class="section" id="api-changes">
+<h3>Api Changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_changes_1_1_to_2_0/">Api changes from version 1.1 to 2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_changes_2_0_to_3_0/">Api changes from version 2.0 to 3.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_changes_3_0_to_4_0/">Api changes from version 3.0 to 4.0</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="freebox-discovery">
+<h3>Freebox discovery<a class="headerlink" href="#freebox-discovery" title="Permalink to this headline">¶</a></h3>
+<p>To discover a Freebox supporting this API you can either use mDNS, or
+make a HTTP request to mafreebox.freebox.fr to get API information.</p>
+<div class="section" id="discovery-using-mdns">
+<h4>Discovery using mDNS<a class="headerlink" href="#discovery-using-mdns" title="Permalink to this headline">¶</a></h4>
+<p>This is the preferred method since it does not require to know the
+Freebox IP address.</p>
+<p>The Freebox broadcasts the &#8220;_fbx-api._tcp&#8221; service</p>
+<p>On iOS devices, you can use a <a class="reference external" href="https://developer.apple.com/library/ios/#documentation/Cocoa/Reference/Foundation/Classes/NSNetServiceBrowser_Class/Reference/Reference.html">NSNetServiceBrowser</a></p>
+<p>On Android devices, you can use <a class="reference external" href="http://developer.android.com/training/connect-devices-wirelessly/nsd.html">Network Service Discovery</a>
+or <a class="reference external" href="http://sourceforge.net/projects/jmdns/">JmDNS</a></p>
+<p>On the TXT record you can obtain the following information:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>api_version</td>
+<td>The current API version on the Freebox</td>
+</tr>
+<tr class="row-odd"><td>device_type</td>
+<td>&#8220;FreeboxServer1,1&#8221; for the Freebox Server revision 1,1</td>
+</tr>
+<tr class="row-even"><td>api_base_url</td>
+<td>The API root path on the HTTP server</td>
+</tr>
+<tr class="row-odd"><td>uid</td>
+<td>The device unique id</td>
+</tr>
+<tr class="row-even"><td>api_domain</td>
+<td>The domain to use in place of hardcoded Freebox ip</td>
+</tr>
+<tr class="row-odd"><td>https_available</td>
+<td>Tells if https has been configured on the Freebox</td>
+</tr>
+<tr class="row-even"><td>https_port</td>
+<td>Port to use for remote https access to the Freebox Api</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="discovery-using-http">
+<h4>Discovery using HTTP<a class="headerlink" href="#discovery-using-http" title="Permalink to this headline">¶</a></h4>
+<p>If you can, avoid this method because it requires to use a hardcoded
+address to retrieve API information.</p>
+<p>If you make a HTTP get request on
+<a class="reference external" href="http://mafreebox.freebox.fr/api_version">http://mafreebox.freebox.fr/api_version</a> you can get the same API
+information as provided in mDNS.</p>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api_version</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;uid&quot;</span><span class="o">:</span> <span class="s2">&quot;23b86ec8091013d668829fe12791fdab&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;device_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Server&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;api_version&quot;</span><span class="o">:</span> <span class="s2">&quot;4.0&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;api_base_url&quot;</span><span class="o">:</span> <span class="s2">&quot;/api/&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;device_type&quot;</span><span class="o">:</span> <span class="s2">&quot;FreeboxServer1,2&quot;</span>
+   <span class="s2">&quot;api_domain&quot;</span><span class="o">:</span> <span class="s2">&quot;example.fbxos.fr&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;https_available&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="s2">&quot;https_port&quot;</span><span class="o">:</span> <span class="mi">3615</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="building-the-api-request-url">
+<h3>Building the API request URL<a class="headerlink" href="#building-the-api-request-url" title="Permalink to this headline">¶</a></h3>
+<p>Once you&#8217;ve discovered a Freebox on the local network you can access
+the API at the following URL:</p>
+<div class="highlight-python"><div class="highlight"><pre>https://[api_domain]:[freebox_port]/[api_base_url]/v[major_api_version]/[api_url]
+</pre></div>
+</div>
+<p>or for local access</p>
+<blockquote>
+<div><a class="reference external" href="https://mafreebox.freebox.fr/[api_base_url]/v[major_api_version]/[api_url">https://mafreebox.freebox.fr/[api_base_url]/v[major_api_version]/[api_url</a>]</div></blockquote>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>https://example.fbxos.fr:3615/api/v4/login/
+</pre></div>
+</div>
+</div>
+<div class="section" id="api-conventions">
+<h3>API conventions<a class="headerlink" href="#api-conventions" title="Permalink to this headline">¶</a></h3>
+<p>Most API uses the <a class="reference external" href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST architecture</a>, pay
+attention to the http methods used for each request.</p>
+<p>The API response is always a JSON object using utf8 encoding.</p>
+<dl class="object">
+<dt id="APIResponse">
+<code class="descname">APIResponse</code><a class="headerlink" href="#APIResponse" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="APIResponse.success">
+<code class="descname">success</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#APIResponse.success" title="Permalink to this definition">¶</a></dt>
+<dd><p>indicates if the request was successful</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="APIResponse.result">
+<code class="descname">result</code><span> </span>object<em class="property"> Read-only</em><a class="headerlink" href="#APIResponse.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>the result of the request.</p>
+<p>(It may be omitted if the request does not expect any result)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="APIResponse.error_code">
+<code class="descname">error_code</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#APIResponse.error_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>In case of request error, this error_code provides information
+about the error.</p>
+<p>The possible error_code values are documented for each API.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="APIResponse.msg">
+<code class="descname">msg</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#APIResponse.msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>In cas of error, provides a French error message relative to the
+error</p>
+</dd></dl>
+
+</dd></dl>
+
+<p><strong>Successful response example</strong></p>
+<blockquote>
+<div><div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">logged_in</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="nx">challenge</span><span class="o">:</span> <span class="s2">&quot;WpsbHdkBpRpHLMGQHZ1ri1uUqa4ce6Dw&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Error response example</strong></p>
+<blockquote>
+<div><div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">msg</span><span class="o">:</span> <span class="s2">&quot;Requête invalide&quot;</span><span class="p">,</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">error_code</span><span class="o">:</span> <span class="s2">&quot;invalid_request&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The HTTP response code can also be used to error reason, for instance
+if you attempt to access to an API with invalid credential you will
+get a 403 error, or if you attempt to call an API with an invalid path
+you will get a 404 error.</p>
+</div>
+</div>
+<div class="section" id="https-access">
+<h2>HTTPS Access<a class="headerlink" href="#https-access" title="Permalink to this headline">¶</a></h2>
+<p>Each Freebox is now automatically assigned a random domain name (api_domain),
+and an associated TLS certificate to enable secure access to API.</p>
+<p>This is enabled by default and all applications MUST now use HTTPS to access
+the api. Unsecure access will be removed at some point.</p>
+<p>Certificates used for HTTPS access are emitted by either &#8216;Freebox ECC Root CA&#8217;
+in case of ECDSA access, or &#8216;Freebox Root CA&#8217; in case of RSA.</p>
+<p>You must validate the certificate chain, by using the following
+Root CA certificates:</p>
+<p><strong>Freebox ECC Root CA</strong></p>
+<blockquote>
+<div><div class="highlight-lua"><div class="highlight"><pre><span class="c1">-----BEGIN CERTIFICATE-----</span>
+<span class="n">MIICWTCCAd</span><span class="o">+</span><span class="n">gAwIBAgIJAMaRcLnIgyukMAoGCCqGSM49BAMCMGExCzAJBgNVBAYT</span>
+<span class="n">AkZSMQ8wDQYDVQQIDAZGcmFuY2UxDjAMBgNVBAcMBVBhcmlzMRMwEQYDVQQKDApG</span>
+<span class="n">cmVlYm94IFNBMRwwGgYDVQQDDBNGcmVlYm94IEVDQyBSb290IENBMB4XDTE1MDkw</span>
+<span class="n">MTE4MDIwN1oXDTM1MDgyNzE4MDIwN1owYTELMAkGA1UEBhMCRlIxDzANBgNVBAgM</span>
+<span class="n">BkZyYW5jZTEOMAwGA1UEBwwFUGFyaXMxEzARBgNVBAoMCkZyZWVib3ggU0ExHDAa</span>
+<span class="n">BgNVBAMME0ZyZWVib3ggRUNDIFJvb3QgQ0EwdjAQBgcqhkjOPQIBBgUrgQQAIgNi</span>
+<span class="n">AASCjD6ZKn5ko6cU5Vxh8GA1KqRi6p2GQzndxHtuUmwY8RvBbhZ0GIL7bQ4f08ae</span>
+<span class="n">JOv0ycWjEW0fyOnAw6AYdsN6y1eNvH2DVfoXQyGoCSvXQNAUxla</span><span class="o">+</span><span class="n">sJuLGICRYiZz</span>
+<span class="n">mnijYzBhMB0GA1UdDgQWBBTIB3c2GlbV6EIh2ErEMJvFxMz</span><span class="o">/</span><span class="n">QTAfBgNVHSMEGDAW</span>
+<span class="n">gBTIB3c2GlbV6EIh2ErEMJvFxMz</span><span class="o">/</span><span class="n">QTAPBgNVHRMBAf8EBTADAQH</span><span class="o">/</span><span class="n">MA4GA1UdDwEB</span>
+<span class="o">/</span><span class="n">wQEAwIBhjAKBggqhkjOPQQDAgNoADBlAjA8tzEMRVX8vrFuOGDhvZr7OSJjbBr8</span>
+<span class="n">gl2I70LeVNGEXZsAThUkqj5Rg9bV8xw3aSMCMQCDjB5CgsLH8EdZmiksdBRRKM2r</span>
+<span class="n">vxo6c0dSSNrr7dDN</span><span class="o">+</span><span class="n">m2</span><span class="o">/</span><span class="n">dRvgoIpGL2GauOGqDFY</span><span class="o">=</span>
+<span class="c1">-----END CERTIFICATE-----</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Freebox Root CA</strong></p>
+<blockquote>
+<div><div class="highlight-lua"><div class="highlight"><pre><span class="c1">-----BEGIN CERTIFICATE-----</span>
+<span class="n">MIIFmjCCA4KgAwIBAgIJAKLyz15lYOrYMA0GCSqGSIb3DQEBCwUAMFoxCzAJBgNV</span>
+<span class="n">BAYTAkZSMQ8wDQYDVQQIDAZGcmFuY2UxDjAMBgNVBAcMBVBhcmlzMRAwDgYDVQQK</span>
+<span class="n">DAdGcmVlYm94MRgwFgYDVQQDDA9GcmVlYm94IFJvb3QgQ0EwHhcNMTUwNzMwMTUw</span>
+<span class="n">OTIwWhcNMzUwNzI1MTUwOTIwWjBaMQswCQYDVQQGEwJGUjEPMA0GA1UECAwGRnJh</span>
+<span class="n">bmNlMQ4wDAYDVQQHDAVQYXJpczEQMA4GA1UECgwHRnJlZWJveDEYMBYGA1UEAwwP</span>
+<span class="n">RnJlZWJveCBSb290IENBMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA</span>
+<span class="n">xqYIvq8538SH6BJ99jDlOPoyDBrlwKEp879oYplicTC2</span><span class="o">/</span><span class="n">p0X66R</span><span class="o">/</span><span class="n">ft0en1uSQadC</span>
+<span class="n">sL</span><span class="o">/</span><span class="n">JTyfgyJAgI1Dq2Y5EYVT</span><span class="o">/</span><span class="mi">7</span><span class="n">G6GBtVH6Bxa713mM</span><span class="o">+</span><span class="n">I</span><span class="o">/</span><span class="n">v0JlTGFalgMqamMuIRDQ</span>
+<span class="n">tdyvqEIs8DcfGB</span><span class="o">/</span><span class="mi">1</span><span class="n">l2A8UhKOFbHQsMcigxOe9ZodMhtVNn0mUyG</span><span class="o">+</span><span class="mi">9</span><span class="n">Zgu1e</span><span class="o">/</span><span class="n">YMhsS</span>
+<span class="n">iG4Kqap6TGtk80yruS1mMWVSgLOq9F5BGD4rlNlWLo0C3R10mFCpqvsFU</span><span class="o">+</span><span class="n">g4kYoA</span>
+<span class="n">dTxaIpi1pgng3CGLE0FXgwstJz8RBaZObYEslEYKDzmer5zrU1pVHiwkjsgwbnuy</span>
+<span class="n">WtM1Xry3Jxc7N</span><span class="o">/</span><span class="n">i1rxFmN</span><span class="o">/</span><span class="mi">4</span><span class="n">l</span><span class="o">/</span><span class="n">Tcb1F7x4yVZmrzbQVptKSmyTEvPvpzqzdxVWuYi</span>
+<span class="n">qIFSe</span><span class="o">/</span><span class="n">njl8dX9v5hjbMo4CeLuXIRE4nSq2A7GBm4j9Zb6</span><span class="o">/</span><span class="n">l2WIBpnCKtwUVlroKw</span>
+<span class="n">NBgB6zHg5WI9nWGuy3ozpP4zyxqXhaTgrQcDDIG</span><span class="o">/</span><span class="n">SQS1GOXKGdkCcSa</span><span class="o">+</span><span class="n">VkJ0jTf5</span>
+<span class="n">od7PxBn9</span><span class="o">/</span><span class="n">TuN0yYdgQK3YDjD9F9</span><span class="o">+</span><span class="n">CLp8QZK1bnPdVGywPfL1iztngF9J6JohTyL</span><span class="o">/</span>
+<span class="n">VMvpWfS</span><span class="o">/</span><span class="n">X6R4Y3p8</span><span class="o">/</span><span class="n">eSio4BNuPvm9r0xp6IMpW92V8SYL0N6TQQxzZYgkLV7TbQI</span>
+<span class="n">Hw6v64yMbbF0YS9VjS0sFpZcFERVQiodRu7nYNC1jy8CAwEAAaNjMGEwHQYDVR0O</span>
+<span class="n">BBYEFD2erMkECujilR0BuER09FdsYIebMB8GA1UdIwQYMBaAFD2erMkECujilR0B</span>
+<span class="n">uER09FdsYIebMA8GA1UdEwEB</span><span class="o">/</span><span class="n">wQFMAMBAf8wDgYDVR0PAQH</span><span class="o">/</span><span class="n">BAQDAgGGMA0GCSqG</span>
+<span class="n">SIb3DQEBCwUAA4ICAQAZ2Nx8mWIWckNY8X2t</span><span class="o">/</span><span class="n">ymmCbcKxGw8Hn3BfTDcUWQ7GLRf</span>
+<span class="n">MGzTqxGSLBQ5tENaclbtTpNrqPv2k6LY0VjfrKoTSS8JfXkm6</span><span class="o">+</span><span class="n">FUtyXpsGK8MrLL</span>
+<span class="n">hZ</span><span class="o">/</span><span class="n">YdADTfbbWOjjD0VaPUoglvo2N4n7rOuRxVYIij11fL</span><span class="o">/</span><span class="n">wl3OUZ7GHLgL3qXSz0</span>
+<span class="o">+</span><span class="n">RGW</span><span class="o">+</span><span class="mi">1</span><span class="n">oZo8HQ7pb6RwLfv42Gf</span><span class="o">+</span><span class="mi">2</span><span class="n">gyNBckM7VVh9R19UkLCsHFqhFBbUmqwJgNA2</span><span class="o">/</span>
+<span class="mi">3</span><span class="n">twgV6Y26qlyHXXODUfV3arLCwFoNB</span><span class="o">+</span><span class="n">IIrde1E</span><span class="o">/</span><span class="n">JoOry9oKvF8DZTo</span><span class="o">/</span><span class="n">Qm6o2KsdZ</span>
+<span class="n">dxs</span><span class="o">/</span><span class="n">YcIUsCvKX8WCKtH6la</span><span class="o">/</span><span class="n">kFCUcXIb8f1u</span><span class="o">+</span><span class="n">Y4pjj3PBmKI</span><span class="o">/</span><span class="mi">1</span><span class="o">+</span><span class="n">Rs9GqB0kt1otyx</span>
+<span class="n">Q6bqxqBSgsrkuhCfRxwjbfBgmXjIZ</span><span class="o">/</span><span class="n">a4muY5uMI0gbl9zbMFEJHDojhH6TUB5qd0</span>
+<span class="n">JJlI61gldaT5Ci1aLbvVcJtdeGhElf7pOE9JrXINpP3NOJJaUSueAvxyj</span><span class="o">/</span><span class="n">WWoo0v</span>
+<span class="mi">4</span><span class="n">KO7njox8F6jCHALNDLdTsX0FTGmUZ</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">QfJry3VNwyjCyWDy1ra4KWoqt6U7SzM</span>
+<span class="n">d5jENIZChM8TnDXJzqc</span><span class="o">+</span><span class="n">mu00cI3icn9bV9flYCXLTIsprB21wVSMh0XeBGylKxeB</span>
+<span class="n">S27oDfFq04XSox7JM9HdTt2hLK96x1T7FpFrBTnALzb7vHv9MhXqAT90fPR</span><span class="o">/</span><span class="mi">8</span><span class="n">A</span><span class="o">==</span>
+<span class="c1">-----END CERTIFICATE-----</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="authentication">
+<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>Unless otherwise stated API access must be authenticated using the
+procedure described in the following document</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="login/">Login</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="websocket-api">
+<h2>WebSocket API<a class="headerlink" href="#websocket-api" title="Permalink to this headline">¶</a></h2>
+<p>WebSocket allow bidirectional communication between your api client
+and the Freebox. This allow more interactivity without the need of
+frequently polling data from the Freebox.</p>
+<p>For WebSocket access, you must use the same Authentication mechanism as
+for regular http api request. This means that you must include a proper
+<strong>X-Fbx-App-Auth</strong> header when you open the WebSocket connection.</p>
+<p>Once the connection is established, most of messages sent via the WebSocket
+are text based (using utf-8 as per WebSocket specifications) and encoded
+as JSON objects.</p>
+<p>The WebSocket frames maximum accepted size is 1 MB</p>
+<div class="section" id="websocket-api-conventions">
+<h3>WebSocket API conventions<a class="headerlink" href="#websocket-api-conventions" title="Permalink to this headline">¶</a></h3>
+<p>As for HTTP api, the client can make requests to the Freebox (the available
+requests are specified per api).</p>
+<p>The requests use the following format:</p>
+<dl class="object">
+<dt id="WebSocketRequest">
+<code class="descname">WebSocketRequest</code><a class="headerlink" href="#WebSocketRequest" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WebSocketRequest.request_id">
+<code class="descname">request_id</code><span> </span>int<em class="property"> Optionnal</em><a class="headerlink" href="#WebSocketRequest.request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>if you specifiy a request_id in your request, it will be added
+in the corresponding reply, so that you can correlate responses
+to the request</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketRequest.action">
+<code class="descname">action</code><span> </span>string<a class="headerlink" href="#WebSocketRequest.action" title="Permalink to this definition">¶</a></dt>
+<dd><p>the request &#8216;action&#8217;</p>
+<p>(available actions are described in each api)</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Other fields, related to a specfic action, will be used as &#8216;action&#8217; parameters</p>
+<p>Responses to such requests will have the following format:</p>
+<dl class="object">
+<dt id="WebSocketResponse">
+<code class="descname">WebSocketResponse</code><a class="headerlink" href="#WebSocketResponse" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WebSocketResponse.request_id">
+<code class="descname">request_id</code><span> </span>int<a class="headerlink" href="#WebSocketResponse.request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>if you set a request_id in your WebSocketRequest, the same request_id
+will be returned in the associated response</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketResponse.action">
+<code class="descname">action</code><span> </span>string<a class="headerlink" href="#WebSocketResponse.action" title="Permalink to this definition">¶</a></dt>
+<dd><p>the action specified in the associated WebSocketRequest</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketResponse.success">
+<code class="descname">success</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketResponse.success" title="Permalink to this definition">¶</a></dt>
+<dd><p>indicates if the request was successful</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketResponse.result">
+<code class="descname">result</code><span> </span>object<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketResponse.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>the result of the request.</p>
+<p>(It may be omitted if the request does not expect any result)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketResponse.error_code">
+<code class="descname">error_code</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketResponse.error_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>In case of request error, this error_code provides information
+about the error.</p>
+<p>The possible error_code values are documented for each API.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketResponse.msg">
+<code class="descname">msg</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketResponse.msg" title="Permalink to this definition">¶</a></dt>
+<dd><p>In cas of error, provides a French error message relative to the
+error</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>When the Freebox wants to send a notification on WebSocket it will have
+the following format:</p>
+<dl class="object">
+<dt id="WebSocketNotification">
+<code class="descname">WebSocketNotification</code><a class="headerlink" href="#WebSocketNotification" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WebSocketNotification.action">
+<code class="descname">action</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketNotification.action" title="Permalink to this definition">¶</a></dt>
+<dd><p>The action will have the value &#8216;notification&#8217;</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketNotification.success">
+<code class="descname">success</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketNotification.success" title="Permalink to this definition">¶</a></dt>
+<dd><p>will be True</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketNotification.source">
+<code class="descname">source</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketNotification.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the source of the notification</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketNotification.event">
+<code class="descname">event</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketNotification.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of event that generated the notification</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WebSocketNotification.result">
+<code class="descname">result</code><span> </span>object<em class="property"> Read-only</em><a class="headerlink" href="#WebSocketNotification.result" title="Permalink to this definition">¶</a></dt>
+<dd><p>the content of the notification (may be omitted if no data
+has to be transferred along with the notification)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="api-list">
+<h2>API List<a class="headerlink" href="#api-list" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="downloads">
+<h3>Downloads<a class="headerlink" href="#downloads" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="download/">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download/#download-stats">Download Stats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download/#download-files">Download Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download/#download-trackers-unstable">Download Trackers [UNSTABLE]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download/#download-peers-unstable">Download Peers [UNSTABLE]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download/#download-pieces">Download Pieces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download/#download-blacklist-unstable">Download Blacklist [UNSTABLE]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download_feeds/">Download Feeds</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download_config/">Download Configuration</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-system-api">
+<h3>File System Api<a class="headerlink" href="#file-system-api" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fs/">File System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="share/">File Sharing Link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upload/">File Upload</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="air-media">
+<h3>Air Media<a class="headerlink" href="#air-media" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="airmedia/">AirMedia API</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="rrd">
+<h3>RRD<a class="headerlink" href="#rrd" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="rrd/">RRD [UNSTABLE]</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="calls-contacts">
+<h3>Calls / Contacts<a class="headerlink" href="#calls-contacts" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="call/">Call</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contacts/">Contacts</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="connection/">Connection API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lan/">Lan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lan/#lan-browser">Lan Browser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freeplug/">Freeplug</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dhcp/">DHCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ftp/">Ftp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nat/">NAT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nat/#port-forwarding">Port Forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nat/#incoming-port-configuration">Incoming port configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="igd/">UPnP IGD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lcd/">LCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network_share/">Network Share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="upnpav/">UPnP AV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="switch/">Switch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wifi/">Wi-Fi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system/">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vpn/">VPN Server [UNSTABLE]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vpn_client/">VPN Client [UNSTABLE]</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="storage/">Storage API [UNSTABLE]</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="parental-filter">
+<h3>Parental filter<a class="headerlink" href="#parental-filter" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="parental/">Parental Control</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="pvr">
+<h3>PVR<a class="headerlink" href="#pvr" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pvr/">PVR [UNSTABLE]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pvr/#pvr-programmed-records">PVR Programmed records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pvr/#pvr-finished-records">PVR Finished records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pvr/#storage-media">Storage media</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

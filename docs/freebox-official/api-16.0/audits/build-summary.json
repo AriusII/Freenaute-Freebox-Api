@@ -1,0 +1,29 @@
+{
+  "raw": {
+    "modules": 72,
+    "http_signatures": 343,
+    "objects": 196,
+    "properties": 1271
+  },
+  "active": {
+    "modules": 45,
+    "http_signatures": 342,
+    "unique_method_paths": 338,
+    "objects": 195,
+    "properties": 1254
+  },
+  "exclusions": 14,
+  "source_sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+  "documented_versions": {
+    "8": 218,
+    "10": 13,
+    "11": 24,
+    "16": 17,
+    "None": 4,
+    "9": 41,
+    "14": 4,
+    "13": 2,
+    "15": 19
+  },
+  "no_operational_api_tests": true
+}

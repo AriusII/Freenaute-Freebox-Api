@@ -1,0 +1,115 @@
+{
+  "module": {
+    "module": "camera",
+    "title": "Cameras",
+    "category": "maison-profils",
+    "path": "docs/reference/maison-profils/camera.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 5,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#cameras",
+    "source_pre_blocks": 6,
+    "markdown_code_blocks": 6,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "camera",
+      "method": "GET",
+      "documented_path": "/api/v8/camera/",
+      "path_template": "/api/v{major}/camera/",
+      "documented_major": 8,
+      "title": "Get list of cameras",
+      "id": "get--api-v8-camera-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/camera.md#get--api-v8-camera-",
+      "referenced_objects": [
+        "Camera"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-camera-"
+    },
+    {
+      "module": "camera",
+      "method": "GET",
+      "documented_path": "/api/v8/camera/{id}",
+      "path_template": "/api/v{major}/camera/{id}",
+      "documented_major": 8,
+      "title": "Access a given camera",
+      "id": "get--api-v8-camera-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/camera.md#get--api-v8-camera-id",
+      "referenced_objects": [
+        "Camera"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-camera-id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "camera",
+      "name": "Camera",
+      "id": "Camera",
+      "properties": [
+        "Camera.id",
+        "Camera.node_id",
+        "Camera.name",
+        "Camera.stream_url",
+        "Camera.lan_gid"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera",
+      "markdown": "docs/reference/maison-profils/camera.md#Camera"
+    }
+  ],
+  "properties": [
+    {
+      "module": "camera",
+      "id": "Camera.id",
+      "signature": "id string",
+      "description": "camera id",
+      "source_id": "Camera.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.id",
+      "markdown": "docs/reference/maison-profils/camera.md#Camera.id"
+    },
+    {
+      "module": "camera",
+      "id": "Camera.node_id",
+      "signature": "node_id int",
+      "description": "camera node id",
+      "source_id": "Camera.node_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.node_id",
+      "markdown": "docs/reference/maison-profils/camera.md#Camera.node_id"
+    },
+    {
+      "module": "camera",
+      "id": "Camera.name",
+      "signature": "name string",
+      "description": "camera name",
+      "source_id": "Camera.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.name",
+      "markdown": "docs/reference/maison-profils/camera.md#Camera.name"
+    },
+    {
+      "module": "camera",
+      "id": "Camera.stream_url",
+      "signature": "stream_url string",
+      "description": "camera stream url",
+      "source_id": "Camera.stream_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.stream_url",
+      "markdown": "docs/reference/maison-profils/camera.md#Camera.stream_url"
+    },
+    {
+      "module": "camera",
+      "id": "Camera.lan_gid",
+      "signature": "lan_gid string",
+      "description": "camera lan id",
+      "source_id": "Camera.lan_gid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.lan_gid",
+      "markdown": "docs/reference/maison-profils/camera.md#Camera.lan_gid"
+    }
+  ],
+  "events": []
+}

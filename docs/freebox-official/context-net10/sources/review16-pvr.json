@@ -1,0 +1,805 @@
+{
+  "module": {
+    "module": "pvr",
+    "title": "PVR [UNSTABLE]",
+    "category": "multimedia",
+    "path": "docs/reference/multimedia/pvr.md",
+    "http_signatures": 14,
+    "objects": 5,
+    "properties": 51,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#pvr-unstable",
+    "source_pre_blocks": 41,
+    "markdown_code_blocks": 41,
+    "source_tables": 11
+  },
+  "endpoints": [
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/config/",
+      "path_template": "/api/v{major}/pvr/config/",
+      "documented_major": 8,
+      "title": "Get the current PVR configuration",
+      "id": "get--api-v8-pvr-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-config-",
+      "referenced_objects": [
+        "PvrConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-config-"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/config/",
+      "path_template": "/api/v{major}/pvr/config/",
+      "documented_major": 8,
+      "title": "Update the current PVR configuration",
+      "id": "put--api-v8-pvr-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#put--api-v8-pvr-config-",
+      "referenced_objects": [
+        "PvrConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-pvr-config-"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/quota/",
+      "path_template": "/api/v{major}/pvr/quota/",
+      "documented_major": 8,
+      "title": "Getting the current quota info",
+      "id": "get--api-v8-pvr-quota-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-quota-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-quota-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-quota-"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/quota/",
+      "path_template": "/api/v{major}/pvr/quota/",
+      "documented_major": 8,
+      "title": "Request next quota threshold",
+      "id": "put--api-v8-pvr-quota-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-quota-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#put--api-v8-pvr-quota-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-pvr-quota-"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/programmed/",
+      "path_template": "/api/v{major}/pvr/programmed/",
+      "documented_major": 8,
+      "title": "Getting the list of precords",
+      "id": "get--api-v8-pvr-programmed-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-programmed-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-programmed-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-programmed-"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/programmed/{id}",
+      "path_template": "/api/v{major}/pvr/programmed/{id}",
+      "documented_major": 8,
+      "title": "Getting a specific precord",
+      "id": "get--api-v8-pvr-programmed-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-programmed-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-programmed-id",
+      "referenced_objects": [
+        "Precord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-programmed-id"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/programmed/{id}",
+      "path_template": "/api/v{major}/pvr/programmed/{id}",
+      "documented_major": 8,
+      "title": "Updating a precord",
+      "id": "put--api-v8-pvr-programmed-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-programmed-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#put--api-v8-pvr-programmed-id",
+      "referenced_objects": [
+        "Precord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-pvr-programmed-id"
+    },
+    {
+      "module": "pvr",
+      "method": "DELETE",
+      "documented_path": "/api/v8/pvr/programmed/{id}",
+      "path_template": "/api/v{major}/pvr/programmed/{id}",
+      "documented_major": 8,
+      "title": "Delete a precord",
+      "id": "delete--api-v8-pvr-programmed-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-pvr-programmed-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#delete--api-v8-pvr-programmed-id",
+      "referenced_objects": [
+        "Precord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-pvr-programmed-id"
+    },
+    {
+      "module": "pvr",
+      "method": "POST",
+      "documented_path": "/api/v8/pvr/programmed/",
+      "path_template": "/api/v{major}/pvr/programmed/",
+      "documented_major": 8,
+      "title": "Create a precord",
+      "id": "post--api-v8-pvr-programmed-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-pvr-programmed-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#post--api-v8-pvr-programmed-",
+      "referenced_objects": [
+        "Precord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-pvr-programmed-"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/finished/",
+      "path_template": "/api/v{major}/pvr/finished/",
+      "documented_major": 8,
+      "title": "Getting the list of frecords",
+      "id": "get--api-v8-pvr-finished-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-finished-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-finished-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-finished-"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/finished/{id}",
+      "path_template": "/api/v{major}/pvr/finished/{id}",
+      "documented_major": 8,
+      "title": "Getting a specific frecord",
+      "id": "get--api-v8-pvr-finished-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-finished-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-finished-id",
+      "referenced_objects": [
+        "Frecord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-finished-id"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/finished/{id}",
+      "path_template": "/api/v{major}/pvr/finished/{id}",
+      "documented_major": 8,
+      "title": "Updating an frecord",
+      "id": "put--api-v8-pvr-finished-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-finished-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#put--api-v8-pvr-finished-id",
+      "referenced_objects": [
+        "Frecord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-pvr-finished-id"
+    },
+    {
+      "module": "pvr",
+      "method": "DELETE",
+      "documented_path": "/api/v8/pvr/finished/{id}",
+      "path_template": "/api/v{major}/pvr/finished/{id}",
+      "documented_major": 8,
+      "title": "Delete an frecord",
+      "id": "delete--api-v8-pvr-finished-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-pvr-finished-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#delete--api-v8-pvr-finished-id",
+      "referenced_objects": [
+        "Frecord"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-pvr-finished-id"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/media/",
+      "path_template": "/api/v{major}/pvr/media/",
+      "documented_major": 8,
+      "title": "Getting the list of media",
+      "id": "get--api-v8-pvr-media-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-media-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/multimedia/pvr.md#get--api-v8-pvr-media-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-pvr-media-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "pvr",
+      "name": "PvrConfig",
+      "id": "PvrConfig",
+      "properties": [
+        "PvrConfig.margin_before",
+        "PvrConfig.margin_after"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrConfig",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrConfig"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrQuota",
+      "id": "PvrQuota",
+      "properties": [
+        "PvrQuota.quota_exceeded",
+        "PvrQuota.needed_tresh",
+        "PvrQuota.cur_tresh"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrQuota",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrQuota"
+    },
+    {
+      "module": "pvr",
+      "name": "Precord",
+      "id": "Precord",
+      "properties": [
+        "Precord.id",
+        "Precord.media",
+        "Precord.path",
+        "Precord.has_record_gen",
+        "Precord.record_gen_id",
+        "Precord.conflict",
+        "Precord.overlap_list",
+        "Precord.enabled",
+        "Precord.altered",
+        "Precord.state",
+        "Precord.error",
+        "Precord.channel_uuid",
+        "Precord.channel_name",
+        "Precord.channel_quality",
+        "Precord.channel_type",
+        "Precord.name",
+        "Precord.subname",
+        "Precord.broadcast_type",
+        "Precord.start",
+        "Precord.end",
+        "Precord.legacy_uri",
+        "Precord.force_channel_name"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord"
+    },
+    {
+      "module": "pvr",
+      "name": "Frecord",
+      "id": "Frecord",
+      "properties": [
+        "Frecord.id",
+        "Frecord.media",
+        "Frecord.path",
+        "Frecord.filename",
+        "Frecord.byte_size",
+        "Frecord.has_record_gen",
+        "Frecord.record_gen_id",
+        "Frecord.altered",
+        "Frecord.state",
+        "Frecord.error",
+        "Frecord.channel_uuid",
+        "Frecord.channel_name",
+        "Frecord.channel_quality",
+        "Frecord.channel_type",
+        "Frecord.name",
+        "Frecord.subname",
+        "Frecord.broadcast_type",
+        "Frecord.start",
+        "Frecord.end",
+        "Frecord.secure"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord"
+    },
+    {
+      "module": "pvr",
+      "name": "Media",
+      "id": "Media",
+      "properties": [
+        "Media.media",
+        "Media.free_bytes",
+        "propriete-sans-ancre-pvr-50",
+        "Media.record_time"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Media",
+      "markdown": "docs/reference/multimedia/pvr.md#Media"
+    }
+  ],
+  "properties": [
+    {
+      "module": "pvr",
+      "id": "PvrConfig.margin_before",
+      "signature": "margin_before int",
+      "description": "default margin before recording start time",
+      "source_id": "PvrConfig.margin_before",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrConfig.margin_before",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrConfig.margin_before"
+    },
+    {
+      "module": "pvr",
+      "id": "PvrConfig.margin_after",
+      "signature": "margin_after int",
+      "description": "default margin after recording end time",
+      "source_id": "PvrConfig.margin_after",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrConfig.margin_after",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrConfig.margin_after"
+    },
+    {
+      "module": "pvr",
+      "id": "PvrQuota.quota_exceeded",
+      "signature": "quota_exceeded bool",
+      "description": "is quota exceeded",
+      "source_id": "PvrQuota.quota_exceeded",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrQuota.quota_exceeded",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrQuota.quota_exceeded"
+    },
+    {
+      "module": "pvr",
+      "id": "PvrQuota.needed_tresh",
+      "signature": "needed_tresh int",
+      "description": "needed quota threshold",
+      "source_id": "PvrQuota.needed_tresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrQuota.needed_tresh",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrQuota.needed_tresh"
+    },
+    {
+      "module": "pvr",
+      "id": "PvrQuota.cur_tresh",
+      "signature": "cur_tresh int",
+      "description": "current quota threshold",
+      "source_id": "PvrQuota.cur_tresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrQuota.cur_tresh",
+      "markdown": "docs/reference/multimedia/pvr.md#PvrQuota.cur_tresh"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.id",
+      "signature": "id string Read-only",
+      "description": "precord id",
+      "source_id": "Precord.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.id",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.id"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.media",
+      "signature": "media string",
+      "description": "media name on which the record will be written to. See the Media API for more info. This property and can be empty when the file backing the record is not available, for example when secure is set.",
+      "source_id": "Precord.media",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.media",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.media"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.path",
+      "signature": "path string",
+      "description": "destination directory on the media storage where the record will be written to",
+      "source_id": "Precord.path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.path",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.path"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.has_record_gen",
+      "signature": "has_record_gen bool Read-only",
+      "description": "if true, this precord has been generated using a Generator",
+      "source_id": "Precord.has_record_gen",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.has_record_gen",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.has_record_gen"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.record_gen_id",
+      "signature": "record_gen_id int Read-only",
+      "description": "if has_record_gen, this is the id of the generator",
+      "source_id": "Precord.record_gen_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.record_gen_id",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.record_gen_id"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.conflict",
+      "signature": "conflict bool Read-only",
+      "description": "if true this record may conflict with another record",
+      "source_id": "Precord.conflict",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.conflict",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.conflict"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.overlap_list",
+      "signature": "overlap_list [] array of int Read-only",
+      "description": "in case of conflict, this will contain the list of records id that may conflict with this record",
+      "source_id": "Precord.overlap_list",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.overlap_list",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.overlap_list"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.enabled",
+      "signature": "enabled bool",
+      "description": "it only applies to generated records. If false the generated precord will be skipped.",
+      "source_id": "Precord.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.enabled",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.enabled"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.altered",
+      "signature": "altered bool Read-only",
+      "description": "a precord is altered when some part of the recording may be missing. This can be the case if a conflict occurred during the recording (or connection was down)",
+      "source_id": "Precord.altered",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.altered",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.altered"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.state",
+      "signature": "state enum Read-only",
+      "description": "State Description disabled disabled start_error failed to start waiting_start_time scheduled starting starting running running running_error running with error failed failed finished finished",
+      "source_id": "Precord.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.state",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.state"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.error",
+      "signature": "error enum Read-only",
+      "description": "Error none file_access_error disk_full private_but_no_private_dir network_problem resource_problem no_stream_available no_data_received missed stopped internal_error unknown_error",
+      "source_id": "Precord.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.error",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.error"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.channel_uuid",
+      "signature": "channel_uuid string",
+      "description": "channel uuid",
+      "source_id": "Precord.channel_uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.channel_uuid",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.channel_uuid"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.channel_name",
+      "signature": "channel_name string",
+      "description": "optional channel name",
+      "source_id": "Precord.channel_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.channel_name",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.channel_name"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.channel_quality",
+      "signature": "channel_quality enum",
+      "description": "channel_quality auto hd sd ld 3d",
+      "source_id": "Precord.channel_quality",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.channel_quality",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.channel_quality"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.channel_type",
+      "signature": "channel_type enum",
+      "description": "channel_type Description \u2018\u2019 (empty string) auto iptv use only iptv streams dvb use only dvb streams",
+      "source_id": "Precord.channel_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.channel_type",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.channel_type"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.name",
+      "signature": "name string",
+      "description": "record name",
+      "source_id": "Precord.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.name",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.name"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.subname",
+      "signature": "subname string",
+      "description": "record subname",
+      "source_id": "Precord.subname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.subname",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.subname"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.broadcast_type",
+      "signature": "broadcast_type enum",
+      "description": "broadcast_type tv radio",
+      "source_id": "Precord.broadcast_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.broadcast_type",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.broadcast_type"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.start",
+      "signature": "start int",
+      "description": "record start timestamp",
+      "source_id": "Precord.start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.start",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.start"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.end",
+      "signature": "end int",
+      "description": "record end timestamp",
+      "source_id": "Precord.end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.end",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.end"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.legacy_uri",
+      "signature": "legacy_uri string",
+      "description": "only used for legacy apps. Use channel_uuid instead when available NOTE: only visible when called from player",
+      "source_id": "Precord.legacy_uri",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.legacy_uri",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.legacy_uri"
+    },
+    {
+      "module": "pvr",
+      "id": "Precord.force_channel_name",
+      "signature": "force_channel_name string",
+      "description": "only used for legacy apps. Use channel_uuid instead when available NOTE: only visible when called from player",
+      "source_id": "Precord.force_channel_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.force_channel_name",
+      "markdown": "docs/reference/multimedia/pvr.md#Precord.force_channel_name"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.id",
+      "signature": "id string Read-only",
+      "description": "frecord id",
+      "source_id": "Frecord.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.id",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.id"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.media",
+      "signature": "media string Read-only",
+      "description": "media name on which the record is written. See the Media API for more info. This property and can be empty when the file backing the record is not available, for example when secure is set.",
+      "source_id": "Frecord.media",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.media",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.media"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.path",
+      "signature": "path string Read-only",
+      "description": "destination directory on the media storage",
+      "source_id": "Frecord.path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.path",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.path"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.filename",
+      "signature": "filename string Read-only",
+      "description": "filename of the record",
+      "source_id": "Frecord.filename",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.filename",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.filename"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.byte_size",
+      "signature": "byte_size int Read-only",
+      "description": "size of the record file in bytes",
+      "source_id": "Frecord.byte_size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.byte_size",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.byte_size"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.has_record_gen",
+      "signature": "has_record_gen bool Read-only",
+      "description": "if true, this frecord has been generated using a Generator",
+      "source_id": "Frecord.has_record_gen",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.has_record_gen",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.has_record_gen"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.record_gen_id",
+      "signature": "record_gen_id int Read-only",
+      "description": "if has_record_gen, this is the id of the generator",
+      "source_id": "Frecord.record_gen_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.record_gen_id",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.record_gen_id"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.altered",
+      "signature": "altered bool Read-only",
+      "description": "an frecord is altered when some part of the recording may be missing. This can be the case if a conflict occurred during the recording (or connection was down)",
+      "source_id": "Frecord.altered",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.altered",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.altered"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.state",
+      "signature": "state enum Read-only",
+      "description": "State Description disabled disabled start_error failed to start waiting_start_time scheduled starting starting running running running_error running with error failed failed finished finished",
+      "source_id": "Frecord.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.state",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.state"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.error",
+      "signature": "error enum Read-only",
+      "description": "Error none file_access_error disk_full private_but_no_private_dir network_problem resource_problem no_stream_available no_data_received missed stopped internal_error unknown_error",
+      "source_id": "Frecord.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.error",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.error"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.channel_uuid",
+      "signature": "channel_uuid string Read-only",
+      "description": "channel uuid",
+      "source_id": "Frecord.channel_uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.channel_uuid",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.channel_uuid"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.channel_name",
+      "signature": "channel_name string Read-only",
+      "description": "optional channel name",
+      "source_id": "Frecord.channel_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.channel_name",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.channel_name"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.channel_quality",
+      "signature": "channel_quality enum Read-only",
+      "description": "channel_quality auto hd sd ld 3d",
+      "source_id": "Frecord.channel_quality",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.channel_quality",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.channel_quality"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.channel_type",
+      "signature": "channel_type enum Read-only",
+      "description": "channel_type Description \u2018\u2019 (empty string) auto iptv use only iptv streams dvb use only dvb streams",
+      "source_id": "Frecord.channel_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.channel_type",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.channel_type"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.name",
+      "signature": "name string",
+      "description": "record name",
+      "source_id": "Frecord.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.name",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.name"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.subname",
+      "signature": "subname string",
+      "description": "record subname",
+      "source_id": "Frecord.subname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.subname",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.subname"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.broadcast_type",
+      "signature": "broadcast_type enum Read-only",
+      "description": "broadcast_type tv radio",
+      "source_id": "Frecord.broadcast_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.broadcast_type",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.broadcast_type"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.start",
+      "signature": "start int Read-only",
+      "description": "record start timestamp",
+      "source_id": "Frecord.start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.start",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.start"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.end",
+      "signature": "end int Read-only",
+      "description": "record end timestamp",
+      "source_id": "Frecord.end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.end",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.end"
+    },
+    {
+      "module": "pvr",
+      "id": "Frecord.secure",
+      "signature": "secure bool Read-only",
+      "description": "flag set when the record is protected by DRM",
+      "source_id": "Frecord.secure",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord.secure",
+      "markdown": "docs/reference/multimedia/pvr.md#Frecord.secure"
+    },
+    {
+      "module": "pvr",
+      "id": "Media.media",
+      "signature": "media string Read-only",
+      "description": "name of the storage medium",
+      "source_id": "Media.media",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Media.media",
+      "markdown": "docs/reference/multimedia/pvr.md#Media.media"
+    },
+    {
+      "module": "pvr",
+      "id": "Media.free_bytes",
+      "signature": "free_bytes int Read-only",
+      "description": "number of free bytes on the medium",
+      "source_id": "Media.free_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Media.free_bytes",
+      "markdown": "docs/reference/multimedia/pvr.md#Media.free_bytes"
+    },
+    {
+      "module": "pvr",
+      "id": "propriete-sans-ancre-pvr-50",
+      "signature": "total bytes int [ro]",
+      "description": "total number of bytes on the medium",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#media",
+      "markdown": "docs/reference/multimedia/pvr.md#propriete-sans-ancre-pvr-50"
+    },
+    {
+      "module": "pvr",
+      "id": "Media.record_time",
+      "signature": "record_time int Read-only",
+      "description": "estimated record time in seconds for multiple channel types and qualities",
+      "source_id": "Media.record_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Media.record_time",
+      "markdown": "docs/reference/multimedia/pvr.md#Media.record_time"
+    }
+  ],
+  "events": []
+}

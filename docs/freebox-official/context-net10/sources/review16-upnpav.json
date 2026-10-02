@@ -1,0 +1,75 @@
+{
+  "module": {
+    "module": "upnpav",
+    "title": "UPnP AV",
+    "category": "services",
+    "path": "docs/reference/services/upnpav.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 1,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#upnp-av",
+    "source_pre_blocks": 7,
+    "markdown_code_blocks": 7,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "upnpav",
+      "method": "GET",
+      "documented_path": "/api/v8/upnpav/config/",
+      "path_template": "/api/v{major}/upnpav/config/",
+      "documented_major": 8,
+      "title": "Get the current UPnP AV configuration",
+      "id": "get--api-v8-upnpav-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upnpav-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/upnpav.md#get--api-v8-upnpav-config-",
+      "referenced_objects": [
+        "UPnPAVConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-upnpav-config-"
+    },
+    {
+      "module": "upnpav",
+      "method": "PUT",
+      "documented_path": "/api/v8/upnpav/config/",
+      "path_template": "/api/v{major}/upnpav/config/",
+      "documented_major": 8,
+      "title": "Update the UPnP AV configuration",
+      "id": "put--api-v8-upnpav-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-upnpav-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/upnpav.md#put--api-v8-upnpav-config-",
+      "referenced_objects": [
+        "UPnPAVConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-upnpav-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "upnpav",
+      "name": "UPnPAVConfig",
+      "id": "UPnPAVConfig",
+      "properties": [
+        "UPnPAVConfig.enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPAVConfig",
+      "markdown": "docs/reference/services/upnpav.md#UPnPAVConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "upnpav",
+      "id": "UPnPAVConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is the UPnP AV service enabled",
+      "source_id": "UPnPAVConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPAVConfig.enabled",
+      "markdown": "docs/reference/services/upnpav.md#UPnPAVConfig.enabled"
+    }
+  ],
+  "events": []
+}

@@ -1,0 +1,165 @@
+{
+  "module": {
+    "module": "lcd",
+    "title": "LCD",
+    "category": "systeme",
+    "path": "docs/reference/systeme/lcd.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 10,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#lcd-315",
+    "source_pre_blocks": 7,
+    "markdown_code_blocks": 7,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "lcd",
+      "method": "GET",
+      "documented_path": "/api/v8/lcd/config/",
+      "path_template": "/api/v{major}/lcd/config/",
+      "documented_major": 8,
+      "title": "Get the current LCD configuration",
+      "id": "get--api-v8-lcd-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lcd-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/lcd.md#get--api-v8-lcd-config-",
+      "referenced_objects": [
+        "LcdConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-lcd-config-"
+    },
+    {
+      "module": "lcd",
+      "method": "PUT",
+      "documented_path": "/api/v8/lcd/config/",
+      "path_template": "/api/v{major}/lcd/config/",
+      "documented_major": 8,
+      "title": "Update the lcd configuration",
+      "id": "put--api-v8-lcd-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-lcd-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/lcd.md#put--api-v8-lcd-config-",
+      "referenced_objects": [
+        "LcdConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-lcd-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "lcd",
+      "name": "LcdConfig",
+      "id": "LcdConfig",
+      "properties": [
+        "LcdConfig.brightness",
+        "LcdConfig.orientation_forced",
+        "LcdConfig.orientation",
+        "LcdConfig.hide_wifi_key",
+        "LcdConfig.led_strip_enabled",
+        "LcdConfig.led_strip_brightness",
+        "LcdConfig.led_strip_animation",
+        "LcdConfig.available_led_strip_animations",
+        "LcdConfig.hide_status_led",
+        "LcdConfig.screensaver"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "lcd",
+      "id": "LcdConfig.brightness",
+      "signature": "brightness int",
+      "description": "the screen brightness (range from 0 to 100)",
+      "source_id": "LcdConfig.brightness",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.brightness",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.brightness"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.orientation_forced",
+      "signature": "orientation_forced bool",
+      "description": "is the screen orientation forced",
+      "source_id": "LcdConfig.orientation_forced",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.orientation_forced",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.orientation_forced"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.orientation",
+      "signature": "orientation int",
+      "description": "the screen orientation angle",
+      "source_id": "LcdConfig.orientation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.orientation",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.orientation"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.hide_wifi_key",
+      "signature": "hide_wifi_key bool",
+      "description": "hide wifi key information (including qrcode) - optional",
+      "source_id": "LcdConfig.hide_wifi_key",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.hide_wifi_key",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.hide_wifi_key"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.led_strip_enabled",
+      "signature": "led_strip_enabled bool",
+      "description": "enable/disable led strip brightness - optional",
+      "source_id": "LcdConfig.led_strip_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.led_strip_enabled",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.led_strip_enabled"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.led_strip_brightness",
+      "signature": "led_strip_brightness int",
+      "description": "led strip brightness (range from 0 to 100) - optional",
+      "source_id": "LcdConfig.led_strip_brightness",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.led_strip_brightness",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.led_strip_brightness"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.led_strip_animation",
+      "signature": "led_strip_animation enum",
+      "description": "led strip animation - optional",
+      "source_id": "LcdConfig.led_strip_animation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.led_strip_animation",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.led_strip_animation"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.available_led_strip_animations",
+      "signature": "available_led_strip_animations [] array of enum Read-only",
+      "description": "array containing what LED strip animations can be configured",
+      "source_id": "LcdConfig.available_led_strip_animations",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.available_led_strip_animations",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.available_led_strip_animations"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.hide_status_led",
+      "signature": "hide_status_led bool",
+      "description": "hide status LED (on supported Freebox models) - optional",
+      "source_id": "LcdConfig.hide_status_led",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.hide_status_led",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.hide_status_led"
+    },
+    {
+      "module": "lcd",
+      "id": "LcdConfig.screensaver",
+      "signature": "screensaver enum",
+      "description": "Configure the screensaver - optional Only present on boxes that have has_lcd_screensaver set to true in their SystemConfig information. Possible values are listed in the following table: Value Description disabled Display always on on Screensaver enabled night Screensaver enabled during the night",
+      "source_id": "LcdConfig.screensaver",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig.screensaver",
+      "markdown": "docs/reference/systeme/lcd.md#LcdConfig.screensaver"
+    }
+  ],
+  "events": []
+}

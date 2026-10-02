@@ -1,0 +1,185 @@
+{
+  "module": {
+    "module": "login",
+    "title": "Login",
+    "category": "fondamentaux",
+    "path": "docs/reference/fondamentaux/login.md",
+    "http_signatures": 5,
+    "objects": 2,
+    "properties": 7,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#login",
+    "source_pre_blocks": 22,
+    "markdown_code_blocks": 22,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "login",
+      "method": "POST",
+      "documented_path": "/api/v8/login/authorize/",
+      "path_template": "/api/v{major}/login/authorize/",
+      "documented_major": 8,
+      "title": "Request authorization",
+      "id": "post--api-v8-login-authorize-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fondamentaux/login.md#post--api-v8-login-authorize-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-login-authorize-"
+    },
+    {
+      "module": "login",
+      "method": "GET",
+      "documented_path": "/api/v8/login/authorize/{track_id}",
+      "path_template": "/api/v{major}/login/authorize/{track_id}",
+      "documented_major": 8,
+      "title": "Track authorization progress",
+      "id": "get--api-v8-login-authorize-track_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fondamentaux/login.md#get--api-v8-login-authorize-track_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-login-authorize-track_id"
+    },
+    {
+      "module": "login",
+      "method": "GET",
+      "documented_path": "/api/v8/login/",
+      "path_template": "/api/v{major}/login/",
+      "documented_major": 8,
+      "title": "Getting the challenge value",
+      "id": "get--api-v8-login-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fondamentaux/login.md#get--api-v8-login-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-login-"
+    },
+    {
+      "module": "login",
+      "method": "POST",
+      "documented_path": "/api/v8/login/session/",
+      "path_template": "/api/v{major}/login/session/",
+      "documented_major": 8,
+      "title": "Opening a session",
+      "id": "post--api-v8-login-session-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fondamentaux/login.md#post--api-v8-login-session-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-login-session-"
+    },
+    {
+      "module": "login",
+      "method": "POST",
+      "documented_path": "/api/v8/login/logout/",
+      "path_template": "/api/v{major}/login/logout/",
+      "documented_major": 8,
+      "title": "Closing the current session",
+      "id": "post--api-v8-login-logout-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-logout-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fondamentaux/login.md#post--api-v8-login-logout-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-login-logout-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "login",
+      "name": "TokenRequest",
+      "id": "TokenRequest",
+      "properties": [
+        "TokenRequest.app_id",
+        "TokenRequest.app_name",
+        "TokenRequest.app_version",
+        "TokenRequest.device_name"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest",
+      "markdown": "docs/reference/fondamentaux/login.md#TokenRequest"
+    },
+    {
+      "module": "login",
+      "name": "SessionStart",
+      "id": "SessionStart",
+      "properties": [
+        "SessionStart.app_id",
+        "SessionStart.app_version",
+        "SessionStart.password"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart",
+      "markdown": "docs/reference/fondamentaux/login.md#SessionStart"
+    }
+  ],
+  "properties": [
+    {
+      "module": "login",
+      "id": "TokenRequest.app_id",
+      "signature": "app_id string",
+      "description": "A unique app_id string",
+      "source_id": "TokenRequest.app_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.app_id",
+      "markdown": "docs/reference/fondamentaux/login.md#TokenRequest.app_id"
+    },
+    {
+      "module": "login",
+      "id": "TokenRequest.app_name",
+      "signature": "app_name string",
+      "description": "A descriptive application name (will be displayed on lcd)",
+      "source_id": "TokenRequest.app_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.app_name",
+      "markdown": "docs/reference/fondamentaux/login.md#TokenRequest.app_name"
+    },
+    {
+      "module": "login",
+      "id": "TokenRequest.app_version",
+      "signature": "app_version string",
+      "description": "app version",
+      "source_id": "TokenRequest.app_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.app_version",
+      "markdown": "docs/reference/fondamentaux/login.md#TokenRequest.app_version"
+    },
+    {
+      "module": "login",
+      "id": "TokenRequest.device_name",
+      "signature": "device_name string",
+      "description": "The name of the device on which the app will be used",
+      "source_id": "TokenRequest.device_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.device_name",
+      "markdown": "docs/reference/fondamentaux/login.md#TokenRequest.device_name"
+    },
+    {
+      "module": "login",
+      "id": "SessionStart.app_id",
+      "signature": "app_id string",
+      "description": "Same app_id used in TokenRequest to get the app_token",
+      "source_id": "SessionStart.app_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_id",
+      "markdown": "docs/reference/fondamentaux/login.md#SessionStart.app_id"
+    },
+    {
+      "module": "login",
+      "id": "SessionStart.app_version",
+      "signature": "app_version string",
+      "description": "app version",
+      "source_id": "SessionStart.app_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_version",
+      "markdown": "docs/reference/fondamentaux/login.md#SessionStart.app_version"
+    },
+    {
+      "module": "login",
+      "id": "SessionStart.password",
+      "signature": "password string",
+      "description": "The password computed using the challenge and the app_token To compute the password you have to compute the hmac-sha1 of the challenge and the app_token password = hmac-sha1(app_token, challenge)",
+      "source_id": "SessionStart.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.password",
+      "markdown": "docs/reference/fondamentaux/login.md#SessionStart.password"
+    }
+  ],
+  "events": []
+}

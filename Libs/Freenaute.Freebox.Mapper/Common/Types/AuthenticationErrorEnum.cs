@@ -1,4 +1,4 @@
-﻿namespace Freenaute.Freebox.Mapper.Common.Types;
+namespace Freenaute.Freebox.Mapper.Common.Types;
 
 /// <summary>
 ///     Enumeration of possible authentication errors when accessing the API.

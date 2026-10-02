@@ -1,0 +1,165 @@
+{
+  "module": {
+    "module": "ftp",
+    "title": "Ftp",
+    "category": "services",
+    "path": "docs/reference/services/ftp.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 10,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ftp",
+    "source_pre_blocks": 7,
+    "markdown_code_blocks": 7,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "ftp",
+      "method": "GET",
+      "documented_path": "/api/v8/ftp/config/",
+      "path_template": "/api/v{major}/ftp/config/",
+      "documented_major": 8,
+      "title": "Get the current Ftp configuration",
+      "id": "get--api-v8-ftp-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ftp-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/ftp.md#get--api-v8-ftp-config-",
+      "referenced_objects": [
+        "FtpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-ftp-config-"
+    },
+    {
+      "module": "ftp",
+      "method": "PUT",
+      "documented_path": "/api/v8/ftp/config/",
+      "path_template": "/api/v{major}/ftp/config/",
+      "documented_major": 8,
+      "title": "Update the FTP configuration",
+      "id": "put--api-v8-ftp-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-ftp-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/ftp.md#put--api-v8-ftp-config-",
+      "referenced_objects": [
+        "FtpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-ftp-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "ftp",
+      "name": "FtpConfig",
+      "id": "FtpConfig",
+      "properties": [
+        "FtpConfig.enabled",
+        "FtpConfig.allow_anonymous",
+        "FtpConfig.allow_anonymous_write",
+        "FtpConfig.username",
+        "FtpConfig.password",
+        "FtpConfig.allow_remote_access",
+        "FtpConfig.weak_password",
+        "FtpConfig.port_ctrl",
+        "FtpConfig.port_data",
+        "FtpConfig.remote_domain"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "ftp",
+      "id": "FtpConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is the FTP server enabled",
+      "source_id": "FtpConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.enabled",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.enabled"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.allow_anonymous",
+      "signature": "allow_anonymous bool",
+      "description": "can anonymous user log in",
+      "source_id": "FtpConfig.allow_anonymous",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.allow_anonymous",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.allow_anonymous"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.allow_anonymous_write",
+      "signature": "allow_anonymous_write bool",
+      "description": "can anonymous user write data",
+      "source_id": "FtpConfig.allow_anonymous_write",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.allow_anonymous_write",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.allow_anonymous_write"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.username",
+      "signature": "username string Read-only",
+      "description": "default user name to use. Cannot be changed",
+      "source_id": "FtpConfig.username",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.username",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.username"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.password",
+      "signature": "password string Write-only",
+      "description": "user password",
+      "source_id": "FtpConfig.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.password",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.password"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.allow_remote_access",
+      "signature": "allow_remote_access bool",
+      "description": "enable ftp server remote access NOTE: to be able to enable the remote access the password must be strong enough",
+      "source_id": "FtpConfig.allow_remote_access",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.allow_remote_access",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.allow_remote_access"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.weak_password",
+      "signature": "weak_password bool Read-only",
+      "description": "is the ftp password weak (in this case remote access is disabled)",
+      "source_id": "FtpConfig.weak_password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.weak_password",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.weak_password"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.port_ctrl",
+      "signature": "port_ctrl int",
+      "description": "ftp control port to use for remote access",
+      "source_id": "FtpConfig.port_ctrl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.port_ctrl",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.port_ctrl"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.port_data",
+      "signature": "port_data int",
+      "description": "ftp data port to use for remote access",
+      "source_id": "FtpConfig.port_data",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.port_data",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.port_data"
+    },
+    {
+      "module": "ftp",
+      "id": "FtpConfig.remote_domain",
+      "signature": "remote_domain string",
+      "description": "domain name to use for remote access",
+      "source_id": "FtpConfig.remote_domain",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig.remote_domain",
+      "markdown": "docs/reference/services/ftp.md#FtpConfig.remote_domain"
+    }
+  ],
+  "events": []
+}

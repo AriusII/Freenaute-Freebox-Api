@@ -1,0 +1,456 @@
+{
+  "module": {
+    "module": "notif",
+    "title": "Notif",
+    "category": "maison-profils",
+    "path": "docs/reference/maison-profils/notif.md",
+    "http_signatures": 8,
+    "objects": 6,
+    "properties": 26,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#notif",
+    "source_pre_blocks": 20,
+    "markdown_code_blocks": 20,
+    "source_tables": 7
+  },
+  "endpoints": [
+    {
+      "module": "notif",
+      "method": "GET",
+      "documented_path": "/api/v11/notif/targets",
+      "path_template": "/api/v{major}/notif/targets",
+      "documented_major": 11,
+      "title": "Get list of notification target",
+      "id": "get--api-v11-notif-targets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#get--api-v11-notif-targets",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-notif-targets"
+    },
+    {
+      "module": "notif",
+      "method": "GET",
+      "documented_path": "/api/v11/notif/targets/{id}",
+      "path_template": "/api/v{major}/notif/targets/{id}",
+      "documented_major": 11,
+      "title": "Get a given notification target by this id",
+      "id": "get--api-v11-notif-targets-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#get--api-v11-notif-targets-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-notif-targets-id"
+    },
+    {
+      "module": "notif",
+      "method": "DELETE",
+      "documented_path": "/api/v11/notif/targets/{id}",
+      "path_template": "/api/v{major}/notif/targets/{id}",
+      "documented_major": 11,
+      "title": "Delete a notification target",
+      "id": "delete--api-v11-notif-targets-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v11-notif-targets-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#delete--api-v11-notif-targets-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v11-notif-targets-id"
+    },
+    {
+      "module": "notif",
+      "method": "PUT",
+      "documented_path": "/api/v11/notif/targets/{id}",
+      "path_template": "/api/v{major}/notif/targets/{id}",
+      "documented_major": 11,
+      "title": "Update a notification target",
+      "id": "put--api-v11-notif-targets-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#put--api-v11-notif-targets-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-notif-targets-id"
+    },
+    {
+      "module": "notif",
+      "method": "POST",
+      "documented_path": "/api/v11/notif/targets/",
+      "path_template": "/api/v{major}/notif/targets/",
+      "documented_major": 11,
+      "title": "Add a notification target",
+      "id": "post--api-v11-notif-targets-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#post--api-v11-notif-targets-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v11-notif-targets-"
+    },
+    {
+      "module": "notif",
+      "method": "POST",
+      "documented_path": "/register",
+      "path_template": "/register",
+      "documented_major": null,
+      "title": "Notification server specification",
+      "id": "post--register",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--register",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#post--register",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--register"
+    },
+    {
+      "module": "notif",
+      "method": "DELETE",
+      "documented_path": "/register/{box_id}/{device_id}",
+      "path_template": "/register/{box_id}/{device_id}",
+      "documented_major": null,
+      "title": "Notification server specification",
+      "id": "delete--register-box_id-device_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--register-box_id-device_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#delete--register-box_id-device_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--register-box_id-device_id"
+    },
+    {
+      "module": "notif",
+      "method": "POST",
+      "documented_path": "/send",
+      "path_template": "/send",
+      "documented_major": null,
+      "title": "Notification server specification",
+      "id": "post--send",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--send",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/notif.md#post--send",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--send"
+    }
+  ],
+  "objects": [
+    {
+      "module": "notif",
+      "name": "NotificationTarget",
+      "id": "NotificationTarget",
+      "properties": [
+        "NotificationTarget.id",
+        "NotificationTarget.last_use",
+        "NotificationTarget.type",
+        "NotificationTarget.name",
+        "NotificationTarget.api_url",
+        "NotificationTarget.message_type",
+        "NotificationTarget.subscriptions"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget"
+    },
+    {
+      "module": "notif",
+      "name": "downloader",
+      "id": "downloader",
+      "properties": [
+        "downloader.box_id",
+        "downloader.type",
+        "downloader.data",
+        "downloader.event"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader",
+      "markdown": "docs/reference/maison-profils/notif.md#downloader"
+    },
+    {
+      "module": "notif",
+      "name": "phone",
+      "id": "phone",
+      "properties": [
+        "phone.box_id",
+        "phone.type",
+        "phone.data",
+        "phone.event"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone",
+      "markdown": "docs/reference/maison-profils/notif.md#phone"
+    },
+    {
+      "module": "notif",
+      "name": "box_state",
+      "id": "box_state",
+      "properties": [
+        "box_state.box_id",
+        "box_state.type",
+        "box_state.event"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#box_state",
+      "markdown": "docs/reference/maison-profils/notif.md#box_state"
+    },
+    {
+      "module": "notif",
+      "name": "lan_host",
+      "id": "lan_host",
+      "properties": [
+        "lan_host.box_id",
+        "lan_host.type",
+        "lan_host.host_id",
+        "lan_host.interface",
+        "lan_host.event"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host",
+      "markdown": "docs/reference/maison-profils/notif.md#lan_host"
+    },
+    {
+      "module": "notif",
+      "name": "password_change",
+      "id": "password_change",
+      "properties": [
+        "password_change.box_id",
+        "password_change.type",
+        "password_change.ip"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#password_change",
+      "markdown": "docs/reference/maison-profils/notif.md#password_change"
+    }
+  ],
+  "properties": [
+    {
+      "module": "notif",
+      "id": "NotificationTarget.id",
+      "signature": "id string",
+      "description": "device unique id",
+      "source_id": "NotificationTarget.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.id",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.id"
+    },
+    {
+      "module": "notif",
+      "id": "NotificationTarget.last_use",
+      "signature": "last_use int",
+      "description": "",
+      "source_id": "NotificationTarget.last_use",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.last_use",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.last_use"
+    },
+    {
+      "module": "notif",
+      "id": "NotificationTarget.type",
+      "signature": "type string",
+      "description": "ios | android | firebase",
+      "source_id": "NotificationTarget.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.type",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.type"
+    },
+    {
+      "module": "notif",
+      "id": "NotificationTarget.name",
+      "signature": "name string",
+      "description": "device name",
+      "source_id": "NotificationTarget.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.name",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.name"
+    },
+    {
+      "module": "notif",
+      "id": "NotificationTarget.api_url",
+      "signature": "api_url string",
+      "description": "url of the notification server used to handle communication with the devices",
+      "source_id": "NotificationTarget.api_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.api_url",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.api_url"
+    },
+    {
+      "module": "notif",
+      "id": "NotificationTarget.message_type",
+      "signature": "message_type string",
+      "description": "notification message type Type Description data only send the notification payload to the device notification send the notification payload along a notification title and body to the device",
+      "source_id": "NotificationTarget.message_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.message_type",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.message_type"
+    },
+    {
+      "module": "notif",
+      "id": "NotificationTarget.subscriptions",
+      "signature": "subscriptions array",
+      "description": "permission list array Type Description phone notification when missing call download notification when download is finished security notification when alarm is on box_state notification when box state changed lan_host notification related to lan events password_change notification when admin password is changed",
+      "source_id": "NotificationTarget.subscriptions",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.subscriptions",
+      "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget.subscriptions"
+    },
+    {
+      "module": "notif",
+      "id": "downloader.box_id",
+      "signature": "box_id string",
+      "description": "ID of the box that sent the notification",
+      "source_id": "downloader.box_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.box_id",
+      "markdown": "docs/reference/maison-profils/notif.md#downloader.box_id"
+    },
+    {
+      "module": "notif",
+      "id": "downloader.type",
+      "signature": "type string",
+      "description": "Notification type : downloader",
+      "source_id": "downloader.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.type",
+      "markdown": "docs/reference/maison-profils/notif.md#downloader.type"
+    },
+    {
+      "module": "notif",
+      "id": "downloader.data",
+      "signature": "data int",
+      "description": "ID of the download task that triggered the notification",
+      "source_id": "downloader.data",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.data",
+      "markdown": "docs/reference/maison-profils/notif.md#downloader.data"
+    },
+    {
+      "module": "notif",
+      "id": "downloader.event",
+      "signature": "event enum",
+      "description": "Downloader event that triggered the notification event Description task_done The download task is complete task_error The download task has failed task_seeding_done The download task seeding is complete",
+      "source_id": "downloader.event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.event",
+      "markdown": "docs/reference/maison-profils/notif.md#downloader.event"
+    },
+    {
+      "module": "notif",
+      "id": "phone.box_id",
+      "signature": "box_id string",
+      "description": "ID of the box that sent the notification",
+      "source_id": "phone.box_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone.box_id",
+      "markdown": "docs/reference/maison-profils/notif.md#phone.box_id"
+    },
+    {
+      "module": "notif",
+      "id": "phone.type",
+      "signature": "type string",
+      "description": "Notification type : phone",
+      "source_id": "phone.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone.type",
+      "markdown": "docs/reference/maison-profils/notif.md#phone.type"
+    },
+    {
+      "module": "notif",
+      "id": "phone.data",
+      "signature": "data CallEntry",
+      "description": "Call object that triggered the notification",
+      "source_id": "phone.data",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone.data",
+      "markdown": "docs/reference/maison-profils/notif.md#phone.data"
+    },
+    {
+      "module": "notif",
+      "id": "phone.event",
+      "signature": "event enum",
+      "description": "Phone event that triggered the notification event Description missed_call A call has been missed",
+      "source_id": "phone.event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone.event",
+      "markdown": "docs/reference/maison-profils/notif.md#phone.event"
+    },
+    {
+      "module": "notif",
+      "id": "box_state.box_id",
+      "signature": "box_id string",
+      "description": "ID of the box that sent the notification",
+      "source_id": "box_state.box_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.box_id",
+      "markdown": "docs/reference/maison-profils/notif.md#box_state.box_id"
+    },
+    {
+      "module": "notif",
+      "id": "box_state.type",
+      "signature": "type string",
+      "description": "Notification type : box_state",
+      "source_id": "box_state.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.type",
+      "markdown": "docs/reference/maison-profils/notif.md#box_state.type"
+    },
+    {
+      "module": "notif",
+      "id": "box_state.event",
+      "signature": "event enum",
+      "description": "Box state event that triggered the notification event Description pub_up Wan public connection went up enter_sleep Box will enter sleep mode shut_down Box will shut down reboot Box will reboot",
+      "source_id": "box_state.event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.event",
+      "markdown": "docs/reference/maison-profils/notif.md#box_state.event"
+    },
+    {
+      "module": "notif",
+      "id": "lan_host.box_id",
+      "signature": "box_id string",
+      "description": "ID of the box that sent the notification",
+      "source_id": "lan_host.box_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.box_id",
+      "markdown": "docs/reference/maison-profils/notif.md#lan_host.box_id"
+    },
+    {
+      "module": "notif",
+      "id": "lan_host.type",
+      "signature": "type string",
+      "description": "Notification type : lan",
+      "source_id": "lan_host.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.type",
+      "markdown": "docs/reference/maison-profils/notif.md#lan_host.type"
+    },
+    {
+      "module": "notif",
+      "id": "lan_host.host_id",
+      "signature": "host_id string",
+      "description": "ID of the host that triggered the notification",
+      "source_id": "lan_host.host_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.host_id",
+      "markdown": "docs/reference/maison-profils/notif.md#lan_host.host_id"
+    },
+    {
+      "module": "notif",
+      "id": "lan_host.interface",
+      "signature": "interface string",
+      "description": "The LAN interface the host is connected to",
+      "source_id": "lan_host.interface",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.interface",
+      "markdown": "docs/reference/maison-profils/notif.md#lan_host.interface"
+    },
+    {
+      "module": "notif",
+      "id": "lan_host.event",
+      "signature": "event enum",
+      "description": "LAN host event that triggered the notification event Description first_connection The device is connected for the first time",
+      "source_id": "lan_host.event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.event",
+      "markdown": "docs/reference/maison-profils/notif.md#lan_host.event"
+    },
+    {
+      "module": "notif",
+      "id": "password_change.box_id",
+      "signature": "box_id string",
+      "description": "ID of the box that sent the notification",
+      "source_id": "password_change.box_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#password_change.box_id",
+      "markdown": "docs/reference/maison-profils/notif.md#password_change.box_id"
+    },
+    {
+      "module": "notif",
+      "id": "password_change.type",
+      "signature": "type string",
+      "description": "Notification type : password_change",
+      "source_id": "password_change.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#password_change.type",
+      "markdown": "docs/reference/maison-profils/notif.md#password_change.type"
+    },
+    {
+      "module": "notif",
+      "id": "password_change.ip",
+      "signature": "ip string",
+      "description": "IP of the lan host that requested password change",
+      "source_id": "password_change.ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#password_change.ip",
+      "markdown": "docs/reference/maison-profils/notif.md#password_change.ip"
+    }
+  ],
+  "events": []
+}

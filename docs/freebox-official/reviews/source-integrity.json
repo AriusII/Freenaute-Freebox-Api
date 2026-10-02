@@ -1,0 +1,310 @@
+{
+  "format_version": 1,
+  "review_kind": "independent_offline_source_integrity",
+  "integrity_passed": true,
+  "source_archive_sha256": "8d53243e3855ae2ec077c2e3ac9b890120d9ba9eaedc3ba955cdfe0b034b2094",
+  "snapshot_destination": "docs/freebox-official/api-16.0",
+  "audit": {
+    "version": {
+      "current_document": "16.0",
+      "sanitized_discovery": "16.0",
+      "historical_public_document": "4.0",
+      "source_build": "c1fd8795",
+      "scope": "Supplied target snapshot only; not independently verified as latest on every Freebox"
+    },
+    "primary_source": {
+      "url": "http://mafreebox.freebox.fr/doc/index.html",
+      "path": "sources/raw/embedded/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    },
+    "raw_counts": {
+      "http_signatures": 343,
+      "objects": 196,
+      "properties": 1271,
+      "pre_blocks": 1012,
+      "tables": 207,
+      "table_rows": 1508
+    },
+    "projected_active_counts": {
+      "http_signatures": 342,
+      "objects": 195,
+      "properties": 1254,
+      "pre_blocks": 1009,
+      "tables": 205,
+      "table_rows": 1494
+    },
+    "catalogue_counts": {
+      "modules": 45,
+      "endpoints": 342,
+      "operations": 338,
+      "objects": 195,
+      "properties": 1254,
+      "events": 4
+    },
+    "unique_method_path_operations": 338,
+    "compound_path_signatures": [
+      {
+        "method": "GET",
+        "documented_path": "/api/v8/contact/{contact_id}/[numbers|addresses|urls|emails]/"
+      },
+      {
+        "method": "GET",
+        "documented_path": "/api/v8/[number,address,url,email]/{id}"
+      },
+      {
+        "method": "POST",
+        "documented_path": "/api/v8/[number,address,url,email]/"
+      },
+      {
+        "method": "DELETE",
+        "documented_path": "/api/v8/[number,address,url,email]/{id}"
+      },
+      {
+        "method": "PUT",
+        "documented_path": "/api/v8/[number,address,url,email]/{id}"
+      },
+      {
+        "method": "GET",
+        "documented_path": "/api/v9/wifi/ap/{id}/diag & /api/v9/wifi/bss/{id}/diag"
+      },
+      {
+        "method": "POST",
+        "documented_path": "/api/v9/wifi/ap/{id}/diag & /api/v9/wifi/bss/{id}/diag"
+      }
+    ],
+    "document_units": 72,
+    "active_document_units": 45,
+    "historical_changelog_units": 27,
+    "ids": {
+      "attributes": 2729,
+      "unique": 2719,
+      "duplicate_groups": [
+        {
+          "id": "id1",
+          "occurrences": 6
+        },
+        {
+          "id": "put--api-v9-wifi-config-",
+          "occurrences": 2
+        },
+        {
+          "id": "get--api-v8-system-",
+          "occurrences": 2
+        },
+        {
+          "id": "post--api-v8-downloads-add",
+          "occurrences": 2
+        },
+        {
+          "id": "post--api-v8-home-pairing-adapter_id",
+          "occurrences": 3
+        }
+      ]
+    },
+    "supplied_measurement_discrepancies": [
+      {
+        "artifact": "audits/coverage-freebox-server.json",
+        "field": "local_document_integrity.unique_id_attributes",
+        "supplied": 2711,
+        "independently_measured": 2719
+      }
+    ],
+    "deprecation_rules": [
+      {
+        "kind": "table_row",
+        "module": "00_index",
+        "id": null,
+        "row_first_cell": "device_type",
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "device_type (DEPRECATED: use box_model)"
+      },
+      {
+        "kind": "property",
+        "module": "download",
+        "id": "DownloadFile.path",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "path string Read-only ¶ [ DEPRECATED ]"
+      },
+      {
+        "kind": "table_row",
+        "module": "rrd",
+        "id": null,
+        "row_first_cell": "temp1",
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "temp1 temperature sensor 1 (in °C) [DEPRECATED, use cpum]"
+      },
+      {
+        "kind": "table_row",
+        "module": "rrd",
+        "id": null,
+        "row_first_cell": "temp2",
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "temp2 temperature sensor 2 (in °C) [DEPRECATED, use cpub]"
+      },
+      {
+        "kind": "table_row",
+        "module": "rrd",
+        "id": null,
+        "row_first_cell": "temp3",
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "temp3 temperature sensor 3 (in °C) [DEPRECATED, use sw]"
+      },
+      {
+        "kind": "property",
+        "module": "wifi",
+        "id": "WifiBssStatus.is_main_bss",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "is_main_bss bool Deprecated ¶ this as been replaced by use_shared_params in WifiBss"
+      },
+      {
+        "kind": "property",
+        "module": "wifi",
+        "id": "WifiBssConfig.use_default_config",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "use_default_config bool Deprecated ¶ this as been replaced by use_shared_params in WifiBss"
+      },
+      {
+        "kind": "section",
+        "module": "system",
+        "id": "system-config-v5-deprecated",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "System Config V5 (DEPRECATED) ¶ SystemConfigV5 has the following attributes: SystemConfigV5 ¶ firmware_version string Read-only ¶ freebox firmware version mac string Read-only ¶ freebox mac address serial string Read-only ¶ freebox serial number uptime string Read-only ¶ readable freebox uptime uptime_val int Read-only ¶ freebox uptime (in seconds) board_name string Read-only ¶ freebox hardware revision temp_cpum int Read-only ¶ temp cpum (°C) temp_sw int Read-only ¶ temp sw (°C) temp_cpub int Read-only ¶ temp cpub (°C) fan_rpm int Read-only ¶ fan rpm box_authenticated bool Read-only ¶ is the "
+      },
+      {
+        "kind": "section",
+        "module": "system",
+        "id": "old-version-api-v5",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "Old version (api < v5) ¶ GET /api/v8/system/ ¶ Get the SystemConfigV5 Example request : GET /api/v8/system/ HTTP / 1.1 Host : mafreebox.freebox.fr Example response : HTTP / 1.1 200 OK Content-Type : application/json; charset=utf-8 { \"success\" : true , \"result\" : { \"mac\" : \"F4:CA:E5:5C:EA:14\" , \"box_flavor\" : \"light\" , \"temp_cpub\" : 63 , \"disk_status\" : \"active\" , \"box_authenticated\" : true , \"board_name\" : \"fbxgw1r\" , \"fan_rpm\" : 1832 , \"temp_sw\" : 52 , \"uptime\" : \"6 jours 22 heures 9 minutes 46 secondes\" , \"uptime_val\" : 598186 , \"user_main_storage\" : \"Disque 1\" , \"temp_cpum\" : 62 , \"serial\" "
+      },
+      {
+        "kind": "procedure",
+        "module": "upload",
+        "id": "file-upload",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 0,
+        "verified_removed_nodes": 0,
+        "status": "historical_or_logical_rule_not_applied_to_current_reference"
+      },
+      {
+        "kind": "historical_api_family",
+        "module": "parental_legacy",
+        "id": "deprecated-api-v8-0",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 0,
+        "verified_removed_nodes": 0,
+        "status": "historical_or_logical_rule_not_applied_to_current_reference"
+      },
+      {
+        "kind": "table_row",
+        "module": "login",
+        "id": null,
+        "row_first_cell": "parental",
+        "claimed_removed_nodes": 1,
+        "verified_removed_nodes": 1,
+        "source_text_excerpt": "parental Access to parental control (obsolete)"
+      },
+      {
+        "kind": "historical_api_variant",
+        "module": "connection",
+        "id": "deprecated-api-v10-0",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 0,
+        "verified_removed_nodes": 0,
+        "status": "historical_or_logical_rule_not_applied_to_current_reference"
+      },
+      {
+        "kind": "property",
+        "module": "parental_legacy_archive",
+        "id": "ParentalFilter.ip",
+        "row_first_cell": null,
+        "claimed_removed_nodes": 0,
+        "verified_removed_nodes": 0,
+        "status": "historical_or_logical_rule_not_applied_to_current_reference"
+      }
+    ],
+    "catalogue_source_anchors": {
+      "checked": 1840,
+      "unresolved": []
+    },
+    "review_required": true,
+    "limits": [
+      "Supplied catalogue/documents are data, not implementation instructions",
+      "Conserved source declarations do not resolve contradictory types, route/version behavior or missing examples",
+      "No supplied Python/JavaScript tool or operational API request was executed"
+    ],
+    "closure": {
+      "resources": 87,
+      "successful_resources": 84,
+      "successful_unique_files": 83,
+      "unique_html_documents": 38,
+      "reported_unavailable_resources": [
+        {
+          "url": "http://mafreebox.freebox.fr/doc/_static/favicon.ico",
+          "status": 404,
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "http://mafreebox.freebox.fr/doc/genindex.html",
+          "status": 404,
+          "error": "HTTP Error 404: Not Found"
+        },
+        {
+          "url": "http://mafreebox.freebox.fr/doc/search.html",
+          "status": 404,
+          "error": "HTTP Error 404: Not Found"
+        }
+      ],
+      "links_recomputed": 6284,
+      "link_status_counts": {
+        "present": 6239,
+        "reported_unavailable": 3,
+        "outside_server_scope": 42
+      },
+      "unrecorded_or_broken_references": [],
+      "reference_closure_complete": true,
+      "all_resources_available": false,
+      "limits": "Static HTML/CSS/search-index links; no scripts executed and no live HTTP request"
+    },
+    "markdown_links": {
+      "markdown_files": 62,
+      "local_links_checked": 1308,
+      "defects": [
+        {
+          "source": "docs/ENDPOINTS.md",
+          "target": "reference/reseau/wifi.md#get--api-v9-wifi-ap-id-diag & -api-v9-wifi-bss-id-diag",
+          "reason": "unescaped_whitespace_in_markdown_destination"
+        },
+        {
+          "source": "docs/ENDPOINTS.md",
+          "target": "reference/reseau/wifi.md#post--api-v9-wifi-ap-id-diag & -api-v9-wifi-bss-id-diag",
+          "reason": "unescaped_whitespace_in_markdown_destination"
+        }
+      ],
+      "links_to_intentionally_omitted_uploaded_tools": [
+        {
+          "source": "README.md",
+          "target": "tools/README.md"
+        }
+      ],
+      "complete_for_imported_documentation": false
+    }
+  },
+  "origin_independently_verified": false,
+  "contracts_ready_for_implementation": false,
+  "required_next_step": "Consolidate semantic module reviews; exact byte/anchor coverage alone does not resolve source contract ambiguities"
+}

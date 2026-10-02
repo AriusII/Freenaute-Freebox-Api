@@ -1,0 +1,798 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Lan &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Freeplug" href="../freeplug/" />
+    <link rel="prev" title="Connection API" href="../connection/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="lan">
+<h1>Lan<a class="headerlink" href="#lan" title="Permalink to this headline">¶</a></h1>
+<p>With the LAN API you get information and modify the Freebox Server
+network configuration.</p>
+<div class="section" id="lan-errors">
+<h2>Lan Errors<a class="headerlink" href="#lan-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the LAN API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>noent</td>
+<td>Invalid id</td>
+</tr>
+<tr class="row-odd"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>ioerror</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-odd"><td>inval</td>
+<td>Invalid parameter</td>
+</tr>
+<tr class="row-even"><td>inval_gateway_ip</td>
+<td>Invalid Gateway IP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lan-config">
+<h2>Lan Config<a class="headerlink" href="#lan-config" title="Permalink to this headline">¶</a></h2>
+<p>Lan config has the following attributes:</p>
+<dl class="object">
+<dt id="LanConfig">
+<code class="descname">LanConfig</code><a class="headerlink" href="#LanConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="LanConfig.ip">
+<code class="descname">ip</code><span> </span>string<a class="headerlink" href="#LanConfig.ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox Server IPv4 address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanConfig.name">
+<code class="descname">name</code><span> </span>string<a class="headerlink" href="#LanConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox Server name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanConfig.name_dns">
+<code class="descname">name_dns</code><span> </span>string<a class="headerlink" href="#LanConfig.name_dns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox Server DNS name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanConfig.name_mdns">
+<code class="descname">name_mdns</code><span> </span>string<a class="headerlink" href="#LanConfig.name_mdns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox Server mDNS name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanConfig.name_netbios">
+<code class="descname">name_netbios</code><span> </span>string<a class="headerlink" href="#LanConfig.name_netbios" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox Server netbios name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanConfig.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#LanConfig.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid LAN modes are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>router</td>
+<td>The Freebox acts as a network router</td>
+</tr>
+<tr class="row-odd"><td>bridge</td>
+<td>The Freebox acts as a network bridge</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: in bridge mode, most of Freebox services are disabled.  It
+is recommended to use the router mode, and third party apps
+should not change this setting</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="lan-config-api">
+<h2>Lan Config API<a class="headerlink" href="#lan-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-lan-configuration">
+<h3>Get the current Lan configuration<a class="headerlink" href="#get-the-current-lan-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-lan-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/lan/config/</code><a class="headerlink" href="#get--api-v4-lan-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#LanConfig" title="LanConfig"><code class="xref json json-object docutils literal"><span class="pre">LanConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/lan/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name_dns&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox-r0ro&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name_mdns&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox-r0ro&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox r0ro&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;router&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name_netbios&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox_r0ro&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.254&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-current-lan-configuration">
+<h3>Update the current Lan configuration<a class="headerlink" href="#update-the-current-lan-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-lan-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/lan/config/</code><a class="headerlink" href="#put--api-v4-lan-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current <a class="reference internal" href="#LanConfig" title="LanConfig"><code class="xref json json-object docutils literal"><span class="pre">LanConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/lan/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="s2">&quot;router&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;ip&quot;</span><span class="p">:</span><span class="s2">&quot;192.168.69.254&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Freebox de r0ro&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;name_dns&quot;</span><span class="p">:</span><span class="s2">&quot;freebox-de-r0ro&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;name_mdns&quot;</span><span class="p">:</span><span class="s2">&quot;Freebox-de-r0ro&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;name_netbios&quot;</span><span class="p">:</span><span class="s2">&quot;Freebox_de_r0ro&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
+   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;name_dns&quot;</span><span class="o">:</span><span class="s2">&quot;freebox-de-r0ro&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name_mdns&quot;</span><span class="o">:</span><span class="s2">&quot;Freebox-de-r0ro&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="s2">&quot;Freebox de r0ro&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;mode&quot;</span><span class="o">:</span><span class="s2">&quot;router&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name_netbios&quot;</span><span class="o">:</span><span class="s2">&quot;Freebox_de_r0ro&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;ip&quot;</span><span class="o">:</span><span class="s2">&quot;192.168.69.254&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="lan-browser">
+<h1>Lan Browser<a class="headerlink" href="#lan-browser" title="Permalink to this headline">¶</a></h1>
+<p>With the LAN browser API you get information on hosts on the Freebox
+Server local network.</p>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the LAN browser API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>Invalid parameter</td>
+</tr>
+<tr class="row-odd"><td>nodev</td>
+<td>Invalid interface</td>
+</tr>
+<tr class="row-even"><td>nohost</td>
+<td>Invalid host id</td>
+</tr>
+<tr class="row-odd"><td>nomem</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>netdown</td>
+<td>Network is down</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lan-browser-api">
+<h2>Lan Browser API<a class="headerlink" href="#lan-browser-api" title="Permalink to this headline">¶</a></h2>
+<p>Lan browser API allow you to discover hosts on the local network</p>
+<div class="section" id="getting-the-list-of-browsable-lan-interfaces">
+<h3>Getting the list of browsable LAN interfaces<a class="headerlink" href="#getting-the-list-of-browsable-lan-interfaces" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-lan-browser-interfaces-">
+<code class="descname">GET </code><code class="descname">/api/v4/lan/browser/interfaces/</code><a class="headerlink" href="#get--api-v4-lan-browser-interfaces-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/lan/browser/interfaces/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pub&quot;</span><span class="p">,</span>
+         <span class="nx">host_count</span><span class="o">:</span> <span class="mi">3</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="lan-host-object">
+<h3>Lan Host object<a class="headerlink" href="#lan-host-object" title="Permalink to this headline">¶</a></h3>
+<p>Lan Host has the following attributes:</p>
+<dl class="object">
+<dt id="LanHost">
+<code class="descname">LanHost</code><a class="headerlink" href="#LanHost" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="LanHost.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Host id (unique on this interface)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.primary_name">
+<code class="descname">primary_name</code><span> </span>string<a class="headerlink" href="#LanHost.primary_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Host primary name (chosen from the list of available names, or
+manually set by user)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.host_type">
+<code class="descname">host_type</code><span> </span>enum<a class="headerlink" href="#LanHost.host_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>When possible, the Freebox will try to guess the host_type, but
+you can manually override this to the correct value</p>
+<p>Possible values are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">source</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>workstation</td>
+<td>Workstation</td>
+</tr>
+<tr class="row-odd"><td>laptop</td>
+<td>Laptop</td>
+</tr>
+<tr class="row-even"><td>smartphone</td>
+<td>Smartphone</td>
+</tr>
+<tr class="row-odd"><td>tablet</td>
+<td>Tablet</td>
+</tr>
+<tr class="row-even"><td>printer</td>
+<td>Printer</td>
+</tr>
+<tr class="row-odd"><td>vg_console</td>
+<td>Video game console</td>
+</tr>
+<tr class="row-even"><td>television</td>
+<td>TV</td>
+</tr>
+<tr class="row-odd"><td>nas</td>
+<td>Nas</td>
+</tr>
+<tr class="row-even"><td>ip_camera</td>
+<td>IP Camera</td>
+</tr>
+<tr class="row-odd"><td>ip_phone</td>
+<td>IP Phone</td>
+</tr>
+<tr class="row-even"><td>freebox_player</td>
+<td>Freebox Player</td>
+</tr>
+<tr class="row-odd"><td>freebox_hd</td>
+<td>Freebox Server</td>
+</tr>
+<tr class="row-even"><td>networking_device</td>
+<td>Networking device</td>
+</tr>
+<tr class="row-odd"><td>multimedia_device</td>
+<td>Multimedia device</td>
+</tr>
+<tr class="row-even"><td>other</td>
+<td>Other</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.primary_name_manual">
+<code class="descname">primary_name_manual</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.primary_name_manual" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true the primary name has been set manually</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.l2ident">
+<code class="descname">l2ident</code><span>[] array of </span><a class="reference internal" href="#LanHostL2Ident" title="LanHostL2Ident">LanHostL2Ident</a><em class="property"> Read-only</em><a class="headerlink" href="#LanHost.l2ident" title="Permalink to this definition">¶</a></dt>
+<dd><p>Layer 2 network id and its type</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.vendor_name">
+<code class="descname">vendor_name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.vendor_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Host vendor name (from the mac address)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.persistent">
+<code class="descname">persistent</code><span> </span>bool<a class="headerlink" href="#LanHost.persistent" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true the host is always shown even if it has not been active
+since the Freebox startup</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.reachable">
+<code class="descname">reachable</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.reachable" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true the host can receive traffic from the Freebox</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.last_time_reachable">
+<code class="descname">last_time_reachable</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.last_time_reachable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Last time the host was reached</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.active">
+<code class="descname">active</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true the host sends traffic to the Freebox</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.last_activity">
+<code class="descname">last_activity</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#LanHost.last_activity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Last time the host sent traffic</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.names">
+<code class="descname">names</code><span>[] array of </span><a class="reference internal" href="#LanHostName" title="LanHostName">LanHostName</a><em class="property"> Read-only</em><a class="headerlink" href="#LanHost.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of available names, and their source</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHost.l3connectivities">
+<code class="descname">l3connectivities</code><span>[] array of </span><a class="reference internal" href="#LanHostL3Connectivity" title="LanHostL3Connectivity">LanHostL3Connectivity</a><em class="property"> Read-only</em><a class="headerlink" href="#LanHost.l3connectivities" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of available layer 3 network connections</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="LanHostName">
+<code class="descname">LanHostName</code><a class="headerlink" href="#LanHostName" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="LanHostName.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#LanHostName.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Host name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostName.source">
+<code class="descname">source</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#LanHostName.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>source of the name</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="LanHostL2Ident">
+<code class="descname">LanHostL2Ident</code><a class="headerlink" href="#LanHostL2Ident" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="LanHostL2Ident.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL2Ident.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Layer 2 id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostL2Ident.type">
+<code class="descname">type</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL2Ident.type" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Type of layer 2 address</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">source</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dhcp</td>
+<td>DHCP</td>
+</tr>
+<tr class="row-odd"><td>netbios</td>
+<td>Netbios</td>
+</tr>
+<tr class="row-even"><td>mdns</td>
+<td>mDNS</td>
+</tr>
+<tr class="row-odd"><td>upnp</td>
+<td>UPnP</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="LanHostL3Connectivity">
+<code class="descname">LanHostL3Connectivity</code><a class="headerlink" href="#LanHostL3Connectivity" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="LanHostL3Connectivity.addr">
+<code class="descname">addr</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL3Connectivity.addr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Layer 3 address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostL3Connectivity.af">
+<code class="descname">af</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL3Connectivity.af" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">af</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ipv4</td>
+<td>IPv4</td>
+</tr>
+<tr class="row-odd"><td>ipv6</td>
+<td>IPv6</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostL3Connectivity.active">
+<code class="descname">active</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL3Connectivity.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the connection active</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostL3Connectivity.reachable">
+<code class="descname">reachable</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL3Connectivity.reachable" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the connection reachable</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostL3Connectivity.last_activity">
+<code class="descname">last_activity</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL3Connectivity.last_activity" title="Permalink to this definition">¶</a></dt>
+<dd><p>last activity timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="LanHostL3Connectivity.last_time_reachable">
+<code class="descname">last_time_reachable</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#LanHostL3Connectivity.last_time_reachable" title="Permalink to this definition">¶</a></dt>
+<dd><p>last reachable timestamp</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="getting-the-list-of-hosts-on-a-given-interface">
+<h3>Getting the list of hosts on a given interface<a class="headerlink" href="#getting-the-list-of-hosts-on-a-given-interface" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-lan-browser-interface-">
+<code class="descname">GET </code><code class="descname">/api/v4/lan/browser/{interface}/</code><a class="headerlink" href="#get--api-v4-lan-browser-interface-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of <a class="reference internal" href="#LanHost" title="LanHost"><code class="xref json json-object docutils literal"><span class="pre">LanHost</span></code></a> on this interface</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/lan/browser/pub/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;l2ident&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;d0:23:db:36:15:aa&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mac_address&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;ether-d0:23:db:36:15:aa&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669498</span><span class="p">,</span>
+            <span class="s2">&quot;persistent&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;iPhone-r0ro&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;dhcp&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;vendor_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Apple, Inc.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;l3connectivities&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;addr&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.69.20&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;af&quot;</span><span class="o">:</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669498</span><span class="p">,</span>
+                    <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669498</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669498</span><span class="p">,</span>
+            <span class="s2">&quot;primary_name_manual&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;primary_name&quot;</span><span class="o">:</span> <span class="s2">&quot;iPhone r0ro&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;l2ident&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mac_address&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;ether-00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669491</span><span class="p">,</span>
+            <span class="s2">&quot;persistent&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Player&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;dhcp&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;vendor_name&quot;</span><span class="o">:</span> <span class="s2">&quot;FREEBOX SA&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;l3connectivities&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;addr&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.69.30&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;af&quot;</span><span class="o">:</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669491</span><span class="p">,</span>
+                    <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669491</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669491</span><span class="p">,</span>
+            <span class="s2">&quot;primary_name_manual&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;primary_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Player&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="getting-an-host-information">
+<h3>Getting an host information<a class="headerlink" href="#getting-an-host-information" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-lan-browser-interface-hostid-">
+<code class="descname">GET </code><code class="descname">/api/v4/lan/browser/{interface}/{hostid}/</code><a class="headerlink" href="#get--api-v4-lan-browser-interface-hostid-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the requested <a class="reference internal" href="#LanHost" title="LanHost"><code class="xref json json-object docutils literal"><span class="pre">LanHost</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/lan/browser/pub/ether-00:24:d4:7e:00:4c/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;l2ident&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mac_address&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;ether-00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669611</span><span class="p">,</span>
+        <span class="s2">&quot;persistent&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Player&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;dhcp&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;vendor_name&quot;</span><span class="o">:</span> <span class="s2">&quot;FREEBOX SA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;l3connectivities&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;addr&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.69.30&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;af&quot;</span><span class="o">:</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669611</span><span class="p">,</span>
+                <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669611</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669611</span><span class="p">,</span>
+        <span class="s2">&quot;primary_name_manual&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;primary_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Player&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="updating-an-host-information">
+<h3>Updating an host information<a class="headerlink" href="#updating-an-host-information" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-lan-browser-interface-hostid-">
+<code class="descname">PUT </code><code class="descname">/api/v4/lan/browser/{interface}/{hostid}/</code><a class="headerlink" href="#put--api-v4-lan-browser-interface-hostid-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="#LanHost" title="LanHost"><code class="xref json json-object docutils literal"><span class="pre">LanHost</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/lan/browser/pub/ether-00:24:d4:7e:00:4c/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;ether-00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;primary_name&quot;</span><span class="p">:</span><span class="s2">&quot;Freebox Tv&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;l2ident&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mac_address&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;ether-00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669851</span><span class="p">,</span>
+        <span class="s2">&quot;persistent&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;names&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Player&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;dhcp&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;vendor_name&quot;</span><span class="o">:</span> <span class="s2">&quot;FREEBOX SA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;l3connectivities&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;addr&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.69.30&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;af&quot;</span><span class="o">:</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669851</span><span class="p">,</span>
+                <span class="s2">&quot;last_time_reachable&quot;</span><span class="o">:</span> <span class="mi">1360669851</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;reachable&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;last_activity&quot;</span><span class="o">:</span> <span class="mi">1360669851</span><span class="p">,</span>
+        <span class="s2">&quot;primary_name_manual&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;primary_name&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox Tv&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wake-on-lan">
+<h2>Wake on LAN<a class="headerlink" href="#wake-on-lan" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="send-wake-ok-lan-packet-to-an-host">
+<h3>Send Wake ok Lan packet to an host<a class="headerlink" href="#send-wake-ok-lan-packet-to-an-host" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-lan-wol-interface-">
+<code class="descname">POST </code><code class="descname">/api/v4/lan/wol/{interface}/</code><a class="headerlink" href="#post--api-v4-lan-wol-interface-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a wake on LAN packet to the specified host with an optional password</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/lan/wol/pub/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:24:d4:7e:00:4c&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

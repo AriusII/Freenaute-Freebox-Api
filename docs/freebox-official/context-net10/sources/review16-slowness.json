@@ -1,0 +1,19 @@
+{
+  "module": {
+    "module": "slowness",
+    "title": "Slowness",
+    "category": "systeme",
+    "path": "docs/reference/systeme/slowness.md",
+    "http_signatures": 0,
+    "objects": 0,
+    "properties": 0,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#slowness",
+    "source_pre_blocks": 0,
+    "markdown_code_blocks": 0,
+    "source_tables": 1
+  },
+  "endpoints": [],
+  "objects": [],
+  "properties": [],
+  "events": []
+}

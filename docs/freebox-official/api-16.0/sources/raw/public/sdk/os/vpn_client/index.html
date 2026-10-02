@@ -1,0 +1,818 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>VPN Client [UNSTABLE] &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Storage API [UNSTABLE]" href="../storage/" />
+    <link rel="prev" title="VPN Server [UNSTABLE]" href="../vpn/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="vpn-client-unstable">
+<span id="vpn-client-api"></span><h1>VPN Client [UNSTABLE]<a class="headerlink" href="#vpn-client-unstable" title="Permalink to this headline">¶</a></h1>
+<p>The VPN Client API allows you to control the Freebox VPN Client</p>
+<div class="section" id="vpn-client-errors">
+<h2>VPN Client Errors<a class="headerlink" href="#vpn-client-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access this API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>invalid parameters</td>
+</tr>
+<tr class="row-odd"><td>nomem</td>
+<td>internal error</td>
+</tr>
+<tr class="row-even"><td>ioerror</td>
+<td>internal error</td>
+</tr>
+<tr class="row-odd"><td>nodev</td>
+<td>invalid device</td>
+</tr>
+<tr class="row-even"><td>noent</td>
+<td>invalid id</td>
+</tr>
+<tr class="row-odd"><td>netdown</td>
+<td>network is not available</td>
+</tr>
+<tr class="row-even"><td>exist</td>
+<td>entry already exists</td>
+</tr>
+<tr class="row-odd"><td>busy</td>
+<td>resource is busy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vpn-client-configuration">
+<h2>VPN Client Configuration<a class="headerlink" href="#vpn-client-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vpn-client-configuration-object">
+<h3>VPN Client Configuration Object<a class="headerlink" href="#vpn-client-configuration-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="VPNClientConfig">
+<code class="descname">VPNClientConfig</code><a class="headerlink" href="#VPNClientConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPNClientConfig has the following attributes:</p>
+<dl class="property">
+<dt id="VPNClientConfig.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientConfig.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN config id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.description">
+<code class="descname">description</code><span> </span>string<a class="headerlink" href="#VPNClientConfig.description" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN description</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#VPNClientConfig.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN server type</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pptp</td>
+<td>PPTP VPN server</td>
+</tr>
+<tr class="row-odd"><td>openvpn</td>
+<td>OpenVPN server</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.active">
+<code class="descname">active</code><span> </span>bool<a class="headerlink" href="#VPNClientConfig.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>is this configuration active.
+Only one configuration is active at a time.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.conf_pptp">
+<code class="descname">conf_pptp</code><span> </span>VPNClientConfigPPTP<a class="headerlink" href="#VPNClientConfig.conf_pptp" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when type is PPTP</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt>
+<code class="descname">VPNClientConfig</code></dt>
+<dd><p>VPNClientConfigPPTP has the following attributes:</p>
+<dl class="property">
+<dt id="VPNClientConfig.remote_host">
+<code class="descname">remote_host</code><span> </span>string<a class="headerlink" href="#VPNClientConfig.remote_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>remote host IP or name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.username">
+<code class="descname">username</code><span> </span>string<a class="headerlink" href="#VPNClientConfig.username" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN username</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.password">
+<code class="descname">password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#VPNClientConfig.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN password</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.mppe">
+<code class="descname">mppe</code><span> </span>enum<a class="headerlink" href="#VPNClientConfig.mppe" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">mppe</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disable</td>
+<td>disable mppe</td>
+</tr>
+<tr class="row-odd"><td>require</td>
+<td>require mppe</td>
+</tr>
+<tr class="row-even"><td>require_128</td>
+<td>require 128 bits mppe</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientConfig.allowed_auth">
+<code class="descname">allowed_auth</code><span> </span>dict<a class="headerlink" href="#VPNClientConfig.allowed_auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>allowed authentication methods dictionnary with following keys:</p>
+<blockquote>
+<div><ul class="simple">
+<li>eap</li>
+<li>pap</li>
+<li>chap</li>
+<li>mschap</li>
+<li>mschapv2</li>
+</ul>
+</div></blockquote>
+<p>values are booleans.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-vpn-client-configuration-list">
+<h3>Get VPN Client configuration list<a class="headerlink" href="#get-vpn-client-configuration-list" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn_client-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn_client/config/</code><a class="headerlink" href="#get--api-v4-vpn_client-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#VPNClientConfig" title="VPNClientConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNClientConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn_client/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;test vpn2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conf_pptp&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;mppe&quot;</span><span class="o">:</span> <span class="s2">&quot;require&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;freeuser&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;remote_host&quot;</span><span class="o">:</span> <span class="s2">&quot;vpnhost.example.org&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;allowed_auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;eap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;mschap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;mschapv2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;chap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;pap&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;test vpn1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conf_pptp&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;mppe&quot;</span><span class="o">:</span> <span class="s2">&quot;require&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;testuser&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;remote_host&quot;</span><span class="o">:</span> <span class="s2">&quot;example.org&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;allowed_auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;eap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;mschap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;mschapv2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;chap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;pap&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-vpn-client-config">
+<h3>Get a VPN client config<a class="headerlink" href="#get-a-vpn-client-config" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn_client-config-id">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn_client/config/{id}</code><a class="headerlink" href="#get--api-v4-vpn_client-config-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#VPNClientConfig" title="VPNClientConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNClientConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn_client/config/vpn0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;test vpn2&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn0&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;conf_pptp&quot;</span><span class="o">:</span> <span class="p">{</span>
+             <span class="s2">&quot;mppe&quot;</span><span class="o">:</span> <span class="s2">&quot;require&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;freeuser&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;remote_host&quot;</span><span class="o">:</span> <span class="s2">&quot;vpnhost.example.org&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;allowed_auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                 <span class="s2">&quot;eap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="s2">&quot;mschap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="s2">&quot;mschapv2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="s2">&quot;chap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="s2">&quot;pap&quot;</span><span class="o">:</span> <span class="kc">false</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-vpn-client-configuration">
+<h3>Add a VPN client configuration<a class="headerlink" href="#add-a-vpn-client-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-vpn_client-config-">
+<code class="descname">POST </code><code class="descname">/api/v4/vpn_client/config/</code><a class="headerlink" href="#post--api-v4-vpn_client-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#VPNClientConfig" title="VPNClientConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNClientConfig</span></code></a>.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/vpn_client/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;test pptp&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;active&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nt">&quot;conf_pptp&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mppe&quot;</span><span class="p">:</span> <span class="s2">&quot;require&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;fbxtest&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;remote_host&quot;</span><span class="p">:</span> <span class="s2">&quot;test.example.org&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;allowed_auth&quot;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="nt">&quot;mschapv2&quot;</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;test pptp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conf_pptp&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mppe&quot;</span><span class="o">:</span> <span class="s2">&quot;require&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;fbxtest&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;remote_host&quot;</span><span class="o">:</span> <span class="s2">&quot;test.example.org&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed_auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;eap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;mschap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;mschapv2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;chap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;pap&quot;</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-vpn-client-configuration">
+<h3>Delete a VPN client Configuration<a class="headerlink" href="#delete-a-vpn-client-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-vpn_client-config-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/vpn_client/config/{id}</code><a class="headerlink" href="#delete--api-v4-vpn_client-config-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#VPNClientConfig" title="VPNClientConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNClientConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/vpn_client/config/vpn2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-vpn-client-configuration">
+<h3>Update the VPN client configuration<a class="headerlink" href="#update-the-vpn-client-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-vpn_client-config-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/vpn_client/config/{id}</code><a class="headerlink" href="#put--api-v4-vpn_client-config-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="../vpn/#VPNServerConfig" title="VPNServerConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNServerConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/vpn_client/config/vpn0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;test vpn2&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn0&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;conf_pptp&quot;</span><span class="o">:</span> <span class="p">{</span>
+             <span class="s2">&quot;mppe&quot;</span><span class="o">:</span> <span class="s2">&quot;require&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;username&quot;</span><span class="o">:</span> <span class="s2">&quot;freeuser&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;remote_host&quot;</span><span class="o">:</span> <span class="s2">&quot;vpnhost.example.org&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;allowed_auth&quot;</span><span class="o">:</span> <span class="p">{</span>
+                 <span class="s2">&quot;eap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="s2">&quot;mschap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="s2">&quot;mschapv2&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="s2">&quot;chap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                 <span class="s2">&quot;pap&quot;</span><span class="o">:</span> <span class="kc">false</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="vpn-client-status">
+<h2>VPN Client Status<a class="headerlink" href="#vpn-client-status" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vpn-client-status-object">
+<h3>VPN Client Status Object<a class="headerlink" href="#vpn-client-status-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="VPNClientStatus">
+<code class="descname">VPNClientStatus</code><a class="headerlink" href="#VPNClientStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPNClientStatus has the following attributes:</p>
+<dl class="property">
+<dt id="VPNClientStatus.enabled">
+<code class="descname">enabled</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is VPN client enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.active_vpn">
+<code class="descname">active_vpn</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.active_vpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>active VPN id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.active_vpn_description">
+<code class="descname">active_vpn_description</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.active_vpn_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>active VPN description</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>active VPN type</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pptp</td>
+<td>PPTP VPN server</td>
+</tr>
+<tr class="row-odd"><td>openvpn</td>
+<td>OpenVPN server</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>waiting_wan</td>
+<td>waiting for wan connection</td>
+</tr>
+<tr class="row-odd"><td>going_up</td>
+<td>connecting</td>
+</tr>
+<tr class="row-even"><td>up</td>
+<td>connected</td>
+</tr>
+<tr class="row-odd"><td>going_down</td>
+<td>disconnecting</td>
+</tr>
+<tr class="row-even"><td>down</td>
+<td>disconnected</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.last_up">
+<code class="descname">last_up</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.last_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of last successfull connection</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.last_try">
+<code class="descname">last_try</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.last_try" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of last connection attempt</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.next_try">
+<code class="descname">next_try</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.next_try" title="Permalink to this definition">¶</a></dt>
+<dd><p>seconds left until next connection attempt</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.last_error">
+<code class="descname">last_error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.last_error" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">last_error</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>no error</td>
+</tr>
+<tr class="row-odd"><td>internal</td>
+<td>internal error</td>
+</tr>
+<tr class="row-even"><td>authentication_failed</td>
+<td>wrong credentials</td>
+</tr>
+<tr class="row-odd"><td>auth_failed</td>
+<td>wrong credentials</td>
+</tr>
+<tr class="row-even"><td>resolv_failed</td>
+<td>invalid host name</td>
+</tr>
+<tr class="row-odd"><td>connect_timeout</td>
+<td>connection timeout</td>
+</tr>
+<tr class="row-even"><td>connect_failed</td>
+<td>connection failed</td>
+</tr>
+<tr class="row-odd"><td>setup_control_failed</td>
+<td>PPTP session negociation failure</td>
+</tr>
+<tr class="row-even"><td>setup_call_failed</td>
+<td>PPTP session failure</td>
+</tr>
+<tr class="row-odd"><td>protocol</td>
+<td>protocol error</td>
+</tr>
+<tr class="row-even"><td>remote_terminated</td>
+<td>connection closed by remote peer</td>
+</tr>
+<tr class="row-odd"><td>remote_disconnect</td>
+<td>connection closed by remote peer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.stats">
+<code class="descname">stats</code><span> </span><a class="reference internal" href="#VpnClientStats" title="VpnClientStats">VpnClientStats</a><em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>connection statistics</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNClientStatus.IPv4">
+<code class="descname">IPv4</code><span> </span><a class="reference internal" href="#VpnClientIpInfo" title="VpnClientIpInfo">VpnClientIpInfo</a><em class="property"> Read-only</em><a class="headerlink" href="#VPNClientStatus.IPv4" title="Permalink to this definition">¶</a></dt>
+<dd><p>connection IPv4 information</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="VpnClientStats">
+<code class="descname">VpnClientStats</code><a class="headerlink" href="#VpnClientStats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="VpnClientStats.rate_up">
+<code class="descname">rate_up</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientStats.rate_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>current upload rate (in byte/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientStats.rate_down">
+<code class="descname">rate_down</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientStats.rate_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>current download rate (in byte/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientStats.bytes_up">
+<code class="descname">bytes_up</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientStats.bytes_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>total bytes uploaded</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientStats.bytes_down">
+<code class="descname">bytes_down</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientStats.bytes_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>total bytes downloaded</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="VpnClientIpInfo">
+<code class="descname">VpnClientIpInfo</code><a class="headerlink" href="#VpnClientIpInfo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="VpnClientIpInfo.config_valid">
+<code class="descname">config_valid</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.config_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the configuration valid</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.ip_mask">
+<code class="descname">ip_mask</code><span> </span>dict<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.ip_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>assigned IP and netmask</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.domain">
+<code class="descname">domain</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>provided domain</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.gateway">
+<code class="descname">gateway</code><span> </span>IPv4<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.gateway" title="Permalink to this definition">¶</a></dt>
+<dd><p>provided gateway</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.dns">
+<code class="descname">dns</code><span>[] array of </span>ipv4<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.dns" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of dns servers</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.provider">
+<code class="descname">provider</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>ip_mask source</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">provider</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>static</td>
+<td>static IP configuration</td>
+</tr>
+<tr class="row-even"><td>ppp</td>
+<td>ppp</td>
+</tr>
+<tr class="row-odd"><td>dhcp</td>
+<td>DHCP server</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.routes">
+<code class="descname">routes</code><span> </span>list<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.routes" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of provided routes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VpnClientIpInfo.dhcp">
+<code class="descname">dhcp</code><span> </span>dict<em class="property"> Read-only</em><a class="headerlink" href="#VpnClientIpInfo.dhcp" title="Permalink to this definition">¶</a></dt>
+<dd><p>DHCP status information</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-vpn-client-status">
+<h3>Get the VPN client status<a class="headerlink" href="#get-the-vpn-client-status" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn_client-status">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn_client/status</code><a class="headerlink" href="#get--api-v4-vpn_client-status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#VPNClientStatus" title="VPNClientStatus"><code class="xref json json-object docutils literal"><span class="pre">VPNClientStatus</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn_client/status</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;active_vpn_description&quot;</span><span class="o">:</span> <span class="s2">&quot;test vpn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_try&quot;</span><span class="o">:</span> <span class="mi">1392904509</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stats&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;rate_up&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;bytes_down&quot;</span><span class="o">:</span> <span class="mi">94</span><span class="p">,</span>
+            <span class="s2">&quot;bytes_up&quot;</span><span class="o">:</span> <span class="mi">94</span><span class="p">,</span>
+            <span class="s2">&quot;rate_down&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;active_vpn&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;next_try&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;last_up&quot;</span><span class="o">:</span> <span class="mi">1392904510</span><span class="p">,</span>
+        <span class="s2">&quot;ipv4&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;routes&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="p">},</span>
+            <span class="s2">&quot;config_valid&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;ip_mask&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.65&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mask&quot;</span><span class="o">:</span> <span class="s2">&quot;255.255.255.255&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;provider&quot;</span><span class="o">:</span> <span class="s2">&quot;ppp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dhcp&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;renew_remaining&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;dhcp_options&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="p">},</span>
+                <span class="s2">&quot;lease_remaining&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;lease_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;rebind_remaining&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;server_id&quot;</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;dns&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;212.27.38.253&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;domain&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;gateway&quot;</span><span class="o">:</span> <span class="s2">&quot;212.27.38.253&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-vpn-client-logs">
+<h3>Get the VPN client logs<a class="headerlink" href="#get-the-vpn-client-logs" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn_client-log">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn_client/log</code><a class="headerlink" href="#get--api-v4-vpn_client-log" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn_client/log</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-02-20 14:55:10 dbg: ppp: pppd: sent [ ... ] &quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

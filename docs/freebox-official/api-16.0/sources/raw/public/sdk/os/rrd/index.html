@@ -1,0 +1,315 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RRD [UNSTABLE] &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Call" href="../call/" />
+    <link rel="prev" title="AirMedia API" href="../airmedia/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="rrd-unstable">
+<h1>RRD [UNSTABLE]<a class="headerlink" href="#rrd-unstable" title="Permalink to this headline">¶</a></h1>
+<p>With the rrd API you can retrieve stats collected on the Freebox.
+Right now the stats available are: network stats, switch stats, dsl
+stats, and temperature stats.</p>
+<div class="section" id="rrd-fetch-object">
+<h2>RRD Fetch Object<a class="headerlink" href="#rrd-fetch-object" title="Permalink to this headline">¶</a></h2>
+<p>This is the object used to get stats</p>
+<dl class="object">
+<dt id="RRDFetch">
+<code class="descname">RRDFetch</code><a class="headerlink" href="#RRDFetch" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="RRDFetch.db">
+<code class="descname">db</code><span> </span>enum<a class="headerlink" href="#RRDFetch.db" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the rrd database to read. It can take one of the
+following values</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Db</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>net</td>
+<td>network stats</td>
+</tr>
+<tr class="row-odd"><td>temp</td>
+<td>temperature stats</td>
+</tr>
+<tr class="row-even"><td>dsl</td>
+<td>xDSL stats</td>
+</tr>
+<tr class="row-odd"><td>switch</td>
+<td>switch stats</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="RRDFetch.date_start">
+<code class="descname">date_start</code><span> </span>int<em class="property"> Optionnal</em><a class="headerlink" href="#RRDFetch.date_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>The requested start timestamp of the stats to get</p>
+<p>NOTE: this can be adjusted to fit the best available resolution</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="RRDFetch.date_end">
+<code class="descname">date_end</code><span> </span>int<em class="property"> Optionnal</em><a class="headerlink" href="#RRDFetch.date_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>The requested end timestamp of the stats to get</p>
+<p>NOTE: this can be adjusted to fit the best available resolution</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="RRDFetch.precision">
+<code class="descname">precision</code><span> </span>int<em class="property"> Optionnal</em><a class="headerlink" href="#RRDFetch.precision" title="Permalink to this definition">¶</a></dt>
+<dd><p>By default all values are cast to int, if you need floating
+point precision you can provide a precision factor that will be
+applied to all values before being returned.</p>
+<p>For instance if you want 2 digit precision you should use a
+precision of 100, and divide the obtained results by 100.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="RRDFetch.fields">
+<code class="descname">fields</code><span>[] array of </span>string<em class="property"> Optionnal</em><a class="headerlink" href="#RRDFetch.fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>If you are only interested in getting some fields you can
+provide the list of fields you want to get.</p>
+</dd></dl>
+
+</dd></dl>
+
+<blockquote id="rrd-net-db">
+<div><p>For the net database the fields are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bw_up</td>
+<td>upload available bandwidth (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>bw_down</td>
+<td>download available bandwidth (in byte/s)</td>
+</tr>
+<tr class="row-even"><td>rate_up</td>
+<td>upload rate (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>rate_down</td>
+<td>download rate (in byte/s)</td>
+</tr>
+<tr class="row-even"><td>vpn_rate_up</td>
+<td>vpn client upload rate (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>vpn_rate_down</td>
+<td>vpn client download rate (in byte/s)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<blockquote id="rrd-temp-db">
+<div><p>For the temp database the fields are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cpum</td>
+<td>temperature cpum (in °C)</td>
+</tr>
+<tr class="row-odd"><td>cpub</td>
+<td>temperature cpub (in °C)</td>
+</tr>
+<tr class="row-even"><td>sw</td>
+<td>temperature sw (in °C)</td>
+</tr>
+<tr class="row-odd"><td>hdd</td>
+<td>temperature hdd (in °C)</td>
+</tr>
+<tr class="row-even"><td>fan_speed</td>
+<td>fan rpm</td>
+</tr>
+<tr class="row-odd"><td>temp1</td>
+<td>temperature sensor 1 (in °C) [DEPRECATED, use cpum]</td>
+</tr>
+<tr class="row-even"><td>temp2</td>
+<td>temperature sensor 2 (in °C) [DEPRECATED, use cpub]</td>
+</tr>
+<tr class="row-odd"><td>temp3</td>
+<td>temperature sensor 3 (in °C) [DEPRECATED, use sw]</td>
+</tr>
+</tbody>
+</table>
+<p>For the dsl database the fields are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>rate_up</td>
+<td>dsl available upload bandwidth (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>rate_down</td>
+<td>dsl available download bandwidth (in byte/s)</td>
+</tr>
+<tr class="row-even"><td>snr_up</td>
+<td>dsl upload signal/noise ratio (in 1/10 dB)</td>
+</tr>
+<tr class="row-odd"><td>snr_down</td>
+<td>dsl download signal/noise ratio (in 1/10 dB)</td>
+</tr>
+</tbody>
+</table>
+<p>For the switch database the fields are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>rx_1</td>
+<td>receive rate on port 1 (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>tx_1</td>
+<td>transmit on port 1 (in byte/s)</td>
+</tr>
+<tr class="row-even"><td>rx_2</td>
+<td>receive rate on port 2 (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>tx_2</td>
+<td>transmit on port 2 (in byte/s)</td>
+</tr>
+<tr class="row-even"><td>rx_3</td>
+<td>receive rate on port 3 (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>tx_3</td>
+<td>transmit on port 3 (in byte/s)</td>
+</tr>
+<tr class="row-even"><td>rx_4</td>
+<td>receive rate on port 4 (in byte/s)</td>
+</tr>
+<tr class="row-odd"><td>tx_4</td>
+<td>transmit on port 4 (in byte/s)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="get-rrd-stats-unstable">
+<h2>Get RRD stats [UNSTABLE]<a class="headerlink" href="#get-rrd-stats-unstable" title="Permalink to this headline">¶</a></h2>
+<dl class="post">
+<dt id="post--api-v4-rrd-">
+<code class="descname">POST </code><code class="descname">/api/v4/rrd/</code><a class="headerlink" href="#post--api-v4-rrd-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/rrd/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;db&quot;</span><span class="p">:</span> <span class="s2">&quot;temp&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;temp1&quot;</span> <span class="p">],</span>
+   <span class="nt">&quot;precision&quot;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;date_start&quot;</span><span class="o">:</span> <span class="mi">1353048060</span><span class="p">,</span>
+        <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;temp1&quot;</span><span class="o">:</span> <span class="mi">540</span><span class="p">,</span>
+                <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="mi">1353060840</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;temp1&quot;</span><span class="o">:</span> <span class="mi">545</span><span class="p">,</span>
+                <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="mi">1353060900</span>
+            <span class="p">},</span>
+
+            <span class="p">[</span> <span class="p">...</span> <span class="p">],</span>
+
+            <span class="p">{</span>
+                <span class="s2">&quot;temp1&quot;</span><span class="o">:</span> <span class="mi">540</span><span class="p">,</span>
+                <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="mi">1353069600</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;date_end&quot;</span><span class="o">:</span> <span class="mi">1353069660</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v4-rrd-">
+<code class="descname">GET </code><code class="descname">/api/v4/rrd/</code><a class="headerlink" href="#get--api-v4-rrd-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as post request, but allowed without &#8216;settings&#8217; permission</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

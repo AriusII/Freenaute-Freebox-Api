@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Freenaute.Freebox.Mapper.ServerSide.WebSocket;
 
@@ -19,4 +19,4 @@ public sealed record WebSocketNotification(
     bool Success,
     [property: JsonPropertyName("source")] string Source,
     [property: JsonPropertyName("event")] string Event,
-    [property: JsonPropertyName("result")] object Result);
+    [property: JsonPropertyName("result")] System.Text.Json.JsonElement? Result = null);

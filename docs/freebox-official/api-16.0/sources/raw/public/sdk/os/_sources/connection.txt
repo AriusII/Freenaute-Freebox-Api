@@ -1,0 +1,929 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+==============
+Connection API
+==============
+
+This API provides Freebox connection settings information.
+
+Connection Errors
+=================
+
+When attempting to access the file connection API, you may encounter
+the following errors:
+
+====================== ===================================================
+error_code             Description
+====================== ===================================================
+inval                  invalid request
+nodev                  no device found with this name
+noent                  no entity found with this name
+netdown                network is down
+busy                   device is busy
+invalid_port           invalid port
+insecure_password      the password is too weak to enable remote access
+invalid_provider       invalid ddns provider name
+invalid_next_hop       invalid next hop address (should be a link local address)
+====================== ===================================================
+
+Connection status
+=================
+
+Connection status object
+------------------------
+
+.. json:object:: ConnectionStatus
+
+   .. json:property:: state enum [ro]
+
+      ===============   ===========================================================
+      State             Description
+      ===============   ===========================================================
+      going_up          connection is initializing
+      up                connection is active
+      going_down        connection is about to become inactive
+      down              connection is inactive
+      ===============   ===========================================================
+
+   .. json:property:: type enum [ro]
+
+      ===============   ===========================================================
+      Type              Description
+      ===============   ===========================================================
+      ethernet          FTTH
+      rfc2684           xDSL (unbundled)
+      pppoatm           xDSL
+      ===============   ===========================================================
+
+   .. json:property:: media enum [ro]
+
+      ===============   ===========================================================
+      Media             Description
+      ===============   ===========================================================
+      ftth              FTTH
+      xdsl              xDSL
+      ===============   ===========================================================
+
+   .. json:property:: ipv4 string [ro]
+
+      Freebox IPv4 address
+
+      NOTE: this field is only available when connection state is up
+
+   .. json:property:: ipv6 string [ro]
+
+      Freebox IPv6 address
+
+      NOTE: this field is only available when connection state is up
+
+   .. json:property:: rate_up int [ro]
+
+      current upload rate in byte/s
+
+   .. json:property:: rate_down int [ro]
+
+      current download rate in byte/s
+
+   .. json:property:: bandwidth_up int [ro]
+
+      available upload bandwidth in bit/s
+
+   .. json:property:: bandwidth_down int [ro]
+
+      available download bandwidth in bit/s
+
+   .. json:property:: bytes_up int [ro]
+
+      total uploaded bytes since last connection
+
+   .. json:property:: bytes_down int [ro]
+
+      total downloaded bytes since last connection
+
+   .. json:property:: ipv4_port_range int[2] [ro]
+
+      Some customers share the same IPv4 and each customer is then
+      assigned a port range. The first value is the first port of the assigned
+      range and the second value is the last port (inclusive).
+
+      All :json:object:`PortForwardingConfig` must use ports in this range
+      to be effective.
+
+
+Get the current Connection status
+---------------------------------
+
+.. http:get:: /api/v4/connection/
+
+   Returns the current :json:object:`ConnectionStatus`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "type": "ethernet",
+              "rate_down": 61,
+              "bytes_up": 5489542,
+              "rate_up": 0,
+              "bandwidth_up": 100000000,
+              "ipv4": "13.37.42.42",
+              "ipv6": "2a01:e30:d252:a2a0::1",
+              "bandwidth_down": 100000000,
+              "state": "up",
+              "bytes_down": 13332830,
+              "media": "ftth"
+          }
+      }
+
+Connection configuration
+========================
+
+Connection configuration object
+-------------------------------
+
+.. json:object:: ConnectionConfiguration
+
+   .. json:property:: ping bool
+
+      should the Freebox respond to external ping requests
+
+   .. json:property:: is_secure_pass bool [ro]
+
+      is the admin password secure enough to enable remote access
+
+   .. json:property:: remote_access bool
+
+      enable/disable HTTP remote access
+
+   .. json:property:: remote_access_port int
+
+      port number to use for remote HTTP access
+
+   .. json:property:: remote_access_min_port int [ro]
+
+      This field indicate the minimum possible value for
+      remote_access_port (see :json:object:`ConnectionStatus` ipv4_port_range)
+
+   .. json:property:: remote_access_max_port int [ro]
+
+      This field indicate the maximum possible value for
+      remote_access_port (see :json:object:`ConnectionStatus` ipv4_port_range)
+
+   .. json:property:: remote_access_ip string [ro]
+
+      IPv4 to use for remote access (can be missing if connection is down)
+
+   .. json:property:: api_remote_access bool [ro]
+
+      is remote access enabled for apps, or share link
+
+   .. json:property:: wol bool
+
+      enable/disable Wake-on-lan proxy
+
+   .. json:property:: adblock bool
+
+      is ads blocking feature enabled
+
+   .. json:property:: adblock_not_set bool [ro]
+
+      if set to true adblock setting has never been set by the user
+
+   .. json:property:: allow_token_request bool
+
+      if false, user has disabled new token request.
+      New apps can't request a new token.
+      Apps that already have a token are still allowed
+
+Get the current Connection configuration
+----------------------------------------
+
+.. http:get:: /api/v4/connection/config/
+
+   Returns the current :json:object:`ConnectionConfiguration`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ping": true,
+              "is_secure_pass": false,
+              "remote_access_port": 80,
+              "remote_access": false,
+              "wol": false,
+              "adblock": false,
+              "adblock_not_set": false,
+              "api_remote_access": true,
+              "allow_token_request": true,
+              "remote_access_ip": "312.13.37.42"
+          }
+      }
+
+
+Update the Connection configuration
+-----------------------------------
+
+.. http:put:: /api/v4/connection/config/
+
+   Updates the :json:object:`ConnectionConfiguration`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/connection/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "ping": true,
+        "wol": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ping": true,
+              "is_secure_pass": false,
+              "remote_access_port": 80,
+              "remote_access": false,
+              "wol": false,
+              "adblock": false,
+              "adblock_not_set": false,
+              "api_remote_access": true,
+              "allow_token_request": true,
+              "remote_access_ip": "312.13.37.42"
+          }
+      }
+
+
+
+Connection IPv6 configuration
+=============================
+
+Connection IPv6 configuration object
+------------------------------------
+
+.. json:object:: ConnectionIpv6Delegation
+
+   .. json:property:: prefix string
+
+      IPv6 prefix
+
+   .. json:property:: next_hop ipv6
+
+      the next hop for the prefix
+
+.. json:object:: ConnectionIpv6Configuration
+
+   .. json:property:: ipv6_enabled bool
+
+      is IPv6 enabled
+
+   .. json:property:: ipv6ll string [ro]
+
+      Freebox IPv6 link local address
+
+   .. json:property:: delegations ConnectionIpv6Delegation[8]
+
+      list of IPv6 delegations
+
+Get the current IPv6 Connection configuration
+---------------------------------------------
+
+.. http:get:: /api/v4/connection/ipv6/config/
+
+   Returns the current :json:object:`ConnectionIpv6Configuration`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/ipv6/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ipv6_enabled": true,
+              "delegations": [
+                  {
+                      "prefix": "2a01:e30:d252:a2a0::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a1::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a2::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a3::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a4::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a5::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a6::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a7::/64",
+                      "next_hop": ""
+                  }
+              ]
+          }
+      }
+
+Update the IPv6 Connection configuration
+----------------------------------------
+
+.. http:put:: /api/v4/connection/ipv6/config/
+
+   Updates the :json:object:`ConnectionIpv6Configuration`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/connection/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "delegations": [
+            {
+               "prefix": "2a01:e30:d252:a2a2::/64",
+               "next_hop": "fe80::be30:5bff:feb5:fcc7"
+            }
+         ]
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ipv6_enabled": true,
+              "ipv6ll": "fe80::224:d4ff:acac:ecec",
+              "delegations": [
+                  {
+                      "prefix": "2a01:e30:d252:a2a0::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a1::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a2::/64",
+                      "next_hop": "fe80::d252:5bff:feb5:fcc7"
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a3::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a4::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a5::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a6::/64",
+                      "next_hop": ""
+                  },
+                  {
+                      "prefix": "2a01:e30:d252:a2a7::/64",
+                      "next_hop": ""
+                  }
+              ]
+          }
+      }
+
+
+Connection xDSL status [UNSTABLE]
+=================================
+
+xDSL status object [UNSTABLE]
+-----------------------------
+
+.. json:object:: XdslStatus
+
+   .. json:property:: status enum [ro]
+
+      ===============   ===========================================================
+      Status            Description
+      ===============   ===========================================================
+      down              unsynchronized
+      training          synchronizing step 1/4
+      started           synchronizing step 2/4
+      chan_analysis     synchronizing step 3/4
+      msg_exchange      synchronizing step 4/4
+      showtime          Ready
+      disabled          Disabled
+      ===============   ===========================================================
+
+   .. json:property:: protocol enum [ro]
+
+      ===============   ===========================================================
+      Protocol          Description
+      ===============   ===========================================================
+      t1413             T1.413
+      adsl1_a           ADSL
+      adsl2_a           ADSL2
+      adsl2plus_a       ADSL2+
+      readsl2           ReachDSL
+      adsl2_m           ADSL2 annex M
+      adsl2plus_m       ADSL2+ annex M
+      unknown           Unknown
+      ===============   ===========================================================
+
+   .. json:property:: modulation enum [ro]
+
+      ===============   ===========================================================
+      Protocol          Description
+      ===============   ===========================================================
+      adsl              ADSL
+      vdsl              VDSL
+      ===============   ===========================================================
+
+   .. json:property:: uptime int [ro]
+
+      uptime in seconds
+
+xDSL stats object [UNSTABLE]
+----------------------------
+
+.. json:object:: XdslStats
+
+   .. json:property:: maxrate int [ro]
+
+      ATM max rate in kbit/s
+
+   .. json:property:: rate int [ro]
+
+      ATM rate in kbit/s
+
+   .. json:property:: snr int [ro]
+
+      in dB
+
+   .. json:property:: attn int [ro]
+
+      in dB
+
+   .. json:property:: snr_10 int [ro]
+
+      in dB/10
+
+   .. json:property:: attn_10 int [ro]
+
+      in dB/10
+
+   .. json:property:: fec int [ro]
+   .. json:property:: crc int [ro]
+   .. json:property:: hec int [ro]
+   .. json:property:: es int [ro]
+   .. json:property:: ses int [ro]
+   .. json:property:: phyr bool [ro]
+   .. json:property:: ginp bool [ro]
+   .. json:property:: nitro bool [ro]
+
+   .. json:property:: rxmt int [ro]
+
+	only available when phyr is on
+
+   .. json:property:: rxmt_corr int [ro]
+
+	only available when phyr is on
+
+   .. json:property:: rxmt_uncorr int [ro]
+
+	only available when phyr is on
+
+   .. json:property:: rtx_tx int [ro]
+
+	only available when ginp is on
+
+   .. json:property:: rtx_c int [ro]
+
+	only available when ginp is on
+
+   .. json:property:: rtx_uc int [ro]
+
+	only available when ginp is on
+
+
+xDSL infos object [UNSTABLE]
+----------------------------
+
+.. json:object:: XdslInfos
+
+   .. json:property:: status XdslStatus
+
+   .. json:property:: down XdslStats
+
+   .. json:property:: up XdslStats
+
+
+Get the current xDSL infos
+--------------------------
+
+.. http:get:: /api/v4/connection/xdsl/
+
+   Returns the current :json:object:`XdslInfos`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/xdsl/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "status": {
+                  "status": "showtime",
+                  "protocol": "adsl2plus_a",
+                  "uptime": 5017,
+                  "modulation": "adsl"
+              },
+              "down": {
+                  "es": 43,
+                  "phyr": true,
+                  "attn": 0,
+                  "snr": 7,
+                  "nitro": true,
+                  "rate": 28031,
+                  "hec": 0,
+                  "crc": 0,
+                  "rxmt_uncorr": 0,
+                  "rxmt_corr": 0,
+                  "ses": 43,
+                  "fec": 0,
+                  "maxrate": 30636,
+                  "rxmt": 0
+              },
+              "up": {
+                  "es": 0,
+                  "phyr": false,
+                  "attn": 23,
+                  "snr": 15,
+                  "nitro": true,
+                  "rate": 1022,
+                  "hec": 0,
+                  "crc": 0,
+                  "rxmt_uncorr": 0,
+                  "rxmt_corr": 0,
+                  "ses": 0,
+                  "fec": 0,
+                  "maxrate": 1022,
+                  "rxmt": 0
+              }
+          }
+
+      }
+
+Connection FTTH status [UNSTABLE]
+=================================
+
+FTTH status object [UNSTABLE]
+-----------------------------
+
+.. json:object:: FtthStatus
+
+   .. json:property:: sfp_present boolean [ro]
+
+   .. json:property:: sfp_alim_ok boolean [ro]
+
+   .. json:property:: sfp_has_power_report boolean [ro]
+
+   .. json:property:: sfp_has_signal boolean [ro]
+
+   .. json:property:: link boolean [ro]
+
+   .. json:property:: sfp_serial string [ro]
+
+   .. json:property:: sfp_model string [ro]
+
+   .. json:property:: sfp_vendor string [ro]
+
+   .. json:property:: sfp_vendor string [ro]
+
+   .. json:property:: sfp_pwr_tx int [ro]
+
+      scaled by 100 (in dBm)
+
+   .. json:property:: sfp_pwr_rx int [ro]
+
+      scaled by 100 (in dBm)
+
+Get the current FTTH status
+---------------------------
+
+.. http:get:: /api/v4/connection/ftth/
+
+   Returns the current :json:object:`FtthStatus`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/ftth/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "sfp_has_power_report": true,
+              "sfp_has_signal": false,
+              "sfp_model": "SPBD-1250E4H2RDB",
+              "sfp_vendor": "DELTA",
+              "sfp_pwr_tx": -1172,
+              "sfp_pwr_rx": -3698,
+              "link": false,
+              "sfp_alim_ok": true,
+              "sfp_serial": "DE104900000471",
+              "sfp_present": true
+          }
+      }
+
+Connection DynDNS status
+========================
+
+DynDnsProvider status object
+----------------------------
+
+.. json:object:: DDNSStatus
+
+   .. json:property:: status enum
+
+      ===============   ===========================================================
+      Status            Description
+      ===============   ===========================================================
+      disabled          Disabled
+      ok                Ok
+      wait              Updating
+      reqfail           Request failed
+      authfail          Authentication error
+      nocredential      Invalid credential
+      ipinval           Invalid IP
+      hostinval         Invalid hostname
+      abuse             Blocked because of abuse
+      dnserror          DNS error
+      unavailable       Service unavailable
+      nowan             Unable to get wan IP
+      unknown           Unknown
+      ===============   ===========================================================
+
+   .. json:property:: next_refresh int
+
+      next refresh timestamp
+
+   .. json:property:: last_refresh int
+
+      last refresh timestamp
+
+   .. json:property:: next_retry int
+
+      next retry timestamp
+
+   .. json:property:: last_error int
+
+      last error timestamp
+
+
+Get the status of a DynDNS service
+----------------------------------
+
+Right now the supported dynamic dns providers are:
+
+- ovh
+- dyndns
+- noip
+
+.. http:get:: /api/v4/connection/ddns/{provider}/status/
+
+   Returns the current :json:object:`DDNSStatus`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/ddns/dyndns/status/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+
+          "success": true,
+          "result": {
+              "last_error": 1354127350,
+              "status": "hostinval",
+              "next_refresh": 0,
+              "last_refresh": 0,
+              "next_retry": 0
+          }
+
+      }
+
+Connection DynDNS configuration
+===============================
+
+DynDns config object
+--------------------
+
+.. json:object:: DDNSConfig
+
+   .. json:property:: enabled bool
+
+   .. json:property:: hostname string
+
+      dns name to use to register
+
+   .. json:property:: password string [wo]
+
+      password to use to register
+
+   .. json:property:: user string
+
+      username to use to register
+
+Get the config of a DynDNS service
+----------------------------------
+
+.. http:get:: /api/v4/connection/ddns/{provider}/
+
+   Returns the current :json:object:`DDNSConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/connection/ddns/dyndns/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+
+          "success": true,
+          "result": {
+              "enabled": true,
+              "hostname": "test",
+              "user": "test"
+          }
+
+      }
+
+
+Set the config of a DynDNS service
+----------------------------------
+
+.. http:put:: /api/v4/connection/ddns/{provider}/
+
+   Set the :json:object:`DDNSConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/connection/ddns/dyndns/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "enabled": false,
+         "user": "test",
+         "password": "ssss",
+         "hostname": "ttt"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+
+          "success": true,
+          "result": {
+              "enabled": false,
+              "hostname": "ttt",
+              "user": "test"
+          }
+
+      }
+
+..  LocalWords:  inval nodev noent netdown ddns ConnectionStatus FTTH
+..  LocalWords:  ethernet rfc xDSL unbundled pppoatm ftth xdsl ipv ip
+..  LocalWords:  IPv priv ConnectionConfiguration wol lan XdslStatus
+..  LocalWords:  ConnectionIpv unsynchronized chan msg adsl readsl ok
+..  LocalWords:  ReachDSL vdsl VDSL XdslStats maxrate snr fec crc hec
+..  LocalWords:  ses phyr nitro rxmt uncorr infos XdslInfos sfp alim
+..  LocalWords:  FtthStatus boolean pwr tx dBm rx SPBD RDB DDNSStatus
+..  LocalWords:  DynDnsProvider reqfail authfail nocredential ipinval
+..  LocalWords:  hostinval dnserror DNS nowan ovh dyndns noip
+..  LocalWords:  DynDns DDNSConfig ssss ttt

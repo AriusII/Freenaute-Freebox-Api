@@ -1,0 +1,1222 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===========
+File System
+===========
+
+With the file system API you can access files on Freebox
+internal disk and disks connected to the Freebox.
+
+Path encoding
+=============
+
+.. _`Path Encoding`:
+
+``NOTE:``
+
+For maximum compatibility issues path are encoded in base64, you
+*should* use the path as it is returned by the ls API call.
+
+For instance this will solve problems with `unicode equivalence
+<http://en.wikipedia.org/wiki/Unicode_equivalence>`_ .
+
+Although "Spécial" (0x53 0x70 **0xc3 0xa9** 0x63 0x69 0x61 0x6c) and
+"Spécial" (0x53 0x70 **0x65 0xcc 0x81** 0x63 0x69 0x61 0x6c) are utf8
+equivalent, it is represents two different path.
+
+Some software/libraries will replace the original string with its
+normalized form, causing issues.  The use of base64 encoded path will
+ensure the original path will be preserved.
+
+File System Errors
+==================
+
+When attempting to access the file system API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+invalid_id                       Invalid object id
+path_not_found                   File or folder not found
+internal_error                   Internal error
+disk_unavailable                 The disk is not mounted
+invalid_request                  Invalid request
+invalid_conflict_mode            The conflict mode specified is invalid (see below)
+exec_failed                      Internal error
+out_of_memory                    Out of memory
+task_not_found                   Invalid task id
+invalid_state                    You tried to set an invalid state
+invalid_task_type                This operation cannot be performed on this task
+destination_conflict             The destination file/folder already exists
+access_denied                    Access to this file is denied
+disk_full                        The destination disk is full
+======================           ======================
+
+Task
+====
+
+File system tasks have the following attributes:
+
+.. json:object:: FsTask
+
+   .. json:property:: id int [ro]
+
+       id
+
+   .. json:property:: type enum [ro]
+
+      The valid task types are:
+
+      ===============   ======================
+      Type              Description
+      ===============   ======================
+      cat               Concatenate multiple files
+      cp                Copy files
+      mv                Move files
+      rm                Remove files
+      archive           Creates an archive
+      extract           Extract an archive
+      repair            Check and repair files
+      ===============   ======================
+
+   .. json:property:: state enum
+
+      ===============   ======================
+      State             Description
+      ===============   ======================
+      queued            Queued (only one task is active at a given time)
+      running           Running
+      paused            Paused (user suspended)
+      done              Done
+      failed            Failed (see error)
+      ===============   ======================
+
+   .. json:property:: error enum [ro]
+
+      =====================   =========================================================
+      Error                   Description
+      =====================   =========================================================
+      none                    No error
+      archive_read_failed     Error reading archive
+      archive_open_failed     Error opening archive
+      archive_write_failed    Error writing archive
+      chdir_failed            Error changing directory
+      dest_is_not_dir         The destination is not a directory
+      file_exists             File already exists
+      file_not_found          File not found
+      mkdir_failed            Unable to create directory
+      open_input_failed       Error opening input file
+      open_output_failed      Error opening output file
+      opendir_failed          Error opening directory
+      overwrite_failed        Error overwriting file
+      path_too_big            Path is too long
+      repair_failed           Failed to repair corrupted files
+      rmdir_failed            Error removing directory
+      same_file               Source and Destination are the same file
+      unlink_failed           Error removing file
+      unsupported_file_type   This file type is not supported
+      write_failed            Error writing file
+      disk_full               Disk is full
+      internal                Internal error
+      invalid_format          Invalid file format (corrupted ?)
+      incorrect_password      Invalid or missing password for extraction
+      permission_denied       Permission denied
+      readlink_failed         Failed to read the target of a symbolic link
+      symlink_failed          Failed to create a symbolic link
+      =====================   =========================================================
+
+   .. json:property:: created_ts timestamp [ro]
+
+      task creation timestamp
+
+   .. json:property:: started_ts timestamp [ro]
+
+      task start timestamp
+
+   .. json:property:: done_ts timestamp [ro]
+
+      task end timestamp
+
+   .. json:property:: duration int [ro]
+
+      task duration in seconds
+
+   .. json:property:: progress int [ro]
+
+      task progress in percent (scaled by 100)
+
+   .. json:property:: eta int [ro]
+
+      estimated time remaining before the task completion (in seconds)
+
+   .. json:property:: from string [ro]
+
+      current source file (if available)
+
+   .. json:property:: to string [ro]
+
+      current destination file (if available)
+
+   .. json:property:: nfiles int [ro]
+
+      number of files to process
+
+   .. json:property:: nfiles_done int [ro]
+
+      number of files processed
+
+   .. json:property:: total_bytes int [ro]
+
+      total bytes to process
+
+   .. json:property:: total_bytes_done int [ro]
+
+      number of bytes processed
+
+   .. json:property:: curr_bytes int [ro]
+
+      size of the file currently processed
+
+   .. json:property:: curr_bytes_done int [ro]
+
+      number of bytes processed for the current file
+
+   .. json:property:: rate int [ro]
+
+      processing rate in byte/s
+
+List every tasks
+----------------
+
+.. http:get:: /api/v4/fs/tasks/
+
+   Returns the collection of all :json:object:`FsTask` tasks
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fs/tasks/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         success: true,
+         result: [
+            {
+               curr_bytes_done: 0,
+               total_bytes: 0,
+               nfiles_done: 0,
+               started_ts: 1355834253,
+               duration: 3,
+               done_ts: 0,
+               curr_bytes: 0,
+               type: "extract",
+               to: "oxygennosvg/128x128/mimetypes/application_x_nzb.png",
+               id: 12,
+               nfiles: 0,
+               created_ts: 1355834253,
+               state: "paused",
+               total_bytes_done: 0,
+               from: "/Disque dur/tests/oxygennosvg.tar.gz",
+               rate: 0,
+               eta: 0,
+               error: "none",
+               progress: 0
+            },
+            {
+               id: 11,
+               curr_bytes_done: 0,
+               total_bytes: 0,
+               nfiles_done: 0,
+               started_ts: 1355834187,
+               duration: 0,
+               done_ts: 1355834187,
+               curr_bytes: 0,
+               type: "rm",
+               to: "",
+               nfiles: 0,
+               created_ts: 1355834187,
+               state: "done",
+               total_bytes_done: 0,
+               from: "/Disque dur/test/testiso.1.iso",
+               rate: 0,
+               eta: 0,
+               error: "none",
+               progress: 100
+            }
+         ]
+      }
+
+List a task
+-----------
+
+.. http:get:: /api/v4/fs/tasks/{id}
+
+   Returns the :json:object:`FsTask` task with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fs/tasks/12 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         success: true,
+         result: {
+            curr_bytes_done: 0,
+            total_bytes: 0,
+            nfiles_done: 0,
+            started_ts: 1355834253,
+            duration: 268,
+            done_ts: 0,
+            curr_bytes: 0,
+            type: "extract",
+            to: "oxygennosvg/16x16/actions/format_stroke_color.png",
+            id: 12,
+            nfiles: 0,
+            created_ts: 1355834253,
+            state: "running",
+            total_bytes_done: 0,
+            from: "/Disque dur/tests/oxygennosvg.tar.gz",
+            rate: 0,
+            eta: 0,
+            error: "none",
+            progress: 0
+         }
+      }
+
+Delete a task
+-------------
+
+.. http:delete:: /api/v4/fs/tasks/{id}
+
+   Deletes the :json:object:`FsTask` task with the given id, if the
+   task was running, stop it.
+
+   No rollback is done, if a file as already been processed it will be
+   left as is.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/fs/tasks/12 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Update a task
+-------------
+
+.. http:put:: /api/v4/fs/tasks/{id}
+
+   Updates the :json:object:`FsTask` task with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/fs/tasks/15 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "state": "paused"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 2410125312,
+              "nfiles_done": 0,
+              "started_ts": 1355835094,
+              "duration": 27,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "cp",
+              "to": "/Disque dur/old_hdd/testiso.1.iso",
+              "id": 15,
+              "nfiles": 1,
+              "created_ts": 1355835094,
+              "state": "paused",
+              "total_bytes_done": 595591168,
+              "from": "/Disque dur/old_hdd/testiso.iso",
+              "rate": 0,
+              "eta": 85,
+              "error": "none",
+              "progress": 24
+          }
+      }
+
+Listing
+=======
+
+File info
+---------
+
+.. json:object:: FileInfo
+
+   .. json:property:: path string [ro]
+
+      file path (encoded in base64 as explained in `Path Encoding`_)
+
+   .. json:property:: name string [ro]
+
+      file name (in clear text)
+
+   .. json:property:: mimetype string [ro]
+
+      file mimetype
+
+   .. json:property:: type enum
+
+      ===============   ======================
+      Type              Description
+      ===============   ======================
+      dir               Directory
+      file              Regular file
+      ===============   ======================
+
+   .. json:property:: size int [ro]
+
+      file size in bytes
+
+   .. json:property:: modification int [ro]
+
+      file modification timestamp
+
+   .. json:property:: index int [ro]
+
+      display order for natural sort
+
+   .. json:property:: link boolean [ro]
+
+      is this file a link
+
+   .. json:property:: target string [ro]
+
+      symlink target path (encoded in base64 as explained in `Path Encoding`_)
+      (only present when link is set to true)
+
+   .. json:property:: hidden boolean [ro]
+
+      should the file be hidden to user
+
+   .. json:property:: foldercount int [ro]
+
+      number of subfolders
+
+      only relevant for dir, only provided if "countSubFolder"
+      parameter is set
+
+   .. json:property:: filecount int [ro]
+
+      number of files inside directory
+
+      only relevant for dir, only provided if "countSubFolder"
+      parameter is set
+
+List files
+----------
+
+.. http:get:: /api/v4/fs/ls/{path}
+
+   Returns the list of :json:object:`FileInfos` for the given path
+
+   :param bool onlyFolder:          Only list folders
+   :param bool countSubFolder:      Return files and subfolder count for folders
+   :param bool removeHidden:        Don't return hidden files in directory listing
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fs/ls/L0Rpc3F1ZSBkdXI= HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+
+          "success": true,
+          "result": [
+              {
+                  "path": "L0Rpc3F1ZSBkdXIvRW5yZWdpc3RyZW1lbnRz",
+                  "filecount": 0,
+                  "link": false,
+                  "modification": 1362005535,
+                  "foldercount": 0,
+                  "name": "Enregistrements",
+                  "index": 1,
+                  "mimetype": "inode/directory",
+                  "hidden": false,
+                  "type": "dir",
+                  "size": 4096
+              },
+
+              /* Note: for the two following folders path are different, but name is utf8 equivalent */
+
+              {
+                  "path": "L0Rpc3F1ZSBkdXIvTGUgU3DDqWNpYWwgMg==",
+                  "filecount": 0,
+                  "link": false,
+                  "modification": 1362492511,
+                  "foldercount": 0,
+                  "name": "Le Spécial 2",
+                  "index": 3,
+                  "mimetype": "inode/directory",
+                  "hidden": false,
+                  "type": "dir",
+                  "size": 4096
+              },
+              {
+                  "path": "L0Rpc3F1ZSBkdXIvTGUgU3BlzIFjaWFsIDI=",
+                  "filecount": 4,
+                  "link": false,
+                  "modification": 1361995307,
+                  "foldercount": 1,
+                  "name": "Le Spécial 2",
+                  "index": 4,
+                  "mimetype": "inode/directory",
+                  "hidden": false,
+                  "type": "dir",
+                  "size": 4096
+              },
+
+               [ ... ]
+
+              {
+                  "path": "L0Rpc3F1ZSBkdXIvVmlkw6lvcw==",
+                  "filecount": 8,
+                  "link": false,
+                  "modification": 1361887598,
+                  "foldercount": 2,
+                  "name": "Vidéos",
+                  "index": 16,
+                  "mimetype": "inode/directory",
+                  "hidden": false,
+                  "type": "dir",
+                  "size": 4096
+              }
+          ]
+
+      }
+
+Get file information
+--------------------
+
+.. http:get:: /api/v4/fs/info/{path}
+
+   Returns the :json:object:`FileInfos` for the given path
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fs/info/L0Rpc3F1ZSBkdXIvdG90bw== HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "type": "dir",
+              "link": true,
+              "parent": "L0Rpc3F1ZSBkdXI=",
+              "modification": 1370354349,
+              "hidden": false,
+              "mimetype": "inode/directory",
+              "name": "toto",
+              "target": "L0Rpc3F1ZSBkdXIvUGhvdG9z",
+              "path": "L0Rpc3F1ZSBkdXIvdG90bw==",
+              "size": 4096
+          }
+      }
+
+Operations
+==========
+
+Each time you want to perform a modification on the file system you
+will have to create a new :json:object:`FsTask` that you will be
+able to monitor.
+
+NOTE: The requested operation may be en-queued to avoid performance
+drop because of excessive disk io
+
+Conflict resolution
+-------------------
+
+For certain file operations where a file name conflict can happen,
+you must specify a conflict resolution mode.
+
+Valid resolution modes are:
+
+===============   =================================
+Conflict mode     Description
+===============   =================================
+overwrite         Overwrite the destination file
+both              Keep both files (rename the file adding a suffix)
+recent            Only overwrite if newer than destination file
+skip              Keep the destination file
+===============   =================================
+
+Move files
+----------
+
+.. http:post:: /api/v4/fs/mv/
+
+   :param string[] files:  The list of files to move
+   :param string dst:      The destination
+   :param enum mode:       The conflict resolution mode
+
+   **Example request for moving files**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/mv/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "files":
+            [
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL0RTQ18zNDkxLmpwZw==", /* /Disque dur/Photos/DSC_3491.jpg */
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL0RTQ18zNTAwLmpwZw==" /* /Disque dur/Photos/DSC_3500.jpg */
+            ],
+          "dst": "L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZA==", /* /Disque dur/Photos/Launchpad */
+          "mode": "overwrite"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355840585,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "mv",
+              "to": "",
+              "id": 39,
+              "nfiles": 0,
+              "created_ts": 1355840585,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Copy files
+----------
+
+.. http:post:: /api/v4/fs/cp/
+
+   :param string[] files:  The list of files to copy
+   :param string dst:      The destination
+   :param enum mode:       The conflict resolution mode
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/cp/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "files":
+            [
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzQ5MS5qcGcK", /* /Disque dur/Photos/Launchpad/DSC_3491.jpg */
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzUwMC5qcGcK", /* /Disque dur/Photos/Launchpad/DSC_3500.jpg */
+            ],
+          "dst": "L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMK", /* /Disque dur/Photos/Rockets */
+          "mode": "both"
+       }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355840943,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "cp",
+              "to": "",
+              "id": 43,
+              "nfiles": 0,
+              "created_ts": 1355840943,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Remove files
+------------
+
+.. http:post:: /api/v4/fs/rm/
+
+   :param string[] files:  The list of files to remove
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/rm/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "files":
+            [
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM0OTEuanBnCg==", /* /Disque dur/Photos/Rockets/DSC_3491.jpg */
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM1MDAuanBnCg==" /* /Disque dur/Photos/Rockets/DSC_3500.jpg */
+            ]
+       }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355841064,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "rm",
+              "to": "",
+              "id": 45,
+              "nfiles": 0,
+              "created_ts": 1355841064,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "/Disque dur/Photos/Rockets/DSC_3491.jpg",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Cat files
+---------
+
+.. http:post:: /api/v4/fs/cat/
+
+   :param string[] files:     The list of files to concatenate
+   :param string dst:         The destination
+   :param bool multi_volumes: Enable multi-volumes mode, it will start at XXX001 and concatenate XXX002, XXX003, ...
+   :param bool delete_files:  Deletes source files
+   :param bool overwrite:     Overwrites the destination
+   :param bool append:        Append to the destination
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/cat/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "files":
+            [
+               "L0Rpc3F1ZSBkdXIvZmlsZTE=", /* /Disque dur/file1 */
+               "L0Rpc3F1ZSBkdXIvZmlsZTI="  /* /Disque dur/file2 */
+            ],
+          "dst": "L0Rpc3F1ZSBkdXIvZmlsZTEy", /* /Disque dur/file12 */
+          "multi_volumes": false,
+          "delete_files": false,
+          "append": true,
+          "overwrite": false
+      }
+
+   Or if you want to do a multi-volumes concatenation:
+
+   .. sourcecode:: javascript
+
+      {
+         "files":
+            [
+               // You don't need to specify file002, file003, ...
+               // They'll be found by cat.
+               "L0Rpc3F1ZSBkdXIvZmlsZTAwMQ==", /* /Disque dur/file001 */
+            ],
+          "dst": "L0Rpc3F1ZSBkdXIvZmlsZQ==", /* /Disque dur/file */
+          "multi_volumes": true,
+          "delete_files": true,
+          "append": false,
+          "overwrite": true
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355840943,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "cat",
+              "to": "",
+              "id": 43,
+              "nfiles": 0,
+              "created_ts": 1355840943,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Create an archive
+-----------------
+
+.. http:post:: /api/v4/fs/archive/
+
+   :param string[] files:  The list of files to archive
+   :param string dst:      The destination
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/archive/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "files":
+            [
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzQ5MS5qcGc=", /* /Disque dur/Photos/Launchpad/DSC_3491.jpg */
+               "L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzUwMC5qcGc="  /* /Disque dur/Photos/Launchpad/DSC_3500.jpg */
+            ],
+          "dst": "L0Rpc3F1ZSBkdXIvUGhvdG9zL3JvY2tldHMuemlw" /* /Disque dur/Photos/rockets.zip */
+       }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355840943,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "archive",
+              "to": "",
+              "id": 42,
+              "nfiles": 0,
+              "created_ts": 1355840943,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Extract a file
+--------------
+
+.. http:post:: /api/v4/fs/extract/
+
+   :param string src:               The archive file
+   :param string dst:               The destination folder
+   :param string password:          The archive password
+   :param boolean delete_archive:   Delete archive after extraction
+   :param boolean overwrite:        Overwrite files on conflict
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/extract/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "src": "L0Rpc3F1ZSBkdXIvb2xkX2hkZC90ZXN0aXNvLjEuaXNv", /* /Disque dur/old_hdd/testiso.1.iso */
+         "dst": "L0Rpc3F1ZSBkdXIvb2xkX2hkZA==" /* /Disque dur/old_hdd */
+         "password": "",
+         "delete_archive": false,
+         "overwrite": true
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355842252,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "extract",
+              "to": "/Disque dur/old_hdd",
+              "id": 48,
+              "nfiles": 0,
+              "created_ts": 1355842252,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "/Disque dur/old_hdd/testiso.1.iso",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Repair a file
+-------------
+
+.. http:post:: /api/v4/fs/repair/
+
+   :param string src:               The .par2 file
+   :param boolean delete_archive:   Delete par2 files after repair
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/repair/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "src": "L0Rpc3F1ZSBkdXIvdGVzdHMvcGFyMi9saWNlbnNlLnR4dC5wYXIy", /* /Disque dur/tests/par2/license.txt.par2 */
+         "delete_archive": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 0,
+              "nfiles_done": 0,
+              "started_ts": 1355842559,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 0,
+              "type": "repair",
+              "to": "",
+              "id": 50,
+              "nfiles": 0,
+              "created_ts": 1355842559,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Hash a file
+-----------
+
+.. http:post:: /api/v4/fs/hash/
+
+   :param string src:         The file to hash
+   :param string hash_type:   The type of hash (md5, sha1, ...)
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/hash/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "src": "L0Rpc3F1ZSBkdXIvbXlfZmlsZQ==", /* /Disque dur/my_file */
+         "hash_type": "md5"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "curr_bytes_done": 0,
+              "total_bytes": 4242,
+              "nfiles_done": 0,
+              "started_ts": 1355842559,
+              "duration": 0,
+              "done_ts": 0,
+              "curr_bytes": 4242,
+              "type": "hash",
+              "to": "",
+              "id": 50,
+              "nfiles": 1,
+              "created_ts": 1355842559,
+              "state": "running",
+              "total_bytes_done": 0,
+              "from": "/Disque dur/my_file",
+              "rate": 0,
+              "eta": 0,
+              "error": "none",
+              "progress": 0
+          }
+      }
+
+Get the hash value
+~~~~~~~~~~~~~~~~~~
+
+To get the hash, the task must have succeed and be in the state
+"done".
+
+.. http:get:: /api/v4/fs/tasks/{id}/hash
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fs/tasks/50/hash HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "hash": "94baaad4d1347ec6e15ae35c88ee8bc8"
+          }
+      }
+
+Create a directory
+------------------
+
+Contrary to other file system tasks, this operation is done
+synchronously.
+
+Instead of a returning a :json:object:`FsTask` a call to this API
+will only return success status
+
+.. http:post:: /api/v4/fs/mkdir/
+
+   :param string parent:   The parent directory path (base64 encoded)
+   :param string dirname:  The name of the directory to create
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/mkdir/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "parent": "L0Rpc3F1ZSBkdXI=", /* /Disque dur */
+         "dirname": "Test"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Rename a file/folder
+--------------------
+
+Contrary to other file system tasks, this operation is done
+synchronously.
+
+Instead of a returning a :json:object:`FsTask` a call to this API
+will only return success status and the new path as a result
+
+.. http:post:: /api/v4/fs/rename/
+
+   :param string src:   The source file path (base64 encoded)
+   :param string dst:   The new name of the file (clear text, without path)
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fs/rename/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "src": "L0Rpc3F1ZSBkdXIvdGVzdC50eHQ=", /* /Disque dur/test.txt */
+         "dst": "plop.txt"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": "L0Rpc3F1ZSBkdXIvcGxvcC50eHQ=" /* /Disque dur/plop.txt */
+      }
+
+Download a file
+---------------
+
+.. http:get:: /api/v4/dl/{path}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/dl/L0Rpc3F1ZSBkdXIvUGhvdG9zL1BsYW5zIHNlY3JldHMuanBn HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: image/jpeg
+      Content-Length: 600864
+      Content-Disposition: attachment; filename="Plans secrets.jpg"
+
+      [ ... ]
+
+..  LocalWords:  Spécial xc xa xcc FsTask cp mv chdir dest dir mkdir
+..  LocalWords:  opendir rmdir unlink readlink symlink nfiles curr io
+..  LocalWords:  oxygennosvg FileInfo mimetype foldercount subfolders
+..  LocalWords:  countSubFolder filecount FileInfos onlyFolder yZWdpc
+..  LocalWords:  subfolder removeHidden ZSBkdXIvRW RyZW lbnRz lvcw dC
+..  LocalWords:  Enregistrements ZSBkdXIvTGUgU DDqWNpYWwgMg Vidéos ec
+..  LocalWords:  BlzIFjaWFsIDI ZSBkdXIvVmlkw dst RTQ zNDkxLmpwZw xhdW
+..  LocalWords:  zNTAwLmpwZw jaHBhZA jaHBhZC NfMzQ qcGcK NfMzUwMC src
+..  LocalWords:  tldHMK OTEuanBnCg MDAuanBnCg multi ZSBkdXIvZmlsZTE
+..  LocalWords:  ZSBkdXIvZmlsZTI ZSBkdXIvZmlsZTEy ZSBkdXIvZmlsZTAwMQ
+..  LocalWords:  ZSBkdXIvZmlsZQ qcGc tldHMuemlw ZSBkdXIvb xkX hkZC ae
+..  LocalWords:  ZXN aXNvLjEuaXNv hkZA hdd ZSBkdXIvdGVzdHMvcGFyMi ee
+..  LocalWords:  saWNlbnNlLnR wYXIy ZSBkdXIvbXlfZmlsZQ baaad bc eHQ
+..  LocalWords:  ZSBkdXI ZSBkdXIvdGVzdC txt ZSBkdXIvcGxvcC

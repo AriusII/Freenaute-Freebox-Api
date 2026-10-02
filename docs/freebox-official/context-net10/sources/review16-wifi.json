@@ -1,0 +1,2684 @@
+{
+  "module": {
+    "module": "wifi",
+    "title": "Wi-Fi",
+    "category": "reseau",
+    "path": "docs/reference/reseau/wifi.md",
+    "http_signatures": 50,
+    "objects": 32,
+    "properties": 154,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#wi-fi",
+    "source_pre_blocks": 169,
+    "markdown_code_blocks": 169,
+    "source_tables": 20
+  },
+  "endpoints": [
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/config/",
+      "path_template": "/api/v{major}/wifi/config/",
+      "documented_major": 9,
+      "title": "Get the current Wi-Fi global configuration",
+      "id": "get--api-v9-wifi-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-config-",
+      "referenced_objects": [
+        "WifiGlobalConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/config/",
+      "path_template": "/api/v{major}/wifi/config/",
+      "documented_major": 9,
+      "title": "Update the Wi-Fi global configuration",
+      "id": "put--api-v9-wifi-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-config-",
+      "referenced_objects": [
+        "WifiGlobalConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v16/wifi/steering/config/",
+      "path_template": "/api/v{major}/wifi/steering/config/",
+      "documented_major": 16,
+      "title": "Get the current Wi-Fi steering configuration",
+      "id": "get--api-v16-wifi-steering-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-wifi-steering-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v16-wifi-steering-config-",
+      "referenced_objects": [
+        "WifiSteeringConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-wifi-steering-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v16/wifi/steering/config/",
+      "path_template": "/api/v{major}/wifi/steering/config/",
+      "documented_major": 16,
+      "title": "Update the Wi-Fi steering configuration",
+      "id": "put--api-v16-wifi-steering-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-wifi-steering-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v16-wifi-steering-config-",
+      "referenced_objects": [
+        "WifiSteeringConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v16-wifi-steering-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v10/wifi/state/",
+      "path_template": "/api/v{major}/wifi/state/",
+      "documented_major": 10,
+      "title": "Get the global wifi state",
+      "id": "get--api-v10-wifi-state-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-wifi-state-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v10-wifi-state-",
+      "referenced_objects": [
+        "WifiGlobalState"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-wifi-state-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/",
+      "path_template": "/api/v{major}/wifi/ap/",
+      "documented_major": 9,
+      "title": "Get the ap list",
+      "id": "get--api-v9-wifi-ap-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-",
+      "referenced_objects": [
+        "WifiAp"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}",
+      "path_template": "/api/v{major}/wifi/ap/{id}",
+      "documented_major": 9,
+      "title": "Get a particular AP",
+      "id": "get--api-v9-wifi-ap-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id",
+      "referenced_objects": [
+        "WifiAp"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/ap/{id}",
+      "path_template": "/api/v{major}/wifi/ap/{id}",
+      "documented_major": 9,
+      "title": "Update an AP",
+      "id": "put--api-v9-wifi-ap-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-ap-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-ap-id",
+      "referenced_objects": [
+        "WifiAp"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-ap-id"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/allowed_channel_comb",
+      "path_template": "/api/v{major}/wifi/ap/{id}/allowed_channel_comb",
+      "documented_major": 9,
+      "title": "Wi-Fi AP allowed channels",
+      "id": "get--api-v9-wifi-ap-id-allowed_channel_comb",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-allowed_channel_comb",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-allowed_channel_comb",
+      "referenced_objects": [
+        "WifiAllowedComb"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-allowed_channel_comb"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/stations/",
+      "path_template": "/api/v{major}/wifi/ap/{id}/stations/",
+      "documented_major": 9,
+      "title": "Get Wi-Fi Stations List",
+      "id": "get--api-v9-wifi-ap-id-stations-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-stations-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-stations-",
+      "referenced_objects": [
+        "WifiStation"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-stations-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/stations/{mac}",
+      "path_template": "/api/v{major}/wifi/ap/{id}/stations/{mac}",
+      "documented_major": 9,
+      "title": "Get Wi-Fi Station",
+      "id": "get--api-v9-wifi-ap-id-stations-mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-stations-mac",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-stations-mac",
+      "referenced_objects": [
+        "WifiStation"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-stations-mac"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/channel_survey_history/{timestamp}",
+      "path_template": "/api/v{major}/wifi/ap/{id}/channel_survey_history/{timestamp}",
+      "documented_major": 9,
+      "title": "Get survey data history",
+      "id": "get--api-v9-wifi-ap-id-channel_survey_history-timestamp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-channel_survey_history-timestamp",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-channel_survey_history-timestamp",
+      "referenced_objects": [
+        "WifiApChannelSurveyData"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-channel_survey_history-timestamp"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/ap/{id}/restart",
+      "path_template": "/api/v{major}/wifi/ap/{id}/restart",
+      "documented_major": 9,
+      "title": "Restart an AP",
+      "id": "post--api-v9-wifi-ap-id-restart",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-ap-id-restart",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-ap-id-restart",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-ap-id-restart"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/bss/",
+      "path_template": "/api/v{major}/wifi/bss/",
+      "documented_major": 9,
+      "title": "Get the bss list",
+      "id": "get--api-v9-wifi-bss-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-bss-",
+      "referenced_objects": [
+        "WifiBss"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-bss-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/bss/{id}",
+      "path_template": "/api/v{major}/wifi/bss/{id}",
+      "documented_major": 9,
+      "title": "Get a particular BSS",
+      "id": "get--api-v9-wifi-bss-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-bss-id",
+      "referenced_objects": [
+        "WifiBss"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-bss-id"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/bss/{id}",
+      "path_template": "/api/v{major}/wifi/bss/{id}",
+      "documented_major": 9,
+      "title": "Update an BSS",
+      "id": "put--api-v9-wifi-bss-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-bss-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-bss-id",
+      "referenced_objects": [
+        "WifiAp"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-bss-id"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/neighbors/",
+      "path_template": "/api/v{major}/wifi/ap/{id}/neighbors/",
+      "documented_major": 9,
+      "title": "List AP neighbors",
+      "id": "get--api-v9-wifi-ap-id-neighbors-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-neighbors-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-neighbors-",
+      "referenced_objects": [
+        "WifiNeighbor"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-neighbors-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/channel_usage/",
+      "path_template": "/api/v{major}/wifi/ap/{id}/channel_usage/",
+      "documented_major": 9,
+      "title": "List Wi-Fi channels usage",
+      "id": "get--api-v9-wifi-ap-id-channel_usage-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-channel_usage-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-channel_usage-",
+      "referenced_objects": [
+        "WifiChannelUsage"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-channel_usage-"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/ap/{id}/neighbors/scan",
+      "path_template": "/api/v{major}/wifi/ap/{id}/neighbors/scan",
+      "documented_major": 9,
+      "title": "Refresh radar informations",
+      "id": "post--api-v9-wifi-ap-id-neighbors-scan",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-ap-id-neighbors-scan",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-ap-id-neighbors-scan",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-ap-id-neighbors-scan"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/planning/",
+      "path_template": "/api/v{major}/wifi/planning/",
+      "documented_major": 9,
+      "title": "Get Wi-Fi Planning",
+      "id": "get--api-v9-wifi-planning-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-planning-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-planning-",
+      "referenced_objects": [
+        "WifiPlanning"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-planning-"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/planning/",
+      "path_template": "/api/v{major}/wifi/planning/",
+      "documented_major": 9,
+      "title": "Update Wi-Fi Planning",
+      "id": "put--api-v9-wifi-planning-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-planning-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-planning-",
+      "referenced_objects": [
+        "WifiPlanning"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-planning-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/mac_filter/",
+      "path_template": "/api/v{major}/wifi/mac_filter/",
+      "documented_major": 9,
+      "title": "Get the MAC filter list",
+      "id": "get--api-v9-wifi-mac_filter-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-mac_filter-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-mac_filter-",
+      "referenced_objects": [
+        "WifiMacFilter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-mac_filter-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/mac_filter/{filter_id}",
+      "path_template": "/api/v{major}/wifi/mac_filter/{filter_id}",
+      "documented_major": 9,
+      "title": "Getting a particular MAC filter",
+      "id": "get--api-v9-wifi-mac_filter-filter_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-mac_filter-filter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-mac_filter-filter_id",
+      "referenced_objects": [
+        "WifiMacFilter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-mac_filter-filter_id"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/mac_filter/{filter_id}",
+      "path_template": "/api/v{major}/wifi/mac_filter/{filter_id}",
+      "documented_major": 9,
+      "title": "Updating a MAC filter",
+      "id": "put--api-v9-wifi-mac_filter-filter_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-mac_filter-filter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-mac_filter-filter_id",
+      "referenced_objects": [
+        "WifiMacFilter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-mac_filter-filter_id"
+    },
+    {
+      "module": "wifi",
+      "method": "DELETE",
+      "documented_path": "/api/v9/wifi/mac_filter/{filter_id}",
+      "path_template": "/api/v{major}/wifi/mac_filter/{filter_id}",
+      "documented_major": 9,
+      "title": "Delete a MAC filter",
+      "id": "delete--api-v9-wifi-mac_filter-filter_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v9-wifi-mac_filter-filter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#delete--api-v9-wifi-mac_filter-filter_id",
+      "referenced_objects": [
+        "WifiMacFilter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v9-wifi-mac_filter-filter_id"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/mac_filter/",
+      "path_template": "/api/v{major}/wifi/mac_filter/",
+      "documented_major": 9,
+      "title": "Create a new MAC filter",
+      "id": "post--api-v9-wifi-mac_filter-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-mac_filter-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-mac_filter-",
+      "referenced_objects": [
+        "WifiMacFilter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-mac_filter-"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/config/reset/",
+      "path_template": "/api/v{major}/wifi/config/reset/",
+      "documented_major": 9,
+      "title": "Global reset",
+      "id": "post--api-v9-wifi-config-reset-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-config-reset-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-config-reset-",
+      "referenced_objects": [
+        "WifiMacFilter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-config-reset-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/default",
+      "path_template": "/api/v{major}/wifi/ap/{id}/default",
+      "documented_major": 9,
+      "title": "Config reset value of an AP",
+      "id": "get--api-v9-wifi-ap-id-default",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-default",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-default",
+      "referenced_objects": [
+        "WifiApConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-default"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/bss/{id}/default",
+      "path_template": "/api/v{major}/wifi/bss/{id}/default",
+      "documented_major": 9,
+      "title": "Config reset value of a BSS",
+      "id": "get--api-v9-wifi-bss-id-default",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-id-default",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-bss-id-default",
+      "referenced_objects": [
+        "WifiBssConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-bss-id-default"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/default",
+      "path_template": "/api/v{major}/wifi/default",
+      "documented_major": 9,
+      "title": "Config reset value (bulk)",
+      "id": "get--api-v9-wifi-default",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-default",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-default",
+      "referenced_objects": [
+        "WifiApConfig",
+        "WifiBssConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-default"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/diag",
+      "path_template": "/api/v{major}/wifi/diag",
+      "documented_major": 9,
+      "title": "Global diagnostic",
+      "id": "get--api-v9-wifi-diag",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-diag",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-diag",
+      "referenced_objects": [
+        "WifiDiagItem"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-diag"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/diag",
+      "path_template": "/api/v{major}/wifi/diag",
+      "documented_major": 9,
+      "title": "Global diagnostic",
+      "id": "post--api-v9-wifi-diag",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-diag",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-diag",
+      "referenced_objects": [
+        "WifiDiagItem"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-diag"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/ap/{id}/diag \u0026 /api/v9/wifi/bss/{id}/diag",
+      "path_template": "/api/v{major}/wifi/ap/{id}/diag \u0026 /api/v{major}/wifi/bss/{id}/diag",
+      "documented_major": 9,
+      "title": "Per AP/BSS diagnostic",
+      "id": "get--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag",
+      "referenced_objects": [
+        "WifiDiagItem"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/ap/{id}/diag \u0026 /api/v9/wifi/bss/{id}/diag",
+      "path_template": "/api/v{major}/wifi/ap/{id}/diag \u0026 /api/v{major}/wifi/bss/{id}/diag",
+      "documented_major": 9,
+      "title": "Per AP/BSS diagnostic",
+      "id": "post--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag",
+      "referenced_objects": [
+        "WifiDiagItem"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-ap-id-diag \u0026 -api-v9-wifi-bss-id-diag"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/wps/config/",
+      "path_template": "/api/v{major}/wifi/wps/config/",
+      "documented_major": 9,
+      "title": "Enable/disable WPS on all Wi-Fi cards",
+      "id": "get--api-v9-wifi-wps-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-wps-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-wps-config-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-wps-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/wps/config/",
+      "path_template": "/api/v{major}/wifi/wps/config/",
+      "documented_major": 9,
+      "title": "Enable/disable WPS on all Wi-Fi cards",
+      "id": "put--api-v9-wifi-wps-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-wps-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-wps-config-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-wps-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/wps/start/",
+      "path_template": "/api/v{major}/wifi/wps/start/",
+      "documented_major": 9,
+      "title": "Start a Wps session on a bss",
+      "id": "post--api-v9-wifi-wps-start-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-wps-start-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-wps-start-",
+      "referenced_objects": [
+        "WifiWpsCandidate",
+        "WifiWpsSession"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-wps-start-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/wps/sessions/",
+      "path_template": "/api/v{major}/wifi/wps/sessions/",
+      "documented_major": 9,
+      "title": "List the Wps session",
+      "id": "get--api-v9-wifi-wps-sessions-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-wps-sessions-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-wps-sessions-",
+      "referenced_objects": [
+        "WifiWpsSession"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-wps-sessions-"
+    },
+    {
+      "module": "wifi",
+      "method": "DELETE",
+      "documented_path": "/api/v9/wifi/wps/sessions/",
+      "path_template": "/api/v{major}/wifi/wps/sessions/",
+      "documented_major": 9,
+      "title": "Clear all Wps Sessions",
+      "id": "delete--api-v9-wifi-wps-sessions-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v9-wifi-wps-sessions-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#delete--api-v9-wifi-wps-sessions-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v9-wifi-wps-sessions-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v14/wifi/custom_keys/config/",
+      "path_template": "/api/v{major}/wifi/custom_keys/config/",
+      "documented_major": 14,
+      "title": "Get or change the dedicated ap config",
+      "id": "get--api-v14-wifi-custom_keys-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v14-wifi-custom_keys-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v14-wifi-custom_keys-config-",
+      "referenced_objects": [
+        "WifiCustomKeyConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v14-wifi-custom_keys-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v14/wifi/custom_keys/config/",
+      "path_template": "/api/v{major}/wifi/custom_keys/config/",
+      "documented_major": 14,
+      "title": "Get or change the dedicated ap config",
+      "id": "put--api-v14-wifi-custom_keys-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v14-wifi-custom_keys-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v14-wifi-custom_keys-config-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v14-wifi-custom_keys-config-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/custom_key/",
+      "path_template": "/api/v{major}/wifi/custom_key/",
+      "documented_major": 9,
+      "title": "Get the list of wifi custom key",
+      "id": "get--api-v9-wifi-custom_key-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-custom_key-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-custom_key-",
+      "referenced_objects": [
+        "WifiCustomKey"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-custom_key-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v9/wifi/custom_key/{key_id}",
+      "path_template": "/api/v{major}/wifi/custom_key/{key_id}",
+      "documented_major": 9,
+      "title": "Getting a particular wifi custom key",
+      "id": "get--api-v9-wifi-custom_key-key_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-custom_key-key_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v9-wifi-custom_key-key_id",
+      "referenced_objects": [
+        "WifiCustomKey"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v9-wifi-custom_key-key_id"
+    },
+    {
+      "module": "wifi",
+      "method": "DELETE",
+      "documented_path": "/api/v9/wifi/custom_key/{key_id}",
+      "path_template": "/api/v{major}/wifi/custom_key/{key_id}",
+      "documented_major": 9,
+      "title": "Delete a wifi custom key",
+      "id": "delete--api-v9-wifi-custom_key-key_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v9-wifi-custom_key-key_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#delete--api-v9-wifi-custom_key-key_id",
+      "referenced_objects": [
+        "WifiCustomKey"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v9-wifi-custom_key-key_id"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v9/wifi/custom_key/",
+      "path_template": "/api/v{major}/wifi/custom_key/",
+      "documented_major": 9,
+      "title": "Create a new wifi custom key",
+      "id": "post--api-v9-wifi-custom_key-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v9-wifi-custom_key-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v9-wifi-custom_key-",
+      "referenced_objects": [
+        "WifiCustomKey"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v9-wifi-custom_key-"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v13/wifi/temp_disable",
+      "path_template": "/api/v{major}/wifi/temp_disable",
+      "documented_major": 13,
+      "title": "Get temporary disable state",
+      "id": "get--api-v13-wifi-temp_disable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v13-wifi-temp_disable",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v13-wifi-temp_disable",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v13-wifi-temp_disable"
+    },
+    {
+      "module": "wifi",
+      "method": "POST",
+      "documented_path": "/api/v13/wifi/temp_disable",
+      "path_template": "/api/v{major}/wifi/temp_disable",
+      "documented_major": 13,
+      "title": "Get temporary disable state",
+      "id": "post--api-v13-wifi-temp_disable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v13-wifi-temp_disable",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#post--api-v13-wifi-temp_disable",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v13-wifi-temp_disable"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v14/wifi/bss/{id}/mlo/allowed_comb",
+      "path_template": "/api/v{major}/wifi/bss/{id}/mlo/allowed_comb",
+      "documented_major": 14,
+      "title": "Available partner",
+      "id": "get--api-v14-wifi-bss-id-mlo-allowed_comb",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v14-wifi-bss-id-mlo-allowed_comb",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v14-wifi-bss-id-mlo-allowed_comb",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v14-wifi-bss-id-mlo-allowed_comb"
+    },
+    {
+      "module": "wifi",
+      "method": "GET",
+      "documented_path": "/api/v14/wifi/bss/{id}/mlo/config",
+      "path_template": "/api/v{major}/wifi/bss/{id}/mlo/config",
+      "documented_major": 14,
+      "title": "Getting the MLO config",
+      "id": "get--api-v14-wifi-bss-id-mlo-config",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v14-wifi-bss-id-mlo-config",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#get--api-v14-wifi-bss-id-mlo-config",
+      "referenced_objects": [
+        "WifiMLOConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v14-wifi-bss-id-mlo-config"
+    },
+    {
+      "module": "wifi",
+      "method": "PUT",
+      "documented_path": "/api/v9/wifi/config/",
+      "path_template": "/api/v{major}/wifi/config/",
+      "documented_major": 9,
+      "title": "Changing the MLO config",
+      "id": "put--api-v9-wifi-config---variante-2",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/wifi.md#put--api-v9-wifi-config---variante-2",
+      "referenced_objects": [
+        "WifiGlobalConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v9-wifi-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "wifi",
+      "name": "WifiGlobalConfig",
+      "id": "WifiGlobalConfig",
+      "properties": [
+        "WifiGlobalConfig.enabled",
+        "WifiGlobalConfig.mac_filter_state"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiGlobalConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiSteeringConfig",
+      "id": "WifiSteeringConfig",
+      "properties": [
+        "WifiSteeringConfig.steering_level"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiSteeringConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiSteeringConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiGlobalState",
+      "id": "WifiGlobalState",
+      "properties": [
+        "WifiGlobalState.state",
+        "WifiGlobalState.expected_phys"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalState",
+      "markdown": "docs/reference/reseau/wifi.md#WifiGlobalState"
+    },
+    {
+      "module": "wifi",
+      "name": "ExpectedPhy",
+      "id": "ExpectedPhy",
+      "properties": [
+        "ExpectedPhy.band",
+        "ExpectedPhy.phy_id",
+        "ExpectedPhy.detected"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ExpectedPhy",
+      "markdown": "docs/reference/reseau/wifi.md#ExpectedPhy"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiAp",
+      "id": "WifiAp",
+      "properties": [
+        "WifiAp.id",
+        "WifiAp.name",
+        "WifiAp.status",
+        "WifiAp.capabilities",
+        "WifiAp.config"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAp"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiApStatus",
+      "id": "WifiApStatus",
+      "properties": [
+        "WifiApStatus.state",
+        "WifiApStatus.channel_width",
+        "WifiApStatus.primary_channel",
+        "WifiApStatus.secondary_channel",
+        "WifiApStatus.dfs_cac_remaining_time",
+        "WifiApStatus.dfs_disabled",
+        "WifiApStatus.temp_disable_remaining_time"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiApCapabilities",
+      "id": "WifiApCapabilities",
+      "properties": [
+        "WifiApCapabilities.2d4g",
+        "WifiApCapabilities.5g",
+        "WifiApCapabilities.6g",
+        "WifiApCapabilities.60g"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApCapabilities",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApCapabilities"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiApHtConfig",
+      "id": "WifiApHtConfig",
+      "properties": [
+        "WifiApHtConfig.ac_enabled",
+        "WifiApHtConfig.ht_enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHtConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApHtConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiApHeConfig",
+      "id": "WifiApHeConfig",
+      "properties": [
+        "WifiApHeConfig.enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHeConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApHeConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiApConfig",
+      "id": "WifiApConfig",
+      "properties": [
+        "WifiApConfig.band",
+        "WifiApConfig.channel_width",
+        "WifiApConfig.primary_channel",
+        "WifiApConfig.secondary_channel",
+        "WifiApConfig.dfs_enabled",
+        "WifiApConfig.ht",
+        "WifiApConfig.he"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiApChannelSurveyData",
+      "id": "WifiApChannelSurveyData",
+      "properties": [
+        "WifiApChannelSurveyData.timestamp",
+        "WifiApChannelSurveyData.busy_percent",
+        "WifiApChannelSurveyData.tx_percent",
+        "WifiApChannelSurveyData.rx_percent",
+        "WifiApChannelSurveyData.rx_bss_percent"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiAllowedComb",
+      "id": "WifiAllowedComb",
+      "properties": [
+        "WifiAllowedComb.band",
+        "WifiAllowedComb.channel_width",
+        "WifiAllowedComb.need_dfs",
+        "WifiAllowedComb.dfs_cac_time",
+        "WifiAllowedComb.psc",
+        "WifiAllowedComb.primary",
+        "WifiAllowedComb.secondary"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiStation",
+      "id": "WifiStation",
+      "properties": [
+        "WifiStation.id",
+        "WifiStation.mac",
+        "WifiStation.bssid",
+        "WifiStation.hostname",
+        "WifiStation.host",
+        "WifiStation.state",
+        "WifiStation.inactive",
+        "WifiStation.conn_duration",
+        "WifiStation.rx_bytes",
+        "WifiStation.tx_bytes",
+        "WifiStation.tx_rate",
+        "WifiStation.rx_rate",
+        "WifiStation.signal",
+        "WifiStation.flags",
+        "WifiStation.last_rx",
+        "WifiStation.last_tx"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiStationFlags",
+      "id": "WifiStationFlags",
+      "properties": [
+        "WifiStationFlags.legacy",
+        "WifiStationFlags.ht",
+        "WifiStationFlags.vht",
+        "WifiStationFlags.he",
+        "WifiStationFlags.authorized"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiStationStats",
+      "id": "WifiStationStats",
+      "properties": [
+        "WifiStationStats.bitrate",
+        "WifiStationStats.mcs",
+        "WifiStationStats.vht_mcs",
+        "WifiStationStats.width",
+        "WifiStationStats.shortgi"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationStats"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiBss",
+      "id": "WifiBss",
+      "properties": [
+        "WifiBss.id",
+        "WifiBss.phy_id",
+        "WifiBss.status",
+        "WifiBss.use_shared_params",
+        "WifiBss.config",
+        "WifiBss.bss_params",
+        "WifiBss.shared_bss_params",
+        "WifiBss.disable_wep"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiBssStatus",
+      "id": "WifiBssStatus",
+      "properties": [
+        "WifiBssStatus.state",
+        "WifiBssStatus.sta_count",
+        "WifiBssStatus.authorized_sta_count",
+        "WifiBssStatus.custom_key_ssid",
+        "WifiBssStatus.partners"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiBssConfig",
+      "id": "WifiBssConfig",
+      "properties": [
+        "WifiBssConfig.enabled",
+        "WifiBssConfig.ssid",
+        "WifiBssConfig.hide_ssid",
+        "WifiBssConfig.gcmp256",
+        "WifiBssConfig.encryption",
+        "WifiBssConfig.key",
+        "WifiBssConfig.eapol_version"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiNeighbor",
+      "id": "WifiNeighbor",
+      "properties": [
+        "WifiNeighbor.bssid",
+        "WifiNeighbor.ssid",
+        "WifiNeighbor.band",
+        "WifiNeighbor.channel_width",
+        "WifiNeighbor.channel",
+        "WifiNeighbor.secondary_channel",
+        "WifiNeighbor.signal",
+        "WifiNeighbor.capabilities"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiNeighborCap",
+      "id": "WifiNeighborCap",
+      "properties": [
+        "WifiNeighborCap.legacy",
+        "WifiNeighborCap.ht",
+        "WifiNeighborCap.vht"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighborCap",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighborCap"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiChannelUsage",
+      "id": "WifiChannelUsage",
+      "properties": [
+        "WifiChannelUsage.channel",
+        "WifiChannelUsage.band",
+        "WifiChannelUsage.noise_level",
+        "WifiChannelUsage.rx_busy_percent"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiChannelUsage",
+      "markdown": "docs/reference/reseau/wifi.md#WifiChannelUsage"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiPlanning",
+      "id": "WifiPlanning",
+      "properties": [
+        "WifiPlanning.use_planning",
+        "WifiPlanning.resolution",
+        "WifiPlanning.mapping"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiPlanning",
+      "markdown": "docs/reference/reseau/wifi.md#WifiPlanning"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiMacFilter",
+      "id": "WifiMacFilter",
+      "properties": [
+        "WifiMacFilter.id",
+        "WifiMacFilter.mac",
+        "WifiMacFilter.comment",
+        "WifiMacFilter.type",
+        "WifiMacFilter.hostname",
+        "WifiMacFilter.host"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiDiagItem",
+      "id": "WifiDiagItem",
+      "properties": [
+        "WifiDiagItem.ap_id",
+        "WifiDiagItem.bssid",
+        "WifiDiagItem.code",
+        "WifiDiagItem.severity"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiDiagItem",
+      "markdown": "docs/reference/reseau/wifi.md#WifiDiagItem"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiWpsCandidate",
+      "id": "WifiWpsCandidate",
+      "properties": [
+        "WifiWpsCandidate.bssid",
+        "WifiWpsCandidate.ssid",
+        "WifiWpsCandidate.bss_uuid",
+        "WifiWpsCandidate.band",
+        "WifiWpsCandidate.encryption",
+        "WifiWpsCandidate.wps_enabled",
+        "WifiWpsCandidate.state"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiWpsSession",
+      "id": "WifiWpsSession",
+      "properties": [
+        "WifiWpsSession.id",
+        "WifiWpsSession.bss_uuid",
+        "WifiWpsSession.ssid",
+        "WifiWpsSession.active",
+        "WifiWpsSession.result",
+        "WifiWpsSession.start_date",
+        "WifiWpsSession.end_date",
+        "WifiWpsSession.mac"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiCustomKeyConfig",
+      "id": "WifiCustomKeyConfig",
+      "properties": [
+        "WifiCustomKeyConfig.ssid",
+        "WifiCustomKeyConfig.ssid_read_only",
+        "WifiCustomKeyConfig.hide_ssid",
+        "WifiCustomKeyConfig.encryption"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyConfig",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyConfig"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiCustomKeyHost",
+      "id": "WifiCustomKeyHost",
+      "properties": [
+        "WifiCustomKeyHost.hostname",
+        "WifiCustomKeyHost.host"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyHost",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyHost"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiCustomKeyParams",
+      "id": "WifiCustomKeyParams",
+      "properties": [
+        "WifiCustomKeyParams.description",
+        "WifiCustomKeyParams.key",
+        "WifiCustomKeyParams.max_use_count",
+        "WifiCustomKeyParams.duration",
+        "WifiCustomKeyParams.access_type"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiCustomKey",
+      "id": "WifiCustomKey",
+      "properties": [
+        "WifiCustomKey.id",
+        "WifiCustomKey.remaining",
+        "WifiCustomKey.params",
+        "WifiCustomKey.users"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKey",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKey"
+    },
+    {
+      "module": "wifi",
+      "name": "TemporaryWifiDisable",
+      "id": "TemporaryWifiDisable",
+      "properties": [
+        "TemporaryWifiDisable.duration",
+        "TemporaryWifiDisable.keep",
+        "TemporaryWifiDisable.remaining"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TemporaryWifiDisable",
+      "markdown": "docs/reference/reseau/wifi.md#TemporaryWifiDisable"
+    },
+    {
+      "module": "wifi",
+      "name": "WifiMLOConfiguration",
+      "id": "WifiMLOConfiguration",
+      "properties": [
+        "WifiMLOConfiguration.partners"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMLOConfiguration",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMLOConfiguration"
+    }
+  ],
+  "properties": [
+    {
+      "module": "wifi",
+      "id": "WifiGlobalConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is wifi enabled",
+      "source_id": "WifiGlobalConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalConfig.enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiGlobalConfig.enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiGlobalConfig.mac_filter_state",
+      "signature": "mac_filter_state enum",
+      "description": "mac_filter_state Description disabled mac filter is disabled whitelist mac filter is enabled, using a whitelist blacklist mac filter is enabled, using a blacklist",
+      "source_id": "WifiGlobalConfig.mac_filter_state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalConfig.mac_filter_state",
+      "markdown": "docs/reference/reseau/wifi.md#WifiGlobalConfig.mac_filter_state"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiSteeringConfig.steering_level",
+      "signature": "steering_level int",
+      "description": "Wi-Fi steering level. Value Description 0 Wi-Fi steering is disabled 1 Devices are steered when they accept the change 2 Devices are steered more aggressively",
+      "source_id": "WifiSteeringConfig.steering_level",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiSteeringConfig.steering_level",
+      "markdown": "docs/reference/reseau/wifi.md#WifiSteeringConfig.steering_level"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiGlobalState.state",
+      "signature": "state enum Read-only",
+      "description": "wifi global state state Description enabled Wifi is enabled disabled Wi-Fi is disabled disabled_planning Wi-Fi is disabled by planning",
+      "source_id": "WifiGlobalState.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalState.state",
+      "markdown": "docs/reference/reseau/wifi.md#WifiGlobalState.state"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiGlobalState.expected_phys",
+      "signature": "expected_phys [] array of ExpectedPhy Read-only",
+      "description": "expected wifi cards",
+      "source_id": "WifiGlobalState.expected_phys",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalState.expected_phys",
+      "markdown": "docs/reference/reseau/wifi.md#WifiGlobalState.expected_phys"
+    },
+    {
+      "module": "wifi",
+      "id": "ExpectedPhy.band",
+      "signature": "band enum Read-only",
+      "description": "state Description 2d4g 2.4GHz band 5g 5GHz band 6g 6 GHz band 60g 60GHz band",
+      "source_id": "ExpectedPhy.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ExpectedPhy.band",
+      "markdown": "docs/reference/reseau/wifi.md#ExpectedPhy.band"
+    },
+    {
+      "module": "wifi",
+      "id": "ExpectedPhy.phy_id",
+      "signature": "phy_id int Read-only",
+      "description": "id of the phy",
+      "source_id": "ExpectedPhy.phy_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ExpectedPhy.phy_id",
+      "markdown": "docs/reference/reseau/wifi.md#ExpectedPhy.phy_id"
+    },
+    {
+      "module": "wifi",
+      "id": "ExpectedPhy.detected",
+      "signature": "detected bool Read-only",
+      "description": "true if the wifi card is detected",
+      "source_id": "ExpectedPhy.detected",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ExpectedPhy.detected",
+      "markdown": "docs/reference/reseau/wifi.md#ExpectedPhy.detected"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAp.id",
+      "signature": "id int Read-only",
+      "description": "wifi ap id",
+      "source_id": "WifiAp.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp.id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAp.id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAp.name",
+      "signature": "name string Read-only",
+      "description": "wifi ap name",
+      "source_id": "WifiAp.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp.name",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAp.name"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAp.status",
+      "signature": "status WifiApStatus Read-only",
+      "description": "ap status",
+      "source_id": "WifiAp.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp.status",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAp.status"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAp.capabilities",
+      "signature": "capabilities WifiApCapabilities Read-only",
+      "description": "ap capabilities",
+      "source_id": "WifiAp.capabilities",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp.capabilities",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAp.capabilities"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAp.config",
+      "signature": "config WifiApConfig",
+      "description": "ap configuration",
+      "source_id": "WifiAp.config",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp.config",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAp.config"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.state",
+      "signature": "state enum Read-only",
+      "description": "state Description scanning Ap is probing wifi channels no_param Ap is not configured bad_param Ap has an invalid configuration disabled Ap is permanently disabled disabled_planning Ap is currently disabled according to planning disabled_power_saving Ap is currently disabled according to power save disabled_temp Ap is currently disabled temporarily no_active_bss Ap has no active BSS starting Ap is starting starting Ap is stopping acs Ap is selecting the best available channel ht_scan Ap is scanning for other access point dfs Ap is performing dynamic frequency selection active Ap is active failed Ap has failed to start",
+      "source_id": "WifiApStatus.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.state",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.state"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.channel_width",
+      "signature": "channel_width int Read-only",
+      "description": "effective channel width (in MHz)",
+      "source_id": "WifiApStatus.channel_width",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.channel_width",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.channel_width"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.primary_channel",
+      "signature": "primary_channel int Read-only",
+      "description": "effective primary channel",
+      "source_id": "WifiApStatus.primary_channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.primary_channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.primary_channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.secondary_channel",
+      "signature": "secondary_channel int Read-only",
+      "description": "effective secondary channel",
+      "source_id": "WifiApStatus.secondary_channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.secondary_channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.secondary_channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.dfs_cac_remaining_time",
+      "signature": "dfs_cac_remaining_time int Read-only",
+      "description": "time left in dfs state",
+      "source_id": "WifiApStatus.dfs_cac_remaining_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.dfs_cac_remaining_time",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.dfs_cac_remaining_time"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.dfs_disabled",
+      "signature": "dfs_disabled bool Read-only",
+      "description": "Indicates if DFS channels are unavailable regardless of how the WifiApConfig is configured for this phy. This is enabled when your freebox is in compatibility mode for other Freebox wifi products.",
+      "source_id": "WifiApStatus.dfs_disabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.dfs_disabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.dfs_disabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApStatus.temp_disable_remaining_time",
+      "signature": "temp_disable_remaining_time int Read-only",
+      "description": "Optional remaining time this access point is temporarily disabled.",
+      "source_id": "WifiApStatus.temp_disable_remaining_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus.temp_disable_remaining_time",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApStatus.temp_disable_remaining_time"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApCapabilities.2d4g",
+      "signature": "2d4g int Read-only",
+      "description": "map of capabilities in 2.4 GHz band",
+      "source_id": "WifiApCapabilities.2d4g",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApCapabilities.2d4g",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApCapabilities.2d4g"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApCapabilities.5g",
+      "signature": "5g int Read-only",
+      "description": "map of capabilities in 5 GHz band",
+      "source_id": "WifiApCapabilities.5g",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApCapabilities.5g",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApCapabilities.5g"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApCapabilities.6g",
+      "signature": "6g int Read-only",
+      "description": "map of capabilities in 6 GHz band",
+      "source_id": "WifiApCapabilities.6g",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApCapabilities.6g",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApCapabilities.6g"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApCapabilities.60g",
+      "signature": "60g int Read-only",
+      "description": "map of capabilities in 60 GHz band",
+      "source_id": "WifiApCapabilities.60g",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApCapabilities.60g",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApCapabilities.60g"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApHtConfig.ac_enabled",
+      "signature": "ac_enabled bool",
+      "description": "enable 802.11ac",
+      "source_id": "WifiApHtConfig.ac_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHtConfig.ac_enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApHtConfig.ac_enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApHtConfig.ht_enabled",
+      "signature": "ht_enabled bool",
+      "description": "enable 802.11n [UNSTABLE]",
+      "source_id": "WifiApHtConfig.ht_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHtConfig.ht_enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApHtConfig.ht_enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApHeConfig.enabled",
+      "signature": "enabled bool",
+      "description": "enable 802.11ax (HE) [UNSTABLE]",
+      "source_id": "WifiApHeConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHeConfig.enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApHeConfig.enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.band",
+      "signature": "band enum",
+      "description": "band Description 2d4g 2.4 GHz 5g 5 GHz 6g 6 GHz 60g 60 GHz",
+      "source_id": "WifiApConfig.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.band",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.band"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.channel_width",
+      "signature": "channel_width int",
+      "description": "wanted channel width (in MHz) : 20 MHz 40 MHz 80 MHz 160 MHz",
+      "source_id": "WifiApConfig.channel_width",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.channel_width",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.channel_width"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.primary_channel",
+      "signature": "primary_channel int",
+      "description": "wanted primary channel, value of 0 means automatic selection",
+      "source_id": "WifiApConfig.primary_channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.primary_channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.primary_channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.secondary_channel",
+      "signature": "secondary_channel int",
+      "description": "wanted secondary channel, value of 0 means automatic selection",
+      "source_id": "WifiApConfig.secondary_channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.secondary_channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.secondary_channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.dfs_enabled",
+      "signature": "dfs_enabled bool",
+      "description": "enable channels that require DFS",
+      "source_id": "WifiApConfig.dfs_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.dfs_enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.dfs_enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.ht",
+      "signature": "ht WifiApHtConfig",
+      "description": "wifi ht config",
+      "source_id": "WifiApConfig.ht",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.ht",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.ht"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApConfig.he",
+      "signature": "he WifiApHeConfig",
+      "description": "wifi HE config",
+      "source_id": "WifiApConfig.he",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig.he",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApConfig.he"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApChannelSurveyData.timestamp",
+      "signature": "timestamp int",
+      "description": "timestamp at which the survey data was retrieved",
+      "source_id": "WifiApChannelSurveyData.timestamp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData.timestamp",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData.timestamp"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApChannelSurveyData.busy_percent",
+      "signature": "busy_percent int",
+      "description": "percentage of time the channel was sensed busy",
+      "source_id": "WifiApChannelSurveyData.busy_percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData.busy_percent",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData.busy_percent"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApChannelSurveyData.tx_percent",
+      "signature": "tx_percent int",
+      "description": "percentage of time spent sending on the channel",
+      "source_id": "WifiApChannelSurveyData.tx_percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData.tx_percent",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData.tx_percent"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApChannelSurveyData.rx_percent",
+      "signature": "rx_percent int",
+      "description": "percentage of time spent receiving Wi-Fi traffic on the channel",
+      "source_id": "WifiApChannelSurveyData.rx_percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData.rx_percent",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData.rx_percent"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiApChannelSurveyData.rx_bss_percent",
+      "signature": "rx_bss_percent int",
+      "description": "percentage of time spent receiving Wi-Fi traffic for a local BSS",
+      "source_id": "WifiApChannelSurveyData.rx_bss_percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData.rx_bss_percent",
+      "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData.rx_bss_percent"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.band",
+      "signature": "band enum Read-only",
+      "description": "the band for which the combination can be used band Description 2d4g 2.4 GHz 5g 5 GHz 60g 60 GHz",
+      "source_id": "WifiAllowedComb.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.band",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.band"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.channel_width",
+      "signature": "channel_width string Read-only",
+      "description": "the channel_width for which the combination can be used",
+      "source_id": "WifiAllowedComb.channel_width",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.channel_width",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.channel_width"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.need_dfs",
+      "signature": "need_dfs bool Read-only",
+      "description": "does this combination requires DFS. You should only allow this combination if ap has allowed dfs.",
+      "source_id": "WifiAllowedComb.need_dfs",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.need_dfs",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.need_dfs"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.dfs_cac_time",
+      "signature": "dfs_cac_time int Read-only",
+      "description": "time required in dfs state before being able to start the AP.",
+      "source_id": "WifiAllowedComb.dfs_cac_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.dfs_cac_time",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.dfs_cac_time"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.psc",
+      "signature": "psc bool Read-only",
+      "description": "is this using a PSC channel as primary. Some phones/PCs can only see 6GHz APs when their primary channel is a Preferred Scanning Channel (PSC).",
+      "source_id": "WifiAllowedComb.psc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.psc",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.psc"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.primary",
+      "signature": "primary int Read-only",
+      "description": "primary channel",
+      "source_id": "WifiAllowedComb.primary",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.primary",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.primary"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiAllowedComb.secondary",
+      "signature": "secondary int Read-only",
+      "description": "secondary channel (zero means that secondary channel will not be used)",
+      "source_id": "WifiAllowedComb.secondary",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb.secondary",
+      "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb.secondary"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.id",
+      "signature": "id string Read-only",
+      "description": "station id",
+      "source_id": "WifiStation.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.mac",
+      "signature": "mac string Read-only",
+      "description": "client MAC address",
+      "source_id": "WifiStation.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.mac",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.mac"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.bssid",
+      "signature": "bssid string Read-only",
+      "description": "bssid on which the client is associated",
+      "source_id": "WifiStation.bssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.bssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.bssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.hostname",
+      "signature": "hostname string Read-only",
+      "description": "client host name",
+      "source_id": "WifiStation.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.hostname",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.hostname"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.host",
+      "signature": "host LanHost Read-only",
+      "description": "client host information",
+      "source_id": "WifiStation.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.host",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.host"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.state",
+      "signature": "state enum Read-only",
+      "description": "state Description associated station is associated authenticated station is authenticated",
+      "source_id": "WifiStation.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.state",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.state"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.inactive",
+      "signature": "inactive int Read-only",
+      "description": "inactive duration (in seconds)",
+      "source_id": "WifiStation.inactive",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.inactive",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.inactive"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.conn_duration",
+      "signature": "conn_duration int Read-only",
+      "description": "connection duration (in seconds)",
+      "source_id": "WifiStation.conn_duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.conn_duration",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.conn_duration"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.rx_bytes",
+      "signature": "rx_bytes int Read-only",
+      "description": "received bytes (from station to Freebox)",
+      "source_id": "WifiStation.rx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.rx_bytes",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.rx_bytes"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.tx_bytes",
+      "signature": "tx_bytes int Read-only",
+      "description": "transmitted bytes (from Freebox to station)",
+      "source_id": "WifiStation.tx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.tx_bytes",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.tx_bytes"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.tx_rate",
+      "signature": "tx_rate int Read-only",
+      "description": "reception data rate (in bytes/s)",
+      "source_id": "WifiStation.tx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.tx_rate",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.tx_rate"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.rx_rate",
+      "signature": "rx_rate int Read-only",
+      "description": "transmission data rate (in bytes/s)",
+      "source_id": "WifiStation.rx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.rx_rate",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.rx_rate"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.signal",
+      "signature": "signal int Read-only",
+      "description": "signal attenuation (in dB)",
+      "source_id": "WifiStation.signal",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.signal",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.signal"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.flags",
+      "signature": "flags WifiStationFlags Read-only",
+      "description": "station flags",
+      "source_id": "WifiStation.flags",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.flags",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.flags"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.last_rx",
+      "signature": "last_rx WifiStationStats Read-only",
+      "description": "last rx stats",
+      "source_id": "WifiStation.last_rx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.last_rx",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.last_rx"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStation.last_tx",
+      "signature": "last_tx WifiStationStats Read-only",
+      "description": "last tx stats",
+      "source_id": "WifiStation.last_tx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation.last_tx",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStation.last_tx"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationFlags.legacy",
+      "signature": "legacy bool Read-only",
+      "description": "does station uses legacy wifi (802.11a, 802.11b)",
+      "source_id": "WifiStationFlags.legacy",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags.legacy",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags.legacy"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationFlags.ht",
+      "signature": "ht bool Read-only",
+      "description": "does station support ht (802.11n)",
+      "source_id": "WifiStationFlags.ht",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags.ht",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags.ht"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationFlags.vht",
+      "signature": "vht bool Read-only",
+      "description": "does station support vht (802.11ac)",
+      "source_id": "WifiStationFlags.vht",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags.vht",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags.vht"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationFlags.he",
+      "signature": "he bool Read-only",
+      "description": "does station support he (802.11ax)",
+      "source_id": "WifiStationFlags.he",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags.he",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags.he"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationFlags.authorized",
+      "signature": "authorized bool Read-only",
+      "description": "is the station authenticated",
+      "source_id": "WifiStationFlags.authorized",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags.authorized",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags.authorized"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationStats.bitrate",
+      "signature": "bitrate int Read-only",
+      "description": "physical link rate (in 1/10th of MBit/s), -1 if unknown",
+      "source_id": "WifiStationStats.bitrate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats.bitrate",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationStats.bitrate"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationStats.mcs",
+      "signature": "mcs int Read-only",
+      "description": "current link mcs, -1 if not used",
+      "source_id": "WifiStationStats.mcs",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats.mcs",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationStats.mcs"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationStats.vht_mcs",
+      "signature": "vht_mcs int Read-only",
+      "description": "current link vht mcs, -1 if not used",
+      "source_id": "WifiStationStats.vht_mcs",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats.vht_mcs",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationStats.vht_mcs"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationStats.width",
+      "signature": "width string Read-only",
+      "description": "current channel width",
+      "source_id": "WifiStationStats.width",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats.width",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationStats.width"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiStationStats.shortgi",
+      "signature": "shortgi bool Read-only",
+      "description": "is shortgi enabled",
+      "source_id": "WifiStationStats.shortgi",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats.shortgi",
+      "markdown": "docs/reference/reseau/wifi.md#WifiStationStats.shortgi"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.id",
+      "signature": "id int Read-only",
+      "description": "bss id",
+      "source_id": "WifiBss.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.phy_id",
+      "signature": "phy_id string Read-only",
+      "description": "associated AP id",
+      "source_id": "WifiBss.phy_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.phy_id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.phy_id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.status",
+      "signature": "status WifiBssStatus Read-only",
+      "description": "bss status",
+      "source_id": "WifiBss.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.status",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.status"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.use_shared_params",
+      "signature": "use_shared_params bool",
+      "description": "if set to True the bss will use the shared parameters stored under shared_bss_params if not the bss will use a configuration specific to this bss stored under bss_params when you want to edit the bss config you should change the config values using values from bss_params or shared_bss_params as a source and update use_shared_params accordingly.",
+      "source_id": "WifiBss.use_shared_params",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.use_shared_params",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.use_shared_params"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.config",
+      "signature": "config WifiBssConfig",
+      "description": "bss configuration (use this field for editing)",
+      "source_id": "WifiBss.config",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.config",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.config"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.bss_params",
+      "signature": "bss_params WifiBssConfig Read-only",
+      "description": "current configuration specific to this bss",
+      "source_id": "WifiBss.bss_params",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.bss_params",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.bss_params"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.shared_bss_params",
+      "signature": "shared_bss_params WifiBssConfig Read-only",
+      "description": "current configuration for shared bss config",
+      "source_id": "WifiBss.shared_bss_params",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.shared_bss_params",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.shared_bss_params"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBss.disable_wep",
+      "signature": "disable_wep bool Read-only",
+      "description": "Whether or not this BSS can work with wep encryption or not",
+      "source_id": "WifiBss.disable_wep",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss.disable_wep",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBss.disable_wep"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssStatus.state",
+      "signature": "state enum Read-only",
+      "description": "state Description phy_stopped associated AP is stopped no_param bss is missing config bad_param bss has an invalid config disabled bss is disabled temp_disabled bss has been temporary disabled starting bss is starting active bss is active failed bss has failed to start",
+      "source_id": "WifiBssStatus.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus.state",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus.state"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssStatus.sta_count",
+      "signature": "sta_count int Read-only",
+      "description": "number of stations for this bss",
+      "source_id": "WifiBssStatus.sta_count",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus.sta_count",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus.sta_count"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssStatus.authorized_sta_count",
+      "signature": "authorized_sta_count int Read-only",
+      "description": "number of authenticated stations for this bss",
+      "source_id": "WifiBssStatus.authorized_sta_count",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus.authorized_sta_count",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus.authorized_sta_count"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssStatus.custom_key_ssid",
+      "signature": "custom_key_ssid string Read-only",
+      "description": "SSID to use with custom keys",
+      "source_id": "WifiBssStatus.custom_key_ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus.custom_key_ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus.custom_key_ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssStatus.partners",
+      "signature": "partners [int] Read-only",
+      "description": "The currently active MLO partners\u2019s AP for this BSS. Can be empty if MLO is disabled. See the MLO chapter for more info",
+      "source_id": "WifiBssStatus.partners",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus.partners",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus.partners"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.enabled",
+      "signature": "enabled bool",
+      "description": "enable this BSS. Note that if you want the AP to completely stop emitting wifi you should use WifiGlobalConfig enabled attribute.",
+      "source_id": "WifiBssConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.ssid",
+      "signature": "ssid str",
+      "description": "bss displayed name",
+      "source_id": "WifiBssConfig.ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.hide_ssid",
+      "signature": "hide_ssid str",
+      "description": "don\u2019t show bss in bss list",
+      "source_id": "WifiBssConfig.hide_ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.hide_ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.hide_ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.gcmp256",
+      "signature": "gcmp256 str",
+      "description": "Whether or not to use GCMP-256 (only in WPA3 \u0026 for box that supports 802.11-be)",
+      "source_id": "WifiBssConfig.gcmp256",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.gcmp256",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.gcmp256"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.encryption",
+      "signature": "encryption enum",
+      "description": "encryption Description wep wep (should not use) wpa_psk_auto wpa1 CCMP\u002BTKIP (should not use) wpa_psk_tkip wpa1 TKIP (should not use) wpa_psk_ccmp wpa1 CCMP (should not use) wpa12_psk_auto wpa1\u002Bwpa2 CCMP\u002BTKIP (should not use) wpa2_psk_auto wpa2 CCMP\u002BTKIP (should not use) wpa2_psk_tkip wpa2 TKIP (should not use) wpa2_psk_ccmp wpa2 CCMP wpa23_psk_ccmp wpa2\u002Bwpa3 CCMP WPA3-personal transition mode wpa23_psk_ccmp_mrsno wpa2\u002Bwpa3 CCMP WPA3-personal compatibility mode wpa3_psk_ccmp wpa3 CCMP WPA3-personal only mode",
+      "source_id": "WifiBssConfig.encryption",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.encryption",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.encryption"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.key",
+      "signature": "key string",
+      "description": "wifi key \u201C **** \u201D will be returned when insufficient permission",
+      "source_id": "WifiBssConfig.key",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.key",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.key"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiBssConfig.eapol_version",
+      "signature": "eapol_version int Read-only",
+      "description": "eapol version",
+      "source_id": "WifiBssConfig.eapol_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.eapol_version",
+      "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig.eapol_version"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.bssid",
+      "signature": "bssid string Read-only",
+      "description": "neighbor bssid",
+      "source_id": "WifiNeighbor.bssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.bssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.bssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.ssid",
+      "signature": "ssid string Read-only",
+      "description": "neighbor ssid",
+      "source_id": "WifiNeighbor.ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.band",
+      "signature": "band enum Read-only",
+      "description": "the band for which the combination can be used band Description 2d4g 2.4 GHz 5g 5 GHz 60g 60 GHz",
+      "source_id": "WifiNeighbor.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.band",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.band"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.channel_width",
+      "signature": "channel_width int Read-only",
+      "description": "neighbor channel_width",
+      "source_id": "WifiNeighbor.channel_width",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.channel_width",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.channel_width"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.channel",
+      "signature": "channel int Read-only",
+      "description": "neighbor primary channel",
+      "source_id": "WifiNeighbor.channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.secondary_channel",
+      "signature": "secondary_channel int Read-only",
+      "description": "neighbor secondary channel (0 for unused)",
+      "source_id": "WifiNeighbor.secondary_channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.secondary_channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.secondary_channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.signal",
+      "signature": "signal int Read-only",
+      "description": "signal attenuation in dB",
+      "source_id": "WifiNeighbor.signal",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.signal",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.signal"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighbor.capabilities",
+      "signature": "capabilities WifiNeighborCap Read-only",
+      "description": "neighbor capabilities",
+      "source_id": "WifiNeighbor.capabilities",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor.capabilities",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor.capabilities"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighborCap.legacy",
+      "signature": "legacy bool Read-only",
+      "description": "neighbor uses legacy wifi (802.11a, 802.11b)",
+      "source_id": "WifiNeighborCap.legacy",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighborCap.legacy",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighborCap.legacy"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighborCap.ht",
+      "signature": "ht bool Read-only",
+      "description": "neighbor supports ht (802.11n)",
+      "source_id": "WifiNeighborCap.ht",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighborCap.ht",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighborCap.ht"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiNeighborCap.vht",
+      "signature": "vht bool Read-only",
+      "description": "neighbor supports vht (802.11ac)",
+      "source_id": "WifiNeighborCap.vht",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighborCap.vht",
+      "markdown": "docs/reference/reseau/wifi.md#WifiNeighborCap.vht"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiChannelUsage.channel",
+      "signature": "channel int Read-only",
+      "description": "channel number",
+      "source_id": "WifiChannelUsage.channel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiChannelUsage.channel",
+      "markdown": "docs/reference/reseau/wifi.md#WifiChannelUsage.channel"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiChannelUsage.band",
+      "signature": "band enum Read-only",
+      "description": "band Description 2d4g 2.4 GHz 5g 5 GHz 60g 60 GHz",
+      "source_id": "WifiChannelUsage.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiChannelUsage.band",
+      "markdown": "docs/reference/reseau/wifi.md#WifiChannelUsage.band"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiChannelUsage.noise_level",
+      "signature": "noise_level int Read-only",
+      "description": "noise level on channel in dB",
+      "source_id": "WifiChannelUsage.noise_level",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiChannelUsage.noise_level",
+      "markdown": "docs/reference/reseau/wifi.md#WifiChannelUsage.noise_level"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiChannelUsage.rx_busy_percent",
+      "signature": "rx_busy_percent int Read-only",
+      "description": "rx channel busy time percentage",
+      "source_id": "WifiChannelUsage.rx_busy_percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiChannelUsage.rx_busy_percent",
+      "markdown": "docs/reference/reseau/wifi.md#WifiChannelUsage.rx_busy_percent"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiPlanning.use_planning",
+      "signature": "use_planning bool",
+      "description": "is the planning enabled",
+      "source_id": "WifiPlanning.use_planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiPlanning.use_planning",
+      "markdown": "docs/reference/reseau/wifi.md#WifiPlanning.use_planning"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiPlanning.resolution",
+      "signature": "resolution int Read-only",
+      "description": "planning resolution (number of slots per day)",
+      "source_id": "WifiPlanning.resolution",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiPlanning.resolution",
+      "markdown": "docs/reference/reseau/wifi.md#WifiPlanning.resolution"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiPlanning.mapping",
+      "signature": "mapping [] array of str",
+      "description": "mapping for planning : \u201Con\u201D or \u201Coff\u201D mapping[0] is monday at 0:0 mapping[7 * resolution - 1] is sunday last slot (each slot has a duration of 60 * 24 / resolution minutes)",
+      "source_id": "WifiPlanning.mapping",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiPlanning.mapping",
+      "markdown": "docs/reference/reseau/wifi.md#WifiPlanning.mapping"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMacFilter.id",
+      "signature": "id string Read-only",
+      "description": "filter id",
+      "source_id": "WifiMacFilter.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter.id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter.id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMacFilter.mac",
+      "signature": "mac string Read-only",
+      "description": "MAC address to filter",
+      "source_id": "WifiMacFilter.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter.mac",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter.mac"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMacFilter.comment",
+      "signature": "comment string",
+      "description": "comment",
+      "source_id": "WifiMacFilter.comment",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter.comment",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter.comment"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMacFilter.type",
+      "signature": "type enum",
+      "description": "type Description whitelist if mac_filter is set to whitelist this station will be allowed blacklist if mac_filter is set to blacklist this station will be rejected",
+      "source_id": "WifiMacFilter.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter.type",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter.type"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMacFilter.hostname",
+      "signature": "hostname string Read-only",
+      "description": "host name when available",
+      "source_id": "WifiMacFilter.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter.hostname",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter.hostname"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMacFilter.host",
+      "signature": "host LanHost Read-only",
+      "description": "host information when available",
+      "source_id": "WifiMacFilter.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter.host",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter.host"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiDiagItem.ap_id",
+      "signature": "ap_id int",
+      "description": "When this item relates to an AP, this indicates the AP\u2019s index When this item relates to a BSS, this field is unset",
+      "source_id": "WifiDiagItem.ap_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiDiagItem.ap_id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiDiagItem.ap_id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiDiagItem.bssid",
+      "signature": "bssid str",
+      "description": "When this item relates to a BSS, this field indicates the bss\u2019s id When this item relates to an AP, this field is unset",
+      "source_id": "WifiDiagItem.bssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiDiagItem.bssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiDiagItem.bssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiDiagItem.code",
+      "signature": "code enum",
+      "description": "The code identifying which param is faulty/suboptimal Code Description all This is a the same as doing a full reset of this AP/BSS network_disabled This changes the \u2018enabled\u2019 field in WifiBssConfig network_security This changes the \u2018encryption\u2019 field in WifiBssConfig network_visibility This changes the \u2018hide_ssid\u2019 field in WifiBssConfig channel_width This changes the \u2018channel_width\u2019 field in WifiApConfig channel_value This changes the \u2018channel\u2019 \u0026 \u2018secondary_channel\u2019 fields in WifiApConfig",
+      "source_id": "WifiDiagItem.code",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiDiagItem.code",
+      "markdown": "docs/reference/reseau/wifi.md#WifiDiagItem.code"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiDiagItem.severity",
+      "signature": "severity enum",
+      "description": "Severity Description minor minor problems don\u2019t have performance/compatibility implications major major problems do",
+      "source_id": "WifiDiagItem.severity",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiDiagItem.severity",
+      "markdown": "docs/reference/reseau/wifi.md#WifiDiagItem.severity"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.bssid",
+      "signature": "bssid string Read-only",
+      "description": "bss id",
+      "source_id": "WifiWpsCandidate.bssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.bssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.bssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.ssid",
+      "signature": "ssid string Read-only",
+      "description": "wifi network name",
+      "source_id": "WifiWpsCandidate.ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.bss_uuid",
+      "signature": "bss_uuid string Read-only",
+      "description": "bss uuid for wps",
+      "source_id": "WifiWpsCandidate.bss_uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.bss_uuid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.bss_uuid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.band",
+      "signature": "band string Read-only",
+      "description": "band Description 2d4g 2.4 GHz 5g 5 GHz 60g 60 GHz",
+      "source_id": "WifiWpsCandidate.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.band",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.band"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.encryption",
+      "signature": "encryption enum Read-only",
+      "description": "currently configured encryption mode see WifiBssConfig encryption field",
+      "source_id": "WifiWpsCandidate.encryption",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.encryption",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.encryption"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.wps_enabled",
+      "signature": "wps_enabled bool Read-only",
+      "description": "is wps enabled for this bss",
+      "source_id": "WifiWpsCandidate.wps_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.wps_enabled",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.wps_enabled"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsCandidate.state",
+      "signature": "state enum Read-only",
+      "description": "the current state of the associated ap see WifiBssStatus state",
+      "source_id": "WifiWpsCandidate.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate.state",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate.state"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.id",
+      "signature": "id int Read-only",
+      "description": "wps session id",
+      "source_id": "WifiWpsSession.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.bss_uuid",
+      "signature": "bss_uuid string Read-only",
+      "description": "bss wps uuid",
+      "source_id": "WifiWpsSession.bss_uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.bss_uuid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.bss_uuid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.ssid",
+      "signature": "ssid string Read-only",
+      "description": "ssid",
+      "source_id": "WifiWpsSession.ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.active",
+      "signature": "active bool Read-only",
+      "description": "is the session active",
+      "source_id": "WifiWpsSession.active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.active",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.active"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.result",
+      "signature": "result enum Read-only",
+      "description": "result of the wps session result Description success success user_canceled canceled by user self_canceled canceled by restart of bss failed_timeout timeout while waiting for station failed_overlap another wps session was active failed_unknown unknown failure",
+      "source_id": "WifiWpsSession.result",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.result",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.result"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.start_date",
+      "signature": "start_date int Read-only",
+      "description": "session start date (timestamp)",
+      "source_id": "WifiWpsSession.start_date",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.start_date",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.start_date"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.end_date",
+      "signature": "end_date enum Read-only",
+      "description": "session end date (timestamp)",
+      "source_id": "WifiWpsSession.end_date",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.end_date",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.end_date"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiWpsSession.mac",
+      "signature": "mac string Read-only",
+      "description": "mac of the associated client (in case of success)",
+      "source_id": "WifiWpsSession.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession.mac",
+      "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession.mac"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyConfig.ssid",
+      "signature": "ssid string",
+      "description": "The name of the dedicated wifi network",
+      "source_id": "WifiCustomKeyConfig.ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyConfig.ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyConfig.ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyConfig.ssid_read_only",
+      "signature": "ssid_read_only bool Read-only",
+      "description": "When true, the SSID name cannot be changed.",
+      "source_id": "WifiCustomKeyConfig.ssid_read_only",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyConfig.ssid_read_only",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyConfig.ssid_read_only"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyConfig.hide_ssid",
+      "signature": "hide_ssid bool Read-only",
+      "description": "When true, the SSID used for guest network is hidden.",
+      "source_id": "WifiCustomKeyConfig.hide_ssid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyConfig.hide_ssid",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyConfig.hide_ssid"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyConfig.encryption",
+      "signature": "encryption enum Read-only",
+      "description": "Encryption used for guest Wi-Fi network.",
+      "source_id": "WifiCustomKeyConfig.encryption",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyConfig.encryption",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyConfig.encryption"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyHost.hostname",
+      "signature": "hostname string Read-only",
+      "description": "host name",
+      "source_id": "WifiCustomKeyHost.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyHost.hostname",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyHost.hostname"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyHost.host",
+      "signature": "host LanHost Read-only",
+      "description": "optional host information from Lan Browser (if available)",
+      "source_id": "WifiCustomKeyHost.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyHost.host",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyHost.host"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyParams.description",
+      "signature": "description string",
+      "description": "description of the custom key",
+      "source_id": "WifiCustomKeyParams.description",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams.description",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams.description"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyParams.key",
+      "signature": "key string",
+      "description": "Wi-Fi password for this custom access \u201C **** \u201D will be returned when insufficient permission",
+      "source_id": "WifiCustomKeyParams.key",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams.key",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams.key"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyParams.max_use_count",
+      "signature": "max_use_count int",
+      "description": "Number of different hosts that can connect to this network (maximum 127) 0 has special meaning, it means unlimited number of users.",
+      "source_id": "WifiCustomKeyParams.max_use_count",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams.max_use_count",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams.max_use_count"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyParams.duration",
+      "signature": "duration int",
+      "description": "Number of seconds before the custom access is revoked",
+      "source_id": "WifiCustomKeyParams.duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams.duration",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams.duration"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKeyParams.access_type",
+      "signature": "access_type enum",
+      "description": "access_type Description full stations will get full access to local network \u002B internet net_only stations connected using this custom key will be isolated and won\u2019t have access to local network devices",
+      "source_id": "WifiCustomKeyParams.access_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams.access_type",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams.access_type"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKey.id",
+      "signature": "id int Read-only",
+      "description": "custom key id",
+      "source_id": "WifiCustomKey.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKey.id",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKey.id"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKey.remaining",
+      "signature": "remaining int Read-only",
+      "description": "time remaining before the access (seconds) if 0 then it does not expire",
+      "source_id": "WifiCustomKey.remaining",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKey.remaining",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKey.remaining"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKey.params",
+      "signature": "params WifiCustomKeyParams",
+      "description": "custom key parameters",
+      "source_id": "WifiCustomKey.params",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKey.params",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKey.params"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiCustomKey.users",
+      "signature": "users [] array of WifiCustomKeyHost Read-only",
+      "description": "list of hosts that used the custom key",
+      "source_id": "WifiCustomKey.users",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKey.users",
+      "markdown": "docs/reference/reseau/wifi.md#WifiCustomKey.users"
+    },
+    {
+      "module": "wifi",
+      "id": "TemporaryWifiDisable.duration",
+      "signature": "duration int Write-only",
+      "description": "temporary disable duration",
+      "source_id": "TemporaryWifiDisable.duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TemporaryWifiDisable.duration",
+      "markdown": "docs/reference/reseau/wifi.md#TemporaryWifiDisable.duration"
+    },
+    {
+      "module": "wifi",
+      "id": "TemporaryWifiDisable.keep",
+      "signature": "keep enum Write-only",
+      "description": "specify a wifi band to keep active keep Description 2d4g keep only 2,4Ghz band active 5g keep only 5GHz bands active 6g keep only 6GHz band active",
+      "source_id": "TemporaryWifiDisable.keep",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TemporaryWifiDisable.keep",
+      "markdown": "docs/reference/reseau/wifi.md#TemporaryWifiDisable.keep"
+    },
+    {
+      "module": "wifi",
+      "id": "TemporaryWifiDisable.remaining",
+      "signature": "remaining int Read-only",
+      "description": "remaining seconds the wifi is temporarily disabled. Set to 0 to stop the temporary wifi disabling period.",
+      "source_id": "TemporaryWifiDisable.remaining",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TemporaryWifiDisable.remaining",
+      "markdown": "docs/reference/reseau/wifi.md#TemporaryWifiDisable.remaining"
+    },
+    {
+      "module": "wifi",
+      "id": "WifiMLOConfiguration.partners",
+      "signature": "partners [int]",
+      "description": "List of phys participating in the MLD for the BSS An empty array means MLO is disabled An array with only the BSS\u2019s AP index in it means SLO (single link mode) The allowed combinations are retrieved by the mlo/allowed_comb api.",
+      "source_id": "WifiMLOConfiguration.partners",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMLOConfiguration.partners",
+      "markdown": "docs/reference/reseau/wifi.md#WifiMLOConfiguration.partners"
+    }
+  ],
+  "events": []
+}

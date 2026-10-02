@@ -1,0 +1,149 @@
+{
+  "module": {
+    "module": "share",
+    "title": "File Sharing Link",
+    "category": "fichiers-telechargements",
+    "path": "docs/reference/fichiers-telechargements/share.md",
+    "http_signatures": 4,
+    "objects": 1,
+    "properties": 5,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#file-sharing-link",
+    "source_pre_blocks": 13,
+    "markdown_code_blocks": 13,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "share",
+      "method": "GET",
+      "documented_path": "/api/v8/share_link/",
+      "path_template": "/api/v{major}/share_link/",
+      "documented_major": 8,
+      "title": "Retrieve a File Sharing link",
+      "id": "get--api-v8-share_link-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-share_link-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#get--api-v8-share_link-",
+      "referenced_objects": [
+        "ShareLink"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-share_link-"
+    },
+    {
+      "module": "share",
+      "method": "GET",
+      "documented_path": "/api/v8/share_link/{token}",
+      "path_template": "/api/v{major}/share_link/{token}",
+      "documented_major": 8,
+      "title": "Retrieve a File Sharing link",
+      "id": "get--api-v8-share_link-token",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-share_link-token",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#get--api-v8-share_link-token",
+      "referenced_objects": [
+        "ShareLink"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-share_link-token"
+    },
+    {
+      "module": "share",
+      "method": "DELETE",
+      "documented_path": "/api/v8/share_link/{token}",
+      "path_template": "/api/v{major}/share_link/{token}",
+      "documented_major": 8,
+      "title": "Delete a File Sharing link",
+      "id": "delete--api-v8-share_link-token",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-share_link-token",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#delete--api-v8-share_link-token",
+      "referenced_objects": [
+        "ShareLink"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-share_link-token"
+    },
+    {
+      "module": "share",
+      "method": "POST",
+      "documented_path": "/api/v8/share_link/",
+      "path_template": "/api/v{major}/share_link/",
+      "documented_major": 8,
+      "title": "Create a File Sharing link",
+      "id": "post--api-v8-share_link-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-share_link-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#post--api-v8-share_link-",
+      "referenced_objects": [
+        "ShareLink"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-share_link-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "share",
+      "name": "ShareLink",
+      "id": "ShareLink",
+      "properties": [
+        "ShareLink.token",
+        "ShareLink.path",
+        "ShareLink.name",
+        "ShareLink.expire",
+        "ShareLink.fullurl"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink"
+    }
+  ],
+  "properties": [
+    {
+      "module": "share",
+      "id": "ShareLink.token",
+      "signature": "token string Read-only",
+      "description": "The link unique sharing token",
+      "source_id": "ShareLink.token",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink.token",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink.token"
+    },
+    {
+      "module": "share",
+      "id": "ShareLink.path",
+      "signature": "path string Read-only",
+      "description": "The root path of the share, if the path is a regular file, only this file will be shared",
+      "source_id": "ShareLink.path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink.path",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink.path"
+    },
+    {
+      "module": "share",
+      "id": "ShareLink.name",
+      "signature": "name string Read-only",
+      "description": "The readable name of the shared file/folder",
+      "source_id": "ShareLink.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink.name",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink.name"
+    },
+    {
+      "module": "share",
+      "id": "ShareLink.expire",
+      "signature": "expire timestamp Read-only",
+      "description": "Link expiration timestamp, 0 means no expiration.",
+      "source_id": "ShareLink.expire",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink.expire",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink.expire"
+    },
+    {
+      "module": "share",
+      "id": "ShareLink.fullurl",
+      "signature": "fullurl string Read-only",
+      "description": "Full URL to use for remote access. If remote access is disabled, the field will be empty.",
+      "source_id": "ShareLink.fullurl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink.fullurl",
+      "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink.fullurl"
+    }
+  ],
+  "events": []
+}

@@ -1,0 +1,150 @@
+{
+  "module": {
+    "module": "standby",
+    "title": "Standby",
+    "category": "systeme",
+    "path": "docs/reference/systeme/standby.md",
+    "http_signatures": 2,
+    "objects": 2,
+    "properties": 8,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#standby-743",
+    "source_pre_blocks": 10,
+    "markdown_code_blocks": 10,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "standby",
+      "method": "GET",
+      "documented_path": "/api/v11/standby/status",
+      "path_template": "/api/v{major}/standby/status",
+      "documented_major": 11,
+      "title": "Get standby status",
+      "id": "get--api-v11-standby-status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-standby-status",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/standby.md#get--api-v11-standby-status",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-standby-status"
+    },
+    {
+      "module": "standby",
+      "method": "PUT",
+      "documented_path": "/api/v11/standby/config",
+      "path_template": "/api/v{major}/standby/config",
+      "documented_major": 11,
+      "title": "Update standby config",
+      "id": "put--api-v11-standby-config",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-standby-config",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/standby.md#put--api-v11-standby-config",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-standby-config"
+    }
+  ],
+  "objects": [
+    {
+      "module": "standby",
+      "name": "StandbyConfig",
+      "id": "StandbyConfig",
+      "properties": [
+        "StandbyConfig.use_planning",
+        "StandbyConfig.planning_mode",
+        "StandbyConfig.resolution",
+        "StandbyConfig.mapping"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig",
+      "markdown": "docs/reference/systeme/standby.md#StandbyConfig"
+    },
+    {
+      "module": "standby",
+      "name": "StandbyStatus",
+      "id": "StandbyStatus",
+      "properties": [
+        "StandbyStatus.use_planning",
+        "StandbyStatus.planning_mode",
+        "StandbyStatus.next_change",
+        "StandbyStatus.available_planning_modes"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus",
+      "markdown": "docs/reference/systeme/standby.md#StandbyStatus"
+    }
+  ],
+  "properties": [
+    {
+      "module": "standby",
+      "id": "StandbyConfig.use_planning",
+      "signature": "use_planning bool",
+      "description": "is the planning enabled",
+      "source_id": "StandbyConfig.use_planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig.use_planning",
+      "markdown": "docs/reference/systeme/standby.md#StandbyConfig.use_planning"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyConfig.planning_mode",
+      "signature": "planning_mode enum",
+      "description": "current planning mode Type Description wifi_off Wi-Fi disabled standby Freebox standby",
+      "source_id": "StandbyConfig.planning_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig.planning_mode",
+      "markdown": "docs/reference/systeme/standby.md#StandbyConfig.planning_mode"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyConfig.resolution",
+      "signature": "resolution int Read-only",
+      "description": "planning resolution (number of slots per day)",
+      "source_id": "StandbyConfig.resolution",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig.resolution",
+      "markdown": "docs/reference/systeme/standby.md#StandbyConfig.resolution"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyConfig.mapping",
+      "signature": "mapping [] array of bool",
+      "description": "mapping for planning : true or false mapping[0] is monday at 0:0 mapping[7 * resolution - 1] is sunday last slot (each slot has a duration of 60 * 24 / resolution minutes) The boolean value indicates whether the planning is in effect (i.e: Wi-Fi disabled, or box standing by)",
+      "source_id": "StandbyConfig.mapping",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig.mapping",
+      "markdown": "docs/reference/systeme/standby.md#StandbyConfig.mapping"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyStatus.use_planning",
+      "signature": "use_planning bool Read-only",
+      "description": "is the planning enabled",
+      "source_id": "StandbyStatus.use_planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus.use_planning",
+      "markdown": "docs/reference/systeme/standby.md#StandbyStatus.use_planning"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyStatus.planning_mode",
+      "signature": "planning_mode enum Read-only",
+      "description": "Type of planning that is configured, just like in StandbyConfig",
+      "source_id": "StandbyStatus.planning_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus.planning_mode",
+      "markdown": "docs/reference/systeme/standby.md#StandbyStatus.planning_mode"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyStatus.next_change",
+      "signature": "next_change timestamp Read-only",
+      "description": "timestamp of the scheduled next change, according to planning",
+      "source_id": "StandbyStatus.next_change",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus.next_change",
+      "markdown": "docs/reference/systeme/standby.md#StandbyStatus.next_change"
+    },
+    {
+      "module": "standby",
+      "id": "StandbyStatus.available_planning_modes",
+      "signature": "available_planning_modes array Read-only",
+      "description": "array of available planning modes. Individual array elements are enum values just like planning_mode in StandbyConfig",
+      "source_id": "StandbyStatus.available_planning_modes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus.available_planning_modes",
+      "markdown": "docs/reference/systeme/standby.md#StandbyStatus.available_planning_modes"
+    }
+  ],
+  "events": []
+}

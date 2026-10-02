@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Freenaute.Freebox.Mapper.ServerSide.WebSocket;
 
@@ -15,11 +15,13 @@ namespace Freenaute.Freebox.Mapper.ServerSide.WebSocket;
 /// <param name="ErrorCode">In case of request error, this error code provides information about the error.</param>
 /// <param name="Message">In case of error, provides a French error message relative to the error.</param>
 public sealed record WebSocketResponse(
-    [property: JsonPropertyName("req_id")] int RequestId,
+    [property: JsonPropertyName("request_id")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    int? RequestId,
     [property: JsonPropertyName("action")] string Action,
     [property: JsonPropertyName("success")]
     bool Success,
-    [property: JsonPropertyName("result")] object Result,
+    [property: JsonPropertyName("result")] System.Text.Json.JsonElement? Result = null,
     [property: JsonPropertyName("error_code")]
-    string ErrorCode,
-    [property: JsonPropertyName("msg")] string Message);
+    string? ErrorCode = null,
+    [property: JsonPropertyName("msg")] string? Message = null);

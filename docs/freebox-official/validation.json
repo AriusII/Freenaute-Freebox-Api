@@ -1,0 +1,1369 @@
+{
+  "format_version": 2,
+  "recorded_after_validation_at": "2026-10-02T19:33:33Z",
+  "scope": "controlled_local_tests_and_native_execution",
+  "validated_source_base_commit": "595cedd2104629c7aa8cd4b344e1af9354f0ab7f",
+  "includes_uncommitted_working_copy": true,
+  "sdk": "10.0.401",
+  "runtime": "10.0.12",
+  "target_framework": "net10.0",
+  "language_version": "14",
+  "dotnet_tests": {
+    "Debug": {
+      "client_passed": 211,
+      "documentation_passed": 21,
+      "passed": 232,
+      "failed": 0,
+      "skipped": 0
+    },
+    "Release": {
+      "client_passed": 211,
+      "documentation_passed": 21,
+      "passed": 232,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "restore": {
+    "solution_locked_mode": true,
+    "sample_linux_x64_locked_mode": true,
+    "documentation_linux_x64_locked_mode": true,
+    "solution_locked_mode_after_rid_restore": true,
+    "runtime_identifiers_consistent": true
+  },
+  "native_aot": {
+    "runtime_identifier": "linux-x64",
+    "warnings": 0,
+    "artifacts": [
+      {
+        "path": "artifacts/publish/Freenaute.Freebox.AotSmoke/release_linux-x64/Freenaute.Freebox.AotSmoke",
+        "sha256": "1ebfe4bacf04ed5076e2a5f8b2f4525f1fc346ee95cd7804c45d4ba4d82c5d77",
+        "format": "ELF 64-bit x86-64",
+        "publication_succeeded": true,
+        "execution_succeeded": true
+      },
+      {
+        "path": "artifacts/publish/Freenaute.Freebox.Documentation/release_linux-x64/Freenaute.Freebox.Documentation",
+        "sha256": "60cd1d9fcfba0587532dc655cdca7932acab746f91b3d5eaa0b3ec76aa892637",
+        "format": "ELF 64-bit x86-64",
+        "publication_succeeded": true,
+        "execution_succeeded": true
+      }
+    ],
+    "sample_protected_http_fixtures": 17,
+    "scope": "Representative HTTP façades, DI/session, generated JSON, typed unions and patches, Base64 paths, WebSocket control metadata; documentation verification and coverage.",
+    "websocket_connection_exercised_in_native_sample": false,
+    "binary_transfer_exercised_in_native_sample": false
+  },
+  "documentation": {
+    "verified_copied_files": 175,
+    "reviewed_modules": 45,
+    "generated_module_tasks": 45,
+    "reported_implemented_operations": 330,
+    "reported_client_bindings": 348,
+    "reported_example_only_operations": 4,
+    "missing_review_citations": 0,
+    "implementation_coverage": "docs/freebox-official/coverage-net10/coverage.json",
+    "full_sdk_implemented": false,
+    "origin_independently_verified": false
+  },
+  "packaging": {
+    "client_created": true,
+    "mapper_created": true,
+    "readme_included": true,
+    "framework": "net10.0",
+    "nuget_publish_performed": false
+  },
+  "live_freebox_business_requests_performed": false,
+  "native_binaries_committed": false,
+  "source_files_after_validation": [
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FilesForm.cs",
+      "sha256": "468c37bbe34c48f45c162d6d9b330f9137b2a98689463d4782f4b9b78c6ee381"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FilesPath.cs",
+      "sha256": "d189b95a11192533bd70c443cd96348ded30e5045ed0a5e6968ab1dc0973273e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FilesRequestValidator.cs",
+      "sha256": "e55fe4b17c201bb2f5422af665c8c3ed93e844318e1744c61892be61bf179692"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxDownloadFeedsApi.cs",
+      "sha256": "e7625bdd08ba02dbb242258304e272af407c2f983926850228814f2a796538b7"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxDownloadSubmission.cs",
+      "sha256": "cce23b531fc15e741183a9c1a57f43736bcffb822ffad720124cb1e4b37f4445"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxDownloadsApi.cs",
+      "sha256": "22ee20bb883e005a5c2be1b2ab1e6509892e6af9b0084f1b10ce45b9906e0ccf"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxFileResource.cs",
+      "sha256": "a3400e6c20ccaf1c6b3fd08ded159dfde380042b0d45b55bff00bf13f8d6f9aa"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxFileSystemApi.cs",
+      "sha256": "663991bd98b65e2b00c34e6929625305172c148d70f37e1d2f20577110eb318c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxFilesApi.cs",
+      "sha256": "88b590a7210432a180f5a24bdabefa258cc0e4827d7de64e15496c7deaf96f3c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxRaidApi.cs",
+      "sha256": "998a346f0c48f9d53c8bf4263e70ca2b74afd3dac45fbb737fb19b468c3bcc37"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxSharesApi.cs",
+      "sha256": "2cb0c6570269f3e2f66ef156049976f44c7492bb65ce4ad7c9e5ca5dc6935b5e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxStatisticsApi.cs",
+      "sha256": "d860a0a523e2e981b222aa8bd2218b4dfdc975acdef818d8ca51c0cc4337e81a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxStorageApi.cs",
+      "sha256": "a0647e0fd40652f895e9b184ef98b4cd10eee1192da117cf78485136fb765f23"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxUploadsApi.cs",
+      "sha256": "9d0373c67b02fcf51bfb4df5b719e69b7ddc120edc6514125fac81e836c4f9b7"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Files/FreeboxVirtualMachinesApi.cs",
+      "sha256": "53c6817df94df57fff97edf4acbc8483cb9def87a93e6dbeef45199793e8b366"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxConnectionApi.cs",
+      "sha256": "22aa7a90392d46e0f7ee82b3cb6d310b925f7fadef1ecf47357a3f0f1bc2cd2c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxDdnsProvider.cs",
+      "sha256": "92f807ae735c354508b2a3cac49b29084b13190cc68ebfc6ffa2826df6c4ac35"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxDhcpApi.cs",
+      "sha256": "3165d1d04ba6348c59798d1486578c3d3ad610764155787e0dbd0dcef9921bb3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxDhcpStaticLease.cs",
+      "sha256": "bcd9a461d8b3e1838c72bc5ddd67284bfa4cb8eaaf0f676ec7a2ce7c23183720"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxDhcpV6Api.cs",
+      "sha256": "1a05a373b55e902fba7ba917d6c98df2276627fafb0d5991cc5cbe5d4fe70afc"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxFreeplug.cs",
+      "sha256": "14d4092b2e0711bace704dc0c0fc9b357f641c5fea6cf4ee67174fdfe87ce3aa"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxFreeplugApi.cs",
+      "sha256": "6082c5ff4833070843761c68b83370ccdbddff65b0ffa282512ab20109af2a28"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxIgdApi.cs",
+      "sha256": "abadf74865e857c1af7913558ec01409763860f5e4830fc68f1beab5d3c7b764"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxIgdRedirection.cs",
+      "sha256": "13a798a977a63895f689b1263032c355a635df1a7889ad6d641f438288a5fcc2"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxIncomingPort.cs",
+      "sha256": "aa5bf4d64cebe5b474fc8121dfbe3a7a6e348a16f29757ccb9cafa2ac75eefd5"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxLanApi.cs",
+      "sha256": "6e8bf5a5eeb16e973c52e3e845de4266dc090ef7a43a61810c323cbe2fbf3e6f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxLanHost.cs",
+      "sha256": "ad2cde9597790c262847a59679ec1eaa54b9f983c5ed81d5a884d7e2bd626009"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxLanInterface.cs",
+      "sha256": "adddeb70db5ed6aa7eb3ba76d69aefa228fc43bd713486ba2edf332f43794f75"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxNatApi.cs",
+      "sha256": "fb6d31446bbd3bbd545a0299ab90d53ffca32a372567ee3e8d5362aec9dbe69e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxNetworkApi.cs",
+      "sha256": "b2b4104e4eb5fbb341712351d8a709724b50ec0af9cbce4ad70fd246814d75a6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxPortForwarding.cs",
+      "sha256": "8b9a1f80d78ed3bf02d2a2e50c6e03d3ae0205c504361a7f6fa9000cddad93ab"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxSfpApi.cs",
+      "sha256": "d41778bd9c7994e500c6715698a83ef907d934eb94679d8cd9cc02b286e99d1c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxSwitchApi.cs",
+      "sha256": "e4eac30495a4543a5c3cbc1e8e6b9a4c01a20d343eeecc9aed35381a4466e071"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxSwitchPort.cs",
+      "sha256": "a19be7218f988e3044ded299c9dde414d26050ceae8e9ec102e23d8e3de11fa7"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiAccessPoint.cs",
+      "sha256": "fbc42f2f0ac625ccde213a8009beabd72ebe6876846b3654228363c1c441f35c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiApi.cs",
+      "sha256": "3b22eaf105e2273f1f9037366813cd0829613f1081a5a276bae6052dff3da062"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiBss.cs",
+      "sha256": "586a07dcaf3d50162fac43196b4368319d9a52c4988b1fccefa5f06f847fc7a8"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiGuestAccessApi.cs",
+      "sha256": "37eecb77f6533dbb2c589f6414ece59a9b9f94af7d78a64a931da0787e1056ed"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiGuestKey.cs",
+      "sha256": "b97bafdf0306359aa5771c77d20d60d7bda5de275159b0ae64f774b3952762cb"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiMacFilter.cs",
+      "sha256": "5272291cc3106b2dba52d7a9dd9b188e3e2a3b381dbe46b968fa8a8a2837269a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiStation.cs",
+      "sha256": "762f3a1553cf03d006f852fbe83eef2439012a18bf8e9a397e60a9fedb5d62dc"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/FreeboxWifiWpsApi.cs",
+      "sha256": "51f85a274c049a1bc4f2a0771541dadbf53e89a5381dcc03311fd51a579e47a1"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/NetworkPath.cs",
+      "sha256": "044b89c545d28ab2ef4c9313586537cb24c60a64b7f74480079bdf0008fb353a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Network/NetworkWriteValidation.cs",
+      "sha256": "75f6acf6488c341b7c0836b6aebc7efba8ef131646aaeeb131f4c456ac82ebe0"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Protocol/FreeboxCamerasApi.cs",
+      "sha256": "5a9ddbeb351713cf5627efb1358567488deb0da3fe64710a3af711d32585f331"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Protocol/FreeboxNotificationsApi.cs",
+      "sha256": "425c2d3495e2d09ac695520a048893d9aad29bc634ab3453a0f8d7949418fcf3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxCallApi.cs",
+      "sha256": "ef5aa5c80d7127571b0dbd3efbbb4f79157bef74715dd4cb8b2934cfe818cdb3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxContactsApi.cs",
+      "sha256": "4458490f6e1652977076f898bf2e35016e0bd401e62f0613421c20b54c83f4f6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxFtpApi.cs",
+      "sha256": "2fecd0cbd6cb352f8d49c1952de93bc4d6d5dc63ad980558325642eec1e9aa96"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxNetworkShareApi.cs",
+      "sha256": "a92ac57a0b3c16eb9e4bfda48e6b621bf8cc59005702a7e626d684d7069de265"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxPlayerApi.cs",
+      "sha256": "685480f1ba0d61c3694883bc31a2a079675541e11faf77af69757489d6f441a8"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxPvrApi.cs",
+      "sha256": "211223ba0d99278553283fa439763ea21038e8af2ca46e5742398de4770abfac"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxServiceCommand.cs",
+      "sha256": "8804b12f403c5998b028b8399d69096d7c96264b2eaadfe3ec9d3477dcf4a088"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxServiceResource.cs",
+      "sha256": "1f88ca3387eec923c2d8a512c17f6fcfe217faa09a4846373a4f71fb24c04b7c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxServicesApi.cs",
+      "sha256": "748dfce5a8541db6005c9a5d0ed2ce80b9034b27a3f128f533c6115777aaac3e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxTftpApi.cs",
+      "sha256": "14718d5a065f7132ab5bc21bcf47a27e294dc1dd2ede3027c4350b41e6966f1c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxUPnpAvApi.cs",
+      "sha256": "8522777197e6a695768f56248bed0f0bb2867bed77b26c52c1fa54339b918495"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxVpnApi.cs",
+      "sha256": "24b333324382a06b89a3a15282912ad2d23cd2441d778b8655031dd2bbc5b1da"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/FreeboxVpnClientApi.cs",
+      "sha256": "e8a284985c64ef45fe69536938a2690504c3debe9041828e5fc650e3737d714f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Services/ServicesPath.cs",
+      "sha256": "77353e63a568fc6eea2310dbfca3246f95240f7625adc835447f1a71913f63d1"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/SystemHome/FreeboxSystemHomeApi.cs",
+      "sha256": "b2e0cdc5ba3bac02516a12d7a4dba370f5dc92f1dee95790bd99df9c341fc063"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/SystemHome/FreeboxSystemHomeCommand.cs",
+      "sha256": "d6917d840e2d6447a530ee10c74629ee6720186099448c1085ab55a9a44a8111"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/WebSockets/FreeboxEventsApi.cs",
+      "sha256": "436ab51bd86832261964828a38daf83e3b29f73f7f863216ae49317adce20e01"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/WebSockets/FreeboxUploadCommand.cs",
+      "sha256": "2f272a2d709e4f672437a9f7044cfa76deb5c8ac261cbe2cf3d1c24b6447038b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/WebSockets/FreeboxUploadSession.cs",
+      "sha256": "1bc59b8d877545790eb65a3338f82e04fe39b223a661617a990b9a4891bb57a1"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/WebSockets/FreeboxWebSocketApiException.cs",
+      "sha256": "232c786c2a46ad0f779b227c2a9c16d8b5dd085fdd1333831173746161554f2c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/WebSockets/FreeboxWebSocketsApi.cs",
+      "sha256": "c23e98132602b524d3f33b0cf8329ede03c34b31dfdefb4437da02c3da4fe1d2"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxAirMediaApi.cs",
+      "sha256": "7292feffe8555cae6a08624dfa4b43f3885fd3a3bed7fd8bc7f1ff10f9392e54"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxAirMediaReceiver.cs",
+      "sha256": "141dac18407597f82daf35a758a786536f010c5ecbc69611231589f7ea6de936"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxApiException.cs",
+      "sha256": "b0ce6a257b66823781422e44d50f341a811880352411837f7fb96369a0d84676"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxApiPath.cs",
+      "sha256": "36bee4deef41fe5e08ff010bd6249dd4c490482fd3e7243d18f9de90c74d582f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxAuthenticationApi.cs",
+      "sha256": "d6fca124d768e3439a049d5dfc05a0719ea76211d80e3d191a89f2516ff65dad"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxClient.cs",
+      "sha256": "e7e644a39bb586bebca45c36cef059b3605a68ae638217291174332c29b5727d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxClientOptions.cs",
+      "sha256": "116eb30380716b8fafb5a5d4b00f88cd70ef198a287952fa02853f3351fc6043"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxClientState.cs",
+      "sha256": "5d40f7d7fe903a33cf039d3d33d14b6d9d6adff6886a595411a73b038a961c78"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxDiscoveryApi.cs",
+      "sha256": "9e6c5d59db36c8f5eb26931a421ef2b82399bce66c2ea7edea351056f8ad57ee"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxDownload.cs",
+      "sha256": "d88277021e2e4fb161ef9d869ec885a7714c0a4c131bb69d5adb464134c06566"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxHttpTransport.Binary.cs",
+      "sha256": "e6a16d5faab3e1a79dfa5448e6d6a0ae36e28c8af2f9cb3dd13e35d156698415"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxHttpTransport.WebSockets.cs",
+      "sha256": "6e251e9de41d663b94a530db603e5de0ac40eb831079d77a8be8a757357765e0"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxHttpTransport.cs",
+      "sha256": "23bc1a803e7250007ee97f6baeea113a01cd7ec065f3bc88ea67a59f37385100"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxServiceCollectionExtensions.cs",
+      "sha256": "12db3d4c33948a5557899c8adddb8c140ddf9772db2deec1d91af5aebfb9d942"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxTls.cs",
+      "sha256": "9b771a148f1bcc23522449a0892078340ed330b67197ed4055d0b8a55e8ab82e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxTlsCertificates.cs",
+      "sha256": "35ab4198b622515da31b6e7bf33babcd6fcea582cc41dd64febb41b1c9104e6f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxWebSocketConnection.cs",
+      "sha256": "31be90a5236c27e25e427e366dfae340720a612d399bc1c8733ee257a9cfce75"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Freenaute.Freebox.Client.csproj",
+      "sha256": "4c65bc3575e5167fdba3a600ecbf4f8a72c6b556ee3cab81f3e9e37357ec033b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/IFreeboxBinaryTransport.cs",
+      "sha256": "ade68671024138da5d168e3dd87a0199819e09e025824a80aafff37ea435a4da"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/IFreeboxClient.cs",
+      "sha256": "1bb2039edfd0d924650c8ad486fe7b6c175dbf1381b918ed73f401fb6f7acf4c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/IFreeboxWebSocketTransport.cs",
+      "sha256": "61d4b42c3e6b192c8e4261ff17814710ff9e1b6fca273dffef524fc71effe0b6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/packages.lock.json",
+      "sha256": "b49955d5df91b4670c495c2ee2d6e0e3c113be8b69e539e9af3e70063e269767"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ClientSide/Api/AirMedia/AirMediaReceiverRequest.cs",
+      "sha256": "932b71f0df20725ed5de5d7cb93106ba70515f86251382165dbcfb5857721a37"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ClientSide/Api/AirMedia/UpdateAirMediaConfigRequest.cs",
+      "sha256": "8dfff9e56f69ec0ed542fa217380d121993b2c2709b24a173246cf8501e2f420"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ClientSide/Authentication/Login/SessionStartRequest.cs",
+      "sha256": "d1bda055793b40da355e472496ea95307b7455045288560c0d218cbe3804b6e3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ClientSide/Authentication/Login/TokenRequest.cs",
+      "sha256": "ceba9f46d81317be8090729ca2feda4cb1aae53020ec80b4dc9b77a7da93de26"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ClientSide/WebSocket/WebSocketRequest.cs",
+      "sha256": "86cdabc289ba8a11d17d13c627b8a0f4e3920625e2a60131428cbf294e1deebd"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/ErrorResponse.cs",
+      "sha256": "2a9a1cfbdf53c7ea925d3c34d4c7d94e59202f26188263d5ed92948399404c1e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/SuccessfulResponse.cs",
+      "sha256": "62b587438567a9996e1469cff839d52a4b891f14770cad6862460f831a1b050a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/AirMediaAction.cs",
+      "sha256": "f057c21e5dcbe731fbb537e4d372b84cf03b0bf88c97a37c798f0ac3b9d74aa4"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/AirMediaCapabilities.cs",
+      "sha256": "dffd78df7296c9d72383d89a6905535a77503c74b588e447284fa15c7d0f5e1d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/AirMediaErrorCodeEnum.cs",
+      "sha256": "f8be6b6ed9c9343dff4ccfda1c5349f24fdc0ad960ab9cb191c3398457def6e6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/AirMediaMediaType.cs",
+      "sha256": "ecab5b26b8ca5107b1fb2db2ced7ffff10180782d7a3070277e62ecbc1829053"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/AuthenticationErrorEnum.cs",
+      "sha256": "526af6e3c8bba32fee2d8a2f61c7d5c4654c556a9f73d3cb7d4f8cd13f1c79b9"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/AuthorizationTrackEnum.cs",
+      "sha256": "13ece1a68243665898c63b55727beb4523947c3cf0105554aff0c52f6c806eac"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Common/Types/BoxModels.cs",
+      "sha256": "7faf2f08284a67d2a7dc10e563a84daadf900f10ee34c49b412dacf7f1ecdd44"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/AddDownloadBlacklistRequest.cs",
+      "sha256": "e6df8045a4be60f9974a6127fc05635fc735fe76ded344ff9384b7e8fa0d9d6e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/AddDownloadTrackerRequest.cs",
+      "sha256": "5142a116e6206caabdff4f7e7770cd45338f75c761ff5f606326d76a5644c6a0"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/AddedDownloads.cs",
+      "sha256": "002ad211688a095475cb1e0bb51605c1607dac246cc8b75238be3f653cc8e3f5"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/ArchiveFilesRequest.cs",
+      "sha256": "268becc8c0317deada4065f2236a68b2e4f38198791a3eb962ea300b8305b18a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/CheckPartitionRequest.cs",
+      "sha256": "feaa5b60a5f1cd015fe2ec806b9a091c212b68ed335a8d8102c6c413bf151ea4"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/ConcatenateFilesRequest.cs",
+      "sha256": "64e35c2080a3c58fdb80c3462c7db04b594c99416bf4a75f4bb19855b55cdecf"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/CreateDirectoryRequest.cs",
+      "sha256": "86c367a0cd40d1a4fd072cc8600b0fdbc9dd01fe12153cf0936358b14f685b6e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/CreateDownloadFeedRequest.cs",
+      "sha256": "35d307fb0099ba77cd7b93f950ca93918c3c5439aaf2a23b34fddc45392d3dab"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/CreateRaidRequest.cs",
+      "sha256": "9c29def63bba839ff8ba067754bc541239f58b5c52ab953ee458752d7ce6fb9a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/CreateShareLinkRequest.cs",
+      "sha256": "c2e83effe7bbcf4111abeab0224cfedfee563d1774824be15278e93773ed883f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/CreateVirtualMachineRequest.cs",
+      "sha256": "614591e04b11ccebdd2484c923fcb806914edf7af7c3c4c34b5455ed6fb5ad3c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DhtStats.cs",
+      "sha256": "b7f621761e29e21b0bf2b15e09bdf59490eb4d48166cc74a2fb3cce396b428c5"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DiskPartition.cs",
+      "sha256": "54239f4092be8749235cbff1875f96369976781b4edc105980d694bf6fcab5ea"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DiskPartitionState.cs",
+      "sha256": "0cceedd1aec7681f37e018ffe6394ab6347514abaf51f6eb2e465dbfbb1f675b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DiskTableType.cs",
+      "sha256": "b07d58fa681174b9a6e53a0032409a2d45bb6829e8a7ee609655d79be55833dd"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DlBtConfig.cs",
+      "sha256": "db91f19939316d5a25823718d94173df1cf213e8c53403defd24755d9a8f650b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DlFeedConfig.cs",
+      "sha256": "fd7f895703aed0236205f00340af34c2c42b41c0a0d89b19c2777c8e76176df4"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DlNewsConfig.cs",
+      "sha256": "39194d95d27b5d33c792a6a0da3030678a07527622b91cc9fc81d1b15a428aa6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DlRate.cs",
+      "sha256": "b9c3bd0a65d9c84c30442550991da843e54c71c3d3ee0365163c136e36260ae9"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DlThrottlingConfig.cs",
+      "sha256": "c86160450614a02d5d66d65781d6befd2877d6eeb2cb5d87936bfb6fa69c369e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/Download.cs",
+      "sha256": "3728ddd398296d6b4957c93a77c6d097db2e8751ada31a9d7f3bf8bd23bdb344"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadBlacklistEntry.cs",
+      "sha256": "31b68062fd329f197863ec76bcbdff2c27246b3eb451a7d1e1828d2f740ada52"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadConfiguration.cs",
+      "sha256": "3014178e24f7f40fdd96fe38ef73a1a60f688ae1534529823f6064d169eb21c3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadCryptoSupport.cs",
+      "sha256": "9d710080ec6e662720fcfc59ba4c06722ae76e68ac954306e5142187c4424cb6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadFeed.cs",
+      "sha256": "ef1b4019adcf4d1e2444d08e120ccdab423f2dea0e2a832e546fbd496815d5ff"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadFeedItem.cs",
+      "sha256": "6f0aeef649270949d40d1beb77c9e881ddb704cd5ba941995540be201ec42a92"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadFile.cs",
+      "sha256": "947c491b35d36f6bf3d2c57ff52fa12180ab92fa413d80a11ebd26cb7fe7f29a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadFilePriority.cs",
+      "sha256": "70cc31a1d45f25030e2f6c5f1286e516170849087f50f6857c9b7414a69cf443"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadFilePriorityRequest.cs",
+      "sha256": "993a6fc55e010ee92f9e8543f44e0e1ac7c22e076586ef586bd590667b19fa56"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadIoPriority.cs",
+      "sha256": "51255e9f131e6f9e3c8a8c8d14587525300c31a3371418c264ee3ecea44526d1"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadPeer.cs",
+      "sha256": "c559525d2dd40276980beb1e2f6ec7c69ac1f06ac44865d4f6244b64070b7d5f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadScheduleMode.cs",
+      "sha256": "347d579da8af69423843f225211185cecbb6a7bae8fef8ba7b83a4d818e2d4d0"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadStats.cs",
+      "sha256": "256d7f69bc3f1c80d1a7cd1048e29b5bffcbd776b0c498eb0af5bb079554852f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadStatus.cs",
+      "sha256": "6fed8e4c45ad5aa12d546d1ee5ec48e5a6f8ac2e906c2dcf13644f65c5948cb5"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadThrottlingMode.cs",
+      "sha256": "ef83e197e0ef2d3c7517206674d06fe6100e0257f3c37ad9aae8e985957aa65a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadTracker.cs",
+      "sha256": "141134ad831a02953c4c94e1334bcb173a1b12468720d0f7b899f5923631f228"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/DownloadUrlRequest.cs",
+      "sha256": "1228dd0746316fb6a67df5f5ba189b13443421feea00bea52163f252638cadce"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/ExtractFilesRequest.cs",
+      "sha256": "188d53ab1b7e70627f691edf8020b4f8bd13d88c8350a2de5ea80929bb8e0c04"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FetchRrdRequest.cs",
+      "sha256": "9c242bba74c38553a3384650ac7abac56681c5907cd93154daa5395819777c37"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FileConflictMode.cs",
+      "sha256": "e0f2f69f352fef9cb989d9541246f53e5213222c3585ff508c46fa61f1c1a520"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FileEntry.cs",
+      "sha256": "c9debfe4a441ed4182d3ccadebc8a2d55f5bcbd5fa741505c6accb69b75d9d0b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FileListingOptions.cs",
+      "sha256": "d58754824b7171a95bc434fc8088042451a1072226bae7110f699ea76ce15c0d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FileTaskState.cs",
+      "sha256": "86629fd977ead2f5d2bd5935cb9802ad0dd0d2aeae8dbcb523dc7ffe700e1a2d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FileTransferRequest.cs",
+      "sha256": "5554b51cefdfd6a423db83c7f4ca1d32482d062618890044364fe09fd5f698ac"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FileUpload.cs",
+      "sha256": "e5e67274fa264ec30ba38e0f8b9010c143ed033d7dcaedd96b7e0b4f077265cd"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FormatStorageDiskRequest.cs",
+      "sha256": "0003874b7e2204ba2c99b6b22fb140d63d32a43b58606c22e6a39c9d049bb1c5"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/FsTask.cs",
+      "sha256": "58f023b107eef86e5cd3a092656e016c9b0098e6c3c4a054e67290b071124489"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/HashFileRequest.cs",
+      "sha256": "029ba879c71d3c355655a03505fac72f99841a6dbe02ff46b551058d211d5ab6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/InlineResults.cs",
+      "sha256": "03ef5f28e97bd0e6cf7709ff30a4725c939a38a968a7750b482b36774580b13e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/MarkDownloadFeedItemRequest.cs",
+      "sha256": "03d7c35c13af02e473d4f661e945f368f543cdb25943ba9d7117bf68d5a87e89"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/NzbConfigStatus.cs",
+      "sha256": "2c3f4ea5f4e184e86702eb77788e168c82b3b803e758774698ca81ead0b338fe"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/OperationProgress.cs",
+      "sha256": "7ef7e47536bd7f499e85f7d56a6f323a9a209f52854d9853a77c2ef58f1c3ad2"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/PartitionCheckMode.cs",
+      "sha256": "7b2bbb9ba23c1672333d8c159222a3b3374dc9ef8917fd737e4c8c112589a371"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/PartitionFileSystem.cs",
+      "sha256": "76e01105b2fd589e72c17b0bfb6bee130e81edf36882ec5945f37200ab767fb1"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RaidArray.cs",
+      "sha256": "ac59f36d53568c437f50a7b94f5f153429b18891dbaa6e7d6818d0e6f910158f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RaidDisk.cs",
+      "sha256": "f5e029bc1c94c63f50a00178330b770443815c5af67333a9aa18ed42e91ea6dc"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RaidLevel.cs",
+      "sha256": "f3fa7e9420945e082ec50568fab6ff699fad5fd09405b53b50161cb2addebd00"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RaidMember.cs",
+      "sha256": "494f4f03b978dc8ef9b34a35d6894296dcdbd988c493a7cd91e782c148781ccf"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RaidState.cs",
+      "sha256": "48bb81d41d7d267820a7b317950abab82ed0318e0a68d588f213be440af6dbee"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RemoveFilesRequest.cs",
+      "sha256": "e13d1f5a96f4d970df8520c7f30b3133398f7bb79c0b2b5edbae5bbe9675db57"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RenameFileRequest.cs",
+      "sha256": "0ae1452ef8eb459513a22406b8cf37b24f381e1a4fe165d6bda10a7b9513c774"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RepairFilesRequest.cs",
+      "sha256": "7c799848168355043b8a540477a6baf815fa613342c3dcf33f218d5dccd3ce53"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/RrdDatabase.cs",
+      "sha256": "a7ca4ab60d69b0dc5bca415f856b00ae0351404c9ec4302cde45b032f778dd01"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/SetDownloadThrottlingRequest.cs",
+      "sha256": "c660d6ebb3fa509c580ac237c4c4f36edfa07efa23f26736e1142ce162b81ce7"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/SetFileTaskStateRequest.cs",
+      "sha256": "9da8020e0e8163909bf4a0fe840b9f639d77cf4e4b8e49c5370943d228bd8d0d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/SetPartitionStateRequest.cs",
+      "sha256": "0c8a7d6b2c2088f9508e4ce554afe336f8ea77787f18b7e5abf7a83f56d17e78"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/SetRaidStateRequest.cs",
+      "sha256": "214c6efcf5a6221614f3ce1baf47a356f200968a65078294a8087e0f2c48fe68"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/SetStorageDiskStateRequest.cs",
+      "sha256": "38993eb0b1b4fda73edca1b44d0709e5fd8b9cb3a14ef96c2bf5ef0b21d9fc8e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/ShareLink.cs",
+      "sha256": "b600099d5622d740ec04e7cbe7e26ad55a6d5ed7f722e569c2c1f3f2b6fe62fc"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/StorageConfig.cs",
+      "sha256": "b2c1678dbf3a099d8e1b8852846166085fa40401af902fb3028afcdf1041fdbf"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/StorageDisk.cs",
+      "sha256": "094d74ceba890ece7b20d4b868d4bf97c8a4031a6b1170d7068cb84728030e0f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/StorageDiskState.cs",
+      "sha256": "2b3c315996e1ec73c4b3278e0ccae7e559f46219ef7bf68d0b5268ae972f80f9"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDlBtConfig.cs",
+      "sha256": "7242b604a47727be4a8b53a4658c268af75d2a75fe41fe1c0c326327b1a028c9"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDlFeedConfig.cs",
+      "sha256": "97bf58804ea9e6d35c03bc7e35609edf0411f06708189bc2f50a26671b50da1e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDlNewsConfig.cs",
+      "sha256": "c80d9086ccac15693cd372d6648b715f825c1c5952210aae829c37734abd922c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDlRate.cs",
+      "sha256": "789e709c8905953018b277dc9663d0fd41c0755060b736cde6af83d1ee479ca3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDlThrottlingConfig.cs",
+      "sha256": "de12de85169bacbfc4aa3b22da6f7f019107d0fbf9fd5510dc251056792165fc"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDownloadConfiguration.cs",
+      "sha256": "fa533aa1687ad0becf5bce9535bd37d72427300ae1b2e17014bf15efbe727d59"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDownloadFeedRequest.cs",
+      "sha256": "c5a91e3e152344a720795844a61e22e28ec061f207573632a40915a350e393da"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDownloadRequest.cs",
+      "sha256": "fdeadcc5f72fbd38a42a1d16b845f870b01872942d67be0f778239686c898c37"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateDownloadTrackerRequest.cs",
+      "sha256": "ad94ce91ad1e017187714c81851bc697872e0deb4eff8ebadde67193389ee28a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateRaidMembersRequest.cs",
+      "sha256": "72bddc21e0b9de864ae782fc4fcdc37862167c5e11c408533d68490728bd3649"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/UpdateStorageConfiguration.cs",
+      "sha256": "57f5cbe462a038fbdcd7bc135da80a0a0155816bd60996058cab1d14d0bc7df8"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VirtualDiskType.cs",
+      "sha256": "b3c629ee4c6db802ff612b447a7b256b9a5a391ee981dfeac09f69a7bcbd3967"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VirtualMachine.cs",
+      "sha256": "8d019129d958a1510adddd1c24ede32381de84f5db64ced7c389d8a0e9b2cf2b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VmDiskInfo.cs",
+      "sha256": "a4c22188059403a09f3fc4acbb18a24421b1898808512f9013d2f445efce2f2c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VmDiskInformationRequest.cs",
+      "sha256": "fe85db9f7802b74d25a27fb8d79bd1996130e800f6878b3939a6d59d11c39938"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VmDiskTask.cs",
+      "sha256": "e941210a7e2da96740d596f805956f64534cdf6c894c1587e0b1b565e2eed01d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VmDistribution.cs",
+      "sha256": "7d290194c7c318d7ce0ad3828da4f98826ac568cdddd7e8a4175441d9e7bd185"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VmStateChange.cs",
+      "sha256": "eccc59c3dccb2f1dc0de97f97fa16f80c07b048b68173247bd8cc4783a598a58"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Files/VmSystemInfo.cs",
+      "sha256": "08a7a74f3dfeb22e24f7b4ac1e1962a38b92b55a1b06d2c2e03311a946b1087e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/ConnectionContracts.cs",
+      "sha256": "4f213a0c9a50e4d29581ad9e6bb203a0abbfea22cbacf52e817e980ef933a198"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/DhcpContracts.cs",
+      "sha256": "5771a5a841e514ab49d71c30a0f87ea35b9769b1989f580444044dea7327db65"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/Dhcpv6Contracts.cs",
+      "sha256": "f727a5aa957550895d9c2bb52a94f825b6976608f128c17207e584adfd94fef3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/FreeplugContracts.cs",
+      "sha256": "e4a6994d3eb30c9ffd5e27d60206b5fda42a9b09a56d0a374ec570d59b960ff4"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/IgdContracts.cs",
+      "sha256": "75be291c829a991a95402113c429e057bf8669bd86209c97afd3af682f6b415e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/LanContracts.cs",
+      "sha256": "36879a5db851858e75d5cc5c055bf477fca95957900b92f513e9a5ac95ac8080"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/NatContracts.cs",
+      "sha256": "3077408bb7dc639d1fb068bc386d29deadbcb96cf49c53462632324015f5fa25"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/NetworkUnions.cs",
+      "sha256": "809a259e6d2e9ea869035d6a91c54c99eca03285f35bd7da421b1a1bf619a016"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/NetworkWireValues.cs",
+      "sha256": "4a9d0f50ab5054b2933761521592ff4e7355765bf588cdcf2e7b4b5cc9b0453e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/SfpContracts.cs",
+      "sha256": "7d7a6240108bdd59465557bfd370e45adb23ea4b5b16c4a12dd240f35775d270"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/SwitchContracts.cs",
+      "sha256": "0bc476f3dfbbf32b39c1b2dc3ac70c46a53b9b9fb8969f14d82fcbd2bf81e268"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Network/WifiContracts.cs",
+      "sha256": "99acb5b0713f460de8a1502850db6fa8f38718503033b724c07f660037681712"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/EmptyObjectOrInt32Array.cs",
+      "sha256": "6ce8c48b7e251cc2561d396c11f198b149efd7e433615d3326457719a43e9f08"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/EncodedFreeboxPath.cs",
+      "sha256": "26823c777b1fcf43129f78f5d8fa05413a5d4d33f3201a27442bf714713e1751"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/ObjectOrArray.cs",
+      "sha256": "77d72c815d34128d5ae7f0a90074b8df7c5b12cbef90281f77bc2b3bbfd26f24"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/ObjectOrArrayJsonConverter.cs",
+      "sha256": "5c9cb32f7890e744aff804be221020ed353cfd33999df8afe84b6a46ec49002e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/Optional.cs",
+      "sha256": "d8a3a2267a3713bf819dd565367c5964d7789bf5cc01a30248f0f6483f446528"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/OptionalJsonConverter.cs",
+      "sha256": "0aa984040ebad152e2c809100d765f60abe916b9c1db02f1cd1d9b6566705949"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Primitives/StringOrInteger.cs",
+      "sha256": "adde7a8ecb6615b74b9fa841d3ae793769506bfdf0d6de72b5e6fd3b5addded3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Protocol/Camera.cs",
+      "sha256": "9ddb697a76a1aba79b120a75253db56176b0725963913de488f27402dd861805"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Protocol/NotificationTarget.cs",
+      "sha256": "cec12415fa2d01e4fcd071d7617b43c70ecb07bb3179d85d5d1aef42e2880466"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/AfpConfigPatch.cs",
+      "sha256": "1e8b1b84014325adb3e40c13b1e978144bfc39c86b6395f90ac2aec1faf48b29"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/CallEntryPatch.cs",
+      "sha256": "0dfd21d74c59e2a9c98dd69bc6a21fbb0d92e3e5e997c5f005b500858fc15e76"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/CallModels.cs",
+      "sha256": "7eb1fa8309db23c4acee8d03e4789962fcf5442121a0031d2964304572d37605"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ContactAddressWriteRequest.cs",
+      "sha256": "050dce3991abc80b1b3d3b861e708538bb121c666199c2ce580673b5905a522c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ContactEmailWriteRequest.cs",
+      "sha256": "45b7a2e5bf51dae39ee279e0681c1416a99fca0eabebe45e9ddf81dce33fdc0a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ContactNumberWriteRequest.cs",
+      "sha256": "0c21f5bb7fff0f39b11e2c646fc84dbe325d8de473b5707eac5b41debc3757a2"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ContactUrlWriteRequest.cs",
+      "sha256": "1ccfe7eb8a5def751077bee5ba28e9914ed5c413dccbe77ff88bcacdfbc6ae1b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ContactWriteRequest.cs",
+      "sha256": "4ce575b3940013358aba226144560dec7bbfc8c6d79c1f96c5eff1c9243448ce"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ContactsModels.cs",
+      "sha256": "f135787a1710c79680cd3e5fd29f66d8286a20c69166f3f68d5984eaa7f683e3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/FinishedRecordingPatch.cs",
+      "sha256": "5083cee9867a7697e0459b3875435e3079eb228a19adab61e6245f34a5e48bcf"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/FtpConfigPatch.cs",
+      "sha256": "cc70c1850e07ebf1f016ae8cb47dcb45ce1a3e20bad7680e65ded6634429800e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/FtpModels.cs",
+      "sha256": "610a862d36d533ae4b465d0b087efe51a1d2fb13c6314f7a4a7db648bb771019"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/NetworkShareModels.cs",
+      "sha256": "5e87d80318fdef8b943049d5cdc28eef658b78b1540f8b2b9d80dd1f9f8a1127"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/PlayerModels.cs",
+      "sha256": "aad1469594d859b89f55080a6fd1d3c4411e0b91b645b41dd45e10c8c1a1f40d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/PlayerVolumePatch.cs",
+      "sha256": "8a8c12b47211ae2018f5fd161bb92d681cec593938e27ea05e900fb57d2e7cda"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ProgrammedRecordingWriteRequest.cs",
+      "sha256": "3d4601e749583bac2711d88dfbbe3b4de0b74641a1a9857f052a235816076a69"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/PvrConfigPatch.cs",
+      "sha256": "d80a17ab67c8106a23cbb81d65def17990ec3cff52bde2b0feeab0d46ba7f01c"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/PvrModels.cs",
+      "sha256": "c6473e5a153705b1b8330481149d443b165707b826efae80e3f2f582257a65f8"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/PvrQuotaRecalculationRequest.cs",
+      "sha256": "8cbd009b2e6dae8e44eabcdaaddd0ab3cd058dd76d55c36a4972c1205d79b85d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/PvrRecordTime.cs",
+      "sha256": "0b54cbae6cf05dddac975f270958213559f43eef16e36c18179121f1adfe3fd3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/SambaConfigPatch.cs",
+      "sha256": "aa708e665f90664ffc3794935ec320b98750e52a96b70947c208bf47409cd153"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/ServicesWireValues.cs",
+      "sha256": "0e73b4db09610922ae6678e1217fd559fa6bdfdf6c5477bffdcd0c80245e205e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/TftpConfigPatch.cs",
+      "sha256": "377247b30440a6ffb7b1d037ca3a7b9ea49795f9e1e2cc5af94364c7e945aab3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/TftpModels.cs",
+      "sha256": "2e7cecd572b3cb2058a9b14b785ef794718bea2778dd602fa956f0cdc2d2b698"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/UPnpAvConfigPatch.cs",
+      "sha256": "1b2cac898f0642e24218145460f82d55edc0b2a37b707d54c860aa7209442367"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/UpnpavModels.cs",
+      "sha256": "597c290e649204936a63b01b7f9b037538ace88be43226e4f47f4d65c8c6ae06"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VoicemailPatch.cs",
+      "sha256": "da37155974b30a7178eb07309b33e0e2acf80c676dfaffe5aaa8c96915f1ed9d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnClientAuthenticationPatch.cs",
+      "sha256": "149a783a367675c710f747f823e1582759388369833162d0d91e6bf184a3646d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnClientModels.cs",
+      "sha256": "a883957e22ddb6c2e73556e1ff75036b32e9c8c531ba9fd3cb7fc9a8a46dacf7"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnClientPptpPatch.cs",
+      "sha256": "a152084c92097c4aa3238c409ac1e89acbe41d9f1a8c4407e6a1f6a703cfca56"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnClientWireGuardAddressWriteRequest.cs",
+      "sha256": "312ff5413bd43ff7a751677bf1f5b521bcdf924079bfb63fe9c04f8e6dc1ffce"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnClientWireGuardPatch.cs",
+      "sha256": "dd02cd720ce5a0cd383a3512bbd1474aee122203081b04596c45e3290f38735f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnClientWriteRequest.cs",
+      "sha256": "fae52d8389a49547e9f5a1dd6a02e97c09267c6b4f2dfc5fad29811d9247db94"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnIpSecAuthModes.cs",
+      "sha256": "c3c9377953be810935498c40eadbcd82251e75fc34fb807195f9853bc00b8f06"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnModels.cs",
+      "sha256": "b9d412bc92a7004ea4844126cc9442d9c40f2c9f12349d0e46b38e420802936d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnOpenVpnConfigPatch.cs",
+      "sha256": "a9942f0a4810859fb253a10c17c83ff8a8ad43838d2d8fb4aca5253909974f5f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnOpenVpnRoutedPatch.cs",
+      "sha256": "b7149820dfffd664077bcd6d99e50a5ef4461ff41f60582b0f8dd89aca62b9be"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnUserWireGuardPatch.cs",
+      "sha256": "e341282fd994cacd0640bea1670aa7802f362b68ca55d3928b5c88c22aa867e6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/Services/VpnUserWriteRequest.cs",
+      "sha256": "f116b05cc29cef31e9ba7660a09b2d2b2aa31a049cc29342c55070494e29865e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/SystemHome/HomeIoValue.cs",
+      "sha256": "93f7e0289660fbdd4ad2ca65c0b1a8820b868f59ae0e029e6fdfb3168b7c32cc"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/SystemHome/NetworkControlHosts.cs",
+      "sha256": "d800b885d0062f8592cb320a25e0a77256012e5bed6513e564e51688c88abec4"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/SystemHome/ReadContracts.cs",
+      "sha256": "467abe1c74f054add4c909b8e5c77bb6306fa9cf9d675ec701b1c5b5181f7993"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/SystemHome/Requests.cs",
+      "sha256": "96855af1f57d5e013778192eadf22eb5f3e46a080d5b2dd78af69b3b818c0659"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/SystemHome/WireTokens.cs",
+      "sha256": "9061825cc76fd8288e6102e335d8a77f987651408357e3928c5834ec33a5e751"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Contracts/WebSockets/WebSocketContracts.cs",
+      "sha256": "ed413763477f2722fc783ae9b9bb9ce0d8c069d8dcfe770dfacf4abb4874366f"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Freenaute.Freebox.Mapper.csproj",
+      "sha256": "5a0d7de0aef5e95a22663163edb1c5e808742af3b0c417ed91d17697150dc159"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/FilesJsonSerializerContext.cs",
+      "sha256": "1dc99b6323f3d7b3efef113a953fab17fa431cc799978976af320bdf35b3e2ea"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/FreeboxJsonSerializerContext.cs",
+      "sha256": "4fba55122e58563ca35a2aed701d2fda08997a2cb0b3f45f98f145eb4aab2826"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/NetworkJsonSerializerContext.cs",
+      "sha256": "cb9a0fccd01383c0b50191ff4e8bce0c309a4b02bcaf091b0adc408288da052b"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/ProtocolJsonSerializerContext.cs",
+      "sha256": "6567fc98ed7c8e188b8856af8b562c526b72bb7e5defea8488455c64223732a3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/ServicesJsonSerializerContext.cs",
+      "sha256": "133126349b661de73cac17fb6ab9802a90f3795213235a2121153457ba684323"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/SharedJsonSerializerContext.cs",
+      "sha256": "bdf9060851723d6a8b7a267922d93657fdd63f5184f104c34ebd00b4e5329981"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/SystemHomeJsonSerializerContext.cs",
+      "sha256": "a17814b74b7e9f780bff8125315d457ada947408a94d34072bcd24939ff717da"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/WebSocketJsonSerializerContext.cs",
+      "sha256": "2fb83b686b0e7428a4cedb96e285f1eb8a47a3b06221bbb0a4eb4267e0a0478e"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Api/AirMedia/AirMediaConfigResponse.cs",
+      "sha256": "1912e764ead65f144e9946c44658f41780bf84ca213038be14b2dd805b10e0b3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Api/AirMedia/AirMediaErrorResponse.cs",
+      "sha256": "be830a5481ab6d5032cff3b8caf0d3d68adcda15c16f34d5c680adedfe952c90"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Api/AirMedia/AirMediaReceiverResponse.cs",
+      "sha256": "050b6951ab6f2cfd8db639bf227c8193bf91e5b006576e2d185ca93c45684519"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Authentication/Login/AuthorizeResponse.cs",
+      "sha256": "fbfa8af8052e1e8fa140c159902b28612e4bcd774603a6d89193c30c82f385e6"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Authentication/Login/AuthorizeTrackResponse.cs",
+      "sha256": "9720f2e54e57e170d0d18c76d4dacc42384bbd3721a8b07646007b314870c7e4"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Authentication/Login/LoginResponse.cs",
+      "sha256": "faa239ef9aaafd71db7d8ad3c0075d9f0426ab2314cf57de775d65b4a9485e58"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Authentication/Login/SessionResponse.cs",
+      "sha256": "6774dd3f2bd814fb1da1b9e4bc4e4bf623d776de84cd9fc887337f6c2ccbad3a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/General/ApiVersionResponse.cs",
+      "sha256": "bc6df23d3ddb54eaf3514e5eb9c226ddbb53666e1960de309b00b0c24d17572a"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Models/SessionFailedModel.cs",
+      "sha256": "dfeb48d0255e79e56db66842dd13d05a886d69c9f39d214e31214dcf0c846a4d"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/Models/SessionPermissionModel.cs",
+      "sha256": "a99e651009d1fc4a081a8b956394dbf541dc600f60dd246ee3448b10031a80c0"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/WebSocket/WebSocketNotification.cs",
+      "sha256": "7a8c6a97bd1e3ecb24e19cef4107a9b3a9a2c61cfa26154e0d61ee04fe173657"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/ServerSide/WebSocket/WebSocketResponse.cs",
+      "sha256": "019168259e9847f32320425783a44c28aeedb88fba07f4dac7db27d4125c5f71"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/packages.lock.json",
+      "sha256": "d38ba0626b3763d585a79495b3d16cbb95d5f7e43ed555664553598d19a83498"
+    },
+    {
+      "path": "Samples/Freenaute.Freebox.AotSmoke/DomainSmoke.cs",
+      "sha256": "2945f067110926de587bc6f183be0c08c71c4521173a3b9726cb1948ffe8e8d1"
+    },
+    {
+      "path": "Samples/Freenaute.Freebox.AotSmoke/Freenaute.Freebox.AotSmoke.csproj",
+      "sha256": "a61b99944ed802a82a91e7d3c6e3aa6273107f71bbfe131ffe0661ec84379c11"
+    },
+    {
+      "path": "Samples/Freenaute.Freebox.AotSmoke/Program.cs",
+      "sha256": "81f1dee4f17c4c2e387eb3904a39c53b312f2e84d1115ad887b790e42c7cc3e5"
+    },
+    {
+      "path": "Samples/Freenaute.Freebox.AotSmoke/packages.lock.json",
+      "sha256": "7d171aec3c19a15c13bf159a768876310d19c59b6b22784115d2156a11776a83"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/AirMediaCommandTests.cs",
+      "sha256": "e35e60fea20921a01ffaac3ce8757935916721414b12220c6b026de18c32e781"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/AuthenticationTests.cs",
+      "sha256": "5020a9efbd0fa8c61bcfc7661645009cac8c831d4979bed49d04c1034ce546b4"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/BinaryTransportTests.cs",
+      "sha256": "c902cc37b9aadcb7d12dcf0a80baa925bd4fd4142b0daefb6a4ad1ccf281dece"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/FilesApiTests.cs",
+      "sha256": "4af2b19f2cfccc1977ecfa0dcc84f1fba252f3d6b67413d7b56b5b7882c2f2dd"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/FixtureHandler.cs",
+      "sha256": "46e8aef2edb23729ca08bc92e3e8e0744996deb8d32ee8916e839b28f0fa5646"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/Freenaute.Freebox.Client.Tests.csproj",
+      "sha256": "e2fa45ef7b9f858b6086971e80231eca84d1dc20cd480ced9a140325ed1fcf36"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/HttpClientTests.cs",
+      "sha256": "37867e29c4de42016121a86efc8826fd70c75f718c7d0bf7b3ecda65c3d1192d"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/HttpLifetimeTests.cs",
+      "sha256": "5a57f5c52f3a8369636f74127af0f394ed9e95df23679aef238d5d0ee4d038a6"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/NetworkApiTests.cs",
+      "sha256": "b6d452f2600fe021ade94ed25f244f7149204de9c1a7d4ae83b1f2d8fcca31d9"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/PrimitiveContractTests.cs",
+      "sha256": "fb48d387883a2b972c8f43498bcfeaeb1564845df06638a590ecb9e460151256"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/PrimitiveTestJsonContext.cs",
+      "sha256": "bab9b10b583f35fe48143763b65ce9895208136e87e5b08d30abd6d29d50c302"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/ProtocolContractTests.cs",
+      "sha256": "2b64bca56ec92e537a65d61f52dd63eb0bd2f01b42a9e3ba2833be99655cb936"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/ProtocolDomainTests.cs",
+      "sha256": "985faabe33cb0a92fc7973bbd0cd3f2bd3a2ad54d2e49ae168356f02f5146d69"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/SerializationTests.cs",
+      "sha256": "6087962763560913c3886e9b126ae0a389c7891d0e3925186024f591b32400a2"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/ServicesApiTests.cs",
+      "sha256": "ced66314df9550bd324a52c0aae9f9ce5305779e7f811f5e5b65b1c5f46c99ff"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/SystemHomeApiTests.cs",
+      "sha256": "87073c1193847cb1fa2f11bee0b0b60d9b822a41219b9ae63134efa4ea670199"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/TestJsonContext.cs",
+      "sha256": "ccaeb4068d9a21ff5f2dffcb14980ede22c479137b25e062f085e57c49874ec0"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/TlsTests.cs",
+      "sha256": "394ca32f4249bbb5aa50a18def9ff22d913f3030fa3e1fc698f8ed8a6d42aa09"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/WebSocketApiTests.cs",
+      "sha256": "c31cf05f2224d1dc17c5b1f5ff80ae6e343aef0d64581b4b6bea551e5d17f9e9"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/WebSocketHandshakeTests.cs",
+      "sha256": "28471a7b14fb4f6cd3af62661947d96995ad822195f6a2e05426017550a93b3d"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Client.Tests/packages.lock.json",
+      "sha256": "2c175d6b60614bd3b24279025b3006e3b40f9c233d99d74657f6c15ab2d51099"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Documentation.Tests/DocumentationTests.cs",
+      "sha256": "15282a087ffd1b79531a77c91105f6221f6f9a2b6f94bb81ad9fb37b4bc5e553"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Documentation.Tests/Freenaute.Freebox.Documentation.Tests.csproj",
+      "sha256": "10ea6706ecad6b746d38e034ef84fa6b059bba2aa3cce312b5ad93abe7f2c74a"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Documentation.Tests/SnapshotFixture.cs",
+      "sha256": "7205ae336b2440ec8e3500909441a90953cc9cfa422a9f4a455cb75e45f6b13d"
+    },
+    {
+      "path": "Tests/Freenaute.Freebox.Documentation.Tests/packages.lock.json",
+      "sha256": "74b2bacbf32075fad0b8cfefb932eb8bc5ef6bc00df3f484c1ad183148a351e7"
+    },
+    {
+      "path": "Tools/Freenaute.Freebox.Documentation/DocumentFiles.cs",
+      "sha256": "6ce7cc61d06e68b7145f543532da11e13a41b7182c9c70a72f04e6b2417bbb4b"
+    },
+    {
+      "path": "Tools/Freenaute.Freebox.Documentation/DocumentationCommands.cs",
+      "sha256": "ae8df4a860cf6342a2b49a0fa104a76d4683397a752d39f146551ab028dd4270"
+    },
+    {
+      "path": "Tools/Freenaute.Freebox.Documentation/Freenaute.Freebox.Documentation.csproj",
+      "sha256": "ef02ab024b0b4e848c2b96876b811902755de0a58339989248c93a82982f629a"
+    },
+    {
+      "path": "Tools/Freenaute.Freebox.Documentation/Program.cs",
+      "sha256": "6a858a6ded7ca4e98d4ea2a5f424430b1052dc0ada0b9081a4982e5227766ca2"
+    },
+    {
+      "path": "Tools/Freenaute.Freebox.Documentation/SnapshotCorpus.cs",
+      "sha256": "b690be956b93246a06fef302d016963bda3a747805c5027d80d464b1dfdf2315"
+    },
+    {
+      "path": "Tools/Freenaute.Freebox.Documentation/packages.lock.json",
+      "sha256": "12360222d955ffb77b9c6e07c01ac6186a1f4f620d297ca1cdfc7e4a56b32356"
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "349329e7637af0694dd38d2854f8cbb11650c72d23fbbd77de553774d1fe2c7f"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "sha256": "cf19591a5a2705dfe7b5febd2081e38f1e838ecfa8e9baa71d15b83ea32cfc9f"
+    },
+    {
+      "path": "global.json",
+      "sha256": "ce61f5ae207d33d00594c77c5999c7f0dc66434e85a85f38090335d588438974"
+    },
+    {
+      "path": "Freenaute.Freebox.sln",
+      "sha256": "d3bab6cf1d7cfcbc6ccd32f579483af5b07a787a48fd54f86a918affa0c0e94c"
+    },
+    {
+      "path": ".github/workflows/dotnet.yml",
+      "sha256": "fdbd2c53745d4a1d0d1b38f55bd6daa44472060ec206c5b485f940ae5aae4f6a"
+    }
+  ]
+}

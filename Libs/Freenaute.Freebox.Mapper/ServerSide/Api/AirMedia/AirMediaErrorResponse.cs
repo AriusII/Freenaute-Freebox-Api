@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 using Freenaute.Freebox.Mapper.Common.Types;
 
 namespace Freenaute.Freebox.Mapper.ServerSide.Api.AirMedia;

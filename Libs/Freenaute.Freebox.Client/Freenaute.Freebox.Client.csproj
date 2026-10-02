@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsAotCompatible>true</IsAotCompatible>
+    <Description>Fluent Freebox Server HTTP client with dependency injection and NativeAOT-compatible contracts.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Freenaute.Freebox.Mapper/Freenaute.Freebox.Mapper.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>

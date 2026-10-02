@@ -1,0 +1,816 @@
+{
+  "module": {
+    "module": "vpn",
+    "title": "VPN Server [UNSTABLE]",
+    "category": "services",
+    "path": "docs/reference/services/vpn.md",
+    "http_signatures": 12,
+    "objects": 10,
+    "properties": 50,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#vpn-server-unstable",
+    "source_pre_blocks": 37,
+    "markdown_code_blocks": 37,
+    "source_tables": 8
+  },
+  "endpoints": [
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/",
+      "path_template": "/api/v{major}/vpn/",
+      "documented_major": 8,
+      "title": "VPN Server List API",
+      "id": "get--api-v8-vpn-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-",
+      "referenced_objects": [
+        "VPNServer"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/{vpn_id}/config/",
+      "path_template": "/api/v{major}/vpn/{vpn_id}/config/",
+      "documented_major": 8,
+      "title": "Get a VPN config",
+      "id": "get--api-v8-vpn-vpn_id-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-vpn_id-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-vpn_id-config-",
+      "referenced_objects": [
+        "VPNServerConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-vpn_id-config-"
+    },
+    {
+      "module": "vpn",
+      "method": "PUT",
+      "documented_path": "/api/v8/vpn/openvpn_routed/config/",
+      "path_template": "/api/v{major}/vpn/openvpn_routed/config/",
+      "documented_major": 8,
+      "title": "Update the VPN configuration",
+      "id": "put--api-v8-vpn-openvpn_routed-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vpn-openvpn_routed-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#put--api-v8-vpn-openvpn_routed-config-",
+      "referenced_objects": [
+        "VPNServerConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-vpn-openvpn_routed-config-"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/user/",
+      "path_template": "/api/v{major}/vpn/user/",
+      "documented_major": 8,
+      "title": "VPN Server User List",
+      "id": "get--api-v8-vpn-user-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-user-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-user-",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-user-"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/user/{login}",
+      "path_template": "/api/v{major}/vpn/user/{login}",
+      "documented_major": 8,
+      "title": "Get a VPN user",
+      "id": "get--api-v8-vpn-user-login",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-user-login",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-user-login",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-user-login"
+    },
+    {
+      "module": "vpn",
+      "method": "POST",
+      "documented_path": "/api/v8/vpn/user/",
+      "path_template": "/api/v{major}/vpn/user/",
+      "documented_major": 8,
+      "title": "Add a VPN User",
+      "id": "post--api-v8-vpn-user-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vpn-user-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#post--api-v8-vpn-user-",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vpn-user-"
+    },
+    {
+      "module": "vpn",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vpn/user/{login}",
+      "path_template": "/api/v{major}/vpn/user/{login}",
+      "documented_major": 8,
+      "title": "Delete a VPN User",
+      "id": "delete--api-v8-vpn-user-login",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vpn-user-login",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#delete--api-v8-vpn-user-login",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-vpn-user-login"
+    },
+    {
+      "module": "vpn",
+      "method": "PUT",
+      "documented_path": "/api/v8/vpn/user/{login}",
+      "path_template": "/api/v{major}/vpn/user/{login}",
+      "documented_major": 8,
+      "title": "Update a VPN User",
+      "id": "put--api-v8-vpn-user-login",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vpn-user-login",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#put--api-v8-vpn-user-login",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-vpn-user-login"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/ip_pool/",
+      "path_template": "/api/v{major}/vpn/ip_pool/",
+      "documented_major": 8,
+      "title": "Get the VPN server IP pool reservations",
+      "id": "get--api-v8-vpn-ip_pool-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-ip_pool-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-ip_pool-",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-ip_pool-"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/connection/",
+      "path_template": "/api/v{major}/vpn/connection/",
+      "documented_major": 8,
+      "title": "Get the list of connections",
+      "id": "get--api-v8-vpn-connection-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-connection-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-connection-",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-connection-"
+    },
+    {
+      "module": "vpn",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vpn/connection/{id}",
+      "path_template": "/api/v{major}/vpn/connection/{id}",
+      "documented_major": 8,
+      "title": "Close a given connection",
+      "id": "delete--api-v8-vpn-connection-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vpn-connection-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#delete--api-v8-vpn-connection-id",
+      "referenced_objects": [
+        "VPNUser"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-vpn-connection-id"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/download_config/{server_name}/{login}/{fmt}",
+      "path_template": "/api/v{major}/vpn/download_config/{server_name}/{login}/{fmt}",
+      "documented_major": 8,
+      "title": "Donwload a user configuration file",
+      "id": "get--api-v8-vpn-download_config-server_name-login-fmt",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-download_config-server_name-login-fmt",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn.md#get--api-v8-vpn-download_config-server_name-login-fmt",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn-download_config-server_name-login-fmt"
+    }
+  ],
+  "objects": [
+    {
+      "module": "vpn",
+      "name": "VPNServer",
+      "id": "VPNServer",
+      "properties": [
+        "VPNServer.name",
+        "VPNServer.type",
+        "VPNServer.state",
+        "VPNServer.connection_count",
+        "VPNServer.auth_connection_count"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer",
+      "markdown": "docs/reference/services/vpn.md#VPNServer"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNPPTPConfig",
+      "id": "VPNPPTPConfig",
+      "properties": [
+        "VPNPPTPConfig.mppe",
+        "VPNPPTPConfig.allowed_auth"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig",
+      "markdown": "docs/reference/services/vpn.md#VPNPPTPConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNOpenVpnConfig",
+      "id": "VPNOpenVpnConfig",
+      "properties": [
+        "VPNOpenVpnConfig.cipher",
+        "VPNOpenVpnConfig.disable_fragment",
+        "VPNOpenVpnConfig.use_tcp"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig",
+      "markdown": "docs/reference/services/vpn.md#VPNOpenVpnConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNWireGuardConfig",
+      "id": "VPNWireGuardConfig",
+      "properties": [
+        "VPNWireGuardConfig.mtu"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNWireGuardConfig",
+      "markdown": "docs/reference/services/vpn.md#VPNWireGuardConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNIPSecAuthMode",
+      "id": "VPNIPSecAuthMode",
+      "properties": [
+        "VPNIPSecAuthMode.id_source",
+        "VPNIPSecAuthMode.id_custom"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecAuthMode",
+      "markdown": "docs/reference/services/vpn.md#VPNIPSecAuthMode"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNIPSecConfig",
+      "id": "VPNIPSecConfig",
+      "properties": [
+        "VPNIPSecConfig.ike_version",
+        "VPNIPSecConfig.auth_modes"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig",
+      "markdown": "docs/reference/services/vpn.md#VPNIPSecConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNServerConfig",
+      "id": "VPNServerConfig",
+      "properties": [
+        "VPNServerConfig.id",
+        "VPNServerConfig.type",
+        "VPNServerConfig.enabled",
+        "VPNServerConfig.enable_ipv4",
+        "VPNServerConfig.enable_ipv6",
+        "VPNServerConfig.port",
+        "VPNServerConfig.min_port",
+        "VPNServerConfig.max_port",
+        "VPNServerConfig.port_ike",
+        "VPNServerConfig.port_nat",
+        "VPNServerConfig.conf_pptp",
+        "VPNServerConfig.conf_openvpn",
+        "VPNServerConfig.conf_ipsec",
+        "VPNServerConfig.conf_wireguard",
+        "VPNServerConfig.ip_start",
+        "VPNServerConfig.ip_end",
+        "VPNServerConfig.ip6_start",
+        "VPNServerConfig.ip6_end"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNUser",
+      "id": "VPNUser",
+      "properties": [
+        "VPNUser.login",
+        "VPNUser.type",
+        "VPNUser.password",
+        "VPNUser.password_set",
+        "VPNUser.ip_reservation",
+        "VPNUser.conf_wireguard.keepalive",
+        "VPNUser.conf_wireguard.psk"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser",
+      "markdown": "docs/reference/services/vpn.md#VPNUser"
+    },
+    {
+      "module": "vpn",
+      "name": "conf_wireguard",
+      "id": "VPNUser.conf_wireguard",
+      "properties": [
+        "VPNUser.conf_wireguard.keepalive",
+        "VPNUser.conf_wireguard.psk"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.conf_wireguard",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.conf_wireguard"
+    },
+    {
+      "module": "vpn",
+      "name": "VPNConnection",
+      "id": "VPNConnection",
+      "properties": [
+        "VPNConnection.id",
+        "VPNConnection.vpn",
+        "VPNConnection.user",
+        "VPNConnection.authenticated",
+        "VPNConnection.auth_time",
+        "VPNConnection.src_ip",
+        "VPNConnection.src_port",
+        "VPNConnection.local_ip",
+        "VPNConnection.rx_bytes",
+        "VPNConnection.tx_bytes"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection"
+    }
+  ],
+  "properties": [
+    {
+      "module": "vpn",
+      "id": "VPNServer.name",
+      "signature": "name string Read-only",
+      "description": "VPN server name (id)",
+      "source_id": "VPNServer.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.name",
+      "markdown": "docs/reference/services/vpn.md#VPNServer.name"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServer.type",
+      "signature": "type enum Read-only",
+      "description": "VPN server type type Description ipsec IPsec IKEv2 server pptp PPTP VPN server openvpn OpenVPN server wireguard WireGuard server",
+      "source_id": "VPNServer.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.type",
+      "markdown": "docs/reference/services/vpn.md#VPNServer.type"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServer.state",
+      "signature": "state enum Read-only",
+      "description": "server state state stopped starting started stopping error",
+      "source_id": "VPNServer.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.state",
+      "markdown": "docs/reference/services/vpn.md#VPNServer.state"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServer.connection_count",
+      "signature": "connection_count int Read-only",
+      "description": "number of active connections",
+      "source_id": "VPNServer.connection_count",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.connection_count",
+      "markdown": "docs/reference/services/vpn.md#VPNServer.connection_count"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServer.auth_connection_count",
+      "signature": "auth_connection_count int Read-only",
+      "description": "number of active connections that have passed authentication",
+      "source_id": "VPNServer.auth_connection_count",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.auth_connection_count",
+      "markdown": "docs/reference/services/vpn.md#VPNServer.auth_connection_count"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNPPTPConfig.mppe",
+      "signature": "mppe enum",
+      "description": "mppe Description disable disable mppe require require mppe require_128 require 128 bits mppe",
+      "source_id": "VPNPPTPConfig.mppe",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig.mppe",
+      "markdown": "docs/reference/services/vpn.md#VPNPPTPConfig.mppe"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNPPTPConfig.allowed_auth",
+      "signature": "allowed_auth dict",
+      "description": "allowed authentication methods dictionnary with following entries: pap chap mschapv2 values are booleans.",
+      "source_id": "VPNPPTPConfig.allowed_auth",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig.allowed_auth",
+      "markdown": "docs/reference/services/vpn.md#VPNPPTPConfig.allowed_auth"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNOpenVpnConfig.cipher",
+      "signature": "cipher enum",
+      "description": "cipher blowfish aes128 aes256 chacha20poly1305",
+      "source_id": "VPNOpenVpnConfig.cipher",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig.cipher",
+      "markdown": "docs/reference/services/vpn.md#VPNOpenVpnConfig.cipher"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNOpenVpnConfig.disable_fragment",
+      "signature": "disable_fragment bool",
+      "description": "disable fragment configuration option",
+      "source_id": "VPNOpenVpnConfig.disable_fragment",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig.disable_fragment",
+      "markdown": "docs/reference/services/vpn.md#VPNOpenVpnConfig.disable_fragment"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNOpenVpnConfig.use_tcp",
+      "signature": "use_tcp bool",
+      "description": "use TCP instead of UDP",
+      "source_id": "VPNOpenVpnConfig.use_tcp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig.use_tcp",
+      "markdown": "docs/reference/services/vpn.md#VPNOpenVpnConfig.use_tcp"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNWireGuardConfig.mtu",
+      "signature": "mtu int",
+      "description": "wireguard device MTU. Value must be between 512 and 1420.",
+      "source_id": "VPNWireGuardConfig.mtu",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNWireGuardConfig.mtu",
+      "markdown": "docs/reference/services/vpn.md#VPNWireGuardConfig.mtu"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNIPSecAuthMode.id_source",
+      "signature": "id_source enum",
+      "description": "source of the connection id id_source custom",
+      "source_id": "VPNIPSecAuthMode.id_source",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecAuthMode.id_source",
+      "markdown": "docs/reference/services/vpn.md#VPNIPSecAuthMode.id_source"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNIPSecAuthMode.id_custom",
+      "signature": "id_custom string",
+      "description": "value of the source id when id_source is custom",
+      "source_id": "VPNIPSecAuthMode.id_custom",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecAuthMode.id_custom",
+      "markdown": "docs/reference/services/vpn.md#VPNIPSecAuthMode.id_custom"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNIPSecConfig.ike_version",
+      "signature": "ike_version int Read-only",
+      "description": "IKE protocol version",
+      "source_id": "VPNIPSecConfig.ike_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig.ike_version",
+      "markdown": "docs/reference/services/vpn.md#VPNIPSecConfig.ike_version"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNIPSecConfig.auth_modes",
+      "signature": "auth_modes [] array of VPNIPSecAuthMode Read-only",
+      "description": "map of supported auth modes, currently only psk is supported",
+      "source_id": "VPNIPSecConfig.auth_modes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig.auth_modes",
+      "markdown": "docs/reference/services/vpn.md#VPNIPSecConfig.auth_modes"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.id",
+      "signature": "id string Read-only",
+      "description": "VPN server id",
+      "source_id": "VPNServerConfig.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.id",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.id"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.type",
+      "signature": "type enum Read-only",
+      "description": "VPN server type type Description pptp PPTP VPN server openvpn OpenVPN server ipsec IPsec IKEv2 server wireguard WireGuard server",
+      "source_id": "VPNServerConfig.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.type",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.type"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is the VPN server enabled",
+      "source_id": "VPNServerConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.enabled",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.enabled"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.enable_ipv4",
+      "signature": "enable_ipv4 bool",
+      "description": "enable IPv4 on this server NOTE: Not relevant for openvpn_bridge, pptp and wireguard",
+      "source_id": "VPNServerConfig.enable_ipv4",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.enable_ipv4",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.enable_ipv4"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.enable_ipv6",
+      "signature": "enable_ipv6 bool",
+      "description": "enable IPv6 on this server NOTE: Not relevant for openvpn_bridge, pptp and wireguard",
+      "source_id": "VPNServerConfig.enable_ipv6",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.enable_ipv6",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.enable_ipv6"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.port",
+      "signature": "port int",
+      "description": "the server port NOTE: you can only edit the server port when type is openvpn or wireguard",
+      "source_id": "VPNServerConfig.port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.port",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.port"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.min_port",
+      "signature": "min_port int Read-only",
+      "description": "This field indicate the minimum possible value for port (see ConnectionStatus ipv4_port_range)",
+      "source_id": "VPNServerConfig.min_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.min_port",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.min_port"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.max_port",
+      "signature": "max_port int Read-only",
+      "description": "This field indicate the maximum possible value for port (see ConnectionStatus ipv4_port_range)",
+      "source_id": "VPNServerConfig.max_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.max_port",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.max_port"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.port_ike",
+      "signature": "port_ike int",
+      "description": "IPSec ike server port NOTE: only present for ipsec server",
+      "source_id": "VPNServerConfig.port_ike",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.port_ike",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.port_ike"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.port_nat",
+      "signature": "port_nat int",
+      "description": "IPSec nat server port NOTE: only present for ipsec server",
+      "source_id": "VPNServerConfig.port_nat",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.port_nat",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.port_nat"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.conf_pptp",
+      "signature": "conf_pptp VPNPPTPConfig",
+      "description": "only available when type is PPTP",
+      "source_id": "VPNServerConfig.conf_pptp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.conf_pptp",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.conf_pptp"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.conf_openvpn",
+      "signature": "conf_openvpn VPNOpenVpnConfig",
+      "description": "only available when type is OpenVPN",
+      "source_id": "VPNServerConfig.conf_openvpn",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.conf_openvpn",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.conf_openvpn"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.conf_ipsec",
+      "signature": "conf_ipsec VPNIPSecConfig",
+      "description": "only available when type is IPsec",
+      "source_id": "VPNServerConfig.conf_ipsec",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.conf_ipsec",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.conf_ipsec"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.conf_wireguard",
+      "signature": "conf_wireguard VPNWireGuardConfig",
+      "description": "only available when type is WireGuard",
+      "source_id": "VPNServerConfig.conf_wireguard",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.conf_wireguard",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.conf_wireguard"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.ip_start",
+      "signature": "ip_start string Read-only",
+      "description": "start of the IP range that will be used to give clients an IP",
+      "source_id": "VPNServerConfig.ip_start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.ip_start",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.ip_start"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.ip_end",
+      "signature": "ip_end string Read-only",
+      "description": "end of the IP range that will be used to give clients an IP",
+      "source_id": "VPNServerConfig.ip_end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.ip_end",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.ip_end"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.ip6_start",
+      "signature": "ip6_start string Read-only",
+      "description": "start of the IPv6 range that will be used to give clients an IPv6",
+      "source_id": "VPNServerConfig.ip6_start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.ip6_start",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.ip6_start"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNServerConfig.ip6_end",
+      "signature": "ip6_end string Read-only",
+      "description": "end of the IPv6 range that will be used to give clients an IPv6",
+      "source_id": "VPNServerConfig.ip6_end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig.ip6_end",
+      "markdown": "docs/reference/services/vpn.md#VPNServerConfig.ip6_end"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.login",
+      "signature": "login string",
+      "description": "VPN user login",
+      "source_id": "VPNUser.login",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.login",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.login"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.type",
+      "signature": "type enum",
+      "description": "VPN user type type standard wireguard",
+      "source_id": "VPNUser.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.type",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.type"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.password",
+      "signature": "password string Write-only",
+      "description": "VPN user password (length must be between 8 and 32)",
+      "source_id": "VPNUser.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.password",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.password"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.password_set",
+      "signature": "password_set bool Read-only",
+      "description": "True if a password was provided for this user",
+      "source_id": "VPNUser.password_set",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.password_set",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.password_set"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.ip_reservation",
+      "signature": "ip_reservation ipv4",
+      "description": "You can specify the IP you want to assign to this user. If you don\u2019t want to use a specific IP pass an empty string or omit this property. This field is required if the type property is set to \u2018wireguard\u2019. The IP must be in the VPN range (see ip_start, ip_end).",
+      "source_id": "VPNUser.ip_reservation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.ip_reservation",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.ip_reservation"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.conf_wireguard.keepalive",
+      "signature": "keepalive int",
+      "description": "Interval in seconds at which keepalive packets are sent.",
+      "source_id": "VPNUser.conf_wireguard.keepalive",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.conf_wireguard.keepalive",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.conf_wireguard.keepalive"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNUser.conf_wireguard.psk",
+      "signature": "psk bool",
+      "description": "Enable optional preshared-key.",
+      "source_id": "VPNUser.conf_wireguard.psk",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.conf_wireguard.psk",
+      "markdown": "docs/reference/services/vpn.md#VPNUser.conf_wireguard.psk"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.id",
+      "signature": "id string Read-only",
+      "description": "connection id",
+      "source_id": "VPNConnection.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.id",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.id"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.vpn",
+      "signature": "vpn strong Read-only",
+      "description": "related VPN server id",
+      "source_id": "VPNConnection.vpn",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.vpn",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.vpn"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.user",
+      "signature": "user string Read-only",
+      "description": "user login",
+      "source_id": "VPNConnection.user",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.user",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.user"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.authenticated",
+      "signature": "authenticated bool Read-only",
+      "description": "is the connection authenticated",
+      "source_id": "VPNConnection.authenticated",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.authenticated",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.authenticated"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.auth_time",
+      "signature": "auth_time int Read-only",
+      "description": "timestamp of the authentication",
+      "source_id": "VPNConnection.auth_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.auth_time",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.auth_time"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.src_ip",
+      "signature": "src_ip ipv4 Read-only",
+      "description": "connection source IP address",
+      "source_id": "VPNConnection.src_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.src_ip",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.src_ip"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.src_port",
+      "signature": "src_port int Read-only",
+      "description": "connection source port",
+      "source_id": "VPNConnection.src_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.src_port",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.src_port"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.local_ip",
+      "signature": "local_ip int Read-only",
+      "description": "attributed IP address from VPN adress pool",
+      "source_id": "VPNConnection.local_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.local_ip",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.local_ip"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.rx_bytes",
+      "signature": "rx_bytes int Read-only",
+      "description": "rx bytes",
+      "source_id": "VPNConnection.rx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.rx_bytes",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.rx_bytes"
+    },
+    {
+      "module": "vpn",
+      "id": "VPNConnection.tx_bytes",
+      "signature": "tx_bytes int Read-only",
+      "description": "tx bytes",
+      "source_id": "VPNConnection.tx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection.tx_bytes",
+      "markdown": "docs/reference/services/vpn.md#VPNConnection.tx_bytes"
+    }
+  ],
+  "events": []
+}

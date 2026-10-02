@@ -1,0 +1,228 @@
+{
+  "module": {
+    "module": "network_share",
+    "title": "Network Share",
+    "category": "services",
+    "path": "docs/reference/services/network_share.md",
+    "http_signatures": 4,
+    "objects": 2,
+    "properties": 12,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#network-share",
+    "source_pre_blocks": 14,
+    "markdown_code_blocks": 14,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "network_share",
+      "method": "GET",
+      "documented_path": "/api/v8/netshare/samba/",
+      "path_template": "/api/v{major}/netshare/samba/",
+      "documented_major": 8,
+      "title": "Get the current Samba configuration",
+      "id": "get--api-v8-netshare-samba-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-netshare-samba-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/network_share.md#get--api-v8-netshare-samba-",
+      "referenced_objects": [
+        "SambaConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-netshare-samba-"
+    },
+    {
+      "module": "network_share",
+      "method": "PUT",
+      "documented_path": "/api/v8/netshare/samba/",
+      "path_template": "/api/v{major}/netshare/samba/",
+      "documented_major": 8,
+      "title": "Update the Samba configuration",
+      "id": "put--api-v8-netshare-samba-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-netshare-samba-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/network_share.md#put--api-v8-netshare-samba-",
+      "referenced_objects": [
+        "SambaConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-netshare-samba-"
+    },
+    {
+      "module": "network_share",
+      "method": "GET",
+      "documented_path": "/api/v8/netshare/afp/",
+      "path_template": "/api/v{major}/netshare/afp/",
+      "documented_major": 8,
+      "title": "Get the current Afp configuration",
+      "id": "get--api-v8-netshare-afp-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-netshare-afp-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/network_share.md#get--api-v8-netshare-afp-",
+      "referenced_objects": [
+        "AfpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-netshare-afp-"
+    },
+    {
+      "module": "network_share",
+      "method": "PUT",
+      "documented_path": "/api/v8/netshare/afp/",
+      "path_template": "/api/v{major}/netshare/afp/",
+      "documented_major": 8,
+      "title": "Update the Afp configuration",
+      "id": "put--api-v8-netshare-afp-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-netshare-afp-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/network_share.md#put--api-v8-netshare-afp-",
+      "referenced_objects": [
+        "AfpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-netshare-afp-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "network_share",
+      "name": "SambaConfig",
+      "id": "SambaConfig",
+      "properties": [
+        "SambaConfig.file_share_enabled",
+        "SambaConfig.print_share_enabled",
+        "SambaConfig.logon_enabled",
+        "SambaConfig.logon_user",
+        "SambaConfig.logon_password",
+        "SambaConfig.workgroup",
+        "SambaConfig.smbv2_enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig"
+    },
+    {
+      "module": "network_share",
+      "name": "AfpConfig",
+      "id": "AfpConfig",
+      "properties": [
+        "AfpConfig.enabled",
+        "AfpConfig.guest_allow",
+        "AfpConfig.server_type",
+        "AfpConfig.login_name",
+        "AfpConfig.login_password"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig",
+      "markdown": "docs/reference/services/network_share.md#AfpConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "network_share",
+      "id": "SambaConfig.file_share_enabled",
+      "signature": "file_share_enabled bool",
+      "description": "is file sharing enabled",
+      "source_id": "SambaConfig.file_share_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.file_share_enabled",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.file_share_enabled"
+    },
+    {
+      "module": "network_share",
+      "id": "SambaConfig.print_share_enabled",
+      "signature": "print_share_enabled bool",
+      "description": "is printer sharing enabled",
+      "source_id": "SambaConfig.print_share_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.print_share_enabled",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.print_share_enabled"
+    },
+    {
+      "module": "network_share",
+      "id": "SambaConfig.logon_enabled",
+      "signature": "logon_enabled bool",
+      "description": "is login/password required to access shares",
+      "source_id": "SambaConfig.logon_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.logon_enabled",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.logon_enabled"
+    },
+    {
+      "module": "network_share",
+      "id": "SambaConfig.logon_user",
+      "signature": "logon_user string",
+      "description": "samba user name",
+      "source_id": "SambaConfig.logon_user",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.logon_user",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.logon_user"
+    },
+    {
+      "module": "network_share",
+      "id": "SambaConfig.logon_password",
+      "signature": "logon_password string Write-only",
+      "description": "samba user password",
+      "source_id": "SambaConfig.logon_password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.logon_password",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.logon_password"
+    },
+    {
+      "module": "network_share",
+      "id": "SambaConfig.workgroup",
+      "signature": "workgroup string",
+      "description": "name of the workgroup",
+      "source_id": "SambaConfig.workgroup",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.workgroup",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.workgroup"
+    },
+    {
+      "module": "network_share",
+      "id": "SambaConfig.smbv2_enabled",
+      "signature": "smbv2_enabled bool",
+      "description": "Set to true to enable SMBv2/v3",
+      "source_id": "SambaConfig.smbv2_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig.smbv2_enabled",
+      "markdown": "docs/reference/services/network_share.md#SambaConfig.smbv2_enabled"
+    },
+    {
+      "module": "network_share",
+      "id": "AfpConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is afp service enabled",
+      "source_id": "AfpConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig.enabled",
+      "markdown": "docs/reference/services/network_share.md#AfpConfig.enabled"
+    },
+    {
+      "module": "network_share",
+      "id": "AfpConfig.guest_allow",
+      "signature": "guest_allow bool",
+      "description": "allow guest to access shared files",
+      "source_id": "AfpConfig.guest_allow",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig.guest_allow",
+      "markdown": "docs/reference/services/network_share.md#AfpConfig.guest_allow"
+    },
+    {
+      "module": "network_share",
+      "id": "AfpConfig.server_type",
+      "signature": "server_type enum",
+      "description": "Afp server type (to display proper icon) in MacOS valid server types are: server_type powerbook powermac macmini imac macbook macbookpro macbookair macpro appletv airport xserve",
+      "source_id": "AfpConfig.server_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig.server_type",
+      "markdown": "docs/reference/services/network_share.md#AfpConfig.server_type"
+    },
+    {
+      "module": "network_share",
+      "id": "AfpConfig.login_name",
+      "signature": "login_name string",
+      "description": "Afp user name",
+      "source_id": "AfpConfig.login_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig.login_name",
+      "markdown": "docs/reference/services/network_share.md#AfpConfig.login_name"
+    },
+    {
+      "module": "network_share",
+      "id": "AfpConfig.login_password",
+      "signature": "login_password string Write-only",
+      "description": "Afp user password",
+      "source_id": "AfpConfig.login_password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig.login_password",
+      "markdown": "docs/reference/services/network_share.md#AfpConfig.login_password"
+    }
+  ],
+  "events": []
+}

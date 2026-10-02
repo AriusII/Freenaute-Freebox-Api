@@ -1,0 +1,1036 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+==============
+PVR [UNSTABLE]
+==============
+
+***** INTERNAL USE ONLY *****
+
+PVR Errors
+==========
+
+=========================== ======================
+error_code                  Description
+=========================== ======================
+noent                       wrong id
+inval                       invalid params
+inval_date_fmt              invalid date format
+inval_end_before_start      start time must be before end time
+system_time_incorrect       system time not available
+record_duration_too_long    record duration is too long
+record_date_in_past         record date is already passed
+unknown_channel             unknown channel
+no_channel_svc              no service for this channel
+only_auto_disable           can't disable manual precord
+cannot_change_en_state      can't change enabled state
+cannot_disable_has_data     can't disable started record
+internal_error              internal error
+=========================== ======================
+
+PVR Config
+==========
+
+PVR config has the following attributes:
+
+.. json:object:: PvrConfig
+
+   .. json:property:: margin_before int
+
+       default margin before recording start time
+
+   .. json:property:: margin_after int
+
+       default margin after recording end time
+
+
+PVR Config API
+==============
+
+Get the current PVR configuration
+---------------------------------
+
+.. http:get:: /api/v4/pvr/config/
+
+   Returns the current :json:object:`PvrConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "margin_before": 10,
+              "margin_after": 5
+          }
+      }
+
+Update the current PVR configuration
+------------------------------------
+
+.. http:put:: /api/v4/pvr/config/
+
+   Update the current :json:object:`PvrConfig`
+
+PVR Quota
+=========
+
+PVR Quota has the following attributes:
+
+.. json:object:: PvrQuota
+
+   .. json:property:: quota_exceeded bool
+
+      is quota exceeded
+
+   .. json:property:: needed_tresh int
+
+      needed quota threshold
+
+   .. json:property:: cur_tresh int
+
+      current quota threshold
+
+PVR Quota API
+=============
+
+Getting the current quota info
+------------------------------
+
+.. http:get:: /api/v4/pvr/quota/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/quota/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "quota_exceeded": true,
+              "needed_tresh": 80,
+              "cur_tresh": 40
+          }
+      }
+
+Request next quota threshold
+----------------------------
+
+.. http:put:: /api/v4/pvr/quota/
+
+   Request next quota threshold. You don't have to provide any arguments,
+   the quota will be adjusted automatically if needed.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/pvr/quota/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      { }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "quota_exceeded": false,
+              "needed_tresh": 80,
+              "cur_tresh": 80
+          }
+      }
+
+======================
+PVR Programmed records
+======================
+
+Precords (Programmed records) are records that are planned. Precords can be
+manual, or generated using a PVR Generator (see below). Only manual Precords
+can be edited directly.
+
+Precord
+=======
+
+Precord has the following attributes:
+
+.. json:object:: Precord
+
+   .. json:property:: id string [ro]
+
+      precord id
+
+   .. json:property:: media string
+
+      media name on which the record will be written to. See the `Media API`_
+      for more info. This property and can be empty when the file backing the
+      record is not available, for example when secure is set.
+
+   .. json:property:: path string
+
+      destination directory on the media storage where the record will be
+      written to
+
+   .. json:property:: has_record_gen bool [ro]
+
+      if true, this precord has been generated using a Generator
+
+   .. json:property:: record_gen_id int [ro]
+
+      if has_record_gen, this is the id of the generator
+
+   .. json:property:: conflict bool [ro]
+
+      if true this record may conflict with another record
+
+   .. json:property:: overlap_list int[] [ro]
+
+      in case of conflict, this will contain the list of records id that may
+      conflict with this record
+
+   .. json:property:: enabled bool
+
+      it only applies to generated records. If false the generated precord will
+      be skipped.
+
+   .. json:property:: altered bool [ro]
+
+      a precord is altered when some part of the recording may be missing.
+      This can be the case if a conflict occurred during the recording
+      (or connection was down)
+
+   .. json:property:: state enum [ro]
+
+      ===================   ======================
+      State                 Description
+      ===================   ======================
+      disabled              disabled
+      start_error           failed to start
+      waiting_start_time    scheduled
+      starting              starting
+      running               running
+      running_error         running with error
+      failed                failed
+      finished              finished
+      ===================   ======================
+
+   .. json:property:: error enum [ro]
+
+      =========================== ==
+      Error
+      =========================== ==
+      none
+      file_access_error
+      disk_full
+      private_but_no_private_dir
+      network_problem
+      resource_problem
+      no_stream_available
+      no_data_received
+      missed
+      stopped
+      internal_error
+      unknown_error
+      =========================== ==
+
+   .. json:property:: channel_uuid string
+
+      channel uuid
+
+   .. json:property:: channel_name string
+
+      optional channel name
+
+   .. json:property:: channel_quality enum
+
+      =========================== ==
+      channel_quality
+      =========================== ==
+      auto
+      hd
+      sd
+      ld
+      3d
+      =========================== ==
+
+   .. json:property:: channel_type enum
+
+      =========================== =========================
+      channel_type                Description
+      =========================== =========================
+      '' (empty string)           auto
+      iptv                        use only iptv streams
+      dvb                         use only dvb streams
+      =========================== =========================
+
+   .. json:property:: name string
+
+      record name
+
+   .. json:property:: subname string
+
+      record subname
+
+   .. json:property:: broadcast_type enum
+
+      =========================== ==
+      broadcast_type
+      =========================== ==
+      tv
+      radio
+      =========================== ==
+
+   .. json:property:: start int
+
+      record start timestamp
+
+   .. json:property:: end int
+
+      record end timestamp
+
+   .. json:property:: legacy_uri string
+
+      only used for legacy apps. Use channel_uuid instead when available
+      NOTE: only visible when called from player
+
+   .. json:property:: force_channel_name string
+
+      only used for legacy apps. Use channel_uuid instead when available
+      NOTE: only visible when called from player
+
+
+Precord API
+===========
+
+Getting the list of precords
+----------------------------
+
+.. http:get:: /api/v4/pvr/programmed/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/programmed/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "has_record_gen": true,
+                  "channel_name": "France 2",
+                  "overlap_list": [
+                      195
+                  ],
+                  "end": 1403755697,
+                  "media": "Disque dur",
+                  "path": "Enregistrements",
+                  "record_gen_id": 10,
+                  "enabled": true,
+                  "id": 190,
+                  "start": 1403755628,
+                  "broadcast_type": "tv",
+                  "subname": "",
+                  "state": "waiting_start_time",
+                  "channel_type": "",
+                  "name": "Test Repeat",
+                  "channel_quality": "auto",
+                  "conflict": true,
+                  "channel_uuid": "uuid-webtv-201",
+                  "error": "none",
+                  "altered": false
+              }
+
+              [ ... ]
+
+              {
+                  "has_record_gen": false,
+                  "channel_name": "France 2",
+                  "overlap_list": [ ],
+                  "end": 1403541511,
+                  "media": "NO NAME",
+                  "path": "Enregistrements",
+                  "record_gen_id": 0,
+                  "enabled": true,
+                  "id": 236,
+                  "start": 1403541361,
+                  "broadcast_type": "tv",
+                  "subname": "Sub Test",
+                  "state": "finished",
+                  "channel_type": "iptv",
+                  "name": "Test",
+                  "channel_quality": "auto",
+                  "conflict": false,
+                  "channel_uuid": "uuid-webtv-201",
+                  "error": "none",
+                  "altered": true
+              }
+          ]
+      }
+
+Getting a specific precord
+--------------------------
+
+.. http:get:: /api/v4/pvr/programmed/{id}
+
+   Returns the requested :json:object:`Precord`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/programmed/236 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "has_record_gen": false,
+              "channel_name": "France 2",
+              "overlap_list": [ ],
+              "end": 1403541511,
+              "media": "NO NAME",
+              "path": "Enregistrements",
+              "record_gen_id": 0,
+              "enabled": true,
+              "id": 236,
+              "start": 1403541361,
+              "broadcast_type": "tv",
+              "subname": "Sub Test",
+              "state": "finished",
+              "channel_type": "iptv",
+              "name": "Test",
+              "channel_quality": "auto",
+              "conflict": false,
+              "channel_uuid": "uuid-webtv-201",
+              "error": "none",
+              "altered": true
+          }
+      }
+
+Updating a precord
+------------------
+
+.. http:put:: /api/v4/pvr/programmed/{id}
+
+   Update a :json:object:`Precord` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/pvr/programmed/236 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "name": "test 2"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "has_record_gen": false,
+              "channel_name": "France 2",
+              "overlap_list": [ ],
+              "end": 1403541511,
+              "media": "NO NAME",
+              "path": "Enregistrements",
+              "record_gen_id": 0,
+              "enabled": true,
+              "id": 236,
+              "start": 1403541361,
+              "broadcast_type": "tv",
+              "subname": "Sub Test",
+              "state": "finished",
+              "channel_type": "iptv",
+              "name": "test 2",
+              "channel_quality": "auto",
+              "conflict": false,
+              "channel_uuid": "uuid-webtv-201",
+              "error": "none",
+              "altered": true
+          }
+      }
+
+Delete a precord
+----------------
+
+.. http:delete:: /api/v4/pvr/programmed/{id}
+
+   Delete a :json:object:`Precord`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/pvr/programmed/236 HTTP/1.1
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+      }
+
+Create a precord
+----------------
+
+.. http:post:: /api/v4/pvr/programmed/
+
+   Create a new :json:object:`Precord`
+
+   ** Example request**:
+
+   .. sourcecode: http
+
+      POST /api/v4/pvr/programmed/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode: javascript
+
+      {
+          "start": 1444240500,
+          "end": 1444244100,
+          "channel_uuid": "uuid-webtv-374",
+          "name": "Secret Story",
+          "subname: "La soirée des habitants"
+      }
+
+   ** Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": 63,
+              "media": "Disque dur",
+              "path": "Enregistrements",
+              "channel_uuid": "uuid-webtv-374",
+              "channel_name": "NT1",
+              "channel_type": "",
+              "channel_quality": "auto",
+              "broadcast_type": "tv",
+              "start": 1444240500,
+              "end": 1444244100,
+              "name": "Secret Story",
+              "subname": "La soirée des habitants",
+              "state": "starting",
+              "error": "none",
+              "enabled": true,
+              "altered": false,
+              "conflict": false,
+              "overlap_list": [],
+              "margin_before": 0,
+              "margin_after": 0,
+              "has_record_gen": false,
+              "record_gen_id": 0
+          }
+      }
+
+======================
+PVR Finished records
+======================
+
+Frecords (Finished records) are records that are finished or in progress.
+An `Frecord` object is created automatically when a `Precord` start time is
+reached.
+
+Frecord
+=======
+
+Frecord has the following attributes:
+
+.. json:object:: Frecord
+
+   .. json:property:: id string [ro]
+
+      frecord id
+
+   .. json:property:: media string [ro]
+
+      media name on which the record is written. See the `Media API`_ for more
+      info. This property and can be empty when the file backing the record is
+      not available, for example when secure is set.
+
+   .. json:property:: path string [ro]
+
+      destination directory on the media storage
+
+   .. json:property:: filename string [ro]
+
+      filename of the record
+
+   .. json:property:: byte_size int [ro]
+
+      size of the record file in bytes
+
+   .. json:property:: has_record_gen bool [ro]
+
+      if true, this frecord has been generated using a Generator
+
+   .. json:property:: record_gen_id int [ro]
+
+      if has_record_gen, this is the id of the generator
+
+   .. json:property:: altered bool [ro]
+
+      an frecord is altered when some part of the recording may be missing.
+      This can be the case if a conflict occurred during the recording
+      (or connection was down)
+
+   .. json:property:: state enum [ro]
+
+      ===================   ======================
+      State                 Description
+      ===================   ======================
+      disabled              disabled
+      start_error           failed to start
+      waiting_start_time    scheduled
+      starting              starting
+      running               running
+      running_error         running with error
+      failed                failed
+      finished              finished
+      ===================   ======================
+
+   .. json:property:: error enum [ro]
+
+      =========================== ==
+      Error
+      =========================== ==
+      none
+      file_access_error
+      disk_full
+      private_but_no_private_dir
+      network_problem
+      resource_problem
+      no_stream_available
+      no_data_received
+      missed
+      stopped
+      internal_error
+      unknown_error
+      =========================== ==
+
+   .. json:property:: channel_uuid string [ro]
+
+      channel uuid
+
+   .. json:property:: channel_name string [ro]
+
+      optional channel name
+
+   .. json:property:: channel_quality enum [ro]
+
+      =========================== ==
+      channel_quality
+      =========================== ==
+      auto
+      hd
+      sd
+      ld
+      3d
+      =========================== ==
+
+   .. json:property:: channel_type enum [ro]
+
+      =========================== =========================
+      channel_type                Description
+      =========================== =========================
+      '' (empty string)           auto
+      iptv                        use only iptv streams
+      dvb                         use only dvb streams
+      =========================== =========================
+
+   .. json:property:: name string
+
+      record name
+
+   .. json:property:: subname string
+
+      record subname
+
+   .. json:property:: broadcast_type enum [ro]
+
+      =========================== ==
+      broadcast_type
+      =========================== ==
+      tv
+      radio
+      =========================== ==
+
+   .. json:property:: start int [ro]
+
+      record start timestamp
+
+   .. json:property:: end int [ro]
+
+      record end timestamp
+
+   .. json:property:: secure bool [ro]
+
+      flag set when the record is protected by DRM
+
+Frecord API
+===========
+
+Getting the list of frecords
+----------------------------
+
+.. http:get:: /api/v4/pvr/finished/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/finished/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "id": 5,
+                  "media": "Disque dur",
+                  "path": "Enregistrements",
+                  "filename": "M6 - Fier de ma maison - 27-06-2013 16h35 01h15 (5).m2ts",
+                  "byte_size": 4433869440,
+                  "has_record_gen": false,
+                  "record_gen_id": 0,
+                  "broadcast_type": "tv",
+                  "channel_uuid": "uuid-webtv-613",
+                  "channel_name": "M6",
+                  "channel_type": "dvb",
+                  "channel_quality": "hd",
+                  "name": "Fier de ma maison",
+                  "subname": "",
+                  "start": 1372343700,
+                  "end": 1372348200,
+                  "state": "finished",
+                  "error": "none",
+                  "enabled": true,
+                  "altered": true,
+                  "secure": false
+              },
+
+              [ ... ]
+
+              {
+                  "id": 22,
+                  "media": "",
+                  "path": "",
+                  "filename": "TF1 - Nos chers voisins - 17-09-2014 15h23 01h (22).m2ts",
+                  "byte_size": 2421095040,
+                  "has_record_gen": false,
+                  "record_gen_id": 0,
+                  "broadcast_type": "tv",
+                  "channel_uuid": "uuid-webtv-612",
+                  "channel_name": "TF1",
+                  "channel_type": "",
+                  "channel_quality": "auto",
+                  "name": "Nos chers voisins",
+                  "subname": "",
+                  "start": 1410960180,
+                  "end": 1410963780,
+                  "state": "finished",
+                  "error": "none",
+                  "enabled": true,
+                  "altered": true,
+                  "secure": true
+              }
+          ]
+      }
+
+Getting a specific frecord
+--------------------------
+
+.. http:get:: /api/v4/pvr/finished/{id}
+
+   Returns the requested :json:object:`Frecord`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/finished/236 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": 236,
+              "media": "NO NAME",
+              "path": "",
+              "filename": "France 3 - Tout le sport - 10-04-2015 20h00 10m (24).m2ts",
+              "byte_size": 341752320,
+              "has_record_gen": false,
+              "record_gen_id": 0,
+              "broadcast_type": "tv",
+              "channel_uuid": "uuid-webtv-202",
+              "channel_name": "France 3",
+              "channel_type": "",
+              "channel_quality": "auto",
+              "name": "Tout le sport",
+              "subname": "",
+              "start": 1428688800,
+              "end": 1428689400,
+              "state": "finished",
+              "error": "none",
+              "enabled": true,
+              "altered": true,
+              "secure": false
+          }
+      }
+
+Updating an frecord
+-------------------
+
+.. http:put:: /api/v4/pvr/finished/{id}
+
+   Update a :json:object:`Frecord` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/pvr/finished/236 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "name": "Tout le sport",
+        "subname": "On est les champions"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": 236,
+              "media": "NO NAME",
+              "path": "",
+              "filename": "France 3 - Tout le sport - 10-04-2015 20h00 10m (24).m2ts",
+              "byte_size": 341752320,
+              "has_record_gen": false,
+              "record_gen_id": 0,
+              "broadcast_type": "tv",
+              "channel_uuid": "uuid-webtv-202",
+              "channel_name": "France 3",
+              "channel_type": "",
+              "channel_quality": "auto",
+              "name": "Tout le sport",
+              "subname": "On est les champions",
+              "start": 1428688800,
+              "end": 1428689400,
+              "state": "finished",
+              "error": "none",
+              "enabled": true,
+              "altered": true,
+              "secure": false
+          }
+      }
+
+Delete an frecord
+-----------------
+
+.. http:delete:: /api/v4/pvr/finished/{id}
+
+   Delete a :json:object:`Frecord` and associated files
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/pvr/finished/236 HTTP/1.1
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+      }
+
+
+=============
+Storage media
+=============
+
+Media objects represent a storage on which records can be written to, typically
+a disk.
+
+Media
+=====
+
+Media has the following attributes:
+
+.. json:object:: Media
+
+   .. json:property:: media string [ro]
+
+      name of the storage medium
+
+   .. json:property:: free_bytes int [ro]
+
+      number of free bytes on the medium
+
+   .. json:property:: total bytes int [ro]
+
+      total number of bytes on the medium
+
+   .. json:property:: record_time int [ro]
+
+      estimated record time in seconds for multiple channel types and qualities
+
+Media API
+=========
+
+Getting the list of media
+-------------------------
+
+.. http:get:: /api/v4/pvr/media/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/pvr/media/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "media": "Disque dur",
+                  "free_bytes": 39700000000,
+                  "total_bytes": 244950000000,
+                  "record_time": {
+                      "dvb":  { "sd": 48461, "hd": 35245, "3d": 35245 },
+                      "iptv":  { "ld": 155078, "sd": 110770, "hd": 51012, "3d": 51012 }
+                  }
+              },
+
+              [ ... ]
+
+              {
+                  "media":  "NO NAME",
+                  "free_bytes": 873930000,
+                  "total_bytes":  7790000000,
+                  "record_time":  {
+                      "dvb":  { "sd": 1066, "hd": 775, "3d": 775 },
+                      "iptv":  { "ld": 3413, "sd": 2438, "hd": 1122, "3d": 1122 }
+                  }
+              }
+          ]
+      }

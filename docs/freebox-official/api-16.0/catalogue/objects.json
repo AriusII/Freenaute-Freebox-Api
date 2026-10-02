@@ -1,0 +1,3013 @@
+[
+  {
+    "module": "00_index",
+    "name": "APIResponse",
+    "id": "APIResponse",
+    "properties": [
+      "APIResponse.success",
+      "APIResponse.result",
+      "APIResponse.error_code",
+      "APIResponse.msg"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse",
+    "markdown": "docs/reference/fondamentaux/00_index.md#APIResponse"
+  },
+  {
+    "module": "login",
+    "name": "TokenRequest",
+    "id": "TokenRequest",
+    "properties": [
+      "TokenRequest.app_id",
+      "TokenRequest.app_name",
+      "TokenRequest.app_version",
+      "TokenRequest.device_name"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest",
+    "markdown": "docs/reference/fondamentaux/login.md#TokenRequest"
+  },
+  {
+    "module": "login",
+    "name": "SessionStart",
+    "id": "SessionStart",
+    "properties": [
+      "SessionStart.app_id",
+      "SessionStart.app_version",
+      "SessionStart.password"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart",
+    "markdown": "docs/reference/fondamentaux/login.md#SessionStart"
+  },
+  {
+    "module": "websocket",
+    "name": "WebSocketRequest",
+    "id": "WebSocketRequest",
+    "properties": [
+      "WebSocketRequest.request_id",
+      "WebSocketRequest.action"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest",
+    "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketRequest"
+  },
+  {
+    "module": "websocket",
+    "name": "WebSocketResponse",
+    "id": "WebSocketResponse",
+    "properties": [
+      "WebSocketResponse.request_id",
+      "WebSocketResponse.action",
+      "WebSocketResponse.success",
+      "WebSocketResponse.result",
+      "WebSocketResponse.error_code",
+      "WebSocketResponse.msg"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse",
+    "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse"
+  },
+  {
+    "module": "websocket",
+    "name": "WebSocketNotification",
+    "id": "WebSocketNotification",
+    "properties": [
+      "WebSocketNotification.action",
+      "WebSocketNotification.success",
+      "WebSocketNotification.source",
+      "WebSocketNotification.event",
+      "WebSocketNotification.result"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification",
+    "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification"
+  },
+  {
+    "module": "websocket",
+    "name": "RegisterAction",
+    "id": "RegisterAction",
+    "properties": [
+      "RegisterAction.action",
+      "RegisterAction.events"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction",
+    "markdown": "docs/reference/fondamentaux/websocket.md#RegisterAction"
+  },
+  {
+    "module": "airmedia",
+    "name": "AirMediaConfig",
+    "id": "AirMediaConfig",
+    "properties": [
+      "AirMediaConfig.enabled",
+      "AirMediaConfig.password"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaConfig",
+    "markdown": "docs/reference/services/airmedia.md#AirMediaConfig"
+  },
+  {
+    "module": "airmedia",
+    "name": "AirMediaReceiver",
+    "id": "AirMediaReceiver",
+    "properties": [
+      "AirMediaReceiver.name",
+      "AirMediaReceiver.password_protected",
+      "AirMediaReceiver.capabilities"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiver",
+    "markdown": "docs/reference/services/airmedia.md#AirMediaReceiver"
+  },
+  {
+    "module": "airmedia",
+    "name": "AirMediaReceiverRequest",
+    "id": "AirMediaReceiverRequest",
+    "properties": [
+      "AirMediaReceiverRequest.action",
+      "AirMediaReceiverRequest.media_type",
+      "AirMediaReceiverRequest.password",
+      "AirMediaReceiverRequest.position",
+      "AirMediaReceiverRequest.media"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest",
+    "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest"
+  },
+  {
+    "module": "call",
+    "name": "CallEntry",
+    "id": "CallEntry",
+    "properties": [
+      "CallEntry.id",
+      "CallEntry.type",
+      "CallEntry.datetime",
+      "CallEntry.number",
+      "CallEntry.name",
+      "CallEntry.duration",
+      "CallEntry.new",
+      "CallEntry.contact_id"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry",
+    "markdown": "docs/reference/services/call.md#CallEntry"
+  },
+  {
+    "module": "call",
+    "name": "VoicemailEntry",
+    "id": "VoicemailEntry",
+    "properties": [
+      "VoicemailEntry.id",
+      "VoicemailEntry.country_code",
+      "VoicemailEntry.phone_number",
+      "VoicemailEntry.date",
+      "VoicemailEntry.read",
+      "VoicemailEntry.duration"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry",
+    "markdown": "docs/reference/services/call.md#VoicemailEntry"
+  },
+  {
+    "module": "contacts",
+    "name": "ContactEntry",
+    "id": "ContactEntry",
+    "properties": [
+      "ContactEntry.id",
+      "ContactEntry.display_name",
+      "ContactEntry.first_name",
+      "ContactEntry.last_name",
+      "ContactEntry.company",
+      "ContactEntry.photo_url",
+      "ContactEntry.last_update",
+      "ContactEntry.notes",
+      "ContactEntry.addresses",
+      "ContactEntry.emails",
+      "ContactEntry.numbers",
+      "ContactEntry.urls"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry",
+    "markdown": "docs/reference/services/contacts.md#ContactEntry"
+  },
+  {
+    "module": "contacts",
+    "name": "ContactNumber",
+    "id": "ContactNumber",
+    "properties": [
+      "ContactNumber.id",
+      "ContactNumber.contact_id",
+      "ContactNumber.type",
+      "ContactNumber.number",
+      "ContactNumber.is_default",
+      "ContactNumber.is_own"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber",
+    "markdown": "docs/reference/services/contacts.md#ContactNumber"
+  },
+  {
+    "module": "contacts",
+    "name": "ContactAddress",
+    "id": "ContactAddress",
+    "properties": [
+      "ContactAddress.id",
+      "ContactAddress.contact_id",
+      "ContactAddress.type",
+      "ContactAddress.number",
+      "ContactAddress.street",
+      "ContactAddress.street2",
+      "ContactAddress.city",
+      "ContactAddress.zipcode",
+      "ContactAddress.country"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress",
+    "markdown": "docs/reference/services/contacts.md#ContactAddress"
+  },
+  {
+    "module": "contacts",
+    "name": "ContactUrl",
+    "id": "ContactUrl",
+    "properties": [
+      "ContactUrl.id",
+      "ContactUrl.contact_id",
+      "ContactUrl.type",
+      "ContactUrl.url"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl",
+    "markdown": "docs/reference/services/contacts.md#ContactUrl"
+  },
+  {
+    "module": "contacts",
+    "name": "ContactEmail",
+    "id": "ContactEmail",
+    "properties": [
+      "ContactEmail.id",
+      "ContactEmail.contact_id",
+      "ContactEmail.type",
+      "ContactEmail.email"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail",
+    "markdown": "docs/reference/services/contacts.md#ContactEmail"
+  },
+  {
+    "module": "connection",
+    "name": "ConnectionStatus",
+    "id": "ConnectionStatus",
+    "properties": [
+      "ConnectionStatus.state",
+      "ConnectionStatus.type",
+      "ConnectionStatus.media",
+      "ConnectionStatus.ipv4",
+      "ConnectionStatus.ipv6",
+      "ConnectionStatus.rate_up",
+      "ConnectionStatus.rate_down",
+      "ConnectionStatus.bandwidth_up",
+      "ConnectionStatus.bandwidth_down",
+      "ConnectionStatus.bytes_up",
+      "ConnectionStatus.bytes_down",
+      "ConnectionStatus.ipv4_port_range"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus",
+    "markdown": "docs/reference/reseau/connection.md#ConnectionStatus"
+  },
+  {
+    "module": "connection",
+    "name": "ConnectionConfiguration",
+    "id": "ConnectionConfiguration",
+    "properties": [
+      "ConnectionConfiguration.ping",
+      "ConnectionConfiguration.is_secure_pass",
+      "ConnectionConfiguration.remote_access",
+      "ConnectionConfiguration.remote_access_port",
+      "ConnectionConfiguration.remote_access_min_port",
+      "ConnectionConfiguration.remote_access_max_port",
+      "ConnectionConfiguration.remote_access_ip",
+      "ConnectionConfiguration.api_remote_access",
+      "ConnectionConfiguration.wol",
+      "ConnectionConfiguration.adblock",
+      "ConnectionConfiguration.adblock_not_set",
+      "ConnectionConfiguration.allow_token_request",
+      "ConnectionConfiguration.sip_alg"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration",
+    "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration"
+  },
+  {
+    "module": "connection",
+    "name": "ConnectionIpv6Delegation",
+    "id": "ConnectionIpv6Delegation",
+    "properties": [
+      "ConnectionIpv6Delegation.prefix",
+      "ConnectionIpv6Delegation.next_hop"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Delegation",
+    "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Delegation"
+  },
+  {
+    "module": "connection",
+    "name": "ConnectionIpv6Configuration",
+    "id": "ConnectionIpv6Configuration",
+    "properties": [
+      "ConnectionIpv6Configuration.ipv6_enabled",
+      "ConnectionIpv6Configuration.ipv6_firewall",
+      "ConnectionIpv6Configuration.ipv6_prefix_firewall",
+      "ConnectionIpv6Configuration.ipv6ll",
+      "propriete-sans-ancre-connection-32",
+      "ConnectionIpv6Configuration.delegations"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration",
+    "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration"
+  },
+  {
+    "module": "connection",
+    "name": "XdslStatus",
+    "id": "XdslStatus",
+    "properties": [
+      "XdslStatus.status",
+      "XdslStatus.protocol",
+      "XdslStatus.modulation",
+      "XdslStatus.uptime"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStatus",
+    "markdown": "docs/reference/reseau/connection.md#XdslStatus"
+  },
+  {
+    "module": "connection",
+    "name": "XdslStats",
+    "id": "XdslStats",
+    "properties": [
+      "XdslStats.maxrate",
+      "XdslStats.rate",
+      "XdslStats.snr",
+      "XdslStats.attn",
+      "XdslStats.snr_10",
+      "XdslStats.attn_10",
+      "XdslStats.fec",
+      "XdslStats.crc",
+      "XdslStats.hec",
+      "XdslStats.es",
+      "XdslStats.ses",
+      "XdslStats.phyr",
+      "XdslStats.ginp",
+      "XdslStats.nitro",
+      "XdslStats.rxmt",
+      "XdslStats.rxmt_corr",
+      "XdslStats.rxmt_uncorr",
+      "XdslStats.rtx_tx",
+      "XdslStats.rtx_c",
+      "XdslStats.rtx_uc"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats",
+    "markdown": "docs/reference/reseau/connection.md#XdslStats"
+  },
+  {
+    "module": "connection",
+    "name": "XdslInfos",
+    "id": "XdslInfos",
+    "properties": [
+      "XdslInfos.status",
+      "XdslInfos.down",
+      "XdslInfos.up"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#XdslInfos",
+    "markdown": "docs/reference/reseau/connection.md#XdslInfos"
+  },
+  {
+    "module": "connection",
+    "name": "LteRadioBand",
+    "id": "LteRadioBand",
+    "properties": [
+      "LteRadioBand.enabled",
+      "LteRadioBand.bandwidth",
+      "LteRadioBand.rsrq",
+      "LteRadioBand.rsrp",
+      "LteRadioBand.rssi",
+      "LteRadioBand.band",
+      "LteRadioBand.pci"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand",
+    "markdown": "docs/reference/reseau/connection.md#LteRadioBand"
+  },
+  {
+    "module": "connection",
+    "name": "LteRadio",
+    "id": "LteRadio",
+    "properties": [
+      "LteRadio.associated",
+      "LteRadio.plmn",
+      "LteRadio.signal_level",
+      "LteRadio.gcid",
+      "LteRadio.bands",
+      "LteRadio.ue_active"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio",
+    "markdown": "docs/reference/reseau/connection.md#LteRadio"
+  },
+  {
+    "module": "connection",
+    "name": "LteNetwork",
+    "id": "LteNetwork",
+    "properties": [
+      "LteNetwork.pdn_up",
+      "LteNetwork.has_ipv6",
+      "LteNetwork.ipv6_dns",
+      "LteNetwork.ipv6",
+      "LteNetwork.ipv6_netmask",
+      "LteNetwork.has_ipv4",
+      "LteNetwork.ipv4_dns",
+      "LteNetwork.ipv4",
+      "LteNetwork.ipv4_netmask"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork",
+    "markdown": "docs/reference/reseau/connection.md#LteNetwork"
+  },
+  {
+    "module": "connection",
+    "name": "LteSim",
+    "id": "LteSim",
+    "properties": [
+      "LteSim.present",
+      "LteSim.pin_locked",
+      "LteSim.puk_remaining",
+      "LteSim.iccid",
+      "LteSim.puk_locked",
+      "LteSim.pin_remaining"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim",
+    "markdown": "docs/reference/reseau/connection.md#LteSim"
+  },
+  {
+    "module": "connection",
+    "name": "LteTunnelDetails",
+    "id": "LteTunnelDetails",
+    "properties": [
+      "LteTunnelDetails.connected",
+      "LteTunnelDetails.last_error",
+      "LteTunnelDetails.tx_flows_rate",
+      "LteTunnelDetails.tx_max_rate",
+      "LteTunnelDetails.tx_used_rate",
+      "LteTunnelDetails.rx_flows_rate",
+      "LteTunnelDetails.rx_max_rate",
+      "LteTunnelDetails.rx_used_rate"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails",
+    "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails"
+  },
+  {
+    "module": "connection",
+    "name": "LteTunnel",
+    "id": "LteTunnel",
+    "properties": [
+      "LteTunnel.lte",
+      "LteTunnel.xdsl"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnel",
+    "markdown": "docs/reference/reseau/connection.md#LteTunnel"
+  },
+  {
+    "module": "connection",
+    "name": "LteConfiguration",
+    "id": "LteConfiguration",
+    "properties": [
+      "LteConfiguration.enabled",
+      "LteConfiguration.radio",
+      "LteConfiguration.state",
+      "LteConfiguration.network",
+      "LteConfiguration.fsm_state",
+      "LteConfiguration.sim"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration",
+    "markdown": "docs/reference/reseau/connection.md#LteConfiguration"
+  },
+  {
+    "module": "connection",
+    "name": "FtthStatus",
+    "id": "FtthStatus",
+    "properties": [
+      "FtthStatus.sfp_present",
+      "FtthStatus.sfp_alim_ok",
+      "FtthStatus.sfp_has_power_report",
+      "FtthStatus.sfp_has_signal",
+      "FtthStatus.link",
+      "FtthStatus.sfp_serial",
+      "FtthStatus.sfp_model",
+      "FtthStatus.sfp_vendor",
+      "propriete-sans-ancre-connection-113",
+      "FtthStatus.sfp_pwr_tx",
+      "FtthStatus.sfp_pwr_rx"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus",
+    "markdown": "docs/reference/reseau/connection.md#FtthStatus"
+  },
+  {
+    "module": "connection",
+    "name": "DDNSStatus",
+    "id": "DDNSStatus",
+    "properties": [
+      "DDNSStatus.status",
+      "DDNSStatus.next_refresh",
+      "DDNSStatus.last_refresh",
+      "DDNSStatus.next_retry",
+      "DDNSStatus.last_error"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus",
+    "markdown": "docs/reference/reseau/connection.md#DDNSStatus"
+  },
+  {
+    "module": "connection",
+    "name": "DDNSConfig",
+    "id": "DDNSConfig",
+    "properties": [
+      "DDNSConfig.enabled",
+      "DDNSConfig.hostname",
+      "DDNSConfig.password",
+      "DDNSConfig.user"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSConfig",
+    "markdown": "docs/reference/reseau/connection.md#DDNSConfig"
+  },
+  {
+    "module": "lan",
+    "name": "LanConfig",
+    "id": "LanConfig",
+    "properties": [
+      "LanConfig.ip",
+      "LanConfig.name",
+      "LanConfig.name_dns",
+      "LanConfig.name_mdns",
+      "LanConfig.name_netbios",
+      "LanConfig.type"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig",
+    "markdown": "docs/reference/reseau/lan.md#LanConfig"
+  },
+  {
+    "module": "lan",
+    "name": "Route",
+    "id": "Route",
+    "properties": [
+      "Route.prefix",
+      "Route.gateway",
+      "Route.enabled",
+      "Route.description"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Route",
+    "markdown": "docs/reference/reseau/lan.md#Route"
+  },
+  {
+    "module": "lan",
+    "name": "LanHost",
+    "id": "LanHost",
+    "properties": [
+      "LanHost.id",
+      "LanHost.primary_name",
+      "LanHost.domain_name",
+      "LanHost.host_type",
+      "LanHost.primary_name_manual",
+      "LanHost.l2ident",
+      "LanHost.vendor_name",
+      "LanHost.persistent",
+      "LanHost.reachable",
+      "LanHost.last_time_reachable",
+      "LanHost.active",
+      "LanHost.last_activity",
+      "LanHost.first_activity",
+      "LanHost.names",
+      "LanHost.l3connectivities",
+      "LanHost.network_control",
+      "LanHost.info"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost",
+    "markdown": "docs/reference/reseau/lan.md#LanHost"
+  },
+  {
+    "module": "lan",
+    "name": "LanHostName",
+    "id": "LanHostName",
+    "properties": [
+      "LanHostName.name",
+      "LanHostName.source"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostName",
+    "markdown": "docs/reference/reseau/lan.md#LanHostName"
+  },
+  {
+    "module": "lan",
+    "name": "LanHostL2Ident",
+    "id": "LanHostL2Ident",
+    "properties": [
+      "LanHostL2Ident.id",
+      "LanHostL2Ident.type"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL2Ident",
+    "markdown": "docs/reference/reseau/lan.md#LanHostL2Ident"
+  },
+  {
+    "module": "lan",
+    "name": "LanHostL3Connectivity",
+    "id": "LanHostL3Connectivity",
+    "properties": [
+      "LanHostL3Connectivity.addr",
+      "LanHostL3Connectivity.af",
+      "LanHostL3Connectivity.active",
+      "LanHostL3Connectivity.reachable",
+      "LanHostL3Connectivity.last_activity",
+      "LanHostL3Connectivity.last_time_reachable",
+      "LanHostL3Connectivity.model"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity",
+    "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity"
+  },
+  {
+    "module": "lan",
+    "name": "LanHostNetworkControl",
+    "id": "LanHostNetworkControl",
+    "properties": [
+      "LanHostNetworkControl.profile_id",
+      "LanHostNetworkControl.name",
+      "LanHostNetworkControl.current_mode"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostNetworkControl",
+    "markdown": "docs/reference/reseau/lan.md#LanHostNetworkControl"
+  },
+  {
+    "module": "freeplug",
+    "name": "FreeplugNetwork",
+    "id": "FreeplugNetwork",
+    "properties": [
+      "FreeplugNetwork.id",
+      "FreeplugNetwork.members"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FreeplugNetwork",
+    "markdown": "docs/reference/reseau/freeplug.md#FreeplugNetwork"
+  },
+  {
+    "module": "freeplug",
+    "name": "Freeplug",
+    "id": "Freeplug",
+    "properties": [
+      "Freeplug.id",
+      "Freeplug.local",
+      "Freeplug.net_role",
+      "Freeplug.model",
+      "Freeplug.eth_port_status",
+      "Freeplug.eth_full_duplex",
+      "Freeplug.has_network",
+      "Freeplug.eth_speed",
+      "Freeplug.inactive",
+      "Freeplug.net_id",
+      "Freeplug.rx_rate",
+      "Freeplug.tx_rate"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug",
+    "markdown": "docs/reference/reseau/freeplug.md#Freeplug"
+  },
+  {
+    "module": "dhcp",
+    "name": "DhcpConfig",
+    "id": "DhcpConfig",
+    "properties": [
+      "DhcpConfig.enabled",
+      "DhcpConfig.sticky_assign",
+      "DhcpConfig.gateway",
+      "DhcpConfig.netmask",
+      "DhcpConfig.ip_range_start",
+      "DhcpConfig.ip_range_end",
+      "DhcpConfig.always_broadcast",
+      "DhcpConfig.ignore_out_of_range_hint",
+      "DhcpConfig.boot_server",
+      "DhcpConfig.boot_file",
+      "DhcpConfig.dns",
+      "DhcpConfig.options"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig",
+    "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig"
+  },
+  {
+    "module": "dhcp",
+    "name": "DhcpOption",
+    "id": "DhcpOption",
+    "properties": [
+      "DhcpOption.id",
+      "DhcpOption.val"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpOption",
+    "markdown": "docs/reference/reseau/dhcp.md#DhcpOption"
+  },
+  {
+    "module": "dhcp",
+    "name": "DhcpStaticLease",
+    "id": "DhcpStaticLease",
+    "properties": [
+      "DhcpStaticLease.id",
+      "DhcpStaticLease.mac",
+      "DhcpStaticLease.comment",
+      "DhcpStaticLease.hostname",
+      "DhcpStaticLease.ip",
+      "DhcpStaticLease.host",
+      "DhcpStaticLease.options"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease",
+    "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease"
+  },
+  {
+    "module": "dhcp",
+    "name": "DhcpDynamicLease",
+    "id": "DhcpDynamicLease",
+    "properties": [
+      "DhcpDynamicLease.mac",
+      "DhcpDynamicLease.hostname",
+      "DhcpDynamicLease.ip",
+      "DhcpDynamicLease.lease_remaining",
+      "DhcpDynamicLease.assign_time",
+      "DhcpDynamicLease.refresh_time",
+      "DhcpDynamicLease.is_static",
+      "DhcpDynamicLease.host"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease",
+    "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease"
+  },
+  {
+    "module": "dhcpv6",
+    "name": "DHCPv6Config",
+    "id": "DHCPv6Config",
+    "properties": [
+      "DHCPv6Config.enabled",
+      "DHCPv6Config.use_custom_dns",
+      "DHCPv6Config.dns"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DHCPv6Config",
+    "markdown": "docs/reference/reseau/dhcpv6.md#DHCPv6Config"
+  },
+  {
+    "module": "ftp",
+    "name": "FtpConfig",
+    "id": "FtpConfig",
+    "properties": [
+      "FtpConfig.enabled",
+      "FtpConfig.allow_anonymous",
+      "FtpConfig.allow_anonymous_write",
+      "FtpConfig.username",
+      "FtpConfig.password",
+      "FtpConfig.allow_remote_access",
+      "FtpConfig.weak_password",
+      "FtpConfig.port_ctrl",
+      "FtpConfig.port_data",
+      "FtpConfig.remote_domain"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig",
+    "markdown": "docs/reference/services/ftp.md#FtpConfig"
+  },
+  {
+    "module": "tftp",
+    "name": "TftpConfig",
+    "id": "TftpConfig",
+    "properties": [
+      "TftpConfig.enabled",
+      "TftpConfig.root"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#TftpConfig",
+    "markdown": "docs/reference/services/tftp.md#TftpConfig"
+  },
+  {
+    "module": "nat",
+    "name": "DmzConfig",
+    "id": "DmzConfig",
+    "properties": [
+      "DmzConfig.ip",
+      "DmzConfig.enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DmzConfig",
+    "markdown": "docs/reference/reseau/nat.md#DmzConfig"
+  },
+  {
+    "module": "nat",
+    "name": "PortForwardingConfig",
+    "id": "PortForwardingConfig",
+    "properties": [
+      "PortForwardingConfig.id",
+      "PortForwardingConfig.enabled",
+      "PortForwardingConfig.ip_proto",
+      "PortForwardingConfig.wan_port_start",
+      "PortForwardingConfig.wan_port_end",
+      "PortForwardingConfig.lan_ip",
+      "PortForwardingConfig.lan_port",
+      "PortForwardingConfig.hostname",
+      "PortForwardingConfig.host",
+      "PortForwardingConfig.src_ip",
+      "PortForwardingConfig.comment"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PortForwardingConfig",
+    "markdown": "docs/reference/reseau/nat.md#PortForwardingConfig"
+  },
+  {
+    "module": "nat",
+    "name": "IncomingPortConfig",
+    "id": "IncomingPortConfig",
+    "properties": [
+      "IncomingPortConfig.id",
+      "IncomingPortConfig.enabled",
+      "IncomingPortConfig.active",
+      "IncomingPortConfig.type",
+      "IncomingPortConfig.in_port",
+      "IncomingPortConfig.netns",
+      "propriete-sans-ancre-nat-20",
+      "IncomingPortConfig.min_port",
+      "IncomingPortConfig.max_port",
+      "IncomingPortConfig.readonly"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#IncomingPortConfig",
+    "markdown": "docs/reference/reseau/nat.md#IncomingPortConfig"
+  },
+  {
+    "module": "igd",
+    "name": "UPnPIGDConfig",
+    "id": "UPnPIGDConfig",
+    "properties": [
+      "UPnPIGDConfig.enabled",
+      "UPnPIGDConfig.version"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPIGDConfig",
+    "markdown": "docs/reference/reseau/igd.md#UPnPIGDConfig"
+  },
+  {
+    "module": "igd",
+    "name": "UPnPRedir",
+    "id": "UPnPRedir",
+    "properties": [
+      "UPnPRedir.id",
+      "UPnPRedir.enabled",
+      "UPnPRedir.ext_src_ip",
+      "UPnPRedir.ext_port",
+      "UPnPRedir.int_ip",
+      "UPnPRedir.int_port",
+      "UPnPRedir.proto",
+      "UPnPRedir.desc",
+      "UPnPRedir.remaining",
+      "UPnPRedir.host"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir",
+    "markdown": "docs/reference/reseau/igd.md#UPnPRedir"
+  },
+  {
+    "module": "lcd",
+    "name": "LcdConfig",
+    "id": "LcdConfig",
+    "properties": [
+      "LcdConfig.brightness",
+      "LcdConfig.orientation_forced",
+      "LcdConfig.orientation",
+      "LcdConfig.hide_wifi_key",
+      "LcdConfig.led_strip_enabled",
+      "LcdConfig.led_strip_brightness",
+      "LcdConfig.led_strip_animation",
+      "LcdConfig.available_led_strip_animations",
+      "LcdConfig.hide_status_led",
+      "LcdConfig.screensaver"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig",
+    "markdown": "docs/reference/systeme/lcd.md#LcdConfig"
+  },
+  {
+    "module": "ledstrip",
+    "name": "LedstripPlanning",
+    "id": "LedstripPlanning",
+    "properties": [
+      "LedstripPlanning.use_planning",
+      "LedstripPlanning.planning_mode",
+      "LedstripPlanning.resolution",
+      "LedstripPlanning.mapping"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning",
+    "markdown": "docs/reference/systeme/ledstrip.md#LedstripPlanning"
+  },
+  {
+    "module": "ledstrip",
+    "name": "LedstripStatus",
+    "id": "LedstripStatus",
+    "properties": [
+      "LedstripStatus.use_planning",
+      "LedstripStatus.next_change"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripStatus",
+    "markdown": "docs/reference/systeme/ledstrip.md#LedstripStatus"
+  },
+  {
+    "module": "network_share",
+    "name": "SambaConfig",
+    "id": "SambaConfig",
+    "properties": [
+      "SambaConfig.file_share_enabled",
+      "SambaConfig.print_share_enabled",
+      "SambaConfig.logon_enabled",
+      "SambaConfig.logon_user",
+      "SambaConfig.logon_password",
+      "SambaConfig.workgroup",
+      "SambaConfig.smbv2_enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig",
+    "markdown": "docs/reference/services/network_share.md#SambaConfig"
+  },
+  {
+    "module": "network_share",
+    "name": "AfpConfig",
+    "id": "AfpConfig",
+    "properties": [
+      "AfpConfig.enabled",
+      "AfpConfig.guest_allow",
+      "AfpConfig.server_type",
+      "AfpConfig.login_name",
+      "AfpConfig.login_password"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig",
+    "markdown": "docs/reference/services/network_share.md#AfpConfig"
+  },
+  {
+    "module": "upnpav",
+    "name": "UPnPAVConfig",
+    "id": "UPnPAVConfig",
+    "properties": [
+      "UPnPAVConfig.enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPAVConfig",
+    "markdown": "docs/reference/services/upnpav.md#UPnPAVConfig"
+  },
+  {
+    "module": "switch",
+    "name": "SwitchPortStatus",
+    "id": "SwitchPortStatus",
+    "properties": [
+      "SwitchPortStatus.id",
+      "SwitchPortStatus.link",
+      "SwitchPortStatus.duplex",
+      "SwitchPortStatus.speed",
+      "SwitchPortStatus.mode",
+      "SwitchPortStatus.mac_list"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStatus",
+    "markdown": "docs/reference/reseau/switch.md#SwitchPortStatus"
+  },
+  {
+    "module": "switch",
+    "name": "SwitchPortConfig",
+    "id": "SwitchPortConfig",
+    "properties": [
+      "SwitchPortConfig.id",
+      "SwitchPortConfig.duplex",
+      "SwitchPortConfig.speed"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortConfig",
+    "markdown": "docs/reference/reseau/switch.md#SwitchPortConfig"
+  },
+  {
+    "module": "switch",
+    "name": "SwitchPortStats",
+    "id": "SwitchPortStats",
+    "properties": [
+      "SwitchPortStats.rx_bad_bytes",
+      "SwitchPortStats.rx_broadcast_packets",
+      "SwitchPortStats.rx_bytes_rate",
+      "SwitchPortStats.rx_err_packets",
+      "SwitchPortStats.rx_fcs_packets",
+      "SwitchPortStats.rx_fragments_packets",
+      "SwitchPortStats.rx_good_bytes",
+      "SwitchPortStats.rx_good_packets",
+      "SwitchPortStats.rx_jabber_packets",
+      "SwitchPortStats.rx_multicast_packets",
+      "SwitchPortStats.rx_oversize_packets",
+      "SwitchPortStats.rx_packets_rate",
+      "SwitchPortStats.rx_pause",
+      "SwitchPortStats.rx_undersize_packets",
+      "SwitchPortStats.rx_unicast_packets",
+      "SwitchPortStats.tx_broadcast_packets",
+      "SwitchPortStats.tx_bytes",
+      "SwitchPortStats.tx_bytes_rate",
+      "SwitchPortStats.tx_collisions",
+      "SwitchPortStats.tx_deferred",
+      "SwitchPortStats.tx_excessive",
+      "SwitchPortStats.tx_fcs",
+      "SwitchPortStats.tx_late",
+      "SwitchPortStats.tx_multicast_packets",
+      "SwitchPortStats.tx_multiple",
+      "SwitchPortStats.tx_packets",
+      "SwitchPortStats.tx_packets_rate",
+      "SwitchPortStats.tx_pause",
+      "SwitchPortStats.tx_single",
+      "SwitchPortStats.tx_unicast_packets"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SwitchPortStats",
+    "markdown": "docs/reference/reseau/switch.md#SwitchPortStats"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiGlobalConfig",
+    "id": "WifiGlobalConfig",
+    "properties": [
+      "WifiGlobalConfig.enabled",
+      "WifiGlobalConfig.mac_filter_state"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiGlobalConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiSteeringConfig",
+    "id": "WifiSteeringConfig",
+    "properties": [
+      "WifiSteeringConfig.steering_level"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiSteeringConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiSteeringConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiGlobalState",
+    "id": "WifiGlobalState",
+    "properties": [
+      "WifiGlobalState.state",
+      "WifiGlobalState.expected_phys"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiGlobalState",
+    "markdown": "docs/reference/reseau/wifi.md#WifiGlobalState"
+  },
+  {
+    "module": "wifi",
+    "name": "ExpectedPhy",
+    "id": "ExpectedPhy",
+    "properties": [
+      "ExpectedPhy.band",
+      "ExpectedPhy.phy_id",
+      "ExpectedPhy.detected"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ExpectedPhy",
+    "markdown": "docs/reference/reseau/wifi.md#ExpectedPhy"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiAp",
+    "id": "WifiAp",
+    "properties": [
+      "WifiAp.id",
+      "WifiAp.name",
+      "WifiAp.status",
+      "WifiAp.capabilities",
+      "WifiAp.config"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAp",
+    "markdown": "docs/reference/reseau/wifi.md#WifiAp"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiApStatus",
+    "id": "WifiApStatus",
+    "properties": [
+      "WifiApStatus.state",
+      "WifiApStatus.channel_width",
+      "WifiApStatus.primary_channel",
+      "WifiApStatus.secondary_channel",
+      "WifiApStatus.dfs_cac_remaining_time",
+      "WifiApStatus.dfs_disabled",
+      "WifiApStatus.temp_disable_remaining_time"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApStatus",
+    "markdown": "docs/reference/reseau/wifi.md#WifiApStatus"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiApCapabilities",
+    "id": "WifiApCapabilities",
+    "properties": [
+      "WifiApCapabilities.2d4g",
+      "WifiApCapabilities.5g",
+      "WifiApCapabilities.6g",
+      "WifiApCapabilities.60g"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApCapabilities",
+    "markdown": "docs/reference/reseau/wifi.md#WifiApCapabilities"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiApHtConfig",
+    "id": "WifiApHtConfig",
+    "properties": [
+      "WifiApHtConfig.ac_enabled",
+      "WifiApHtConfig.ht_enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHtConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiApHtConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiApHeConfig",
+    "id": "WifiApHeConfig",
+    "properties": [
+      "WifiApHeConfig.enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApHeConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiApHeConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiApConfig",
+    "id": "WifiApConfig",
+    "properties": [
+      "WifiApConfig.band",
+      "WifiApConfig.channel_width",
+      "WifiApConfig.primary_channel",
+      "WifiApConfig.secondary_channel",
+      "WifiApConfig.dfs_enabled",
+      "WifiApConfig.ht",
+      "WifiApConfig.he"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiApConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiApChannelSurveyData",
+    "id": "WifiApChannelSurveyData",
+    "properties": [
+      "WifiApChannelSurveyData.timestamp",
+      "WifiApChannelSurveyData.busy_percent",
+      "WifiApChannelSurveyData.tx_percent",
+      "WifiApChannelSurveyData.rx_percent",
+      "WifiApChannelSurveyData.rx_bss_percent"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiApChannelSurveyData",
+    "markdown": "docs/reference/reseau/wifi.md#WifiApChannelSurveyData"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiAllowedComb",
+    "id": "WifiAllowedComb",
+    "properties": [
+      "WifiAllowedComb.band",
+      "WifiAllowedComb.channel_width",
+      "WifiAllowedComb.need_dfs",
+      "WifiAllowedComb.dfs_cac_time",
+      "WifiAllowedComb.psc",
+      "WifiAllowedComb.primary",
+      "WifiAllowedComb.secondary"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiAllowedComb",
+    "markdown": "docs/reference/reseau/wifi.md#WifiAllowedComb"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiStation",
+    "id": "WifiStation",
+    "properties": [
+      "WifiStation.id",
+      "WifiStation.mac",
+      "WifiStation.bssid",
+      "WifiStation.hostname",
+      "WifiStation.host",
+      "WifiStation.state",
+      "WifiStation.inactive",
+      "WifiStation.conn_duration",
+      "WifiStation.rx_bytes",
+      "WifiStation.tx_bytes",
+      "WifiStation.tx_rate",
+      "WifiStation.rx_rate",
+      "WifiStation.signal",
+      "WifiStation.flags",
+      "WifiStation.last_rx",
+      "WifiStation.last_tx"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStation",
+    "markdown": "docs/reference/reseau/wifi.md#WifiStation"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiStationFlags",
+    "id": "WifiStationFlags",
+    "properties": [
+      "WifiStationFlags.legacy",
+      "WifiStationFlags.ht",
+      "WifiStationFlags.vht",
+      "WifiStationFlags.he",
+      "WifiStationFlags.authorized"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationFlags",
+    "markdown": "docs/reference/reseau/wifi.md#WifiStationFlags"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiStationStats",
+    "id": "WifiStationStats",
+    "properties": [
+      "WifiStationStats.bitrate",
+      "WifiStationStats.mcs",
+      "WifiStationStats.vht_mcs",
+      "WifiStationStats.width",
+      "WifiStationStats.shortgi"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiStationStats",
+    "markdown": "docs/reference/reseau/wifi.md#WifiStationStats"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiBss",
+    "id": "WifiBss",
+    "properties": [
+      "WifiBss.id",
+      "WifiBss.phy_id",
+      "WifiBss.status",
+      "WifiBss.use_shared_params",
+      "WifiBss.config",
+      "WifiBss.bss_params",
+      "WifiBss.shared_bss_params",
+      "WifiBss.disable_wep"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBss",
+    "markdown": "docs/reference/reseau/wifi.md#WifiBss"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiBssStatus",
+    "id": "WifiBssStatus",
+    "properties": [
+      "WifiBssStatus.state",
+      "WifiBssStatus.sta_count",
+      "WifiBssStatus.authorized_sta_count",
+      "WifiBssStatus.custom_key_ssid",
+      "WifiBssStatus.partners"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus",
+    "markdown": "docs/reference/reseau/wifi.md#WifiBssStatus"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiBssConfig",
+    "id": "WifiBssConfig",
+    "properties": [
+      "WifiBssConfig.enabled",
+      "WifiBssConfig.ssid",
+      "WifiBssConfig.hide_ssid",
+      "WifiBssConfig.gcmp256",
+      "WifiBssConfig.encryption",
+      "WifiBssConfig.key",
+      "WifiBssConfig.eapol_version"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiBssConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiNeighbor",
+    "id": "WifiNeighbor",
+    "properties": [
+      "WifiNeighbor.bssid",
+      "WifiNeighbor.ssid",
+      "WifiNeighbor.band",
+      "WifiNeighbor.channel_width",
+      "WifiNeighbor.channel",
+      "WifiNeighbor.secondary_channel",
+      "WifiNeighbor.signal",
+      "WifiNeighbor.capabilities"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighbor",
+    "markdown": "docs/reference/reseau/wifi.md#WifiNeighbor"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiNeighborCap",
+    "id": "WifiNeighborCap",
+    "properties": [
+      "WifiNeighborCap.legacy",
+      "WifiNeighborCap.ht",
+      "WifiNeighborCap.vht"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiNeighborCap",
+    "markdown": "docs/reference/reseau/wifi.md#WifiNeighborCap"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiChannelUsage",
+    "id": "WifiChannelUsage",
+    "properties": [
+      "WifiChannelUsage.channel",
+      "WifiChannelUsage.band",
+      "WifiChannelUsage.noise_level",
+      "WifiChannelUsage.rx_busy_percent"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiChannelUsage",
+    "markdown": "docs/reference/reseau/wifi.md#WifiChannelUsage"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiPlanning",
+    "id": "WifiPlanning",
+    "properties": [
+      "WifiPlanning.use_planning",
+      "WifiPlanning.resolution",
+      "WifiPlanning.mapping"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiPlanning",
+    "markdown": "docs/reference/reseau/wifi.md#WifiPlanning"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiMacFilter",
+    "id": "WifiMacFilter",
+    "properties": [
+      "WifiMacFilter.id",
+      "WifiMacFilter.mac",
+      "WifiMacFilter.comment",
+      "WifiMacFilter.type",
+      "WifiMacFilter.hostname",
+      "WifiMacFilter.host"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMacFilter",
+    "markdown": "docs/reference/reseau/wifi.md#WifiMacFilter"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiDiagItem",
+    "id": "WifiDiagItem",
+    "properties": [
+      "WifiDiagItem.ap_id",
+      "WifiDiagItem.bssid",
+      "WifiDiagItem.code",
+      "WifiDiagItem.severity"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiDiagItem",
+    "markdown": "docs/reference/reseau/wifi.md#WifiDiagItem"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiWpsCandidate",
+    "id": "WifiWpsCandidate",
+    "properties": [
+      "WifiWpsCandidate.bssid",
+      "WifiWpsCandidate.ssid",
+      "WifiWpsCandidate.bss_uuid",
+      "WifiWpsCandidate.band",
+      "WifiWpsCandidate.encryption",
+      "WifiWpsCandidate.wps_enabled",
+      "WifiWpsCandidate.state"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate",
+    "markdown": "docs/reference/reseau/wifi.md#WifiWpsCandidate"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiWpsSession",
+    "id": "WifiWpsSession",
+    "properties": [
+      "WifiWpsSession.id",
+      "WifiWpsSession.bss_uuid",
+      "WifiWpsSession.ssid",
+      "WifiWpsSession.active",
+      "WifiWpsSession.result",
+      "WifiWpsSession.start_date",
+      "WifiWpsSession.end_date",
+      "WifiWpsSession.mac"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiWpsSession",
+    "markdown": "docs/reference/reseau/wifi.md#WifiWpsSession"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiCustomKeyConfig",
+    "id": "WifiCustomKeyConfig",
+    "properties": [
+      "WifiCustomKeyConfig.ssid",
+      "WifiCustomKeyConfig.ssid_read_only",
+      "WifiCustomKeyConfig.hide_ssid",
+      "WifiCustomKeyConfig.encryption"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyConfig",
+    "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyConfig"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiCustomKeyHost",
+    "id": "WifiCustomKeyHost",
+    "properties": [
+      "WifiCustomKeyHost.hostname",
+      "WifiCustomKeyHost.host"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyHost",
+    "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyHost"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiCustomKeyParams",
+    "id": "WifiCustomKeyParams",
+    "properties": [
+      "WifiCustomKeyParams.description",
+      "WifiCustomKeyParams.key",
+      "WifiCustomKeyParams.max_use_count",
+      "WifiCustomKeyParams.duration",
+      "WifiCustomKeyParams.access_type"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKeyParams",
+    "markdown": "docs/reference/reseau/wifi.md#WifiCustomKeyParams"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiCustomKey",
+    "id": "WifiCustomKey",
+    "properties": [
+      "WifiCustomKey.id",
+      "WifiCustomKey.remaining",
+      "WifiCustomKey.params",
+      "WifiCustomKey.users"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiCustomKey",
+    "markdown": "docs/reference/reseau/wifi.md#WifiCustomKey"
+  },
+  {
+    "module": "wifi",
+    "name": "TemporaryWifiDisable",
+    "id": "TemporaryWifiDisable",
+    "properties": [
+      "TemporaryWifiDisable.duration",
+      "TemporaryWifiDisable.keep",
+      "TemporaryWifiDisable.remaining"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#TemporaryWifiDisable",
+    "markdown": "docs/reference/reseau/wifi.md#TemporaryWifiDisable"
+  },
+  {
+    "module": "wifi",
+    "name": "WifiMLOConfiguration",
+    "id": "WifiMLOConfiguration",
+    "properties": [
+      "WifiMLOConfiguration.partners"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#WifiMLOConfiguration",
+    "markdown": "docs/reference/reseau/wifi.md#WifiMLOConfiguration"
+  },
+  {
+    "module": "system",
+    "name": "SystemConfig",
+    "id": "SystemConfig",
+    "properties": [
+      "SystemConfig.firmware_version",
+      "SystemConfig.mac",
+      "SystemConfig.serial",
+      "SystemConfig.uptime",
+      "SystemConfig.uptime_val",
+      "SystemConfig.board_name",
+      "SystemConfig.box_authenticated",
+      "SystemConfig.disk_status",
+      "SystemConfig.usb3_enable",
+      "SystemConfig.user_main_storage",
+      "SystemConfig.user_storage_powered",
+      "SystemConfig.expansions",
+      "SystemConfig.model_info",
+      "SystemConfig.fans",
+      "propriete-sans-ancre-system-15"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig",
+    "markdown": "docs/reference/systeme/system.md#SystemConfig"
+  },
+  {
+    "module": "system",
+    "name": "SystemModelInfo",
+    "id": "SystemModelInfo",
+    "properties": [
+      "SystemModelInfo.name",
+      "SystemModelInfo.pretty_name",
+      "SystemModelInfo.has_expansions",
+      "SystemModelInfo.has_lan_sfp",
+      "SystemModelInfo.has_dect",
+      "SystemModelInfo.has_home_automation",
+      "SystemModelInfo.has_femtocell_exp",
+      "SystemModelInfo.has_fixed_femtocell",
+      "SystemModelInfo.has_vm",
+      "SystemModelInfo.has_dsl",
+      "SystemModelInfo.has_standby",
+      "SystemModelInfo.has_eco_wifi",
+      "SystemModelInfo.has_wop",
+      "SystemModelInfo.has_led_strip",
+      "SystemModelInfo.has_status_led",
+      "SystemModelInfo.has_usb3_enable",
+      "SystemModelInfo.has_lcd_screensaver"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo",
+    "markdown": "docs/reference/systeme/system.md#SystemModelInfo"
+  },
+  {
+    "module": "system",
+    "name": "SystemConfigSensor",
+    "id": "SystemConfigSensor",
+    "properties": [
+      "SystemConfigSensor.id",
+      "SystemConfigSensor.name",
+      "SystemConfigSensor.value"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigSensor",
+    "markdown": "docs/reference/systeme/system.md#SystemConfigSensor"
+  },
+  {
+    "module": "system",
+    "name": "SystemConfigFan",
+    "id": "SystemConfigFan",
+    "properties": [
+      "SystemConfigFan.id",
+      "SystemConfigFan.name",
+      "SystemConfigFan.value"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigFan",
+    "markdown": "docs/reference/systeme/system.md#SystemConfigFan"
+  },
+  {
+    "module": "system",
+    "name": "SystemConfigExpansion",
+    "id": "SystemConfigExpansion",
+    "properties": [
+      "SystemConfigExpansion.slot",
+      "SystemConfigExpansion.probe_done",
+      "SystemConfigExpansion.present",
+      "SystemConfigExpansion.supported",
+      "SystemConfigExpansion.bundle",
+      "SystemConfigExpansion.type"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion",
+    "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNServer",
+    "id": "VPNServer",
+    "properties": [
+      "VPNServer.name",
+      "VPNServer.type",
+      "VPNServer.state",
+      "VPNServer.connection_count",
+      "VPNServer.auth_connection_count"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer",
+    "markdown": "docs/reference/services/vpn.md#VPNServer"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNPPTPConfig",
+    "id": "VPNPPTPConfig",
+    "properties": [
+      "VPNPPTPConfig.mppe",
+      "VPNPPTPConfig.allowed_auth"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig",
+    "markdown": "docs/reference/services/vpn.md#VPNPPTPConfig"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNOpenVpnConfig",
+    "id": "VPNOpenVpnConfig",
+    "properties": [
+      "VPNOpenVpnConfig.cipher",
+      "VPNOpenVpnConfig.disable_fragment",
+      "VPNOpenVpnConfig.use_tcp"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig",
+    "markdown": "docs/reference/services/vpn.md#VPNOpenVpnConfig"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNWireGuardConfig",
+    "id": "VPNWireGuardConfig",
+    "properties": [
+      "VPNWireGuardConfig.mtu"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNWireGuardConfig",
+    "markdown": "docs/reference/services/vpn.md#VPNWireGuardConfig"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNIPSecAuthMode",
+    "id": "VPNIPSecAuthMode",
+    "properties": [
+      "VPNIPSecAuthMode.id_source",
+      "VPNIPSecAuthMode.id_custom"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecAuthMode",
+    "markdown": "docs/reference/services/vpn.md#VPNIPSecAuthMode"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNIPSecConfig",
+    "id": "VPNIPSecConfig",
+    "properties": [
+      "VPNIPSecConfig.ike_version",
+      "VPNIPSecConfig.auth_modes"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig",
+    "markdown": "docs/reference/services/vpn.md#VPNIPSecConfig"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNServerConfig",
+    "id": "VPNServerConfig",
+    "properties": [
+      "VPNServerConfig.id",
+      "VPNServerConfig.type",
+      "VPNServerConfig.enabled",
+      "VPNServerConfig.enable_ipv4",
+      "VPNServerConfig.enable_ipv6",
+      "VPNServerConfig.port",
+      "VPNServerConfig.min_port",
+      "VPNServerConfig.max_port",
+      "VPNServerConfig.port_ike",
+      "VPNServerConfig.port_nat",
+      "VPNServerConfig.conf_pptp",
+      "VPNServerConfig.conf_openvpn",
+      "VPNServerConfig.conf_ipsec",
+      "VPNServerConfig.conf_wireguard",
+      "VPNServerConfig.ip_start",
+      "VPNServerConfig.ip_end",
+      "VPNServerConfig.ip6_start",
+      "VPNServerConfig.ip6_end"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig",
+    "markdown": "docs/reference/services/vpn.md#VPNServerConfig"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNUser",
+    "id": "VPNUser",
+    "properties": [
+      "VPNUser.login",
+      "VPNUser.type",
+      "VPNUser.password",
+      "VPNUser.password_set",
+      "VPNUser.ip_reservation",
+      "VPNUser.conf_wireguard.keepalive",
+      "VPNUser.conf_wireguard.psk"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser",
+    "markdown": "docs/reference/services/vpn.md#VPNUser"
+  },
+  {
+    "module": "vpn",
+    "name": "conf_wireguard",
+    "id": "VPNUser.conf_wireguard",
+    "properties": [
+      "VPNUser.conf_wireguard.keepalive",
+      "VPNUser.conf_wireguard.psk"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.conf_wireguard",
+    "markdown": "docs/reference/services/vpn.md#VPNUser.conf_wireguard"
+  },
+  {
+    "module": "vpn",
+    "name": "VPNConnection",
+    "id": "VPNConnection",
+    "properties": [
+      "VPNConnection.id",
+      "VPNConnection.vpn",
+      "VPNConnection.user",
+      "VPNConnection.authenticated",
+      "VPNConnection.auth_time",
+      "VPNConnection.src_ip",
+      "VPNConnection.src_port",
+      "VPNConnection.local_ip",
+      "VPNConnection.rx_bytes",
+      "VPNConnection.tx_bytes"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection",
+    "markdown": "docs/reference/services/vpn.md#VPNConnection"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VPNClientConfig",
+    "id": "VPNClientConfig",
+    "properties": [
+      "VPNClientConfig.id",
+      "VPNClientConfig.description",
+      "VPNClientConfig.type",
+      "VPNClientConfig.active",
+      "VPNClientConfig.conf_pptp",
+      "VPNClientConfig.conf_wireguard"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig",
+    "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VPNClientConfigPPTP",
+    "id": "VPNClientConfigPPTP",
+    "properties": [
+      "VPNClientConfigPPTP.remote_host",
+      "VPNClientConfigPPTP.username",
+      "VPNClientConfigPPTP.password",
+      "VPNClientConfigPPTP.mppe",
+      "VPNClientConfigPPTP.allowed_auth"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP",
+    "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VPNClientConfigWireGuard",
+    "id": "VPNClientConfigWireGuard",
+    "properties": [
+      "VPNClientConfigWireGuard.remote_addr",
+      "VPNClientConfigWireGuard.remote_port",
+      "VPNClientConfigWireGuard.remote_public_key",
+      "VPNClientConfigWireGuard.remote_preshared_key",
+      "VPNClientConfigWireGuard.local_priv_key",
+      "VPNClientConfigWireGuard.local_addr",
+      "VPNClientConfigWireGuard.dns"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard",
+    "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VPNClientConfigWireGuardIP",
+    "id": "VPNClientConfigWireGuardIP",
+    "properties": [
+      "VPNClientConfigWireGuardIP.ip",
+      "VPNClientConfigWireGuardIP.len"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuardIP",
+    "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuardIP"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VPNClientStatus",
+    "id": "VPNClientStatus",
+    "properties": [
+      "VPNClientStatus.enabled",
+      "VPNClientStatus.active_vpn",
+      "VPNClientStatus.active_vpn_description",
+      "VPNClientStatus.type",
+      "VPNClientStatus.state",
+      "VPNClientStatus.last_up",
+      "VPNClientStatus.last_try",
+      "VPNClientStatus.next_try",
+      "VPNClientStatus.last_error",
+      "VPNClientStatus.stats",
+      "VPNClientStatus.IPv4"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus",
+    "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VpnClientStats",
+    "id": "VpnClientStats",
+    "properties": [
+      "VpnClientStats.rate_up",
+      "VpnClientStats.rate_down",
+      "VpnClientStats.bytes_up",
+      "VpnClientStats.bytes_down"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats",
+    "markdown": "docs/reference/services/vpn_client.md#VpnClientStats"
+  },
+  {
+    "module": "vpn_client",
+    "name": "VpnClientIpInfo",
+    "id": "VpnClientIpInfo",
+    "properties": [
+      "VpnClientIpInfo.config_valid",
+      "VpnClientIpInfo.ip_mask",
+      "VpnClientIpInfo.domain",
+      "VpnClientIpInfo.gateway",
+      "VpnClientIpInfo.dns",
+      "VpnClientIpInfo.provider",
+      "VpnClientIpInfo.routes",
+      "VpnClientIpInfo.dhcp"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo",
+    "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo"
+  },
+  {
+    "module": "download",
+    "name": "Download",
+    "id": "Download",
+    "properties": [
+      "Download.id",
+      "Download.type",
+      "Download.name",
+      "Download.status",
+      "Download.size",
+      "Download.queue_pos",
+      "Download.io_priority",
+      "Download.tx_bytes",
+      "Download.rx_bytes",
+      "Download.tx_rate",
+      "Download.rx_rate",
+      "Download.tx_pct",
+      "Download.rx_pct",
+      "Download.error",
+      "Download.created_ts",
+      "Download.eta",
+      "Download.download_dir",
+      "Download.stop_ratio",
+      "Download.archive_password",
+      "Download.info_hash",
+      "Download.piece_length"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Download",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#Download"
+  },
+  {
+    "module": "download",
+    "name": "NzbConfigStatus",
+    "id": "NzbConfigStatus",
+    "properties": [
+      "NzbConfigStatus.status",
+      "NzbConfigStatus.error"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#NzbConfigStatus",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#NzbConfigStatus"
+  },
+  {
+    "module": "download",
+    "name": "DhtStats",
+    "id": "DhtStats",
+    "properties": [
+      "DhtStats.enabled",
+      "DhtStats.node_count",
+      "DhtStats.enabled_ipv6",
+      "DhtStats.node_count_ipv6"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#DhtStats"
+  },
+  {
+    "module": "download",
+    "name": "DownloadStats",
+    "id": "DownloadStats",
+    "properties": [
+      "DownloadStats.nb_tasks",
+      "DownloadStats.nb_tasks_stopped",
+      "DownloadStats.nb_tasks_checking",
+      "DownloadStats.nb_tasks_queued",
+      "DownloadStats.nb_tasks_extracting",
+      "DownloadStats.nb_tasks_done",
+      "DownloadStats.nb_tasks_repairing",
+      "DownloadStats.nb_tasks_seeding",
+      "DownloadStats.nb_tasks_downloading",
+      "DownloadStats.nb_tasks_error",
+      "DownloadStats.nb_tasks_stopping",
+      "DownloadStats.nb_tasks_active",
+      "DownloadStats.nb_rss",
+      "DownloadStats.nb_rss_items_unread",
+      "DownloadStats.rx_rate",
+      "DownloadStats.tx_rate",
+      "DownloadStats.throttling_mode",
+      "DownloadStats.throttling_is_scheduled",
+      "DownloadStats.throttling_rate",
+      "DownloadStats.nzb_config_status",
+      "DownloadStats.conn_ready",
+      "DownloadStats.nb_peer",
+      "DownloadStats.blocklist_entries",
+      "DownloadStats.blocklist_hits",
+      "DownloadStats.dht_stats"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats"
+  },
+  {
+    "module": "download",
+    "name": "DownloadFile",
+    "id": "DownloadFile",
+    "properties": [
+      "DownloadFile.id",
+      "DownloadFile.task_id",
+      "DownloadFile.filepath",
+      "DownloadFile.name",
+      "DownloadFile.mimetype",
+      "DownloadFile.size",
+      "DownloadFile.rx",
+      "DownloadFile.status",
+      "DownloadFile.error",
+      "DownloadFile.priority",
+      "DownloadFile.preview_url"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile"
+  },
+  {
+    "module": "download",
+    "name": "DownloadTracker",
+    "id": "DownloadTracker",
+    "properties": [
+      "DownloadTracker.announce",
+      "DownloadTracker.is_backup",
+      "DownloadTracker.status",
+      "DownloadTracker.interval",
+      "DownloadTracker.min_interval",
+      "DownloadTracker.reannounce_in",
+      "DownloadTracker.nseeders",
+      "DownloadTracker.nleechers",
+      "DownloadTracker.is_enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker"
+  },
+  {
+    "module": "download",
+    "name": "DownloadPeer",
+    "id": "DownloadPeer",
+    "properties": [
+      "DownloadPeer.host",
+      "DownloadPeer.port",
+      "DownloadPeer.state",
+      "DownloadPeer.origin",
+      "DownloadPeer.protocol",
+      "DownloadPeer.client",
+      "DownloadPeer.country_code",
+      "DownloadPeer.tx",
+      "DownloadPeer.rx",
+      "DownloadPeer.tx_rate",
+      "DownloadPeer.rx_rate",
+      "DownloadPeer.progress",
+      "DownloadPeer.requests"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer"
+  },
+  {
+    "module": "download",
+    "name": "DownloadBlacklistEntry",
+    "id": "DownloadBlacklistEntry",
+    "properties": [
+      "DownloadBlacklistEntry.host",
+      "DownloadBlacklistEntry.reason",
+      "DownloadBlacklistEntry.expire",
+      "DownloadBlacklistEntry.global"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry",
+    "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadBlacklistEntry"
+  },
+  {
+    "module": "download_feeds",
+    "name": "DownloadFeed",
+    "id": "DownloadFeed",
+    "properties": [
+      "DownloadFeed.id",
+      "DownloadFeed.status",
+      "DownloadFeed.url",
+      "DownloadFeed.title",
+      "DownloadFeed.desc",
+      "DownloadFeed.image_url",
+      "DownloadFeed.nb_read",
+      "DownloadFeed.nb_unread",
+      "DownloadFeed.auto_download",
+      "DownloadFeed.fetch_ts",
+      "DownloadFeed.pub_ts",
+      "DownloadFeed.error"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed",
+    "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed"
+  },
+  {
+    "module": "download_feeds",
+    "name": "DownloadFeedItem",
+    "id": "DownloadFeedItem",
+    "properties": [
+      "DownloadFeedItem.id",
+      "DownloadFeedItem.feed_id",
+      "DownloadFeedItem.title",
+      "DownloadFeedItem.desc",
+      "DownloadFeedItem.author",
+      "DownloadFeedItem.link",
+      "DownloadFeedItem.is_read",
+      "DownloadFeedItem.is_downloaded",
+      "DownloadFeedItem.fetch_ts",
+      "DownloadFeedItem.pub_ts",
+      "DownloadFeedItem.enclosure_url",
+      "DownloadFeedItem.enclosure_type",
+      "DownloadFeedItem.enclosure_length"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem",
+    "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem"
+  },
+  {
+    "module": "download_config",
+    "name": "DownloadConfiguration",
+    "id": "DownloadConfiguration",
+    "properties": [
+      "DownloadConfiguration.max_downloading_tasks",
+      "DownloadConfiguration.download_dir",
+      "DownloadConfiguration.watch_dir",
+      "DownloadConfiguration.use_watch_dir",
+      "DownloadConfiguration.throttling",
+      "DownloadConfiguration.news",
+      "DownloadConfiguration.bt",
+      "DownloadConfiguration.feed",
+      "DownloadConfiguration.blocklist",
+      "DownloadConfiguration.dns1",
+      "DownloadConfiguration.dns2"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration"
+  },
+  {
+    "module": "download_config",
+    "name": "DlThrottlingConfig",
+    "id": "DlThrottlingConfig",
+    "properties": [
+      "DlThrottlingConfig.normal",
+      "DlThrottlingConfig.slow",
+      "DlThrottlingConfig.schedule",
+      "DlThrottlingConfig.mode"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlThrottlingConfig"
+  },
+  {
+    "module": "download_config",
+    "name": "DlRate",
+    "id": "DlRate",
+    "properties": [
+      "DlRate.tx_rate",
+      "DlRate.rx_rate"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DlRate",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlRate"
+  },
+  {
+    "module": "download_config",
+    "name": "DlNewsConfig",
+    "id": "DlNewsConfig",
+    "properties": [
+      "DlNewsConfig.server",
+      "DlNewsConfig.port",
+      "DlNewsConfig.ssl",
+      "DlNewsConfig.user",
+      "DlNewsConfig.password",
+      "DlNewsConfig.nthreads",
+      "DlNewsConfig.auto_repair",
+      "DlNewsConfig.lazy_par2",
+      "DlNewsConfig.auto_extract",
+      "DlNewsConfig.erase_tmp"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig"
+  },
+  {
+    "module": "download_config",
+    "name": "DlBtConfig",
+    "id": "DlBtConfig",
+    "properties": [
+      "DlBtConfig.max_peers",
+      "DlBtConfig.stop_ratio",
+      "DlBtConfig.crypto_support",
+      "DlBtConfig.enable_dht",
+      "DlBtConfig.enable_pex",
+      "DlBtConfig.announce_timeout",
+      "DlBtConfig.main_port",
+      "DlBtConfig.dht_port"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig"
+  },
+  {
+    "module": "download_config",
+    "name": "DlFeedConfig",
+    "id": "DlFeedConfig",
+    "properties": [
+      "DlFeedConfig.fetch_interval",
+      "DlFeedConfig.max_items"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DlFeedConfig",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlFeedConfig"
+  },
+  {
+    "module": "download_config",
+    "name": "DlBlockListConfig",
+    "id": "DlBlockListConfig",
+    "properties": [
+      "DlBlockListConfig.sources[]"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DlBlockListConfig",
+    "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBlockListConfig"
+  },
+  {
+    "module": "fs",
+    "name": "FsTask",
+    "id": "FsTask",
+    "properties": [
+      "FsTask.id",
+      "FsTask.type",
+      "FsTask.state",
+      "FsTask.error",
+      "FsTask.created_ts",
+      "FsTask.started_ts",
+      "FsTask.done_ts",
+      "FsTask.duration",
+      "FsTask.progress",
+      "FsTask.eta",
+      "FsTask.from",
+      "FsTask.to",
+      "FsTask.nfiles",
+      "FsTask.nfiles_done",
+      "FsTask.total_bytes",
+      "FsTask.total_bytes_done",
+      "FsTask.curr_bytes",
+      "FsTask.curr_bytes_done",
+      "FsTask.rate",
+      "FsTask.src",
+      "FsTask.dst"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask",
+    "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask"
+  },
+  {
+    "module": "fs",
+    "name": "FileInfo",
+    "id": "FileInfo",
+    "properties": [
+      "FileInfo.path",
+      "FileInfo.name",
+      "FileInfo.mimetype",
+      "FileInfo.type",
+      "FileInfo.size",
+      "FileInfo.modification",
+      "FileInfo.index",
+      "FileInfo.link",
+      "FileInfo.target",
+      "FileInfo.hidden",
+      "FileInfo.foldercount",
+      "FileInfo.filecount",
+      "FileInfo.exif"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo",
+    "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo"
+  },
+  {
+    "module": "share",
+    "name": "ShareLink",
+    "id": "ShareLink",
+    "properties": [
+      "ShareLink.token",
+      "ShareLink.path",
+      "ShareLink.name",
+      "ShareLink.expire",
+      "ShareLink.fullurl"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink",
+    "markdown": "docs/reference/fichiers-telechargements/share.md#ShareLink"
+  },
+  {
+    "module": "upload",
+    "name": "FileUpload",
+    "id": "FileUpload",
+    "properties": [
+      "FileUpload.id",
+      "FileUpload.size",
+      "FileUpload.uploaded",
+      "FileUpload.status",
+      "FileUpload.start_date",
+      "FileUpload.last_update",
+      "FileUpload.upload_name",
+      "FileUpload.dirname"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload",
+    "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload"
+  },
+  {
+    "module": "upload",
+    "name": "FileUploadStartAction",
+    "id": "FileUploadStartAction",
+    "properties": [
+      "FileUploadStartAction.request_id",
+      "FileUploadStartAction.action",
+      "FileUploadStartAction.size",
+      "FileUploadStartAction.dirname",
+      "FileUploadStartAction.filename",
+      "FileUploadStartAction.force"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction",
+    "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction"
+  },
+  {
+    "module": "upload",
+    "name": "FileUploadFinalizeAction",
+    "id": "FileUploadFinalizeAction",
+    "properties": [
+      "FileUploadFinalizeAction.request_id",
+      "FileUploadFinalizeAction.action"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadFinalizeAction",
+    "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadFinalizeAction"
+  },
+  {
+    "module": "upload",
+    "name": "FileUploadCancelAction",
+    "id": "FileUploadCancelAction",
+    "properties": [
+      "FileUploadCancelAction.request_id",
+      "FileUploadCancelAction.action"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadCancelAction",
+    "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadCancelAction"
+  },
+  {
+    "module": "upload",
+    "name": "FileUploadChunkResponse",
+    "id": "FileUploadChunkResponse",
+    "properties": [
+      "FileUploadChunkResponse.total_len",
+      "FileUploadChunkResponse.complete",
+      "FileUploadChunkResponse.cancelled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadChunkResponse",
+    "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadChunkResponse"
+  },
+  {
+    "module": "home",
+    "name": "HomeAdapter",
+    "id": "HomeAdapter",
+    "properties": [
+      "HomeAdapter.id",
+      "HomeAdapter.icon_url",
+      "HomeAdapter.label",
+      "HomeAdapter.status",
+      "HomeAdapter.type",
+      "HomeAdapter.props"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter",
+    "markdown": "docs/reference/maison-profils/home.md#HomeAdapter"
+  },
+  {
+    "module": "home",
+    "name": "HomePairingStep",
+    "id": "HomePairingStep",
+    "properties": [
+      "HomePairingStep.fields",
+      "HomePairingStep.icon_url",
+      "HomePairingStep.pageid",
+      "HomePairingStep.refresh",
+      "HomePairingStep.session"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep",
+    "markdown": "docs/reference/maison-profils/home.md#HomePairingStep"
+  },
+  {
+    "module": "home",
+    "name": "HomePairingStepField",
+    "id": "HomePairingStepField",
+    "properties": [
+      "HomePairingStepField.widget",
+      "HomePairingStepField.text"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStepField",
+    "markdown": "docs/reference/maison-profils/home.md#HomePairingStepField"
+  },
+  {
+    "module": "home",
+    "name": "HomeNode",
+    "id": "HomeNode",
+    "properties": [
+      "HomeNode.adapter",
+      "HomeNode.category",
+      "HomeNode.id",
+      "HomeNode.label",
+      "HomeNode.name",
+      "HomeNode.show_endpoints",
+      "HomeNode.signal_links",
+      "HomeNode.slot_links",
+      "HomeNode.status",
+      "HomeNode.type"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode",
+    "markdown": "docs/reference/maison-profils/home.md#HomeNode"
+  },
+  {
+    "module": "home",
+    "name": "HomeNodeEndpoint",
+    "id": "HomeNodeEndpoint",
+    "properties": [
+      "HomeNodeEndpoint.category",
+      "HomeNodeEndpoint.ep_type",
+      "HomeNodeEndpoint.id",
+      "HomeNodeEndpoint.visibility",
+      "HomeNodeEndpoint.access"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint",
+    "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint"
+  },
+  {
+    "module": "home",
+    "name": "HomeNodeType",
+    "id": "HomeNodeType",
+    "properties": [
+      "HomeNodeType.icon",
+      "HomeNodeType.label",
+      "propriete-sans-ancre-home-31",
+      "HomeNodeType.physical"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType",
+    "markdown": "docs/reference/maison-profils/home.md#HomeNodeType"
+  },
+  {
+    "module": "home",
+    "name": "HomeNodeEndpointUi",
+    "id": "HomeNodeEndpointUi",
+    "properties": [
+      "HomeNodeEndpointUi.display",
+      "HomeNodeEndpointUi.icon_url",
+      "HomeNodeEndpointUi.unit",
+      "HomeNodeEndpointUi.icon_color",
+      "HomeNodeEndpointUi.text_color",
+      "HomeNodeEndpointUi.value_color",
+      "HomeNodeEndpointUi.range",
+      "HomeNodeEndpointUi.icon_color_range",
+      "HomeNodeEndpointUi.text_color_range",
+      "HomeNodeEndpointUi.value_color_range",
+      "HomeNodeEndpointUi.status_text_range"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi",
+    "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi"
+  },
+  {
+    "module": "home",
+    "name": "HomeNodeEndpointValue",
+    "id": "HomeNodeEndpointValue",
+    "properties": [
+      "HomeNodeEndpointValue.value",
+      "HomeNodeEndpointValue.unit",
+      "HomeNodeEndpointValue.refresh",
+      "HomeNodeEndpointValue.value_type"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue",
+    "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointValue"
+  },
+  {
+    "module": "home",
+    "name": "HomeTile",
+    "id": "HomeTile",
+    "properties": [
+      "HomeTile.node_id",
+      "HomeTile.label",
+      "HomeTile.action",
+      "HomeTile.type",
+      "HomeTile.group",
+      "HomeTile.data"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile",
+    "markdown": "docs/reference/maison-profils/home.md#HomeTile"
+  },
+  {
+    "module": "home",
+    "name": "HomeNodeGroup",
+    "id": "HomeNodeGroup",
+    "properties": [
+      "HomeNodeGroup.label",
+      "HomeNodeGroup.icon_url"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeGroup",
+    "markdown": "docs/reference/maison-profils/home.md#HomeNodeGroup"
+  },
+  {
+    "module": "home",
+    "name": "HomeTileData",
+    "id": "HomeTileData",
+    "properties": [
+      "HomeTileData.refresh",
+      "HomeTileData.label",
+      "HomeTileData.ep_id",
+      "HomeTileData.value_type",
+      "HomeTileData.value",
+      "propriete-sans-ancre-home-61",
+      "HomeTileData.ui"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData",
+    "markdown": "docs/reference/maison-profils/home.md#HomeTileData"
+  },
+  {
+    "module": "camera",
+    "name": "Camera",
+    "id": "Camera",
+    "properties": [
+      "Camera.id",
+      "Camera.node_id",
+      "Camera.name",
+      "Camera.stream_url",
+      "Camera.lan_gid"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Camera",
+    "markdown": "docs/reference/maison-profils/camera.md#Camera"
+  },
+  {
+    "module": "lang",
+    "name": "LanguageSupport",
+    "id": "LanguageSupport",
+    "properties": [
+      "LanguageSupport.lang",
+      "LanguageSupport.avalaible"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#LanguageSupport",
+    "markdown": "docs/reference/systeme/lang.md#LanguageSupport"
+  },
+  {
+    "module": "notif",
+    "name": "NotificationTarget",
+    "id": "NotificationTarget",
+    "properties": [
+      "NotificationTarget.id",
+      "NotificationTarget.last_use",
+      "NotificationTarget.type",
+      "NotificationTarget.name",
+      "NotificationTarget.api_url",
+      "NotificationTarget.message_type",
+      "NotificationTarget.subscriptions"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget",
+    "markdown": "docs/reference/maison-profils/notif.md#NotificationTarget"
+  },
+  {
+    "module": "notif",
+    "name": "downloader",
+    "id": "downloader",
+    "properties": [
+      "downloader.box_id",
+      "downloader.type",
+      "downloader.data",
+      "downloader.event"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#downloader",
+    "markdown": "docs/reference/maison-profils/notif.md#downloader"
+  },
+  {
+    "module": "notif",
+    "name": "phone",
+    "id": "phone",
+    "properties": [
+      "phone.box_id",
+      "phone.type",
+      "phone.data",
+      "phone.event"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#phone",
+    "markdown": "docs/reference/maison-profils/notif.md#phone"
+  },
+  {
+    "module": "notif",
+    "name": "box_state",
+    "id": "box_state",
+    "properties": [
+      "box_state.box_id",
+      "box_state.type",
+      "box_state.event"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#box_state",
+    "markdown": "docs/reference/maison-profils/notif.md#box_state"
+  },
+  {
+    "module": "notif",
+    "name": "lan_host",
+    "id": "lan_host",
+    "properties": [
+      "lan_host.box_id",
+      "lan_host.type",
+      "lan_host.host_id",
+      "lan_host.interface",
+      "lan_host.event"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host",
+    "markdown": "docs/reference/maison-profils/notif.md#lan_host"
+  },
+  {
+    "module": "notif",
+    "name": "password_change",
+    "id": "password_change",
+    "properties": [
+      "password_change.box_id",
+      "password_change.type",
+      "password_change.ip"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#password_change",
+    "markdown": "docs/reference/maison-profils/notif.md#password_change"
+  },
+  {
+    "module": "profile",
+    "name": "Profile",
+    "id": "Profile",
+    "properties": [
+      "Profile.id",
+      "Profile.name",
+      "Profile.icon"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Profile",
+    "markdown": "docs/reference/maison-profils/profile.md#Profile"
+  },
+  {
+    "module": "profile",
+    "name": "NetworkControl",
+    "id": "NetworkControl",
+    "properties": [
+      "NetworkControl.profile_id",
+      "NetworkControl.next_change",
+      "NetworkControl.override_mode",
+      "NetworkControl.current_mode",
+      "NetworkControl.rule_mode",
+      "NetworkControl.override_until",
+      "NetworkControl.override",
+      "NetworkControl.macs",
+      "NetworkControl.hosts",
+      "NetworkControl.resolution",
+      "NetworkControl.cdayranges"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl",
+    "markdown": "docs/reference/maison-profils/profile.md#NetworkControl"
+  },
+  {
+    "module": "profile",
+    "name": "NetworkControlRule",
+    "id": "NetworkControlRule",
+    "properties": [
+      "NetworkControlRule.id",
+      "NetworkControlRule.profile_id",
+      "NetworkControlRule.name",
+      "NetworkControlRule.mode",
+      "propriete-sans-ancre-profile-19",
+      "propriete-sans-ancre-profile-20",
+      "NetworkControlRule.weekdays",
+      "NetworkControlRule.enabled"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule",
+    "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule"
+  },
+  {
+    "module": "player",
+    "name": "Player",
+    "id": "Player",
+    "properties": [
+      "Player.id",
+      "Player.device_name",
+      "Player.uid",
+      "Player.reachable",
+      "Player.api_version",
+      "Player.api_available"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Player",
+    "markdown": "docs/reference/multimedia/player.md#Player"
+  },
+  {
+    "module": "player",
+    "name": "PlayerStatusForegroundApp",
+    "id": "PlayerStatusForegroundApp",
+    "properties": [
+      "PlayerStatusForegroundApp.package_id",
+      "PlayerStatusForegroundApp.cur_url",
+      "PlayerStatusForegroundApp.context",
+      "PlayerStatusForegroundApp.package"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp",
+    "markdown": "docs/reference/multimedia/player.md#PlayerStatusForegroundApp"
+  },
+  {
+    "module": "player",
+    "name": "PlayerStatusCapabilities",
+    "id": "PlayerStatusCapabilities",
+    "properties": [
+      "PlayerStatusCapabilities.play",
+      "PlayerStatusCapabilities.pause",
+      "PlayerStatusCapabilities.stop",
+      "PlayerStatusCapabilities.next",
+      "PlayerStatusCapabilities.prev",
+      "PlayerStatusCapabilities.record",
+      "PlayerStatusCapabilities.record_stop",
+      "PlayerStatusCapabilities.seek_forward",
+      "PlayerStatusCapabilities.seek_backward",
+      "PlayerStatusCapabilities.seek_to",
+      "PlayerStatusCapabilities.shuffle",
+      "PlayerStatusCapabilities.repeat_all",
+      "PlayerStatusCapabilities.repeat_one",
+      "PlayerStatusCapabilities.select_stream",
+      "PlayerStatusCapabilities.select_audio_track",
+      "PlayerStatusCapabilities.select_srt_track"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities",
+    "markdown": "docs/reference/multimedia/player.md#PlayerStatusCapabilities"
+  },
+  {
+    "module": "player",
+    "name": "PlayerStatusInformations",
+    "id": "PlayerStatusInformations",
+    "properties": [
+      "PlayerStatusInformations.name",
+      "PlayerStatusInformations.last_activity",
+      "PlayerStatusInformations.capabilities"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusInformations",
+    "markdown": "docs/reference/multimedia/player.md#PlayerStatusInformations"
+  },
+  {
+    "module": "player",
+    "name": "PlayerStatus",
+    "id": "PlayerStatus",
+    "properties": [
+      "PlayerStatus.power_state",
+      "PlayerStatus.player",
+      "PlayerStatus.foreground_app"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatus",
+    "markdown": "docs/reference/multimedia/player.md#PlayerStatus"
+  },
+  {
+    "module": "pvr",
+    "name": "PvrConfig",
+    "id": "PvrConfig",
+    "properties": [
+      "PvrConfig.margin_before",
+      "PvrConfig.margin_after"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PvrConfig",
+    "markdown": "docs/reference/multimedia/pvr.md#PvrConfig"
+  },
+  {
+    "module": "pvr",
+    "name": "PvrQuota",
+    "id": "PvrQuota",
+    "properties": [
+      "PvrQuota.quota_exceeded",
+      "PvrQuota.needed_tresh",
+      "PvrQuota.cur_tresh"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#PvrQuota",
+    "markdown": "docs/reference/multimedia/pvr.md#PvrQuota"
+  },
+  {
+    "module": "pvr",
+    "name": "Precord",
+    "id": "Precord",
+    "properties": [
+      "Precord.id",
+      "Precord.media",
+      "Precord.path",
+      "Precord.has_record_gen",
+      "Precord.record_gen_id",
+      "Precord.conflict",
+      "Precord.overlap_list",
+      "Precord.enabled",
+      "Precord.altered",
+      "Precord.state",
+      "Precord.error",
+      "Precord.channel_uuid",
+      "Precord.channel_name",
+      "Precord.channel_quality",
+      "Precord.channel_type",
+      "Precord.name",
+      "Precord.subname",
+      "Precord.broadcast_type",
+      "Precord.start",
+      "Precord.end",
+      "Precord.legacy_uri",
+      "Precord.force_channel_name"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Precord",
+    "markdown": "docs/reference/multimedia/pvr.md#Precord"
+  },
+  {
+    "module": "pvr",
+    "name": "Frecord",
+    "id": "Frecord",
+    "properties": [
+      "Frecord.id",
+      "Frecord.media",
+      "Frecord.path",
+      "Frecord.filename",
+      "Frecord.byte_size",
+      "Frecord.has_record_gen",
+      "Frecord.record_gen_id",
+      "Frecord.altered",
+      "Frecord.state",
+      "Frecord.error",
+      "Frecord.channel_uuid",
+      "Frecord.channel_name",
+      "Frecord.channel_quality",
+      "Frecord.channel_type",
+      "Frecord.name",
+      "Frecord.subname",
+      "Frecord.broadcast_type",
+      "Frecord.start",
+      "Frecord.end",
+      "Frecord.secure"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord",
+    "markdown": "docs/reference/multimedia/pvr.md#Frecord"
+  },
+  {
+    "module": "pvr",
+    "name": "Media",
+    "id": "Media",
+    "properties": [
+      "Media.media",
+      "Media.free_bytes",
+      "propriete-sans-ancre-pvr-50",
+      "Media.record_time"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#Media",
+    "markdown": "docs/reference/multimedia/pvr.md#Media"
+  },
+  {
+    "module": "rrd",
+    "name": "RRDFetch",
+    "id": "RRDFetch",
+    "properties": [
+      "RRDFetch.db",
+      "RRDFetch.date_start",
+      "RRDFetch.date_end",
+      "RRDFetch.precision",
+      "RRDFetch.fields"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch",
+    "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch"
+  },
+  {
+    "module": "standby",
+    "name": "StandbyConfig",
+    "id": "StandbyConfig",
+    "properties": [
+      "StandbyConfig.use_planning",
+      "StandbyConfig.planning_mode",
+      "StandbyConfig.resolution",
+      "StandbyConfig.mapping"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig",
+    "markdown": "docs/reference/systeme/standby.md#StandbyConfig"
+  },
+  {
+    "module": "standby",
+    "name": "StandbyStatus",
+    "id": "StandbyStatus",
+    "properties": [
+      "StandbyStatus.use_planning",
+      "StandbyStatus.planning_mode",
+      "StandbyStatus.next_change",
+      "StandbyStatus.available_planning_modes"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus",
+    "markdown": "docs/reference/systeme/standby.md#StandbyStatus"
+  },
+  {
+    "module": "storage",
+    "name": "OperationProgress",
+    "id": "OperationProgress",
+    "properties": [
+      "OperationProgress.done_steps",
+      "OperationProgress.max_steps",
+      "OperationProgress.percent"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#OperationProgress",
+    "markdown": "docs/reference/stockage-vm/storage.md#OperationProgress"
+  },
+  {
+    "module": "storage",
+    "name": "DiskPartition",
+    "id": "DiskPartition",
+    "properties": [
+      "DiskPartition.id",
+      "DiskPartition.disk_id",
+      "DiskPartition.state",
+      "DiskPartition.fstype",
+      "DiskPartition.label",
+      "DiskPartition.path",
+      "DiskPartition.total_bytes",
+      "DiskPartition.used_bytes",
+      "DiskPartition.free_bytes",
+      "DiskPartition.fsck_result",
+      "DiskPartition.operation_pct"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition",
+    "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition"
+  },
+  {
+    "module": "storage",
+    "name": "StorageDisk",
+    "id": "StorageDisk",
+    "properties": [
+      "StorageDisk.id",
+      "StorageDisk.type",
+      "StorageDisk.state",
+      "StorageDisk.connector",
+      "StorageDisk.total_bytes",
+      "StorageDisk.table_type",
+      "StorageDisk.model",
+      "StorageDisk.serial",
+      "StorageDisk.firmware",
+      "StorageDisk.temp",
+      "StorageDisk.operation_pct",
+      "StorageDisk.partitions",
+      "StorageDisk.idle",
+      "StorageDisk.idle_duration",
+      "StorageDisk.spinning",
+      "StorageDisk.active_duration",
+      "StorageDisk.time_before_spindown",
+      "StorageDisk.read_requests",
+      "StorageDisk.read_error_requests",
+      "StorageDisk.write_requests",
+      "StorageDisk.write_error_requests"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk",
+    "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk"
+  },
+  {
+    "module": "storage",
+    "name": "StorageConfig",
+    "id": "StorageConfig",
+    "properties": [
+      "StorageConfig.external_pm_enabled",
+      "StorageConfig.external_pm_idle_before_spindown"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#StorageConfig",
+    "markdown": "docs/reference/stockage-vm/storage.md#StorageConfig"
+  },
+  {
+    "module": "raid",
+    "name": "RaidArray",
+    "id": "RaidArray",
+    "properties": [
+      "RaidArray.id",
+      "RaidArray.state",
+      "RaidArray.name",
+      "RaidArray.level",
+      "RaidArray.disk_id",
+      "RaidArray.uuid",
+      "RaidArray.sync_action",
+      "RaidArray.sysfs_state",
+      "RaidArray.array_size",
+      "RaidArray.raid_disks",
+      "RaidArray.sync_speed",
+      "RaidArray.sync_completed_pos",
+      "RaidArray.sync_completed_end",
+      "RaidArray.sync_completed_percent",
+      "RaidArray.check_interval",
+      "RaidArray.last_check",
+      "RaidArray.next_check",
+      "RaidArray.degraded",
+      "RaidArray.members"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray",
+    "markdown": "docs/reference/stockage-vm/raid.md#RaidArray"
+  },
+  {
+    "module": "raid",
+    "name": "RaidMember",
+    "id": "RaidMember",
+    "properties": [
+      "RaidMember.id",
+      "RaidMember.array_id",
+      "RaidMember.role",
+      "RaidMember.set_name",
+      "RaidMember.set_uuid",
+      "RaidMember.dev_uuid",
+      "RaidMember.device_location",
+      "RaidMember.total_bytes",
+      "RaidMember.active_device",
+      "RaidMember.corrected_read_errors",
+      "RaidMember.sct_erc_supported",
+      "RaidMember.sct_erc_enabled",
+      "RaidMember.disk"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember",
+    "markdown": "docs/reference/stockage-vm/raid.md#RaidMember"
+  },
+  {
+    "module": "raid",
+    "name": "RaidDisk",
+    "id": "RaidDisk",
+    "properties": [
+      "RaidDisk.model",
+      "RaidDisk.serial",
+      "RaidDisk.firmware",
+      "RaidDisk.temp"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk",
+    "markdown": "docs/reference/stockage-vm/raid.md#RaidDisk"
+  },
+  {
+    "module": "sfp",
+    "name": "SfpConfig",
+    "id": "SfpConfig",
+    "properties": [
+      "SfpConfig.sfp_type_forced",
+      "SfpConfig.sfp_type_forced_value",
+      "SfpConfig.available_sfp_types"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SfpConfig",
+    "markdown": "docs/reference/reseau/sfp.md#SfpConfig"
+  },
+  {
+    "module": "sfp",
+    "name": "SfpStatus",
+    "id": "SfpStatus",
+    "properties": [
+      "SfpStatus.present",
+      "SfpStatus.eeprom_valid",
+      "SfpStatus.supported",
+      "SfpStatus.type",
+      "SfpStatus.power_good",
+      "SfpStatus.link",
+      "SfpStatus.vendor_name",
+      "SfpStatus.part_number",
+      "SfpStatus.hardware_rev",
+      "SfpStatus.serial_number"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus",
+    "markdown": "docs/reference/reseau/sfp.md#SfpStatus"
+  },
+  {
+    "module": "update",
+    "name": "UpdateStatus",
+    "id": "UpdateStatus",
+    "properties": [
+      "UpdateStatus.state",
+      "UpdateStatus.upgrade_state"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#UpdateStatus",
+    "markdown": "docs/reference/systeme/update.md#UpdateStatus"
+  },
+  {
+    "module": "update",
+    "name": "UpgradeState",
+    "id": "UpgradeState",
+    "properties": [
+      "UpgradeState.state",
+      "UpgradeState.old_version",
+      "UpgradeState.new_version",
+      "UpgradeState.percent",
+      "UpgradeState.error_string"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState",
+    "markdown": "docs/reference/systeme/update.md#UpgradeState"
+  },
+  {
+    "module": "vm",
+    "name": "VM",
+    "id": "VM",
+    "properties": [
+      "VM.id",
+      "VM.name",
+      "VM.disk_path",
+      "VM.disk_type",
+      "VM.cd_path",
+      "VM.memory",
+      "VM.vcpus",
+      "VM.status",
+      "VM.enable_screen",
+      "VM.bind_usb_ports",
+      "VM.enable_cloudinit",
+      "VM.cloudinit_hostname",
+      "VM.cloudinit_userdata",
+      "VM.mac",
+      "VM.os"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VM",
+    "markdown": "docs/reference/stockage-vm/vm.md#VM"
+  },
+  {
+    "module": "vm",
+    "name": "VmSystemInfo",
+    "id": "VmSystemInfo",
+    "properties": [
+      "VmSystemInfo.total_memory",
+      "VmSystemInfo.used_memory",
+      "VmSystemInfo.total_cpus",
+      "VmSystemInfo.used_cpus",
+      "VmSystemInfo.usb_ports",
+      "VmSystemInfo.usb_used"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo",
+    "markdown": "docs/reference/stockage-vm/vm.md#VmSystemInfo"
+  },
+  {
+    "module": "vm",
+    "name": "VmDistribution",
+    "id": "VmDistribution",
+    "properties": [
+      "VmDistribution.name",
+      "VmDistribution.url",
+      "VmDistribution.hash",
+      "VmDistribution.os"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution",
+    "markdown": "docs/reference/stockage-vm/vm.md#VmDistribution"
+  },
+  {
+    "module": "vm",
+    "name": "VmDiskInfo",
+    "id": "VmDiskInfo",
+    "properties": [
+      "VmDiskInfo.type",
+      "VmDiskInfo.actual_size",
+      "VmDiskInfo.virtual_size"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskInfo",
+    "markdown": "docs/reference/stockage-vm/vm.md#VmDiskInfo"
+  },
+  {
+    "module": "vm",
+    "name": "VmDiskTask",
+    "id": "VmDiskTask",
+    "properties": [
+      "VmDiskTask.id",
+      "VmDiskTask.type",
+      "VmDiskTask.done",
+      "VmDiskTask.error"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask",
+    "markdown": "docs/reference/stockage-vm/vm.md#VmDiskTask"
+  },
+  {
+    "module": "vm",
+    "name": "VmStateChange",
+    "id": "VmStateChange",
+    "properties": [
+      "VmStateChange.id",
+      "VmStateChange.status"
+    ],
+    "source": "http://mafreebox.freebox.fr/doc/index.html#VmStateChange",
+    "markdown": "docs/reference/stockage-vm/vm.md#VmStateChange"
+  }
+]

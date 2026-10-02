@@ -1,0 +1,18 @@
+{
+  "source": "http://mafreebox.freebox.fr/api_version",
+  "retrieved_at_utc": "2026-10-02T17:19:26.854850+00:00",
+  "result": {
+    "api_version": "16.0",
+    "api_base_url": "/api/",
+    "box_model_name": "Freebox v9 (r1)",
+    "box_model": "fbxgw9-r1",
+    "device_type": "FreeboxServer9,1"
+  },
+  "omitted": [
+    "uid",
+    "api_domain",
+    "https_port",
+    "device_name",
+    "https_available"
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "module": {
+    "module": "freeplug",
+    "title": "Freeplug",
+    "category": "reseau",
+    "path": "docs/reference/reseau/freeplug.md",
+    "http_signatures": 3,
+    "objects": 2,
+    "properties": 14,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#freeplug",
+    "source_pre_blocks": 9,
+    "markdown_code_blocks": 9,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "freeplug",
+      "method": "GET",
+      "documented_path": "/api/v8/freeplug/",
+      "path_template": "/api/v{major}/freeplug/",
+      "documented_major": 8,
+      "title": "Get the current Freeplugs networks",
+      "id": "get--api-v8-freeplug-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-freeplug-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/freeplug.md#get--api-v8-freeplug-",
+      "referenced_objects": [
+        "FreeplugNetwork"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-freeplug-"
+    },
+    {
+      "module": "freeplug",
+      "method": "GET",
+      "documented_path": "/api/v8/freeplug/{id}/",
+      "path_template": "/api/v{major}/freeplug/{id}/",
+      "documented_major": 8,
+      "title": "Get a particular Freeplug information",
+      "id": "get--api-v8-freeplug-id-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-freeplug-id-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/freeplug.md#get--api-v8-freeplug-id-",
+      "referenced_objects": [
+        "Freeplug"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-freeplug-id-"
+    },
+    {
+      "module": "freeplug",
+      "method": "POST",
+      "documented_path": "/api/v8/freeplug/{id}/reset/",
+      "path_template": "/api/v{major}/freeplug/{id}/reset/",
+      "documented_major": 8,
+      "title": "Reset a Freeplug",
+      "id": "post--api-v8-freeplug-id-reset-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-freeplug-id-reset-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/freeplug.md#post--api-v8-freeplug-id-reset-",
+      "referenced_objects": [
+        "Freeplug"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-freeplug-id-reset-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "freeplug",
+      "name": "FreeplugNetwork",
+      "id": "FreeplugNetwork",
+      "properties": [
+        "FreeplugNetwork.id",
+        "FreeplugNetwork.members"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FreeplugNetwork",
+      "markdown": "docs/reference/reseau/freeplug.md#FreeplugNetwork"
+    },
+    {
+      "module": "freeplug",
+      "name": "Freeplug",
+      "id": "Freeplug",
+      "properties": [
+        "Freeplug.id",
+        "Freeplug.local",
+        "Freeplug.net_role",
+        "Freeplug.model",
+        "Freeplug.eth_port_status",
+        "Freeplug.eth_full_duplex",
+        "Freeplug.has_network",
+        "Freeplug.eth_speed",
+        "Freeplug.inactive",
+        "Freeplug.net_id",
+        "Freeplug.rx_rate",
+        "Freeplug.tx_rate"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug"
+    }
+  ],
+  "properties": [
+    {
+      "module": "freeplug",
+      "id": "FreeplugNetwork.id",
+      "signature": "id string Read-only",
+      "description": "Network unique id",
+      "source_id": "FreeplugNetwork.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FreeplugNetwork.id",
+      "markdown": "docs/reference/reseau/freeplug.md#FreeplugNetwork.id"
+    },
+    {
+      "module": "freeplug",
+      "id": "FreeplugNetwork.members",
+      "signature": "members [] array of Freeplug Read-only",
+      "description": "List of freeplugs member of this network",
+      "source_id": "FreeplugNetwork.members",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FreeplugNetwork.members",
+      "markdown": "docs/reference/reseau/freeplug.md#FreeplugNetwork.members"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.id",
+      "signature": "id string Read-only",
+      "description": "Freeplug unique id",
+      "source_id": "Freeplug.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.id",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.id"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.local",
+      "signature": "local bool Read-only",
+      "description": "if true the Freeplug is connected directly to the Freebox",
+      "source_id": "Freeplug.local",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.local",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.local"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.net_role",
+      "signature": "net_role enum Read-only",
+      "description": "Freeplug network role Type Description sta Freeplug Station pco Freeplug proxy coordinator cco Central coordinator",
+      "source_id": "Freeplug.net_role",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.net_role",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.net_role"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.model",
+      "signature": "model string Read-only",
+      "description": "Freebox Server netbios name",
+      "source_id": "Freeplug.model",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.model",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.model"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.eth_port_status",
+      "signature": "eth_port_status enum Read-only",
+      "description": "Type Description up The ethernet port is up down The ethernet port is down unknown The ethernet port state is unknown",
+      "source_id": "Freeplug.eth_port_status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.eth_port_status",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.eth_port_status"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.eth_full_duplex",
+      "signature": "eth_full_duplex bool Read-only",
+      "description": "ethernet link is full duplex",
+      "source_id": "Freeplug.eth_full_duplex",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.eth_full_duplex",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.eth_full_duplex"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.has_network",
+      "signature": "has_network bool Read-only",
+      "description": "is connected to the network",
+      "source_id": "Freeplug.has_network",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.has_network",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.has_network"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.eth_speed",
+      "signature": "eth_speed int Read-only",
+      "description": "ethernet port speed",
+      "source_id": "Freeplug.eth_speed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.eth_speed",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.eth_speed"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.inactive",
+      "signature": "inactive int Read-only",
+      "description": "seconds since last activity",
+      "source_id": "Freeplug.inactive",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.inactive",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.inactive"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.net_id",
+      "signature": "net_id string Read-only",
+      "description": "network id",
+      "source_id": "Freeplug.net_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.net_id",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.net_id"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.rx_rate",
+      "signature": "rx_rate int Read-only",
+      "description": "rx rate (from the freeplugs to the \u201Ccco\u201D freeplug) (in Mb/s) -1 if not available",
+      "source_id": "Freeplug.rx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.rx_rate",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.rx_rate"
+    },
+    {
+      "module": "freeplug",
+      "id": "Freeplug.tx_rate",
+      "signature": "tx_rate int Read-only",
+      "description": "tx rate (from the \u201Ccco\u201D freeplug to the freeplugs) (in Mb/s) -1 if not available",
+      "source_id": "Freeplug.tx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Freeplug.tx_rate",
+      "markdown": "docs/reference/reseau/freeplug.md#Freeplug.tx_rate"
+    }
+  ],
+  "events": []
+}

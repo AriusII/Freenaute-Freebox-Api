@@ -1,0 +1,16 @@
+{
+  "format_version": 1,
+  "generator": "freenaute-freebox-documentation-net10",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "7a2411a84a580713dddaf551119fc479a9c075d7326fbd2fb0b69a48ce00dc04",
+      "bytes": 385
+    },
+    {
+      "path": "coverage.json",
+      "sha256": "97c1bdb6941b2bea172cd53074e7b6888a209d72a4178c5a0ef34daf315f5009",
+      "bytes": 199114
+    }
+  ]
+}

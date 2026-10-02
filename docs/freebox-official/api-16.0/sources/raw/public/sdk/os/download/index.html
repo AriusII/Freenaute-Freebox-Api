@@ -1,0 +1,2182 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Download &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Download Feeds" href="../download_feeds/" />
+    <link rel="prev" title="Login" href="../login/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="download">
+<h1>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h1>
+<p>With the download API you can control the download queue of the
+Freebox.  The Freebox supports downloads from HTTP, FTP, Magnet link,
+<code class="docutils literal"><span class="pre">.torrent</span></code> files and newsgroups (NNTP).  Each download task is
+represented by a <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> object.</p>
+<div class="section" id="download-errors">
+<h2>Download Errors<a class="headerlink" href="#download-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the download API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task_not_found</td>
+<td>No task was found with the given id</td>
+</tr>
+<tr class="row-odd"><td>invalid_operation</td>
+<td>Attempt to perform an invalid operation</td>
+</tr>
+<tr class="row-even"><td>invalid_file</td>
+<td>Error with the download file (invalid format ?)</td>
+</tr>
+<tr class="row-odd"><td>invalid_url</td>
+<td>URL is invalid</td>
+</tr>
+<tr class="row-even"><td>not_implemented</td>
+<td>Method not implemented</td>
+</tr>
+<tr class="row-odd"><td>out_of_memory</td>
+<td>No more memory available to perform the requested action</td>
+</tr>
+<tr class="row-even"><td>invalid_task_type</td>
+<td>The task type is invalid</td>
+</tr>
+<tr class="row-odd"><td>hibernating</td>
+<td>The downloader is hibernating</td>
+</tr>
+<tr class="row-even"><td>need_bt_stopped_done</td>
+<td>This action is only valid for Bittorrent task in stopped or done state</td>
+</tr>
+<tr class="row-odd"><td>bt_tracker_not_found</td>
+<td>Attempt to access an invalid tracker object</td>
+</tr>
+<tr class="row-even"><td>too_many_tasks</td>
+<td>Too many tasks</td>
+</tr>
+<tr class="row-odd"><td>invalid_address</td>
+<td>Invalid peer address</td>
+</tr>
+<tr class="row-even"><td>port_conflict</td>
+<td>Port conflict when setting config</td>
+</tr>
+<tr class="row-odd"><td>invalid_priority</td>
+<td>Invalid priority</td>
+</tr>
+<tr class="row-even"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-odd"><td>ctx_file_error</td>
+<td>Failed to initialize task context file (need to check disk)</td>
+</tr>
+<tr class="row-even"><td>exists</td>
+<td>Same task already exists</td>
+</tr>
+<tr class="row-odd"><td>port_outside_range</td>
+<td>Incoming port is not available for this customer
+(see <a class="reference internal" href="../connection/#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="download-task-taskfile-errors">
+<h2>Download Task / TaskFile Errors<a class="headerlink" href="#download-task-taskfile-errors" title="Permalink to this headline">¶</a></h2>
+<p>Each download task can encounter one of the following errors:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>No error</td>
+</tr>
+<tr class="row-odd"><td>internal</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>disk_full</td>
+<td>The disk is full</td>
+</tr>
+<tr class="row-odd"><td>unknown</td>
+<td>Unknown error</td>
+</tr>
+<tr class="row-even"><td>parse_error</td>
+<td>Parse error</td>
+</tr>
+<tr class="row-odd"><td>http_301</td>
+<td>HTTP 301 error</td>
+</tr>
+<tr class="row-even"><td>http_400</td>
+<td>HTTP 400 error</td>
+</tr>
+<tr class="row-odd"><td>http_401</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_402</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_403</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_404</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_405</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_406</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_407</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_408</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_409</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_410</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_411</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_412</td>
+<td>[ ... ]</td>
+</tr>
+<tr class="row-odd"><td>http_413</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_414</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_415</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_416</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_417</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_422</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_423</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_424</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_425</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_426</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_427</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_428</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_429</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_430</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_431</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_4xx</td>
+<td>Other 4xx HTTP errors</td>
+</tr>
+<tr class="row-odd"><td>http_500</td>
+<td>HTTP 500 error</td>
+</tr>
+<tr class="row-even"><td>http_501</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_502</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_503</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_504</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_505</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_506</td>
+<td>[ ... ]</td>
+</tr>
+<tr class="row-even"><td>http_507</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_508</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_509</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_510</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>http_511</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>http_5xx</td>
+<td>Other 5xx HTTP errors</td>
+</tr>
+<tr class="row-even"><td>http_redirections_exceeded</td>
+<td>Too many HTTP redirections</td>
+</tr>
+<tr class="row-odd"><td>nzb_no_group</td>
+<td>Cannot find the requested group on server</td>
+</tr>
+<tr class="row-even"><td>nzb_not_found</td>
+<td>Article not fount on the server</td>
+</tr>
+<tr class="row-odd"><td>nzb_invalid_crc</td>
+<td>Invalid article CRC</td>
+</tr>
+<tr class="row-even"><td>nzb_invalid_size</td>
+<td>Invalid article size</td>
+</tr>
+<tr class="row-odd"><td>nzb_invalid_filename</td>
+<td>Invalid filename</td>
+</tr>
+<tr class="row-even"><td>nzb_open_failed</td>
+<td>Error opening</td>
+</tr>
+<tr class="row-odd"><td>nzb_write_failed</td>
+<td>Error writing</td>
+</tr>
+<tr class="row-even"><td>nzb_missing_size</td>
+<td>Missing article size</td>
+</tr>
+<tr class="row-odd"><td>nzb_decode_error</td>
+<td>Article decoding error</td>
+</tr>
+<tr class="row-even"><td>nzb_missing_segments</td>
+<td>Missing article segments</td>
+</tr>
+<tr class="row-odd"><td>nzb_error</td>
+<td>Other nzb error</td>
+</tr>
+<tr class="row-even"><td>unknown_host</td>
+<td>Unknown host</td>
+</tr>
+<tr class="row-odd"><td>timeout</td>
+<td>Timeout</td>
+</tr>
+<tr class="row-even"><td>bad_authentication</td>
+<td>Invalid credentials</td>
+</tr>
+<tr class="row-odd"><td>connection_refused</td>
+<td>Remote host refused connection</td>
+</tr>
+<tr class="row-even"><td>nzb_authentication_required</td>
+<td>Nzb server need authentication</td>
+</tr>
+<tr class="row-odd"><td>bt_tracker_error</td>
+<td>Unable to announce on tracker</td>
+</tr>
+<tr class="row-even"><td>bt_missing_files</td>
+<td>Missing torrent files</td>
+</tr>
+<tr class="row-odd"><td>bt_file_error</td>
+<td>Error accessing torrent files</td>
+</tr>
+<tr class="row-even"><td>missing_ctx_file</td>
+<td>Error accessing task context file</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="download-object">
+<h2>Download object<a class="headerlink" href="#download-object" title="Permalink to this headline">¶</a></h2>
+<p>Download objects have the following attributes:</p>
+<dl class="object">
+<dt id="Download">
+<code class="descname">Download</code><a class="headerlink" href="#Download" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="Download.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Download.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid download types are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bt</td>
+<td>bittorrent download</td>
+</tr>
+<tr class="row-odd"><td>nzb</td>
+<td>newsgroup download</td>
+</tr>
+<tr class="row-even"><td>http</td>
+<td>HTTP download</td>
+</tr>
+<tr class="row-odd"><td>ftp</td>
+<td>FTP download</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Download.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="Download.status">
+<code class="descname">status</code><span> </span>enum<a class="headerlink" href="#Download.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid download status are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stopped</td>
+<td>task is stopped, can be resumed by setting the status
+to downloading</td>
+</tr>
+<tr class="row-odd"><td>queued</td>
+<td>task will start when a new download slot is available
+the queue position is stored in queue_pos attribute</td>
+</tr>
+<tr class="row-even"><td>starting</td>
+<td>task is preparing to start download</td>
+</tr>
+<tr class="row-odd"><td>downloading</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>stopping</td>
+<td>task is gracefully stopping</td>
+</tr>
+<tr class="row-odd"><td>error</td>
+<td>there was a problem with the download, you can get an
+error code in the error field</td>
+</tr>
+<tr class="row-even"><td>done</td>
+<td>the download is over. For bt you can resume seeding
+setting the status to seeding if the ratio is not
+reached yet</td>
+</tr>
+<tr class="row-odd"><td>checking</td>
+<td>(only valid for nzb) download is over, the downloaded
+files are being checked using par2</td>
+</tr>
+<tr class="row-even"><td>repairing</td>
+<td>(only valid for nzb) download is over, the downloaded
+files are being repaired using par2</td>
+</tr>
+<tr class="row-odd"><td>extracting</td>
+<td>only valid for nzb) download is over, the downloaded
+files are being extracted</td>
+</tr>
+<tr class="row-even"><td>seeding</td>
+<td>(only valid for bt) download is over, the content is
+Change to being shared to other users. The task will
+automatically stop once the seed ratio has been
+reached</td>
+</tr>
+<tr class="row-odd"><td>retry</td>
+<td>You can set a task status to &#8216;retry&#8217; to restart the download
+task.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.size">
+<code class="descname">size</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>download size (in Bytes)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.queue_pos">
+<code class="descname">queue_pos</code><span> </span>int<a class="headerlink" href="#Download.queue_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>position in download queue (0 if not queued)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.io_priority">
+<code class="descname">io_priority</code><span> </span>enum<a class="headerlink" href="#Download.io_priority" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid download priorities are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Priority</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>low</td>
+<td>low</td>
+</tr>
+<tr class="row-odd"><td>normal</td>
+<td>normal</td>
+</tr>
+<tr class="row-even"><td>high</td>
+<td>high</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.tx_bytes">
+<code class="descname">tx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.tx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>transmitted bytes (including protocol overhead)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.rx_bytes">
+<code class="descname">rx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.rx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>received bytes (including protocol overhead)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.tx_rate">
+<code class="descname">tx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.tx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current transmit rate (in byte/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.rx_rate">
+<code class="descname">rx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.rx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current receive rate (in byte/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.tx_pct">
+<code class="descname">tx_pct</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.tx_pct" title="Permalink to this definition">¶</a></dt>
+<dd><p>transmit percentage (without protocol overhead)</p>
+<p>To improve precision the value as been scaled by 100 so that a
+tx_pct of 123 means 1.23%</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.rx_pct">
+<code class="descname">rx_pct</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.rx_pct" title="Permalink to this definition">¶</a></dt>
+<dd><p>received percentage (without protocol overhead)</p>
+<p>To improve precision the value as been scaled by 100 so that a
+tx_pct of 123 means 1.23%</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Download.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>An error code</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.created_ts">
+<code class="descname">created_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#Download.created_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of the download creation time</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.eta">
+<code class="descname">eta</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.eta" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimated remaining download time (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.download_dir">
+<code class="descname">download_dir</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Download.download_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>directory where the file(s) will be saved (base64 encoded)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.stop_ratio">
+<code class="descname">stop_ratio</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Download.stop_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only relevant for bittorrent tasks.  Once the transmit ration
+has been reached the task will stop seeding.</p>
+<p>The ratio is scaled by 100 to improve resolution.</p>
+<p>A stop_ratio of 150 means that the task will stop seeding once
+tx_bytes = 1.5 * rx_bytes.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.archive_password">
+<code class="descname">archive_password</code><span> </span>string<a class="headerlink" href="#Download.archive_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<strong>only relevant for nzb</strong>) password for extracting downloaded
+archives</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.info_hash">
+<code class="descname">info_hash</code><span> </span>string<a class="headerlink" href="#Download.info_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<strong>only relevant for bt</strong>) torrent info_hash encoded in hexa</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Download.piece_length">
+<code class="descname">piece_length</code><span> </span>int<a class="headerlink" href="#Download.piece_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<strong>only relevant for bt</strong>) torrent piece length in bytes</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="download-api">
+<h2>Download API<a class="headerlink" href="#download-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="retrieve-a-download-task">
+<h3>Retrieve a Download task<a class="headerlink" href="#retrieve-a-download-task" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/</code><a class="headerlink" href="#get--api-v4-downloads-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> tasks</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+      <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;rx_bytes&quot;</span><span class="o">:</span> <span class="mi">147450</span><span class="p">,</span>
+            <span class="s2">&quot;tx_bytes&quot;</span><span class="o">:</span> <span class="mi">3460</span><span class="p">,</span>
+            <span class="s2">&quot;download_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;archive_password&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">60290</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;downloading&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;io_priority&quot;</span><span class="o">:</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;bt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;piece_length&quot;</span><span class="o">:</span> <span class="mi">524288</span><span class="p">,</span>
+            <span class="s2">&quot;queue_pos&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1273</span><span class="p">,</span>
+            <span class="s2">&quot;info_hash&quot;</span><span class="o">:</span> <span class="s2">&quot;A7055D06E5A8F7F816EC01AC7F7F5243D3CB008F&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1485513882</span><span class="p">,</span>
+            <span class="s2">&quot;stop_ratio&quot;</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span>
+            <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">202</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;debian-8.7.1-amd64-CD-1.iso&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tx_pct&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rx_pct&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">10950</span><span class="p">,</span>
+            <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">660600000</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v4-downloads-id">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{id}</code><a class="headerlink" href="#get--api-v4-downloads-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/16</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;rx_bytes&quot;</span><span class="o">:</span> <span class="mi">688005364</span><span class="p">,</span>
+        <span class="s2">&quot;tx_bytes&quot;</span><span class="o">:</span> <span class="mi">3232055279</span><span class="p">,</span>
+        <span class="s2">&quot;download_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Téléchargements/ */</span>
+        <span class="s2">&quot;archive_password&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">331896</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;seeding&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;io_priority&quot;</span><span class="o">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">678428672</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;bt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;queue_pos&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">14</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1349786169</span><span class="p">,</span>
+        <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;debian-6.0.6-amd64-CD-1.iso&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rx_pct&quot;</span><span class="o">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_pct&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-download-task">
+<h3>Delete a Download task<a class="headerlink" href="#delete-a-download-task" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-downloads-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/downloads/{id}</code><a class="headerlink" href="#delete--api-v4-downloads-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> task with the given id,
+<strong>without</strong> erasing the downloaded files If the task was not done
+it is stopped</p>
+<p>You can call this method to remove done tasks from the task list.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/downloads/16</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="delete">
+<dt id="delete--api-v4-downloads-id-erase">
+<code class="descname">DELETE </code><code class="descname">/api/v4/downloads/{id}/erase</code><a class="headerlink" href="#delete--api-v4-downloads-id-erase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as previous, but <strong>erases</strong> the downloaded files</p>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-download-task">
+<h3>Update a Download task<a class="headerlink" href="#update-a-download-task" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-downloads-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/{id}</code><a class="headerlink" href="#put--api-v4-downloads-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/downloads/16</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;io_priority&quot;</span><span class="o">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;stopped&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;rx_bytes&quot;</span><span class="o">:</span> <span class="mi">683407058</span><span class="p">,</span>
+        <span class="s2">&quot;tx_bytes&quot;</span><span class="o">:</span> <span class="mi">17866436</span><span class="p">,</span>
+        <span class="s2">&quot;download_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Téléchargements/ */</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">1075260392</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;stopping&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;io_priority&quot;</span><span class="o">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">678428672</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;bt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;queue_pos&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">14</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1349786169</span><span class="p">,</span>
+        <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;debian-6.0.6-amd64-CD-1.iso&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stop_ratio&quot;</span><span class="o">:</span> <span class="mi">55936</span><span class="p">,</span>
+        <span class="s2">&quot;rx_pct&quot;</span><span class="o">:</span> <span class="mi">10000</span><span class="p">,</span>
+        <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_pct&quot;</span><span class="o">:</span> <span class="mi">4</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-download-log">
+<h3>Get download log<a class="headerlink" href="#get-download-log" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-id-log">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{id}/log</code><a class="headerlink" href="#get--api-v4-downloads-id-log" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the log.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/16/log</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;log line\nanother log line\n&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="adding-a-new-download-task">
+<h3>Adding a new Download task<a class="headerlink" href="#adding-a-new-download-task" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="adding-by-url">
+<h4>Adding by URL<a class="headerlink" href="#adding-by-url" title="Permalink to this headline">¶</a></h4>
+<p>Supported URL scheme are <code class="docutils literal"><span class="pre">http://</span></code>, <code class="docutils literal"><span class="pre">ftp://</span></code>, <code class="docutils literal"><span class="pre">magnet:</span></code></p>
+<p>You can start a recursive download by setting the recursive parameter.
+The downloader will then extract links from each donwloaded html page
+and continue downloading files on the same domain and on the same root
+path.  This can be used to download all the files on a directory
+index.</p>
+<p>You can add multiple downloads at once by passing a list of URL
+(separated by a new line delimiter) in download_url_list instead of
+using download_url.</p>
+<p>/!NOTE: for this API the request arguments must be encoded using
+&#8220;application/x-www-form-urlencoded&#8221; (or &#8220;multipart/form-data&#8221; for file
+upload) instead of &#8220;application/json&#8221;</p>
+<dl class="post">
+<dt id="post--api-v4-downloads-add">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/add</code><a class="headerlink" href="#post--api-v4-downloads-add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>download_url</strong> (<em>string</em>) &#8211; The URL</li>
+<li><strong>download_url_list</strong> (<em>string</em>) &#8211; A list of URL separated by a new
+line delimiter (use download_url
+or download_url_list)</li>
+<li><strong>download_dir</strong> (<em>string</em>) &#8211; The download destination directory
+(optional: will use the
+configuration download_dir by
+default)</li>
+<li><strong>recursive</strong> (<em>bool</em>) &#8211; If true the download will be recursive</li>
+<li><strong>username</strong> (<em>string</em>) &#8211; Auth username (optional)</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; Auth password (optional)</li>
+<li><strong>archive_password</strong> (<em>string</em>) &#8211; The password required to extract
+downloaded content (only relevant
+for nzb)</li>
+<li><strong>cookies</strong> (<em>string</em>) &#8211; The http cookies (to be able to pass
+session cookies along with url)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: instead of passing password and username you can include them in the URL.</p>
+<p><strong>Example request : Single download add</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>POST /api/v4/downloads/add HTTP/1.1
+Host: mafreebox.freebox.fr
+
+download_url=http%3A%2F%2Fcdimage.debian.org%2Fdebian-cd%2F6.0.6%2Famd64%2Fbt-cd%2Fdebian-6.0.6-amd64-CD-1.iso.torrent
+&amp;download_dir=L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<p>On success you&#8217;ll get the id of the new download task.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">23</span>
+    <span class="p">},</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example request : Multiple downloads at once</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre>POST /api/v4/downloads/add HTTP/1.1
+Host: mafreebox.freebox.fr
+
+download_url_list=ftp%3A%2F%2Ftest-debit.free.fr%2F1024.rnd
+         %0Ahttp%3A%2F%2Ftest-debit.free.fr%2F4096.rnd
+         %0Ahttp%3A%2F%2Ftest-debit.free.fr%2F32768.rnd
+&amp;download_dir=L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<p>On success you&#8217;ll get the list of id of the new download tasks.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+       <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="p">[</span>
+           <span class="mi">32</span><span class="p">,</span>
+           <span class="mi">33</span><span class="p">,</span>
+           <span class="mi">34</span>
+       <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="adding-by-file-upload">
+<h4>Adding by file upload<a class="headerlink" href="#adding-by-file-upload" title="Permalink to this headline">¶</a></h4>
+<p>Supported files are .torrent, .nzb,</p>
+<dl class="post">
+<dt id="post--api-v4-downloads-add">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/add</code><a class="headerlink" href="#post--api-v4-downloads-add" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>download_file</strong> (<em>string</em>) &#8211; The download file (must be uploaded
+using multipart/form-data</li>
+<li><strong>download_dir</strong> (<em>string</em>) &#8211; The download destination directory
+(optional: will use the
+configuration download_dir by
+default)</li>
+<li><strong>archive_password</strong> (<em>string</em>) &#8211; The password required to extract
+downloaded content (only relevant
+for nzb)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/add</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">multipart/form-data; boundary=---------------------------176791920111939857911845395343</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">26651</span>
+
+-----------------------------176791920111939857911845395343
+Content-Disposition: form-data; name=&quot;download_dir&quot;
+
+L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv
+-----------------------------176791920111939857911845395343
+Content-Disposition: form-data; name=&quot;archive_password&quot;
+
+
+-----------------------------176791920111939857911845395343
+Content-Disposition: form-data; name=&quot;download_file&quot;; filename=&quot;debian-6.0.6-amd64-CD-1.iso.torrent&quot;
+Content-Type: application/x-bittorrent
+
+d8:announce41:http://bttracker.debian.org:6969/announce7:comment [ ... ]
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">42</span>
+   <span class="p">},</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="download-stats">
+<h1>Download Stats<a class="headerlink" href="#download-stats" title="Permalink to this headline">¶</a></h1>
+<p>If you just want to display synthetic information about downloader
+this is the method to use.</p>
+<div class="section" id="download-nzb-configuration-status-object">
+<h2>Download Nzb configuration status Object<a class="headerlink" href="#download-nzb-configuration-status-object" title="Permalink to this headline">¶</a></h2>
+<dl class="object">
+<dt id="NzbConfigStatus">
+<code class="descname">NzbConfigStatus</code><a class="headerlink" href="#NzbConfigStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="NzbConfigStatus.status">
+<code class="descname">status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#NzbConfigStatus.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid config status are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>not_checked</td>
+<td>config has not been checked yet</td>
+</tr>
+<tr class="row-odd"><td>checking</td>
+<td>test in progress</td>
+</tr>
+<tr class="row-even"><td>error</td>
+<td>config is invalid, see error</td>
+</tr>
+<tr class="row-odd"><td>ok</td>
+<td>config is ok</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="NzbConfigStatus.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#NzbConfigStatus.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid config status are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>test is ok</td>
+</tr>
+<tr class="row-odd"><td>nzb_authentication_required</td>
+<td>authentication is required</td>
+</tr>
+<tr class="row-even"><td>bad_authentication</td>
+<td>incorrect credentials</td>
+</tr>
+<tr class="row-odd"><td>connection_refused</td>
+<td>unable to connect to NNTP server</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="download-dht-stats-object">
+<h2>Download DHT stats Object<a class="headerlink" href="#download-dht-stats-object" title="Permalink to this headline">¶</a></h2>
+<dl class="object">
+<dt id="DhtStats">
+<code class="descname">DhtStats</code><a class="headerlink" href="#DhtStats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DhtStats.enabled">
+<code class="descname">enabled</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DhtStats.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the dht enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhtStats.node_count">
+<code class="descname">node_count</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DhtStats.node_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of active nodes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhtStats.enabled_ipv6">
+<code class="descname">enabled_ipv6</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DhtStats.enabled_ipv6" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the dht enabled on IPv6</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhtStats.node_count_ipv6">
+<code class="descname">node_count_ipv6</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DhtStats.node_count_ipv6" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of active nodes on IPv6</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="download-stats-object">
+<h2>Download Stats Object<a class="headerlink" href="#download-stats-object" title="Permalink to this headline">¶</a></h2>
+<dl class="object">
+<dt id="DownloadStats">
+<code class="descname">DownloadStats</code><a class="headerlink" href="#DownloadStats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadStats.nb_tasks">
+<code class="descname">nb_tasks</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>total number of tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_stopped">
+<code class="descname">nb_tasks_stopped</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_stopped" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of stopped tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_checking">
+<code class="descname">nb_tasks_checking</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_checking" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of checking tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_queued">
+<code class="descname">nb_tasks_queued</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_queued" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of queued tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_extracting">
+<code class="descname">nb_tasks_extracting</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_extracting" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of extracting tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_done">
+<code class="descname">nb_tasks_done</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of done tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_repairing">
+<code class="descname">nb_tasks_repairing</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_repairing" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of repairing tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_seeding">
+<code class="descname">nb_tasks_seeding</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_seeding" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of seeding tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_downloading">
+<code class="descname">nb_tasks_downloading</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_downloading" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of downloading tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_error">
+<code class="descname">nb_tasks_error</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of error tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_stopping">
+<code class="descname">nb_tasks_stopping</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_stopping" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of stopping tasks</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_tasks_active">
+<code class="descname">nb_tasks_active</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_tasks_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of active tasks (checking + queued + extracting +
+repairing + seeding + downloading)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_rss">
+<code class="descname">nb_rss</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_rss" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of RSS feed subscriptions</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_rss_items_unread">
+<code class="descname">nb_rss_items_unread</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_rss_items_unread" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of unread RSS items</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.rx_rate">
+<code class="descname">rx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.rx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current receive rate in bytes / second</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.tx_rate">
+<code class="descname">tx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.tx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current transmit rate in bytes / second</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.throttling_mode">
+<code class="descname">throttling_mode</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.throttling_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>active throttling_mode (see <a class="reference internal" href="../download_config/#DlThrottlingConfig" title="DlThrottlingConfig"><code class="xref json json-object docutils literal"><span class="pre">DlThrottlingConfig</span></code></a>)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.throttling_is_scheduled">
+<code class="descname">throttling_is_scheduled</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.throttling_is_scheduled" title="Permalink to this definition">¶</a></dt>
+<dd><p>if true, the current throttling mode has been computed using the
+throttling schedule</p>
+<p>if false, the current throttling mode has been manually forced</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.throttling_rate">
+<code class="descname">throttling_rate</code><span> </span>:json:object:`DlRate`<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.throttling_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current rate for throttling</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nzb_config_status">
+<code class="descname">nzb_config_status</code><span> </span>:json:object:`NzbConfigStatus`<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nzb_config_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>current nzb configuration status</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.conn_ready">
+<code class="descname">conn_ready</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.conn_ready" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the connection ready</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.nb_peer">
+<code class="descname">nb_peer</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.nb_peer" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of bittorrent peers</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.blocklist_entries">
+<code class="descname">blocklist_entries</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.blocklist_entries" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of rules in blocklist</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.blocklist_hits">
+<code class="descname">blocklist_hits</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.blocklist_hits" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of hits in blocklist</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadStats.dht_stats">
+<code class="descname">dht_stats</code><span> </span>:json:object:`DhtStats`<em class="property"> Read-only</em><a class="headerlink" href="#DownloadStats.dht_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>dht stats</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="get-the-download-stats">
+<h3>Get the Download Stats<a class="headerlink" href="#get-the-download-stats" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-stats">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/stats</code><a class="headerlink" href="#get--api-v4-downloads-stats" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/stats</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;throttling_rate&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;nb_tasks_stopped&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_checking&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_queued&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_extracting&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_done&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_repairing&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;throttling_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_active&quot;</span><span class="o">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">4294</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_downloading&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;throttling_is_scheduled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_error&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_stopping&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nb_rss_items_unread&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">14222</span><span class="p">,</span>
+        <span class="s2">&quot;nb_tasks_seeding&quot;</span><span class="o">:</span> <span class="mi">3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="download-files">
+<h1>Download Files<a class="headerlink" href="#download-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-files-object">
+<h2>Download Files Object<a class="headerlink" href="#download-files-object" title="Permalink to this headline">¶</a></h2>
+<p>Each <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> has one or more <a class="reference internal" href="#DownloadFile" title="DownloadFile"><code class="xref json json-object docutils literal"><span class="pre">DownloadFile</span></code></a>.</p>
+<dl class="object">
+<dt id="DownloadFile">
+<code class="descname">DownloadFile</code><a class="headerlink" href="#DownloadFile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadFile.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>opaque id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.task_id">
+<code class="descname">task_id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.task_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id of the download task</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.path">
+<code class="descname">path</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>[ DEPRECATED ]</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.filepath">
+<code class="descname">filepath</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.filepath" title="Permalink to this definition">¶</a></dt>
+<dd><p>full filepath on the disk (encoded as in file system api)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>file name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.mimetype">
+<code class="descname">mimetype</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.mimetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>file mimetype</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.size">
+<code class="descname">size</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>file size in bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.rx">
+<code class="descname">rx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.rx" title="Permalink to this definition">¶</a></dt>
+<dd><p>received bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.status">
+<code class="descname">status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>file download status</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queued</td>
+<td>file is queued for download</td>
+</tr>
+<tr class="row-odd"><td>error</td>
+<td>there was a problem with this file, see error to get the error code</td>
+</tr>
+<tr class="row-even"><td>done</td>
+<td>file download is completed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>file error code in case status is error</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.priority">
+<code class="descname">priority</code><span> </span>string<a class="headerlink" href="#DownloadFile.priority" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>file download priority inside the download task</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Priority</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>no_dl</td>
+<td>this file will not be downloaded</td>
+</tr>
+<tr class="row-odd"><td>low</td>
+<td>low priority</td>
+</tr>
+<tr class="row-even"><td>normal</td>
+<td>default priority</td>
+</tr>
+<tr class="row-odd"><td>high</td>
+<td>high priority</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadFile.preview_url">
+<code class="descname">preview_url</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadFile.preview_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>url to preview downloaded file (only available for bittorrent)
+as a share link, this url can be use without requiring any
+form of authentication so that it can be passed as-is to any
+software.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="download-files-api">
+<h2>Download Files API<a class="headerlink" href="#download-files-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-files-for-a-given-download">
+<h3>Get the list of files for a given Download<a class="headerlink" href="#get-the-list-of-files-for-a-given-download" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-downloads-task_id-files">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{task_id}/files</code><a class="headerlink" href="#get--api-v4-downloads-task_id-files" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/37/files</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/Téléchargements//test-debit.free.fr.html&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;5-1&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;task_id&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;filepath&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMvL3Rlc3QtZGViaXQuZnJlZS5mci5odG1s&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;text/html&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;test-debit.free.fr.html&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;rx&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;priority&quot;</span><span class="o">:</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">0</span>
+
+      <span class="p">},</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/Téléchargements//test-debit.free.fr/1024.rnd&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;5-7&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;task_id&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;filepath&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMvL3Rlc3QtZGViaXQuZnJlZS5mci8xMDI0LnJuZA==&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;application/octet-stream&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;1024.rnd&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;rx&quot;</span><span class="o">:</span> <span class="mi">1048576</span><span class="p">,</span>
+          <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;priority&quot;</span><span class="o">:</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">1048576</span>
+      <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+      <span class="p">{</span>
+          <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/Téléchargements//test-debit.free.fr/image.iso&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;5-16&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;task_id&quot;</span><span class="o">:</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;filepath&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMvL3Rlc3QtZGViaXQuZnJlZS5mci9pbWFnZS5pc28=&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;application/x-cd-image&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;image.iso&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;rx&quot;</span><span class="o">:</span> <span class="mi">678428672</span><span class="p">,</span>
+          <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;priority&quot;</span><span class="o">:</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">678428672</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="change-the-priority-of-a-download-file">
+<h3>Change the priority of a Download File<a class="headerlink" href="#change-the-priority-of-a-download-file" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-downloads-task_id-files-file_id">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/{task_id}/files/{file_id}</code><a class="headerlink" href="#put--api-v4-downloads-task_id-files-file_id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>task_id</strong> (<em>string</em>) &#8211; The download task id</li>
+<li><strong>path</strong> (<em>string</em>) &#8211; The file_id</li>
+<li><strong>priority</strong> (<em>string</em>) &#8211; The new file download priority</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/downloads/37/files/37-4</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+{
+  &quot;priority&quot; : &quot;high&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="download-trackers-unstable">
+<h1>Download Trackers [UNSTABLE]<a class="headerlink" href="#download-trackers-unstable" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-tracker-object">
+<h2>Download Tracker Object<a class="headerlink" href="#download-tracker-object" title="Permalink to this headline">¶</a></h2>
+<p>Each torrent <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> task has one or more
+<a class="reference internal" href="#DownloadTracker" title="DownloadTracker"><code class="xref json json-object docutils literal"><span class="pre">DownloadTracker</span></code></a>.</p>
+<p>Each tracker is identified by its announce URL.</p>
+<dl class="object">
+<dt id="DownloadTracker">
+<code class="descname">DownloadTracker</code><a class="headerlink" href="#DownloadTracker" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadTracker.announce">
+<code class="descname">announce</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.announce" title="Permalink to this definition">¶</a></dt>
+<dd><p>tracker announce URL</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.is_backup">
+<code class="descname">is_backup</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.is_backup" title="Permalink to this definition">¶</a></dt>
+<dd><p>true if the tracker is a backup tracker (the downloader won&#8217;t
+connect to this tracker unless the primary tracker fails)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.status">
+<code class="descname">status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>tracker status</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>unannounced</td>
+<td>not announced</td>
+</tr>
+<tr class="row-odd"><td>announcing</td>
+<td>announcing</td>
+</tr>
+<tr class="row-even"><td>announce_failed</td>
+<td>an error occurred while trying to announce</td>
+</tr>
+<tr class="row-odd"><td>announced</td>
+<td>announced</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.interval">
+<code class="descname">interval</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>desired interval between two announces (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.min_interval">
+<code class="descname">min_interval</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.min_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>minimum interval between two announces (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.reannounce_in">
+<code class="descname">reannounce_in</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.reannounce_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>time left before reannounce (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.nseeders">
+<code class="descname">nseeders</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.nseeders" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of seeders announced on tracker</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.nleechers">
+<code class="descname">nleechers</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadTracker.nleechers" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of leechers announced on tracker</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadTracker.is_enabled">
+<code class="descname">is_enabled</code><span> </span>bool<a class="headerlink" href="#DownloadTracker.is_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the tracker enabled</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="download-tracker-api">
+<h2>Download Tracker API<a class="headerlink" href="#download-tracker-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-trackers-for-a-given-download">
+<h3>Get the list of trackers for a given Download<a class="headerlink" href="#get-the-list-of-trackers-for-a-given-download" title="Permalink to this headline">¶</a></h3>
+<p>Attempting to call this method on a download other than bittorent will
+fail</p>
+<dl class="get">
+<dt id="get--api-v4-downloads-task_id-trackers">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{task_id}/trackers</code><a class="headerlink" href="#get--api-v4-downloads-task_id-trackers" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/35/tracker</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;nseeders&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;nleechers&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;reannounce_in&quot;</span><span class="o">:</span> <span class="mi">790</span><span class="p">,</span>
+            <span class="s2">&quot;is_backup&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;interval&quot;</span><span class="o">:</span> <span class="mi">900</span><span class="p">,</span>
+            <span class="s2">&quot;min_interval&quot;</span><span class="o">:</span> <span class="mi">60</span><span class="p">,</span>
+            <span class="s2">&quot;announce&quot;</span><span class="o">:</span> <span class="s2">&quot;http://bttracker.debian.org:6969/announce&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;announced&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-new-tracker">
+<h3>Add a new tracker<a class="headerlink" href="#add-a-new-tracker" title="Permalink to this headline">¶</a></h3>
+<p>Attempting to call this method on a download other than bittorent will
+fail</p>
+<dl class="post">
+<dt id="post--api-v4-downloads-task_id-trackers">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/{task_id}/trackers</code><a class="headerlink" href="#post--api-v4-downloads-task_id-trackers" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/35/tracker</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+{
+  &quot;announce&quot;: &quot;udp://tracker.openbittorrent.com:80&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="remove-a-tracker">
+<h3>Remove a tracker<a class="headerlink" href="#remove-a-tracker" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-downloads-task_id-trackers-announce">
+<code class="descname">DELETE </code><code class="descname">/api/v4/downloads/{task_id}/trackers/{announce}</code><a class="headerlink" href="#delete--api-v4-downloads-task_id-trackers-announce" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/downloads/35/tracker/udp%3A%2F%2Ftracker.openbittorrent.com%3A80</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+{
+  &quot;announce&quot;: &quot;udp://tracker.openbittorrent.com:80&quot;
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-tracker">
+<h3>Update a tracker<a class="headerlink" href="#update-a-tracker" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-downloads-task_id-trackers-announce">
+<code class="descname">PUT </code><code class="descname">/api/v4/downloads/{task_id}/trackers/{announce}</code><a class="headerlink" href="#put--api-v4-downloads-task_id-trackers-announce" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/downloads/35/tracker/udp%3A%2F%2Ftracker.openbittorrent.com%3A80</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+{
+  &quot;announce&quot;: &quot;udp://tracker.openbittorrent.com:80&quot;,
+  &quot;is_enabled&quot;: true
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="download-peers-unstable">
+<h1>Download Peers [UNSTABLE]<a class="headerlink" href="#download-peers-unstable" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-peer-object">
+<h2>Download Peer Object<a class="headerlink" href="#download-peer-object" title="Permalink to this headline">¶</a></h2>
+<p>Each torrent <a class="reference internal" href="#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> task has one or more
+<a class="reference internal" href="#DownloadPeer" title="DownloadPeer"><code class="xref json json-object docutils literal"><span class="pre">DownloadPeer</span></code></a>.</p>
+<dl class="object">
+<dt id="DownloadPeer">
+<code class="descname">DownloadPeer</code><a class="headerlink" href="#DownloadPeer" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadPeer.host">
+<code class="descname">host</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>peer IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.port">
+<code class="descname">port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.port" title="Permalink to this definition">¶</a></dt>
+<dd><p>peer port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>peer state</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disconnected</td>
+<td>not connected</td>
+</tr>
+<tr class="row-odd"><td>connecting</td>
+<td>trying to connect to the peer</td>
+</tr>
+<tr class="row-even"><td>handshaking</td>
+<td>connected to the peer, negotiating capabilities</td>
+</tr>
+<tr class="row-odd"><td>ready</td>
+<td>ready to exchange data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.origin">
+<code class="descname">origin</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.origin" title="Permalink to this definition">¶</a></dt>
+<dd><p>peer origin</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Origin</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tracker</td>
+<td>got the peer from the tracker</td>
+</tr>
+<tr class="row-odd"><td>incoming</td>
+<td>incoming peer</td>
+</tr>
+<tr class="row-even"><td>dht</td>
+<td>got the peer from DHT</td>
+</tr>
+<tr class="row-odd"><td>pex</td>
+<td>got the peer from Peer exchange protocol</td>
+</tr>
+<tr class="row-even"><td>user</td>
+<td>manually added peer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.protocol">
+<code class="descname">protocol</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.protocol" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Protocol</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tcp</td>
+<td>TCP</td>
+</tr>
+<tr class="row-odd"><td>tcp_obfuscated</td>
+<td>Obfuscated TCP</td>
+</tr>
+<tr class="row-even"><td>udp</td>
+<td>UDP</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.client">
+<code class="descname">client</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bittorrent client name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.country_code">
+<code class="descname">country_code</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.country_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Peer country code (iso 3166)</p>
+<p>If country code is not available it will have the value &#8221;??&#8221;</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.tx">
+<code class="descname">tx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.tx" title="Permalink to this definition">¶</a></dt>
+<dd><p>transmitted bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.rx">
+<code class="descname">rx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.rx" title="Permalink to this definition">¶</a></dt>
+<dd><p>received bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.tx_rate">
+<code class="descname">tx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.tx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current transmit rate in byte/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.rx_rate">
+<code class="descname">rx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.rx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>current receive rate in byte/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.progress">
+<code class="descname">progress</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>peer current download progress</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadPeer.requests">
+<code class="descname">requests</code><span>[] array of </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadPeer.requests" title="Permalink to this definition">¶</a></dt>
+<dd><p>current requested pieces</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="get-the-list-of-peers-for-a-given-download">
+<h3>Get the list of peers for a given Download<a class="headerlink" href="#get-the-list-of-peers-for-a-given-download" title="Permalink to this headline">¶</a></h3>
+<p>Attempting to call this method on a download other than bittorent will fail</p>
+<dl class="get">
+<dt id="get--api-v4-downloads-task_id-peers">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{task_id}/peers</code><a class="headerlink" href="#get--api-v4-downloads-task_id-peers" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/downloads/42/peers</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;protocol&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp_obfuscated&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;origin&quot;</span><span class="o">:</span> <span class="s2">&quot;tracker&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">91</span><span class="p">,</span>
+            <span class="s2">&quot;remote_choke&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;requests&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="p">},</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;186.213.200.201&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;client&quot;</span><span class="o">:</span> <span class="s2">&quot;Azureus 4.7.2.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;country_code&quot;</span><span class="o">:</span> <span class="s2">&quot;BR&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;local_interest&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rx&quot;</span><span class="o">:</span> <span class="mi">1617</span><span class="p">,</span>
+            <span class="s2">&quot;tx&quot;</span><span class="o">:</span> <span class="mi">836670</span><span class="p">,</span>
+            <span class="s2">&quot;remote_interest&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;local_choke&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+          <span class="s2">&quot;protocol&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;origin&quot;</span><span class="o">:</span> <span class="s2">&quot;tracker&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">11</span><span class="p">,</span>
+          <span class="s2">&quot;remote_choke&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;requests&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="p">},</span>
+          <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;208.127.4.60&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;client&quot;</span><span class="o">:</span> <span class="s2">&quot;Transmission 2.51&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;country_code&quot;</span><span class="o">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;local_interest&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;rx&quot;</span><span class="o">:</span> <span class="mi">8929</span><span class="p">,</span>
+          <span class="s2">&quot;tx&quot;</span><span class="o">:</span> <span class="mi">7592234</span><span class="p">,</span>
+          <span class="s2">&quot;remote_interest&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;local_choke&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="download-pieces">
+<span id="dl-pieces-api"></span><h1>Download Pieces<a class="headerlink" href="#download-pieces" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>Each Torrent is split in &#8216;pieces&#8217; of fixed size. The Download Piece Api allow
+tracking the download state of each pieces of a Torrent</div></blockquote>
+<div class="section" id="get-the-pieces-status-a-given-download">
+<h2>Get the pieces status a given download<a class="headerlink" href="#get-the-pieces-status-a-given-download" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The result value is a string, with each character representing a piece status.
+Piece status can be:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>X</td>
+<td>piece is complete</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>piece is currently downloading</td>
+</tr>
+<tr class="row-even"><td>.</td>
+<td>piece is wanted but not downloading yet</td>
+</tr>
+<tr class="row-odd"><td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+<td>piece is not wanted and will not be downloaded</td>
+</tr>
+<tr class="row-even"><td>/</td>
+<td>piece is downloading with high priority as it is needed for file preview</td>
+</tr>
+<tr class="row-odd"><td>U</td>
+<td>piece is scheduled with high priority as it is needed for file preview</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="get">
+<dt id="get--api-v4-downloads-task_id-pieces">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{task_id}/pieces</code><a class="headerlink" href="#get--api-v4-downloads-task_id-pieces" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/api/v1/downloads/5/pieces</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;XXXXX//++....-- [ ... ] XXX&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="download-blacklist-unstable">
+<span id="dl-blaklist-api"></span><h1>Download Blacklist [UNSTABLE]<a class="headerlink" href="#download-blacklist-unstable" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>For bittorrent downloads, we use a blacklist to store information about &#8220;useless&#8221; or broken peers.
+For instance if a peer is complete and we are trying to seed data, there is no use attempting to connect
+to this peer again.</p>
+<p>The download blacklist api allow you to retreive information about this blacklist, and remove, or add peers
+to the blacklist.</p>
+<p>Each  <a class="reference internal" href="#DownloadBlacklistEntry" title="DownloadBlacklistEntry"><code class="xref json json-object docutils literal"><span class="pre">DownloadBlacklistEntry</span></code></a> can be specific to a torrent, or &#8220;global&#8221; and apply to any torrent.</p>
+</div></blockquote>
+<div class="section" id="download-blacklist-object">
+<h2>Download Blacklist Object<a class="headerlink" href="#download-blacklist-object" title="Permalink to this headline">¶</a></h2>
+<dl class="object">
+<dt id="DownloadBlacklistEntry">
+<code class="descname">DownloadBlacklistEntry</code><a class="headerlink" href="#DownloadBlacklistEntry" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DownloadBlacklistEntry.host">
+<code class="descname">host</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DownloadBlacklistEntry.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>entry ip</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadBlacklistEntry.reason">
+<code class="descname">reason</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DownloadBlacklistEntry.reason" title="Permalink to this definition">¶</a></dt>
+<dd><p>blacklist reason</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disconnected</td>
+<td>not connected</td>
+</tr>
+<tr class="row-odd"><td>connecting</td>
+<td>trying to connect to the peer</td>
+</tr>
+<tr class="row-even"><td>handshaking</td>
+<td>connected to the peer, negotiating capabilities</td>
+</tr>
+<tr class="row-odd"><td>ready</td>
+<td>ready to exchange data</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadBlacklistEntry.expire">
+<code class="descname">expire</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DownloadBlacklistEntry.expire" title="Permalink to this definition">¶</a></dt>
+<dd><p>time left before blacklist removal</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DownloadBlacklistEntry.global">
+<code class="descname">global</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DownloadBlacklistEntry.global" title="Permalink to this definition">¶</a></dt>
+<dd><p>does this entry applies to all torrents</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="get-the-list-of-blacklist-entries-for-a-given-download">
+<h3>Get the list of blacklist entries for a given download<a class="headerlink" href="#get-the-list-of-blacklist-entries-for-a-given-download" title="Permalink to this headline">¶</a></h3>
+<p>Attempting to call this method on a download other than bittorent will fail.</p>
+<dl class="get">
+<dt id="get--api-v4-downloads-task_id-blacklist">
+<code class="descname">GET </code><code class="descname">/api/v4/downloads/{task_id}/blacklist</code><a class="headerlink" href="#get--api-v4-downloads-task_id-blacklist" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/api/v1/downloads/5/blacklist</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;89.215.188.6&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expire&quot;</span><span class="o">:</span> <span class="mi">90</span><span class="p">,</span>
+            <span class="s2">&quot;global&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;reason&quot;</span><span class="o">:</span> <span class="s2">&quot;torrent_not_found&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;94.23.0.89&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expire&quot;</span><span class="o">:</span> <span class="mi">120</span><span class="p">,</span>
+            <span class="s2">&quot;global&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;reason&quot;</span><span class="o">:</span> <span class="s2">&quot;conn_closed&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;188.254.151.215&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expire&quot;</span><span class="o">:</span> <span class="mi">150</span><span class="p">,</span>
+            <span class="s2">&quot;global&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;reason&quot;</span><span class="o">:</span> <span class="s2">&quot;timeout&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;201.25.54.26&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expire&quot;</span><span class="o">:</span> <span class="mi">180</span><span class="p">,</span>
+            <span class="s2">&quot;global&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;reason&quot;</span><span class="o">:</span> <span class="s2">&quot;timeout&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="empty-the-blacklist-for-a-given-download">
+<h3>Empty the blacklist for a given download<a class="headerlink" href="#empty-the-blacklist-for-a-given-download" title="Permalink to this headline">¶</a></h3>
+<p>This call allow to remove all global entries, and entries related to the given download</p>
+<dl class="delete">
+<dt id="delete--api-v4-downloads-task_id-blacklist-empty">
+<code class="descname">DELETE </code><code class="descname">/api/v4/downloads/{task_id}/blacklist/empty</code><a class="headerlink" href="#delete--api-v4-downloads-task_id-blacklist-empty" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/api/v1/downloads/5/blacklist/empty</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-particular-blacklist-entry">
+<h3>Delete a particular blacklist entry<a class="headerlink" href="#delete-a-particular-blacklist-entry" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-downloads-blacklist-host">
+<code class="descname">DELETE </code><code class="descname">/api/v4/downloads/blacklist/{host}</code><a class="headerlink" href="#delete--api-v4-downloads-blacklist-host" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/api/v1/downloads/blacklist/201.25.54.26</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-blacklist-entry">
+<h3>Add a blacklist entry<a class="headerlink" href="#add-a-blacklist-entry" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-downloads-blacklist">
+<code class="descname">POST </code><code class="descname">/api/v4/downloads/blacklist</code><a class="headerlink" href="#post--api-v4-downloads-blacklist" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/downloads/blacklist</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+{
+  &quot;host&quot;: &quot;8.8.8.8&quot;,
+  &quot;expire&quot;: 3600
+}
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span>
+       <span class="p">{</span>
+          <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;197.200.139.87&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;expire&quot;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span>
+          <span class="s2">&quot;global&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;reason&quot;</span><span class="o">:</span> <span class="s2">&quot;user&quot;</span>
+       <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

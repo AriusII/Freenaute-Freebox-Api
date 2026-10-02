@@ -1,0 +1,1291 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Connection API &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Lan" href="../lan/" />
+    <link rel="prev" title="Contacts" href="../contacts/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="connection-api">
+<h1>Connection API<a class="headerlink" href="#connection-api" title="Permalink to this headline">¶</a></h1>
+<p>This API provides Freebox connection settings information.</p>
+<div class="section" id="connection-errors">
+<h2>Connection Errors<a class="headerlink" href="#connection-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the file connection API, you may encounter
+the following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>invalid request</td>
+</tr>
+<tr class="row-odd"><td>nodev</td>
+<td>no device found with this name</td>
+</tr>
+<tr class="row-even"><td>noent</td>
+<td>no entity found with this name</td>
+</tr>
+<tr class="row-odd"><td>netdown</td>
+<td>network is down</td>
+</tr>
+<tr class="row-even"><td>busy</td>
+<td>device is busy</td>
+</tr>
+<tr class="row-odd"><td>invalid_port</td>
+<td>invalid port</td>
+</tr>
+<tr class="row-even"><td>insecure_password</td>
+<td>the password is too weak to enable remote access</td>
+</tr>
+<tr class="row-odd"><td>invalid_provider</td>
+<td>invalid ddns provider name</td>
+</tr>
+<tr class="row-even"><td>invalid_next_hop</td>
+<td>invalid next hop address (should be a link local address)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="connection-status">
+<h2>Connection status<a class="headerlink" href="#connection-status" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connection-status-object">
+<h3>Connection status object<a class="headerlink" href="#connection-status-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="ConnectionStatus">
+<code class="descname">ConnectionStatus</code><a class="headerlink" href="#ConnectionStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ConnectionStatus.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>going_up</td>
+<td>connection is initializing</td>
+</tr>
+<tr class="row-odd"><td>up</td>
+<td>connection is active</td>
+</tr>
+<tr class="row-even"><td>going_down</td>
+<td>connection is about to become inactive</td>
+</tr>
+<tr class="row-odd"><td>down</td>
+<td>connection is inactive</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ethernet</td>
+<td>FTTH</td>
+</tr>
+<tr class="row-odd"><td>rfc2684</td>
+<td>xDSL (unbundled)</td>
+</tr>
+<tr class="row-even"><td>pppoatm</td>
+<td>xDSL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.media">
+<code class="descname">media</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.media" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Media</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ftth</td>
+<td>FTTH</td>
+</tr>
+<tr class="row-odd"><td>xdsl</td>
+<td>xDSL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.ipv4">
+<code class="descname">ipv4</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.ipv4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox IPv4 address</p>
+<p>NOTE: this field is only available when connection state is up</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.ipv6">
+<code class="descname">ipv6</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.ipv6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox IPv6 address</p>
+<p>NOTE: this field is only available when connection state is up</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.rate_up">
+<code class="descname">rate_up</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.rate_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>current upload rate in byte/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.rate_down">
+<code class="descname">rate_down</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.rate_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>current download rate in byte/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.bandwidth_up">
+<code class="descname">bandwidth_up</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.bandwidth_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>available upload bandwidth in bit/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.bandwidth_down">
+<code class="descname">bandwidth_down</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.bandwidth_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>available download bandwidth in bit/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.bytes_up">
+<code class="descname">bytes_up</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.bytes_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>total uploaded bytes since last connection</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.bytes_down">
+<code class="descname">bytes_down</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.bytes_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>total downloaded bytes since last connection</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionStatus.ipv4_port_range">
+<code class="descname">ipv4_port_range</code><span> </span>int[2]<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionStatus.ipv4_port_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Some customers share the same IPv4 and each customer is then
+assigned a port range. The first value is the first port of the assigned
+range and the second value is the last port (inclusive).</p>
+<p>All <a class="reference internal" href="../nat/#PortForwardingConfig" title="PortForwardingConfig"><code class="xref json json-object docutils literal"><span class="pre">PortForwardingConfig</span></code></a> must use ports in this range
+to be effective.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-current-connection-status">
+<h3>Get the current Connection status<a class="headerlink" href="#get-the-current-connection-status" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-connection-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/</code><a class="headerlink" href="#get--api-v4-connection-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;ethernet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate_down&quot;</span><span class="o">:</span> <span class="mi">61</span><span class="p">,</span>
+        <span class="s2">&quot;bytes_up&quot;</span><span class="o">:</span> <span class="mi">5489542</span><span class="p">,</span>
+        <span class="s2">&quot;rate_up&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;bandwidth_up&quot;</span><span class="o">:</span> <span class="mi">100000000</span><span class="p">,</span>
+        <span class="s2">&quot;ipv4&quot;</span><span class="o">:</span> <span class="s2">&quot;13.37.42.42&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ipv6&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a0::1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bandwidth_down&quot;</span><span class="o">:</span> <span class="mi">100000000</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;bytes_down&quot;</span><span class="o">:</span> <span class="mi">13332830</span><span class="p">,</span>
+        <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;ftth&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="connection-configuration">
+<h2>Connection configuration<a class="headerlink" href="#connection-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connection-configuration-object">
+<h3>Connection configuration object<a class="headerlink" href="#connection-configuration-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="ConnectionConfiguration">
+<code class="descname">ConnectionConfiguration</code><a class="headerlink" href="#ConnectionConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ConnectionConfiguration.ping">
+<code class="descname">ping</code><span> </span>bool<a class="headerlink" href="#ConnectionConfiguration.ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>should the Freebox respond to external ping requests</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.is_secure_pass">
+<code class="descname">is_secure_pass</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionConfiguration.is_secure_pass" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the admin password secure enough to enable remote access</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.remote_access">
+<code class="descname">remote_access</code><span> </span>bool<a class="headerlink" href="#ConnectionConfiguration.remote_access" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable/disable HTTP remote access</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.remote_access_port">
+<code class="descname">remote_access_port</code><span> </span>int<a class="headerlink" href="#ConnectionConfiguration.remote_access_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>port number to use for remote HTTP access</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.remote_access_min_port">
+<code class="descname">remote_access_min_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionConfiguration.remote_access_min_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This field indicate the minimum possible value for
+remote_access_port (see <a class="reference internal" href="#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.remote_access_max_port">
+<code class="descname">remote_access_max_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionConfiguration.remote_access_max_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This field indicate the maximum possible value for
+remote_access_port (see <a class="reference internal" href="#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.remote_access_ip">
+<code class="descname">remote_access_ip</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionConfiguration.remote_access_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPv4 to use for remote access (can be missing if connection is down)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.api_remote_access">
+<code class="descname">api_remote_access</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionConfiguration.api_remote_access" title="Permalink to this definition">¶</a></dt>
+<dd><p>is remote access enabled for apps, or share link</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.wol">
+<code class="descname">wol</code><span> </span>bool<a class="headerlink" href="#ConnectionConfiguration.wol" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable/disable Wake-on-lan proxy</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.adblock">
+<code class="descname">adblock</code><span> </span>bool<a class="headerlink" href="#ConnectionConfiguration.adblock" title="Permalink to this definition">¶</a></dt>
+<dd><p>is ads blocking feature enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.adblock_not_set">
+<code class="descname">adblock_not_set</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionConfiguration.adblock_not_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>if set to true adblock setting has never been set by the user</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionConfiguration.allow_token_request">
+<code class="descname">allow_token_request</code><span> </span>bool<a class="headerlink" href="#ConnectionConfiguration.allow_token_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>if false, user has disabled new token request.
+New apps can&#8217;t request a new token.
+Apps that already have a token are still allowed</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-current-connection-configuration">
+<h3>Get the current Connection configuration<a class="headerlink" href="#get-the-current-connection-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-connection-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/config/</code><a class="headerlink" href="#get--api-v4-connection-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#ConnectionConfiguration" title="ConnectionConfiguration"><code class="xref json json-object docutils literal"><span class="pre">ConnectionConfiguration</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ping&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;is_secure_pass&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;remote_access_port&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+        <span class="s2">&quot;remote_access&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;wol&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;adblock&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;adblock_not_set&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;api_remote_access&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;allow_token_request&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;remote_access_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;312.13.37.42&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-connection-configuration">
+<h3>Update the Connection configuration<a class="headerlink" href="#update-the-connection-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-connection-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/connection/config/</code><a class="headerlink" href="#put--api-v4-connection-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#ConnectionConfiguration" title="ConnectionConfiguration"><code class="xref json json-object docutils literal"><span class="pre">ConnectionConfiguration</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/connection/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;ping&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;wol&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ping&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;is_secure_pass&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;remote_access_port&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+        <span class="s2">&quot;remote_access&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;wol&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;adblock&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;adblock_not_set&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;api_remote_access&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;allow_token_request&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;remote_access_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;312.13.37.42&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="connection-ipv6-configuration">
+<h2>Connection IPv6 configuration<a class="headerlink" href="#connection-ipv6-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="connection-ipv6-configuration-object">
+<h3>Connection IPv6 configuration object<a class="headerlink" href="#connection-ipv6-configuration-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="ConnectionIpv6Delegation">
+<code class="descname">ConnectionIpv6Delegation</code><a class="headerlink" href="#ConnectionIpv6Delegation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ConnectionIpv6Delegation.prefix">
+<code class="descname">prefix</code><span> </span>string<a class="headerlink" href="#ConnectionIpv6Delegation.prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPv6 prefix</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionIpv6Delegation.next_hop">
+<code class="descname">next_hop</code><span> </span>ipv6<a class="headerlink" href="#ConnectionIpv6Delegation.next_hop" title="Permalink to this definition">¶</a></dt>
+<dd><p>the next hop for the prefix</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="ConnectionIpv6Configuration">
+<code class="descname">ConnectionIpv6Configuration</code><a class="headerlink" href="#ConnectionIpv6Configuration" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ConnectionIpv6Configuration.ipv6_enabled">
+<code class="descname">ipv6_enabled</code><span> </span>bool<a class="headerlink" href="#ConnectionIpv6Configuration.ipv6_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is IPv6 enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionIpv6Configuration.ipv6ll">
+<code class="descname">ipv6ll</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#ConnectionIpv6Configuration.ipv6ll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox IPv6 link local address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ConnectionIpv6Configuration.delegations">
+<code class="descname">delegations</code><span> </span>ConnectionIpv6Delegation[8]<a class="headerlink" href="#ConnectionIpv6Configuration.delegations" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of IPv6 delegations</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-current-ipv6-connection-configuration">
+<h3>Get the current IPv6 Connection configuration<a class="headerlink" href="#get-the-current-ipv6-connection-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-connection-ipv6-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/ipv6/config/</code><a class="headerlink" href="#get--api-v4-connection-ipv6-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#ConnectionIpv6Configuration" title="ConnectionIpv6Configuration"><code class="xref json json-object docutils literal"><span class="pre">ConnectionIpv6Configuration</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/ipv6/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ipv6_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;delegations&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a0::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a1::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a2::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a3::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a4::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a5::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a6::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a7::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-ipv6-connection-configuration">
+<h3>Update the IPv6 Connection configuration<a class="headerlink" href="#update-the-ipv6-connection-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-connection-ipv6-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/connection/ipv6/config/</code><a class="headerlink" href="#put--api-v4-connection-ipv6-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#ConnectionIpv6Configuration" title="ConnectionIpv6Configuration"><code class="xref json json-object docutils literal"><span class="pre">ConnectionIpv6Configuration</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/connection/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;delegations&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+         <span class="nt">&quot;prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;2a01:e30:d252:a2a2::/64&quot;</span><span class="p">,</span>
+         <span class="nt">&quot;next_hop&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::be30:5bff:feb5:fcc7&quot;</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ipv6_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;ipv6ll&quot;</span><span class="o">:</span> <span class="s2">&quot;fe80::224:d4ff:acac:ecec&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;delegations&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a0::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a1::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a2::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;fe80::d252:5bff:feb5:fcc7&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a3::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a4::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a5::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a6::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;2a01:e30:d252:a2a7::/64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;next_hop&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="connection-xdsl-status-unstable">
+<h2>Connection xDSL status [UNSTABLE]<a class="headerlink" href="#connection-xdsl-status-unstable" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="xdsl-status-object-unstable">
+<h3>xDSL status object [UNSTABLE]<a class="headerlink" href="#xdsl-status-object-unstable" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="XdslStatus">
+<code class="descname">XdslStatus</code><a class="headerlink" href="#XdslStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="XdslStatus.status">
+<code class="descname">status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#XdslStatus.status" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>down</td>
+<td>unsynchronized</td>
+</tr>
+<tr class="row-odd"><td>training</td>
+<td>synchronizing step 1/4</td>
+</tr>
+<tr class="row-even"><td>started</td>
+<td>synchronizing step 2/4</td>
+</tr>
+<tr class="row-odd"><td>chan_analysis</td>
+<td>synchronizing step 3/4</td>
+</tr>
+<tr class="row-even"><td>msg_exchange</td>
+<td>synchronizing step 4/4</td>
+</tr>
+<tr class="row-odd"><td>showtime</td>
+<td>Ready</td>
+</tr>
+<tr class="row-even"><td>disabled</td>
+<td>Disabled</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStatus.protocol">
+<code class="descname">protocol</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#XdslStatus.protocol" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Protocol</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>t1413</td>
+<td>T1.413</td>
+</tr>
+<tr class="row-odd"><td>adsl1_a</td>
+<td>ADSL</td>
+</tr>
+<tr class="row-even"><td>adsl2_a</td>
+<td>ADSL2</td>
+</tr>
+<tr class="row-odd"><td>adsl2plus_a</td>
+<td>ADSL2+</td>
+</tr>
+<tr class="row-even"><td>readsl2</td>
+<td>ReachDSL</td>
+</tr>
+<tr class="row-odd"><td>adsl2_m</td>
+<td>ADSL2 annex M</td>
+</tr>
+<tr class="row-even"><td>adsl2plus_m</td>
+<td>ADSL2+ annex M</td>
+</tr>
+<tr class="row-odd"><td>unknown</td>
+<td>Unknown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStatus.modulation">
+<code class="descname">modulation</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#XdslStatus.modulation" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Protocol</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>adsl</td>
+<td>ADSL</td>
+</tr>
+<tr class="row-odd"><td>vdsl</td>
+<td>VDSL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStatus.uptime">
+<code class="descname">uptime</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStatus.uptime" title="Permalink to this definition">¶</a></dt>
+<dd><p>uptime in seconds</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xdsl-stats-object-unstable">
+<h3>xDSL stats object [UNSTABLE]<a class="headerlink" href="#xdsl-stats-object-unstable" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="XdslStats">
+<code class="descname">XdslStats</code><a class="headerlink" href="#XdslStats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="XdslStats.maxrate">
+<code class="descname">maxrate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.maxrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>ATM max rate in kbit/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rate">
+<code class="descname">rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>ATM rate in kbit/s</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.snr">
+<code class="descname">snr</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.snr" title="Permalink to this definition">¶</a></dt>
+<dd><p>in dB</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.attn">
+<code class="descname">attn</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.attn" title="Permalink to this definition">¶</a></dt>
+<dd><p>in dB</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.snr_10">
+<code class="descname">snr_10</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.snr_10" title="Permalink to this definition">¶</a></dt>
+<dd><p>in dB/10</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.attn_10">
+<code class="descname">attn_10</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.attn_10" title="Permalink to this definition">¶</a></dt>
+<dd><p>in dB/10</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.fec">
+<code class="descname">fec</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.fec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.crc">
+<code class="descname">crc</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.crc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.hec">
+<code class="descname">hec</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.hec" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.es">
+<code class="descname">es</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.es" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.ses">
+<code class="descname">ses</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.ses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.phyr">
+<code class="descname">phyr</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.phyr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.ginp">
+<code class="descname">ginp</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.ginp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.nitro">
+<code class="descname">nitro</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.nitro" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rxmt">
+<code class="descname">rxmt</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rxmt" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when phyr is on</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rxmt_corr">
+<code class="descname">rxmt_corr</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rxmt_corr" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when phyr is on</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rxmt_uncorr">
+<code class="descname">rxmt_uncorr</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rxmt_uncorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when phyr is on</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rtx_tx">
+<code class="descname">rtx_tx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rtx_tx" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when ginp is on</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rtx_c">
+<code class="descname">rtx_c</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rtx_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when ginp is on</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="XdslStats.rtx_uc">
+<code class="descname">rtx_uc</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#XdslStats.rtx_uc" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when ginp is on</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="xdsl-infos-object-unstable">
+<h3>xDSL infos object [UNSTABLE]<a class="headerlink" href="#xdsl-infos-object-unstable" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="XdslInfos">
+<code class="descname">XdslInfos</code><a class="headerlink" href="#XdslInfos" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="XdslInfos.status">
+<code class="descname">status</code><span> </span><a class="reference internal" href="#XdslStatus" title="XdslStatus">XdslStatus</a><a class="headerlink" href="#XdslInfos.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslInfos.down">
+<code class="descname">down</code><span> </span><a class="reference internal" href="#XdslStats" title="XdslStats">XdslStats</a><a class="headerlink" href="#XdslInfos.down" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="XdslInfos.up">
+<code class="descname">up</code><span> </span><a class="reference internal" href="#XdslStats" title="XdslStats">XdslStats</a><a class="headerlink" href="#XdslInfos.up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-current-xdsl-infos">
+<h3>Get the current xDSL infos<a class="headerlink" href="#get-the-current-xdsl-infos" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-connection-xdsl-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/xdsl/</code><a class="headerlink" href="#get--api-v4-connection-xdsl-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#XdslInfos" title="XdslInfos"><code class="xref json json-object docutils literal"><span class="pre">XdslInfos</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/xdsl/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;showtime&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;protocol&quot;</span><span class="o">:</span> <span class="s2">&quot;adsl2plus_a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;uptime&quot;</span><span class="o">:</span> <span class="mi">5017</span><span class="p">,</span>
+            <span class="s2">&quot;modulation&quot;</span><span class="o">:</span> <span class="s2">&quot;adsl&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;down&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;es&quot;</span><span class="o">:</span> <span class="mi">43</span><span class="p">,</span>
+            <span class="s2">&quot;phyr&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;attn&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;snr&quot;</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
+            <span class="s2">&quot;nitro&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">28031</span><span class="p">,</span>
+            <span class="s2">&quot;hec&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;crc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rxmt_uncorr&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rxmt_corr&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;ses&quot;</span><span class="o">:</span> <span class="mi">43</span><span class="p">,</span>
+            <span class="s2">&quot;fec&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;maxrate&quot;</span><span class="o">:</span> <span class="mi">30636</span><span class="p">,</span>
+            <span class="s2">&quot;rxmt&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;up&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;es&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;phyr&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;attn&quot;</span><span class="o">:</span> <span class="mi">23</span><span class="p">,</span>
+            <span class="s2">&quot;snr&quot;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+            <span class="s2">&quot;nitro&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">1022</span><span class="p">,</span>
+            <span class="s2">&quot;hec&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;crc&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rxmt_uncorr&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;rxmt_corr&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;ses&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;fec&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;maxrate&quot;</span><span class="o">:</span> <span class="mi">1022</span><span class="p">,</span>
+            <span class="s2">&quot;rxmt&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="connection-ftth-status-unstable">
+<h2>Connection FTTH status [UNSTABLE]<a class="headerlink" href="#connection-ftth-status-unstable" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ftth-status-object-unstable">
+<h3>FTTH status object [UNSTABLE]<a class="headerlink" href="#ftth-status-object-unstable" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="FtthStatus">
+<code class="descname">FtthStatus</code><a class="headerlink" href="#FtthStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FtthStatus.sfp_present">
+<code class="descname">sfp_present</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_present" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_alim_ok">
+<code class="descname">sfp_alim_ok</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_alim_ok" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_has_power_report">
+<code class="descname">sfp_has_power_report</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_has_power_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_has_signal">
+<code class="descname">sfp_has_signal</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_has_signal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.link">
+<code class="descname">link</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.link" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_serial">
+<code class="descname">sfp_serial</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_serial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_model">
+<code class="descname">sfp_model</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_vendor">
+<code class="descname">sfp_vendor</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_vendor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt>
+<code class="descname">sfp_vendor</code><span> </span>string<em class="property"> Read-only</em></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_pwr_tx">
+<code class="descname">sfp_pwr_tx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_pwr_tx" title="Permalink to this definition">¶</a></dt>
+<dd><p>scaled by 100 (in dBm)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtthStatus.sfp_pwr_rx">
+<code class="descname">sfp_pwr_rx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FtthStatus.sfp_pwr_rx" title="Permalink to this definition">¶</a></dt>
+<dd><p>scaled by 100 (in dBm)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-current-ftth-status">
+<h3>Get the current FTTH status<a class="headerlink" href="#get-the-current-ftth-status" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-connection-ftth-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/ftth/</code><a class="headerlink" href="#get--api-v4-connection-ftth-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#FtthStatus" title="FtthStatus"><code class="xref json json-object docutils literal"><span class="pre">FtthStatus</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/ftth/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;sfp_has_power_report&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_has_signal&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_model&quot;</span><span class="o">:</span> <span class="s2">&quot;SPBD-1250E4H2RDB&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_vendor&quot;</span><span class="o">:</span> <span class="s2">&quot;DELTA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_pwr_tx&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1172</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_pwr_rx&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">3698</span><span class="p">,</span>
+        <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_alim_ok&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_serial&quot;</span><span class="o">:</span> <span class="s2">&quot;DE104900000471&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sfp_present&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="connection-dyndns-status">
+<h2>Connection DynDNS status<a class="headerlink" href="#connection-dyndns-status" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dyndnsprovider-status-object">
+<h3>DynDnsProvider status object<a class="headerlink" href="#dyndnsprovider-status-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DDNSStatus">
+<code class="descname">DDNSStatus</code><a class="headerlink" href="#DDNSStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DDNSStatus.status">
+<code class="descname">status</code><span> </span>enum<a class="headerlink" href="#DDNSStatus.status" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disabled</td>
+<td>Disabled</td>
+</tr>
+<tr class="row-odd"><td>ok</td>
+<td>Ok</td>
+</tr>
+<tr class="row-even"><td>wait</td>
+<td>Updating</td>
+</tr>
+<tr class="row-odd"><td>reqfail</td>
+<td>Request failed</td>
+</tr>
+<tr class="row-even"><td>authfail</td>
+<td>Authentication error</td>
+</tr>
+<tr class="row-odd"><td>nocredential</td>
+<td>Invalid credential</td>
+</tr>
+<tr class="row-even"><td>ipinval</td>
+<td>Invalid IP</td>
+</tr>
+<tr class="row-odd"><td>hostinval</td>
+<td>Invalid hostname</td>
+</tr>
+<tr class="row-even"><td>abuse</td>
+<td>Blocked because of abuse</td>
+</tr>
+<tr class="row-odd"><td>dnserror</td>
+<td>DNS error</td>
+</tr>
+<tr class="row-even"><td>unavailable</td>
+<td>Service unavailable</td>
+</tr>
+<tr class="row-odd"><td>nowan</td>
+<td>Unable to get wan IP</td>
+</tr>
+<tr class="row-even"><td>unknown</td>
+<td>Unknown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DDNSStatus.next_refresh">
+<code class="descname">next_refresh</code><span> </span>int<a class="headerlink" href="#DDNSStatus.next_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>next refresh timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DDNSStatus.last_refresh">
+<code class="descname">last_refresh</code><span> </span>int<a class="headerlink" href="#DDNSStatus.last_refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>last refresh timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DDNSStatus.next_retry">
+<code class="descname">next_retry</code><span> </span>int<a class="headerlink" href="#DDNSStatus.next_retry" title="Permalink to this definition">¶</a></dt>
+<dd><p>next retry timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DDNSStatus.last_error">
+<code class="descname">last_error</code><span> </span>int<a class="headerlink" href="#DDNSStatus.last_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>last error timestamp</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-status-of-a-dyndns-service">
+<h3>Get the status of a DynDNS service<a class="headerlink" href="#get-the-status-of-a-dyndns-service" title="Permalink to this headline">¶</a></h3>
+<p>Right now the supported dynamic dns providers are:</p>
+<ul class="simple">
+<li>ovh</li>
+<li>dyndns</li>
+<li>noip</li>
+</ul>
+<dl class="get">
+<dt id="get--api-v4-connection-ddns-provider-status-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/ddns/{provider}/status/</code><a class="headerlink" href="#get--api-v4-connection-ddns-provider-status-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#DDNSStatus" title="DDNSStatus"><code class="xref json json-object docutils literal"><span class="pre">DDNSStatus</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/ddns/dyndns/status/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;last_error&quot;</span><span class="o">:</span> <span class="mi">1354127350</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;hostinval&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;next_refresh&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;last_refresh&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;next_retry&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="connection-dyndns-configuration">
+<h2>Connection DynDNS configuration<a class="headerlink" href="#connection-dyndns-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dyndns-config-object">
+<h3>DynDns config object<a class="headerlink" href="#dyndns-config-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="DDNSConfig">
+<code class="descname">DDNSConfig</code><a class="headerlink" href="#DDNSConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DDNSConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#DDNSConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="DDNSConfig.hostname">
+<code class="descname">hostname</code><span> </span>string<a class="headerlink" href="#DDNSConfig.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>dns name to use to register</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DDNSConfig.password">
+<code class="descname">password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#DDNSConfig.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>password to use to register</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DDNSConfig.user">
+<code class="descname">user</code><span> </span>string<a class="headerlink" href="#DDNSConfig.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>username to use to register</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-config-of-a-dyndns-service">
+<h3>Get the config of a DynDNS service<a class="headerlink" href="#get-the-config-of-a-dyndns-service" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-connection-ddns-provider-">
+<code class="descname">GET </code><code class="descname">/api/v4/connection/ddns/{provider}/</code><a class="headerlink" href="#get--api-v4-connection-ddns-provider-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#DDNSConfig" title="DDNSConfig"><code class="xref json json-object docutils literal"><span class="pre">DDNSConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/connection/ddns/dyndns/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="set-the-config-of-a-dyndns-service">
+<h3>Set the config of a DynDNS service<a class="headerlink" href="#set-the-config-of-a-dyndns-service" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-connection-ddns-provider-">
+<code class="descname">PUT </code><code class="descname">/api/v4/connection/ddns/{provider}/</code><a class="headerlink" href="#put--api-v4-connection-ddns-provider-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the <a class="reference internal" href="#DDNSConfig" title="DDNSConfig"><code class="xref json json-object docutils literal"><span class="pre">DDNSConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/connection/ddns/dyndns/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;ssss&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;ttt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;ttt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

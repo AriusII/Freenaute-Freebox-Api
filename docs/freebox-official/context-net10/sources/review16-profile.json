@@ -1,0 +1,496 @@
+{
+  "module": {
+    "module": "profile",
+    "title": "Profile management",
+    "category": "maison-profils",
+    "path": "docs/reference/maison-profils/profile.md",
+    "http_signatures": 15,
+    "objects": 3,
+    "properties": 22,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#profile-management",
+    "source_pre_blocks": 29,
+    "markdown_code_blocks": 29,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/profile",
+      "path_template": "/api/v{major}/profile",
+      "documented_major": 8,
+      "title": "Get the list of profiles",
+      "id": "get--api-v8-profile",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-profile",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-profile",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-profile"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/profile/{id}",
+      "path_template": "/api/v{major}/profile/{id}",
+      "documented_major": 8,
+      "title": "Get a profile",
+      "id": "get--api-v8-profile-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-profile-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-profile-id",
+      "referenced_objects": [
+        "Profile"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-profile-id"
+    },
+    {
+      "module": "profile",
+      "method": "POST",
+      "documented_path": "/api/v8/profile/",
+      "path_template": "/api/v{major}/profile/",
+      "documented_major": 8,
+      "title": "Add a profile",
+      "id": "post--api-v8-profile-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-profile-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#post--api-v8-profile-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-profile-"
+    },
+    {
+      "module": "profile",
+      "method": "DELETE",
+      "documented_path": "/api/v8/profile/{id}",
+      "path_template": "/api/v{major}/profile/{id}",
+      "documented_major": 8,
+      "title": "Delete a profile",
+      "id": "delete--api-v8-profile-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-profile-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#delete--api-v8-profile-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-profile-id"
+    },
+    {
+      "module": "profile",
+      "method": "PUT",
+      "documented_path": "/api/v8/profile/3",
+      "path_template": "/api/v{major}/profile/3",
+      "documented_major": 8,
+      "title": "Update a profile",
+      "id": "put--api-v8-profile-3",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-profile-3",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#put--api-v8-profile-3",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-profile-3"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control",
+      "path_template": "/api/v{major}/network_control",
+      "documented_major": 8,
+      "title": "Get Network Control for all profiles",
+      "id": "get--api-v8-network_control",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-network_control",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-network_control"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/{profile_id}",
+      "path_template": "/api/v{major}/network_control/{profile_id}",
+      "documented_major": 8,
+      "title": "Get Network Control for a profile",
+      "id": "get--api-v8-network_control-profile_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-profile_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-network_control-profile_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-network_control-profile_id"
+    },
+    {
+      "module": "profile",
+      "method": "PUT",
+      "documented_path": "/api/v8/network_control/{profile_id}",
+      "path_template": "/api/v{major}/network_control/{profile_id}",
+      "documented_major": 8,
+      "title": "Update Network Control for a profile",
+      "id": "put--api-v8-network_control-profile_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-network_control-profile_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#put--api-v8-network_control-profile_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-network_control-profile_id"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/migrate",
+      "path_template": "/api/v{major}/network_control/migrate",
+      "documented_major": 8,
+      "title": "Get migration to new default mode status",
+      "id": "get--api-v8-network_control-migrate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-migrate",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-network_control-migrate",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-network_control-migrate"
+    },
+    {
+      "module": "profile",
+      "method": "POST",
+      "documented_path": "/api/v8/network_control/migrate",
+      "path_template": "/api/v{major}/network_control/migrate",
+      "documented_major": 8,
+      "title": "Migrate to new default mode",
+      "id": "post--api-v8-network_control-migrate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-network_control-migrate",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#post--api-v8-network_control-migrate",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-network_control-migrate"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/{profile_id}/rules",
+      "path_template": "/api/v{major}/network_control/{profile_id}/rules",
+      "documented_major": 8,
+      "title": "Get Network Control Rules for a profile",
+      "id": "get--api-v8-network_control-profile_id-rules",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-profile_id-rules",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-network_control-profile_id-rules",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-network_control-profile_id-rules"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/{profile_id}/rules/{rule_id}",
+      "path_template": "/api/v{major}/network_control/{profile_id}/rules/{rule_id}",
+      "documented_major": 8,
+      "title": "Get a Network Control Rule",
+      "id": "get--api-v8-network_control-profile_id-rules-rule_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-profile_id-rules-rule_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#get--api-v8-network_control-profile_id-rules-rule_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-network_control-profile_id-rules-rule_id"
+    },
+    {
+      "module": "profile",
+      "method": "POST",
+      "documented_path": "/api/v8/network_controlr/{profile_id}/rules/",
+      "path_template": "/api/v{major}/network_controlr/{profile_id}/rules/",
+      "documented_major": 8,
+      "title": "Create a Network Control Rule",
+      "id": "post--api-v8-network_controlr-profile_id-rules-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-network_controlr-profile_id-rules-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#post--api-v8-network_controlr-profile_id-rules-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-network_controlr-profile_id-rules-"
+    },
+    {
+      "module": "profile",
+      "method": "PUT",
+      "documented_path": "/api/v8/network_control/{id}/rules/{rule_id}",
+      "path_template": "/api/v{major}/network_control/{id}/rules/{rule_id}",
+      "documented_major": 8,
+      "title": "Update a Network Control Rule",
+      "id": "put--api-v8-network_control-id-rules-rule_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-network_control-id-rules-rule_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#put--api-v8-network_control-id-rules-rule_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-network_control-id-rules-rule_id"
+    },
+    {
+      "module": "profile",
+      "method": "DELETE",
+      "documented_path": "/api/v8/network_control/{id}/rules/{rule_id}",
+      "path_template": "/api/v{major}/network_control/{id}/rules/{rule_id}",
+      "documented_major": 8,
+      "title": "Delete a Network Control Rule",
+      "id": "delete--api-v8-network_control-id-rules-rule_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-network_control-id-rules-rule_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/profile.md#delete--api-v8-network_control-id-rules-rule_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-network_control-id-rules-rule_id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "profile",
+      "name": "Profile",
+      "id": "Profile",
+      "properties": [
+        "Profile.id",
+        "Profile.name",
+        "Profile.icon"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Profile",
+      "markdown": "docs/reference/maison-profils/profile.md#Profile"
+    },
+    {
+      "module": "profile",
+      "name": "NetworkControl",
+      "id": "NetworkControl",
+      "properties": [
+        "NetworkControl.profile_id",
+        "NetworkControl.next_change",
+        "NetworkControl.override_mode",
+        "NetworkControl.current_mode",
+        "NetworkControl.rule_mode",
+        "NetworkControl.override_until",
+        "NetworkControl.override",
+        "NetworkControl.macs",
+        "NetworkControl.hosts",
+        "NetworkControl.resolution",
+        "NetworkControl.cdayranges"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl"
+    },
+    {
+      "module": "profile",
+      "name": "NetworkControlRule",
+      "id": "NetworkControlRule",
+      "properties": [
+        "NetworkControlRule.id",
+        "NetworkControlRule.profile_id",
+        "NetworkControlRule.name",
+        "NetworkControlRule.mode",
+        "propriete-sans-ancre-profile-19",
+        "propriete-sans-ancre-profile-20",
+        "NetworkControlRule.weekdays",
+        "NetworkControlRule.enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule"
+    }
+  ],
+  "properties": [
+    {
+      "module": "profile",
+      "id": "Profile.id",
+      "signature": "id int Read-only",
+      "description": "",
+      "source_id": "Profile.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Profile.id",
+      "markdown": "docs/reference/maison-profils/profile.md#Profile.id"
+    },
+    {
+      "module": "profile",
+      "id": "Profile.name",
+      "signature": "name string",
+      "description": "",
+      "source_id": "Profile.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Profile.name",
+      "markdown": "docs/reference/maison-profils/profile.md#Profile.name"
+    },
+    {
+      "module": "profile",
+      "id": "Profile.icon",
+      "signature": "icon string",
+      "description": "",
+      "source_id": "Profile.icon",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Profile.icon",
+      "markdown": "docs/reference/maison-profils/profile.md#Profile.icon"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.profile_id",
+      "signature": "profile_id int Read-only",
+      "description": "",
+      "source_id": "NetworkControl.profile_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.profile_id",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.profile_id"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.next_change",
+      "signature": "next_change int Read-only",
+      "description": "",
+      "source_id": "NetworkControl.next_change",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.next_change",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.next_change"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.override_mode",
+      "signature": "override_mode enum",
+      "description": "",
+      "source_id": "NetworkControl.override_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.override_mode",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.override_mode"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.current_mode",
+      "signature": "current_mode enum Read-only",
+      "description": "",
+      "source_id": "NetworkControl.current_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.current_mode",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.current_mode"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.rule_mode",
+      "signature": "rule_mode enum Read-only",
+      "description": "",
+      "source_id": "NetworkControl.rule_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.rule_mode",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.rule_mode"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.override_until",
+      "signature": "override_until int",
+      "description": "",
+      "source_id": "NetworkControl.override_until",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.override_until",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.override_until"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.override",
+      "signature": "override bool",
+      "description": "",
+      "source_id": "NetworkControl.override",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.override",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.override"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.macs",
+      "signature": "macs [] array of string",
+      "description": "",
+      "source_id": "NetworkControl.macs",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.macs",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.macs"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.hosts",
+      "signature": "hosts [] array of LanHost Read-only",
+      "description": "",
+      "source_id": "NetworkControl.hosts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.hosts",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.hosts"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.resolution",
+      "signature": "resolution int Read-only",
+      "description": "",
+      "source_id": "NetworkControl.resolution",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.resolution",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.resolution"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControl.cdayranges",
+      "signature": "cdayranges [] array of string",
+      "description": "",
+      "source_id": "NetworkControl.cdayranges",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl.cdayranges",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControl.cdayranges"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControlRule.id",
+      "signature": "id int Read-only",
+      "description": "",
+      "source_id": "NetworkControlRule.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule.id",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule.id"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControlRule.profile_id",
+      "signature": "profile_id int Read-only",
+      "description": "",
+      "source_id": "NetworkControlRule.profile_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule.profile_id",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule.profile_id"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControlRule.name",
+      "signature": "name string",
+      "description": "",
+      "source_id": "NetworkControlRule.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule.name",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule.name"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControlRule.mode",
+      "signature": "mode enum",
+      "description": "",
+      "source_id": "NetworkControlRule.mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule.mode",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule.mode"
+    },
+    {
+      "module": "profile",
+      "id": "propriete-sans-ancre-profile-19",
+      "signature": "start_time",
+      "description": "",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#rule-object",
+      "markdown": "docs/reference/maison-profils/profile.md#propriete-sans-ancre-profile-19"
+    },
+    {
+      "module": "profile",
+      "id": "propriete-sans-ancre-profile-20",
+      "signature": "end_time",
+      "description": "",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#rule-object",
+      "markdown": "docs/reference/maison-profils/profile.md#propriete-sans-ancre-profile-20"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControlRule.weekdays",
+      "signature": "weekdays [] array of bool",
+      "description": "",
+      "source_id": "NetworkControlRule.weekdays",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule.weekdays",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule.weekdays"
+    },
+    {
+      "module": "profile",
+      "id": "NetworkControlRule.enabled",
+      "signature": "enabled bool",
+      "description": "",
+      "source_id": "NetworkControlRule.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule.enabled",
+      "markdown": "docs/reference/maison-profils/profile.md#NetworkControlRule.enabled"
+    }
+  ],
+  "events": []
+}

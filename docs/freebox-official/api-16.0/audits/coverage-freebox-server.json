@@ -1,0 +1,159 @@
+{
+  "audit": "coverage-freebox-server",
+  "performed_at": "2026-10-02T19:20:00+02:00",
+  "scope": "Official Freebox Server SDK and the current documentation exposed by the local Freebox; no authenticated operational API calls.",
+  "verdict": {
+    "current_v16_corpus": "complete_from_single_monolithic_document",
+    "public_v4_html_archive": "complete",
+    "public_v4_source_and_index_archive": "additional_resources_required"
+  },
+  "source_priority": [
+    {
+      "kind": "current_contract",
+      "url": "http://mafreebox.freebox.fr/doc/index.html",
+      "api_version": "16.0",
+      "sphinx_build": "c1fd8795",
+      "last_modified": "2026-07-17T13:51:53Z",
+      "etag": "W/\"6a5a3379-282b1\"",
+      "snapshot": "sources/seed/local-doc.html"
+    },
+    {
+      "kind": "historical_public_entry_point",
+      "url": "https://dev.freebox.fr/sdk/server.html",
+      "links_to": "https://dev.freebox.fr/sdk/os/"
+    },
+    {
+      "kind": "historical_public_contract",
+      "url": "https://dev.freebox.fr/sdk/os/",
+      "api_version": "4.0",
+      "last_modified": "2017-03-28T14:13:34Z"
+    }
+  ],
+  "local_document_integrity": {
+    "raw_id_attributes": 2729,
+    "unique_id_attributes": 2711,
+    "unique_internal_fragment_references": 2634,
+    "unresolved_internal_fragment_references": 0,
+    "section_divs": 830,
+    "document_api_markers": 72,
+    "migration_units": 27,
+    "active_reference_units": 44,
+    "operation_anchors": {
+      "raw_occurrences": 340,
+      "unique_anchor_ids": 335,
+      "methods": {
+        "GET": { "raw_occurrences": 169, "unique_anchor_ids": 168 },
+        "POST": { "raw_occurrences": 69, "unique_anchor_ids": 66 },
+        "PUT": { "raw_occurrences": 69, "unique_anchor_ids": 68 },
+        "DELETE": { "raw_occurrences": 33, "unique_anchor_ids": 33 }
+      },
+      "path_versions": [8, 9, 10, 11, 13, 14, 15, 16],
+      "duplicate_anchor_ids": [
+        { "id": "get--api-v8-system-", "occurrences": 2 },
+        { "id": "post--api-v8-downloads-add", "occurrences": 2 },
+        { "id": "post--api-v8-home-pairing-adapter_id", "occurrences": 3 },
+        { "id": "put--api-v9-wifi-config-", "occurrences": 2 }
+      ]
+    }
+  },
+  "active_reference_units": [
+    "login", "websocket", "airmedia", "call", "contacts", "connection", "lan", "freeplug", "dhcp", "dhcpv6", "ftp", "tftp", "nat", "igd", "lcd", "ledstrip", "network_share", "upnpav", "switch", "wifi", "system", "vpn", "vpn_client", "slowness", "download", "download_feeds", "download_config", "fs", "share", "upload", "home", "camera", "lang", "notif", "profile", "player", "pvr", "rrd", "standby", "storage", "raid", "sfp", "update", "vm"
+  ],
+  "scope_boundary": {
+    "include": [
+      "All document-api/* units in the local Gateway document",
+      "document-api/player because it is a Server Gateway API that controls the Player",
+      "unstable units, with an explicit stability marker"
+    ],
+    "exclude": [
+      "https://dev.freebox.fr/sdk/player.html and libfbxqml/ (Player QML SDK)",
+      "https://dev.freebox.fr/sdk/telec.html (network remote-control protocol)",
+      "blog, GitHub, app-store and third-party example links"
+    ]
+  },
+  "deprecated_exclusions": [
+    {
+      "source_anchor": "deprecated-api-v4",
+      "exclude": "legacy HTTP upload v3",
+      "replacement": "current WebSocket upload unit"
+    },
+    {
+      "source_anchor": "deprecated-api-v5-0",
+      "exclude": "legacy HTTP upload v3 reminder",
+      "replacement": "current WebSocket upload unit"
+    },
+    {
+      "source_anchor": "deprecated-api-v8-0",
+      "exclude": "parental-control API",
+      "replacement": "profile"
+    },
+    {
+      "source_anchor": "deprecated-api-v10-0",
+      "exclude": "legacy Connection xDSL/4G aggregation contract",
+      "replacement": "separate currently documented status endpoints"
+    },
+    {
+      "source_anchor": "system-config-v5-deprecated",
+      "exclude": "SystemConfigV5 and its properties"
+    },
+    {
+      "source_anchor": "api_version response",
+      "exclude": "device_type",
+      "replacement": "box_model"
+    },
+    {
+      "source_anchors": ["WifiBssStatus.is_main_bss", "WifiBssConfig.use_default_config"],
+      "replacement": "use_shared_params"
+    },
+    {
+      "source_anchor": "DownloadFile.path",
+      "replacement": "DownloadFile.filepath"
+    },
+    {
+      "source_anchor": "rrd-temp-db",
+      "exclude": ["temp1", "temp2", "temp3"],
+      "replacement": ["cpum", "cpub", "sw"]
+    }
+  ],
+  "unstable_policy": {
+    "action": "include_and_label",
+    "distinct_unstable_headings": 21
+  },
+  "manifest_observation": {
+    "resource_count": 50,
+    "successful_responses": 47,
+    "expected_local_ui_404s": [
+      "http://mafreebox.freebox.fr/doc/_static/favicon.ico",
+      "http://mafreebox.freebox.fr/doc/genindex.html",
+      "http://mafreebox.freebox.fr/doc/search.html"
+    ],
+    "public_v4_expected_html_documents": 33,
+    "public_v4_collected_html_documents": 33
+  },
+  "public_archive_additions": {
+    "required_for_full_historical_archive": [
+      "https://dev.freebox.fr/sdk/os/_sources/{33 documented names}.txt",
+      "https://dev.freebox.fr/sdk/os/objects.inv",
+      "https://dev.freebox.fr/sdk/os/searchindex.js",
+      "https://dev.freebox.fr/sdk/os/genindex/",
+      "https://dev.freebox.fr/sdk/os/search/"
+    ],
+    "not_available_on_local_v16": [
+      "/doc/ (403)",
+      "/doc/objects.inv (404)",
+      "/doc/searchindex.js (404)",
+      "/doc/search.html (404)",
+      "/doc/genindex.html (404)",
+      "/doc/_sources/* (404)"
+    ]
+  },
+  "delivery_acceptance_criteria": [
+    "Preserve the local v16 snapshot with ETag, last-modified time and hash.",
+    "Document every active reference unit and isolate migration history from the active reference.",
+    "Index 335 unique operations with their exact method, path version and source anchor.",
+    "Keep every unstable API with an explicit marker.",
+    "Exclude all entries in deprecated_exclusions from current contracts.",
+    "Validate generated links against the 2634 local fragment references.",
+    "Collect the listed public RST sources and indexes, or state that the public archive remains HTML-only."
+  ]
+}

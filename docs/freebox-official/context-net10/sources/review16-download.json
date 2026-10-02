@@ -1,0 +1,1307 @@
+{
+  "module": {
+    "module": "download",
+    "title": "Download",
+    "category": "fichiers-telechargements",
+    "path": "docs/reference/fichiers-telechargements/download.md",
+    "http_signatures": 21,
+    "objects": 8,
+    "properties": 89,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#download",
+    "source_pre_blocks": 48,
+    "markdown_code_blocks": 48,
+    "source_tables": 15
+  },
+  "endpoints": [
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/",
+      "path_template": "/api/v{major}/downloads/",
+      "documented_major": 8,
+      "title": "Retrieve a Download task",
+      "id": "get--api-v8-downloads-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-",
+      "referenced_objects": [
+        "Download"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{id}",
+      "path_template": "/api/v{major}/downloads/{id}",
+      "documented_major": 8,
+      "title": "Retrieve a Download task",
+      "id": "get--api-v8-downloads-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-id",
+      "referenced_objects": [
+        "Download"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-id"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{id}",
+      "path_template": "/api/v{major}/downloads/{id}",
+      "documented_major": 8,
+      "title": "Delete a Download task",
+      "id": "delete--api-v8-downloads-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#delete--api-v8-downloads-id",
+      "referenced_objects": [
+        "Download"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-downloads-id"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{id}/erase",
+      "path_template": "/api/v{major}/downloads/{id}/erase",
+      "documented_major": 8,
+      "title": "Delete a Download task",
+      "id": "delete--api-v8-downloads-id-erase",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-id-erase",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#delete--api-v8-downloads-id-erase",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-downloads-id-erase"
+    },
+    {
+      "module": "download",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/{id}",
+      "path_template": "/api/v{major}/downloads/{id}",
+      "documented_major": 8,
+      "title": "Update a Download task",
+      "id": "put--api-v8-downloads-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#put--api-v8-downloads-id",
+      "referenced_objects": [
+        "Download"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-id"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{id}/log",
+      "path_template": "/api/v{major}/downloads/{id}/log",
+      "documented_major": 8,
+      "title": "Get download log",
+      "id": "get--api-v8-downloads-id-log",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-id-log",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-id-log",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-id-log"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/add",
+      "path_template": "/api/v{major}/downloads/add",
+      "documented_major": 8,
+      "title": "Adding by URL",
+      "id": "post--api-v8-downloads-add",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-add",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#post--api-v8-downloads-add",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-add"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/add",
+      "path_template": "/api/v{major}/downloads/add",
+      "documented_major": 8,
+      "title": "Adding by file upload",
+      "id": "post--api-v8-downloads-add--variante-2",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-add",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#post--api-v8-downloads-add--variante-2",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-add"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/stats",
+      "path_template": "/api/v{major}/downloads/stats",
+      "documented_major": 8,
+      "title": "Get the Download Stats",
+      "id": "get--api-v8-downloads-stats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-stats",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-stats",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-stats"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/files",
+      "path_template": "/api/v{major}/downloads/{task_id}/files",
+      "documented_major": 8,
+      "title": "Get the list of files for a given Download",
+      "id": "get--api-v8-downloads-task_id-files",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-files",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-task_id-files",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-task_id-files"
+    },
+    {
+      "module": "download",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/{task_id}/files/{file_id}",
+      "path_template": "/api/v{major}/downloads/{task_id}/files/{file_id}",
+      "documented_major": 8,
+      "title": "Change the priority of a Download File",
+      "id": "put--api-v8-downloads-task_id-files-file_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-task_id-files-file_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#put--api-v8-downloads-task_id-files-file_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-task_id-files-file_id"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers",
+      "path_template": "/api/v{major}/downloads/{task_id}/trackers",
+      "documented_major": 8,
+      "title": "Get the list of trackers for a given Download",
+      "id": "get--api-v8-downloads-task_id-trackers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-trackers",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-task_id-trackers",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-task_id-trackers"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers",
+      "path_template": "/api/v{major}/downloads/{task_id}/trackers",
+      "documented_major": 8,
+      "title": "Add a new tracker",
+      "id": "post--api-v8-downloads-task_id-trackers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-task_id-trackers",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#post--api-v8-downloads-task_id-trackers",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-task_id-trackers"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers/{announce}",
+      "path_template": "/api/v{major}/downloads/{task_id}/trackers/{announce}",
+      "documented_major": 8,
+      "title": "Remove a tracker",
+      "id": "delete--api-v8-downloads-task_id-trackers-announce",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-task_id-trackers-announce",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#delete--api-v8-downloads-task_id-trackers-announce",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-downloads-task_id-trackers-announce"
+    },
+    {
+      "module": "download",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers/{announce}",
+      "path_template": "/api/v{major}/downloads/{task_id}/trackers/{announce}",
+      "documented_major": 8,
+      "title": "Update a tracker",
+      "id": "put--api-v8-downloads-task_id-trackers-announce",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-task_id-trackers-announce",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#put--api-v8-downloads-task_id-trackers-announce",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-task_id-trackers-announce"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/peers",
+      "path_template": "/api/v{major}/downloads/{task_id}/peers",
+      "documented_major": 8,
+      "title": "Get the list of peers for a given Download",
+      "id": "get--api-v8-downloads-task_id-peers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-peers",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-task_id-peers",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-task_id-peers"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/pieces",
+      "path_template": "/api/v{major}/downloads/{task_id}/pieces",
+      "documented_major": 8,
+      "title": "Get the pieces status a given download",
+      "id": "get--api-v8-downloads-task_id-pieces",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-pieces",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-task_id-pieces",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-task_id-pieces"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/blacklist",
+      "path_template": "/api/v{major}/downloads/{task_id}/blacklist",
+      "documented_major": 8,
+      "title": "Get the list of blacklist entries for a given download",
+      "id": "get--api-v8-downloads-task_id-blacklist",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-blacklist",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#get--api-v8-downloads-task_id-blacklist",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-task_id-blacklist"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{task_id}/blacklist/empty",
+      "path_template": "/api/v{major}/downloads/{task_id}/blacklist/empty",
+      "documented_major": 8,
+      "title": "Empty the blacklist for a given download",
+      "id": "delete--api-v8-downloads-task_id-blacklist-empty",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-task_id-blacklist-empty",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#delete--api-v8-downloads-task_id-blacklist-empty",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-downloads-task_id-blacklist-empty"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/blacklist/{host}",
+      "path_template": "/api/v{major}/downloads/blacklist/{host}",
+      "documented_major": 8,
+      "title": "Delete a particular blacklist entry",
+      "id": "delete--api-v8-downloads-blacklist-host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-blacklist-host",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#delete--api-v8-downloads-blacklist-host",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-downloads-blacklist-host"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/blacklist",
+      "path_template": "/api/v{major}/downloads/blacklist",
+      "documented_major": 8,
+      "title": "Add a blacklist entry",
+      "id": "post--api-v8-downloads-blacklist",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-blacklist",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#post--api-v8-downloads-blacklist",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-blacklist"
+    }
+  ],
+  "objects": [
+    {
+      "module": "download",
+      "name": "Download",
+      "id": "Download",
+      "properties": [
+        "Download.id",
+        "Download.type",
+        "Download.name",
+        "Download.status",
+        "Download.size",
+        "Download.queue_pos",
+        "Download.io_priority",
+        "Download.tx_bytes",
+        "Download.rx_bytes",
+        "Download.tx_rate",
+        "Download.rx_rate",
+        "Download.tx_pct",
+        "Download.rx_pct",
+        "Download.error",
+        "Download.created_ts",
+        "Download.eta",
+        "Download.download_dir",
+        "Download.stop_ratio",
+        "Download.archive_password",
+        "Download.info_hash",
+        "Download.piece_length"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download"
+    },
+    {
+      "module": "download",
+      "name": "NzbConfigStatus",
+      "id": "NzbConfigStatus",
+      "properties": [
+        "NzbConfigStatus.status",
+        "NzbConfigStatus.error"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NzbConfigStatus",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#NzbConfigStatus"
+    },
+    {
+      "module": "download",
+      "name": "DhtStats",
+      "id": "DhtStats",
+      "properties": [
+        "DhtStats.enabled",
+        "DhtStats.node_count",
+        "DhtStats.enabled_ipv6",
+        "DhtStats.node_count_ipv6"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DhtStats"
+    },
+    {
+      "module": "download",
+      "name": "DownloadStats",
+      "id": "DownloadStats",
+      "properties": [
+        "DownloadStats.nb_tasks",
+        "DownloadStats.nb_tasks_stopped",
+        "DownloadStats.nb_tasks_checking",
+        "DownloadStats.nb_tasks_queued",
+        "DownloadStats.nb_tasks_extracting",
+        "DownloadStats.nb_tasks_done",
+        "DownloadStats.nb_tasks_repairing",
+        "DownloadStats.nb_tasks_seeding",
+        "DownloadStats.nb_tasks_downloading",
+        "DownloadStats.nb_tasks_error",
+        "DownloadStats.nb_tasks_stopping",
+        "DownloadStats.nb_tasks_active",
+        "DownloadStats.nb_rss",
+        "DownloadStats.nb_rss_items_unread",
+        "DownloadStats.rx_rate",
+        "DownloadStats.tx_rate",
+        "DownloadStats.throttling_mode",
+        "DownloadStats.throttling_is_scheduled",
+        "DownloadStats.throttling_rate",
+        "DownloadStats.nzb_config_status",
+        "DownloadStats.conn_ready",
+        "DownloadStats.nb_peer",
+        "DownloadStats.blocklist_entries",
+        "DownloadStats.blocklist_hits",
+        "DownloadStats.dht_stats"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats"
+    },
+    {
+      "module": "download",
+      "name": "DownloadFile",
+      "id": "DownloadFile",
+      "properties": [
+        "DownloadFile.id",
+        "DownloadFile.task_id",
+        "DownloadFile.filepath",
+        "DownloadFile.name",
+        "DownloadFile.mimetype",
+        "DownloadFile.size",
+        "DownloadFile.rx",
+        "DownloadFile.status",
+        "DownloadFile.error",
+        "DownloadFile.priority",
+        "DownloadFile.preview_url"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile"
+    },
+    {
+      "module": "download",
+      "name": "DownloadTracker",
+      "id": "DownloadTracker",
+      "properties": [
+        "DownloadTracker.announce",
+        "DownloadTracker.is_backup",
+        "DownloadTracker.status",
+        "DownloadTracker.interval",
+        "DownloadTracker.min_interval",
+        "DownloadTracker.reannounce_in",
+        "DownloadTracker.nseeders",
+        "DownloadTracker.nleechers",
+        "DownloadTracker.is_enabled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker"
+    },
+    {
+      "module": "download",
+      "name": "DownloadPeer",
+      "id": "DownloadPeer",
+      "properties": [
+        "DownloadPeer.host",
+        "DownloadPeer.port",
+        "DownloadPeer.state",
+        "DownloadPeer.origin",
+        "DownloadPeer.protocol",
+        "DownloadPeer.client",
+        "DownloadPeer.country_code",
+        "DownloadPeer.tx",
+        "DownloadPeer.rx",
+        "DownloadPeer.tx_rate",
+        "DownloadPeer.rx_rate",
+        "DownloadPeer.progress",
+        "DownloadPeer.requests"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer"
+    },
+    {
+      "module": "download",
+      "name": "DownloadBlacklistEntry",
+      "id": "DownloadBlacklistEntry",
+      "properties": [
+        "DownloadBlacklistEntry.host",
+        "DownloadBlacklistEntry.reason",
+        "DownloadBlacklistEntry.expire",
+        "DownloadBlacklistEntry.global"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadBlacklistEntry"
+    }
+  ],
+  "properties": [
+    {
+      "module": "download",
+      "id": "Download.id",
+      "signature": "id int Read-only",
+      "description": "id",
+      "source_id": "Download.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.id",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.id"
+    },
+    {
+      "module": "download",
+      "id": "Download.type",
+      "signature": "type enum Read-only",
+      "description": "The valid download types are: Type Description bt bittorrent download nzb newsgroup download http HTTP download ftp FTP download",
+      "source_id": "Download.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.type",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.type"
+    },
+    {
+      "module": "download",
+      "id": "Download.name",
+      "signature": "name string Read-only",
+      "description": "",
+      "source_id": "Download.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.name",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.name"
+    },
+    {
+      "module": "download",
+      "id": "Download.status",
+      "signature": "status enum",
+      "description": "The valid download status are: Status Description stopped task is stopped, can be resumed by setting the status to downloading queued task will start when a new download slot is available the queue position is stored in queue_pos attribute starting task is preparing to start download downloading stopping task is gracefully stopping error there was a problem with the download, you can get an error code in the error field done the download is over. For bt you can resume seeding setting the status to seeding if the ratio is not reached yet checking (only valid for nzb) download is over, the downloaded files are being checked using par2 repairing (only valid for nzb) download is over, the downloaded files are being repaired using par2 extracting (only valid for nzb) download is over, the downloaded files are being extracted seeding (only valid for bt) download is over, the content is Change to being shared to other users. The task will automatically stop once the seed ratio has been reached retry You can set a task status to \u2018retry\u2019 to restart the download task.",
+      "source_id": "Download.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.status",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.status"
+    },
+    {
+      "module": "download",
+      "id": "Download.size",
+      "signature": "size int Read-only",
+      "description": "download size (in Bytes)",
+      "source_id": "Download.size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.size",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.size"
+    },
+    {
+      "module": "download",
+      "id": "Download.queue_pos",
+      "signature": "queue_pos int",
+      "description": "position in download queue (0 if not queued)",
+      "source_id": "Download.queue_pos",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.queue_pos",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.queue_pos"
+    },
+    {
+      "module": "download",
+      "id": "Download.io_priority",
+      "signature": "io_priority enum",
+      "description": "The valid download priorities are: Priority Description low low normal normal high high",
+      "source_id": "Download.io_priority",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.io_priority",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.io_priority"
+    },
+    {
+      "module": "download",
+      "id": "Download.tx_bytes",
+      "signature": "tx_bytes int Read-only",
+      "description": "transmitted bytes (including protocol overhead)",
+      "source_id": "Download.tx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.tx_bytes",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.tx_bytes"
+    },
+    {
+      "module": "download",
+      "id": "Download.rx_bytes",
+      "signature": "rx_bytes int Read-only",
+      "description": "received bytes (including protocol overhead)",
+      "source_id": "Download.rx_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.rx_bytes",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.rx_bytes"
+    },
+    {
+      "module": "download",
+      "id": "Download.tx_rate",
+      "signature": "tx_rate int Read-only",
+      "description": "current transmit rate (in byte/s)",
+      "source_id": "Download.tx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.tx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.tx_rate"
+    },
+    {
+      "module": "download",
+      "id": "Download.rx_rate",
+      "signature": "rx_rate int Read-only",
+      "description": "current receive rate (in byte/s)",
+      "source_id": "Download.rx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.rx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.rx_rate"
+    },
+    {
+      "module": "download",
+      "id": "Download.tx_pct",
+      "signature": "tx_pct int Read-only",
+      "description": "transmit percentage (without protocol overhead) To improve precision the value as been scaled by 100 so that a tx_pct of 123 means 1.23%",
+      "source_id": "Download.tx_pct",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.tx_pct",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.tx_pct"
+    },
+    {
+      "module": "download",
+      "id": "Download.rx_pct",
+      "signature": "rx_pct int Read-only",
+      "description": "received percentage (without protocol overhead) To improve precision the value as been scaled by 100 so that a tx_pct of 123 means 1.23%",
+      "source_id": "Download.rx_pct",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.rx_pct",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.rx_pct"
+    },
+    {
+      "module": "download",
+      "id": "Download.error",
+      "signature": "error enum Read-only",
+      "description": "An error code",
+      "source_id": "Download.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.error",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.error"
+    },
+    {
+      "module": "download",
+      "id": "Download.created_ts",
+      "signature": "created_ts timestamp Read-only",
+      "description": "timestamp of the download creation time",
+      "source_id": "Download.created_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.created_ts",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.created_ts"
+    },
+    {
+      "module": "download",
+      "id": "Download.eta",
+      "signature": "eta int Read-only",
+      "description": "estimated remaining download time (in seconds)",
+      "source_id": "Download.eta",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.eta",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.eta"
+    },
+    {
+      "module": "download",
+      "id": "Download.download_dir",
+      "signature": "download_dir string Read-only",
+      "description": "directory where the file(s) will be saved (base64 encoded)",
+      "source_id": "Download.download_dir",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.download_dir",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.download_dir"
+    },
+    {
+      "module": "download",
+      "id": "Download.stop_ratio",
+      "signature": "stop_ratio int Read-only",
+      "description": "Only relevant for bittorrent tasks. Once the transmit ration has been reached the task will stop seeding. The ratio is scaled by 100 to improve resolution. A stop_ratio of 150 means that the task will stop seeding once tx_bytes = 1.5 * rx_bytes.",
+      "source_id": "Download.stop_ratio",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.stop_ratio",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.stop_ratio"
+    },
+    {
+      "module": "download",
+      "id": "Download.archive_password",
+      "signature": "archive_password string",
+      "description": "( only relevant for nzb ) password for extracting downloaded archives",
+      "source_id": "Download.archive_password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.archive_password",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.archive_password"
+    },
+    {
+      "module": "download",
+      "id": "Download.info_hash",
+      "signature": "info_hash string",
+      "description": "( only relevant for bt ) torrent info_hash encoded in hexa",
+      "source_id": "Download.info_hash",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.info_hash",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.info_hash"
+    },
+    {
+      "module": "download",
+      "id": "Download.piece_length",
+      "signature": "piece_length int",
+      "description": "( only relevant for bt ) torrent piece length in bytes",
+      "source_id": "Download.piece_length",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download.piece_length",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#Download.piece_length"
+    },
+    {
+      "module": "download",
+      "id": "NzbConfigStatus.status",
+      "signature": "status enum Read-only",
+      "description": "The valid config status are: Type Description not_checked config has not been checked yet checking test in progress error config is invalid, see error ok config is ok",
+      "source_id": "NzbConfigStatus.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NzbConfigStatus.status",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#NzbConfigStatus.status"
+    },
+    {
+      "module": "download",
+      "id": "NzbConfigStatus.error",
+      "signature": "error enum Read-only",
+      "description": "The valid config status are: Type Description none test is ok nzb_authentication_required authentication is required bad_authentication incorrect credentials connection_refused unable to connect to NNTP server",
+      "source_id": "NzbConfigStatus.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NzbConfigStatus.error",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#NzbConfigStatus.error"
+    },
+    {
+      "module": "download",
+      "id": "DhtStats.enabled",
+      "signature": "enabled bool Read-only",
+      "description": "is the dht enabled",
+      "source_id": "DhtStats.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats.enabled",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DhtStats.enabled"
+    },
+    {
+      "module": "download",
+      "id": "DhtStats.node_count",
+      "signature": "node_count int Read-only",
+      "description": "number of active nodes",
+      "source_id": "DhtStats.node_count",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats.node_count",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DhtStats.node_count"
+    },
+    {
+      "module": "download",
+      "id": "DhtStats.enabled_ipv6",
+      "signature": "enabled_ipv6 bool Read-only",
+      "description": "is the dht enabled on IPv6",
+      "source_id": "DhtStats.enabled_ipv6",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats.enabled_ipv6",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DhtStats.enabled_ipv6"
+    },
+    {
+      "module": "download",
+      "id": "DhtStats.node_count_ipv6",
+      "signature": "node_count_ipv6 int Read-only",
+      "description": "number of active nodes on IPv6",
+      "source_id": "DhtStats.node_count_ipv6",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats.node_count_ipv6",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DhtStats.node_count_ipv6"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks",
+      "signature": "nb_tasks int Read-only",
+      "description": "total number of tasks",
+      "source_id": "DownloadStats.nb_tasks",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_stopped",
+      "signature": "nb_tasks_stopped int Read-only",
+      "description": "number of stopped tasks",
+      "source_id": "DownloadStats.nb_tasks_stopped",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_stopped",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_stopped"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_checking",
+      "signature": "nb_tasks_checking int Read-only",
+      "description": "number of checking tasks",
+      "source_id": "DownloadStats.nb_tasks_checking",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_checking",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_checking"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_queued",
+      "signature": "nb_tasks_queued int Read-only",
+      "description": "number of queued tasks",
+      "source_id": "DownloadStats.nb_tasks_queued",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_queued",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_queued"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_extracting",
+      "signature": "nb_tasks_extracting int Read-only",
+      "description": "number of extracting tasks",
+      "source_id": "DownloadStats.nb_tasks_extracting",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_extracting",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_extracting"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_done",
+      "signature": "nb_tasks_done int Read-only",
+      "description": "number of done tasks",
+      "source_id": "DownloadStats.nb_tasks_done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_done",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_done"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_repairing",
+      "signature": "nb_tasks_repairing int Read-only",
+      "description": "number of repairing tasks",
+      "source_id": "DownloadStats.nb_tasks_repairing",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_repairing",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_repairing"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_seeding",
+      "signature": "nb_tasks_seeding int Read-only",
+      "description": "number of seeding tasks",
+      "source_id": "DownloadStats.nb_tasks_seeding",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_seeding",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_seeding"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_downloading",
+      "signature": "nb_tasks_downloading int Read-only",
+      "description": "number of downloading tasks",
+      "source_id": "DownloadStats.nb_tasks_downloading",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_downloading",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_downloading"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_error",
+      "signature": "nb_tasks_error int Read-only",
+      "description": "number of error tasks",
+      "source_id": "DownloadStats.nb_tasks_error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_error",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_error"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_stopping",
+      "signature": "nb_tasks_stopping int Read-only",
+      "description": "number of stopping tasks",
+      "source_id": "DownloadStats.nb_tasks_stopping",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_stopping",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_stopping"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_tasks_active",
+      "signature": "nb_tasks_active int Read-only",
+      "description": "number of active tasks (checking \u002B queued \u002B extracting \u002B repairing \u002B seeding \u002B downloading)",
+      "source_id": "DownloadStats.nb_tasks_active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_tasks_active",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_tasks_active"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_rss",
+      "signature": "nb_rss int Read-only",
+      "description": "number of RSS feed subscriptions",
+      "source_id": "DownloadStats.nb_rss",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_rss",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_rss"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_rss_items_unread",
+      "signature": "nb_rss_items_unread int Read-only",
+      "description": "number of unread RSS items",
+      "source_id": "DownloadStats.nb_rss_items_unread",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_rss_items_unread",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_rss_items_unread"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.rx_rate",
+      "signature": "rx_rate int Read-only",
+      "description": "current receive rate in bytes / second",
+      "source_id": "DownloadStats.rx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.rx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.rx_rate"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.tx_rate",
+      "signature": "tx_rate int Read-only",
+      "description": "current transmit rate in bytes / second",
+      "source_id": "DownloadStats.tx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.tx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.tx_rate"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.throttling_mode",
+      "signature": "throttling_mode enum Read-only",
+      "description": "active throttling_mode (see DlThrottlingConfig )",
+      "source_id": "DownloadStats.throttling_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.throttling_mode",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.throttling_mode"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.throttling_is_scheduled",
+      "signature": "throttling_is_scheduled bool Read-only",
+      "description": "if true, the current throttling mode has been computed using the throttling schedule if false, the current throttling mode has been manually forced",
+      "source_id": "DownloadStats.throttling_is_scheduled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.throttling_is_scheduled",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.throttling_is_scheduled"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.throttling_rate",
+      "signature": "throttling_rate :json:object:\u0060DlRate\u0060 Read-only",
+      "description": "current rate for throttling",
+      "source_id": "DownloadStats.throttling_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.throttling_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.throttling_rate"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nzb_config_status",
+      "signature": "nzb_config_status :json:object:\u0060NzbConfigStatus\u0060 Read-only",
+      "description": "current nzb configuration status",
+      "source_id": "DownloadStats.nzb_config_status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nzb_config_status",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nzb_config_status"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.conn_ready",
+      "signature": "conn_ready bool Read-only",
+      "description": "is the connection ready",
+      "source_id": "DownloadStats.conn_ready",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.conn_ready",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.conn_ready"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.nb_peer",
+      "signature": "nb_peer int Read-only",
+      "description": "number of bittorrent peers",
+      "source_id": "DownloadStats.nb_peer",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.nb_peer",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.nb_peer"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.blocklist_entries",
+      "signature": "blocklist_entries int Read-only",
+      "description": "number of rules in blocklist",
+      "source_id": "DownloadStats.blocklist_entries",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.blocklist_entries",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.blocklist_entries"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.blocklist_hits",
+      "signature": "blocklist_hits int Read-only",
+      "description": "number of hits in blocklist",
+      "source_id": "DownloadStats.blocklist_hits",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.blocklist_hits",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.blocklist_hits"
+    },
+    {
+      "module": "download",
+      "id": "DownloadStats.dht_stats",
+      "signature": "dht_stats :json:object:\u0060DhtStats\u0060 Read-only",
+      "description": "dht stats",
+      "source_id": "DownloadStats.dht_stats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats.dht_stats",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadStats.dht_stats"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.id",
+      "signature": "id string Read-only",
+      "description": "opaque id",
+      "source_id": "DownloadFile.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.id",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.id"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.task_id",
+      "signature": "task_id int Read-only",
+      "description": "id of the download task",
+      "source_id": "DownloadFile.task_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.task_id",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.task_id"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.filepath",
+      "signature": "filepath string Read-only",
+      "description": "full filepath on the disk (encoded as in file system api)",
+      "source_id": "DownloadFile.filepath",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.filepath",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.filepath"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.name",
+      "signature": "name string Read-only",
+      "description": "file name",
+      "source_id": "DownloadFile.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.name",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.name"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.mimetype",
+      "signature": "mimetype string Read-only",
+      "description": "file mimetype",
+      "source_id": "DownloadFile.mimetype",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.mimetype",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.mimetype"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.size",
+      "signature": "size int Read-only",
+      "description": "file size in bytes",
+      "source_id": "DownloadFile.size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.size",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.size"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.rx",
+      "signature": "rx int Read-only",
+      "description": "received bytes",
+      "source_id": "DownloadFile.rx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.rx",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.rx"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.status",
+      "signature": "status enum Read-only",
+      "description": "file download status Status Description queued file is queued for download error there was a problem with this file, see error to get the error code done file download is completed",
+      "source_id": "DownloadFile.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.status",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.status"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.error",
+      "signature": "error enum Read-only",
+      "description": "file error code in case status is error",
+      "source_id": "DownloadFile.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.error",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.error"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.priority",
+      "signature": "priority string",
+      "description": "file download priority inside the download task Priority Description no_dl this file will not be downloaded low low priority normal default priority high high priority",
+      "source_id": "DownloadFile.priority",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.priority",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.priority"
+    },
+    {
+      "module": "download",
+      "id": "DownloadFile.preview_url",
+      "signature": "preview_url string Read-only",
+      "description": "url to preview downloaded file (only available for bittorrent) as a share link, this url can be use without requiring any form of authentication so that it can be passed as-is to any software.",
+      "source_id": "DownloadFile.preview_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.preview_url",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadFile.preview_url"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.announce",
+      "signature": "announce string Read-only",
+      "description": "tracker announce URL",
+      "source_id": "DownloadTracker.announce",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.announce",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.announce"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.is_backup",
+      "signature": "is_backup bool Read-only",
+      "description": "true if the tracker is a backup tracker (the downloader won\u2019t connect to this tracker unless the primary tracker fails)",
+      "source_id": "DownloadTracker.is_backup",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.is_backup",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.is_backup"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.status",
+      "signature": "status enum Read-only",
+      "description": "tracker status Status Description unannounced not announced announcing announcing announce_failed an error occurred while trying to announce announced announced",
+      "source_id": "DownloadTracker.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.status",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.status"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.interval",
+      "signature": "interval int Read-only",
+      "description": "desired interval between two announces (in seconds)",
+      "source_id": "DownloadTracker.interval",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.interval",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.interval"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.min_interval",
+      "signature": "min_interval int Read-only",
+      "description": "minimum interval between two announces (in seconds)",
+      "source_id": "DownloadTracker.min_interval",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.min_interval",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.min_interval"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.reannounce_in",
+      "signature": "reannounce_in int Read-only",
+      "description": "time left before reannounce (in seconds)",
+      "source_id": "DownloadTracker.reannounce_in",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.reannounce_in",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.reannounce_in"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.nseeders",
+      "signature": "nseeders int Read-only",
+      "description": "number of seeders announced on tracker",
+      "source_id": "DownloadTracker.nseeders",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.nseeders",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.nseeders"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.nleechers",
+      "signature": "nleechers int Read-only",
+      "description": "number of leechers announced on tracker",
+      "source_id": "DownloadTracker.nleechers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.nleechers",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.nleechers"
+    },
+    {
+      "module": "download",
+      "id": "DownloadTracker.is_enabled",
+      "signature": "is_enabled bool",
+      "description": "is the tracker enabled",
+      "source_id": "DownloadTracker.is_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker.is_enabled",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadTracker.is_enabled"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.host",
+      "signature": "host string Read-only",
+      "description": "peer IP",
+      "source_id": "DownloadPeer.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.host",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.host"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.port",
+      "signature": "port int Read-only",
+      "description": "peer port",
+      "source_id": "DownloadPeer.port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.port",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.port"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.state",
+      "signature": "state enum Read-only",
+      "description": "peer state State Description disconnected not connected connecting trying to connect to the peer handshaking connected to the peer, negotiating capabilities ready ready to exchange data",
+      "source_id": "DownloadPeer.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.state",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.state"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.origin",
+      "signature": "origin enum Read-only",
+      "description": "peer origin Origin Description tracker got the peer from the tracker incoming incoming peer dht got the peer from DHT pex got the peer from Peer exchange protocol user manually added peer",
+      "source_id": "DownloadPeer.origin",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.origin",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.origin"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.protocol",
+      "signature": "protocol enum Read-only",
+      "description": "Protocol Description tcp TCP tcp_obfuscated Obfuscated TCP udp UDP",
+      "source_id": "DownloadPeer.protocol",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.protocol",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.protocol"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.client",
+      "signature": "client string Read-only",
+      "description": "Bittorrent client name",
+      "source_id": "DownloadPeer.client",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.client",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.client"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.country_code",
+      "signature": "country_code string Read-only",
+      "description": "Peer country code (iso 3166) If country code is not available it will have the value \u201C??\u201D",
+      "source_id": "DownloadPeer.country_code",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.country_code",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.country_code"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.tx",
+      "signature": "tx int Read-only",
+      "description": "transmitted bytes",
+      "source_id": "DownloadPeer.tx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.tx",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.tx"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.rx",
+      "signature": "rx int Read-only",
+      "description": "received bytes",
+      "source_id": "DownloadPeer.rx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.rx",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.rx"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.tx_rate",
+      "signature": "tx_rate int Read-only",
+      "description": "current transmit rate in byte/s",
+      "source_id": "DownloadPeer.tx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.tx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.tx_rate"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.rx_rate",
+      "signature": "rx_rate int Read-only",
+      "description": "current receive rate in byte/s",
+      "source_id": "DownloadPeer.rx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.rx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.rx_rate"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.progress",
+      "signature": "progress int Read-only",
+      "description": "peer current download progress",
+      "source_id": "DownloadPeer.progress",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.progress",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.progress"
+    },
+    {
+      "module": "download",
+      "id": "DownloadPeer.requests",
+      "signature": "requests [] array of int Read-only",
+      "description": "current requested pieces",
+      "source_id": "DownloadPeer.requests",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.requests",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadPeer.requests"
+    },
+    {
+      "module": "download",
+      "id": "DownloadBlacklistEntry.host",
+      "signature": "host string Read-only",
+      "description": "entry ip",
+      "source_id": "DownloadBlacklistEntry.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry.host",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadBlacklistEntry.host"
+    },
+    {
+      "module": "download",
+      "id": "DownloadBlacklistEntry.reason",
+      "signature": "reason enum Read-only",
+      "description": "blacklist reason State Description not_blacklisted crypto_not_supported peer does not support encrypted connection connect_fail failed to connect hs_timeout handshake timeout hs_failed handshake failed hs_crypt_failed handshake failed during crypto hs_crypto_disabled handshake failed because encryption is disabled torrent_not_found torrent not found read_failed failed to read from peer write_failed failed to send data to peer crap_received received invalid data from peer conn_closed connection closed by remote peer timeout timeout blocklist peer is in a blocked ip range user manually blacklisted",
+      "source_id": "DownloadBlacklistEntry.reason",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry.reason",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadBlacklistEntry.reason"
+    },
+    {
+      "module": "download",
+      "id": "DownloadBlacklistEntry.expire",
+      "signature": "expire int Read-only",
+      "description": "time left before blacklist removal",
+      "source_id": "DownloadBlacklistEntry.expire",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry.expire",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadBlacklistEntry.expire"
+    },
+    {
+      "module": "download",
+      "id": "DownloadBlacklistEntry.global",
+      "signature": "global bool Read-only",
+      "description": "does this entry applies to all torrents",
+      "source_id": "DownloadBlacklistEntry.global",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry.global",
+      "markdown": "docs/reference/fichiers-telechargements/download.md#DownloadBlacklistEntry.global"
+    }
+  ],
+  "events": []
+}

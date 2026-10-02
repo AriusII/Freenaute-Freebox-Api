@@ -1,0 +1,587 @@
+{
+  "module": {
+    "module": "contacts",
+    "title": "Contacts",
+    "category": "services",
+    "path": "docs/reference/services/contacts.md",
+    "http_signatures": 10,
+    "objects": 5,
+    "properties": 35,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#contacts",
+    "source_pre_blocks": 34,
+    "markdown_code_blocks": 34,
+    "source_tables": 5
+  },
+  "endpoints": [
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/",
+      "path_template": "/api/v{major}/contact/",
+      "documented_major": 8,
+      "title": "Get a list of contacts",
+      "id": "get--api-v8-contact-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#get--api-v8-contact-",
+      "referenced_objects": [
+        "ContactEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-contact-"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{id}",
+      "path_template": "/api/v{major}/contact/{id}",
+      "documented_major": 8,
+      "title": "Access a given contact entry",
+      "id": "get--api-v8-contact-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#get--api-v8-contact-id",
+      "referenced_objects": [
+        "ContactEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-contact-id"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/contact/",
+      "path_template": "/api/v{major}/contact/",
+      "documented_major": 8,
+      "title": "Create a contact",
+      "id": "post--api-v8-contact-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-contact-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#post--api-v8-contact-",
+      "referenced_objects": [
+        "ContactEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-contact-"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/contact/{id}",
+      "path_template": "/api/v{major}/contact/{id}",
+      "documented_major": 8,
+      "title": "Delete a contact",
+      "id": "delete--api-v8-contact-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-contact-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#delete--api-v8-contact-id",
+      "referenced_objects": [
+        "ContactEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-contact-id"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/contact/{id}",
+      "path_template": "/api/v{major}/contact/{id}",
+      "documented_major": 8,
+      "title": "Update a contact entry",
+      "id": "put--api-v8-contact-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-contact-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#put--api-v8-contact-id",
+      "referenced_objects": [
+        "ContactEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-contact-id"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{contact_id}/[numbers|addresses|urls|emails]/",
+      "path_template": "/api/v{major}/contact/{contact_id}/[numbers|addresses|urls|emails]/",
+      "documented_major": 8,
+      "title": "Get the list of numbers for a given contact",
+      "id": "get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "referenced_objects": [
+        "ContactNumber"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "path_template": "/api/v{major}/[number,address,url,email]/{id}",
+      "documented_major": 8,
+      "title": "Access a given contact number",
+      "id": "get--api-v8-[number,address,url,email]-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-[number,address,url,email]-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#get--api-v8-[number,address,url,email]-id",
+      "referenced_objects": [
+        "ContactNumber"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-[number,address,url,email]-id"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/[number,address,url,email]/",
+      "path_template": "/api/v{major}/[number,address,url,email]/",
+      "documented_major": 8,
+      "title": "Create a contact number",
+      "id": "post--api-v8-[number,address,url,email]-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-[number,address,url,email]-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#post--api-v8-[number,address,url,email]-",
+      "referenced_objects": [
+        "ContactNumber"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-[number,address,url,email]-"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "path_template": "/api/v{major}/[number,address,url,email]/{id}",
+      "documented_major": 8,
+      "title": "Delete a contact number",
+      "id": "delete--api-v8-[number,address,url,email]-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-[number,address,url,email]-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#delete--api-v8-[number,address,url,email]-id",
+      "referenced_objects": [
+        "ContactNumber"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-[number,address,url,email]-id"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "path_template": "/api/v{major}/[number,address,url,email]/{id}",
+      "documented_major": 8,
+      "title": "Update a contact number",
+      "id": "put--api-v8-[number,address,url,email]-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-[number,address,url,email]-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/contacts.md#put--api-v8-[number,address,url,email]-id",
+      "referenced_objects": [
+        "ContactNumber"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-[number,address,url,email]-id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "contacts",
+      "name": "ContactEntry",
+      "id": "ContactEntry",
+      "properties": [
+        "ContactEntry.id",
+        "ContactEntry.display_name",
+        "ContactEntry.first_name",
+        "ContactEntry.last_name",
+        "ContactEntry.company",
+        "ContactEntry.photo_url",
+        "ContactEntry.last_update",
+        "ContactEntry.notes",
+        "ContactEntry.addresses",
+        "ContactEntry.emails",
+        "ContactEntry.numbers",
+        "ContactEntry.urls"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactNumber",
+      "id": "ContactNumber",
+      "properties": [
+        "ContactNumber.id",
+        "ContactNumber.contact_id",
+        "ContactNumber.type",
+        "ContactNumber.number",
+        "ContactNumber.is_default",
+        "ContactNumber.is_own"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactAddress",
+      "id": "ContactAddress",
+      "properties": [
+        "ContactAddress.id",
+        "ContactAddress.contact_id",
+        "ContactAddress.type",
+        "ContactAddress.number",
+        "ContactAddress.street",
+        "ContactAddress.street2",
+        "ContactAddress.city",
+        "ContactAddress.zipcode",
+        "ContactAddress.country"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactUrl",
+      "id": "ContactUrl",
+      "properties": [
+        "ContactUrl.id",
+        "ContactUrl.contact_id",
+        "ContactUrl.type",
+        "ContactUrl.url"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl",
+      "markdown": "docs/reference/services/contacts.md#ContactUrl"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactEmail",
+      "id": "ContactEmail",
+      "properties": [
+        "ContactEmail.id",
+        "ContactEmail.contact_id",
+        "ContactEmail.type",
+        "ContactEmail.email"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail",
+      "markdown": "docs/reference/services/contacts.md#ContactEmail"
+    }
+  ],
+  "properties": [
+    {
+      "module": "contacts",
+      "id": "ContactEntry.id",
+      "signature": "id int",
+      "description": "contact id",
+      "source_id": "ContactEntry.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.id",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.display_name",
+      "signature": "display_name string",
+      "description": "contact display name",
+      "source_id": "ContactEntry.display_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.display_name",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.display_name"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.first_name",
+      "signature": "first_name string",
+      "description": "contact first name",
+      "source_id": "ContactEntry.first_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.first_name",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.first_name"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.last_name",
+      "signature": "last_name string",
+      "description": "contact last name",
+      "source_id": "ContactEntry.last_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.last_name",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.last_name"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.company",
+      "signature": "company string",
+      "description": "contact company name",
+      "source_id": "ContactEntry.company",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.company",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.company"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.photo_url",
+      "signature": "photo_url string",
+      "description": "contact photo URL NOTE the photo URL can be embedded (for instance \u201C data:image/jpeg;base64,/9j/4AA [ \u2026 ]\u201D)",
+      "source_id": "ContactEntry.photo_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.photo_url",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.photo_url"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.last_update",
+      "signature": "last_update timestamp",
+      "description": "contact last modification timestamp",
+      "source_id": "ContactEntry.last_update",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.last_update",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.last_update"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.notes",
+      "signature": "notes string",
+      "description": "contact last modification timestamp",
+      "source_id": "ContactEntry.notes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.notes",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.notes"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.addresses",
+      "signature": "addresses [] array of ContactAddress",
+      "description": "list of contact postal addresses",
+      "source_id": "ContactEntry.addresses",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.addresses",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.addresses"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.emails",
+      "signature": "emails [] array of ContactEmail",
+      "description": "list of contact email addresses",
+      "source_id": "ContactEntry.emails",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.emails",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.emails"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.numbers",
+      "signature": "numbers [] array of ContactNumber",
+      "description": "list of contact phone numbers",
+      "source_id": "ContactEntry.numbers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.numbers",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.numbers"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEntry.urls",
+      "signature": "urls [] array of ContactUrl",
+      "description": "list of contact URL",
+      "source_id": "ContactEntry.urls",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry.urls",
+      "markdown": "docs/reference/services/contacts.md#ContactEntry.urls"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactNumber.id",
+      "signature": "id int",
+      "description": "address id",
+      "source_id": "ContactNumber.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.id",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber.id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactNumber.contact_id",
+      "signature": "contact_id int",
+      "description": "id of the related contact",
+      "source_id": "ContactNumber.contact_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.contact_id",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber.contact_id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactNumber.type",
+      "signature": "type enum",
+      "description": "Type of number Type Description fixed fixed phone mobile mobile phone work work fax fax other other",
+      "source_id": "ContactNumber.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.type",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber.type"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactNumber.number",
+      "signature": "number string",
+      "description": "",
+      "source_id": "ContactNumber.number",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.number",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber.number"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactNumber.is_default",
+      "signature": "is_default bool",
+      "description": "is this number the preferred contact phone number",
+      "source_id": "ContactNumber.is_default",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.is_default",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber.is_default"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactNumber.is_own",
+      "signature": "is_own bool",
+      "description": "is this number the Freebox owner number",
+      "source_id": "ContactNumber.is_own",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.is_own",
+      "markdown": "docs/reference/services/contacts.md#ContactNumber.is_own"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.id",
+      "signature": "id int",
+      "description": "address id",
+      "source_id": "ContactAddress.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.id",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.contact_id",
+      "signature": "contact_id int",
+      "description": "id of the related contact",
+      "source_id": "ContactAddress.contact_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.contact_id",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.contact_id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.type",
+      "signature": "type enum",
+      "description": "Type of email Type Description home home address work work address other other",
+      "source_id": "ContactAddress.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.type",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.type"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.number",
+      "signature": "number string",
+      "description": "",
+      "source_id": "ContactAddress.number",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.number",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.number"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.street",
+      "signature": "street string",
+      "description": "",
+      "source_id": "ContactAddress.street",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.street",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.street"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.street2",
+      "signature": "street2 string",
+      "description": "",
+      "source_id": "ContactAddress.street2",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.street2",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.street2"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.city",
+      "signature": "city string",
+      "description": "",
+      "source_id": "ContactAddress.city",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.city",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.city"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.zipcode",
+      "signature": "zipcode string",
+      "description": "",
+      "source_id": "ContactAddress.zipcode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.zipcode",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.zipcode"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactAddress.country",
+      "signature": "country string",
+      "description": "",
+      "source_id": "ContactAddress.country",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.country",
+      "markdown": "docs/reference/services/contacts.md#ContactAddress.country"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactUrl.id",
+      "signature": "id int",
+      "description": "address id",
+      "source_id": "ContactUrl.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl.id",
+      "markdown": "docs/reference/services/contacts.md#ContactUrl.id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactUrl.contact_id",
+      "signature": "contact_id int",
+      "description": "id of the related contact",
+      "source_id": "ContactUrl.contact_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl.contact_id",
+      "markdown": "docs/reference/services/contacts.md#ContactUrl.contact_id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactUrl.type",
+      "signature": "type enum",
+      "description": "Type of URL Type Description profile profile address blog blog address site website address other other",
+      "source_id": "ContactUrl.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl.type",
+      "markdown": "docs/reference/services/contacts.md#ContactUrl.type"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactUrl.url",
+      "signature": "url string",
+      "description": "URL address",
+      "source_id": "ContactUrl.url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl.url",
+      "markdown": "docs/reference/services/contacts.md#ContactUrl.url"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEmail.id",
+      "signature": "id int",
+      "description": "address id",
+      "source_id": "ContactEmail.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail.id",
+      "markdown": "docs/reference/services/contacts.md#ContactEmail.id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEmail.contact_id",
+      "signature": "contact_id int",
+      "description": "id of the related contact",
+      "source_id": "ContactEmail.contact_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail.contact_id",
+      "markdown": "docs/reference/services/contacts.md#ContactEmail.contact_id"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEmail.type",
+      "signature": "type enum",
+      "description": "Type of address Type Description home home address work work address other other",
+      "source_id": "ContactEmail.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail.type",
+      "markdown": "docs/reference/services/contacts.md#ContactEmail.type"
+    },
+    {
+      "module": "contacts",
+      "id": "ContactEmail.email",
+      "signature": "email string",
+      "description": "email address",
+      "source_id": "ContactEmail.email",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail.email",
+      "markdown": "docs/reference/services/contacts.md#ContactEmail.email"
+    }
+  ],
+  "events": []
+}

@@ -1,0 +1,149 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===
+Ftp
+===
+
+The FTP API allow you to control the Freebox ftp server settings
+
+Ftp Errors
+==========
+
+When attempting to access the FTP API, you may encounter the following
+errors:
+
+======================           ========================================
+error_code                       Description
+======================           ========================================
+internal_error                   Internal error
+weak_password                    Password is too weak for remote access
+======================           ========================================
+
+Ftp Config
+==========
+
+FtpConfig has the following attributes:
+
+.. json:object:: FtpConfig
+
+   .. json:property:: enabled bool
+
+       is the FTP server enabled
+
+   .. json:property:: allow_anonymous bool
+
+       can anonymous user log in
+
+   .. json:property:: allow_anonymous_write bool
+
+       can anonymous user write data
+
+   .. json:property:: password string [wo]
+
+       user password
+
+   .. json:property:: allow_remote_access bool
+
+       enable ftp server remote access
+
+       NOTE: to be able to enable the remote
+       access the password must be strong enough
+
+   .. json:property:: weak_password bool [ro]
+
+       is the ftp password weak (in this case
+       remote access is disabled)
+
+   .. json:property:: port_ctrl int
+
+       ftp control port to use for remote access
+
+   .. json:property:: port_data int
+
+       ftp data port to use for remote access
+
+   .. json:property:: remote_domain string
+
+       domain name to use for remote access
+
+
+
+Ftp config API
+==============
+
+Get the current Ftp configuration
+---------------------------------
+
+.. http:get:: /api/v4/ftp/config/
+
+   Get the :json:object:`FtpConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/ftp/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "allow_anonymous": false,
+              "allow_remote_access": false,
+              "port_ctrl": 3615,
+              "port_data": 1337,
+              "weak_password": true,
+              "allow_anonymous_write": false
+          }
+      }
+
+
+Update the FTP configuration
+----------------------------
+
+.. http:put:: /api/v4/ftp/config/
+
+   Update the :json:object:`FtpConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/ftp/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "enabled": true
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "allow_anonymous": false,
+              "allow_anonymous_write": false
+          }
+      }
+
+..  LocalWords:  FtpConfig wo

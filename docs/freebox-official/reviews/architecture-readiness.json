@@ -1,0 +1,490 @@
+{
+  "format_version": 1,
+  "task_id": "architecture-readiness",
+  "work_type": "independent_architecture_readiness_review",
+  "parent": "/root",
+  "reviewer": "/root/final_review",
+  "review_date": "2026-10-02",
+  "verdict": "blocked_evidence",
+  "review_complete_for_assigned_scope": true,
+  "implementation_ready": false,
+  "sources": [
+    {
+      "url": "http://mafreebox.freebox.fr/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+      "raw_file": "/workspace/.cloud-setup/freebox-upload-20261002/Freebox-Server-API-16.0/sources/raw/embedded/doc/index.html",
+      "anchors": [
+        "https-access",
+        "discovery-using-http",
+        "discovery-using-mdns",
+        "opening-a-session",
+        "api-conventions",
+        "SessionStart.app_version",
+        "WebSocketRequest.request_id",
+        "WebSocketResponse.request_id",
+        "LanHost.l2ident",
+        "StorageDisk.table_type",
+        "DownloadPeer.requests",
+        "VoicemailEntry.country_code",
+        "Precord.id",
+        "Frecord.id",
+        "VPNIPSecConfig.auth_modes",
+        "VpnClientIpInfo.routes",
+        "Media.record_time",
+        "LteRadio.bands",
+        "PlayerStatusForegroundApp.package_id",
+        "HomeNode.signal_links",
+        "HomeNode.slot_links",
+        "HomeNodeType",
+        "DlBlockListConfig",
+        "slowness",
+        "get-network-control-for-all-profiles",
+        "create-a-network-control-rule",
+        "get--api-v8-rrd-",
+        "get--api-v8-downloads-",
+        "get--api-v8-vpn_client-status",
+        "get--api-v10-wifi-state-",
+        "changing-the-mlo-config",
+        "post--api-v8-vm-disk-create",
+        "post--api-v8-vm-disk-resize",
+        "update-a-profile",
+        "VPNClientConfig.type",
+        "post--api-v8-vpn_client-config-",
+        "WifiWpsCandidate",
+        "wifi-wps-api"
+      ],
+      "authenticity": "user_supplied_snapshot",
+      "bytes_verified": true
+    },
+    {
+      "url": "http://mafreebox.freebox.fr/api_version",
+      "sha256": "1f6bcbb74eb1a7c7d4bdf0ad955b6e12ad9432976f38e16fb93846ce4cbc2284",
+      "raw_file": "/workspace/.cloud-setup/freebox-upload-20261002/Freebox-Server-API-16.0/sources/api-version.json",
+      "classification": "sanitized_supplied_discovery",
+      "api_version": "16.0"
+    }
+  ],
+  "version_scope": {
+    "target": "16.0",
+    "basis": "Embedded document declaration and sanitized discovery agree for this supplied snapshot.",
+    "historical_public_archive": "4.0",
+    "latest_on_every_Freebox_established": false
+  },
+  "classification": {
+    "scope": "Tool provenance/integrity review, supported foundation corrections, and readiness policy; not a second exhaustive module contract review.",
+    "catalogue_counts": {
+      "modules": 45,
+      "endpoints": 342,
+      "operations": 338,
+      "objects": 195,
+      "properties": 1254,
+      "events": 4
+    },
+    "counts_are_not_implementation_coverage": true,
+    "operations": []
+  },
+  "operations": [],
+  "exclusions": [],
+  "dependencies": [
+    {
+      "task_id": "protocol",
+      "file": "docs/freebox-official/reviews/protocol.json",
+      "sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7",
+      "verdict_observed": "reviewed",
+      "acceptance": "global_consolidator_pending",
+      "role": "semantic_review_dependency_not_independent_runtime_evidence"
+    },
+    {
+      "task_id": "network",
+      "file": "docs/freebox-official/reviews/network.json",
+      "sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "verdict_observed": "blocked_evidence",
+      "acceptance": "global_consolidator_pending",
+      "role": "semantic_review_dependency_not_independent_runtime_evidence"
+    },
+    {
+      "task_id": "files-storage",
+      "file": "docs/freebox-official/reviews/files-storage.json",
+      "sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "verdict_observed": "blocked_evidence",
+      "acceptance": "global_consolidator_pending",
+      "role": "semantic_review_dependency_not_independent_runtime_evidence"
+    },
+    {
+      "task_id": "services-media",
+      "file": "docs/freebox-official/reviews/services-media.json",
+      "sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "verdict_observed": "blocked_evidence",
+      "acceptance": "global_consolidator_pending",
+      "role": "semantic_review_dependency_not_independent_runtime_evidence"
+    },
+    {
+      "task_id": "system-home",
+      "file": "docs/freebox-official/reviews/system-home.json",
+      "sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "verdict_observed": "blocked_evidence",
+      "acceptance": "global_consolidator_pending",
+      "role": "semantic_review_dependency_not_independent_runtime_evidence"
+    }
+  ],
+  "inspected_files": [
+    {
+      "file": "tools/docs/build_snapshot_context.py",
+      "sha256": "4fdd5241261aabe5e4c090252cda67af7d54d9a80b671cf29c9f66a7f774b73a"
+    },
+    {
+      "file": "tools/docs/import_sdk_snapshot.py",
+      "sha256": "6b5aa5b592b722364926d5f9be56bfc217d12c4d9b365a5919e24cd53dd3190b"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Client/FreeboxTls.cs",
+      "sha256": "9b771a148f1bcc23522449a0892078340ed330b67197ed4055d0b8a55e8ab82e"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Client/FreeboxTlsCertificates.cs",
+      "sha256": "35ab4198b622515da31b6e7bf33babcd6fcea582cc41dd64febb41b1c9104e6f"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Client/FreeboxServiceCollectionExtensions.cs",
+      "sha256": "12db3d4c33948a5557899c8adddb8c140ddf9772db2deec1d91af5aebfb9d942"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Client/FreeboxClientOptions.cs",
+      "sha256": "116eb30380716b8fafb5a5d4b00f88cd70ef198a287952fa02853f3351fc6043"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Client/FreeboxHttpTransport.cs",
+      "sha256": "811eb1e660fd0e45f9b097c5c5928989225237af630e595dde94e044b841f6c4"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Mapper/ServerSide/General/ApiVersionResponse.cs",
+      "sha256": "c410bf216a4852f39ea84905713eca1653edf3c9c82f10f1b9ac065e09b06a6d"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Mapper/Common/Types/BoxModels.cs",
+      "sha256": "622420ddaef8fabf23d97988f6333272260b0ac75097aed6199f6b09ac98b445"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Mapper/ClientSide/Authentication/Login/SessionStartRequest.cs",
+      "sha256": "bade2160404f44fab0bfe70d28cc1891a365756dc217882635c7f544e8c9985d"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Mapper/ClientSide/WebSocket/WebSocketRequest.cs",
+      "sha256": "db5f74d625f29567edddd931fe5a2561c288b53fbf2ead9aa52d0a7ed44b02d4"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Mapper/ServerSide/WebSocket/WebSocketResponse.cs",
+      "sha256": "69b4c0b0614aadff65a6ba2a090d55ac2232731f8140447f4a882f673f19d211"
+    },
+    {
+      "file": "Libs/Freenaute.Freebox.Mapper/ServerSide/Models/SessionPermissionModel.cs",
+      "sha256": "060970d99f53302f5ece895077e22bd017bd3409faba8d3a1c922c92caae8a2a"
+    }
+  ],
+  "tool_review": {
+    "uploaded_tools_executed": false,
+    "network_requests_performed": false,
+    "claims_verified": [
+      "ZIP/source/delivery byte equality and bounded archive paths are checked before import.",
+      "Supplied origin is explicitly not independently verified; source counts retain review_required.",
+      "Every copied file is rehashed before context generation; current version must agree with supplied discovery.",
+      "Finite real modules receive reading contexts; all tasks retain implementation_ready false; consumer push callbacks are not Freebox server routes.",
+      "Context output uses the existing protected emit operation; source bytes are never treated as instructions."
+    ],
+    "finding": {
+      "severity": "P2",
+      "file": "tools/docs/import_sdk_snapshot.py",
+      "issue": "The default --review path reviews/source-integrity.json disagrees with the context README link to docs/freebox-official/reviews/source-integrity.json.",
+      "status": "fixed_by_official_docs_and_default_path_rechecked",
+      "next_action": "Align default paths or derive the context link from the actual review artifact.",
+      "resolution": "Default --review now points to docs/freebox-official/reviews/source-integrity.json; output agrees with the context README link."
+    }
+  },
+  "foundation_review": {
+    "scope": "Read-only supported protocol corrections; no app source modified by this reviewer.",
+    "findings_requiring_source_fix": [],
+    "tls": {
+      "default_local_origin": "https://mafreebox.freebox.fr/",
+      "scope": "French Freebox roots, per owned handler; no global trust-store change. Italy roots are documented but not included.",
+      "root_der_sha256": [
+        "23cfb72636be665dbbf2fe3e0527904771a8dff1bace461d8bd69f34812c2444",
+        "2bd8b5be1a990e42ad1bd79c306eb519b637ee2475c0d931f257535610e9c3e7"
+      ],
+      "verification": [
+        "PEM bytes equal the raw published source, decoded DER hashes independently confirmed with OpenSSL.",
+        "CustomRootTrust, NoFlag, serverAuth EKU and standard SslStream hostname verification; no permissive remote-validation callback.",
+        "Handler-owned certificate disposal, no redirects and no cookie persistence.",
+        "Revocation defaults to .NET NoCheck, with explicit Online/Offline option."
+      ],
+      "runtime_handshake_or_server_test_performed": false
+    },
+    "discovery": "BoxModel raw string retained; optional known classification and ignored computed members; JsonConstructor selects the string-preserving source-generated record constructor.",
+    "auth": "Configured app_version is transmitted, unconfigured value omitted; requiredness is not invented.",
+    "websocket": "request_id uses the documented name and is omitted when null.",
+    "permissions": "Absent permission values become false as explicitly documented; camera recording/stream access represented; obsolete parental key excluded."
+  },
+  "bounded_wire_unions": [
+    {
+      "field": "HomeEndpoint.value / HomeTileData.value",
+      "variants": [
+        "Null",
+        "Boolean",
+        "Integer",
+        "Float",
+        "String"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "HomeIoValue with explicit discriminator and Utf8JsonReader/Writer converter; use value_type as separate metadata. Null is permitted for documented void trigger commands only, not all updates.",
+      "review_task": "system-home"
+    },
+    {
+      "field": "LanHost.l2ident",
+      "variants": [
+        "LanHostL2Ident object",
+        "LanHostL2Ident[] array"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "A bounded object-or-array response union. An optional list view is separate from the preserved wire representation.",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#LanHost.l2ident"
+      ],
+      "review_task": "network"
+    },
+    {
+      "field": "GET downloads / GET wifi/state / notification detail results",
+      "variants": [
+        "documented object",
+        "array of the documented object"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "Explicit generic object-or-array representation with per-operation JsonTypeInfo. Never normalize the stored form; singleton convenience accessor rejects arrays with length other than one.",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-",
+        "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-wifi-state-"
+      ],
+      "review_tasks": [
+        "files-storage",
+        "network",
+        "protocol"
+      ]
+    },
+    {
+      "field": "StorageDisk.table_type / VoicemailEntry.country_code / Precord.id / Frecord.id / evidenced numeric-string fields",
+      "variants": [
+        "String",
+        "Integer"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "Named per-domain scalar union retaining opaque string values including empty strings and leading zeros; numeric representation uses a range appropriate to verified field constraints. No global JsonNumberHandling coercion.",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.table_type",
+        "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.country_code",
+        "http://mafreebox.freebox.fr/doc/index.html#Precord.id",
+        "http://mafreebox.freebox.fr/doc/index.html#Frecord.id"
+      ],
+      "review_tasks": [
+        "files-storage",
+        "services-media"
+      ]
+    },
+    {
+      "field": "DownloadPeer.requests",
+      "variants": [
+        "int[]",
+        "EmptyObject"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "Only array or empty object is established. Reject nonempty object until a dictionary element schema is documented; an empty object does not prove arbitrary map keys.",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer.requests"
+      ],
+      "review_task": "files-storage"
+    },
+    {
+      "field": "VPNIPSecConfig.auth_modes",
+      "variants": [
+        "VPNIPSecAuthMode[]",
+        "map of supported auth modes"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "Bounded array/map union if accepted at consolidation; only psk support is stated. Unknown future names may remain raw keys without fabricated semantics.",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig.auth_modes"
+      ],
+      "review_task": "services-media"
+    },
+    {
+      "field": "WifiApCapabilities bands / Media.record_time / LTE aggregation result",
+      "variants": [
+        "literal declared representation",
+        "explicitly shown structured representation"
+      ],
+      "wire_kind_preserved": true,
+      "policy": "Use domain-specific variants only after exact object/map value schemas and branch recognition are accepted; the existence of two shapes does not prove missing inner fields.",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#Media.record_time"
+      ],
+      "review_tasks": [
+        "network",
+        "services-media"
+      ]
+    }
+  ],
+  "wire_name_policy": {
+    "aliases": "Store exact source keys separately, or use an explicit wire-key discriminator. Never silently collapse id/feed_id, IPv4/ipv4, icon/url, type/mode or mode/suspend conflicts.",
+    "unknown_enums": "Preserve raw response tokens and offer optional known classification. Deprecated write choices remain excluded; unknown tokens do not invent semantics.",
+    "paths": "Preserve raw encoded/plain path strings; use explicit conversion methods only when the corresponding endpoint encoding is established.",
+    "timestamps": "Retain raw integers and per-field units. No global seconds/milliseconds rule from heterogeneous examples."
+  },
+  "patch_policy": {
+    "status": "strategy_accepted_by_root_2026-10-02",
+    "representation": "Optional<T> with IsSet independent of Value; false and 0 remain supplied values. Nullable values accepted only on specific documented nullable request fields.",
+    "writer": "Unset properties are omitted by the containing generated writer or explicit WhenWritingDefault metadata; a value converter alone cannot omit its containing property.",
+    "request_models": "Distinct creation/update/action request DTOs and read DTOs. Exclude read-only members; do not assume that every PUT is a merge or that null clears a field.",
+    "examples": "Partial source examples support individual request fields, not universal requiredness/optionality or server defaults."
+  },
+  "generation_strategy": {
+    "phase_gate": "Build a normalized reviewed schema with operation-specific route/body/result, precise field access/presence/nullable states, evidence and accepted errata; then validate coverage and references before emission.",
+    "recommended_default": "Deterministic offline/build-time contract generation plus built-in System.Text.Json source generation, explicit JsonTypeInfo<T> everywhere.",
+    "custom_roslyn_generator": "Not necessary for the present foundation; introduce only if compile-time fluent facade/metadata emission offers a concrete verified benefit over reproducible generated C# files.",
+    "aot": "No runtime reflection, dynamic, open object payload stand-ins or globally permissive serializers. Typed bounded converters must retain wire kind and proven branches. Raw binary/unspecified-format downloads may return owned streams without fabricating JSON DTOs.",
+    "di": "One configured origin/application/session coordinator shared across transient immutable facades; Microsoft.Extensions.Http/IHttpClientBuilder composes the handler lifetime. Resource-specific facades share transport instead of registering separate sessions.",
+    "fluent": "Immutable resource selectors and per-command builders snapshotting explicit supplied fields; capability metadata does not become invented endpoint authorization.",
+    "resultless_operations": "An explicitly accepted success-only command may ignore an unspecified result. It must not manufacture a DTO or imply a documented result shape.",
+    "bounded_unions_and_optional_presence_strategy": "accepted_by_root_2026-10-02; individual missing schemas/routes still require consolidation"
+  },
+  "unknowns": [
+    {
+      "id": "undefined_models",
+      "question": "HomeNodeLink has references but no definition; LteRadio.bands shows only an empty array with no element declaration; PlayerStatusForegroundApp.package_id is type id without a scalar example.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#HomeNode.signal_links",
+        "http://mafreebox.freebox.fr/doc/index.html#HomeNode.slot_links",
+        "http://mafreebox.freebox.fr/doc/index.html#LteRadio.bands",
+        "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp.package_id"
+      ],
+      "impact": "Blocks exact DTO members; a plausible name or empty example does not establish a strongly typed schema.",
+      "owner": "root/global_consolidator",
+      "next_action": "Obtain missing authoritative definitions or retain an explicit unsupported member/model boundary; do not replace with object or JsonElement and claim complete typing."
+    },
+    {
+      "id": "undefined_list_element",
+      "question": "VpnClientIpInfo.routes declares list without its element schema and the only examined example is an empty object.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.routes",
+        "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-status"
+      ],
+      "impact": "Array/EmptyObject can preserve the outer shape, but cannot supply a missing typed list element.",
+      "owner": "root/global_consolidator",
+      "next_action": "Resolve the list element independently; do not invent arbitrary nonempty-map routes."
+    },
+    {
+      "id": "unresolved_wire_names",
+      "question": "HomeNodeType has an anonymous label name declaration; DlBlockListConfig literally declares sources[].",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType",
+        "http://mafreebox.freebox.fr/doc/index.html#DlBlockListConfig"
+      ],
+      "impact": "Blocks a single canonical field writer without additional evidence or an explicitly accepted correction.",
+      "owner": "root/global_consolidator",
+      "next_action": "Preserve both literal evidence and proposed correction in the normalized schema; require root acceptance before a canonical writer is generated."
+    },
+    {
+      "id": "unresolved_operations",
+      "question": "Profile update shows only a concrete /profile/3 signature versus an example collection route; rule creation spells network_controlr; MLO repeats a global WiFi signature while its body/example target MLO.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#create-a-network-control-rule",
+        "http://mafreebox.freebox.fr/doc/index.html#changing-the-mlo-config",
+        "http://mafreebox.freebox.fr/doc/index.html#update-a-profile"
+      ],
+      "impact": "Blocks generic mutation routing; generated fallback/replay could modify a different resource.",
+      "owner": "root/global_consolidator",
+      "next_action": "Resolve each operation with source-specific evidence and an accepted erratum. Do not generalize concrete IDs or probe mutation alternatives."
+    },
+    {
+      "id": "missing_request_and_result_shapes",
+      "question": "GET RRD parameter placement, list-all network-control result shape, and VM disk task identifier response representation are not established by these documents.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-rrd-",
+        "http://mafreebox.freebox.fr/doc/index.html#get-network-control-for-all-profiles",
+        "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-create",
+        "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-resize"
+      ],
+      "impact": "Blocks precise encoders or return DTOs for these operations. The missing VM shape cannot be represented by an invented scalar/object union.",
+      "owner": "root/global_consolidator",
+      "next_action": "Use documented POST RRD for the supported typed path; establish the missing result/encoding shapes before claiming coverage."
+    },
+    {
+      "id": "empty_documentation_sections",
+      "question": "Slowness has no HTTP method/path or request/response contract; WPS candidate discovery and OpenVPN-specific client creation fields are not described.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#slowness",
+        "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.type",
+        "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vpn_client-config-",
+        "http://mafreebox.freebox.fr/doc/index.html#WifiWpsCandidate",
+        "http://mafreebox.freebox.fr/doc/index.html#wifi-wps-api"
+      ],
+      "impact": "Documentation gaps limit a comprehensive feature claim; they do not authorize fictitious endpoint slots.",
+      "owner": "root/global_consolidator",
+      "next_action": "Classify the gaps explicitly. Generate only documented contracts and seek a newer authoritative definition when extending these features."
+    },
+    {
+      "id": "global_contract_gate",
+      "question": "The five semantic module reviews contain remaining route, field-name and inner-schema contradictions. Byte/anchor preservation and 195 object declarations do not resolve them.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#api-conventions"
+      ],
+      "impact": "Full typed SDK generation and exhaustive modern-SDK claims remain blocked pending per-operation/per-model acceptance.",
+      "owner": "root/global_consolidator",
+      "next_action": "Consolidate dependency owners and source-specific errata into a reviewed canonical schema; record accepted policies and unsupported gaps individually."
+    }
+  ],
+  "io": {
+    "session_and_replay": "Invalidate failed sessions and renew for the next explicit operation; no automatic mutation replay or route fallback.",
+    "streams": "Expose explicit ownership of HttpResponseMessage/Stream and cancellation lifetime; neither buffering everything nor releasing a response before its consumer finishes.",
+    "websocket_upload": "Current wire documentation must drive handshake/binary framing/state/correlation; do not reuse a fabricated ordinary HTTP upload route.",
+    "events": "The supplied event inventory has four declarations. No invented Home event names or fictitious event slots."
+  },
+  "concurrency": {
+    "handler_state": "Shared session/discovery coordination; command DTOs immutable snapshots. Delegating handlers and factory primary handlers have explicit ownership.",
+    "task_inventory": "45 real module review contexts and five consolidation groups; not 45 simultaneous agents or implementation approvals."
+  },
+  "validation": {
+    "performed": [
+      "Read-only inspection of the listed tool and foundation source files.",
+      "Raw document SHA-256 and each listed raw anchor independently checked.",
+      "Both French root certificates compared byte-for-byte and decoded DER fingerprints inspected with OpenSSL.",
+      "Five existing semantic review artifacts consulted; unknowns distinguished from bounded alternative representations.",
+      "Verified the corrected default source-integrity review path after the importer owner fix."
+    ],
+    "not_performed": [
+      "No real API requests, TLS handshake, uploaded script execution, code generation or independent claim of current server behavior.",
+      "No build/test rerun by this reviewer; parent and implementation owners manage required checks."
+    ],
+    "required_before_full_generation": [
+      "Canonical schema/reference/deprecation validation and accepted per-operation corrections.",
+      "AOT tests of union wire-kind roundtrips, exact key preservation and omitted/false/zero/null command distinctions.",
+      "Representative JSON, binary and WebSocket paths under NativeAOT; scoped TLS construction and negative certificate validation checks."
+    ]
+  },
+  "ownership": {
+    "written": [
+      "docs/freebox-official/reviews/architecture-readiness.json",
+      "docs/freebox-official/reviews/architecture-readiness.md"
+    ],
+    "app_source_mutations": false
+  },
+  "acceptance": {
+    "independent_reviewer": "/root/final_review",
+    "global_consolidator": "/root",
+    "status": "pending_parent_acceptance",
+    "full_generation_approved": false
+  }
+}

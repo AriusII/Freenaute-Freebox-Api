@@ -1,0 +1,125 @@
+{
+  "module": {
+    "module": "update",
+    "title": "Update Status",
+    "category": "systeme",
+    "path": "docs/reference/systeme/update.md",
+    "http_signatures": 1,
+    "objects": 2,
+    "properties": 7,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#update-status",
+    "source_pre_blocks": 3,
+    "markdown_code_blocks": 3,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "update",
+      "method": "GET",
+      "documented_path": "/api/v11/update/",
+      "path_template": "/api/v{major}/update/",
+      "documented_major": 11,
+      "title": "Get the update status",
+      "id": "get--api-v11-update-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-update-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/update.md#get--api-v11-update-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-update-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "update",
+      "name": "UpdateStatus",
+      "id": "UpdateStatus",
+      "properties": [
+        "UpdateStatus.state",
+        "UpdateStatus.upgrade_state"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpdateStatus",
+      "markdown": "docs/reference/systeme/update.md#UpdateStatus"
+    },
+    {
+      "module": "update",
+      "name": "UpgradeState",
+      "id": "UpgradeState",
+      "properties": [
+        "UpgradeState.state",
+        "UpgradeState.old_version",
+        "UpgradeState.new_version",
+        "UpgradeState.percent",
+        "UpgradeState.error_string"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState",
+      "markdown": "docs/reference/systeme/update.md#UpgradeState"
+    }
+  ],
+  "properties": [
+    {
+      "module": "update",
+      "id": "UpdateStatus.state",
+      "signature": "state enum",
+      "description": "update current state State Description initializing update process is initializing upgrading firmware is upgrading up_to_date firmware is up to date error an error occurred during update",
+      "source_id": "UpdateStatus.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpdateStatus.state",
+      "markdown": "docs/reference/systeme/update.md#UpdateStatus.state"
+    },
+    {
+      "module": "update",
+      "id": "UpdateStatus.upgrade_state",
+      "signature": "upgrade_state UpgradeState",
+      "description": "",
+      "source_id": "UpdateStatus.upgrade_state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpdateStatus.upgrade_state",
+      "markdown": "docs/reference/systeme/update.md#UpdateStatus.upgrade_state"
+    },
+    {
+      "module": "update",
+      "id": "UpgradeState.state",
+      "signature": "state enum",
+      "description": "upgrade state State Description downloading downloading update download_failed update downloading has failed checking checking the downloaded data check_failed downloaded data check has failed prepare_write preparing to write data prepare_write_failed preparing to write data ha failed writing writing the data write_failed data writing has failed reread checking written data reread_failed written data checking has failed commit applying the update commit_failed update applying has failed",
+      "source_id": "UpgradeState.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState.state",
+      "markdown": "docs/reference/systeme/update.md#UpgradeState.state"
+    },
+    {
+      "module": "update",
+      "id": "UpgradeState.old_version",
+      "signature": "old_version string",
+      "description": "current firmware version",
+      "source_id": "UpgradeState.old_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState.old_version",
+      "markdown": "docs/reference/systeme/update.md#UpgradeState.old_version"
+    },
+    {
+      "module": "update",
+      "id": "UpgradeState.new_version",
+      "signature": "new_version string",
+      "description": "new firmware version being downloaded",
+      "source_id": "UpgradeState.new_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState.new_version",
+      "markdown": "docs/reference/systeme/update.md#UpgradeState.new_version"
+    },
+    {
+      "module": "update",
+      "id": "UpgradeState.percent",
+      "signature": "percent int",
+      "description": "download progress if state is downloading",
+      "source_id": "UpgradeState.percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState.percent",
+      "markdown": "docs/reference/systeme/update.md#UpgradeState.percent"
+    },
+    {
+      "module": "update",
+      "id": "UpgradeState.error_string",
+      "signature": "error_string string",
+      "description": "update error if state is download_failed",
+      "source_id": "UpgradeState.error_string",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState.error_string",
+      "markdown": "docs/reference/systeme/update.md#UpgradeState.error_string"
+    }
+  ],
+  "events": []
+}

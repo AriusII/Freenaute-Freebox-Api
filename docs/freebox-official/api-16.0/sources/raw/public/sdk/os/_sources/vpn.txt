@@ -1,0 +1,784 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+.. _vpn_server_api:
+
+=====================
+VPN Server [UNSTABLE]
+=====================
+
+The VPN Server API allows you to control the Freebox VPN Server
+
+VPN Server Errors
+=================
+
+When attempting to access this API, you may encounter the following
+errors:
+
+======================           ===============================================
+error_code                       Description
+======================           ===============================================
+inval                            invalid parameters
+exist                            entry already exists
+noent                            invalid id
+nomem                            internal error
+unsupp                           not supported
+inuse                            resource in use
+busy                             resource is busy
+ioerror                          internal error
+size                             too many elements
+======================           ===============================================
+
+VPN Server List
+===============
+
+VPN Server Object
+-----------------
+
+.. json:object:: VPNServer
+
+   VPNServer has the following attributes:
+
+   .. json:property:: name string [ro]
+
+      VPN server name (id)
+
+   .. json:property:: type enum [ro]
+
+      VPN server type
+
+      ================ =============================
+      type             Description
+      ================ =============================
+      pptp             PPTP VPN server
+      openvpn          OpenVPN server
+      ================ =============================
+
+   .. json:property:: state enum [ro]
+
+      server state
+
+      ================ =
+      state
+      ================ =
+      stopped
+      starting
+      started
+      stopping
+      error
+      ================ =
+
+   .. json:property:: connection_count int [ro]
+
+      number of active connections
+
+   .. json:property:: auth_connection_count int [ro]
+
+      number of active connections that have passed authentication
+
+VPN Server List API
+-------------------
+
+.. http:get:: /api/v4/vpn/
+
+   Get the list of :json:object:`VPNServer`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "state": "stopped",
+                  "type": "pptp",
+                  "name": "pptp",
+                  "connection_count": 0,
+                  "auth_connection_count": 0
+              },
+              {
+                  "state": "stopped",
+                  "type": "openvpn",
+                  "name": "openvpn_routed",
+                  "connection_count": 0,
+                  "auth_connection_count": 0
+              },
+              {
+                  "state": "stopped",
+                  "type": "openvpn",
+                  "name": "openvpn_bridge",
+                  "connection_count": 0,
+                  "auth_connection_count": 0
+              }
+          ]
+      }
+
+VPN Server Config
+=================
+
+.. json:object:: VPNPPTPConfig
+
+   VPNServerConfig has the following attributes:
+
+   .. json:property:: mppe enum
+
+      ================ =============================
+      mppe             Description
+      ================ =============================
+      disable          disable mppe
+      require          require mppe
+      require_128      require 128 bits mppe
+      ================ =============================
+
+   .. json:property:: allowed_auth dict
+
+      allowed authentication methods dictionnary with following entries:
+
+         - pap
+         - chap
+         - mschapv2
+
+      values are booleans.
+
+.. json:object:: VPNOpenVpnConfig
+
+     .. json:property:: cipher enum
+
+      ================ =
+      cipher
+      ================ =
+      blowfish
+      aes128
+      aes256
+      ================ =
+
+   .. json:property:: disable_fragment bool
+
+      disable fragment configuration option
+
+   .. json:property:: use_tcp bool
+
+      use TCP instead of UDP
+
+
+.. json:object:: VPNIPSecAuthMode
+
+     .. json:property:: id_source enum
+
+      source of the connection id
+
+      ================ =
+      id_source
+      ================ =
+      custom
+      ================ =
+
+     .. json:property:: id_custom string
+
+      value of the source id when id_source is custom
+
+
+.. json:object:: VPNIPSecConfig
+
+     .. json:property:: ike_version int [ro]
+
+      IKE protocol version
+
+   .. json:property:: auth_modes VPNIPSecAuthMode[] [ro]
+
+      map of supported auth modes, currently only psk is supported
+
+
+.. json:object:: VPNServerConfig
+
+   .. json:property:: id string [ro]
+
+      VPN server id
+
+   .. json:property:: type enum [ro]
+
+      VPN server type
+
+      ================ =============================
+      type             Description
+      ================ =============================
+      pptp             PPTP VPN server
+      openvpn          OpenVPN server
+      ipsec            IPsec IKEv2 server
+      ================ =============================
+
+   .. json:property:: enabled bool
+
+      is the VPN server enabled
+
+   .. json:property:: enable_ipv4 bool
+
+      enable IPv4 on this server
+
+      NOTE: Not relevant for openvpn_bridge, and pptp
+
+   .. json:property:: enable_ipv6 bool
+
+      enable IPv4 on this server
+
+      NOTE: Not relevant for openvpn_bridge, and pptp
+
+   .. json:property:: port int
+
+      the server port
+
+      NOTE: you can only edit the server port when type is openvpn
+
+   .. json:property:: min_port int [ro]
+
+      This field indicate the minimum possible value for port
+      (see :json:object:`ConnectionStatus` ipv4_port_range)
+
+   .. json:property:: max_port int [ro]
+
+      This field indicate the maximum possible value for port
+      (see :json:object:`ConnectionStatus` ipv4_port_range)
+
+   .. json:property:: port_ike int
+
+      IPSec ike server port
+
+      NOTE: only present for ipsec server
+
+   .. json:property:: port_nat int
+
+      IPSec nat server port
+
+      NOTE: only present for ipsec server
+
+   .. json:property:: conf_pptp VPNPPTPConfig
+
+      only available when type is PPTP
+
+   .. json:property:: conf_openvpn VPNOpenVpnConfig
+
+      only available when type is OpenVPN
+
+   .. json:property:: conf_ipsec VPNIPSecConfig
+
+      only available when type is IPsec
+
+   .. json:property:: ip_start string [ro]
+
+      start of the IP range that will be used to give clients an IP
+
+   .. json:property:: ip_end string [ro]
+
+      end of the IP range that will be used to give clients an IP
+
+   .. json:property:: ip6_start string [ro]
+
+      start of the IPv6 range that will be used to give clients an IPv6
+
+   .. json:property:: ip6_end string [ro]
+
+      end of the IPv6 range that will be used to give clients an IPv6
+
+
+VPN Server Config API
+=====================
+
+Get a VPN config
+----------------
+
+.. http:get:: /api/v4/vpn/{vpn_id}/config/
+
+   Get the :json:object:`VPNServerConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/openvpn_routed/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "port": 1194,
+              "conf_openvpn": {
+                  "cipher": "aes128"
+              },
+              "id": "openvpn_routed",
+              "ip_start": "192.168.27.65",
+              "ip_end": "192.168.27.95",
+              "type": "openvpn"
+          }
+      }
+
+Update the VPN configuration
+----------------------------
+
+.. http:put:: /api/v4/vpn/openvpn_routed/config/
+
+   Update the :json:object:`VPNServerConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/vpn/openvpn_routed/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "conf_openvpn": {
+            "cipher": "blowfish"
+          }
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "port": 1194,
+              "conf_openvpn": {
+                  "cipher": "blowfish"
+              },
+              "id": "openvpn_routed",
+              "ip_start": "192.168.27.65",
+              "ip_end": "192.168.27.95",
+              "type": "openvpn"
+          }
+      }
+
+VPN Server User API
+===================
+
+VPN users are common to all VPN servers.
+
+VPN Server User Object
+----------------------
+
+.. json:object:: VPNUser
+
+   VPNUser has the following attributes:
+
+   .. json:property:: login string
+
+      VPN user login
+
+   .. json:property:: password string [wo]
+
+      VPN user password (length must be between 8 and 32)
+
+   .. json:property:: password_set bool [ro]
+
+      True if a password was provided for this user
+
+   .. json:property:: ip_reservation ipv4
+
+      You can specify the IP you want to assign to this user.
+      If you don't want to use a specific IP pass an empty string or omit this
+      property.
+
+      The IP must be in the VPN range (see ip_start, ip_end).
+
+VPN Server User List
+--------------------
+
+.. http:get:: /api/v4/vpn/user/
+
+   Get the list of :json:object:`VPNUser`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/user/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "ip_reservation": "",
+                  "login": "test-1392677633-np",
+                  "password_set": false
+              },
+              {
+                  "ip_reservation": "",
+                  "login": "test-1392677633",
+                  "password_set": true
+              }
+          ]
+      }
+
+
+Get a VPN user
+--------------
+
+.. http:get:: /api/v4/vpn/user/{login}
+
+   Gets the :json:object:`VPNUser` with the given login
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/user/test-1392677633-np HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ip_reservation": "",
+              "login": "test-1392677633-np",
+              "password_set": false
+          }
+      }
+
+Add a VPN User
+--------------
+
+.. http:post:: /api/v4/vpn/user/
+
+   Creates a new :json:object:`VPNUser`.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/vpn/user/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "login": "vpnuser01",
+        "password": "thisisasecret",
+        "ip_reservation": "192.168.27.69"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ip_reservation": "192.168.27.69",
+              "login": "vpnuser01",
+              "password_set": true
+          }
+      }
+
+Delete a VPN User
+-----------------
+
+.. http:delete:: /api/v4/vpn/user/{login}
+
+   Deletes the :json:object:`VPNUser`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/vpn/user/vpnuser01 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Update a VPN User
+-----------------
+
+.. http:put:: /api/v4/vpn/user/{login}
+
+   Updates the :json:object:`VPNUser` task with the given login
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/vpn/user/test-1392677633-np HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+          "password": "donttellanyone"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ip_reservation": "",
+              "login": "test-1392677633-np",
+              "password_set": true
+          }
+      }
+
+VPN IP Pool
+===========
+
+Get the VPN server IP pool reservations
+---------------------------------------
+
+.. http:get:: /api/v4/vpn/ip_pool/
+
+   Gets the :json:object:`VPNUser` with the given login
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/ip_pool/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "ip_start": "192.168.27.65",
+              "ip_end": "192.168.27.95",
+              "reservations": [
+                  {
+                      "login": "test",
+                      "ip": "192.168.27.69"
+                  }
+              ]
+          }
+      }
+
+VPN Server Connection API
+=========================
+
+This API allows listing the active connections to the VPN server
+
+VPN Connection Object
+---------------------
+
+.. json:object:: VPNConnection
+
+   VPNConnection has the following attributes:
+
+   .. json:property:: id string [ro]
+
+      connection id
+
+   .. json:property:: vpn strong [ro]
+
+      related VPN server id
+
+   .. json:property:: user string [ro]
+
+      user login
+
+   .. json:property:: authenticated bool [ro]
+
+      is the connection authenticated
+
+   .. json:property:: auth_time int [ro]
+
+      timestamp of the authentication
+
+   .. json:property:: src_ip ipv4 [ro]
+
+      connection source IP address
+
+   .. json:property:: src_port int [ro]
+
+      connection source port
+
+   .. json:property:: local_ip int [ro]
+
+      attributed IP address from VPN adress pool
+
+   .. json:property:: rx_bytes int [ro]
+
+      rx bytes
+
+   .. json:property:: tx_bytes int [ro]
+
+      tx bytes
+
+Get the list of connections
+---------------------------
+
+.. http:get:: /api/v4/vpn/connection/
+
+   Get the list of :json:object:`VPNUser`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/user/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "rx_bytes": 94,
+                  "authenticated": true,
+                  "tx_bytes": 94,
+                  "user": "test",
+                  "id": "pptp-2",
+                  "vpn": "pptp",
+                  "src_ip": "93.184.216.119",
+                  "auth_time": 1392895603,
+                  "local_ip": "192.168.27.65"
+              }
+          ]
+      }
+
+Close a given connection
+------------------------
+
+.. http:delete:: /api/v4/vpn/connection/{id}
+
+   Deletes the :json:object:`VPNUser`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/vpn/connection/pptp-2 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+VPN User configuration file API
+===============================
+
+For OpenVPN server, you can download a configuration file that will be
+used to configure the VPN client
+
+Donwload a user configuration file
+----------------------------------
+
+.. http:get:: /api/v4/vpn/download_config/{server_name}/{login}
+
+   Download an OpenVPN configuration file for the given server and login
+
+   WARNING: each time you download a new configuration file for a particular user,
+   you invalidate previous configuration file emitted for this user
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn/connection/pptp-2 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Date: Thu, 20 Feb 2014 13:14:01 GMT
+      Server: nginx
+      Content-Type: application/x-openvpn-profile
+      Content-Disposition: attachment; filename="config_openvpn_routed_test.ovpn"
+      Keep-Alive: timeout=5, max=99
+      Connection: Keep-Alive
+      Transfer-Encoding: chunked
+
+      [ ... ]

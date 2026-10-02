@@ -1,0 +1,592 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+.. _vpn_client_api:
+
+=====================
+VPN Client [UNSTABLE]
+=====================
+
+The VPN Client API allows you to control the Freebox VPN Client
+
+VPN Client Errors
+=================
+
+When attempting to access this API, you may encounter the following
+errors:
+
+======================           ===============================================
+error_code                       Description
+======================           ===============================================
+inval                            invalid parameters
+nomem                            internal error
+ioerror                          internal error
+nodev                            invalid device
+noent                            invalid id
+netdown                          network is not available
+exist                            entry already exists
+busy                             resource is busy
+======================           ===============================================
+
+VPN Client Configuration
+========================
+
+VPN Client Configuration Object
+-------------------------------
+
+.. json:object:: VPNClientConfig
+
+   VPNClientConfig has the following attributes:
+
+   .. json:property:: id string [ro]
+
+      VPN config id
+
+   .. json:property:: description string
+
+      VPN description
+
+   .. json:property:: type enum
+
+      VPN server type
+
+      ================ =============================
+      type             Description
+      ================ =============================
+      pptp             PPTP VPN server
+      openvpn          OpenVPN server
+      ================ =============================
+
+   .. json:property:: active bool
+
+      is this configuration active.
+      Only one configuration is active at a time.
+
+   .. json:property:: conf_pptp VPNClientConfigPPTP
+
+      only available when type is PPTP
+
+.. json:object:: VPNClientConfig
+
+   VPNClientConfigPPTP has the following attributes:
+
+   .. json:property:: remote_host string
+
+      remote host IP or name
+
+   .. json:property:: username string
+
+      VPN username
+
+   .. json:property:: password string [wo]
+
+      VPN password
+
+   .. json:property:: mppe enum
+
+      ================ =============================
+      mppe             Description
+      ================ =============================
+      disable          disable mppe
+      require          require mppe
+      require_128      require 128 bits mppe
+      ================ =============================
+
+   .. json:property:: allowed_auth dict
+
+      allowed authentication methods dictionnary with following keys:
+
+         - eap
+         - pap
+         - chap
+         - mschap
+         - mschapv2
+
+      values are booleans.
+
+Get VPN Client configuration list
+---------------------------------
+
+.. http:get:: /api/v4/vpn_client/config/
+
+   Get the list of :json:object:`VPNClientConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn_client/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "type": "pptp",
+                  "description": "test vpn2",
+                  "active": true,
+                  "id": "vpn0",
+                  "conf_pptp": {
+                      "mppe": "require",
+                      "username": "freeuser",
+                      "remote_host": "vpnhost.example.org",
+                      "allowed_auth": {
+                          "eap": false,
+                          "mschap": false,
+                          "mschapv2": true,
+                          "chap": false,
+                          "pap": false
+                      }
+                  }
+              },
+              {
+                  "type": "pptp",
+                  "description": "test vpn1",
+                  "active": false,
+                  "id": "vpn1",
+                  "conf_pptp": {
+                      "mppe": "require",
+                      "username": "testuser",
+                      "remote_host": "example.org",
+                      "allowed_auth": {
+                          "eap": false,
+                          "mschap": false,
+                          "mschapv2": true,
+                          "chap": false,
+                          "pap": false
+                      }
+                  }
+              }
+          ]
+      }
+
+Get a VPN client config
+-----------------------
+
+.. http:get:: /api/v4/vpn_client/config/{id}
+
+   Get the :json:object:`VPNClientConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn_client/config/vpn0 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+               "type": "pptp",
+               "description": "test vpn2",
+               "active": true,
+               "id": "vpn0",
+               "conf_pptp": {
+                   "mppe": "require",
+                   "username": "freeuser",
+                   "remote_host": "vpnhost.example.org",
+                   "allowed_auth": {
+                       "eap": false,
+                       "mschap": false,
+                       "mschapv2": true,
+                       "chap": false,
+                       "pap": false
+                   }
+               }
+          }
+      }
+
+Add a VPN client configuration
+------------------------------
+
+.. http:post:: /api/v4/vpn_client/config/
+
+   Creates a new :json:object:`VPNClientConfig`.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/vpn_client/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "type": "pptp",
+         "description": "test pptp",
+         "active": false,
+         "conf_pptp": {
+            "mppe": "require",
+            "username": "fbxtest",
+            "password": "",
+            "remote_host": "test.example.org",
+            "allowed_auth": {
+               "mschapv2": true
+            }
+         }
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "type": "pptp",
+              "description": "test pptp",
+              "active": false,
+              "id": "vpn2",
+              "conf_pptp": {
+                  "password": "",
+                  "mppe": "require",
+                  "username": "fbxtest",
+                  "remote_host": "test.example.org",
+                  "allowed_auth": {
+                      "eap": false,
+                      "mschap": false,
+                      "mschapv2": true,
+                      "chap": false,
+                      "pap": false
+                  }
+              }
+          }
+      }
+
+Delete a VPN client Configuration
+---------------------------------
+
+.. http:delete:: /api/v4/vpn_client/config/{id}
+
+   Deletes the :json:object:`VPNClientConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/vpn_client/config/vpn2 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+
+Update the VPN client configuration
+-----------------------------------
+
+.. http:put:: /api/v4/vpn_client/config/{id}
+
+   Update the :json:object:`VPNServerConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/vpn_client/config/vpn0 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "active": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+               "type": "pptp",
+               "description": "test vpn2",
+               "active": false,
+               "id": "vpn0",
+               "conf_pptp": {
+                   "mppe": "require",
+                   "username": "freeuser",
+                   "remote_host": "vpnhost.example.org",
+                   "allowed_auth": {
+                       "eap": false,
+                       "mschap": false,
+                       "mschapv2": true,
+                       "chap": false,
+                       "pap": false
+                   }
+               }
+          }
+      }
+
+VPN Client Status
+=================
+
+VPN Client Status Object
+------------------------
+
+.. json:object:: VPNClientStatus
+
+   VPNClientStatus has the following attributes:
+
+   .. json:property:: enabled bool [ro]
+
+      is VPN client enabled
+
+   .. json:property:: active_vpn string [ro]
+
+      active VPN id
+
+   .. json:property:: active_vpn_description string [ro]
+
+      active VPN description
+
+   .. json:property:: type enum [ro]
+
+      active VPN type
+
+      ================ =============================
+      type             Description
+      ================ =============================
+      pptp             PPTP VPN server
+      openvpn          OpenVPN server
+      ================ =============================
+
+   .. json:property:: state enum [ro]
+
+      ================ =============================
+      state            Description
+      ================ =============================
+      waiting_wan      waiting for wan connection
+      going_up         connecting
+      up               connected
+      going_down       disconnecting
+      down             disconnected
+      ================ =============================
+
+   .. json:property:: last_up int [ro]
+
+      timestamp of last successfull connection
+
+   .. json:property:: last_try int [ro]
+
+      timestamp of last connection attempt
+
+   .. json:property:: next_try int [ro]
+
+      seconds left until next connection attempt
+
+   .. json:property:: last_error enum [ro]
+
+      ========================= =================================
+      last_error                Description
+      ========================= =================================
+      none                      no error
+      internal                  internal error
+      authentication_failed     wrong credentials
+      auth_failed               wrong credentials
+      resolv_failed             invalid host name
+      connect_timeout           connection timeout
+      connect_failed            connection failed
+      setup_control_failed      PPTP session negociation failure
+      setup_call_failed         PPTP session failure
+      protocol                  protocol error
+      remote_terminated         connection closed by remote peer
+      remote_disconnect         connection closed by remote peer
+      ========================= =================================
+
+   .. json:property:: stats VpnClientStats [ro]
+
+      connection statistics
+
+   .. json:property:: IPv4 VpnClientIpInfo [ro]
+
+      connection IPv4 information
+
+.. json:object:: VpnClientStats
+
+   .. json:property:: rate_up int [ro]
+
+      current upload rate (in byte/s)
+
+   .. json:property:: rate_down int [ro]
+
+      current download rate (in byte/s)
+
+   .. json:property:: bytes_up int [ro]
+
+      total bytes uploaded
+
+   .. json:property:: bytes_down int [ro]
+
+      total bytes downloaded
+
+.. json:object:: VpnClientIpInfo
+
+   .. json:property:: config_valid bool [ro]
+
+      is the configuration valid
+
+   .. json:property:: ip_mask dict [ro]
+
+      assigned IP and netmask
+
+   .. json:property:: domain string [ro]
+
+      provided domain
+
+   .. json:property:: gateway IPv4 [ro]
+
+      provided gateway
+
+   .. json:property:: dns ipv4[] [ro]
+
+      list of dns servers
+
+   .. json:property:: provider enum [ro]
+
+      ip_mask source
+
+      ================ =============================
+      provider         Description
+      ================ =============================
+      none             none
+      static           static IP configuration
+      ppp              ppp
+      dhcp             DHCP server
+      ================ =============================
+
+   .. json:property:: routes list [ro]
+
+      list of provided routes
+
+   .. json:property:: dhcp dict [ro]
+
+      DHCP status information
+
+Get the VPN client status
+-------------------------
+
+.. http:get:: /api/v4/vpn_client/status
+
+   Get the :json:object:`VPNClientStatus`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn_client/status HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "type": "pptp",
+              "last_error": "none",
+              "active_vpn_description": "test vpn",
+              "last_try": 1392904509,
+              "state": "up",
+              "stats": {
+                  "rate_up": 0,
+                  "bytes_down": 94,
+                  "bytes_up": 94,
+                  "rate_down": 0
+              },
+              "active_vpn": "vpn1",
+              "next_try": 0,
+              "last_up": 1392904510,
+              "ipv4": {
+                  "routes": { },
+                  "config_valid": true,
+                  "ip_mask": {
+                      "ip": "192.168.27.65",
+                      "mask": "255.255.255.255"
+                  },
+                  "provider": "ppp",
+                  "dhcp": {
+                      "state": "down",
+                      "renew_remaining": 0,
+                      "dhcp_options": { },
+                      "lease_remaining": 0,
+                      "lease_time": 0,
+                      "rebind_remaining": 0,
+                      "server_id": 0
+                  },
+                  "dns": [
+                      "212.27.38.253"
+                  ],
+                  "domain": "",
+                  "gateway": "212.27.38.253"
+              }
+          }
+      }
+
+Get the VPN client logs
+-----------------------
+
+.. http:get:: /api/v4/vpn_client/log
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/vpn_client/log HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": "2014-02-20 14:55:10 dbg: ppp: pppd: sent [ ... ] "
+      }

@@ -1,0 +1,1315 @@
+{
+  "format_version": 1,
+  "group": "services-media",
+  "target_api_version": "16.0",
+  "modules": [
+    "airmedia",
+    "call",
+    "contacts",
+    "ftp",
+    "network_share",
+    "player",
+    "pvr",
+    "tftp",
+    "upnpav",
+    "vpn",
+    "vpn_client"
+  ],
+  "implemented_operations": [
+    {
+      "module": "ftp",
+      "method": "GET",
+      "documented_path": "/api/v8/ftp/config/",
+      "relative_path": "ftp/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ftp-config-",
+      "client_member": "FreeboxFtpApi.GetConfigurationAsync"
+    },
+    {
+      "module": "ftp",
+      "method": "PUT",
+      "documented_path": "/api/v8/ftp/config/",
+      "relative_path": "ftp/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-ftp-config-",
+      "client_member": "FreeboxFtpApi.UpdateConfigurationAsync"
+    },
+    {
+      "module": "tftp",
+      "method": "GET",
+      "documented_path": "/api/v16/tftp/config/",
+      "relative_path": "tftp/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-tftp-config-",
+      "client_member": "FreeboxTftpApi.GetConfigurationAsync"
+    },
+    {
+      "module": "tftp",
+      "method": "PUT",
+      "documented_path": "/api/latest/tftp/config/",
+      "relative_path": "tftp/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-latest-tftp-config-",
+      "client_member": "FreeboxTftpApi.UpdateConfigurationAsync"
+    },
+    {
+      "module": "upnpav",
+      "method": "GET",
+      "documented_path": "/api/v8/upnpav/config/",
+      "relative_path": "upnpav/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upnpav-config-",
+      "client_member": "FreeboxUPnpAvApi.GetConfigurationAsync"
+    },
+    {
+      "module": "upnpav",
+      "method": "PUT",
+      "documented_path": "/api/v8/upnpav/config/",
+      "relative_path": "upnpav/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-upnpav-config-",
+      "client_member": "FreeboxUPnpAvApi.UpdateConfigurationAsync"
+    },
+    {
+      "module": "network_share",
+      "method": "GET",
+      "documented_path": "/api/v8/netshare/samba/",
+      "relative_path": "netshare/samba/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-netshare-samba-",
+      "client_member": "FreeboxNetworkShareApi.GetSambaConfigurationAsync"
+    },
+    {
+      "module": "network_share",
+      "method": "PUT",
+      "documented_path": "/api/v8/netshare/samba/",
+      "relative_path": "netshare/samba/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-netshare-samba-",
+      "client_member": "FreeboxNetworkShareApi.UpdateSambaConfigurationAsync"
+    },
+    {
+      "module": "network_share",
+      "method": "GET",
+      "documented_path": "/api/v8/netshare/afp/",
+      "relative_path": "netshare/afp/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-netshare-afp-",
+      "client_member": "FreeboxNetworkShareApi.GetAfpConfigurationAsync"
+    },
+    {
+      "module": "network_share",
+      "method": "PUT",
+      "documented_path": "/api/v8/netshare/afp/",
+      "relative_path": "netshare/afp/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-netshare-afp-",
+      "client_member": "FreeboxNetworkShareApi.UpdateAfpConfigurationAsync"
+    },
+    {
+      "module": "airmedia",
+      "method": "GET",
+      "documented_path": "/api/v8/airmedia/config/",
+      "relative_path": "airmedia/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-airmedia-config-",
+      "client_member": "IFreeboxAirMediaApi.GetConfigurationAsync",
+      "existing_implementation": true
+    },
+    {
+      "module": "airmedia",
+      "method": "PUT",
+      "documented_path": "/api/v8/airmedia/config/",
+      "relative_path": "airmedia/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-airmedia-config-",
+      "client_member": "IFreeboxAirMediaApi.UpdateConfigurationAsync",
+      "existing_implementation": true
+    },
+    {
+      "module": "airmedia",
+      "method": "GET",
+      "documented_path": "/api/v8/airmedia/receivers/",
+      "relative_path": "airmedia/receivers/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-airmedia-receivers-",
+      "client_member": "IFreeboxAirMediaApi.GetReceiversAsync",
+      "existing_implementation": true
+    },
+    {
+      "module": "airmedia",
+      "method": "POST",
+      "documented_path": "/api/v8/airmedia/receviers/{receiver_name}/",
+      "relative_path": "airmedia/receviers/{receiver_name}/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-airmedia-receviers-receiver_name-",
+      "client_member": "IFreeboxAirMediaApi.SendToReceiverAsync",
+      "existing_implementation": true
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/log/",
+      "relative_path": "call/log/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-log-",
+      "client_member": "FreeboxCallApi.GetLogAsync"
+    },
+    {
+      "module": "call",
+      "method": "POST",
+      "documented_path": "/api/v10/call/log/delete_all/",
+      "relative_path": "call/log/delete_all/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v10-call-log-delete_all-",
+      "client_member": "FreeboxCallApi.DeleteAllLogEntriesAsync"
+    },
+    {
+      "module": "call",
+      "method": "POST",
+      "documented_path": "/api/v10/call/log/mark_all_as_read/",
+      "relative_path": "call/log/mark_all_as_read/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v10-call-log-mark_all_as_read-",
+      "client_member": "FreeboxCallApi.MarkAllLogEntriesAsReadAsync"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/log/{id}",
+      "relative_path": "call/log/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-log-id",
+      "client_member": "FreeboxCallApi.LogEntry().GetAsync"
+    },
+    {
+      "module": "call",
+      "method": "DELETE",
+      "documented_path": "/api/v10/call/log/{id}",
+      "relative_path": "call/log/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v10-call-log-id",
+      "client_member": "FreeboxCallApi.LogEntry().DeleteAsync"
+    },
+    {
+      "module": "call",
+      "method": "PUT",
+      "documented_path": "/api/v10/call/log/{id}",
+      "relative_path": "call/log/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v10-call-log-id",
+      "client_member": "FreeboxCallApi.LogEntry().UpdateAsync"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/account",
+      "relative_path": "call/account",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-account",
+      "client_member": "FreeboxCallApi.GetAccountAsync"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/voicemail/",
+      "relative_path": "call/voicemail/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-voicemail-",
+      "client_member": "FreeboxCallApi.GetVoicemailsAsync"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/voicemail/{id}",
+      "relative_path": "call/voicemail/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-voicemail-id",
+      "client_member": "FreeboxCallApi.Voicemail().GetAsync"
+    },
+    {
+      "module": "call",
+      "method": "DELETE",
+      "documented_path": "/api/v10/call/voicemail/{id}",
+      "relative_path": "call/voicemail/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v10-call-voicemail-id",
+      "client_member": "FreeboxCallApi.Voicemail().DeleteAsync"
+    },
+    {
+      "module": "call",
+      "method": "PUT",
+      "documented_path": "/api/v10/call/voicemail/{id}",
+      "relative_path": "call/voicemail/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v10-call-voicemail-id",
+      "client_member": "FreeboxCallApi.Voicemail().UpdateAsync"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/voicemail/{id}/audio_file",
+      "relative_path": "call/voicemail/{id}/audio_file",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-voicemail-id-audio_file",
+      "client_member": "FreeboxVoicemail.DownloadAudioAsync"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/",
+      "relative_path": "contact/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-",
+      "client_member": "FreeboxContactsApi.GetAllAsync"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{id}",
+      "relative_path": "contact/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-id",
+      "client_member": "FreeboxContactsApi.Contact().GetAsync"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/contact/",
+      "relative_path": "contact/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-contact-",
+      "client_member": "FreeboxContactsApi.CreateAsync"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/contact/{id}",
+      "relative_path": "contact/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-contact-id",
+      "client_member": "FreeboxContactsApi.Contact().DeleteAsync"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/contact/{id}",
+      "relative_path": "contact/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-contact-id",
+      "client_member": "FreeboxContactsApi.Contact().UpdateAsync"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{contact_id}/[numbers|addresses|urls|emails]/",
+      "relative_path": "contact/{contact_id}/numbers/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "client_member": "FreeboxContactsApi.Contact().Numbers.GetAllAsync",
+      "variant": "number"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{contact_id}/[numbers|addresses|urls|emails]/",
+      "relative_path": "contact/{contact_id}/addresses/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "client_member": "FreeboxContactsApi.Contact().Addresses.GetAllAsync",
+      "variant": "address"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{contact_id}/[numbers|addresses|urls|emails]/",
+      "relative_path": "contact/{contact_id}/urls/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "client_member": "FreeboxContactsApi.Contact().Urls.GetAllAsync",
+      "variant": "url"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/contact/{contact_id}/[numbers|addresses|urls|emails]/",
+      "relative_path": "contact/{contact_id}/emails/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-contact-contact_id-[numbers|addresses|urls|emails]-",
+      "client_member": "FreeboxContactsApi.Contact().Emails.GetAllAsync",
+      "variant": "email"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "number/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Numbers.Item().GetAsync",
+      "variant": "number"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "address/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Addresses.Item().GetAsync",
+      "variant": "address"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "url/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Urls.Item().GetAsync",
+      "variant": "url"
+    },
+    {
+      "module": "contacts",
+      "method": "GET",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "email/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Emails.Item().GetAsync",
+      "variant": "email"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/[number,address,url,email]/",
+      "relative_path": "number/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-[number,address,url,email]-",
+      "client_member": "FreeboxContactsApi.Contact().Numbers.CreateAsync",
+      "variant": "number"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/[number,address,url,email]/",
+      "relative_path": "address/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-[number,address,url,email]-",
+      "client_member": "FreeboxContactsApi.Contact().Addresses.CreateAsync",
+      "variant": "address"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/[number,address,url,email]/",
+      "relative_path": "url/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-[number,address,url,email]-",
+      "client_member": "FreeboxContactsApi.Contact().Urls.CreateAsync",
+      "variant": "url"
+    },
+    {
+      "module": "contacts",
+      "method": "POST",
+      "documented_path": "/api/v8/[number,address,url,email]/",
+      "relative_path": "email/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-[number,address,url,email]-",
+      "client_member": "FreeboxContactsApi.Contact().Emails.CreateAsync",
+      "variant": "email"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "number/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Numbers.Item().DeleteAsync",
+      "variant": "number"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "address/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Addresses.Item().DeleteAsync",
+      "variant": "address"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "url/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Urls.Item().DeleteAsync",
+      "variant": "url"
+    },
+    {
+      "module": "contacts",
+      "method": "DELETE",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "email/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Emails.Item().DeleteAsync",
+      "variant": "email"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "number/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Numbers.Item().UpdateAsync",
+      "variant": "number"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "address/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Addresses.Item().UpdateAsync",
+      "variant": "address"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "url/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Urls.Item().UpdateAsync",
+      "variant": "url"
+    },
+    {
+      "module": "contacts",
+      "method": "PUT",
+      "documented_path": "/api/v8/[number,address,url,email]/{id}",
+      "relative_path": "email/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-[number,address,url,email]-id",
+      "client_member": "FreeboxContactsApi.Contact().Emails.Item().UpdateAsync",
+      "variant": "email"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/",
+      "relative_path": "vpn/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-",
+      "client_member": "FreeboxVpnApi.GetServersAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/{vpn_id}/config/",
+      "relative_path": "vpn/{vpn_id}/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-vpn_id-config-",
+      "client_member": "FreeboxVpnApi.GetServerConfigurationAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "PUT",
+      "documented_path": "/api/v8/vpn/openvpn_routed/config/",
+      "relative_path": "vpn/openvpn_routed/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vpn-openvpn_routed-config-",
+      "client_member": "FreeboxVpnApi.UpdateOpenVpnRoutedConfigurationAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/user/",
+      "relative_path": "vpn/user/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-user-",
+      "client_member": "FreeboxVpnApi.GetUsersAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/user/{login}",
+      "relative_path": "vpn/user/{login}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-user-login",
+      "client_member": "FreeboxVpnApi.User().GetAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "POST",
+      "documented_path": "/api/v8/vpn/user/",
+      "relative_path": "vpn/user/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vpn-user-",
+      "client_member": "FreeboxVpnApi.CreateUserAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vpn/user/{login}",
+      "relative_path": "vpn/user/{login}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vpn-user-login",
+      "client_member": "FreeboxVpnApi.User().DeleteAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "PUT",
+      "documented_path": "/api/v8/vpn/user/{login}",
+      "relative_path": "vpn/user/{login}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vpn-user-login",
+      "client_member": "FreeboxVpnApi.User().UpdateAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/ip_pool/",
+      "relative_path": "vpn/ip_pool/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-ip_pool-",
+      "client_member": "FreeboxVpnApi.GetIpPoolAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/connection/",
+      "relative_path": "vpn/connection/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-connection-",
+      "client_member": "FreeboxVpnApi.GetConnectionsAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vpn/connection/{id}",
+      "relative_path": "vpn/connection/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vpn-connection-id",
+      "client_member": "FreeboxVpnApi.DisconnectAsync"
+    },
+    {
+      "module": "vpn",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn/download_config/{server_name}/{login}/{fmt}",
+      "relative_path": "vpn/download_config/{server_name}/{login}/plain",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-download_config-server_name-login-fmt",
+      "client_member": "FreeboxVpnApi.DownloadConfigurationAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/config/",
+      "relative_path": "vpn_client/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-config-",
+      "client_member": "FreeboxVpnClientApi.GetConfigurationsAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/config/{id}",
+      "relative_path": "vpn_client/config/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-config-id",
+      "client_member": "FreeboxVpnClientApi.Configuration().GetAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "POST",
+      "documented_path": "/api/v8/vpn_client/config/",
+      "relative_path": "vpn_client/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vpn_client-config-",
+      "client_member": "FreeboxVpnClientApi.CreateConfigurationAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vpn_client/config/{id}",
+      "relative_path": "vpn_client/config/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vpn_client-config-id",
+      "client_member": "FreeboxVpnClientApi.Configuration().DeleteAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "PUT",
+      "documented_path": "/api/v8/vpn_client/config/{id}",
+      "relative_path": "vpn_client/config/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vpn_client-config-id",
+      "client_member": "FreeboxVpnClientApi.Configuration().UpdateAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/status",
+      "relative_path": "vpn_client/status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-status",
+      "client_member": "FreeboxVpnClientApi.GetStatusAsync"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/log",
+      "relative_path": "vpn_client/log",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-log",
+      "client_member": "FreeboxVpnClientApi.GetLogAsync"
+    },
+    {
+      "module": "player",
+      "method": "GET",
+      "documented_path": "/api/v8/player",
+      "relative_path": "player",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-player",
+      "client_member": "FreeboxPlayerApi.GetAllAsync"
+    },
+    {
+      "module": "player",
+      "method": "GET",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/status/",
+      "relative_path": "player/{id_player}/api/v6/status/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-player-id_player-api-v6-status-",
+      "client_member": "FreeboxPlayerApi.Device().GetStatusAsync"
+    },
+    {
+      "module": "player",
+      "method": "POST",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/mediactrl/",
+      "relative_path": "player/{id_player}/api/v6/control/mediactrl/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-mediactrl-",
+      "client_member": "FreeboxPlayerApi.Device().SendMediaCommandAsync"
+    },
+    {
+      "module": "player",
+      "method": "GET",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/volume/",
+      "relative_path": "player/{id_player}/api/v6/control/volume/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-player-id_player-api-v6-control-volume-",
+      "client_member": "FreeboxPlayerApi.Device().GetVolumeAsync"
+    },
+    {
+      "module": "player",
+      "method": "PUT",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/volume/",
+      "relative_path": "player/{id_player}/api/v6/control/volume/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-player-id_player-api-v6-control-volume-",
+      "client_member": "FreeboxPlayerApi.Device().UpdateVolumeAsync"
+    },
+    {
+      "module": "player",
+      "method": "POST",
+      "documented_path": "/api/v8/player/{id_player}/api/v6/control/open",
+      "relative_path": "player/{id_player}/api/v6/control/open",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-open",
+      "client_member": "FreeboxPlayerApi.Device().OpenAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/config/",
+      "relative_path": "pvr/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-config-",
+      "client_member": "FreeboxPvrApi.GetConfigurationAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/config/",
+      "relative_path": "pvr/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-config-",
+      "client_member": "FreeboxPvrApi.UpdateConfigurationAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/quota/",
+      "relative_path": "pvr/quota/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-quota-",
+      "client_member": "FreeboxPvrApi.GetQuotaAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/quota/",
+      "relative_path": "pvr/quota/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-quota-",
+      "client_member": "FreeboxPvrApi.RecalculateQuotaAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/programmed/",
+      "relative_path": "pvr/programmed/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-programmed-",
+      "client_member": "FreeboxPvrApi.GetProgrammedAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/programmed/{id}",
+      "relative_path": "pvr/programmed/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-programmed-id",
+      "client_member": "FreeboxPvrApi.Programmed().GetAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/programmed/{id}",
+      "relative_path": "pvr/programmed/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-programmed-id",
+      "client_member": "FreeboxPvrApi.Programmed().UpdateAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "DELETE",
+      "documented_path": "/api/v8/pvr/programmed/{id}",
+      "relative_path": "pvr/programmed/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-pvr-programmed-id",
+      "client_member": "FreeboxPvrApi.Programmed().DeleteAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "POST",
+      "documented_path": "/api/v8/pvr/programmed/",
+      "relative_path": "pvr/programmed/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-pvr-programmed-",
+      "client_member": "FreeboxPvrApi.CreateProgrammedAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/finished/",
+      "relative_path": "pvr/finished/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-finished-",
+      "client_member": "FreeboxPvrApi.GetFinishedAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/finished/{id}",
+      "relative_path": "pvr/finished/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-finished-id",
+      "client_member": "FreeboxPvrApi.Finished().GetAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "PUT",
+      "documented_path": "/api/v8/pvr/finished/{id}",
+      "relative_path": "pvr/finished/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-finished-id",
+      "client_member": "FreeboxPvrApi.Finished().UpdateAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "DELETE",
+      "documented_path": "/api/v8/pvr/finished/{id}",
+      "relative_path": "pvr/finished/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-pvr-finished-id",
+      "client_member": "FreeboxPvrApi.Finished().DeleteAsync"
+    },
+    {
+      "module": "pvr",
+      "method": "GET",
+      "documented_path": "/api/v8/pvr/media/",
+      "relative_path": "pvr/media/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-pvr-media-",
+      "client_member": "FreeboxPvrApi.GetMediaAsync"
+    }
+  ],
+  "unsupported_operations": [
+    {
+      "module": "vpn",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-download_config-server_name-login-fmt",
+      "reason": "The fmt=json result schema is not documented. fmt=plain is implemented as a binary download.",
+      "variant": "fmt=json"
+    },
+    {
+      "module": "vpn_client",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vpn_client-config-",
+      "reason": "OpenVPN client configuration/import schema absent; typed creation of type=openvpn is rejected locally. PPTP/WireGuard creation, existing configuration read/update/delete and activation flags are implemented.",
+      "variant": "create type=openvpn"
+    }
+  ],
+  "contract_models": [
+    {
+      "module": "call",
+      "name": "CallEntry",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry"
+    },
+    {
+      "module": "call",
+      "name": "VoicemailEntry",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry"
+    },
+    {
+      "module": "call",
+      "name": "CallAccount",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-account"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactEntry",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactNumber",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactAddress",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactUrl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactEmail",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail"
+    },
+    {
+      "module": "ftp",
+      "name": "FtpConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig"
+    },
+    {
+      "module": "network_share",
+      "name": "SambaConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig"
+    },
+    {
+      "module": "network_share",
+      "name": "AfpConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig"
+    },
+    {
+      "module": "player",
+      "name": "Player",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Player"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatusForegroundApp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatusCapabilities",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusCapabilities"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatusInformations",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusInformations"
+    },
+    {
+      "module": "player",
+      "name": "PlayerStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatus"
+    },
+    {
+      "module": "player",
+      "name": "PlayerVolume",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-player-id_player-api-v6-control-volume-"
+    },
+    {
+      "module": "player",
+      "name": "PlayerMediaCommand",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-mediactrl-"
+    },
+    {
+      "module": "player",
+      "name": "PlayerOpenRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-open"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrConfig"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrQuota",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrQuota"
+    },
+    {
+      "module": "pvr",
+      "name": "ProgrammedRecording",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord"
+    },
+    {
+      "module": "pvr",
+      "name": "FinishedRecording",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrMedia",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Media"
+    },
+    {
+      "module": "tftp",
+      "name": "TftpConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TftpConfig"
+    },
+    {
+      "module": "upnpav",
+      "name": "UPnpAvConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPAVConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnServer",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnPptpConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnOpenVpnConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnWireGuardConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNWireGuardConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnIpSecAuthMode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecAuthMode"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnIpSecConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnServerConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnUser",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnUserWireGuardConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.conf_wireguard"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnConnection",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNConnection"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnIpPool",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-ip_pool-"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnIpReservation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn-ip_pool-"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnServerAuthentication",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig.allowed_auth"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientPptpConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientWireGuardConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientWireGuardAddress",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuardIP"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientStats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientIpInfo",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientAuthentication",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.allowed_auth"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientIpMask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-status"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientDhcpState",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-status"
+    },
+    {
+      "module": "call",
+      "name": "CallEntryPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry"
+    },
+    {
+      "module": "call",
+      "name": "VoicemailPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEntry"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactNumberWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactAddressWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactUrlWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl"
+    },
+    {
+      "module": "contacts",
+      "name": "ContactEmailWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail"
+    },
+    {
+      "module": "ftp",
+      "name": "FtpConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtpConfig"
+    },
+    {
+      "module": "tftp",
+      "name": "TftpConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TftpConfig"
+    },
+    {
+      "module": "network_share",
+      "name": "SambaConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SambaConfig"
+    },
+    {
+      "module": "network_share",
+      "name": "AfpConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig"
+    },
+    {
+      "module": "upnpav",
+      "name": "UPnpAvConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPAVConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnOpenVpnConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnOpenVpnRoutedPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServerConfig"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnUserWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnUserWireGuardPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.conf_wireguard"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientPptpPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientWireGuardPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientWireGuardAddressWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuardIP"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrConfigPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PvrConfig"
+    },
+    {
+      "module": "pvr",
+      "name": "ProgrammedRecordingWriteRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord"
+    },
+    {
+      "module": "pvr",
+      "name": "FinishedRecordingPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Frecord"
+    },
+    {
+      "module": "player",
+      "name": "PlayerVolumePatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-player-id_player-api-v6-control-volume-"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientAuthenticationPatch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.allowed_auth"
+    },
+    {
+      "module": "vpn",
+      "name": "VpnIpSecAuthModes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecConfig.auth_modes"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrRecordTime",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Media.record_time"
+    },
+    {
+      "module": "pvr",
+      "name": "PvrQuotaRecalculationRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-pvr-quota-"
+    }
+  ],
+  "unsupported_fields": [
+    {
+      "module": "player",
+      "model": "PlayerStatusForegroundApp",
+      "field": "package_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#PlayerStatusForegroundApp.package_id",
+      "reason": "Source does not provide a bounded scalar/element schema; omitted locally, not replaced with unconstrained JsonElement."
+    },
+    {
+      "module": "vpn_client",
+      "model": "VpnClientIpInfo",
+      "field": "routes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.routes",
+      "reason": "Source does not provide a bounded scalar/element schema; omitted locally, not replaced with unconstrained JsonElement."
+    },
+    {
+      "module": "vpn_client",
+      "model": "VpnClientDhcpState",
+      "field": "dhcp_options",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-status",
+      "reason": "Only an empty object is provided; option key/value schema is not documented."
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    },
+    {
+      "path": "docs/freebox-official/reviews/services-media.json",
+      "sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70"
+    }
+  ],
+  "coverage": {
+    "documented_signatures": 75,
+    "concrete_routes": 90,
+    "new_documented_signatures": 71,
+    "new_concrete_routes": 86,
+    "existing_airmedia_signatures": 4,
+    "excludes_unsupported_variants": true
+  },
+  "accepted_source_resolutions": [
+    "Outer server API routes use the discovered major (16 in reviewed source); internal Player API remains v6.",
+    "TFTP latest alias uses the current discovered API route, as attested by the v16 request example.",
+    "Formal POST methods win over conflicting call batch GET examples; no alternate-method retries.",
+    "Formal upnpav path wins over copy/pasted upnpigd examples.",
+    "Voicemail country_code, VPN connection local_ip and recording IDs preserve declared/example scalar kinds.",
+    "VPN IPSec authentication modes preserve dictionary/array shape and named dictionary keys.",
+    "PVR record_time preserves integer/typed nested dictionary shape.",
+    "PVR configuration update reads common success only because no result schema is provided."
+  ],
+  "limitations": [
+    "API signatures are covered, but this does not claim full field/schema coverage; omitted fields and unsupported variants are listed.",
+    "Only the documented openvpn_routed server configuration PUT is exposed; no speculative generic server configuration PUT or VPN start/stop routes.",
+    "Timestamp wire values remain integers; no universal unit or epoch is assumed.",
+    "No implicit retry is introduced, including side-effecting VPN configuration downloads.",
+    "Read/write projections omit marked read-only and example-only fields from writes; unset values are omitted, false and zero are explicit, unproven explicit null is rejected.",
+    "Open-ended author-defined Player foreground context alone uses JsonElement as documented.",
+    "No source generator project was necessary; built-in System.Text.Json generated metadata covers the closed contracts."
+  ],
+  "contract_enums": [
+    {
+      "name": "CallType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.type"
+    },
+    {
+      "name": "ContactNumberType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactNumber.type"
+    },
+    {
+      "name": "ContactAddressType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactAddress.type"
+    },
+    {
+      "name": "ContactUrlType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactUrl.type"
+    },
+    {
+      "name": "ContactEmailType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ContactEmail.type"
+    },
+    {
+      "name": "AfpServerType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AfpConfig.server_type"
+    },
+    {
+      "name": "VpnServerType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.type"
+    },
+    {
+      "name": "VpnServerState",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNServer.state"
+    },
+    {
+      "name": "VpnMppeMode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNPPTPConfig.mppe"
+    },
+    {
+      "name": "VpnCipher",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNOpenVpnConfig.cipher"
+    },
+    {
+      "name": "VpnIpSecIdSource",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNIPSecAuthMode.id_source"
+    },
+    {
+      "name": "VpnUserType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNUser.type"
+    },
+    {
+      "name": "VpnClientType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.type"
+    },
+    {
+      "name": "VpnClientState",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.state"
+    },
+    {
+      "name": "VpnClientError",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.last_error"
+    },
+    {
+      "name": "VpnIpProvider",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.provider"
+    },
+    {
+      "name": "RecordingState",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.state"
+    },
+    {
+      "name": "RecordingError",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.error"
+    },
+    {
+      "name": "RecordingQuality",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.channel_quality"
+    },
+    {
+      "name": "RecordingChannelType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.channel_type"
+    },
+    {
+      "name": "RecordingBroadcastType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Precord.broadcast_type"
+    },
+    {
+      "name": "PlayerMediaCommandName",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-player-id_player-api-v6-control-mediactrl-"
+    }
+  ]
+}

@@ -1,0 +1,554 @@
+{
+  "module": {
+    "module": "system",
+    "title": "System",
+    "category": "systeme",
+    "path": "docs/reference/systeme/system.md",
+    "http_signatures": 3,
+    "objects": 5,
+    "properties": 44,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#system-438",
+    "source_pre_blocks": 9,
+    "markdown_code_blocks": 9,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "system",
+      "method": "GET",
+      "documented_path": "/api/v8/system/",
+      "path_template": "/api/v{major}/system/",
+      "documented_major": 8,
+      "title": "Current version (api \u003E= v6)",
+      "id": "get--api-v8-system-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-system-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/systeme/system.md#get--api-v8-system-",
+      "referenced_objects": [
+        "SystemConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-system-"
+    },
+    {
+      "module": "system",
+      "method": "POST",
+      "documented_path": "/api/v8/system/reboot/",
+      "path_template": "/api/v{major}/system/reboot/",
+      "documented_major": 8,
+      "title": "Reboot the system",
+      "id": "post--api-v8-system-reboot-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-system-reboot-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/system.md#post--api-v8-system-reboot-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-system-reboot-"
+    },
+    {
+      "module": "system",
+      "method": "POST",
+      "documented_path": "/api/v11/system/shutdown/",
+      "path_template": "/api/v{major}/system/shutdown/",
+      "documented_major": 11,
+      "title": "Shutdown the system",
+      "id": "post--api-v11-system-shutdown-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-system-shutdown-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/system.md#post--api-v11-system-shutdown-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v11-system-shutdown-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "system",
+      "name": "SystemConfig",
+      "id": "SystemConfig",
+      "properties": [
+        "SystemConfig.firmware_version",
+        "SystemConfig.mac",
+        "SystemConfig.serial",
+        "SystemConfig.uptime",
+        "SystemConfig.uptime_val",
+        "SystemConfig.board_name",
+        "SystemConfig.box_authenticated",
+        "SystemConfig.disk_status",
+        "SystemConfig.usb3_enable",
+        "SystemConfig.user_main_storage",
+        "SystemConfig.user_storage_powered",
+        "SystemConfig.expansions",
+        "SystemConfig.model_info",
+        "SystemConfig.fans",
+        "propriete-sans-ancre-system-15"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig"
+    },
+    {
+      "module": "system",
+      "name": "SystemModelInfo",
+      "id": "SystemModelInfo",
+      "properties": [
+        "SystemModelInfo.name",
+        "SystemModelInfo.pretty_name",
+        "SystemModelInfo.has_expansions",
+        "SystemModelInfo.has_lan_sfp",
+        "SystemModelInfo.has_dect",
+        "SystemModelInfo.has_home_automation",
+        "SystemModelInfo.has_femtocell_exp",
+        "SystemModelInfo.has_fixed_femtocell",
+        "SystemModelInfo.has_vm",
+        "SystemModelInfo.has_dsl",
+        "SystemModelInfo.has_standby",
+        "SystemModelInfo.has_eco_wifi",
+        "SystemModelInfo.has_wop",
+        "SystemModelInfo.has_led_strip",
+        "SystemModelInfo.has_status_led",
+        "SystemModelInfo.has_usb3_enable",
+        "SystemModelInfo.has_lcd_screensaver"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfigSensor",
+      "id": "SystemConfigSensor",
+      "properties": [
+        "SystemConfigSensor.id",
+        "SystemConfigSensor.name",
+        "SystemConfigSensor.value"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigSensor",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigSensor"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfigFan",
+      "id": "SystemConfigFan",
+      "properties": [
+        "SystemConfigFan.id",
+        "SystemConfigFan.name",
+        "SystemConfigFan.value"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigFan",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigFan"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfigExpansion",
+      "id": "SystemConfigExpansion",
+      "properties": [
+        "SystemConfigExpansion.slot",
+        "SystemConfigExpansion.probe_done",
+        "SystemConfigExpansion.present",
+        "SystemConfigExpansion.supported",
+        "SystemConfigExpansion.bundle",
+        "SystemConfigExpansion.type"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion"
+    }
+  ],
+  "properties": [
+    {
+      "module": "system",
+      "id": "SystemConfig.firmware_version",
+      "signature": "firmware_version string Read-only",
+      "description": "freebox firmware version",
+      "source_id": "SystemConfig.firmware_version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.firmware_version",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.firmware_version"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.mac",
+      "signature": "mac string Read-only",
+      "description": "freebox mac address",
+      "source_id": "SystemConfig.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.mac",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.mac"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.serial",
+      "signature": "serial string Read-only",
+      "description": "freebox serial number",
+      "source_id": "SystemConfig.serial",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.serial",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.serial"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.uptime",
+      "signature": "uptime string Read-only",
+      "description": "readable freebox uptime",
+      "source_id": "SystemConfig.uptime",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.uptime",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.uptime"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.uptime_val",
+      "signature": "uptime_val int Read-only",
+      "description": "freebox uptime (in seconds)",
+      "source_id": "SystemConfig.uptime_val",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.uptime_val",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.uptime_val"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.board_name",
+      "signature": "board_name string Read-only",
+      "description": "freebox hardware revision",
+      "source_id": "SystemConfig.board_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.board_name",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.board_name"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.box_authenticated",
+      "signature": "box_authenticated bool Read-only",
+      "description": "is the box authenticated (\u201C\u00E9tape 6\u201D)",
+      "source_id": "SystemConfig.box_authenticated",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.box_authenticated",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.box_authenticated"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.disk_status",
+      "signature": "disk_status enum Read-only",
+      "description": "the internal disk status Value Description not_detected The disk as not been detected disabled The disk is disabled initializing The disk is initializing error The disk failed to mount active The disk is ready",
+      "source_id": "SystemConfig.disk_status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.disk_status",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.disk_status"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.usb3_enable",
+      "signature": "usb3_enable bool",
+      "description": "enable USB3 (on supported platforms)",
+      "source_id": "SystemConfig.usb3_enable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.usb3_enable",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.usb3_enable"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.user_main_storage",
+      "signature": "user_main_storage string",
+      "description": "The label of the storage partition to use for user data. (Matches the label of the DiskPartition ) In case of \u2018light\u2019 box flavor, it must be set by to a permanently attached external storage",
+      "source_id": "SystemConfig.user_main_storage",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.user_main_storage",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.user_main_storage"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.user_storage_powered",
+      "signature": "user_storage_powered bool Read-only",
+      "description": "Indicate whether the user storage is powered or not",
+      "source_id": "SystemConfig.user_storage_powered",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.user_storage_powered",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.user_storage_powered"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.expansions",
+      "signature": "expansions [] array of SystemConfigSensor Read-only",
+      "description": "List of thermal sensors on the system",
+      "source_id": "SystemConfig.expansions",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.expansions",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.expansions"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.model_info",
+      "signature": "model_info SystemModelInfo Read-only",
+      "description": "Device informations",
+      "source_id": "SystemConfig.model_info",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.model_info",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.model_info"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfig.fans",
+      "signature": "fans [] array of SystemConfigFan Read-only",
+      "description": "List of fans on the system",
+      "source_id": "SystemConfig.fans",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig.fans",
+      "markdown": "docs/reference/systeme/system.md#SystemConfig.fans"
+    },
+    {
+      "module": "system",
+      "id": "propriete-sans-ancre-system-15",
+      "signature": "expansions [] array of SystemConfigExpansion Read-only",
+      "description": "List of expansions slots modules",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#system-config",
+      "markdown": "docs/reference/systeme/system.md#propriete-sans-ancre-system-15"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.name",
+      "signature": "name enum Read-only",
+      "description": "name Description fbxgw-r1/full Freebox Server (v6) revision 1 fbxgw-r2/full Freebox Server (v6) revision 2 fbxgw-r1/mini Freebox Mini revision 1 fbxgw-r2/mini Freebox Mini revision 2 fbxgw-r1/one Freebox One revision 1 fbxgw-r2/one Freebox One revision 2 fbxgw7-r1/full Freebox v7 revision 1 fbxgw8-r1/full Freebox v8 revision 1 fbxgw9-r1/full Freebox v9 revision 1",
+      "source_id": "SystemModelInfo.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.name",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.name"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.pretty_name",
+      "signature": "pretty_name string Read-only",
+      "description": "Display name for the box model",
+      "source_id": "SystemModelInfo.pretty_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.pretty_name",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.pretty_name"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_expansions",
+      "signature": "has_expansions bool Read-only",
+      "description": "if present and true, the box has expansions",
+      "source_id": "SystemModelInfo.has_expansions",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_expansions",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_expansions"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_lan_sfp",
+      "signature": "has_lan_sfp bool Read-only",
+      "description": "if present and true, the box has an SFP port for lan",
+      "source_id": "SystemModelInfo.has_lan_sfp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_lan_sfp",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_lan_sfp"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_dect",
+      "signature": "has_dect bool Read-only",
+      "description": "if present and true, the box has a DECT base station",
+      "source_id": "SystemModelInfo.has_dect",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_dect",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_dect"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_home_automation",
+      "signature": "has_home_automation bool Read-only",
+      "description": "if present and true, the box has a Home automation module",
+      "source_id": "SystemModelInfo.has_home_automation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_home_automation",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_home_automation"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_femtocell_exp",
+      "signature": "has_femtocell_exp bool Read-only",
+      "description": "if present and true, the box has a femtocell expansion slot",
+      "source_id": "SystemModelInfo.has_femtocell_exp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_femtocell_exp",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_femtocell_exp"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_fixed_femtocell",
+      "signature": "has_fixed_femtocell bool Read-only",
+      "description": "if present and true, the box has an internal femtocell",
+      "source_id": "SystemModelInfo.has_fixed_femtocell",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_fixed_femtocell",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_fixed_femtocell"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_vm",
+      "signature": "has_vm bool Read-only",
+      "description": "if present and true, the box supports virtual machines",
+      "source_id": "SystemModelInfo.has_vm",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_vm",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_vm"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_dsl",
+      "signature": "has_dsl bool Read-only",
+      "description": "if present and true, the box supports DSL",
+      "source_id": "SystemModelInfo.has_dsl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_dsl",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_dsl"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_standby",
+      "signature": "has_standby bool Read-only",
+      "description": "if present and true, the box supports standby",
+      "source_id": "SystemModelInfo.has_standby",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_standby",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_standby"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_eco_wifi",
+      "signature": "has_eco_wifi bool Read-only",
+      "description": "if present and true, the box supports Eco-WiFi",
+      "source_id": "SystemModelInfo.has_eco_wifi",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_eco_wifi",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_eco_wifi"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_wop",
+      "signature": "has_wop bool Read-only",
+      "description": "if present and true, the box supports Wake-On-PON",
+      "source_id": "SystemModelInfo.has_wop",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_wop",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_wop"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_led_strip",
+      "signature": "has_led_strip bool Read-only",
+      "description": "if present and true, the box has a LED strip",
+      "source_id": "SystemModelInfo.has_led_strip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_led_strip",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_led_strip"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_status_led",
+      "signature": "has_status_led bool Read-only",
+      "description": "if present and true, the box has a status LED",
+      "source_id": "SystemModelInfo.has_status_led",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_status_led",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_status_led"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_usb3_enable",
+      "signature": "has_usb3_enable bool Read-only",
+      "description": "if present and true, the box supports disabling USB3",
+      "source_id": "SystemModelInfo.has_usb3_enable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_usb3_enable",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_usb3_enable"
+    },
+    {
+      "module": "system",
+      "id": "SystemModelInfo.has_lcd_screensaver",
+      "signature": "has_lcd_screensaver [ro] Optionnal",
+      "description": "if present and true, the box supports enabling a screensaver animation on its LCD display",
+      "source_id": "SystemModelInfo.has_lcd_screensaver",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo.has_lcd_screensaver",
+      "markdown": "docs/reference/systeme/system.md#SystemModelInfo.has_lcd_screensaver"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigSensor.id",
+      "signature": "id string Read-only",
+      "description": "sensor id",
+      "source_id": "SystemConfigSensor.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigSensor.id",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigSensor.id"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigSensor.name",
+      "signature": "name string Read-only",
+      "description": "sensor display name",
+      "source_id": "SystemConfigSensor.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigSensor.name",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigSensor.name"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigSensor.value",
+      "signature": "value int Read-only",
+      "description": "sensor current value (in celsius degree)",
+      "source_id": "SystemConfigSensor.value",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigSensor.value",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigSensor.value"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigFan.id",
+      "signature": "id string Read-only",
+      "description": "fan id",
+      "source_id": "SystemConfigFan.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigFan.id",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigFan.id"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigFan.name",
+      "signature": "name string Read-only",
+      "description": "fan display name",
+      "source_id": "SystemConfigFan.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigFan.name",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigFan.name"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigFan.value",
+      "signature": "value int Read-only",
+      "description": "fan current speed (RPM)",
+      "source_id": "SystemConfigFan.value",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigFan.value",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigFan.value"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigExpansion.slot",
+      "signature": "slot int Read-only",
+      "description": "expansion slot id",
+      "source_id": "SystemConfigExpansion.slot",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion.slot",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion.slot"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigExpansion.probe_done",
+      "signature": "probe_done bool Read-only",
+      "description": "has the module presence been probed yet",
+      "source_id": "SystemConfigExpansion.probe_done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion.probe_done",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion.probe_done"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigExpansion.present",
+      "signature": "present bool Read-only",
+      "description": "has an expansion module been detected in the slot",
+      "source_id": "SystemConfigExpansion.present",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion.present",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion.present"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigExpansion.supported",
+      "signature": "supported bool Read-only",
+      "description": "is the module supported in this slot",
+      "source_id": "SystemConfigExpansion.supported",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion.supported",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion.supported"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigExpansion.bundle",
+      "signature": "bundle string Read-only",
+      "description": "module serial number",
+      "source_id": "SystemConfigExpansion.bundle",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion.bundle",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion.bundle"
+    },
+    {
+      "module": "system",
+      "id": "SystemConfigExpansion.type",
+      "signature": "type enum Read-only",
+      "description": "module type Value Description unknown unknown module dsl_lte xDSL \u002B LTE dsl_lte_external_antennas xDSL \u002B LTE with external antennas switch ftth_p2p FTTH P2P ftth_pon FTTH PON security Security module",
+      "source_id": "SystemConfigExpansion.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion.type",
+      "markdown": "docs/reference/systeme/system.md#SystemConfigExpansion.type"
+    }
+  ],
+  "events": []
+}

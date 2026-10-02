@@ -1,0 +1,472 @@
+{
+  "module": {
+    "module": "dhcp",
+    "title": "DHCP",
+    "category": "reseau",
+    "path": "docs/reference/reseau/dhcp.md",
+    "http_signatures": 8,
+    "objects": 4,
+    "properties": 29,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#dhcp",
+    "source_pre_blocks": 26,
+    "markdown_code_blocks": 26,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "dhcp",
+      "method": "GET",
+      "documented_path": "/api/v16/dhcp/config/",
+      "path_template": "/api/v{major}/dhcp/config/",
+      "documented_major": 16,
+      "title": "Get the current DHCP configuration",
+      "id": "get--api-v16-dhcp-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-dhcp-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#get--api-v16-dhcp-config-",
+      "referenced_objects": [
+        "DhcpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-dhcp-config-"
+    },
+    {
+      "module": "dhcp",
+      "method": "PUT",
+      "documented_path": "/api/v16/dhcp/config/",
+      "path_template": "/api/v{major}/dhcp/config/",
+      "documented_major": 16,
+      "title": "Update the current DHCP configuration",
+      "id": "put--api-v16-dhcp-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-dhcp-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#put--api-v16-dhcp-config-",
+      "referenced_objects": [
+        "DhcpConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v16-dhcp-config-"
+    },
+    {
+      "module": "dhcp",
+      "method": "GET",
+      "documented_path": "/api/v16/dhcp/static_lease/",
+      "path_template": "/api/v{major}/dhcp/static_lease/",
+      "documented_major": 16,
+      "title": "Get the list of DHCP static leases",
+      "id": "get--api-v16-dhcp-static_lease-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-dhcp-static_lease-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#get--api-v16-dhcp-static_lease-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-dhcp-static_lease-"
+    },
+    {
+      "module": "dhcp",
+      "method": "GET",
+      "documented_path": "/api/v16/dhcp/static_lease/{id}",
+      "path_template": "/api/v{major}/dhcp/static_lease/{id}",
+      "documented_major": 16,
+      "title": "Get a given DHCP static lease",
+      "id": "get--api-v16-dhcp-static_lease-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-dhcp-static_lease-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#get--api-v16-dhcp-static_lease-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-dhcp-static_lease-id"
+    },
+    {
+      "module": "dhcp",
+      "method": "PUT",
+      "documented_path": "/api/v16/dhcp/static_lease/{id}",
+      "path_template": "/api/v{major}/dhcp/static_lease/{id}",
+      "documented_major": 16,
+      "title": "Update DHCP static lease",
+      "id": "put--api-v16-dhcp-static_lease-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-dhcp-static_lease-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#put--api-v16-dhcp-static_lease-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v16-dhcp-static_lease-id"
+    },
+    {
+      "module": "dhcp",
+      "method": "DELETE",
+      "documented_path": "/api/v8/dhcp/static_lease/{id}",
+      "path_template": "/api/v{major}/dhcp/static_lease/{id}",
+      "documented_major": 8,
+      "title": "Delete a DHCP static lease",
+      "id": "delete--api-v8-dhcp-static_lease-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-dhcp-static_lease-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#delete--api-v8-dhcp-static_lease-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-dhcp-static_lease-id"
+    },
+    {
+      "module": "dhcp",
+      "method": "POST",
+      "documented_path": "/api/v16/dhcp/static_lease/",
+      "path_template": "/api/v{major}/dhcp/static_lease/",
+      "documented_major": 16,
+      "title": "Add a DHCP static lease",
+      "id": "post--api-v16-dhcp-static_lease-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v16-dhcp-static_lease-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#post--api-v16-dhcp-static_lease-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v16-dhcp-static_lease-"
+    },
+    {
+      "module": "dhcp",
+      "method": "GET",
+      "documented_path": "/api/v16/dhcp/dynamic_lease/",
+      "path_template": "/api/v{major}/dhcp/dynamic_lease/",
+      "documented_major": 16,
+      "title": "Get the list of DHCP dynamic leases",
+      "id": "get--api-v16-dhcp-dynamic_lease-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-dhcp-dynamic_lease-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcp.md#get--api-v16-dhcp-dynamic_lease-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-dhcp-dynamic_lease-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "dhcp",
+      "name": "DhcpConfig",
+      "id": "DhcpConfig",
+      "properties": [
+        "DhcpConfig.enabled",
+        "DhcpConfig.sticky_assign",
+        "DhcpConfig.gateway",
+        "DhcpConfig.netmask",
+        "DhcpConfig.ip_range_start",
+        "DhcpConfig.ip_range_end",
+        "DhcpConfig.always_broadcast",
+        "DhcpConfig.ignore_out_of_range_hint",
+        "DhcpConfig.boot_server",
+        "DhcpConfig.boot_file",
+        "DhcpConfig.dns",
+        "DhcpConfig.options"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig"
+    },
+    {
+      "module": "dhcp",
+      "name": "DhcpOption",
+      "id": "DhcpOption",
+      "properties": [
+        "DhcpOption.id",
+        "DhcpOption.val"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpOption",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpOption"
+    },
+    {
+      "module": "dhcp",
+      "name": "DhcpStaticLease",
+      "id": "DhcpStaticLease",
+      "properties": [
+        "DhcpStaticLease.id",
+        "DhcpStaticLease.mac",
+        "DhcpStaticLease.comment",
+        "DhcpStaticLease.hostname",
+        "DhcpStaticLease.ip",
+        "DhcpStaticLease.host",
+        "DhcpStaticLease.options"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease"
+    },
+    {
+      "module": "dhcp",
+      "name": "DhcpDynamicLease",
+      "id": "DhcpDynamicLease",
+      "properties": [
+        "DhcpDynamicLease.mac",
+        "DhcpDynamicLease.hostname",
+        "DhcpDynamicLease.ip",
+        "DhcpDynamicLease.lease_remaining",
+        "DhcpDynamicLease.assign_time",
+        "DhcpDynamicLease.refresh_time",
+        "DhcpDynamicLease.is_static",
+        "DhcpDynamicLease.host"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease"
+    }
+  ],
+  "properties": [
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.enabled",
+      "signature": "enabled bool",
+      "description": "Enable/Disable the DHCP server",
+      "source_id": "DhcpConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.enabled",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.enabled"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.sticky_assign",
+      "signature": "sticky_assign bool",
+      "description": "Always assign the same IP to a given host",
+      "source_id": "DhcpConfig.sticky_assign",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.sticky_assign",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.sticky_assign"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.gateway",
+      "signature": "gateway string Read-only",
+      "description": "Gateway IP address",
+      "source_id": "DhcpConfig.gateway",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.gateway",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.gateway"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.netmask",
+      "signature": "netmask string Read-only",
+      "description": "Gateway subnet netmask",
+      "source_id": "DhcpConfig.netmask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.netmask",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.netmask"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.ip_range_start",
+      "signature": "ip_range_start string",
+      "description": "DHCP range start IP",
+      "source_id": "DhcpConfig.ip_range_start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.ip_range_start",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.ip_range_start"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.ip_range_end",
+      "signature": "ip_range_end string",
+      "description": "DHCP range end IP",
+      "source_id": "DhcpConfig.ip_range_end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.ip_range_end",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.ip_range_end"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.always_broadcast",
+      "signature": "always_broadcast bool",
+      "description": "Always broadcast DHCP responses",
+      "source_id": "DhcpConfig.always_broadcast",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.always_broadcast",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.always_broadcast"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.ignore_out_of_range_hint",
+      "signature": "ignore_out_of_range_hint bool",
+      "description": "Ignore requested address if it is outside of the DHCP range",
+      "source_id": "DhcpConfig.ignore_out_of_range_hint",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.ignore_out_of_range_hint",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.ignore_out_of_range_hint"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.boot_server",
+      "signature": "boot_server string",
+      "description": "Address of the TFTP server used when booting via TFTP.",
+      "source_id": "DhcpConfig.boot_server",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.boot_server",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.boot_server"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.boot_file",
+      "signature": "boot_file string",
+      "description": "Boot file to download from the TFTP server when booting via TFTP.",
+      "source_id": "DhcpConfig.boot_file",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.boot_file",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.boot_file"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.dns",
+      "signature": "dns [] array of string",
+      "description": "List of dns servers to include in DHCP reply",
+      "source_id": "DhcpConfig.dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.dns",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.dns"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpConfig.options",
+      "signature": "options [] array of DhcpOption",
+      "description": "List of dns options to include in DHCP reply",
+      "source_id": "DhcpConfig.options",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpConfig.options",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpConfig.options"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpOption.id",
+      "signature": "id string Read-only",
+      "description": "The valid option identifiers and types are: Identifier Type Description time_offset s32 Time offset time_server ip_list Time server log_server ip_list Log server cookie_server ip_list Cookie server lpr_server ip_list LPR server impress_server ip_list Impress server resource_location_server ip_list Resource location server hostname string Hostname merit_dump_file string Merit dump file domain_name string Domain name swap_server ip_list Swap server root_path string Root path extensions_path string Extensions path ip_fwd bool IP forwarding ip_fwd_non_local bool Non-local IP source routing ip_max_reassembly_size u16 Maximum IP reassembly size ip_ttl u8 Default IP TTL ip_pmtu_timeout u32 IP Path MTU timeout mtu u16 Interface MTU local_subnets bool All subnets are local mask_discovery bool Perform mask discovery mask_supplier bool Mask supplier perform_rd bool Perform router discovery rs_address ip Router solicitation address trailer_encapsulation bool Trailer encapsulation arp_cache_timeout u32 ARP cache timeout eth_encapsulation bool Ethernet encapsulation tcp_ttl u8 Default TCP TTL tcp_keepalive_interval u32 TCP keepalive interval tcp_keepalive_garbage bool TCP keepalive garbage nis_domain string NIS domain nis_server ip_list NIS server ntp_server ip_list NTP server vendor_specific hexstring Vendor specific information nis_plus_domain string NIS\u002B domain nis_plus_server ip_list NIS\u002B server tftp_server_name string TFTP server name bootfile_name string Bootfile name mobile_ip_agent ip_list Mobile IP home agent smtp_server ip_list SMTP server pop3_server ip_list POP3 server nntp_server ip_list NNTP server www_server ip_list Default WWW server finger_server ip_list Default Finger server irc_server ip_list Default IRC server streettalk_server ip_list StreetTalk server stda_server ip_list StreetTalk directory assistance server slp_directory_agent ip_list SLP directory agent slp_service_scope hexstring SLP service scope nds_servers ip_list NDS servers nds_tree_name string NDS tree name nds_context string NDS context ldap_servers ip_list LDAP servers timezone_posix string Timezone POSIX timezone_database string Timezone database name_service hexstring Name service domain_search hexstring Domain search classless_static_route hexstring Classless static route capwap_ac ip_list CAPWAP access controller tftp_server_address ip_list TFTP server address",
+      "source_id": "DhcpOption.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpOption.id",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpOption.id"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpOption.val",
+      "signature": "val string",
+      "description": "The value sent by the DHCP server when this option is requested by the client. The formats depend on the option type: ip: A single IPv4 address (as described in RFC 791) ip_list: A comma-separated list of IPv4 addresses string: A string of ASCII characters hexstring: A string of ASCII hexadecimal characters [0-9a-fA-F] representing a binary value (example: C0A801FE) bool: one of [ \u2018true\u2019, \u2018false\u2019, \u20181\u2019, \u20180\u2019 ] s8, s16, s32: An n-bit signed integer value u8, u16, u32: An n-bit unsigned integer value",
+      "source_id": "DhcpOption.val",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpOption.val",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpOption.val"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.id",
+      "signature": "id string",
+      "description": "DHCP static lease object id",
+      "source_id": "DhcpStaticLease.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.id",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.id"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.mac",
+      "signature": "mac string",
+      "description": "Host mac address",
+      "source_id": "DhcpStaticLease.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.mac",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.mac"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.comment",
+      "signature": "comment string",
+      "description": "an optional comment",
+      "source_id": "DhcpStaticLease.comment",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.comment",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.comment"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.hostname",
+      "signature": "hostname string Read-only",
+      "description": "hostname matching the mac address",
+      "source_id": "DhcpStaticLease.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.hostname",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.hostname"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.ip",
+      "signature": "ip string",
+      "description": "IPv4 to assign to the host",
+      "source_id": "DhcpStaticLease.ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.ip",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.ip"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.host",
+      "signature": "host LanHost Read-only",
+      "description": "LAN host information from LAN browser (refer to LanHost documentation)",
+      "source_id": "DhcpStaticLease.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.host",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.host"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpStaticLease.options",
+      "signature": "options [] array of DhcpOption",
+      "description": "List of dns options to include in DHCP reply",
+      "source_id": "DhcpStaticLease.options",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpStaticLease.options",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpStaticLease.options"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.mac",
+      "signature": "mac string Read-only",
+      "description": "Host mac address",
+      "source_id": "DhcpDynamicLease.mac",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.mac",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.mac"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.hostname",
+      "signature": "hostname string Read-only",
+      "description": "hostname matching the mac address",
+      "source_id": "DhcpDynamicLease.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.hostname",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.hostname"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.ip",
+      "signature": "ip string Read-only",
+      "description": "IPv4 assigned to the host",
+      "source_id": "DhcpDynamicLease.ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.ip",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.ip"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.lease_remaining",
+      "signature": "lease_remaining int Read-only",
+      "description": "time left before lease needs to be refreshed",
+      "source_id": "DhcpDynamicLease.lease_remaining",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.lease_remaining",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.lease_remaining"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.assign_time",
+      "signature": "assign_time timestamp Read-only",
+      "description": "timestamp of the lease first assignment",
+      "source_id": "DhcpDynamicLease.assign_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.assign_time",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.assign_time"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.refresh_time",
+      "signature": "refresh_time timestamp Read-only",
+      "description": "timestamp of the last lease refresh",
+      "source_id": "DhcpDynamicLease.refresh_time",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.refresh_time",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.refresh_time"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.is_static",
+      "signature": "is_static bool Read-only",
+      "description": "is the lease static",
+      "source_id": "DhcpDynamicLease.is_static",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.is_static",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.is_static"
+    },
+    {
+      "module": "dhcp",
+      "id": "DhcpDynamicLease.host",
+      "signature": "host LanHost Read-only",
+      "description": "LAN host information from LAN browser (refer to LanHost documentation)",
+      "source_id": "DhcpDynamicLease.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhcpDynamicLease.host",
+      "markdown": "docs/reference/reseau/dhcp.md#DhcpDynamicLease.host"
+    }
+  ],
+  "events": []
+}

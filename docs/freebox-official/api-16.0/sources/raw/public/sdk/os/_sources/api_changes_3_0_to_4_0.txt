@@ -1,0 +1,58 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===================================
+Api changes from version 3.0 to 4.0
+===================================
+
+Secure Access
+=============
+
+- The Freebox OS API can now be reached over HTTPS. All applications MUST
+  switch to https access. Unsecure access will be removed at some point.
+
+Deprecated api
+==============
+
+- The old upload api as been deprecated in favor of the
+  :ref:`WebSocket upload api <ws_upload_api>`.
+  The v3 upload api will be removed in next firmware release.
+  All new apps should only use websocket upload api. However tracking of uploads has not been changed.
+
+Changed API
+===========
+
+- The File System api now return more details error codes, and can now
+  return 'access_denied' and 'disk_full' in case of IO errors
+
+- :json:object:`SystemConfig` has new 'disk_status', 'box_flavor' attributes
+
+- :json:object:`ConnectionStatus` now expose 'ipv4_port_range' for customers
+  that don't have a 'full' IPv4
+
+- Added new 'port_outside_range' error_code when attempting to use a port outside
+  of assigned 'ipv4_port_range'
+
+- Added 'remote_access_min_port' and 'remote_access_max_port' to
+  :json:object:`ConnectionConfiguration`
+
+- Added 'min_port', 'max_port' for :json:object:`IncomingPortConfig`,
+  :json:object:`VPNServerConfig`
+
+- Added 'readonly' for :json:object:`IncomingPortConfig`
+
+- Added 'allow_remote_access' for :json:object:`FtpConfig`
+
+- Added 'mark_all_as_read' and 'delete_all' for Call api
+
+- Added 'enabled_ipv6' and 'node_count_ipv6' for :json:object:`DhtStats`
+
+- Added 'preview_url' to :json:object:`DownloadFile` for bittorrent downloads
+
+- Added 'info_hash', 'piece_length' to :json:object:`Download` for bittorrent downloads
+
+New API
+=======
+
+- Added :json:object:`StorageConfig` api
+
+- Added :ref:`Download Pieces <dl_pieces_api>` information

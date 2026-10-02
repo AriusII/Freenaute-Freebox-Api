@@ -1,0 +1,341 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+======
+Switch
+======
+
+The Switch API allow you to control the settings of the Freebox
+integrated switch.
+
+Switch Errors
+=============
+
+When attempting to access the switch API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+bad_port                         invalid port number
+bad_speed                        unable to set port speed
+bad_link                         unable to set port link mode
+bad_mac_entry_type               invalid mac entry type
+======================           ======================
+
+Switch Port Status Object
+=========================
+
+SwitchPortStatus has the following attributes:
+
+.. json:object:: SwitchPortStatus
+
+   .. json:property:: id int [ro]
+
+       switch port id
+
+   .. json:property:: link enum [ro]
+
+      ======================           =========================
+      link                             Description
+      ======================           =========================
+      up                               port is up
+      down                             port is down
+      ======================           =========================
+
+   .. json:property:: duplex enum
+
+      ======================           =========================
+      duplex                           Description
+      ======================           =========================
+      half                             force in half duplex mode
+      full                             force in full duplex mode
+      ======================           =========================
+
+   .. json:property:: speed enum
+
+      ======================           =========================
+      duplex                           Description
+      ======================           =========================
+      10                               10Base-T
+      100                              100Base-TX
+      1000                             1000Base-T
+      ======================           =========================
+
+   .. json:property:: mode string [ro]
+
+      display form of speed and duplex mode
+
+   .. json:property:: mac_list object[] [ro]
+
+      list of { mac, name } of hosts connected to this port
+
+
+Switch Port Configuration Object
+================================
+
+SwitchPortConfig has the following attributes:
+
+.. json:object:: SwitchPortConfig
+
+   .. json:property:: id int [ro]
+
+       switch port id
+
+   .. json:property:: duplex enum
+
+      ======================           =========================
+      duplex                           Description
+      ======================           =========================
+      auto                             auto negotiate duplex mode
+      half                             force in half duplex mode
+      full                             force in full duplex mode
+      ======================           =========================
+
+   .. json:property:: speed enum
+
+      ======================           =========================
+      duplex                           Description
+      ======================           =========================
+      auto                             auto negotiate speed
+      10                               10Base-T
+      100                              100Base-TX
+      1000                             1000Base-T
+      ======================           =========================
+
+
+Switch Port Stats Object [UNSTABLE]
+===================================
+
+SwitchPortStats has the following attributes:
+
+.. json:object:: SwitchPortStats
+
+      .. json:property:: rx_bad_bytes int [ro]
+      .. json:property:: rx_broadcast_packets int [ro]
+      .. json:property:: rx_bytes_rate int [ro]
+      .. json:property:: rx_err_packets int [ro]
+      .. json:property:: rx_fcs_packets int [ro]
+      .. json:property:: rx_fragments_packets int [ro]
+      .. json:property:: rx_good_bytes int [ro]
+      .. json:property:: rx_good_packets int [ro]
+      .. json:property:: rx_jabber_packets int [ro]
+      .. json:property:: rx_multicast_packets int [ro]
+      .. json:property:: rx_oversize_packets int [ro]
+      .. json:property:: rx_packets_rate int [ro]
+      .. json:property:: rx_pause int [ro]
+      .. json:property:: rx_undersize_packets int [ro]
+      .. json:property:: rx_unicast_packets int [ro]
+      .. json:property:: tx_broadcast_packets int [ro]
+      .. json:property:: tx_bytes int [ro]
+      .. json:property:: tx_bytes_rate int [ro]
+      .. json:property:: tx_collisions int [ro]
+      .. json:property:: tx_deferred int [ro]
+      .. json:property:: tx_excessive int [ro]
+      .. json:property:: tx_fcs int [ro]
+      .. json:property:: tx_late int [ro]
+      .. json:property:: tx_multicast_packets int [ro]
+      .. json:property:: tx_multiple int [ro]
+      .. json:property:: tx_packets int [ro]
+      .. json:property:: tx_packets_rate int [ro]
+      .. json:property:: tx_pause int [ro]
+      .. json:property:: tx_single int [ro]
+      .. json:property:: tx_unicast_packets int [ro]
+
+Switch API
+==========
+
+Get the current switch status
+-----------------------------
+
+.. http:get:: /api/v4/switch/status/
+
+   Return the list of swith port status :json:object:`SwitchPortStatus`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/switch/status/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "duplex": "half",
+                  "link": "down",
+                  "id": 3,
+                  "mode": "10BaseT-HD",
+                  "speed": "10"
+              },
+              {
+                  "duplex": "full",
+                  "link": "up",
+                  "id": 1,
+                  "mode": "1000BaseT-FD",
+                  "speed": "1000"
+              },
+              {
+                  "duplex": "half",
+                  "link": "down",
+                  "id": 2,
+                  "mode": "10BaseT-HD",
+                  "speed": "10"
+              },
+              {
+                  "duplex": "full",
+                  "mac_list": [
+                      {
+                          "mac": "00:24:D4:7E:00:4C",
+                          "hostname": "r0ro's player"
+                      }
+                  ],
+                  "link": "up",
+                  "id": 4,
+                  "mode": "1000BaseT-FD",
+                  "speed": "1000"
+              }
+          ]
+      }
+
+Get a port configuration
+------------------------
+
+.. http:get:: /api/v4/switch/port/{id}
+
+   Get the :json:object:`SwitchPortConfig` for the given port id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/switch/port/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": 1,
+              "speed": "auto",
+              "duplex": "auto"
+          }
+      }
+
+Update a port configuration
+---------------------------
+
+.. http:put:: /api/v4/switch/port/{id}
+
+   Update the :json:object:`SwitchPortConfig` for the given port id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/switch/port/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "speed": "10"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": 4,
+              "speed": "10",
+              "duplex": "auto"
+          }
+      }
+
+Get a port stats
+----------------
+
+.. http:get:: /api/v4/switch/port/{id}/stats
+
+   Get the :json:object:`SwitchPortStats` for the given port id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/switch/port/4/stats HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "rx_packets_rate": 4,
+              "rx_good_bytes": 20018805,
+              "rx_oversize_packets": 0,
+              "rx_unicast_packets": 113034,
+              "tx_bytes_rate": 736,
+              "tx_unicast_packets": 112409,
+              "rx_bytes_rate": 608,
+              "tx_packets": 166266,
+              "tx_collisions": 0,
+              "tx_packets_rate": 6,
+              "tx_fcs": 0,
+              "tx_bytes": 25316860,
+              "rx_jabber_packets": 0,
+              "tx_single": 0,
+              "tx_excessive": 0,
+              "rx_pause": 0,
+              "rx_multicast_packets": 1217,
+              "tx_pause": 0,
+              "rx_good_packets": 114296,
+              "rx_broadcast_packets": 45,
+              "tx_multiple": 0,
+              "tx_deferred": 0,
+              "tx_late": 0,
+              "tx_multicast_packets": 27962,
+              "rx_fcs_packets": 0,
+              "tx_broadcast_packets": 25895,
+              "rx_err_packets": 0,
+              "rx_fragments_packets": 0,
+              "rx_bad_bytes": 0,
+              "rx_undersize_packets": 0
+          }
+      }
+
+..  LocalWords:  UPnP IGD SwitchPortStatus SwitchPortConfig rx fcs tx
+..  LocalWords:  SwitchPortStats multicast undersize unicast swith HD
+..  LocalWords:  BaseT ro's

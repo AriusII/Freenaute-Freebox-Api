@@ -1,0 +1,593 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Switch &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Wi-Fi" href="../wifi/" />
+    <link rel="prev" title="UPnP AV" href="../upnpav/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="switch">
+<h1>Switch<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h1>
+<p>The Switch API allow you to control the settings of the Freebox
+integrated switch.</p>
+<div class="section" id="switch-errors">
+<h2>Switch Errors<a class="headerlink" href="#switch-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the switch API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bad_port</td>
+<td>invalid port number</td>
+</tr>
+<tr class="row-odd"><td>bad_speed</td>
+<td>unable to set port speed</td>
+</tr>
+<tr class="row-even"><td>bad_link</td>
+<td>unable to set port link mode</td>
+</tr>
+<tr class="row-odd"><td>bad_mac_entry_type</td>
+<td>invalid mac entry type</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="switch-port-status-object">
+<h2>Switch Port Status Object<a class="headerlink" href="#switch-port-status-object" title="Permalink to this headline">¶</a></h2>
+<p>SwitchPortStatus has the following attributes:</p>
+<dl class="object">
+<dt id="SwitchPortStatus">
+<code class="descname">SwitchPortStatus</code><a class="headerlink" href="#SwitchPortStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="SwitchPortStatus.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStatus.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>switch port id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStatus.link">
+<code class="descname">link</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStatus.link" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">link</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>up</td>
+<td>port is up</td>
+</tr>
+<tr class="row-odd"><td>down</td>
+<td>port is down</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStatus.duplex">
+<code class="descname">duplex</code><span> </span>enum<a class="headerlink" href="#SwitchPortStatus.duplex" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">duplex</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>half</td>
+<td>force in half duplex mode</td>
+</tr>
+<tr class="row-odd"><td>full</td>
+<td>force in full duplex mode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStatus.speed">
+<code class="descname">speed</code><span> </span>enum<a class="headerlink" href="#SwitchPortStatus.speed" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">duplex</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>10</td>
+<td>10Base-T</td>
+</tr>
+<tr class="row-odd"><td>100</td>
+<td>100Base-TX</td>
+</tr>
+<tr class="row-even"><td>1000</td>
+<td>1000Base-T</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStatus.mode">
+<code class="descname">mode</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStatus.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>display form of speed and duplex mode</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStatus.mac_list">
+<code class="descname">mac_list</code><span>[] array of </span>object<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStatus.mac_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of { mac, name } of hosts connected to this port</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="switch-port-configuration-object">
+<h2>Switch Port Configuration Object<a class="headerlink" href="#switch-port-configuration-object" title="Permalink to this headline">¶</a></h2>
+<p>SwitchPortConfig has the following attributes:</p>
+<dl class="object">
+<dt id="SwitchPortConfig">
+<code class="descname">SwitchPortConfig</code><a class="headerlink" href="#SwitchPortConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="SwitchPortConfig.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortConfig.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>switch port id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortConfig.duplex">
+<code class="descname">duplex</code><span> </span>enum<a class="headerlink" href="#SwitchPortConfig.duplex" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">duplex</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>auto</td>
+<td>auto negotiate duplex mode</td>
+</tr>
+<tr class="row-odd"><td>half</td>
+<td>force in half duplex mode</td>
+</tr>
+<tr class="row-even"><td>full</td>
+<td>force in full duplex mode</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortConfig.speed">
+<code class="descname">speed</code><span> </span>enum<a class="headerlink" href="#SwitchPortConfig.speed" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">duplex</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>auto</td>
+<td>auto negotiate speed</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>10Base-T</td>
+</tr>
+<tr class="row-even"><td>100</td>
+<td>100Base-TX</td>
+</tr>
+<tr class="row-odd"><td>1000</td>
+<td>1000Base-T</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="switch-port-stats-object-unstable">
+<h2>Switch Port Stats Object [UNSTABLE]<a class="headerlink" href="#switch-port-stats-object-unstable" title="Permalink to this headline">¶</a></h2>
+<p>SwitchPortStats has the following attributes:</p>
+<dl class="object">
+<dt id="SwitchPortStats">
+<code class="descname">SwitchPortStats</code><a class="headerlink" href="#SwitchPortStats" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="SwitchPortStats.rx_bad_bytes">
+<code class="descname">rx_bad_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_bad_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_broadcast_packets">
+<code class="descname">rx_broadcast_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_broadcast_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_bytes_rate">
+<code class="descname">rx_bytes_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_bytes_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_err_packets">
+<code class="descname">rx_err_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_err_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_fcs_packets">
+<code class="descname">rx_fcs_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_fcs_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_fragments_packets">
+<code class="descname">rx_fragments_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_fragments_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_good_bytes">
+<code class="descname">rx_good_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_good_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_good_packets">
+<code class="descname">rx_good_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_good_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_jabber_packets">
+<code class="descname">rx_jabber_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_jabber_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_multicast_packets">
+<code class="descname">rx_multicast_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_multicast_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_oversize_packets">
+<code class="descname">rx_oversize_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_oversize_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_packets_rate">
+<code class="descname">rx_packets_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_packets_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_pause">
+<code class="descname">rx_pause</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_pause" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_undersize_packets">
+<code class="descname">rx_undersize_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_undersize_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.rx_unicast_packets">
+<code class="descname">rx_unicast_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.rx_unicast_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_broadcast_packets">
+<code class="descname">tx_broadcast_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_broadcast_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_bytes">
+<code class="descname">tx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_bytes_rate">
+<code class="descname">tx_bytes_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_bytes_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_collisions">
+<code class="descname">tx_collisions</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_collisions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_deferred">
+<code class="descname">tx_deferred</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_deferred" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_excessive">
+<code class="descname">tx_excessive</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_excessive" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_fcs">
+<code class="descname">tx_fcs</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_fcs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_late">
+<code class="descname">tx_late</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_late" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_multicast_packets">
+<code class="descname">tx_multicast_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_multicast_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_multiple">
+<code class="descname">tx_multiple</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_packets">
+<code class="descname">tx_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_packets_rate">
+<code class="descname">tx_packets_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_packets_rate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_pause">
+<code class="descname">tx_pause</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_pause" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_single">
+<code class="descname">tx_single</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_single" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="property">
+<dt id="SwitchPortStats.tx_unicast_packets">
+<code class="descname">tx_unicast_packets</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#SwitchPortStats.tx_unicast_packets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="switch-api">
+<h2>Switch API<a class="headerlink" href="#switch-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-switch-status">
+<h3>Get the current switch status<a class="headerlink" href="#get-the-current-switch-status" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-switch-status-">
+<code class="descname">GET </code><code class="descname">/api/v4/switch/status/</code><a class="headerlink" href="#get--api-v4-switch-status-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of swith port status <a class="reference internal" href="#SwitchPortStatus" title="SwitchPortStatus"><code class="xref json json-object docutils literal"><span class="pre">SwitchPortStatus</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/switch/status/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;duplex&quot;</span><span class="o">:</span> <span class="s2">&quot;half&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;10BaseT-HD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;10&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;duplex&quot;</span><span class="o">:</span> <span class="s2">&quot;full&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;1000BaseT-FD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;1000&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;duplex&quot;</span><span class="o">:</span> <span class="s2">&quot;half&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;10BaseT-HD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;10&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;duplex&quot;</span><span class="o">:</span> <span class="s2">&quot;full&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mac_list&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:7E:00:4C&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;r0ro&#39;s player&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;1000BaseT-FD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;1000&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-port-configuration">
+<h3>Get a port configuration<a class="headerlink" href="#get-a-port-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-switch-port-id">
+<code class="descname">GET </code><code class="descname">/api/v4/switch/port/{id}</code><a class="headerlink" href="#get--api-v4-switch-port-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#SwitchPortConfig" title="SwitchPortConfig"><code class="xref json json-object docutils literal"><span class="pre">SwitchPortConfig</span></code></a> for the given port id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/switch/port/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;duplex&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-port-configuration">
+<h3>Update a port configuration<a class="headerlink" href="#update-a-port-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-switch-port-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/switch/port/{id}</code><a class="headerlink" href="#put--api-v4-switch-port-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#SwitchPortConfig" title="SwitchPortConfig"><code class="xref json json-object docutils literal"><span class="pre">SwitchPortConfig</span></code></a> for the given port id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/switch/port/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;10&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;speed&quot;</span><span class="o">:</span> <span class="s2">&quot;10&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;duplex&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-port-stats">
+<h3>Get a port stats<a class="headerlink" href="#get-a-port-stats" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-switch-port-id-stats">
+<code class="descname">GET </code><code class="descname">/api/v4/switch/port/{id}/stats</code><a class="headerlink" href="#get--api-v4-switch-port-id-stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#SwitchPortStats" title="SwitchPortStats"><code class="xref json json-object docutils literal"><span class="pre">SwitchPortStats</span></code></a> for the given port id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/switch/port/4/stats</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;rx_packets_rate&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;rx_good_bytes&quot;</span><span class="o">:</span> <span class="mi">20018805</span><span class="p">,</span>
+        <span class="s2">&quot;rx_oversize_packets&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_unicast_packets&quot;</span><span class="o">:</span> <span class="mi">113034</span><span class="p">,</span>
+        <span class="s2">&quot;tx_bytes_rate&quot;</span><span class="o">:</span> <span class="mi">736</span><span class="p">,</span>
+        <span class="s2">&quot;tx_unicast_packets&quot;</span><span class="o">:</span> <span class="mi">112409</span><span class="p">,</span>
+        <span class="s2">&quot;rx_bytes_rate&quot;</span><span class="o">:</span> <span class="mi">608</span><span class="p">,</span>
+        <span class="s2">&quot;tx_packets&quot;</span><span class="o">:</span> <span class="mi">166266</span><span class="p">,</span>
+        <span class="s2">&quot;tx_collisions&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_packets_rate&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">&quot;tx_fcs&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_bytes&quot;</span><span class="o">:</span> <span class="mi">25316860</span><span class="p">,</span>
+        <span class="s2">&quot;rx_jabber_packets&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_single&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_excessive&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_pause&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_multicast_packets&quot;</span><span class="o">:</span> <span class="mi">1217</span><span class="p">,</span>
+        <span class="s2">&quot;tx_pause&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_good_packets&quot;</span><span class="o">:</span> <span class="mi">114296</span><span class="p">,</span>
+        <span class="s2">&quot;rx_broadcast_packets&quot;</span><span class="o">:</span> <span class="mi">45</span><span class="p">,</span>
+        <span class="s2">&quot;tx_multiple&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_deferred&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_late&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_multicast_packets&quot;</span><span class="o">:</span> <span class="mi">27962</span><span class="p">,</span>
+        <span class="s2">&quot;rx_fcs_packets&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;tx_broadcast_packets&quot;</span><span class="o">:</span> <span class="mi">25895</span><span class="p">,</span>
+        <span class="s2">&quot;rx_err_packets&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_fragments_packets&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_bad_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;rx_undersize_packets&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

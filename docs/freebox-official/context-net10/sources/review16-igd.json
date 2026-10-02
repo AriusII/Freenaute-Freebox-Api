@@ -1,0 +1,228 @@
+{
+  "module": {
+    "module": "igd",
+    "title": "UPnP IGD",
+    "category": "reseau",
+    "path": "docs/reference/reseau/igd.md",
+    "http_signatures": 4,
+    "objects": 2,
+    "properties": 12,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#upnp-igd",
+    "source_pre_blocks": 13,
+    "markdown_code_blocks": 13,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "igd",
+      "method": "GET",
+      "documented_path": "/api/v8/upnpigd/config/",
+      "path_template": "/api/v{major}/upnpigd/config/",
+      "documented_major": 8,
+      "title": "Get the current UPnP IGD configuration",
+      "id": "get--api-v8-upnpigd-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upnpigd-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/igd.md#get--api-v8-upnpigd-config-",
+      "referenced_objects": [
+        "UPnPIGDConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-upnpigd-config-"
+    },
+    {
+      "module": "igd",
+      "method": "PUT",
+      "documented_path": "/api/v8/upnpigd/config/",
+      "path_template": "/api/v{major}/upnpigd/config/",
+      "documented_major": 8,
+      "title": "Update the UPnP IGD configuration",
+      "id": "put--api-v8-upnpigd-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-upnpigd-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/igd.md#put--api-v8-upnpigd-config-",
+      "referenced_objects": [
+        "UPnPIGDConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-upnpigd-config-"
+    },
+    {
+      "module": "igd",
+      "method": "GET",
+      "documented_path": "/api/v8/upnpigd/redir/",
+      "path_template": "/api/v{major}/upnpigd/redir/",
+      "documented_major": 8,
+      "title": "Get the list of current redirection",
+      "id": "get--api-v8-upnpigd-redir-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upnpigd-redir-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/igd.md#get--api-v8-upnpigd-redir-",
+      "referenced_objects": [
+        "UPnPRedir"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-upnpigd-redir-"
+    },
+    {
+      "module": "igd",
+      "method": "DELETE",
+      "documented_path": "/api/v8/upnpigd/redir/{id}",
+      "path_template": "/api/v{major}/upnpigd/redir/{id}",
+      "documented_major": 8,
+      "title": "Delete a redirection",
+      "id": "delete--api-v8-upnpigd-redir-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-upnpigd-redir-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/igd.md#delete--api-v8-upnpigd-redir-id",
+      "referenced_objects": [
+        "UPnPRedir"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-upnpigd-redir-id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "igd",
+      "name": "UPnPIGDConfig",
+      "id": "UPnPIGDConfig",
+      "properties": [
+        "UPnPIGDConfig.enabled",
+        "UPnPIGDConfig.version"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPIGDConfig",
+      "markdown": "docs/reference/reseau/igd.md#UPnPIGDConfig"
+    },
+    {
+      "module": "igd",
+      "name": "UPnPRedir",
+      "id": "UPnPRedir",
+      "properties": [
+        "UPnPRedir.id",
+        "UPnPRedir.enabled",
+        "UPnPRedir.ext_src_ip",
+        "UPnPRedir.ext_port",
+        "UPnPRedir.int_ip",
+        "UPnPRedir.int_port",
+        "UPnPRedir.proto",
+        "UPnPRedir.desc",
+        "UPnPRedir.remaining",
+        "UPnPRedir.host"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir"
+    }
+  ],
+  "properties": [
+    {
+      "module": "igd",
+      "id": "UPnPIGDConfig.enabled",
+      "signature": "enabled bool",
+      "description": "is the UPnP IGD service enabled",
+      "source_id": "UPnPIGDConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPIGDConfig.enabled",
+      "markdown": "docs/reference/reseau/igd.md#UPnPIGDConfig.enabled"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPIGDConfig.version",
+      "signature": "version int",
+      "description": "UPnP IGD protocol version Supported values are 1 / 2",
+      "source_id": "UPnPIGDConfig.version",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPIGDConfig.version",
+      "markdown": "docs/reference/reseau/igd.md#UPnPIGDConfig.version"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.id",
+      "signature": "id string Read-only",
+      "description": "the redirection id",
+      "source_id": "UPnPRedir.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.id",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.id"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.enabled",
+      "signature": "enabled bool Read-only",
+      "description": "is the redirection enabled",
+      "source_id": "UPnPRedir.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.enabled",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.enabled"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.ext_src_ip",
+      "signature": "ext_src_ip string Read-only",
+      "description": "source IP",
+      "source_id": "UPnPRedir.ext_src_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.ext_src_ip",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.ext_src_ip"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.ext_port",
+      "signature": "ext_port int Read-only",
+      "description": "external port",
+      "source_id": "UPnPRedir.ext_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.ext_port",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.ext_port"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.int_ip",
+      "signature": "int_ip string Read-only",
+      "description": "the target IP on your LAN",
+      "source_id": "UPnPRedir.int_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.int_ip",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.int_ip"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.int_port",
+      "signature": "int_port int Read-only",
+      "description": "the target port on your LAN",
+      "source_id": "UPnPRedir.int_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.int_port",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.int_port"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.proto",
+      "signature": "proto string Read-only",
+      "description": "the IP protocol to redirect",
+      "source_id": "UPnPRedir.proto",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.proto",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.proto"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.desc",
+      "signature": "desc string Read-only",
+      "description": "a description",
+      "source_id": "UPnPRedir.desc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.desc",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.desc"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.remaining",
+      "signature": "remaining int Read-only",
+      "description": "seconds remaining before redirection expire",
+      "source_id": "UPnPRedir.remaining",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.remaining",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.remaining"
+    },
+    {
+      "module": "igd",
+      "id": "UPnPRedir.host",
+      "signature": "host LanHost Read-only",
+      "description": "lan host if available",
+      "source_id": "UPnPRedir.host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UPnPRedir.host",
+      "markdown": "docs/reference/reseau/igd.md#UPnPRedir.host"
+    }
+  ],
+  "events": []
+}

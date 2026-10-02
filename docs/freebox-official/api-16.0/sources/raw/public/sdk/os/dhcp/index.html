@@ -1,0 +1,581 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>DHCP &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Ftp" href="../ftp/" />
+    <link rel="prev" title="Freeplug" href="../freeplug/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dhcp">
+<h1>DHCP<a class="headerlink" href="#dhcp" title="Permalink to this headline">¶</a></h1>
+<p>With the DHCP API you configure the Freebox dhcp server, and access
+its status.</p>
+<div class="section" id="dhcp-errors">
+<h2>DHCP Errors<a class="headerlink" href="#dhcp-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the DHCP API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>invalid argument</td>
+</tr>
+<tr class="row-odd"><td>inval_netmask</td>
+<td>invalid netmask</td>
+</tr>
+<tr class="row-even"><td>inval_ip_range</td>
+<td>invalid IP range</td>
+</tr>
+<tr class="row-odd"><td>inval_ip_range_net</td>
+<td>IP range &amp; netmask mismatch</td>
+</tr>
+<tr class="row-even"><td>inval_gw_net</td>
+<td>gateway &amp; netmask mismatch</td>
+</tr>
+<tr class="row-odd"><td>exist</td>
+<td>already exists</td>
+</tr>
+<tr class="row-even"><td>nodev</td>
+<td>no such device</td>
+</tr>
+<tr class="row-odd"><td>noent</td>
+<td>no such entry</td>
+</tr>
+<tr class="row-even"><td>netdown</td>
+<td>network is down</td>
+</tr>
+<tr class="row-odd"><td>busy</td>
+<td>device or resource busy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dhcp-config-object">
+<h2>DHCP Config Object<a class="headerlink" href="#dhcp-config-object" title="Permalink to this headline">¶</a></h2>
+<p>DHCP config has the following attributes:</p>
+<dl class="object">
+<dt id="DhcpConfig">
+<code class="descname">DhcpConfig</code><a class="headerlink" href="#DhcpConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DhcpConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#DhcpConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable/Disable the DHCP server</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.sticky_assign">
+<code class="descname">sticky_assign</code><span> </span>bool<a class="headerlink" href="#DhcpConfig.sticky_assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always assign the same IP to a given host</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.gateway">
+<code class="descname">gateway</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DhcpConfig.gateway" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gateway IP address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.netmask">
+<code class="descname">netmask</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DhcpConfig.netmask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gateway subnet netmask</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.ip_range_start">
+<code class="descname">ip_range_start</code><span> </span>string<a class="headerlink" href="#DhcpConfig.ip_range_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>DHCP range start IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.ip_range_end">
+<code class="descname">ip_range_end</code><span> </span>string<a class="headerlink" href="#DhcpConfig.ip_range_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>DHCP range end IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.always_broadcast">
+<code class="descname">always_broadcast</code><span> </span>bool<a class="headerlink" href="#DhcpConfig.always_broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Always broadcast DHCP responses</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpConfig.dns">
+<code class="descname">dns</code><span>[] array of </span>string<a class="headerlink" href="#DhcpConfig.dns" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of dns servers to include in DHCP reply</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dhcp-configuration-api">
+<h2>DHCP Configuration API<a class="headerlink" href="#dhcp-configuration-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-dhcp-configuration">
+<h3>Get the current DHCP configuration<a class="headerlink" href="#get-the-current-dhcp-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-dhcp-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/dhcp/config/</code><a class="headerlink" href="#get--api-v4-dhcp-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#DhcpConfig" title="DhcpConfig"><code class="xref json json-object docutils literal"><span class="pre">DhcpConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/dhcp/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;gateway&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.254&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sticky_assign&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;ip_range_end&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;netmask&quot;</span><span class="o">:</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dns&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;192.168.1.254&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;always_broadcast&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;ip_range_start&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.2&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-current-dhcp-configuration">
+<h3>Update the current DHCP configuration<a class="headerlink" href="#update-the-current-dhcp-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-dhcp-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/dhcp/config/</code><a class="headerlink" href="#put--api-v4-dhcp-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current <a class="reference internal" href="#DhcpConfig" title="DhcpConfig"><code class="xref json json-object docutils literal"><span class="pre">DhcpConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/dhcp/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;gateway&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.254&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sticky_assign&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;ip_range_end&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;netmask&quot;</span><span class="o">:</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dns&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;192.168.1.254&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;always_broadcast&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;ip_range_start&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.2&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="dhcp-static-lease-object">
+<h2>DHCP Static Lease Object<a class="headerlink" href="#dhcp-static-lease-object" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>DHCP static lease have the following attributes</div></blockquote>
+<dl class="object">
+<dt id="DhcpStaticLease">
+<code class="descname">DhcpStaticLease</code><a class="headerlink" href="#DhcpStaticLease" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DhcpStaticLease.id">
+<code class="descname">id</code><span> </span>string<a class="headerlink" href="#DhcpStaticLease.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>DHCP static lease object id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpStaticLease.mac">
+<code class="descname">mac</code><span> </span>string<a class="headerlink" href="#DhcpStaticLease.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Host mac address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpStaticLease.comment">
+<code class="descname">comment</code><span> </span>string<a class="headerlink" href="#DhcpStaticLease.comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>an optional comment</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpStaticLease.hostname">
+<code class="descname">hostname</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DhcpStaticLease.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>hostname matching the mac address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpStaticLease.ip">
+<code class="descname">ip</code><span> </span>string<a class="headerlink" href="#DhcpStaticLease.ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPv4 to assign to the host</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpStaticLease.host">
+<code class="descname">host</code><span> </span><a class="reference internal" href="../lan/#LanHost" title="LanHost">LanHost</a><em class="property"> Read-only</em><a class="headerlink" href="#DhcpStaticLease.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>LAN host information from LAN browser (refer to
+<a class="reference internal" href="../lan/#LanHost" title="LanHost"><code class="xref json json-object docutils literal"><span class="pre">LanHost</span></code></a> documentation)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dhcp-static-lease-api">
+<h2>DHCP Static Lease API<a class="headerlink" href="#dhcp-static-lease-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-dhcp-static-leases">
+<h3>Get the list of DHCP static leases<a class="headerlink" href="#get-the-list-of-dhcp-static-leases" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>You can get the list of <a class="reference internal" href="#DhcpStaticLease" title="DhcpStaticLease"><code class="xref json json-object docutils literal"><span class="pre">DhcpStaticLease</span></code></a> using this
+API</div></blockquote>
+<dl class="get">
+<dt id="get--api-v4-dhcp-static_lease-">
+<code class="descname">GET </code><code class="descname">/api/v4/dhcp/static_lease/</code><a class="headerlink" href="#get--api-v4-dhcp-static_lease-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/dhcp/static_lease/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:55&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;Pc de r0ro&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:55&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:69&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;Imprimante&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:69&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.2&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-given-dhcp-static-lease">
+<h3>Get a given DHCP static lease<a class="headerlink" href="#get-a-given-dhcp-static-lease" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>You can get a specific <a class="reference internal" href="#DhcpStaticLease" title="DhcpStaticLease"><code class="xref json json-object docutils literal"><span class="pre">DhcpStaticLease</span></code></a> with its id</div></blockquote>
+<dl class="get">
+<dt id="get--api-v4-dhcp-static_lease-id">
+<code class="descname">GET </code><code class="descname">/api/v4/dhcp/static_lease/{id}</code><a class="headerlink" href="#get--api-v4-dhcp-static_lease-id" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/dhcp/static_lease/00:DE:AD:B0:0B:55</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:55&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;Pc de r0ro&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:55&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+         <span class="p">},</span>
+         <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-dhcp-static-lease">
+<h3>Update DHCP static lease<a class="headerlink" href="#update-dhcp-static-lease" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>You can update a <a class="reference internal" href="#DhcpStaticLease" title="DhcpStaticLease"><code class="xref json json-object docutils literal"><span class="pre">DhcpStaticLease</span></code></a> with this method</div></blockquote>
+<dl class="put">
+<dt id="put--api-v4-dhcp-static_lease-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/dhcp/static_lease/{id}</code><a class="headerlink" href="#put--api-v4-dhcp-static_lease-id" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/dhcp/static_lease/00:DE:AD:B0:0B:55</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;Mon PC&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:55&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;Mon PC&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;Pc de r0ro&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:DE:AD:B0:0B:55&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+         <span class="p">},</span>
+         <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.1&quot;</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-dhcp-static-lease">
+<h3>Delete a DHCP static lease<a class="headerlink" href="#delete-a-dhcp-static-lease" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Deletes the <a class="reference internal" href="#DhcpStaticLease" title="DhcpStaticLease"><code class="xref json json-object docutils literal"><span class="pre">DhcpStaticLease</span></code></a> with this id</div></blockquote>
+<dl class="delete">
+<dt id="delete--api-v4-dhcp-static_lease-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/dhcp/static_lease/{id}</code><a class="headerlink" href="#delete--api-v4-dhcp-static_lease-id" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/dhcp/static_lease/00:DE:AD:B0:0B:55</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-dhcp-static-lease">
+<h3>Add a DHCP static lease<a class="headerlink" href="#add-a-dhcp-static-lease" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-dhcp-static_lease-">
+<code class="descname">POST </code><code class="descname">/api/v4/dhcp/static_lease/</code><a class="headerlink" href="#post--api-v4-dhcp-static_lease-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/dhcp/static_lease/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.222&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:00:00:11:11:11&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:00:00:11:11:11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;00:00:00:11:11:11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:00:00:11:11:11&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.222&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="dhcp-dynamic-lease-object">
+<h2>DHCP Dynamic Lease Object<a class="headerlink" href="#dhcp-dynamic-lease-object" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>DHCP dynamic lease have the following attributes</div></blockquote>
+<dl class="object">
+<dt id="DhcpDynamicLease">
+<code class="descname">DhcpDynamicLease</code><a class="headerlink" href="#DhcpDynamicLease" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DhcpDynamicLease.mac">
+<code class="descname">mac</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Host mac address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.hostname">
+<code class="descname">hostname</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>hostname matching the mac address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.ip">
+<code class="descname">ip</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPv4 assigned to the host</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.lease_remaining">
+<code class="descname">lease_remaining</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.lease_remaining" title="Permalink to this definition">¶</a></dt>
+<dd><p>time left before lease needs to be refreshed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.assign_time">
+<code class="descname">assign_time</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.assign_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of the lease first assignment</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.refresh_time">
+<code class="descname">refresh_time</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.refresh_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of the last lease refresh</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.is_static">
+<code class="descname">is_static</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.is_static" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the lease static</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DhcpDynamicLease.host">
+<code class="descname">host</code><span> </span><a class="reference internal" href="../lan/#LanHost" title="LanHost">LanHost</a><em class="property"> Read-only</em><a class="headerlink" href="#DhcpDynamicLease.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>LAN host information from LAN browser (refer to
+<a class="reference internal" href="../lan/#LanHost" title="LanHost"><code class="xref json json-object docutils literal"><span class="pre">LanHost</span></code></a> documentation)</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="get-the-list-of-dhcp-dynamic-leases">
+<h3>Get the list of DHCP dynamic leases<a class="headerlink" href="#get-the-list-of-dhcp-dynamic-leases" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>You can get the list of <a class="reference internal" href="#DhcpDynamicLease" title="DhcpDynamicLease"><code class="xref json json-object docutils literal"><span class="pre">DhcpDynamicLease</span></code></a> using this
+API</div></blockquote>
+<dl class="get">
+<dt id="get--api-v4-dhcp-dynamic_lease-">
+<code class="descname">GET </code><code class="descname">/api/v4/dhcp/dynamic_lease/</code><a class="headerlink" href="#get--api-v4-dhcp-dynamic_lease-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/dhcp/dynamic_lease/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre>{
+    &quot;success&quot;: true,
+    &quot;result&quot;: [
+        {
+            &quot;mac&quot;: &quot;13:37:00:00:01:03&quot;,
+            &quot;host&quot;: { … },
+            &quot;refresh_time&quot;: 1364494443,
+            &quot;hostname&quot;: &quot;iPhone r0ro&quot;,
+            &quot;assign_time&quot;: 1364494443,
+            &quot;lease_remaining&quot;: 42971,
+            &quot;is_static&quot;: false,
+            &quot;ip&quot;: &quot;192.168.1.21&quot;
+        },
+        {
+            &quot;mac&quot;: &quot;13:37:00:00:01:02&quot;,
+            &quot;host&quot;: { … },
+            &quot;refresh_time&quot;: 1364493208,
+            &quot;hostname&quot;: &quot;android r0ro&quot;,
+            &quot;assign_time&quot;: 1364482955,
+            &quot;lease_remaining&quot;: 41736,
+            &quot;is_static&quot;: false,
+            &quot;ip&quot;: &quot;192.168.1.22&quot;
+        }
+    ]
+}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+[
+  {
+    "module": "connection",
+    "signature": "ipv6_prefix_firewall bool",
+    "local_id": "propriete-sans-ancre-connection-32",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#connection-ipv6-configuration-object"
+  },
+  {
+    "module": "connection",
+    "signature": "sfp_vendor string Read-only",
+    "local_id": "propriete-sans-ancre-connection-113",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ftth-status-object-unstable"
+  },
+  {
+    "module": "nat",
+    "signature": "in_port int",
+    "local_id": "propriete-sans-ancre-nat-20",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#incoming-port-config"
+  },
+  {
+    "module": "system",
+    "signature": "expansions [] array of SystemConfigExpansion Read-only",
+    "local_id": "propriete-sans-ancre-system-15",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#system-config"
+  },
+  {
+    "module": "home",
+    "signature": "label name Read-only",
+    "local_id": "propriete-sans-ancre-home-31",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#home-node-object"
+  },
+  {
+    "module": "home",
+    "signature": "value String Read-only",
+    "local_id": "propriete-sans-ancre-home-61",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#hometileobject"
+  },
+  {
+    "module": "profile",
+    "signature": "start_time",
+    "local_id": "propriete-sans-ancre-profile-19",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#rule-object"
+  },
+  {
+    "module": "profile",
+    "signature": "end_time",
+    "local_id": "propriete-sans-ancre-profile-20",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#rule-object"
+  },
+  {
+    "module": "pvr",
+    "signature": "total bytes int [ro]",
+    "local_id": "propriete-sans-ancre-pvr-50",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#media"
+  }
+]

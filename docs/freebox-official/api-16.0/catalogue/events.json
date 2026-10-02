@@ -1,0 +1,26 @@
+[
+  {
+    "name": "vm_state_changed",
+    "result_object": "VmStateChange",
+    "description": "VM status has changed",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+  },
+  {
+    "name": "vm_disk_task_done",
+    "result_object": "VmDiskTask",
+    "description": "VM disk task done",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+  },
+  {
+    "name": "lan_host_l3addr_reachable",
+    "result_object": "LanHost",
+    "description": "LAN machine had an L3 address (IPv4 or IPv6) become reachable. Usually when a machine appears on the network, or changes IP.",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+  },
+  {
+    "name": "lan_host_l3addr_unreachable",
+    "result_object": "LanHost",
+    "description": "LAN machine had an L3 address (IPv4 or IPv6) become unreachable. Usually when a machine disappears from the network (after a timeout), or changes IP.",
+    "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+  }
+]

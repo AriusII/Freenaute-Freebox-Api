@@ -1,0 +1,491 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+====
+DHCP
+====
+
+With the DHCP API you configure the Freebox dhcp server, and access
+its status.
+
+DHCP Errors
+===========
+
+When attempting to access the DHCP API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+inval                            invalid argument
+inval_netmask                    invalid netmask
+inval_ip_range                   invalid IP range
+inval_ip_range_net               IP range & netmask mismatch
+inval_gw_net                     gateway & netmask mismatch
+exist                            already exists
+nodev                            no such device
+noent                            no such entry
+netdown                          network is down
+busy                             device or resource busy
+======================           ======================
+
+DHCP Config Object
+==================
+
+DHCP config has the following attributes:
+
+.. json:object:: DhcpConfig
+
+   .. json:property:: enabled bool
+
+      Enable/Disable the DHCP server
+
+   .. json:property:: sticky_assign bool
+
+      Always assign the same IP to a given host
+
+   .. json:property:: gateway string [ro]
+
+      Gateway IP address
+
+   .. json:property:: netmask string [ro]
+
+      Gateway subnet netmask
+
+   .. json:property:: ip_range_start string
+
+      DHCP range start IP
+
+   .. json:property:: ip_range_end string
+
+      DHCP range end IP
+
+   .. json:property:: always_broadcast bool
+
+      Always broadcast DHCP responses
+
+   .. json:property:: dns string[]
+
+      List of dns servers to include in DHCP reply
+
+
+DHCP Configuration API
+======================
+
+Get the current DHCP configuration
+----------------------------------
+
+.. http:get:: /api/v4/dhcp/config/
+
+   Returns the current :json:object:`DhcpConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/dhcp/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "gateway": "192.168.1.254",
+              "sticky_assign": true,
+              "ip_range_end": "192.168.1.50",
+              "netmask": "255.255.255.0",
+              "dns": [
+                  "192.168.1.254",
+                  "",
+                  "",
+                  "",
+                  ""
+              ],
+              "always_broadcast": false,
+              "ip_range_start": "192.168.1.2"
+          }
+      }
+
+Update the current DHCP configuration
+-------------------------------------
+
+.. http:put:: /api/v4/dhcp/config/
+
+   Update the current :json:object:`DhcpConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/dhcp/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "enabled": false,
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "gateway": "192.168.1.254",
+              "sticky_assign": true,
+              "ip_range_end": "192.168.1.50",
+              "netmask": "255.255.255.0",
+              "dns": [
+                  "192.168.1.254",
+                  "",
+                  "",
+                  "",
+                  ""
+              ],
+              "always_broadcast": false,
+              "ip_range_start": "192.168.1.2"
+          }
+      }
+
+DHCP Static Lease Object
+========================
+
+   DHCP static lease have the following attributes
+
+.. json:object:: DhcpStaticLease
+
+   .. json:property:: id string
+
+      DHCP static lease object id
+
+   .. json:property:: mac string
+
+      Host mac address
+
+   .. json:property:: comment string
+
+      an optional comment
+
+   .. json:property:: hostname string [ro]
+
+      hostname matching the mac address
+
+   .. json:property:: ip string
+
+      IPv4 to assign to the host
+
+   .. json:property:: host LanHost [ro]
+
+      LAN host information from LAN browser (refer to
+      :json:object:`LanHost` documentation)
+
+DHCP Static Lease API
+=====================
+
+Get the list of DHCP static leases
+----------------------------------
+
+   You can get the list of :json:object:`DhcpStaticLease` using this
+   API
+
+.. http:get:: /api/v4/dhcp/static_lease/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/dhcp/static_lease/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "mac": "00:DE:AD:B0:0B:55",
+                  "comment": "",
+                  "hostname": "Pc de r0ro",
+                  "id": "00:DE:AD:B0:0B:55",
+                  "host": {
+                     [ ... ]
+                  },
+                  "ip": "192.168.1.1"
+              },
+              {
+                  "mac": "00:DE:AD:B0:0B:69",
+                  "comment": "",
+                  "hostname": "Imprimante",
+                  "id": "00:DE:AD:B0:0B:69",
+                  "host": {
+                     [ ... ]
+                  },
+                  "ip": "192.168.1.2"
+              }
+          ]
+      }
+
+Get a given DHCP static lease
+-----------------------------
+
+   You can get a specific :json:object:`DhcpStaticLease` with its id
+
+.. http:get:: /api/v4/dhcp/static_lease/{id}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/dhcp/static_lease/00:DE:AD:B0:0B:55 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+               "mac": "00:DE:AD:B0:0B:55",
+               "comment": "",
+               "hostname": "Pc de r0ro",
+               "id": "00:DE:AD:B0:0B:55",
+               "host": {
+                  [ ... ]
+               },
+               "ip": "192.168.1.1"
+           }
+      }
+
+
+Update DHCP static lease
+------------------------
+
+   You can update a :json:object:`DhcpStaticLease` with this method
+
+.. http:put:: /api/v4/dhcp/static_lease/{id}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/dhcp/static_lease/00:DE:AD:B0:0B:55 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+        "comment": "Mon PC"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+               "mac": "00:DE:AD:B0:0B:55",
+               "comment": "Mon PC",
+               "hostname": "Pc de r0ro",
+               "id": "00:DE:AD:B0:0B:55",
+               "host": {
+                  [ ... ]
+               },
+               "ip": "192.168.1.1"
+           }
+      }
+
+Delete a DHCP static lease
+--------------------------
+
+   Deletes the :json:object:`DhcpStaticLease` with this id
+
+.. http:delete:: /api/v4/dhcp/static_lease/{id}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/dhcp/static_lease/00:DE:AD:B0:0B:55 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+      }
+
+
+Add a DHCP static lease
+-----------------------
+
+.. http:post:: /api/v4/dhcp/static_lease/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/dhcp/static_lease/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "ip": "192.168.1.222",
+         "mac": "00:00:00:11:11:11"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "mac": "00:00:00:11:11:11",
+              "comment": "",
+              "hostname": "00:00:00:11:11:11",
+              "id": "00:00:00:11:11:11",
+              "ip": "192.168.1.222"
+          }
+      }
+
+DHCP Dynamic Lease Object
+=========================
+
+   DHCP dynamic lease have the following attributes
+
+.. json:object:: DhcpDynamicLease
+
+   .. json:property:: mac string [ro]
+
+      Host mac address
+
+   .. json:property:: hostname string [ro]
+
+      hostname matching the mac address
+
+   .. json:property:: ip string [ro]
+
+      IPv4 assigned to the host
+
+   .. json:property:: lease_remaining int [ro]
+
+      time left before lease needs to be refreshed
+
+   .. json:property:: assign_time timestamp [ro]
+
+      timestamp of the lease first assignment
+
+   .. json:property:: refresh_time timestamp [ro]
+
+      timestamp of the last lease refresh
+
+   .. json:property:: is_static bool [ro]
+
+      is the lease static
+
+   .. json:property:: host LanHost [ro]
+
+      LAN host information from LAN browser (refer to
+      :json:object:`LanHost` documentation)
+
+
+Get the list of DHCP dynamic leases
+-----------------------------------
+
+   You can get the list of :json:object:`DhcpDynamicLease` using this
+   API
+
+.. http:get:: /api/v4/dhcp/dynamic_lease/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/dhcp/dynamic_lease/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "mac": "13:37:00:00:01:03",
+                  "host": { … },
+                  "refresh_time": 1364494443,
+                  "hostname": "iPhone r0ro",
+                  "assign_time": 1364494443,
+                  "lease_remaining": 42971,
+                  "is_static": false,
+                  "ip": "192.168.1.21"
+              },
+              {
+                  "mac": "13:37:00:00:01:02",
+                  "host": { … },
+                  "refresh_time": 1364493208,
+                  "hostname": "android r0ro",
+                  "assign_time": 1364482955,
+                  "lease_remaining": 41736,
+                  "is_static": false,
+                  "ip": "192.168.1.22"
+              }
+          ]
+      }
+
+..  LocalWords:  inval netmask ip gw nodev noent netdown DhcpConfig
+..  LocalWords:  DhcpStaticLease ipv LanHost lan Pc de Imprimante
+..  LocalWords:  DhcpDynamicLease

@@ -1,0 +1,293 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>UPnP IGD &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="LCD" href="../lcd/" />
+    <link rel="prev" title="NAT" href="../nat/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="upnp-igd">
+<h1>UPnP IGD<a class="headerlink" href="#upnp-igd" title="Permalink to this headline">¶</a></h1>
+<p>The UPnP IGD API allow you to control the settings of the Universal
+Plug n&#8217; Play Internet Gateway Device service.  This service allow
+hosts on your local network to manage nat redirections.</p>
+<div class="section" id="upnp-igd-errors">
+<h2>UPnP IGD Errors<a class="headerlink" href="#upnp-igd-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the UPnP IGD API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disabled</td>
+<td>the service is disabled</td>
+</tr>
+<tr class="row-odd"><td>noent</td>
+<td>invalid rule id</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="upnp-igd-config">
+<h2>UPnP IGD Config<a class="headerlink" href="#upnp-igd-config" title="Permalink to this headline">¶</a></h2>
+<p>UPnPIGDConfig has the following attributes:</p>
+<dl class="object">
+<dt id="UPnPIGDConfig">
+<code class="descname">UPnPIGDConfig</code><a class="headerlink" href="#UPnPIGDConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="UPnPIGDConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#UPnPIGDConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the UPnP IGD service enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPIGDConfig.version">
+<code class="descname">version</code><span> </span>int<a class="headerlink" href="#UPnPIGDConfig.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>UPnP IGD protocol version
+Supported values are 1 / 2</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="upnp-igd-config-api">
+<h2>UPnP IGD config API<a class="headerlink" href="#upnp-igd-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-upnp-igd-configuration">
+<h3>Get the current UPnP IGD configuration<a class="headerlink" href="#get-the-current-upnp-igd-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-upnpigd-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/upnpigd/config/</code><a class="headerlink" href="#get--api-v4-upnpigd-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#UPnPIGDConfig" title="UPnPIGDConfig"><code class="xref json json-object docutils literal"><span class="pre">UPnPIGDConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/upnpigd/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-upnp-igd-configuration">
+<h3>Update the UPnP IGD configuration<a class="headerlink" href="#update-the-upnp-igd-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-upnpigd-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/upnpigd/config/</code><a class="headerlink" href="#put--api-v4-upnpigd-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#UPnPIGDConfig" title="UPnPIGDConfig"><code class="xref json json-object docutils literal"><span class="pre">UPnPIGDConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/upnpigd/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="upnp-igd-redirection">
+<h2>UPnP IGD Redirection<a class="headerlink" href="#upnp-igd-redirection" title="Permalink to this headline">¶</a></h2>
+<p>UPnPRedir has the following attributes:</p>
+<dl class="object">
+<dt id="UPnPRedir">
+<code class="descname">UPnPRedir</code><a class="headerlink" href="#UPnPRedir" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="UPnPRedir.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>the redirection id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.enabled">
+<code class="descname">enabled</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the redirection enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.ext_src_ip">
+<code class="descname">ext_src_ip</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.ext_src_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>source IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.ext_port">
+<code class="descname">ext_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.ext_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>external port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.int_ip">
+<code class="descname">int_ip</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.int_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>the target IP on your LAN</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.int_port">
+<code class="descname">int_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.int_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>the target port on your LAN</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.proto">
+<code class="descname">proto</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.proto" title="Permalink to this definition">¶</a></dt>
+<dd><p>the IP protocol to redirect</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.desc">
+<code class="descname">desc</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>a description</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.remaining">
+<code class="descname">remaining</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.remaining" title="Permalink to this definition">¶</a></dt>
+<dd><p>seconds remaining before redirection expire</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="UPnPRedir.host">
+<code class="descname">host</code><span> </span><a class="reference internal" href="../lan/#LanHost" title="LanHost">LanHost</a><em class="property"> Read-only</em><a class="headerlink" href="#UPnPRedir.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>lan host if available</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="upnp-igd-redirection-api">
+<h2>UPnP IGD Redirection API<a class="headerlink" href="#upnp-igd-redirection-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-current-redirection">
+<h3>Get the list of current redirection<a class="headerlink" href="#get-the-list-of-current-redirection" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-upnpigd-redir-">
+<code class="descname">GET </code><code class="descname">/api/v4/upnpigd/redir/</code><a class="headerlink" href="#get--api-v4-upnpigd-redir-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#UPnPRedir" title="UPnPRedir"><code class="xref json json-object docutils literal"><span class="pre">UPnPRedir</span></code></a> redirections</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/upnpigd/redir/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;proto&quot;</span><span class="o">:</span> <span class="s2">&quot;udp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0-53644-udp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;iC53644&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;remaining&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;ext_src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;int_port&quot;</span><span class="o">:</span> <span class="mi">16402</span><span class="p">,</span>
+            <span class="s2">&quot;int_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.44&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ext_port&quot;</span><span class="o">:</span> <span class="mi">53644</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-redirection">
+<h3>Delete a redirection<a class="headerlink" href="#delete-a-redirection" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-upnpigd-redir-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/upnpigd/redir/{id}</code><a class="headerlink" href="#delete--api-v4-upnpigd-redir-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the given <a class="reference internal" href="#UPnPRedir" title="UPnPRedir"><code class="xref json json-object docutils literal"><span class="pre">UPnPRedir</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/upnpigd/redir/0.0.0.0-53644-udp</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,378 @@
+[
+  {
+    "module": "00_index",
+    "id": null,
+    "kind": "table_row",
+    "table_property_id": "discovery-using-mdns",
+    "row_first_cell": "device_type",
+    "operation_scope": [
+      "mDNS TXT record _fbx-api._tcp",
+      "GET /api_version discovery response"
+    ],
+    "reason": "Le tableau des clés du TXT mDNS indique explicitement « (DEPRECATED: use box_model) ».",
+    "replacement": "box_model",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-mdns",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [],
+    "do_not_match": [
+      "device_type dans POST /register de l'API Notification : il désigne le fournisseur de push et n'est pas le champ de découverte."
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "download",
+    "id": "DownloadFile.path",
+    "kind": "property",
+    "property_name": "path",
+    "object": "DownloadFile",
+    "operation_scope": [
+      "GET /api/v8/downloads/{task_id}/files"
+    ],
+    "reason": "La propriété est marquée « [ DEPRECATED ] » dans la référence courante; le changelog 1.1 vers 2.0 dit aussi de déprécier path pour DownloadFile.",
+    "replacement": "DownloadFile.filepath",
+    "replacement_confidence": "strong_inference: filepath est introduit dans le même changement et décrit comme le chemin complet; la phrase de dépréciation ne formule pas elle-même « use filepath ».",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile.path",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#download-api-changes",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-files",
+        "remove_response_field": "DownloadFile.path",
+        "keep": "DownloadFile.filepath"
+      }
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "rrd",
+    "id": null,
+    "kind": "table_row",
+    "table_property_id": "rrd-temp-db",
+    "row_first_cell": "temp1",
+    "operation_scope": [
+      "POST /api/v8/rrd/ with db=temp",
+      "GET /api/v8/rrd/ with db=temp"
+    ],
+    "reason": "La ligne de la table temp indique « [DEPRECATED, use cpum] ».",
+    "replacement": "cpum",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#rrd-temp-db",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#rrd-api-changes",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-rrd-",
+        "replace_request_and_response_field": "temp1",
+        "with": "cpum"
+      }
+    ],
+    "do_not_exclude": [
+      "POST /api/v8/rrd/",
+      "GET /api/v8/rrd/",
+      "Le seul label UNSTABLE de l'API RRD n'est pas un motif d'exclusion."
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "rrd",
+    "id": null,
+    "kind": "table_row",
+    "table_property_id": "rrd-temp-db",
+    "row_first_cell": "temp2",
+    "operation_scope": [
+      "POST /api/v8/rrd/ with db=temp",
+      "GET /api/v8/rrd/ with db=temp"
+    ],
+    "reason": "La ligne de la table temp indique « [DEPRECATED, use cpub] ».",
+    "replacement": "cpub",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#rrd-temp-db",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#rrd-api-changes",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "POST /api/v8/rrd/",
+      "GET /api/v8/rrd/"
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "rrd",
+    "id": null,
+    "kind": "table_row",
+    "table_property_id": "rrd-temp-db",
+    "row_first_cell": "temp3",
+    "operation_scope": [
+      "POST /api/v8/rrd/ with db=temp",
+      "GET /api/v8/rrd/ with db=temp"
+    ],
+    "reason": "La ligne de la table temp indique « [DEPRECATED, use sw] ».",
+    "replacement": "sw",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#rrd-temp-db",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#rrd-api-changes",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "POST /api/v8/rrd/",
+      "GET /api/v8/rrd/"
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "wifi",
+    "id": "WifiBssStatus.is_main_bss",
+    "kind": "property",
+    "property_name": "is_main_bss",
+    "object": "WifiBssStatus",
+    "operation_scope": [
+      "GET /api/v9/wifi/bss/",
+      "GET /api/v9/wifi/bss/{id}",
+      "PUT /api/v9/wifi/bss/{id}"
+    ],
+    "reason": "La propriété porte directement le label Deprecated et sa description indique qu'elle est remplacée par use_shared_params de WifiBss.",
+    "replacement": "WifiBss.use_shared_params",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#WifiBssStatus.is_main_bss",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#changed-api-v5-0",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-",
+        "remove_response_field": "status.is_main_bss"
+      },
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-id",
+        "remove_response_field": "status.is_main_bss"
+      },
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-bss-id",
+        "remove_response_field": "status.is_main_bss"
+      }
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "wifi",
+    "id": "WifiBssConfig.use_default_config",
+    "kind": "property",
+    "property_name": "use_default_config",
+    "object": "WifiBssConfig",
+    "operation_scope": [
+      "GET /api/v9/wifi/bss/",
+      "GET /api/v9/wifi/bss/{id}",
+      "PUT /api/v9/wifi/bss/{id}"
+    ],
+    "reason": "La propriété porte directement le label Deprecated et sa description indique qu'elle est remplacée par use_shared_params de WifiBss.",
+    "replacement": "WifiBss.use_shared_params",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#WifiBssConfig.use_default_config",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#changed-api-v5-0",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-",
+        "remove_response_field": "config.use_default_config"
+      },
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#get--api-v9-wifi-bss-id",
+        "remove_response_field": "config.use_default_config"
+      },
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#put--api-v9-wifi-bss-id",
+        "remove_request_or_response_field": "config.use_default_config"
+      }
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "system",
+    "id": "system-config-v5-deprecated",
+    "kind": "section",
+    "object": "SystemConfigV5",
+    "section_html_id": "system-config-v5-deprecated",
+    "operation_scope": [
+      "Only the old response schema documented under #old-version-api-v5"
+    ],
+    "reason": "La section porte le titre exact « System Config V5 (DEPRECATED) ». Elle représente un schéma de réponse historique, non l'opération système actuelle.",
+    "replacement": "SystemConfig",
+    "replacement_confidence": "explicit_from_adjacent_current_schema",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#system-config-v5-deprecated",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#old-version-api-v5",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "examples_to_sanitize": [
+      {
+        "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#old-version-api-v5",
+        "remove_entire_example": true,
+        "reason": "Il démontre SystemConfigV5."
+      }
+    ],
+    "do_not_exclude": [
+      "GET /api/v8/system/",
+      "La section #current-version-api-v6",
+      "SystemConfig",
+      "Les champs actuels portant le même nom que des champs de SystemConfigV5"
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "system",
+    "id": "old-version-api-v5",
+    "kind": "section",
+    "object": "SystemConfigV5 example",
+    "section_html_id": "old-version-api-v5",
+    "operation_scope": [
+      "Ancien exemple de réponse de GET /api/v8/system/"
+    ],
+    "reason": "La section est explicitement intitulée « Old version (api < v5) » et ne documente que le schéma SystemConfigV5 déjà marqué DEPRECATED.",
+    "replacement": "Section #current-version-api-v6 et schéma SystemConfig",
+    "replacement_confidence": "explicit_from_adjacent_sections",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#old-version-api-v5",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#current-version-api-v6",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "deprecated_historical_example",
+    "apply": true,
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "GET /api/v8/system/",
+      "La section #current-version-api-v6",
+      "SystemConfig"
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "upload",
+    "id": "file-upload",
+    "kind": "procedure",
+    "procedure": "previous HTTP upload method / API v3",
+    "operation_scope": [
+      "Ancienne procédure HTTP d'envoi de fichier; aucun chemin n'est nommé dans la documentation actuelle."
+    ],
+    "reason": "La section File Upload dit explicitement que la méthode HTTP précédente est dépréciée depuis l'API v4 et prescrit l'API WebSocket. Le changelog v4 confirme la dépréciation de l'ancienne API d'upload.",
+    "replacement": "WebSocket upload via /api/v8/ws/upload; FTP si WebSocket ne peut pas être pris en charge.",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#file-upload",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#deprecated-api-v4",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "explicitly_deprecated",
+    "uncertainty": "Le retrait de l'API v3 était annoncé pour le firmware suivant, sans preuve de retrait datée. L'exclusion de la méthode est certaine, pas la date de sa disparition effective.",
+    "apply": false,
+    "apply_reason": "La procédure HTTP v3 n'est plus décrite comme une opération distincte dans la documentation API 16; cette entrée est une règle logique si elle ressurgit dans une source historique.",
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "GET /api/v8/ws/upload",
+      "Les objets FileUploadStartAction, FileUploadFinalizeAction, FileUploadCancelAction et FileUploadChunkResponse",
+      "GET /api/v8/upload/, GET /api/v8/upload/{id}, DELETE /api/v8/upload/{id}/cancel et DELETE /api/v8/upload/{id}: le changelog dit que le suivi des uploads n'a pas changé."
+    ],
+    "removed_nodes": 0,
+    "result": "absent-from-current-reference"
+  },
+  {
+    "module": "parental_legacy",
+    "id": "deprecated-api-v8-0",
+    "kind": "historical_api_family",
+    "api_family": "Parental control API",
+    "operation_scope": [
+      "Toute ancienne opération Parental control distincte de l'API Profile."
+    ],
+    "reason": "Le changelog v8 affirme que l'API de contrôle parental n'est plus utilisable et qu'elle est remplacée par l'API Profile. La table de permissions marque également parental comme obsolete.",
+    "replacement": "Profile API (/api/v8/profile)",
+    "replacement_confidence": "explicit",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#deprecated-api-v8-0",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#profile-management",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "no_longer_usable",
+    "apply": false,
+    "apply_reason": "La famille Parental historique n'a pas de section de contenu à supprimer dans la documentation API 16; cette règle sert uniquement à rejeter une telle famille si une archive est aussi ingérée.",
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "La section actuelle #parental-filter : elle contient la Profile API actuelle malgré son titre historique.",
+      "GET /api/v8/profile et ses schémas Profile."
+    ],
+    "removed_nodes": 0,
+    "result": "absent-from-current-reference"
+  },
+  {
+    "module": "login",
+    "id": null,
+    "kind": "table_row",
+    "table_property_id": "opening-a-session",
+    "row_first_cell": "parental",
+    "operation_scope": [
+      "Objet permissions renvoyé à l'ouverture de session"
+    ],
+    "reason": "La ligne de la table des permissions d'application dit « Access to parental control (obsolete) ».",
+    "replacement": "profile permission / Profile API, selon l'accès souhaité",
+    "replacement_confidence": "family_replacement_explicit; mapping permission exact not stated",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#opening-a-session",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#deprecated-api-v8-0",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "obsolete",
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "Les autres clés permissions.",
+      "Le champ profile et l'API Profile."
+    ],
+    "removed_nodes": 1
+  },
+  {
+    "module": "connection",
+    "id": "deprecated-api-v10-0",
+    "kind": "historical_api_variant",
+    "api_family": "combined xDSL/4G aggregation connection API",
+    "operation_scope": [
+      "Ancienne variante non nommée qui mélangeait l'état LTE et l'agrégation."
+    ],
+    "reason": "Le changelog v10 dit que cette variante de l'API Connection n'est plus utilisable et qu'elle est remplacée par des endpoints distincts pour LTE et l'agrégation.",
+    "replacement": "GET /api/v11/connection/lte/{id}; GET et PUT /api/v11/connection/aggregation",
+    "replacement_confidence": "explicit_at_family_level",
+    "source_anchor": "http://mafreebox.freebox.fr/doc/index.html#deprecated-api-v10-0",
+    "additional_source_anchor": "http://mafreebox.freebox.fr/doc/index.html#connection-lte-status-unstable",
+    "source_snapshot": "sources/seed/local-doc.html",
+    "status": "no_longer_usable",
+    "apply": false,
+    "apply_reason": "Aucun id ni route de l'ancienne variante combinée n'est présent dans la documentation API 16. La règle est informative et ne doit pas déclencher un filtre de module ou de route.",
+    "uncertainty": "La source ne donne ni nom de route ni id HTML pour l'ancienne variante. La règle ne peut donc supprimer qu'un contenu clairement identifié comme réponse combinée historique; elle ne doit jamais supprimer le module Connection ni les endpoints actuels.",
+    "examples_to_sanitize": [],
+    "do_not_exclude": [
+      "GET /api/v11/connection/",
+      "GET /api/v11/connection/xdsl/",
+      "GET /api/v11/connection/lte/{id}",
+      "GET /api/v11/connection/aggregation",
+      "PUT /api/v11/connection/aggregation",
+      "Le label UNSTABLE des endpoints LTE/xDSL."
+    ],
+    "removed_nodes": 0,
+    "result": "absent-from-current-reference"
+  },
+  {
+    "module": "parental_legacy_archive",
+    "id": "ParentalFilter.ip",
+    "kind": "property",
+    "property_name": "ip",
+    "object": "ParentalFilter",
+    "operation_scope": [
+      "Ancienne API publique /api/v4/parental/filter/"
+    ],
+    "reason": "La source Sphinx officielle publique parental.txt porte [DEPRECATED] et précise que le champ n'est rempli que pour les anciennes règles, sans possibilité de créer une règle par IP. Cette API est ensuite déclarée non utilisable par le changelog v8 de la référence embarquée.",
+    "replacement": null,
+    "replacement_confidence": "not_documented",
+    "source_anchor": "https://dev.freebox.fr/sdk/os/parental/#ParentalFilter.ip",
+    "additional_source_anchor": "https://dev.freebox.fr/sdk/os/_sources/parental.txt",
+    "status": "explicitly_deprecated_archive_only",
+    "apply": false,
+    "apply_reason": "Cette propriété est absente de la documentation embarquée API 16. La règle ne s'applique que lorsqu'une archive publique v4 est intégrée au corpus.",
+    "uncertainty": "La marque est présente dans la source Sphinx mais perdue dans le rendu HTML public. Cette règle est utile lorsqu'un générateur ingère l'archive v4; elle ne concerne pas la documentation embarquée API 16, où toute la famille Parental est déjà retirée.",
+    "removed_nodes": 0,
+    "result": "absent-from-current-reference"
+  }
+]

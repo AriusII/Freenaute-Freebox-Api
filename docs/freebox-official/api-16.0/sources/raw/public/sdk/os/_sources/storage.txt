@@ -1,0 +1,768 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+======================
+Storage API [UNSTABLE]
+======================
+
+This API allows you to manage the Freebox internal disk and disks
+connected to the Freebox
+
+This API is unstable, it can be modified without notice in next
+releases.
+
+Storage API Errors
+==================
+
+When attempting to access this API, you may encounter the following
+errors:
+
+======================           ================================
+error_code                       Description
+======================           ================================
+not_found                        No disk/partition with this id
+invalid_disk                     No such disk
+is_a_partition                   This is not a disk but a partition
+is_internal                      This action is not permitted on internal disk
+op_not_supported                 Operation not supported
+op_failed                        Operation failed
+disk_busy                        Disk is busy
+======================           ================================
+
+Disk Partition object
+=====================
+
+Operation progress has the following attributes:
+
+.. json:object:: OperationProgress
+
+   .. json:property:: done_steps int [ro]
+
+      number of steps done
+
+   .. json:property:: max_steps int [ro]
+
+      total number of steps
+
+   .. json:property:: percent int [ro]
+
+      current step progress
+
+Disk partitions have the following attributes:
+
+.. json:object:: DiskPartition
+
+   .. json:property:: id int [ro]
+
+      unique partition id
+
+   .. json:property:: disk_id int [ro]
+
+      related disk id
+
+   .. json:property:: state enum
+
+      ======================           ================================
+      state                            Description
+      ======================           ================================
+      error                            Partition has error
+      checking                         Partition check in progress
+      formatting                       Partition format in progress
+      mounting                         Partition mount in progress
+      maintenance                      Partition is in maintenance mode
+      mounted                          Partition is ready
+      umounting                        Partition umount in progress
+      umounted                         Partition is umounted
+      ejecting                         Partition ejection in progress
+      ======================           ================================
+
+   .. json:property:: fstype enum [ro]
+
+      ====================== ==
+      fstype
+      ====================== ==
+      empty
+      unknown
+      xfs
+      ext4
+      vfat
+      ntf
+      hf
+      hfsplus
+      swap
+      exfat
+      ====================== ==
+
+   .. json:property:: label string
+
+      partition name
+
+   .. json:property:: path string [ro]
+
+      partition mount point (encoded in base64 as explained in fs API)
+
+   .. json:property:: total_bytes int [ro]
+
+      partition size (in bytes)
+
+   .. json:property:: used_bytes int [ro]
+
+      partition used space (in bytes)
+
+   .. json:property:: free_bytes int [ro]
+
+      partition free space (in bytes)
+
+   .. json:property:: fsck_result enum [ro]
+
+      fsck result
+
+      ======================           ================================
+      state                            Description
+      ======================           ================================
+      no_run_yet                       Partition has not been checked yet
+      running                          Check is in progress
+      fs_clean                         File system is ok
+      fs_corrected                     File system was corrected
+      fs_needs_correction              File system need correction
+      failed                           File system has unrecoverable error
+      ======================           ================================
+
+   .. json:property:: operation_pct OperationProgress [ro]
+
+      partition operation progress
+
+Storage Disk object
+===================
+
+Storage disks have the following attributes:
+
+.. json:object:: StorageDisk
+
+   .. json:property:: id int [ro]
+
+      the disk id
+
+   .. json:property:: type enum [ro]
+
+      ======================           ================================
+      type                             Description
+      ======================           ================================
+      internal                         Freebox internal disk
+      usb                              usb disk
+      sata                             sata disk
+      ======================           ================================
+
+   .. json:property:: state enum
+
+      ======================           ================================
+      state                            Description
+      ======================           ================================
+      error                            Disk has error
+      disabled                         Disk is disabled
+      enabled                          Disk is enabled
+      formatting                       Disk is formatting
+      ======================           ================================
+
+   .. json:property:: connector int [ro]
+
+      Disk physical connector id
+
+   .. json:property:: total_bytes int [ro]
+
+      Disk size (in bytes)
+
+   .. json:property:: table_type int [ro]
+
+      ====================== ==
+      table_type
+      ====================== ==
+      msdos
+      gpt
+      superfloppy
+      empty
+      ====================== ==
+
+   .. json:property:: model string [ro]
+
+      Disk model
+
+   .. json:property:: serial string [ro]
+
+      Disk serial number
+
+   .. json:property:: firmware string [ro]
+
+      Disk firmware version
+
+   .. json:property:: temp int [ro]
+
+      Disk temperature (when supported) in °C
+
+   .. json:property:: operation_pct OperationProgress [ro]
+
+      partition operation progress
+
+   .. json:property:: partitions DiskPartition[] [ro]
+
+      list of disk partitions
+
+   .. json:property:: idle bool [ro]
+
+      is disk idle (when available)
+
+   .. json:property:: idle_duration int [ro]
+
+      disk idle duration (in seconds) (when available)
+
+   .. json:property:: spinning bool [ro]
+
+      is disk spinning (when available)
+
+   .. json:property:: active_duration int [ro]
+
+      disk activity duration (in seconds) (when available)
+
+   .. json:property:: time_before_spindown int [ro]
+
+      seconds left before disk spin down (in seconds) (when available)
+
+Storage Disk API
+================
+
+Get the list of disks
+---------------------
+
+.. http:get:: /api/v4/storage/disk/
+
+   Returns the collection of all :json:object:`StorageDisk`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/storage/disk/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "idle_duration": 368,
+                  "spinning": true,
+                  "table_type": "msdos",
+                  "firmware": "PB2ICC0E",
+                  "type": "internal",
+                  "idle": true,
+                  "connector": 0,
+                  "id": 1,
+                  "state": "enabled",
+                  "time_before_spindown": 232,
+                  "total_bytes": 250059350016,
+                  "model": "Hitachi HCC545025B9A300",
+                  "active_duration": 0,
+                  "temp": 51,
+                  "serial": "GSCH35VC",
+                  "partitions": [
+                      {
+                          "fstype": "ext4",
+                          "total_bytes": 245091500032,
+                          "label": "Disque dur",
+                          "id": 3,
+                          "fsck_result": "no_run_yet",
+                          "state": "mounted",
+                          "disk_id": 1,
+                          "free_bytes": 68120969216,
+                          "used_bytes": 164520534016,
+                          "path": "L0Rpc3F1ZSBkdXI="
+                      }
+                  ]
+              },
+              {
+                  "type": "usb",
+                  "total_bytes": 125435904,
+                  "connector": 1,
+                  "id": 1001,
+                  "active_duration": 0,
+                  "partitions": [
+                      {
+                          "fstype": "ext4",
+                          "total_bytes": 121418752,
+                          "label": "Disque 1",
+                          "id": 1002,
+                          "fsck_result": "no_run_yet",
+                          "state": "mounted",
+                          "disk_id": 1001,
+                          "free_bytes": 108904448,
+                          "used_bytes": 6245376,
+                          "path": "L0Rpc3F1ZSAx"
+                      }
+                  ],
+                  "idle_duration": 0,
+                  "state": "enabled",
+                  "idle": false,
+                  "spinning": false,
+                  "model": "",
+                  "table_type": "gpt",
+                  "temp": 0,
+                  "serial": "",
+                  "firmware": ""
+              }
+          ]
+      }
+
+Get a given disk info
+---------------------
+
+.. http:get:: /api/v4/storage/disk/{id}
+
+   Returns the :json:object:`StorageDisk` with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/storage/disk/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "idle_duration": 464,
+              "spinning": true,
+              "table_type": "msdos",
+              "firmware": "PB2ICC0E",
+              "type": "internal",
+              "idle": true,
+              "connector": 0,
+              "id": 1,
+              "state": "enabled",
+              "time_before_spindown": 136,
+              "total_bytes": 250059350016,
+              "model": "Hitachi HCC545025B9A300",
+              "active_duration": 0,
+              "temp": 51,
+              "serial": "GSCH35VC",
+              "partitions": [
+                  {
+                      "fstype": "ext4",
+                      "total_bytes": 245091500032,
+                      "label": "Disque dur",
+                      "id": 3,
+                      "fsck_result": "no_run_yet",
+                      "state": "mounted",
+                      "disk_id": 1,
+                      "free_bytes": 68120969216,
+                      "used_bytes": 164520534016,
+                      "path": "L0Rpc3F1ZSBkdXI="
+                  }
+              ]
+          }
+      }
+
+Update a disk state
+-------------------
+
+.. http:put:: /api/v4/storage/disk/{id}
+
+   Enable/Disable a disk
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/storage/disk/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "state": "disabled"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "type": "usb",
+              "total_bytes": 125435904,
+              "connector": 1,
+              "id": 1001,
+              "active_duration": 0,
+              "partitions": [
+                  {
+                      "fstype": "ext4",
+                      "total_bytes": 121418752,
+                      "label": "Disque 1",
+                      "id": 1002,
+                      "fsck_result": "no_run_yet",
+                      "state": "umounted",
+                      "disk_id": 1001,
+                      "free_bytes": 108904448,
+                      "used_bytes": 6245376,
+                      "path": "L0Rpc3F1ZSAx"
+                  }
+              ],
+              "idle_duration": 0,
+              "state": "disabled",
+              "idle": false,
+              "spinning": false,
+              "model": "",
+              "table_type": "gpt",
+              "temp": 0,
+              "serial": "",
+              "firmware": ""
+          }
+      }
+
+Format a disk
+-------------
+
+.. http:put:: /api/v4/storage/disk/{id}/format/
+
+   Format the disk with the given id
+
+   To be able to format a disk you need to provide the following
+   parameters (JSON encoded).  There will be one partition using all
+   the available space on disk. All previous data will be lost.
+
+   This parameters will be ignored if you format the Freebox internal
+   disk
+
+   :param string table_type:        The partition table format
+   :param string fs_type:           The partition type
+   :param string label:             The partition label
+
+   NOTE: once started you can monitor the format process getting the
+   disk information (see :json:object:`StorageDisk` operation_pct
+   field)
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/fs/storage/disk/1001/format HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "label": "freebox",
+         "fs_type": "vfat",
+         "table_type": "msdos"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Storage Partition API
+=====================
+
+Get the list of partitions
+--------------------------
+
+.. http:get:: /api/v4/storage/partition/
+
+   Returns the collection of all :json:object:`DiskPartition`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/storage/partition/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "fstype": "ext4",
+                  "total_bytes": 245091500032,
+                  "label": "Disque dur",
+                  "id": 3,
+                  "fsck_result": "no_run_yet",
+                  "state": "umounted",
+                  "disk_id": 1,
+                  "free_bytes": 68120969216,
+                  "used_bytes": 164520534016,
+                  "path": "L0Rpc3F1ZSBkdXI="
+              },
+              {
+                  "fstype": "vfat",
+                  "total_bytes": 123485184,
+                  "label": "freebox",
+                  "id": 1002,
+                  "fsck_result": "no_run_yet",
+                  "state": "mounted",
+                  "disk_id": 1001,
+                  "free_bytes": 123484672,
+                  "used_bytes": 512,
+                  "path": "L2ZyZWVib3g="
+              }
+          ]
+      }
+
+Get a given partition info
+--------------------------
+
+.. http:get:: /api/v4/storage/partition/{id}
+
+   Returns the :json:object:`DiskPartition` with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/storage/partition/1002 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "fstype": "vfat",
+              "total_bytes": 123485184,
+              "label": "freebox",
+              "id": 1002,
+              "fsck_result": "no_run_yet",
+              "state": "mounted",
+              "disk_id": 1001,
+              "free_bytes": 123484672,
+              "used_bytes": 512,
+              "path": "L2ZyZWVib3g="
+          }
+      }
+
+
+Update a partition state
+------------------------
+
+.. http:put:: /api/v4/storage/partition/{id}
+
+   Enable/Disable a partition
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/storage/partition/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "state" : "umounted"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "fstype": "vfat",
+              "total_bytes": 123485184,
+              "label": "freebox",
+              "id": 1002,
+              "fsck_result": "no_run_yet",
+              "state": "umounted",
+              "disk_id": 1001,
+              "free_bytes": 123484672,
+              "used_bytes": 512,
+              "path": "L2ZyZWVib3g="
+          }
+      }
+
+Check a partition
+-----------------
+
+.. http:put:: /api/v4/storage/partition/{id}/check/
+
+   Checks the partition with the given id
+
+   To be able to check a partition you need to provide the following
+   parameters (JSON encoded):
+
+   :param enum checkmode: 'ro' for read only check, 'rw' to attempt to
+                           repair errors
+
+   NOTE: once started you can monitor the fsck process getting the
+   partition information (see :json:object:`DiskPartition`
+   operation_pct field)
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/fs/storage/partition/1002/check HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "checkmode": "ro"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Storage Config
+==============
+
+StorageConfig has the following attributes:
+
+.. json:object:: StorageConfig
+
+   .. json:property:: external_pm_enabled bool
+
+       enable/disable external disk power management
+
+   .. json:property:: external_pm_idle_before_spindown int
+
+       idle time in minutes to wait before spinning down an external disk
+
+
+
+Storage config API
+==================
+
+Get the current storage configuration
+-------------------------------------
+
+.. http:get:: /api/v4/storage/config/
+
+   Get the :json:object:`StorageConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/storage/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+        "success": true,
+        "result": {
+           "external_pm_idle_before_spindown": 10,
+           "external_pm_enabled": true
+        }
+      }
+
+Update the External Storage configuration
+-----------------------------------------
+
+.. http:put:: /api/v4/storage/config/
+
+   Update the :json:object:`StorageConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/storage/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "external_pm_enabled": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "external_pm_idle_before_spindown": 10,
+              "external_pm_enabled": false
+          }
+      }
+
+..  LocalWords:  OperationProgress DiskPartition umounting umount xfs
+..  LocalWords:  umounted fstype vfat ntf hfsplus fs fsck ok usb sata
+..  LocalWords:  StorageDisk msdos gpt superfloppy spindown HCC GSCH
+..  LocalWords:  VC ZSBkdXI ZSAx ZyZWVib checkmode rw

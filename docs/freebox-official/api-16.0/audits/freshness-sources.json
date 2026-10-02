@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "audit_name": "Freebox Server API freshness assessment",
+  "checked_at_utc": "2026-10-02T17:12:10.3387095Z",
+  "scope": {
+    "network_access": "Public official sources only; no authenticated request and no mutation.",
+    "runtime_source": "A non-sensitive, locally captured embedded-documentation snapshot supplied by the parent orchestrator.",
+    "excluded_from_record": [
+      "Freebox UID",
+      "API domain",
+      "network addresses",
+      "tokens",
+      "credentials"
+    ]
+  },
+  "public_official_sources": [
+    {
+      "url": "https://dev.freebox.fr/sdk/",
+      "request": "HTTPS HEAD and GET",
+      "http_status": 200,
+      "last_modified": "Mon, 20 Jul 2020 17:22:10 GMT",
+      "role": "Historical SDK index",
+      "reference_status": "historical_only"
+    },
+    {
+      "url": "https://dev.freebox.fr/sdk/server.html",
+      "request": "HTTPS HEAD and GET",
+      "http_status": 200,
+      "last_modified": "Mon, 20 Jul 2020 17:22:10 GMT",
+      "links_to": "https://dev.freebox.fr/sdk/os/",
+      "role": "Historical Freebox Server SDK landing page",
+      "reference_status": "historical_only"
+    },
+    {
+      "url": "https://dev.freebox.fr/sdk/os/",
+      "request": "HTTPS HEAD and GET",
+      "http_status": 200,
+      "last_modified": "Tue, 28 Mar 2017 14:13:34 GMT",
+      "page_title": "Developper API Documentation — FreeboxOS Gateway api 9ba63963 documentation",
+      "declared_api_version": "4.0",
+      "role": "Public legacy documentation",
+      "reference_status": "excluded_from_current_reference",
+      "reason": "Its own declared API version conflicts with the current target snapshot (16.0)."
+    },
+    {
+      "url": "https://dev.freebox.fr/sdk/os/_sources/index.txt",
+      "request": "HTTPS HEAD and GET",
+      "http_status": 200,
+      "last_modified": "Tue, 28 Mar 2017 14:13:34 GMT",
+      "role": "Public Sphinx source for the static legacy page",
+      "reference_status": "historical_only"
+    },
+    {
+      "url": "https://dev.freebox.fr/blog/?p=1321",
+      "published_at": "2013-06-27T13:42:00+02:00",
+      "role": "Official announcement that the API documentation is available on the Freebox Server and replicated on dev.freebox.fr",
+      "reference_status": "source-provenance"
+    },
+    {
+      "url": "https://dev.freebox.fr/blog/?p=22529",
+      "published_at": "2026-09-16T13:52:00+02:00",
+      "announced_firmware": "4.13.0",
+      "role": "Official evidence that Freebox Server firmware continued to change after the public v4.0 documentation",
+      "reference_status": "freshness-context-only",
+      "does_not_establish": "Firmware running on the inspected target"
+    }
+  ],
+  "embedded_runtime_documentation": {
+    "source_path": "sources/seed/local-doc.html",
+    "bytes": 1816775,
+    "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+    "page_title": "FreeboxOS Gateway api b'c1fd8795' documentation",
+    "declared_api_version": "16.0",
+    "discovery_api_version_observed_by_parent": "16.0",
+    "reference_status": "primary_for_this_runtime_snapshot",
+    "consistency": "confirmed"
+  },
+  "documentation_policy_observed_in_embedded_source": {
+    "unstable": "May change or disappear at any time.",
+    "undocumented": "Must not be used.",
+    "other_documented_api": "Maintained for at least one Freebox release."
+  },
+  "primary_reference_decision": {
+    "current_contract": "Embedded documentation that matches the target discovery version.",
+    "historical_context": "Public dev.freebox.fr SDK pages, labelled historical.",
+    "third_party_libraries": "Excluded from the primary reference; they may not introduce endpoints or specifications."
+  },
+  "versioned_example_handling": {
+    "discovery": "Builds a candidate current-version base URL using the discovered API major (v16 in this snapshot).",
+    "literal_documentation": "Retain literal legacy signatures and examples such as /api/v5, /api/v6, and /api/v8; do not mechanically rewrite them to /api/v16.",
+    "reason": "The v16 monolithic documentation retains version history and old examples; a textual occurrence is not a compatibility test."
+  },
+  "cross_reference_handling": {
+    "rule": "A missing or broken Sphinx cross-reference must be reported as such; it must not be used to infer an undocumented endpoint, type, or compatibility guarantee."
+  },
+  "freshness_claim": {
+    "allowed": "Current for the inspected Freebox target at the capture date, API 16.0, after collecting all embedded documentation and applying the explicit-deprecation filter.",
+    "not_allowed": [
+      "Current for every Freebox model or firmware without target-specific validation.",
+      "Current merely because an endpoint appeared in the public v4.0 documentation.",
+      "Guaranteed stable when the embedded documentation marks the API unstable."
+    ]
+  },
+  "revalidation_trigger": [
+    "A discovered API-version change.",
+    "A Freebox firmware update.",
+    "A new model or target being added to scope.",
+    "A documentation-root hash or displayed build identifier change."
+  ]
+}

@@ -1,0 +1,470 @@
+{
+  "module": {
+    "module": "download_feeds",
+    "title": "Download Feeds",
+    "category": "fichiers-telechargements",
+    "path": "docs/reference/fichiers-telechargements/download_feeds.md",
+    "http_signatures": 11,
+    "objects": 2,
+    "properties": 25,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#download-feeds",
+    "source_pre_blocks": 35,
+    "markdown_code_blocks": 35,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "download_feeds",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/feeds/",
+      "path_template": "/api/v{major}/downloads/feeds/",
+      "documented_major": 8,
+      "title": "Get the list of all download Feeds",
+      "id": "get--api-v8-downloads-feeds-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-feeds-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#get--api-v8-downloads-feeds-",
+      "referenced_objects": [
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-feeds-"
+    },
+    {
+      "module": "download_feeds",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/feeds/{id}",
+      "path_template": "/api/v{major}/downloads/feeds/{id}",
+      "documented_major": 8,
+      "title": "Get a download Feed",
+      "id": "get--api-v8-downloads-feeds-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-feeds-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#get--api-v8-downloads-feeds-id",
+      "referenced_objects": [
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-feeds-id"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/",
+      "path_template": "/api/v{major}/downloads/feeds/",
+      "documented_major": 8,
+      "title": "Add a Download Feed",
+      "id": "post--api-v8-downloads-feeds-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#post--api-v8-downloads-feeds-",
+      "referenced_objects": [
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-feeds-"
+    },
+    {
+      "module": "download_feeds",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/feeds/{id}",
+      "path_template": "/api/v{major}/downloads/feeds/{id}",
+      "documented_major": 8,
+      "title": "Delete Download Feed",
+      "id": "delete--api-v8-downloads-feeds-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-feeds-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#delete--api-v8-downloads-feeds-id",
+      "referenced_objects": [
+        "Download",
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-downloads-feeds-id"
+    },
+    {
+      "module": "download_feeds",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/feeds/{id}",
+      "path_template": "/api/v{major}/downloads/feeds/{id}",
+      "documented_major": 8,
+      "title": "Update a Download Feed",
+      "id": "put--api-v8-downloads-feeds-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-feeds-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#put--api-v8-downloads-feeds-id",
+      "referenced_objects": [
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-feeds-id"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/{id}/fetch",
+      "path_template": "/api/v{major}/downloads/feeds/{id}/fetch",
+      "documented_major": 8,
+      "title": "Refresh a Download Feed",
+      "id": "post--api-v8-downloads-feeds-id-fetch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-id-fetch",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#post--api-v8-downloads-feeds-id-fetch",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-feeds-id-fetch"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/fetch",
+      "path_template": "/api/v{major}/downloads/feeds/fetch",
+      "documented_major": 8,
+      "title": "Refresh all Download Feeds",
+      "id": "post--api-v8-downloads-feeds-fetch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-fetch",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#post--api-v8-downloads-feeds-fetch",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-feeds-fetch"
+    },
+    {
+      "module": "download_feeds",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/",
+      "path_template": "/api/v{major}/downloads/feeds/{feed_id}/items/",
+      "documented_major": 8,
+      "title": "Get the items of a given RSS feed",
+      "id": "get--api-v8-downloads-feeds-feed_id-items-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-feeds-feed_id-items-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#get--api-v8-downloads-feeds-feed_id-items-",
+      "referenced_objects": [
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-feeds-feed_id-items-"
+    },
+    {
+      "module": "download_feeds",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/{item_id}",
+      "path_template": "/api/v{major}/downloads/feeds/{feed_id}/items/{item_id}",
+      "documented_major": 8,
+      "title": "Update a feed item",
+      "id": "put--api-v8-downloads-feeds-feed_id-items-item_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-feeds-feed_id-items-item_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#put--api-v8-downloads-feeds-feed_id-items-item_id",
+      "referenced_objects": [
+        "DownloadFeed"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-feeds-feed_id-items-item_id"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/{item_id}/download",
+      "path_template": "/api/v{major}/downloads/feeds/{feed_id}/items/{item_id}/download",
+      "documented_major": 8,
+      "title": "Download a feed item",
+      "id": "post--api-v8-downloads-feeds-feed_id-items-item_id-download",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-feed_id-items-item_id-download",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#post--api-v8-downloads-feeds-feed_id-items-item_id-download",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-feeds-feed_id-items-item_id-download"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/mark_all_as_read",
+      "path_template": "/api/v{major}/downloads/feeds/{feed_id}/items/mark_all_as_read",
+      "documented_major": 8,
+      "title": "Mark all items as read",
+      "id": "post--api-v8-downloads-feeds-feed_id-items-mark_all_as_read",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-feed_id-items-mark_all_as_read",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#post--api-v8-downloads-feeds-feed_id-items-mark_all_as_read",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-downloads-feeds-feed_id-items-mark_all_as_read"
+    }
+  ],
+  "objects": [
+    {
+      "module": "download_feeds",
+      "name": "DownloadFeed",
+      "id": "DownloadFeed",
+      "properties": [
+        "DownloadFeed.id",
+        "DownloadFeed.status",
+        "DownloadFeed.url",
+        "DownloadFeed.title",
+        "DownloadFeed.desc",
+        "DownloadFeed.image_url",
+        "DownloadFeed.nb_read",
+        "DownloadFeed.nb_unread",
+        "DownloadFeed.auto_download",
+        "DownloadFeed.fetch_ts",
+        "DownloadFeed.pub_ts",
+        "DownloadFeed.error"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed"
+    },
+    {
+      "module": "download_feeds",
+      "name": "DownloadFeedItem",
+      "id": "DownloadFeedItem",
+      "properties": [
+        "DownloadFeedItem.id",
+        "DownloadFeedItem.feed_id",
+        "DownloadFeedItem.title",
+        "DownloadFeedItem.desc",
+        "DownloadFeedItem.author",
+        "DownloadFeedItem.link",
+        "DownloadFeedItem.is_read",
+        "DownloadFeedItem.is_downloaded",
+        "DownloadFeedItem.fetch_ts",
+        "DownloadFeedItem.pub_ts",
+        "DownloadFeedItem.enclosure_url",
+        "DownloadFeedItem.enclosure_type",
+        "DownloadFeedItem.enclosure_length"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem"
+    }
+  ],
+  "properties": [
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.id",
+      "signature": "id int Read-only",
+      "description": "id",
+      "source_id": "DownloadFeed.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.id",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.id"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.status",
+      "signature": "status enum Read-only",
+      "description": "The feed can have the following status Status Description ready feed is up to date fetching feed is updating error there was an error trying to refresh this feed, see error",
+      "source_id": "DownloadFeed.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.status",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.status"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.url",
+      "signature": "url string Read-only",
+      "description": "Feed URL",
+      "source_id": "DownloadFeed.url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.url",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.url"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.title",
+      "signature": "title string Read-only",
+      "description": "Feed title (extracted from the RSS)",
+      "source_id": "DownloadFeed.title",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.title",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.title"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.desc",
+      "signature": "desc string Read-only",
+      "description": "Feed description (extracted from the RSS)",
+      "source_id": "DownloadFeed.desc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.desc",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.desc"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.image_url",
+      "signature": "image_url string Read-only",
+      "description": "Feed image URL (extracted from the RSS)",
+      "source_id": "DownloadFeed.image_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.image_url",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.image_url"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.nb_read",
+      "signature": "nb_read int Read-only",
+      "description": "Number of read items in the feed",
+      "source_id": "DownloadFeed.nb_read",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.nb_read",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.nb_read"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.nb_unread",
+      "signature": "nb_unread int Read-only",
+      "description": "Number of unread items in the feed",
+      "source_id": "DownloadFeed.nb_unread",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.nb_unread",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.nb_unread"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.auto_download",
+      "signature": "auto_download bool",
+      "description": "If set to true, the downloader will automatically download new items",
+      "source_id": "DownloadFeed.auto_download",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.auto_download",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.auto_download"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.fetch_ts",
+      "signature": "fetch_ts timestamp Read-only",
+      "description": "Last time the feed was fetched",
+      "source_id": "DownloadFeed.fetch_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.fetch_ts",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.fetch_ts"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.pub_ts",
+      "signature": "pub_ts timestamp Read-only",
+      "description": "Last time the feed was published on remote server",
+      "source_id": "DownloadFeed.pub_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.pub_ts",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.pub_ts"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeed.error",
+      "signature": "error enum Read-only",
+      "description": "Error code (same as used in Download or DownloadFile ).",
+      "source_id": "DownloadFeed.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed.error",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeed.error"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.id",
+      "signature": "id int Read-only",
+      "description": "id",
+      "source_id": "DownloadFeedItem.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.id",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.id"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.feed_id",
+      "signature": "feed_id int Read-only",
+      "description": "id of the DownloadFeed",
+      "source_id": "DownloadFeedItem.feed_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.feed_id",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.feed_id"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.title",
+      "signature": "title string[ro]",
+      "description": "item title",
+      "source_id": "DownloadFeedItem.title",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.title",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.title"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.desc",
+      "signature": "desc string[ro]",
+      "description": "item description",
+      "source_id": "DownloadFeedItem.desc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.desc",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.desc"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.author",
+      "signature": "author string Read-only",
+      "description": "item author",
+      "source_id": "DownloadFeedItem.author",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.author",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.author"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.link",
+      "signature": "link string Read-only",
+      "description": "URL of the RSS feed attachment",
+      "source_id": "DownloadFeedItem.link",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.link",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.link"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.is_read",
+      "signature": "is_read bool",
+      "description": "you can mark the item as read manually, or it is marked as read automatically when the item is downloaded",
+      "source_id": "DownloadFeedItem.is_read",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.is_read",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.is_read"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.is_downloaded",
+      "signature": "is_downloaded bool Read-only",
+      "description": "mark downloaded items, automatically set to true when RSS item is downloaded",
+      "source_id": "DownloadFeedItem.is_downloaded",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.is_downloaded",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.is_downloaded"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.fetch_ts",
+      "signature": "fetch_ts timestamp Read-only",
+      "description": "timestamp of the item creation",
+      "source_id": "DownloadFeedItem.fetch_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.fetch_ts",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.fetch_ts"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.pub_ts",
+      "signature": "pub_ts timestamp Read-only",
+      "description": "item publish timestamp",
+      "source_id": "DownloadFeedItem.pub_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.pub_ts",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.pub_ts"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.enclosure_url",
+      "signature": "enclosure_url string Read-only",
+      "description": "enclosure URL (if specified in RSS feed)",
+      "source_id": "DownloadFeedItem.enclosure_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.enclosure_url",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.enclosure_url"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.enclosure_type",
+      "signature": "enclosure_type string Read-only",
+      "description": "enclosure mime type (if specified in RSS feed)",
+      "source_id": "DownloadFeedItem.enclosure_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.enclosure_type",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.enclosure_type"
+    },
+    {
+      "module": "download_feeds",
+      "id": "DownloadFeedItem.enclosure_length",
+      "signature": "enclosure_length int Read-only",
+      "description": "enclosure size in bytes (if specified in RSS feed)",
+      "source_id": "DownloadFeedItem.enclosure_length",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem.enclosure_length",
+      "markdown": "docs/reference/fichiers-telechargements/download_feeds.md#DownloadFeedItem.enclosure_length"
+    }
+  ],
+  "events": []
+}

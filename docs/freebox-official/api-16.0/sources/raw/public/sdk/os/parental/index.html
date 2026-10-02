@@ -1,0 +1,737 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Parental Control &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="PVR [UNSTABLE]" href="../pvr/" />
+    <link rel="prev" title="Storage API [UNSTABLE]" href="../storage/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="parental-control">
+<h1>Parental Control<a class="headerlink" href="#parental-control" title="Permalink to this headline">¶</a></h1>
+<p>With the parental control API you can define rules to limit or block
+access to internet for any host on your local network. With a planning
+you can change the access policy during the day.</p>
+<p>The different access policies are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">filter_state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>allowed</td>
+<td>access is allowed</td>
+</tr>
+<tr class="row-odd"><td>denied</td>
+<td>access is denied</td>
+</tr>
+<tr class="row-even"><td>webonly</td>
+<td>access is granted only for HTTP and HTTPS traffic</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="parental-control-errors">
+<h2>Parental Control errors<a class="headerlink" href="#parental-control-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the parental control API, you may encounter
+the following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>invalid request</td>
+</tr>
+<tr class="row-odd"><td>exist</td>
+<td>a rule already exists for this host</td>
+</tr>
+<tr class="row-even"><td>noent</td>
+<td>invalid rule id</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="parental-filter-config">
+<h2>Parental Filter Config<a class="headerlink" href="#parental-filter-config" title="Permalink to this headline">¶</a></h2>
+<p>Parental filter configuration allow you to set the default
+filter_state to apply to hosts without rules on your network</p>
+<dl class="object">
+<dt id="ParentalFilterConfig">
+<code class="descname">ParentalFilterConfig</code><a class="headerlink" href="#ParentalFilterConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ParentalFilterConfig.default_filter_mode">
+<code class="descname">default_filter_mode</code><span> </span>enum<a class="headerlink" href="#ParentalFilterConfig.default_filter_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>see available filter_state</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="parental-filter-planning">
+<h2>Parental Filter Planning<a class="headerlink" href="#parental-filter-planning" title="Permalink to this headline">¶</a></h2>
+<p>Parental filter planning let you define the parental filter policy
+based on the week day and the hour.</p>
+<p>Parental filter planning have the following attributes:</p>
+<dl class="object">
+<dt id="ParentalFilterPlanning">
+<code class="descname">ParentalFilterPlanning</code><a class="headerlink" href="#ParentalFilterPlanning" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ParentalFilterPlanning.resolution">
+<code class="descname">resolution</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilterPlanning.resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>planning resolution : number of planning slots per day, e.g. 48
+means that each slot represent 30 minutes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilterPlanning.cdayranges">
+<code class="descname">cdayranges</code><span>[] array of </span>string<a class="headerlink" href="#ParentalFilterPlanning.cdayranges" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of custom day range, each custom day range represents a
+group of days for which you want to use a different planning
+than other week days.</p>
+<p>For instance a custom day range can contain the list of you children
+holidays</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">cdayranges</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>:fr_bank_holidays</td>
+<td>French bank holidays</td>
+</tr>
+<tr class="row-odd"><td>:fr_school_holidays_a</td>
+<td>French school holidays - Zone A</td>
+</tr>
+<tr class="row-even"><td>:fr_school_holidays_b</td>
+<td>French school holidays - Zone B</td>
+</tr>
+<tr class="row-odd"><td>:fr_school_holidays_c</td>
+<td>French school holidays - Zone C</td>
+</tr>
+<tr class="row-even"><td>:fr_school_holidays_corse</td>
+<td>French school holidays - Corse</td>
+</tr>
+</tbody>
+</table>
+<p>each cdayranges can be a coma separated list of cdayranges, for
+instance &#8221;:fr_bank_holidays,:fr_school_holidays_b&#8221;</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilterPlanning.mapping">
+<code class="descname">mapping</code><span>[] array of </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilterPlanning.mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>array of states for each corresponding planning slots.  the
+array size is : (number of cdayranges + 7) * resolution</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="parental-filter-rule-object">
+<h2>Parental Filter rule object<a class="headerlink" href="#parental-filter-rule-object" title="Permalink to this headline">¶</a></h2>
+<p>Parental filter rule objects have the following attributes:</p>
+<dl class="object">
+<dt id="ParentalFilter">
+<code class="descname">ParentalFilter</code><a class="headerlink" href="#ParentalFilter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="ParentalFilter.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.macs">
+<code class="descname">macs</code><span>[] array of </span>string<a class="headerlink" href="#ParentalFilter.macs" title="Permalink to this definition">¶</a></dt>
+<dd><p>the list of mac addresses the rule should be applied to</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.hosts">
+<code class="descname">hosts</code><span>[] array of </span>string<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.hosts" title="Permalink to this definition">¶</a></dt>
+<dd><p>the list of hostnames associated with macs</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.ip">
+<code class="descname">ip</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>only filled for old rules, you cannot set a rule with an IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.desc">
+<code class="descname">desc</code><span> </span>string<a class="headerlink" href="#ParentalFilter.desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>a description for this rule</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.forced">
+<code class="descname">forced</code><span> </span>bool<a class="headerlink" href="#ParentalFilter.forced" title="Permalink to this definition">¶</a></dt>
+<dd><p>is set to true, the rule will not use the planning and will
+always stay in the forced_mode</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.forced_mode">
+<code class="descname">forced_mode</code><span> </span>enum<a class="headerlink" href="#ParentalFilter.forced_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>the filter policy to use when forced is set to true (see
+filter_state for valid states)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.tmp_mode_expire">
+<code class="descname">tmp_mode_expire</code><span> </span>int<a class="headerlink" href="#ParentalFilter.tmp_mode_expire" title="Permalink to this definition">¶</a></dt>
+<dd><p>if != 0 the rule will not use the planning for the next
+tmp_mode_expire seconds</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.tmp_mode">
+<code class="descname">tmp_mode</code><span> </span>enum<a class="headerlink" href="#ParentalFilter.tmp_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>the filter policy to use when tmp_mode_expire is != 0 (see
+filter_state for valid states)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.scheduling_mode">
+<code class="descname">scheduling_mode</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.scheduling_mode" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">scheduling_mode</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>forced</td>
+<td>filter_state is forced to forced_mode</td>
+</tr>
+<tr class="row-odd"><td>temporary</td>
+<td>filter_state is temporary set to tmp_mode for
+the next tmp_mode_expire seconds</td>
+</tr>
+<tr class="row-even"><td>planning</td>
+<td>filter_state is set using the planning</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.filter_state">
+<code class="descname">filter_state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.filter_state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">filter_state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>allowed</td>
+<td>access is allowed</td>
+</tr>
+<tr class="row-odd"><td>denied</td>
+<td>access is denied</td>
+</tr>
+<tr class="row-even"><td>webonly</td>
+<td>access is granted only for HTTP and HTTPS traffic</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.current_mapping_idx">
+<code class="descname">current_mapping_idx</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.current_mapping_idx" title="Permalink to this definition">¶</a></dt>
+<dd><p>current index used in planning to compute filter_state (only
+relevant when scheduling_mode is planning)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="ParentalFilter.next_change">
+<code class="descname">next_change</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#ParentalFilter.next_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>seconds until next filter_state change 0 means filter_state
+won&#8217;t change</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="parental-filter-api">
+<h2>Parental Filter API<a class="headerlink" href="#parental-filter-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-parental-filter-config">
+<h3>Get parental filter config<a class="headerlink" href="#get-parental-filter-config" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-parental-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/parental/config/</code><a class="headerlink" href="#get--api-v4-parental-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#ParentalFilterConfig" title="ParentalFilterConfig"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilterConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/parental/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;default_filter_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-parental-filter-config">
+<h3>Update parental filter config<a class="headerlink" href="#update-parental-filter-config" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-parental-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/parental/config/</code><a class="headerlink" href="#put--api-v4-parental-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#ParentalFilterConfig" title="ParentalFilterConfig"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilterConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/parental/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;default_filter_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;default_filter_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;denied&quot;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-all-parental-filter-rules">
+<h3>Retrieve all Parental Filter rules<a class="headerlink" href="#retrieve-all-parental-filter-rules" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-parental-filter-">
+<code class="descname">GET </code><code class="descname">/api/v4/parental/filter/</code><a class="headerlink" href="#get--api-v4-parental-filter-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#ParentalFilter" title="ParentalFilter"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilter</span></code></a> rules.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/parental/filter/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;forced&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;hosts&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;iPad-r0ro&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;iPhone-r0ro&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;tmp_mode_expire&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;forced_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheduling_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;planning&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;macs&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;D8:A2:CA:FE:BA:DF&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;D0:23:BE:DE:AD:EF&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;current_mapping_idx&quot;</span><span class="o">:</span> <span class="mi">225</span><span class="p">,</span>
+            <span class="s2">&quot;next_change&quot;</span><span class="o">:</span> <span class="mi">620</span><span class="p">,</span>
+            <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;r0ro&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;forced&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s2">&quot;hosts&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;00:07:CB:00:00:07&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;tmp_mode_expire&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;forced_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scheduling_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;planning&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;macs&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;00:07:CB:00:00:07&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;current_mapping_idx&quot;</span><span class="o">:</span> <span class="mi">225</span><span class="p">,</span>
+            <span class="s2">&quot;next_change&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tmp_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="retrieve-a-parental-filter-rule">
+<h3>Retrieve a Parental Filter rule<a class="headerlink" href="#retrieve-a-parental-filter-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-parental-filter-id">
+<code class="descname">GET </code><code class="descname">/api/v4/parental/filter/{id}</code><a class="headerlink" href="#get--api-v4-parental-filter-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#ParentalFilter" title="ParentalFilter"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilter</span></code></a> rule with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/parental/filter/4</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;forced&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;hosts&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;iPad-r0ro&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;iPhone-r0ro&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;tmp_mode_expire&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;forced_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scheduling_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;planning&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;macs&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;D8:A2:5E:1B:3F:9F&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;D0:23:DB:20:70:12&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;current_mapping_idx&quot;</span><span class="o">:</span> <span class="mi">225</span><span class="p">,</span>
+        <span class="s2">&quot;next_change&quot;</span><span class="o">:</span> <span class="mi">529</span><span class="p">,</span>
+        <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tmp_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-parental-filter-rule">
+<h3>Delete a Parental Filter rule<a class="headerlink" href="#delete-a-parental-filter-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-parental-filter-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/parental/filter/{id}</code><a class="headerlink" href="#delete--api-v4-parental-filter-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#ParentalFilter" title="ParentalFilter"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilter</span></code></a> rule with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/parental/filter/4</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-parental-filter-rule">
+<h3>Update a Parental Filter rule<a class="headerlink" href="#update-a-parental-filter-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-parental-filter-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/parental/filter/{id}</code><a class="headerlink" href="#put--api-v4-parental-filter-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#ParentalFilter" title="ParentalFilter"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilter</span></code></a> rule with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/parental/filter/4</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;forced_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;forced&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;forced&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;hosts&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;iPad-r0ro&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;iPhone-r0ro&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;tmp_mode_expire&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;forced_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scheduling_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;forced&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;macs&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;D8:A2:5E:1B:3F:9F&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;D0:23:DB:20:70:12&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;current_mapping_idx&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;next_change&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tmp_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;denied&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-parental-filter-rule">
+<h3>Add a Parental Filter rule<a class="headerlink" href="#add-a-parental-filter-rule" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-parental-filter-">
+<code class="descname">POST </code><code class="descname">/api/v4/parental/filter/</code><a class="headerlink" href="#post--api-v4-parental-filter-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a parental filter rule</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/parental/filter/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;macs&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s2">&quot;00:07:cb:00:00:69&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;00:07:cb:00:00:42&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;forced&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;hosts&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;00:07:CB:00:00:69&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:07:CB:00:00:42&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;tmp_mode_expire&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;forced_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scheduling_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;planning&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;macs&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;00:07:CB:00:00:69&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;00:07:CB:00:00:42&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;current_mapping_idx&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;next_change&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;desc&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tmp_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;allowed&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="parental-filter-planning-api">
+<h2>Parental Filter Planning API<a class="headerlink" href="#parental-filter-planning-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-a-parental-filter-planning">
+<h3>Get a parental filter Planning<a class="headerlink" href="#get-a-parental-filter-planning" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-parental-filter-id-planning">
+<code class="descname">GET </code><code class="descname">/api/v4/parental/filter/{id}/planning</code><a class="headerlink" href="#get--api-v4-parental-filter-id-planning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#ParentalFilterPlanning" title="ParentalFilterPlanning"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilterPlanning</span></code></a> for the filter
+with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/parental/filter/4/planning</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;cdayranges&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;:fr_bank_holidays,:fr_school_holidays_c,&quot;</span>
+         <span class="p">],</span>
+        <span class="s2">&quot;resolution&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="s2">&quot;mapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;denied&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-parental-filter-planning">
+<h3>Update a parental filter Planning<a class="headerlink" href="#update-a-parental-filter-planning" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-parental-filter-id-planning">
+<code class="descname">PUT </code><code class="descname">/api/v4/parental/filter/{id}/planning</code><a class="headerlink" href="#put--api-v4-parental-filter-id-planning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#ParentalFilterPlanning" title="ParentalFilterPlanning"><code class="xref json json-object docutils literal"><span class="pre">ParentalFilterPlanning</span></code></a> for the parental
+filter rule with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/parental/filter/4/planning</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;cdayranges&quot;</span><span class="o">:</span> <span class="p">[],</span>
+   <span class="s2">&quot;resolution&quot;</span><span class="o">:</span><span class="mi">48</span><span class="p">,</span>
+   <span class="s2">&quot;mapping&quot;</span><span class="o">:</span><span class="p">[</span>
+      <span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+
+      <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+      <span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span><span class="p">,</span><span class="s2">&quot;webonly&quot;</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;cdayranges&quot;</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;resolution&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="s2">&quot;mapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;allowed&quot;</span><span class="p">,</span>
+
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;webonly&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

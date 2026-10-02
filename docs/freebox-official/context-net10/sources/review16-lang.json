@@ -1,0 +1,81 @@
+{
+  "module": {
+    "module": "lang",
+    "title": "Language support",
+    "category": "systeme",
+    "path": "docs/reference/systeme/lang.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 2,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#language-support",
+    "source_pre_blocks": 7,
+    "markdown_code_blocks": 7,
+    "source_tables": 0
+  },
+  "endpoints": [
+    {
+      "module": "lang",
+      "method": "GET",
+      "documented_path": "/api/v8/lang/",
+      "path_template": "/api/v{major}/lang/",
+      "documented_major": 8,
+      "title": "Get language status",
+      "id": "get--api-v8-lang-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lang-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/lang.md#get--api-v8-lang-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-lang-"
+    },
+    {
+      "module": "lang",
+      "method": "POST",
+      "documented_path": "/api/v8/lang/",
+      "path_template": "/api/v{major}/lang/",
+      "documented_major": 8,
+      "title": "Set language",
+      "id": "post--api-v8-lang-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-lang-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/lang.md#post--api-v8-lang-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-lang-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "lang",
+      "name": "LanguageSupport",
+      "id": "LanguageSupport",
+      "properties": [
+        "LanguageSupport.lang",
+        "LanguageSupport.avalaible"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanguageSupport",
+      "markdown": "docs/reference/systeme/lang.md#LanguageSupport"
+    }
+  ],
+  "properties": [
+    {
+      "module": "lang",
+      "id": "LanguageSupport.lang",
+      "signature": "lang enum",
+      "description": "",
+      "source_id": "LanguageSupport.lang",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanguageSupport.lang",
+      "markdown": "docs/reference/systeme/lang.md#LanguageSupport.lang"
+    },
+    {
+      "module": "lang",
+      "id": "LanguageSupport.avalaible",
+      "signature": "avalaible [] array of string Read-only",
+      "description": "",
+      "source_id": "LanguageSupport.avalaible",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanguageSupport.avalaible",
+      "markdown": "docs/reference/systeme/lang.md#LanguageSupport.avalaible"
+    }
+  ],
+  "events": []
+}

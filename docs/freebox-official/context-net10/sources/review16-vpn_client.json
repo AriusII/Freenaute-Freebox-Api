@@ -1,0 +1,632 @@
+{
+  "module": {
+    "module": "vpn_client",
+    "title": "VPN Client [UNSTABLE]",
+    "category": "services",
+    "path": "docs/reference/services/vpn_client.md",
+    "http_signatures": 7,
+    "objects": 7,
+    "properties": 43,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#vpn-client-unstable",
+    "source_pre_blocks": 22,
+    "markdown_code_blocks": 22,
+    "source_tables": 7
+  },
+  "endpoints": [
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/config/",
+      "path_template": "/api/v{major}/vpn_client/config/",
+      "documented_major": 8,
+      "title": "Get VPN Client configuration list",
+      "id": "get--api-v8-vpn_client-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#get--api-v8-vpn_client-config-",
+      "referenced_objects": [
+        "VPNClientConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn_client-config-"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/config/{id}",
+      "path_template": "/api/v{major}/vpn_client/config/{id}",
+      "documented_major": 8,
+      "title": "Get a VPN client config",
+      "id": "get--api-v8-vpn_client-config-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-config-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#get--api-v8-vpn_client-config-id",
+      "referenced_objects": [
+        "VPNClientConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn_client-config-id"
+    },
+    {
+      "module": "vpn_client",
+      "method": "POST",
+      "documented_path": "/api/v8/vpn_client/config/",
+      "path_template": "/api/v{major}/vpn_client/config/",
+      "documented_major": 8,
+      "title": "Add a VPN client configuration",
+      "id": "post--api-v8-vpn_client-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vpn_client-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#post--api-v8-vpn_client-config-",
+      "referenced_objects": [
+        "VPNClientConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-vpn_client-config-"
+    },
+    {
+      "module": "vpn_client",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vpn_client/config/{id}",
+      "path_template": "/api/v{major}/vpn_client/config/{id}",
+      "documented_major": 8,
+      "title": "Delete a VPN client Configuration",
+      "id": "delete--api-v8-vpn_client-config-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vpn_client-config-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#delete--api-v8-vpn_client-config-id",
+      "referenced_objects": [
+        "VPNClientConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-vpn_client-config-id"
+    },
+    {
+      "module": "vpn_client",
+      "method": "PUT",
+      "documented_path": "/api/v8/vpn_client/config/{id}",
+      "path_template": "/api/v{major}/vpn_client/config/{id}",
+      "documented_major": 8,
+      "title": "Update the VPN client configuration",
+      "id": "put--api-v8-vpn_client-config-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vpn_client-config-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#put--api-v8-vpn_client-config-id",
+      "referenced_objects": [
+        "VPNServerConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-vpn_client-config-id"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/status",
+      "path_template": "/api/v{major}/vpn_client/status",
+      "documented_major": 8,
+      "title": "Get the VPN client status",
+      "id": "get--api-v8-vpn_client-status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-status",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#get--api-v8-vpn_client-status",
+      "referenced_objects": [
+        "VPNClientStatus"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn_client-status"
+    },
+    {
+      "module": "vpn_client",
+      "method": "GET",
+      "documented_path": "/api/v8/vpn_client/log",
+      "path_template": "/api/v{major}/vpn_client/log",
+      "documented_major": 8,
+      "title": "Get the VPN client logs",
+      "id": "get--api-v8-vpn_client-log",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vpn_client-log",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/services/vpn_client.md#get--api-v8-vpn_client-log",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-vpn_client-log"
+    }
+  ],
+  "objects": [
+    {
+      "module": "vpn_client",
+      "name": "VPNClientConfig",
+      "id": "VPNClientConfig",
+      "properties": [
+        "VPNClientConfig.id",
+        "VPNClientConfig.description",
+        "VPNClientConfig.type",
+        "VPNClientConfig.active",
+        "VPNClientConfig.conf_pptp",
+        "VPNClientConfig.conf_wireguard"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VPNClientConfigPPTP",
+      "id": "VPNClientConfigPPTP",
+      "properties": [
+        "VPNClientConfigPPTP.remote_host",
+        "VPNClientConfigPPTP.username",
+        "VPNClientConfigPPTP.password",
+        "VPNClientConfigPPTP.mppe",
+        "VPNClientConfigPPTP.allowed_auth"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VPNClientConfigWireGuard",
+      "id": "VPNClientConfigWireGuard",
+      "properties": [
+        "VPNClientConfigWireGuard.remote_addr",
+        "VPNClientConfigWireGuard.remote_port",
+        "VPNClientConfigWireGuard.remote_public_key",
+        "VPNClientConfigWireGuard.remote_preshared_key",
+        "VPNClientConfigWireGuard.local_priv_key",
+        "VPNClientConfigWireGuard.local_addr",
+        "VPNClientConfigWireGuard.dns"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VPNClientConfigWireGuardIP",
+      "id": "VPNClientConfigWireGuardIP",
+      "properties": [
+        "VPNClientConfigWireGuardIP.ip",
+        "VPNClientConfigWireGuardIP.len"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuardIP",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuardIP"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VPNClientStatus",
+      "id": "VPNClientStatus",
+      "properties": [
+        "VPNClientStatus.enabled",
+        "VPNClientStatus.active_vpn",
+        "VPNClientStatus.active_vpn_description",
+        "VPNClientStatus.type",
+        "VPNClientStatus.state",
+        "VPNClientStatus.last_up",
+        "VPNClientStatus.last_try",
+        "VPNClientStatus.next_try",
+        "VPNClientStatus.last_error",
+        "VPNClientStatus.stats",
+        "VPNClientStatus.IPv4"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientStats",
+      "id": "VpnClientStats",
+      "properties": [
+        "VpnClientStats.rate_up",
+        "VpnClientStats.rate_down",
+        "VpnClientStats.bytes_up",
+        "VpnClientStats.bytes_down"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientStats"
+    },
+    {
+      "module": "vpn_client",
+      "name": "VpnClientIpInfo",
+      "id": "VpnClientIpInfo",
+      "properties": [
+        "VpnClientIpInfo.config_valid",
+        "VpnClientIpInfo.ip_mask",
+        "VpnClientIpInfo.domain",
+        "VpnClientIpInfo.gateway",
+        "VpnClientIpInfo.dns",
+        "VpnClientIpInfo.provider",
+        "VpnClientIpInfo.routes",
+        "VpnClientIpInfo.dhcp"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo"
+    }
+  ],
+  "properties": [
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfig.id",
+      "signature": "id string Read-only",
+      "description": "VPN config id",
+      "source_id": "VPNClientConfig.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.id",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig.id"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfig.description",
+      "signature": "description string",
+      "description": "VPN description",
+      "source_id": "VPNClientConfig.description",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.description",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig.description"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfig.type",
+      "signature": "type enum",
+      "description": "VPN server type type Description pptp PPTP VPN server openvpn OpenVPN server wireguard WireGuard server",
+      "source_id": "VPNClientConfig.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.type",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig.type"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfig.active",
+      "signature": "active bool",
+      "description": "is this configuration active. Only one configuration is active at a time.",
+      "source_id": "VPNClientConfig.active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.active",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig.active"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfig.conf_pptp",
+      "signature": "conf_pptp VPNClientConfigPPTP",
+      "description": "only available when type is PPTP",
+      "source_id": "VPNClientConfig.conf_pptp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.conf_pptp",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig.conf_pptp"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfig.conf_wireguard",
+      "signature": "conf_wireguard VPNClientConfigWireGuard",
+      "description": "only available when type is WireGuard",
+      "source_id": "VPNClientConfig.conf_wireguard",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfig.conf_wireguard",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfig.conf_wireguard"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigPPTP.remote_host",
+      "signature": "remote_host string",
+      "description": "remote host IP or name",
+      "source_id": "VPNClientConfigPPTP.remote_host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.remote_host",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP.remote_host"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigPPTP.username",
+      "signature": "username string",
+      "description": "VPN username",
+      "source_id": "VPNClientConfigPPTP.username",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.username",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP.username"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigPPTP.password",
+      "signature": "password string Write-only",
+      "description": "VPN password",
+      "source_id": "VPNClientConfigPPTP.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.password",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP.password"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigPPTP.mppe",
+      "signature": "mppe enum",
+      "description": "mppe Description disable disable mppe require require mppe require_128 require 128 bits mppe",
+      "source_id": "VPNClientConfigPPTP.mppe",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.mppe",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP.mppe"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigPPTP.allowed_auth",
+      "signature": "allowed_auth dict",
+      "description": "allowed authentication methods dictionary with following keys: eap pap chap mschap mschapv2 values are booleans.",
+      "source_id": "VPNClientConfigPPTP.allowed_auth",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigPPTP.allowed_auth",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigPPTP.allowed_auth"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.remote_addr",
+      "signature": "remote_addr string",
+      "description": "remote host IP",
+      "source_id": "VPNClientConfigWireGuard.remote_addr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.remote_addr",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.remote_addr"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.remote_port",
+      "signature": "remote_port int",
+      "description": "remote host port",
+      "source_id": "VPNClientConfigWireGuard.remote_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.remote_port",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.remote_port"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.remote_public_key",
+      "signature": "remote_public_key string",
+      "description": "remote host public key",
+      "source_id": "VPNClientConfigWireGuard.remote_public_key",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.remote_public_key",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.remote_public_key"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.remote_preshared_key",
+      "signature": "remote_preshared_key string",
+      "description": "optional preshared key",
+      "source_id": "VPNClientConfigWireGuard.remote_preshared_key",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.remote_preshared_key",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.remote_preshared_key"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.local_priv_key",
+      "signature": "local_priv_key string",
+      "description": "local private key",
+      "source_id": "VPNClientConfigWireGuard.local_priv_key",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.local_priv_key",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.local_priv_key"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.local_addr",
+      "signature": "local_addr [] array of VPNClientConfigWireGuardIP",
+      "description": "IPs to assign to the local interface.",
+      "source_id": "VPNClientConfigWireGuard.local_addr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.local_addr",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.local_addr"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuard.dns",
+      "signature": "dns [] array of string",
+      "description": "list of strings containing IPs of DNS servers to use. Both IPv4 and IPv6 are supported.",
+      "source_id": "VPNClientConfigWireGuard.dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuard.dns",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuard.dns"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuardIP.ip",
+      "signature": "ip string",
+      "description": "string representation of an IPv4 or IPv6 address",
+      "source_id": "VPNClientConfigWireGuardIP.ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuardIP.ip",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuardIP.ip"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientConfigWireGuardIP.len",
+      "signature": "len int",
+      "description": "prefix length associated with the IP address",
+      "source_id": "VPNClientConfigWireGuardIP.len",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientConfigWireGuardIP.len",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientConfigWireGuardIP.len"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.enabled",
+      "signature": "enabled bool Read-only",
+      "description": "is VPN client enabled",
+      "source_id": "VPNClientStatus.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.enabled",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.enabled"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.active_vpn",
+      "signature": "active_vpn string Read-only",
+      "description": "active VPN id",
+      "source_id": "VPNClientStatus.active_vpn",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.active_vpn",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.active_vpn"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.active_vpn_description",
+      "signature": "active_vpn_description string Read-only",
+      "description": "active VPN description",
+      "source_id": "VPNClientStatus.active_vpn_description",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.active_vpn_description",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.active_vpn_description"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.type",
+      "signature": "type enum Read-only",
+      "description": "active VPN type type Description pptp PPTP VPN server openvpn OpenVPN server wireguard WireGuard server",
+      "source_id": "VPNClientStatus.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.type",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.type"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.state",
+      "signature": "state enum Read-only",
+      "description": "state Description waiting_wan waiting for wan connection going_up connecting up connected going_down disconnecting down disconnected",
+      "source_id": "VPNClientStatus.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.state",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.state"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.last_up",
+      "signature": "last_up int Read-only",
+      "description": "timestamp of last successful connection",
+      "source_id": "VPNClientStatus.last_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.last_up",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.last_up"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.last_try",
+      "signature": "last_try int Read-only",
+      "description": "timestamp of last connection attempt",
+      "source_id": "VPNClientStatus.last_try",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.last_try",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.last_try"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.next_try",
+      "signature": "next_try int Read-only",
+      "description": "seconds left until next connection attempt",
+      "source_id": "VPNClientStatus.next_try",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.next_try",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.next_try"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.last_error",
+      "signature": "last_error enum Read-only",
+      "description": "last_error Description none no error internal internal error authentication_failed wrong credentials auth_failed wrong credentials resolv_failed invalid host name connect_timeout connection timeout connect_failed connection failed setup_control_failed PPTP session negotiation failure setup_call_failed PPTP session failure protocol protocol error remote_terminated connection closed by remote peer remote_disconnect connection closed by remote peer",
+      "source_id": "VPNClientStatus.last_error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.last_error",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.last_error"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.stats",
+      "signature": "stats VpnClientStats Read-only",
+      "description": "connection statistics",
+      "source_id": "VPNClientStatus.stats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.stats",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.stats"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VPNClientStatus.IPv4",
+      "signature": "IPv4 VpnClientIpInfo Read-only",
+      "description": "connection IPv4 information",
+      "source_id": "VPNClientStatus.IPv4",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VPNClientStatus.IPv4",
+      "markdown": "docs/reference/services/vpn_client.md#VPNClientStatus.IPv4"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientStats.rate_up",
+      "signature": "rate_up int Read-only",
+      "description": "current upload rate (in byte/s)",
+      "source_id": "VpnClientStats.rate_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats.rate_up",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientStats.rate_up"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientStats.rate_down",
+      "signature": "rate_down int Read-only",
+      "description": "current download rate (in byte/s)",
+      "source_id": "VpnClientStats.rate_down",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats.rate_down",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientStats.rate_down"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientStats.bytes_up",
+      "signature": "bytes_up int Read-only",
+      "description": "total bytes uploaded",
+      "source_id": "VpnClientStats.bytes_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats.bytes_up",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientStats.bytes_up"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientStats.bytes_down",
+      "signature": "bytes_down int Read-only",
+      "description": "total bytes downloaded",
+      "source_id": "VpnClientStats.bytes_down",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientStats.bytes_down",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientStats.bytes_down"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.config_valid",
+      "signature": "config_valid bool Read-only",
+      "description": "is the configuration valid",
+      "source_id": "VpnClientIpInfo.config_valid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.config_valid",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.config_valid"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.ip_mask",
+      "signature": "ip_mask dict Read-only",
+      "description": "assigned IP and netmask",
+      "source_id": "VpnClientIpInfo.ip_mask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.ip_mask",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.ip_mask"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.domain",
+      "signature": "domain string Read-only",
+      "description": "provided domain",
+      "source_id": "VpnClientIpInfo.domain",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.domain",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.domain"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.gateway",
+      "signature": "gateway IPv4 Read-only",
+      "description": "provided gateway",
+      "source_id": "VpnClientIpInfo.gateway",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.gateway",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.gateway"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.dns",
+      "signature": "dns [] array of ipv4 Read-only",
+      "description": "list of dns servers",
+      "source_id": "VpnClientIpInfo.dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.dns",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.dns"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.provider",
+      "signature": "provider enum Read-only",
+      "description": "ip_mask source provider Description none none static static IP configuration ppp ppp dhcp DHCP server",
+      "source_id": "VpnClientIpInfo.provider",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.provider",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.provider"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.routes",
+      "signature": "routes list Read-only",
+      "description": "list of provided routes",
+      "source_id": "VpnClientIpInfo.routes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.routes",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.routes"
+    },
+    {
+      "module": "vpn_client",
+      "id": "VpnClientIpInfo.dhcp",
+      "signature": "dhcp dict Read-only",
+      "description": "DHCP status information",
+      "source_id": "VpnClientIpInfo.dhcp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VpnClientIpInfo.dhcp",
+      "markdown": "docs/reference/services/vpn_client.md#VpnClientIpInfo.dhcp"
+    }
+  ],
+  "events": []
+}
