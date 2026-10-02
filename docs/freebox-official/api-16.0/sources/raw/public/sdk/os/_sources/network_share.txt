@@ -1,0 +1,261 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+=============
+Network Share
+=============
+
+The network share API allow you to control the file sharing services
+running on the Freebox.
+
+Network Share Errors
+====================
+
+When attempting to access this API, you may encounter the following
+errors:
+
+===========================      ==============================
+error_code                       Description
+===========================      ==============================
+invalid_workgroup_name           Invalid workgroup name
+invalid_logon_user               Invalid samba user name
+invalid_logon_password           Invalid samba user password
+invalid_afp_login_name           Invalid AFP user name
+invalid_afp_login_password       Invalid AFP user password
+===========================      ==============================
+
+Samba Config
+============
+
+SambaConfig has the following attributes:
+
+.. json:object:: SambaConfig
+
+   .. json:property:: file_share_enabled bool
+
+       is file sharing enabled
+
+   .. json:property:: print_share_enabled bool
+
+       is printer sharing enabled
+
+   .. json:property:: logon_enabled bool
+
+       is login/password required to access shares
+
+   .. json:property:: logon_user string
+
+       samba user name
+
+   .. json:property:: logon_password string [wo]
+
+       samba user password
+
+   .. json:property:: workgroup string
+
+       name of the workgroup
+
+Samba config API
+================
+
+Get the current Samba configuration
+-----------------------------------
+
+.. http:get:: /api/v4/netshare/samba/
+
+   Get the :json:object:`SambaConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/netshare/samba/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "workgroup": "WORKGROUP",
+              "print_share_enabled": true,
+              "file_share_enabled": true,
+              "logon_enabled": false,
+              "logon_user": "freebox"
+          }
+      }
+
+
+Update the Samba configuration
+------------------------------
+
+.. http:put:: /api/v4/netshare/samba/
+
+   Update the :json:object:`SambaConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/netshare/samba/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "print_share_enabled": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "workgroup": "WORKGROUP",
+              "print_share_enabled": false,
+              "file_share_enabled": true,
+              "logon_enabled": false,
+              "logon_user": "freebox"
+          }
+      }
+
+
+Afp Config
+==========
+
+AfpConfig has the following attributes:
+
+.. json:object:: AfpConfig
+
+   .. json:property:: enabled bool
+
+      is afp service enabled
+
+   .. json:property:: guest_allow bool
+
+      allow guest to access shared files
+
+   .. json:property:: server_type enum
+
+      Afp server type (to display proper icon) in MacOS
+
+      valid server types are:
+
+      ===========================   ==
+      server_type
+      ===========================   ==
+      powerbook
+      powermac
+      macmini
+      imac
+      macbook
+      macbookpro
+      macbookair
+      macpro
+      appletv
+      airport
+      xserve
+      ===========================   ==
+
+   .. json:property:: login_name string
+
+       Afp user name
+
+   .. json:property:: login_password string [wo]
+
+       Afp user password
+
+
+Afp config API
+==============
+
+
+Get the current Afp configuration
+---------------------------------
+
+.. http:get:: /api/v4/netshare/afp/
+
+   Get the :json:object:`AfpConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/netshare/afp/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "guest_allow": true,
+              "login_name": "freebox",
+              "server_type": "airport"
+          }
+      }
+
+
+Update the Afp configuration
+----------------------------
+
+.. http:put:: /api/v4/netshare/afp/
+
+   Update the :json:object:`AfpConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/netshare/afp/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "guest_allow": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "guest_allow": false,
+              "login_name": "freebox",
+              "server_type": "airport"
+          }
+      }
+
+..  LocalWords:  workgroup logon afp login SambaConfig wo AfpConfig
+..  LocalWords:  MacOS powerbook powermac macmini imac macbook macpro
+..  LocalWords:  macbookpro macbookair appletv xserve

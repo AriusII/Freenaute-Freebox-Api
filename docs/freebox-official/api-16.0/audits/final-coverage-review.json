@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-02",
+  "review_kind": "independent offline coverage review",
+  "verdict": "PASS",
+  "authority": {
+    "current_source": "http://mafreebox.freebox.fr/doc/index.html",
+    "announced_api_version": "16.0",
+    "source_sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+    "public_sdk_role": "historical v4 archive; not merged into the current API reference"
+  },
+  "collection": {
+    "manifest_resources": 87,
+    "successful_resources": 84,
+    "successful_resource_hash_mismatches": 0,
+    "documented_404_resources": 3,
+    "public_archive": {
+      "content_html_pages_including_index": 33,
+      "sphinx_rst_sources": 33,
+      "search_and_navigation_artifacts_present": [
+        "objects.inv",
+        "searchindex.js",
+        "genindex",
+        "search"
+      ]
+    }
+  },
+  "scope": {
+    "raw_document_units": 72,
+    "published_modules": 45,
+    "published_api_modules": 44,
+    "published_introduction_modules": 1,
+    "historical_changelog_units_not_published_as_current_reference": 27,
+    "server_player_gateway_module_included": true,
+    "public_player_qml_and_telec_excluded_from_server_contract": true,
+    "unstable_modules_retained": true
+  },
+  "conservation": {
+    "raw": {
+      "http_signatures": 343,
+      "objects": 196,
+      "properties": 1271,
+      "pre_blocks": 1012,
+      "tables": 207,
+      "table_rows": 1508
+    },
+    "published": {
+      "http_signatures": 342,
+      "unique_method_path_operations": 338,
+      "objects": 195,
+      "properties": 1254,
+      "pre_blocks": 1009,
+      "tables": 205,
+      "table_rows": 1494
+    },
+    "extraction_conservation_passed": true,
+    "non_api_prefix_operations_retained": [
+      "POST /register",
+      "DELETE /register/{box_id}/{device_id}",
+      "POST /send"
+    ]
+  },
+  "duplicates": {
+    "signature_occurrences": 342,
+    "unique_method_path_operations": 338,
+    "documented_variant_groups": [
+      {
+        "method": "PUT",
+        "path": "/api/v9/wifi/config/",
+        "occurrences": 2
+      },
+      {
+        "method": "POST",
+        "path": "/api/v8/downloads/add",
+        "occurrences": 2
+      },
+      {
+        "method": "POST",
+        "path": "/api/v8/home/pairing/{adapter_id}",
+        "occurrences": 3
+      }
+    ],
+    "handling": "Variants remain separately anchored in module references and are grouped only in the operations index."
+  },
+  "deprecations": {
+    "reviewed_rules": 14,
+    "applied_node_removals": 10,
+    "logical_or_historical_rules_not_present_in_current_reference": 4,
+    "adapted_examples": 6,
+    "forbidden_current_terms_absent": [
+      "DownloadFile.path",
+      "WifiBssStatus.is_main_bss",
+      "WifiBssConfig.use_default_config",
+      "SystemConfigV5",
+      "temp1",
+      "temp2",
+      "temp3"
+    ],
+    "current_field_intentionally_retained": "WifiGlobalState.expected_phys"
+  },
+  "delivery_integrity": {
+    "markdown_files_checked": 56,
+    "local_links_checked": 1283,
+    "modules_checked": 45,
+    "example_blocks_checked": 1009,
+    "tables_checked": 205,
+    "source_link_defects": 0,
+    "events_documented": 4,
+    "catalogue_records": {
+      "endpoints": 342,
+      "objects": 195,
+      "properties": 1254
+    },
+    "source_properties_without_native_sphinx_id": 9,
+    "synthetic_local_anchors_for_those_properties": 9,
+    "validation_command": "python tools/validate_docs.py",
+    "validation_result": {
+      "passed": true,
+      "errors": []
+    },
+    "independent_catalogue_anchor_check": {
+      "unresolved_endpoints": 0,
+      "unresolved_objects": 0,
+      "unresolved_properties": 0
+    }
+  },
+  "limits": [
+    "The review validates the collected documentation and generated Markdown, not live endpoint behavior.",
+    "The documentation itself may describe hardware-, permission-, or configuration-dependent capabilities.",
+    "Historic public v4 data is archived for traceability and does not override the local API 16.0 contract."
+  ]
+}

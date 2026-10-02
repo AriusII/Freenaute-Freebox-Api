@@ -1,36 +1,37 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Freenaute.Freebox.Mapper.Common.Types;
 
+[JsonConverter(typeof(JsonStringEnumConverter<AirMediaErrorCodeEnum>))]
 public enum AirMediaErrorCodeEnum
 {
-    [JsonPropertyName("unknown_target")] UnknownTarget,
-    [JsonPropertyName("no_client")] NoClient,
-    [JsonPropertyName("set_pass")] SetPassError,
+    [JsonStringEnumMemberName("unknown_target")] UnknownTarget,
+    [JsonStringEnumMemberName("no_client")] NoClient,
+    [JsonStringEnumMemberName("set_pass")] SetPassError,
 
-    [JsonPropertyName("set_onscreen_code")]
+    [JsonStringEnumMemberName("set_onscreen_code")]
     SetOnscreenCodeError,
-    [JsonPropertyName("no_ctrl")] NoControl,
-    [JsonPropertyName("http")] HttpError,
-    [JsonPropertyName("bad_session")] BadSession,
-    [JsonPropertyName("bad_name")] BadName,
-    [JsonPropertyName("bad_device_id")] BadDeviceId,
-    [JsonPropertyName("bad_remote_id")] BadRemoteId,
-    [JsonPropertyName("req_in_progress")] RequestInProgress,
-    [JsonPropertyName("fetch")] FetchError,
-    [JsonPropertyName("no_display")] NoDisplay,
-    [JsonPropertyName("playback_state")] InvalidPlaybackState,
-    [JsonPropertyName("no_slideshow_srv")] NoSlideshowServer,
-    [JsonPropertyName("no_mem")] NoMemory,
-    [JsonPropertyName("inout_file")] InputOutputFileError,
+    [JsonStringEnumMemberName("no_ctrl")] NoControl,
+    [JsonStringEnumMemberName("http")] HttpError,
+    [JsonStringEnumMemberName("bad_session")] BadSession,
+    [JsonStringEnumMemberName("bad_name")] BadName,
+    [JsonStringEnumMemberName("bad_device_id")] BadDeviceId,
+    [JsonStringEnumMemberName("bad_remote_id")] BadRemoteId,
+    [JsonStringEnumMemberName("req_in_progress")] RequestInProgress,
+    [JsonStringEnumMemberName("fetch")] FetchError,
+    [JsonStringEnumMemberName("no_display")] NoDisplay,
+    [JsonStringEnumMemberName("playback_state")] InvalidPlaybackState,
+    [JsonStringEnumMemberName("no_slideshow_srv")] NoSlideshowServer,
+    [JsonStringEnumMemberName("no_mem")] NoMemory,
+    [JsonStringEnumMemberName("inout_file")] InputOutputFileError,
 
-    [JsonPropertyName("no_volume_control")]
+    [JsonStringEnumMemberName("no_volume_control")]
     NoVolumeControl,
-    [JsonPropertyName("connect")] ConnectionError,
-    [JsonPropertyName("unauthorized")] Unauthorized,
+    [JsonStringEnumMemberName("connect")] ConnectionError,
+    [JsonStringEnumMemberName("unauthorized")] Unauthorized,
 
-    [JsonPropertyName("unsupported_media")]
+    [JsonStringEnumMemberName("unsupported_media")]
     UnsupportedMedia,
-    [JsonPropertyName("bad_type")] BadFileType,
-    [JsonPropertyName("unimplemented")] Unimplemented
+    [JsonStringEnumMemberName("bad_type")] BadFileType,
+    [JsonStringEnumMemberName("unimplemented")] Unimplemented
 }

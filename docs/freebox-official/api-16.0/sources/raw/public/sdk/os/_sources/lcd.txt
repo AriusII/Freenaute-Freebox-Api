@@ -1,0 +1,115 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===
+LCD
+===
+
+The lcd API allow you to control the Freebox lcd screen settings
+
+LCD Errors
+==========
+
+When attempting to access the lcd API, you may encounter the following
+errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+inval                            Invalid parameters
+no_panel                         No screen detected
+setup                            Unable to setup screen
+======================           ======================
+
+LCD Config
+==========
+
+LcdConfig has the following attributes:
+
+.. json:object:: LcdConfig
+
+   .. json:property:: brightness int
+
+       the screen brightness (range from 0 to 100)
+
+   .. json:property:: orientation_forced bool
+
+       is the screen orientation forced
+
+   .. json:property:: orientation int
+
+       the screen orientation angle
+
+LCD config API
+==============
+
+Get the current LCD configuration
+---------------------------------
+
+.. http:get:: /api/v4/lcd/config/
+
+   Get the :json:object:`LcdConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/lcd/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "brightness": 100,
+              "orientation": 0,
+              "orientation_forced": false
+          }
+      }
+
+Update the lcd configuration
+----------------------------
+
+.. http:put:: /api/v4/lcd/config/
+
+   Update the :json:object:`LcdConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/lcd/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+        "brightness": 50
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "brightness": 50,
+              "orientation": 0,
+              "orientation_forced": false
+          }
+      }
+
+..  LocalWords:  lcd inval LcdConfig

@@ -1,0 +1,284 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+====
+Call
+====
+
+With the call API you access the Freebox call logs.
+
+Call Errors
+===========
+
+When attempting to access the call API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+internal_error                   Internal error
+invalid_id                       No call with this id
+======================           ======================
+
+Call Object
+===========
+
+Call entries have the following properties
+
+.. json:object:: CallEntry
+
+   .. json:property:: id int [ro]
+
+       id
+
+   .. json:property:: type enum [ro]
+
+      The valid call types are:
+
+      ===============   ======================
+      Type              Description
+      ===============   ======================
+      missed            Missed incoming call
+      accepted          Incoming call
+      outgoing          Outgoing call
+      ===============   ======================
+
+   .. json:property:: datetime timestamp [ro]
+
+      Call creation timestamp.
+
+   .. json:property:: number string [ro]
+
+      Callee number for outgoing calls.
+      Caller number for incoming calls.
+
+   .. json:property:: name string [ro]
+
+      Callee name for outgoing calls.
+      Caller name for incoming calls.
+
+      For incoming call if the network does not provide a contact
+      name, we try to use the contact database to find a suitable name
+
+   .. json:property:: duration int [ro]
+
+      Call duration in seconds.
+
+   .. json:property:: new bool
+
+      Call entry as not been acknowledged yet.
+
+   .. json:property:: contact_id int [ro]
+
+      If the number matches an entry in the contact database, the id
+      of the matching contact.
+
+Call API
+========
+
+This is the call API
+
+List every calls
+----------------
+
+.. http:get:: /api/v4/call/log/
+
+   Returns the collection of all :json:object:`CallEntry` call entries
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/call/log/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         success: true,
+         result: [
+            {
+               number: "0102030405",
+               type: "missed",
+               id: 69,
+               duration: 1,
+               datetime: 1359546363,
+               contact_id: 56,
+               line_id: 0,
+               name: "r0ro (Freebox)",
+               new: true
+            },
+            {
+               number: "**1",
+               type: "outgoing",
+               id: 68,
+               duration: 5,
+               datetime: 1359545960,
+               contact_id: 0,
+               line_id: 0,
+               name: "**1",
+               new: false
+            }
+         ]
+      }
+
+Delete every calls
+------------------
+
+.. http:post:: /api/v4/call/log/delete_all/
+
+   Remove all :json:object:`CallEntry` call entries
+
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/call/log/delete_all HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+Mark every calls as read
+------------------------
+
+.. http:post:: /api/v4/call/log/mark_all_as_read/
+
+   Mark all :json:object:`CallEntry` call entries as read
+
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/call/log/mark_all_as_read HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+Access a given call entry
+-------------------------
+
+.. http:get:: /api/v4/call/log/{id}
+
+   Returns the :json:object:`CallEntry` task with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/call/log/69 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         success: true,
+         result: {
+            number: "0102030405",
+            type: "missed",
+            id: 69,
+            duration: 1,
+            datetime: 1359546363,
+            contact_id: 56,
+            line_id: 0,
+            name: "Romain Bureau",
+            new: true
+         }
+      }
+
+Delete a call
+-------------
+
+.. http:delete:: /api/v4/call/log/{id}
+
+   Deletes the :json:object:`CallEntry` with the given id.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/call/log/69 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Update a call entry
+-------------------
+
+.. http:put:: /api/v4/call/log/{id}
+
+   Updates the :json:object:`CallEntry` task with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/call/log/69 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "new": "false"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         success: true,
+         result: {
+            number: "0102030405",
+            type: "missed",
+            id: 69,
+            duration: 1,
+            datetime: 1359546363,
+            contact_id: 56,
+            line_id: 0,
+            name: "Romain Bureau",
+            new: false
+         }
+      }
+
+..  LocalWords:  CallEntry Romain

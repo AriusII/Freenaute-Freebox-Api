@@ -1,0 +1,166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Api changes from version 1.1 to 2.0 &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Api changes from version 2.0 to 3.0" href="../api_changes_2_0_to_3_0/" />
+    <link rel="prev" title="Developper API Documentation" href="../" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-changes-from-version-1-1-to-2-0">
+<h1>Api changes from version 1.1 to 2.0<a class="headerlink" href="#api-changes-from-version-1-1-to-2-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="download-api-changes">
+<h2>Download Api Changes<a class="headerlink" href="#download-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Added 2 new error_code:</p>
+<blockquote>
+<div><ul class="simple">
+<li>invalid_address</li>
+<li>port_conflict</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Added a new <em>&#8216;cookies&#8217;</em> parameter when adding a download by url.
+This allow browser plugins to pass cookies along with url. This can be useful
+for session based authentication.</p>
+</li>
+<li><p class="first">Added new <a class="reference internal" href="../download/#DownloadStats" title="DownloadStats"><code class="xref json json-object docutils literal"><span class="pre">DownloadStats</span></code></a> attributes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>conn_ready</li>
+<li>nb_peer</li>
+<li>blocklist_entries</li>
+<li>blocklist_hits</li>
+<li>dht_stats</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Deprecate path attribute for <a class="reference internal" href="../download/#DownloadFile" title="DownloadFile"><code class="xref json json-object docutils literal"><span class="pre">DownloadFile</span></code></a></p>
+</li>
+<li><p class="first">Add new attributes to <a class="reference internal" href="../download/#DownloadFile" title="DownloadFile"><code class="xref json json-object docutils literal"><span class="pre">DownloadFile</span></code></a></p>
+<blockquote>
+<div><ul class="simple">
+<li>filepath</li>
+<li>name</li>
+<li>mimetype</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Added a <a class="reference internal" href="../download/#dl-blaklist-api"><span>blacklist API</span></a> to control bittorrent peers blacklist entries</p>
+</li>
+</ul>
+</div>
+<div class="section" id="download-configuration-api-changes">
+<h2>Download Configuration Api Changes<a class="headerlink" href="#download-configuration-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Added new <a class="reference internal" href="../download_config/#DownloadConfiguration" title="DownloadConfiguration"><code class="xref json json-object docutils literal"><span class="pre">DownloadConfiguration</span></code></a> attributes</p>
+<blockquote>
+<div><ul class="simple">
+<li>main_port</li>
+<li>dht_port</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="upnp-igd-api-changes">
+<h2>UPnP IGD Api Changes<a class="headerlink" href="#upnp-igd-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added a host property to <a class="reference internal" href="../igd/#UPnPRedir" title="UPnPRedir"><code class="xref json json-object docutils literal"><span class="pre">UPnPRedir</span></code></a></li>
+</ul>
+</div>
+<div class="section" id="connection-api-changes">
+<h2>Connection api Changes<a class="headerlink" href="#connection-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added a ipv6ll property to <a class="reference internal" href="../connection/#ConnectionIpv6Configuration" title="ConnectionIpv6Configuration"><code class="xref json json-object docutils literal"><span class="pre">ConnectionIpv6Configuration</span></code></a></li>
+<li>Added a snr_10, attn_10 property to <a class="reference internal" href="../connection/#XdslStats" title="XdslStats"><code class="xref json json-object docutils literal"><span class="pre">XdslStats</span></code></a></li>
+</ul>
+</div>
+<div class="section" id="rrd-api-changes">
+<h2>RRD Api Changes<a class="headerlink" href="#rrd-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Added new entries for <a class="reference internal" href="../rrd/#rrd-net-db"><span>net</span></a> database:</p>
+<blockquote>
+<div><ul class="simple">
+<li>vpn_rate_down</li>
+<li>vpn_rate_up</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Added new entries for <a class="reference internal" href="../rrd/#rrd-temp-db"><span>temp</span></a> database:</p>
+<blockquote>
+<div><ul class="simple">
+<li>cpum</li>
+<li>cpub</li>
+<li>sw</li>
+<li>hdd</li>
+<li>fan_speed</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Deprecate entries for <a class="reference internal" href="../rrd/#rrd-temp-db"><span>temp</span></a> database:</p>
+<blockquote>
+<div><ul class="simple">
+<li>temp1</li>
+<li>temp2</li>
+<li>temp3</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="system-api-changes">
+<h2>System Api Changes<a class="headerlink" href="#system-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added uptime_val attribute to <a class="reference internal" href="../system/#SystemConfig" title="SystemConfig"><code class="xref json json-object docutils literal"><span class="pre">SystemConfig</span></code></a></li>
+</ul>
+</div>
+<div class="section" id="wifi-api-changes">
+<h2>Wifi Api Changes<a class="headerlink" href="#wifi-api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Completely rework Wifi API to be able to handle multiple Access Points.</li>
+</ul>
+</div>
+<div class="section" id="new-api">
+<h2>New API<a class="headerlink" href="#new-api" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added an <a class="reference internal" href="../nat/#incoming-port-api"><span>Incoming port configuration Api</span></a></li>
+<li>Added a <a class="reference internal" href="../vpn_client/#vpn-client-api"><span>VPN Client Api</span></a></li>
+<li>Added a <a class="reference internal" href="../vpn_client/#vpn-client-api"><span>VPN Server Api</span></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

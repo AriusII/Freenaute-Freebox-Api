@@ -1,0 +1,516 @@
+{
+  "module": {
+    "module": "download_config",
+    "title": "Download Configuration",
+    "category": "fichiers-telechargements",
+    "path": "docs/reference/fichiers-telechargements/download_config.md",
+    "http_signatures": 3,
+    "objects": 7,
+    "properties": 38,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#download-configuration",
+    "source_pre_blocks": 9,
+    "markdown_code_blocks": 9,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "download_config",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/config/",
+      "path_template": "/api/v{major}/downloads/config/",
+      "documented_major": 8,
+      "title": "Get the current Download configuration",
+      "id": "get--api-v8-downloads-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#get--api-v8-downloads-config-",
+      "referenced_objects": [
+        "DownloadConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-downloads-config-"
+    },
+    {
+      "module": "download_config",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/config/",
+      "path_template": "/api/v{major}/downloads/config/",
+      "documented_major": 8,
+      "title": "Update the Download configuration",
+      "id": "put--api-v8-downloads-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#put--api-v8-downloads-config-",
+      "referenced_objects": [
+        "DownloadConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-config-"
+    },
+    {
+      "module": "download_config",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/throttling",
+      "path_template": "/api/v{major}/downloads/throttling",
+      "documented_major": 8,
+      "title": "Updating the current Throttling mode",
+      "id": "put--api-v8-downloads-throttling",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-throttling",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#put--api-v8-downloads-throttling",
+      "referenced_objects": [
+        "DlThrottlingConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-downloads-throttling"
+    }
+  ],
+  "objects": [
+    {
+      "module": "download_config",
+      "name": "DownloadConfiguration",
+      "id": "DownloadConfiguration",
+      "properties": [
+        "DownloadConfiguration.max_downloading_tasks",
+        "DownloadConfiguration.download_dir",
+        "DownloadConfiguration.watch_dir",
+        "DownloadConfiguration.use_watch_dir",
+        "DownloadConfiguration.throttling",
+        "DownloadConfiguration.news",
+        "DownloadConfiguration.bt",
+        "DownloadConfiguration.feed",
+        "DownloadConfiguration.blocklist",
+        "DownloadConfiguration.dns1",
+        "DownloadConfiguration.dns2"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration"
+    },
+    {
+      "module": "download_config",
+      "name": "DlThrottlingConfig",
+      "id": "DlThrottlingConfig",
+      "properties": [
+        "DlThrottlingConfig.normal",
+        "DlThrottlingConfig.slow",
+        "DlThrottlingConfig.schedule",
+        "DlThrottlingConfig.mode"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlThrottlingConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlRate",
+      "id": "DlRate",
+      "properties": [
+        "DlRate.tx_rate",
+        "DlRate.rx_rate"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlRate",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlRate"
+    },
+    {
+      "module": "download_config",
+      "name": "DlNewsConfig",
+      "id": "DlNewsConfig",
+      "properties": [
+        "DlNewsConfig.server",
+        "DlNewsConfig.port",
+        "DlNewsConfig.ssl",
+        "DlNewsConfig.user",
+        "DlNewsConfig.password",
+        "DlNewsConfig.nthreads",
+        "DlNewsConfig.auto_repair",
+        "DlNewsConfig.lazy_par2",
+        "DlNewsConfig.auto_extract",
+        "DlNewsConfig.erase_tmp"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlBtConfig",
+      "id": "DlBtConfig",
+      "properties": [
+        "DlBtConfig.max_peers",
+        "DlBtConfig.stop_ratio",
+        "DlBtConfig.crypto_support",
+        "DlBtConfig.enable_dht",
+        "DlBtConfig.enable_pex",
+        "DlBtConfig.announce_timeout",
+        "DlBtConfig.main_port",
+        "DlBtConfig.dht_port"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlFeedConfig",
+      "id": "DlFeedConfig",
+      "properties": [
+        "DlFeedConfig.fetch_interval",
+        "DlFeedConfig.max_items"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlFeedConfig",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlFeedConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlBlockListConfig",
+      "id": "DlBlockListConfig",
+      "properties": [
+        "DlBlockListConfig.sources[]"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBlockListConfig",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBlockListConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.max_downloading_tasks",
+      "signature": "max_downloading_tasks int",
+      "description": "max concurrent download tasks",
+      "source_id": "DownloadConfiguration.max_downloading_tasks",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.max_downloading_tasks",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.max_downloading_tasks"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.download_dir",
+      "signature": "download_dir string",
+      "description": "the default path where downloads will be stored (base64 encoded)",
+      "source_id": "DownloadConfiguration.download_dir",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.download_dir",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.download_dir"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.watch_dir",
+      "signature": "watch_dir string",
+      "description": "special folder that will be monitored. When a new supported file (.nzb, .torrent) is copied in that folder, the task is automatically added to the download queue. (base64 encoded)",
+      "source_id": "DownloadConfiguration.watch_dir",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.watch_dir",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.watch_dir"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.use_watch_dir",
+      "signature": "use_watch_dir bool",
+      "description": "if set to false, the watch_dir will not be monitored",
+      "source_id": "DownloadConfiguration.use_watch_dir",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.use_watch_dir",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.use_watch_dir"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.throttling",
+      "signature": "throttling DlThrottlingConfig",
+      "description": "throttling configuration",
+      "source_id": "DownloadConfiguration.throttling",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.throttling",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.throttling"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.news",
+      "signature": "news DlNewsConfig",
+      "description": "newsgroups configuration",
+      "source_id": "DownloadConfiguration.news",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.news",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.news"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.bt",
+      "signature": "bt DlBtConfig",
+      "description": "bittorrent configuration",
+      "source_id": "DownloadConfiguration.bt",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.bt",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.bt"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.feed",
+      "signature": "feed DlFeedConfig",
+      "description": "RSS feed configuration",
+      "source_id": "DownloadConfiguration.feed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.feed",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.feed"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.blocklist",
+      "signature": "blocklist DlBlockListConfig",
+      "description": "block list configuration",
+      "source_id": "DownloadConfiguration.blocklist",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.blocklist",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.blocklist"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.dns1",
+      "signature": "dns1 string",
+      "description": "dns server ip to use for downloader (leave blank for default dns server)",
+      "source_id": "DownloadConfiguration.dns1",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.dns1",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.dns1"
+    },
+    {
+      "module": "download_config",
+      "id": "DownloadConfiguration.dns2",
+      "signature": "dns2 string",
+      "description": "dns server ip to use for downloader",
+      "source_id": "DownloadConfiguration.dns2",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration.dns2",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DownloadConfiguration.dns2"
+    },
+    {
+      "module": "download_config",
+      "id": "DlThrottlingConfig.normal",
+      "signature": "normal DlRate",
+      "description": "download rate for normal time slot (in B/s)",
+      "source_id": "DlThrottlingConfig.normal",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig.normal",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlThrottlingConfig.normal"
+    },
+    {
+      "module": "download_config",
+      "id": "DlThrottlingConfig.slow",
+      "signature": "slow DlRate",
+      "description": "download rate for normal slow slot (in B/s)",
+      "source_id": "DlThrottlingConfig.slow",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig.slow",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlThrottlingConfig.slow"
+    },
+    {
+      "module": "download_config",
+      "id": "DlThrottlingConfig.schedule",
+      "signature": "schedule enum[168]",
+      "description": "The schedule array represent the list of week hours timeslot, starting on monday a midnight. Therefore the complete week is represented in a array of 168 elements (24 * 7) Each slot can have the following value: Type Description normal downloads will use normal DlRate config for this timeslot slow downloads will use slow DlRate config for this timeslot hibernate downloads will be paused for this timeslot",
+      "source_id": "DlThrottlingConfig.schedule",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig.schedule",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlThrottlingConfig.schedule"
+    },
+    {
+      "module": "download_config",
+      "id": "DlThrottlingConfig.mode",
+      "signature": "mode enum",
+      "description": "Throttling mode can have to following values Type Description normal force use of normal rate limits (not using the scheduler) slow force use of slow rate limits (not using the scheduler) hibernate force hibernate (not using the scheduler) schedule use scheduded rate limit",
+      "source_id": "DlThrottlingConfig.mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig.mode",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlThrottlingConfig.mode"
+    },
+    {
+      "module": "download_config",
+      "id": "DlRate.tx_rate",
+      "signature": "tx_rate int",
+      "description": "maximum transmit rate (in byte/s) 0 means no limit",
+      "source_id": "DlRate.tx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlRate.tx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlRate.tx_rate"
+    },
+    {
+      "module": "download_config",
+      "id": "DlRate.rx_rate",
+      "signature": "rx_rate int",
+      "description": "maximum receive rate (in byte/s) 0 means no limit",
+      "source_id": "DlRate.rx_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlRate.rx_rate",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlRate.rx_rate"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.server",
+      "signature": "server string",
+      "description": "NNTP server hostname",
+      "source_id": "DlNewsConfig.server",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.server",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.server"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.port",
+      "signature": "port int",
+      "description": "NNTP server port",
+      "source_id": "DlNewsConfig.port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.port",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.port"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.ssl",
+      "signature": "ssl bool",
+      "description": "Use SSL to connect to server if set to true",
+      "source_id": "DlNewsConfig.ssl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.ssl",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.ssl"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.user",
+      "signature": "user string",
+      "description": "NNTP auth username (can be empty if no auth is required)",
+      "source_id": "DlNewsConfig.user",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.user",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.user"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.password",
+      "signature": "password string Write-only",
+      "description": "NNTP auth password (can be empty if no auth is required)",
+      "source_id": "DlNewsConfig.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.password",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.password"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.nthreads",
+      "signature": "nthreads int",
+      "description": "maximum concurrent connections to the NNTP server",
+      "source_id": "DlNewsConfig.nthreads",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.nthreads",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.nthreads"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.auto_repair",
+      "signature": "auto_repair bool",
+      "description": "automatically check and repair downloaded files using the provided par2 files",
+      "source_id": "DlNewsConfig.auto_repair",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.auto_repair",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.auto_repair"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.lazy_par2",
+      "signature": "lazy_par2 bool",
+      "description": "if set to true the downloader will download the par2 files only if the download is corrupted",
+      "source_id": "DlNewsConfig.lazy_par2",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.lazy_par2",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.lazy_par2"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.auto_extract",
+      "signature": "auto_extract bool",
+      "description": "automatically attempt to extract downloaded files",
+      "source_id": "DlNewsConfig.auto_extract",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.auto_extract",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.auto_extract"
+    },
+    {
+      "module": "download_config",
+      "id": "DlNewsConfig.erase_tmp",
+      "signature": "erase_tmp bool",
+      "description": "if auto_extract is enabled, delete archive files once successfully extracted",
+      "source_id": "DlNewsConfig.erase_tmp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig.erase_tmp",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlNewsConfig.erase_tmp"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.max_peers",
+      "signature": "max_peers int",
+      "description": "maximum number of peers at a given time",
+      "source_id": "DlBtConfig.max_peers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.max_peers",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.max_peers"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.stop_ratio",
+      "signature": "stop_ratio int",
+      "description": "default stop_ratio for bt Download tasks This value is scaled by a factor 100 , for instance a stop_ratio of 200 means that the task will stop once tx_bytes = 2 * size A value of 0 means that the task will continue seeding until it is manually stopped",
+      "source_id": "DlBtConfig.stop_ratio",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.stop_ratio",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.stop_ratio"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.crypto_support",
+      "signature": "crypto_support enum",
+      "description": "The crypto_support can have the following values Type Description unsupported will never use bittorrent crypto allowed will select plain during handshake preferred will select crypto during handshake required will allow plain bittorrent",
+      "source_id": "DlBtConfig.crypto_support",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.crypto_support",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.crypto_support"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.enable_dht",
+      "signature": "enable_dht bool",
+      "description": "enable the dht protocol",
+      "source_id": "DlBtConfig.enable_dht",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.enable_dht",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.enable_dht"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.enable_pex",
+      "signature": "enable_pex bool",
+      "description": "enable the peer exchange protocol",
+      "source_id": "DlBtConfig.enable_pex",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.enable_pex",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.enable_pex"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.announce_timeout",
+      "signature": "announce_timeout int",
+      "description": "timeout in seconds for announcing to tracker",
+      "source_id": "DlBtConfig.announce_timeout",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.announce_timeout",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.announce_timeout"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.main_port",
+      "signature": "main_port int",
+      "description": "main bittorrent port",
+      "source_id": "DlBtConfig.main_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.main_port",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.main_port"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBtConfig.dht_port",
+      "signature": "dht_port int",
+      "description": "bittorrent dht port",
+      "source_id": "DlBtConfig.dht_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig.dht_port",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBtConfig.dht_port"
+    },
+    {
+      "module": "download_config",
+      "id": "DlFeedConfig.fetch_interval",
+      "signature": "fetch_interval int",
+      "description": "interval between automatic RSS refresh (in minutes)",
+      "source_id": "DlFeedConfig.fetch_interval",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlFeedConfig.fetch_interval",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlFeedConfig.fetch_interval"
+    },
+    {
+      "module": "download_config",
+      "id": "DlFeedConfig.max_items",
+      "signature": "max_items int",
+      "description": "maximum feed item to keep",
+      "source_id": "DlFeedConfig.max_items",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlFeedConfig.max_items",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlFeedConfig.max_items"
+    },
+    {
+      "module": "download_config",
+      "id": "DlBlockListConfig.sources[]",
+      "signature": "sources[] string",
+      "description": "list of block list URL source The block list should be in cidr format e.g.: http://list.iblocklist.com/?list=bt_level1\u0026fileformat=cidr\u0026archiveformat=",
+      "source_id": "DlBlockListConfig.sources[]",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBlockListConfig.sources[]",
+      "markdown": "docs/reference/fichiers-telechargements/download_config.md#DlBlockListConfig.sources[]"
+    }
+  ],
+  "events": []
+}

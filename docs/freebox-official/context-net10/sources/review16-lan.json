@@ -1,0 +1,661 @@
+{
+  "module": {
+    "module": "lan",
+    "title": "Lan",
+    "category": "reseau",
+    "path": "docs/reference/reseau/lan.md",
+    "http_signatures": 10,
+    "objects": 7,
+    "properties": 41,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#lan",
+    "source_pre_blocks": 30,
+    "markdown_code_blocks": 30,
+    "source_tables": 7
+  },
+  "endpoints": [
+    {
+      "module": "lan",
+      "method": "GET",
+      "documented_path": "/api/v8/lan/config/",
+      "path_template": "/api/v{major}/lan/config/",
+      "documented_major": 8,
+      "title": "Get the current Lan configuration",
+      "id": "get--api-v8-lan-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lan-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#get--api-v8-lan-config-",
+      "referenced_objects": [
+        "LanConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-lan-config-"
+    },
+    {
+      "module": "lan",
+      "method": "PUT",
+      "documented_path": "/api/v8/lan/config/",
+      "path_template": "/api/v{major}/lan/config/",
+      "documented_major": 8,
+      "title": "Update the current Lan configuration",
+      "id": "put--api-v8-lan-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-lan-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#put--api-v8-lan-config-",
+      "referenced_objects": [
+        "LanConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-lan-config-"
+    },
+    {
+      "module": "lan",
+      "method": "GET",
+      "documented_path": "/api/v16/lan/routes",
+      "path_template": "/api/v{major}/lan/routes",
+      "documented_major": 16,
+      "title": "Get the current routing configuration",
+      "id": "get--api-v16-lan-routes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-lan-routes",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#get--api-v16-lan-routes",
+      "referenced_objects": [
+        "Route"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-lan-routes"
+    },
+    {
+      "module": "lan",
+      "method": "PUT",
+      "documented_path": "/api/v16/lan/routes/",
+      "path_template": "/api/v{major}/lan/routes/",
+      "documented_major": 16,
+      "title": "Update the current routing configuration",
+      "id": "put--api-v16-lan-routes-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-lan-routes-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#put--api-v16-lan-routes-",
+      "referenced_objects": [
+        "Route"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v16-lan-routes-"
+    },
+    {
+      "module": "lan",
+      "method": "GET",
+      "documented_path": "/api/v8/lan/browser/interfaces/",
+      "path_template": "/api/v{major}/lan/browser/interfaces/",
+      "documented_major": 8,
+      "title": "Getting the list of browsable LAN interfaces",
+      "id": "get--api-v8-lan-browser-interfaces-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lan-browser-interfaces-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#get--api-v8-lan-browser-interfaces-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-lan-browser-interfaces-"
+    },
+    {
+      "module": "lan",
+      "method": "GET",
+      "documented_path": "/api/v16/lan/browser/{interface}/",
+      "path_template": "/api/v{major}/lan/browser/{interface}/",
+      "documented_major": 16,
+      "title": "Getting the list of hosts on a given interface",
+      "id": "get--api-v16-lan-browser-interface-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-lan-browser-interface-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#get--api-v16-lan-browser-interface-",
+      "referenced_objects": [
+        "LanHost"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-lan-browser-interface-"
+    },
+    {
+      "module": "lan",
+      "method": "GET",
+      "documented_path": "/api/v16/lan/browser/{interface}/{hostid}/",
+      "path_template": "/api/v{major}/lan/browser/{interface}/{hostid}/",
+      "documented_major": 16,
+      "title": "Getting an host information",
+      "id": "get--api-v16-lan-browser-interface-hostid-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-lan-browser-interface-hostid-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#get--api-v16-lan-browser-interface-hostid-",
+      "referenced_objects": [
+        "LanHost"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-lan-browser-interface-hostid-"
+    },
+    {
+      "module": "lan",
+      "method": "PUT",
+      "documented_path": "/api/v16/lan/browser/{interface}/{hostid}/",
+      "path_template": "/api/v{major}/lan/browser/{interface}/{hostid}/",
+      "documented_major": 16,
+      "title": "Updating an host information",
+      "id": "put--api-v16-lan-browser-interface-hostid-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-lan-browser-interface-hostid-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#put--api-v16-lan-browser-interface-hostid-",
+      "referenced_objects": [
+        "LanHost"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v16-lan-browser-interface-hostid-"
+    },
+    {
+      "module": "lan",
+      "method": "GET",
+      "documented_path": "/api/v8/lan/browser/types/",
+      "path_template": "/api/v{major}/lan/browser/types/",
+      "documented_major": 8,
+      "title": "Getting available lan host types",
+      "id": "get--api-v8-lan-browser-types-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lan-browser-types-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#get--api-v8-lan-browser-types-",
+      "referenced_objects": [
+        "LanHost"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-lan-browser-types-"
+    },
+    {
+      "module": "lan",
+      "method": "POST",
+      "documented_path": "/api/v8/lan/wol/{interface}/",
+      "path_template": "/api/v{major}/lan/wol/{interface}/",
+      "documented_major": 8,
+      "title": "Send Wake ok Lan packet to an host",
+      "id": "post--api-v8-lan-wol-interface-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-lan-wol-interface-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/lan.md#post--api-v8-lan-wol-interface-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-lan-wol-interface-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "lan",
+      "name": "LanConfig",
+      "id": "LanConfig",
+      "properties": [
+        "LanConfig.ip",
+        "LanConfig.name",
+        "LanConfig.name_dns",
+        "LanConfig.name_mdns",
+        "LanConfig.name_netbios",
+        "LanConfig.type"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig"
+    },
+    {
+      "module": "lan",
+      "name": "Route",
+      "id": "Route",
+      "properties": [
+        "Route.prefix",
+        "Route.gateway",
+        "Route.enabled",
+        "Route.description"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Route",
+      "markdown": "docs/reference/reseau/lan.md#Route"
+    },
+    {
+      "module": "lan",
+      "name": "LanHost",
+      "id": "LanHost",
+      "properties": [
+        "LanHost.id",
+        "LanHost.primary_name",
+        "LanHost.domain_name",
+        "LanHost.host_type",
+        "LanHost.primary_name_manual",
+        "LanHost.l2ident",
+        "LanHost.vendor_name",
+        "LanHost.persistent",
+        "LanHost.reachable",
+        "LanHost.last_time_reachable",
+        "LanHost.active",
+        "LanHost.last_activity",
+        "LanHost.first_activity",
+        "LanHost.names",
+        "LanHost.l3connectivities",
+        "LanHost.network_control",
+        "LanHost.info"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost",
+      "markdown": "docs/reference/reseau/lan.md#LanHost"
+    },
+    {
+      "module": "lan",
+      "name": "LanHostName",
+      "id": "LanHostName",
+      "properties": [
+        "LanHostName.name",
+        "LanHostName.source"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostName",
+      "markdown": "docs/reference/reseau/lan.md#LanHostName"
+    },
+    {
+      "module": "lan",
+      "name": "LanHostL2Ident",
+      "id": "LanHostL2Ident",
+      "properties": [
+        "LanHostL2Ident.id",
+        "LanHostL2Ident.type"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL2Ident",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL2Ident"
+    },
+    {
+      "module": "lan",
+      "name": "LanHostL3Connectivity",
+      "id": "LanHostL3Connectivity",
+      "properties": [
+        "LanHostL3Connectivity.addr",
+        "LanHostL3Connectivity.af",
+        "LanHostL3Connectivity.active",
+        "LanHostL3Connectivity.reachable",
+        "LanHostL3Connectivity.last_activity",
+        "LanHostL3Connectivity.last_time_reachable",
+        "LanHostL3Connectivity.model"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity"
+    },
+    {
+      "module": "lan",
+      "name": "LanHostNetworkControl",
+      "id": "LanHostNetworkControl",
+      "properties": [
+        "LanHostNetworkControl.profile_id",
+        "LanHostNetworkControl.name",
+        "LanHostNetworkControl.current_mode"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostNetworkControl",
+      "markdown": "docs/reference/reseau/lan.md#LanHostNetworkControl"
+    }
+  ],
+  "properties": [
+    {
+      "module": "lan",
+      "id": "LanConfig.ip",
+      "signature": "ip string",
+      "description": "Freebox Server IPv4 address",
+      "source_id": "LanConfig.ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig.ip",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig.ip"
+    },
+    {
+      "module": "lan",
+      "id": "LanConfig.name",
+      "signature": "name string",
+      "description": "Freebox Server name",
+      "source_id": "LanConfig.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig.name",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig.name"
+    },
+    {
+      "module": "lan",
+      "id": "LanConfig.name_dns",
+      "signature": "name_dns string",
+      "description": "Freebox Server DNS name",
+      "source_id": "LanConfig.name_dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig.name_dns",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig.name_dns"
+    },
+    {
+      "module": "lan",
+      "id": "LanConfig.name_mdns",
+      "signature": "name_mdns string",
+      "description": "Freebox Server mDNS name",
+      "source_id": "LanConfig.name_mdns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig.name_mdns",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig.name_mdns"
+    },
+    {
+      "module": "lan",
+      "id": "LanConfig.name_netbios",
+      "signature": "name_netbios string",
+      "description": "Freebox Server netbios name",
+      "source_id": "LanConfig.name_netbios",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig.name_netbios",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig.name_netbios"
+    },
+    {
+      "module": "lan",
+      "id": "LanConfig.type",
+      "signature": "type enum",
+      "description": "The valid LAN modes are: Type Description router The Freebox acts as a network router bridge The Freebox acts as a network bridge NOTE: in bridge mode, most of Freebox services are disabled. It is recommended to use the router mode, and third party apps should not change this setting",
+      "source_id": "LanConfig.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanConfig.type",
+      "markdown": "docs/reference/reseau/lan.md#LanConfig.type"
+    },
+    {
+      "module": "lan",
+      "id": "Route.prefix",
+      "signature": "prefix string",
+      "description": "Destination network IPv4 prefix in CIDR format (e.g. 192.168.1.0/24). A prefix is considered invalid if it is a subprefix of any reserved network listed below. Network Description 127.0.0.0/8 Loopback network 169.254.0.0/16 Link-local addresses 224.0.0.0/4 IANA: multicast 192.168.27.0/24 Used for VPN and guest WIFI addresses Only one enabled route may exist for a given prefix. An exists error will be returned if multiple active routes share the same prefix.",
+      "source_id": "Route.prefix",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Route.prefix",
+      "markdown": "docs/reference/reseau/lan.md#Route.prefix"
+    },
+    {
+      "module": "lan",
+      "id": "Route.gateway",
+      "signature": "gateway string",
+      "description": "IP address of the next-hop gateway.",
+      "source_id": "Route.gateway",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Route.gateway",
+      "markdown": "docs/reference/reseau/lan.md#Route.gateway"
+    },
+    {
+      "module": "lan",
+      "id": "Route.enabled",
+      "signature": "enabled bool",
+      "description": "If false the route is not added to the routing table.",
+      "source_id": "Route.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Route.enabled",
+      "markdown": "docs/reference/reseau/lan.md#Route.enabled"
+    },
+    {
+      "module": "lan",
+      "id": "Route.description",
+      "signature": "description string",
+      "description": "Optional text describing the route.",
+      "source_id": "Route.description",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Route.description",
+      "markdown": "docs/reference/reseau/lan.md#Route.description"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.id",
+      "signature": "id string Read-only",
+      "description": "Host id (unique on this interface)",
+      "source_id": "LanHost.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.id",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.id"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.primary_name",
+      "signature": "primary_name string",
+      "description": "Host primary name (chosen from the list of available names, or manually set by user)",
+      "source_id": "LanHost.primary_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.primary_name",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.primary_name"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.domain_name",
+      "signature": "domain_name string",
+      "description": "Host domain name on the local network (manually set by user, or automatically configured during device registration). The string must respect the following rules: Must end with \u2018.home\u2019 63 characters long at max Only alphabetical characters are accepted Digits are accepted provided they are not placed at the beginning of the string, nor after another dot character. Hyphens and dots are accepted provided they are not placed at the beginning or the end of the string, nor after or before another dot character. It is also possible to use an empty string. This special value means no local domain should be registered for this host.",
+      "source_id": "LanHost.domain_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.domain_name",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.domain_name"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.host_type",
+      "signature": "host_type enum",
+      "description": "When possible, the Freebox will try to guess the host_type, but you can manually override this to the correct value Possible values are: source Description workstation Workstation laptop Laptop smartphone Smartphone tablet Tablet printer Printer vg_console Video game console television TV nas Nas ip_camera IP Camera ip_phone IP Phone freebox_player Freebox Player freebox_hd Freebox HD freebox_crystal Freebox Crystal freebox_mini Freebox Mini 4k freebox_delta Freebox Delta freebox_one Freebox One freebox_wifi Freebox Wi-Fi Pop freebox_pop Freebox Pop networking_device Networking device multimedia_device Multimedia device car Connected car watch Smartwatch light Light outlet Connected outlet appliances Household appliances thermostat Thermostat shutter Electric shutter other Other",
+      "source_id": "LanHost.host_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.host_type",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.host_type"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.primary_name_manual",
+      "signature": "primary_name_manual bool Read-only",
+      "description": "If true the primary name has been set manually",
+      "source_id": "LanHost.primary_name_manual",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.primary_name_manual",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.primary_name_manual"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.l2ident",
+      "signature": "l2ident [] array of LanHostL2Ident Read-only",
+      "description": "Layer 2 network id and its type",
+      "source_id": "LanHost.l2ident",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.l2ident",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.l2ident"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.vendor_name",
+      "signature": "vendor_name string Read-only",
+      "description": "Host vendor name (from the mac address)",
+      "source_id": "LanHost.vendor_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.vendor_name",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.vendor_name"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.persistent",
+      "signature": "persistent bool",
+      "description": "If true the host is always shown even if it has not been active since the Freebox startup",
+      "source_id": "LanHost.persistent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.persistent",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.persistent"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.reachable",
+      "signature": "reachable bool Read-only",
+      "description": "If true the host can receive traffic from the Freebox",
+      "source_id": "LanHost.reachable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.reachable",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.reachable"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.last_time_reachable",
+      "signature": "last_time_reachable timestamp Read-only",
+      "description": "Last time the host was reached",
+      "source_id": "LanHost.last_time_reachable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.last_time_reachable",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.last_time_reachable"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.active",
+      "signature": "active bool Read-only",
+      "description": "If true the host sends traffic to the Freebox",
+      "source_id": "LanHost.active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.active",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.active"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.last_activity",
+      "signature": "last_activity timestamp Read-only",
+      "description": "Last time the host sent traffic",
+      "source_id": "LanHost.last_activity",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.last_activity",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.last_activity"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.first_activity",
+      "signature": "first_activity timestamp Read-only",
+      "description": "First time the host sent traffic, or 0 (Unix Epoch) if it wasn\u2019t seen before this field was added.",
+      "source_id": "LanHost.first_activity",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.first_activity",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.first_activity"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.names",
+      "signature": "names [] array of LanHostName Read-only",
+      "description": "List of available names, and their source",
+      "source_id": "LanHost.names",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.names",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.names"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.l3connectivities",
+      "signature": "l3connectivities [] array of LanHostL3Connectivity Read-only",
+      "description": "List of available layer 3 network connections",
+      "source_id": "LanHost.l3connectivities",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.l3connectivities",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.l3connectivities"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.network_control",
+      "signature": "network_control LanHostNetworkControl Read-only",
+      "description": "If device is associated with a profile, contains profile summary.",
+      "source_id": "LanHost.network_control",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.network_control",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.network_control"
+    },
+    {
+      "module": "lan",
+      "id": "LanHost.info",
+      "signature": "info dict Read-only",
+      "description": "Contains detailed information that could be gathered about the device.",
+      "source_id": "LanHost.info",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost.info",
+      "markdown": "docs/reference/reseau/lan.md#LanHost.info"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostName.name",
+      "signature": "name string Read-only",
+      "description": "Host name",
+      "source_id": "LanHostName.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostName.name",
+      "markdown": "docs/reference/reseau/lan.md#LanHostName.name"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostName.source",
+      "signature": "source enum Read-only",
+      "description": "source of the name",
+      "source_id": "LanHostName.source",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostName.source",
+      "markdown": "docs/reference/reseau/lan.md#LanHostName.source"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL2Ident.id",
+      "signature": "id string Read-only",
+      "description": "Layer 2 id",
+      "source_id": "LanHostL2Ident.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL2Ident.id",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL2Ident.id"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL2Ident.type",
+      "signature": "type string Read-only",
+      "description": "Type of layer 2 address source Description dhcp DHCP netbios Netbios mdns mDNS hostname mdns_srv mDNS service upnp UPnP wsd WS-Discovery",
+      "source_id": "LanHostL2Ident.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL2Ident.type",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL2Ident.type"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.addr",
+      "signature": "addr string Read-only",
+      "description": "Layer 3 address",
+      "source_id": "LanHostL3Connectivity.addr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.addr",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.addr"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.af",
+      "signature": "af enum Read-only",
+      "description": "af Description ipv4 IPv4 ipv6 IPv6",
+      "source_id": "LanHostL3Connectivity.af",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.af",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.af"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.active",
+      "signature": "active bool Read-only",
+      "description": "is the connection active",
+      "source_id": "LanHostL3Connectivity.active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.active",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.active"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.reachable",
+      "signature": "reachable bool Read-only",
+      "description": "is the connection reachable",
+      "source_id": "LanHostL3Connectivity.reachable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.reachable",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.reachable"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.last_activity",
+      "signature": "last_activity timestamp Read-only",
+      "description": "last activity timestamp",
+      "source_id": "LanHostL3Connectivity.last_activity",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.last_activity",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.last_activity"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.last_time_reachable",
+      "signature": "last_time_reachable timestamp Read-only",
+      "description": "last reachable timestamp",
+      "source_id": "LanHostL3Connectivity.last_time_reachable",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.last_time_reachable",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.last_time_reachable"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostL3Connectivity.model",
+      "signature": "model string Read-only",
+      "description": "device model if known",
+      "source_id": "LanHostL3Connectivity.model",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostL3Connectivity.model",
+      "markdown": "docs/reference/reseau/lan.md#LanHostL3Connectivity.model"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostNetworkControl.profile_id",
+      "signature": "profile_id int Read-only",
+      "description": "Id of profile this device is associated with.",
+      "source_id": "LanHostNetworkControl.profile_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostNetworkControl.profile_id",
+      "markdown": "docs/reference/reseau/lan.md#LanHostNetworkControl.profile_id"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostNetworkControl.name",
+      "signature": "name string Read-only",
+      "description": "Name of profile this device is associated with.",
+      "source_id": "LanHostNetworkControl.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostNetworkControl.name",
+      "markdown": "docs/reference/reseau/lan.md#LanHostNetworkControl.name"
+    },
+    {
+      "module": "lan",
+      "id": "LanHostNetworkControl.current_mode",
+      "signature": "current_mode enum Read-only",
+      "description": "Mode described in Network Control Object",
+      "source_id": "LanHostNetworkControl.current_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHostNetworkControl.current_mode",
+      "markdown": "docs/reference/reseau/lan.md#LanHostNetworkControl.current_mode"
+    }
+  ],
+  "events": []
+}

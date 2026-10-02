@@ -1,0 +1,408 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+=====
+Login
+=====
+
+Each application identified with an *app_name* must gain access to
+Freebox API before being able to use the api.  This procedure can only
+be initiated from the local network, and the user must have access to
+the Freebox front panel to grant access to the app.
+
+Once the user authorize the app, the app will be provided with a
+unique *app_token* associated with a set of default permissions.
+
+This *app_token* must be store securely by the app, and will not be
+exchanged in clear text for the following requests.
+
+Note that the user can revoke the *app_token*, or edit its permissions
+afterwards. For instance if the user resets the admin password, app
+permissions will be reset.
+
+Then the app will need to open a *session* to get an *auth_token*. The
+app will then be authenticated by adding this session_token in HTTP
+headers of the following requests. The validity of the *auth_token* is
+limited in time and the app will have to renew this *auth_token* once
+in a while.
+
+Obtaining an *app_token*
+========================
+
+TokenRequest object
+-------------------
+
+Download objects have the following attributes
+
+.. json:object:: TokenRequest
+
+   .. json:property:: app_id string
+
+       A unique app_id string
+
+   .. json:property:: app_name string
+
+       A descriptive application name (will be displayed on lcd)
+
+   .. json:property:: app_version string
+
+       app version
+
+   .. json:property:: device_name string
+
+      The name of the device on which the app will be used
+
+Request authorization
+---------------------
+
+This is the first step, the app will ask for an *app_token* using the
+following call.  A message will be displayed on the Freebox LCD asking
+the user to grant/deny access to the requesting app.
+
+Once the app has obtained a valid app_token, it will not have to do
+this procedure again unless the user revokes the app_token.
+
+.. http:post:: /api/v4/login/authorize/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/login/authorize/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "app_id": "fr.freebox.testapp",
+         "app_name": "Test App",
+         "app_version": "0.0.7",
+         "device_name": "Pc de Xavier"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true,
+         "result": {
+            "app_token": "dyNYgfK0Ya6FWGqq83sBHa7TwzWo+pg4fDFUJHShcjVYzTfaRrZzm93p7OTAfH/0",
+            "track_id": 42
+         }
+      }
+
+
+Track authorization progress
+----------------------------
+
+Once the authorization request has been made, the app should monitor
+the token status by using the following API and using the *track_id*
+returned by the previous call.
+
+The status can have one of the following values:
+
+======== =========================================================
+Status   Description
+======== =========================================================
+unknown  the app_token is invalid or has been revoked
+pending  the user has not confirmed the authorization request yet
+timeout  the user did not confirmed the authorization within the given time
+granted  the app_token is valid and can be used to open a session
+denied   the user denied the authorization request
+======== =========================================================
+
+The app should monitor the status until it is different from pending.
+
+.. http:get:: /api/v4/login/authorize/{track_id}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/login/authorize/42 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "status": "pending",
+              "challenge": "Bj6xMqoe+DCHD44KqBljJ579seOXNWr2"
+          }
+      }
+
+   **Example response once the user has validated the request**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "status": "granted",
+              "challenge": "Bj6xMqoe+DCHD44KqBljJ579seOXNWr2"
+          }
+      }
+
+Obtaining a *session_token*
+===========================
+
+To protect the *app_token* secret, it will never be used directly to
+authenticate the application, instead the API will provide a challenge
+the app will combine to its *app_token* to open a session and get a
+*session_token*
+
+The app will then have to include the *session_token* in the HTTP
+headers of the following requests
+
+SessionStart object
+-------------------
+
+Download objects have the following attributes:
+
+.. json:object:: SessionStart
+
+   .. json:property:: app_id string
+
+       Same app_id used in :json:object:`TokenRequest` to get the *app_token*
+
+   .. json:property:: app_version string
+
+       app version
+
+   .. json:property:: password string
+
+      The password computed using the *challenge* and the *app_token*
+
+      To compute the password you have to compute the hmac-sha1 of the
+      challenge and the app_token
+
+      password = hmac-sha1(app_token, challenge)
+
+Getting the challenge value
+---------------------------
+
+The challenge returned by the API will change frequently and have a
+limited time validity.
+
+There are several ways of getting the current challenge value, it will
+always be included in response requesting the app authentication. It
+is also included in the authorization tracking API response.
+
+You can also explicitly request a challenge with the following API
+
+.. http:get:: /api/v4/login/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/login/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "logged_in": false,
+              "challenge": "VzhbtpR4r8CLaJle2QgJBEkyd8JPb0zL"
+          }
+      }
+
+Opening a session
+-----------------
+
+Once you have the challenge you just need use the following API to get
+a *session_token*
+
+NOTE: in case of session opening failure, ensure that the box you're
+connected is the one you expect by checking the uid returned in the
+answer.
+
+In the response you get your app permissions. App permissions are:
+
+=============== ==========================================================================
+App permission  Description
+=============== ==========================================================================
+settings        Allow modifying the Freebox settings (reading settings is always allowed)
+contacts        Access to contact list
+calls           Access to call logs
+explorer        Access to filesystem
+downloader      Access to downloader
+parental        Access to parental control
+pvr		Access personal video recorder
+=============== ==========================================================================
+
+NOTE: A permission not listed in app permissions is equivalent to having this permission set
+to false.
+
+.. http:post:: /api/v4/login/session/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/login/session/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "app_id": "fr.freebox.testapp",
+         "password": "d4da8517c2c25b1b145f2e5ba91bd0589fc0053d"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true,
+         "result" : {
+               "session_token" : "35JYdQSvkcBYK84IFMU7H86clfhS75OzwlQrKlQN1gBch\/Dd62RGzDpgC7YB9jB2",
+               "challenge":"jdGL6CtuJ3Dm7p9nkcIQ8pjB+eLwr4Ya",
+               "permissions": {
+                     "downloader": true,
+               }
+          }
+      }
+
+   **Example response with invalid password**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 403 Forbidden
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "msg": "Erreur d'authentification de l'application",
+          "success": false,
+          "uid": "23b86ec8091013d668829fe12791fdab",
+          "error_code": "invalid_token",
+          "result": {
+               "challenge": "DLjXFEf1kaDwAEn6xRUnEVPU++gnjiSn"
+          }
+      }
+
+Closing the current session
+===========================
+
+to close the current session you can use the following call
+
+.. http:post:: /api/v4/login/logout/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/login/logout/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true,
+      }
+
+Make an authenticated call to the API
+=====================================
+
+Once you have a valid *session_token* you should use it by add the the
+HTTP header **X-Fbx-App-Auth**
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/login/session/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+      X-Fbx-App-Auth: 35JYdQSvkcBYK84IFMU7H86clfhS75OzwlQrKlQN1gBch\/Dd62RGzDpgC7YB9jB2
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true,
+         "result" : {
+               [
+                  ...
+               ]
+          }
+      }
+
+Authentication errors
+---------------------
+
+When attempting to access the API, you may encounter the following
+authentication errors:
+
+NOTE that in this case the HTTP 403 return code will be used as well
+
+======================== ======================
+Error                    Description
+======================== ======================
+auth_required            Invalid session token, or not session token sent
+invalid_token            The app token you are trying to use is invalid or has been revoked
+pending_token            The app token you are trying to use has not been validated by user yet
+insufficient_rights      Your app permissions does not allow accessing this API
+denied_from_external_ip  You are trying to get an app_token from a remote IP
+invalid_request          Your request is invalid
+ratelimited              Too many auth error have been made from your IP
+new_apps_denied          New application token request has been disabled
+apps_denied              API access from apps has been disabled
+internal_error           Internal error
+======================== ======================
+
+
+
+
+
+..  LocalWords:  Login auth TokenRequest lcd Pc de dyNYgfK FWGqq sBHa
+..  LocalWords:  TwzWo fDFUJHShcjVYzTfaRrZzm OTAfH Bj xMqoe DCHD hmac
+..  LocalWords:  KqBljJ seOXNWr SessionStart VzhbtpR CLaJle QgJBEkyd
+..  LocalWords:  JPb uid filesystem da ba bd fc JYdQSvkcBYK IFMU gBch
+..  LocalWords:  clfhS OzwlQrKlQN RGzDpgC jB jdGL CtuJ Dm nkcIQ pjB
+..  LocalWords:  eLwr msg Erreur d'authentification l'application ec
+..  LocalWords:  fe fdab DLjXFEf kaDwAEn xRUnEVPU gnjiSn Fbx ip
+..  LocalWords:  ratelimited

@@ -1,0 +1,673 @@
+{
+  "module": {
+    "module": "fs",
+    "title": "File System",
+    "category": "fichiers-telechargements",
+    "path": "docs/reference/fichiers-telechargements/fs.md",
+    "http_signatures": 19,
+    "objects": 2,
+    "properties": 34,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#file-system-558",
+    "source_pre_blocks": 59,
+    "markdown_code_blocks": 59,
+    "source_tables": 6
+  },
+  "endpoints": [
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/tasks/",
+      "path_template": "/api/v{major}/fs/tasks/",
+      "documented_major": 15,
+      "title": "List every tasks",
+      "id": "get--api-v15-fs-tasks-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#get--api-v15-fs-tasks-",
+      "referenced_objects": [
+        "FsTask"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v15-fs-tasks-"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/tasks/{id}",
+      "path_template": "/api/v{major}/fs/tasks/{id}",
+      "documented_major": 15,
+      "title": "List a task",
+      "id": "get--api-v15-fs-tasks-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#get--api-v15-fs-tasks-id",
+      "referenced_objects": [
+        "FsTask"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v15-fs-tasks-id"
+    },
+    {
+      "module": "fs",
+      "method": "DELETE",
+      "documented_path": "/api/v15/fs/tasks/{id}",
+      "path_template": "/api/v{major}/fs/tasks/{id}",
+      "documented_major": 15,
+      "title": "Delete a task",
+      "id": "delete--api-v15-fs-tasks-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v15-fs-tasks-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#delete--api-v15-fs-tasks-id",
+      "referenced_objects": [
+        "FsTask"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v15-fs-tasks-id"
+    },
+    {
+      "module": "fs",
+      "method": "PUT",
+      "documented_path": "/api/v15/fs/tasks/{id}",
+      "path_template": "/api/v{major}/fs/tasks/{id}",
+      "documented_major": 15,
+      "title": "Update a task",
+      "id": "put--api-v15-fs-tasks-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v15-fs-tasks-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#put--api-v15-fs-tasks-id",
+      "referenced_objects": [
+        "FsTask"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v15-fs-tasks-id"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/ls/{path}",
+      "path_template": "/api/v{major}/fs/ls/{path}",
+      "documented_major": 15,
+      "title": "List files",
+      "id": "get--api-v15-fs-ls-path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-ls-path",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#get--api-v15-fs-ls-path",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v15-fs-ls-path"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/info/{path}",
+      "path_template": "/api/v{major}/fs/info/{path}",
+      "documented_major": 15,
+      "title": "Get file information",
+      "id": "get--api-v15-fs-info-path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-info-path",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#get--api-v15-fs-info-path",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v15-fs-info-path"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/info",
+      "path_template": "/api/v{major}/fs/info",
+      "documented_major": 15,
+      "title": "Batch file information",
+      "id": "post--api-v15-fs-info",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-info",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-info",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-info"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/mv/",
+      "path_template": "/api/v{major}/fs/mv/",
+      "documented_major": 15,
+      "title": "Move files",
+      "id": "post--api-v15-fs-mv-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-mv-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-mv-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-mv-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/cp/",
+      "path_template": "/api/v{major}/fs/cp/",
+      "documented_major": 15,
+      "title": "Copy files",
+      "id": "post--api-v15-fs-cp-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-cp-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-cp-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-cp-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/rm/",
+      "path_template": "/api/v{major}/fs/rm/",
+      "documented_major": 15,
+      "title": "Remove files",
+      "id": "post--api-v15-fs-rm-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-rm-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-rm-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-rm-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/cat/",
+      "path_template": "/api/v{major}/fs/cat/",
+      "documented_major": 15,
+      "title": "Cat files",
+      "id": "post--api-v15-fs-cat-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-cat-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-cat-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-cat-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/archive/",
+      "path_template": "/api/v{major}/fs/archive/",
+      "documented_major": 15,
+      "title": "Create an archive",
+      "id": "post--api-v15-fs-archive-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-archive-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-archive-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-archive-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/extract/",
+      "path_template": "/api/v{major}/fs/extract/",
+      "documented_major": 15,
+      "title": "Extract a file",
+      "id": "post--api-v15-fs-extract-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-extract-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-extract-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-extract-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/repair/",
+      "path_template": "/api/v{major}/fs/repair/",
+      "documented_major": 15,
+      "title": "Repair a file",
+      "id": "post--api-v15-fs-repair-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-repair-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-repair-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-repair-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/hash/",
+      "path_template": "/api/v{major}/fs/hash/",
+      "documented_major": 15,
+      "title": "Hash a file",
+      "id": "post--api-v15-fs-hash-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-hash-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-hash-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-hash-"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/tasks/{id}/hash",
+      "path_template": "/api/v{major}/fs/tasks/{id}/hash",
+      "documented_major": 15,
+      "title": "Get the hash value",
+      "id": "get--api-v15-fs-tasks-id-hash",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-id-hash",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#get--api-v15-fs-tasks-id-hash",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v15-fs-tasks-id-hash"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/mkdir/",
+      "path_template": "/api/v{major}/fs/mkdir/",
+      "documented_major": 15,
+      "title": "Create a directory",
+      "id": "post--api-v15-fs-mkdir-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-mkdir-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-mkdir-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-mkdir-"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/rename/",
+      "path_template": "/api/v{major}/fs/rename/",
+      "documented_major": 15,
+      "title": "Rename a file/folder",
+      "id": "post--api-v15-fs-rename-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-rename-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#post--api-v15-fs-rename-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v15-fs-rename-"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/dl/{path}",
+      "path_template": "/api/v{major}/dl/{path}",
+      "documented_major": 15,
+      "title": "Download a file",
+      "id": "get--api-v15-dl-path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-dl-path",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#get--api-v15-dl-path",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v15-dl-path"
+    }
+  ],
+  "objects": [
+    {
+      "module": "fs",
+      "name": "FsTask",
+      "id": "FsTask",
+      "properties": [
+        "FsTask.id",
+        "FsTask.type",
+        "FsTask.state",
+        "FsTask.error",
+        "FsTask.created_ts",
+        "FsTask.started_ts",
+        "FsTask.done_ts",
+        "FsTask.duration",
+        "FsTask.progress",
+        "FsTask.eta",
+        "FsTask.from",
+        "FsTask.to",
+        "FsTask.nfiles",
+        "FsTask.nfiles_done",
+        "FsTask.total_bytes",
+        "FsTask.total_bytes_done",
+        "FsTask.curr_bytes",
+        "FsTask.curr_bytes_done",
+        "FsTask.rate",
+        "FsTask.src",
+        "FsTask.dst"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask"
+    },
+    {
+      "module": "fs",
+      "name": "FileInfo",
+      "id": "FileInfo",
+      "properties": [
+        "FileInfo.path",
+        "FileInfo.name",
+        "FileInfo.mimetype",
+        "FileInfo.type",
+        "FileInfo.size",
+        "FileInfo.modification",
+        "FileInfo.index",
+        "FileInfo.link",
+        "FileInfo.target",
+        "FileInfo.hidden",
+        "FileInfo.foldercount",
+        "FileInfo.filecount",
+        "FileInfo.exif"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo"
+    }
+  ],
+  "properties": [
+    {
+      "module": "fs",
+      "id": "FsTask.id",
+      "signature": "id int Read-only",
+      "description": "id",
+      "source_id": "FsTask.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.id",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.id"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.type",
+      "signature": "type enum Read-only",
+      "description": "The valid task types are: Type Description cat Concatenate multiple files cp Copy files mv Move files rm Remove files archive Creates an archive extract Extract an archive repair Check and repair files",
+      "source_id": "FsTask.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.type",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.type"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.state",
+      "signature": "state enum",
+      "description": "State Description queued Queued (only one task is active at a given time) running Running paused Paused (user suspended) done Done failed Failed (see error)",
+      "source_id": "FsTask.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.state",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.state"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.error",
+      "signature": "error enum Read-only",
+      "description": "Error Description none No error archive_read_failed Error reading archive archive_open_failed Error opening archive archive_write_failed Error writing archive chdir_failed Error changing directory dest_is_not_dir The destination is not a directory file_exists File already exists file_not_found File not found mkdir_failed Unable to create directory open_input_failed Error opening input file open_output_failed Error opening output file opendir_failed Error opening directory overwrite_failed Error overwriting file path_too_big Path is too long repair_failed Failed to repair corrupted files rmdir_failed Error removing directory same_file Source and Destination are the same file unlink_failed Error removing file unsupported_file_type This file type is not supported write_failed Error writing file disk_full Disk is full internal Internal error invalid_format Invalid file format (corrupted ?) incorrect_password Invalid or missing password for extraction permission_denied Permission denied readlink_failed Failed to read the target of a symbolic link symlink_failed Failed to create a symbolic link copy_into_itself Attempted to copy a directory to a subdirectory of itself truncate_failed Failed to truncate file",
+      "source_id": "FsTask.error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.error",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.error"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.created_ts",
+      "signature": "created_ts timestamp Read-only",
+      "description": "task creation timestamp",
+      "source_id": "FsTask.created_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.created_ts",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.created_ts"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.started_ts",
+      "signature": "started_ts timestamp Read-only",
+      "description": "task start timestamp",
+      "source_id": "FsTask.started_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.started_ts",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.started_ts"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.done_ts",
+      "signature": "done_ts timestamp Read-only",
+      "description": "task end timestamp",
+      "source_id": "FsTask.done_ts",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.done_ts",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.done_ts"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.duration",
+      "signature": "duration int Read-only",
+      "description": "task duration in seconds",
+      "source_id": "FsTask.duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.duration",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.duration"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.progress",
+      "signature": "progress int Read-only",
+      "description": "task progress in percent (scaled by 100)",
+      "source_id": "FsTask.progress",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.progress",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.progress"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.eta",
+      "signature": "eta int Read-only",
+      "description": "estimated time remaining before the task completion (in seconds)",
+      "source_id": "FsTask.eta",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.eta",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.eta"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.from",
+      "signature": "from string Read-only",
+      "description": "current source file (if available)",
+      "source_id": "FsTask.from",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.from",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.from"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.to",
+      "signature": "to string Read-only",
+      "description": "current destination file (if available)",
+      "source_id": "FsTask.to",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.to",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.to"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.nfiles",
+      "signature": "nfiles int Read-only",
+      "description": "number of files to process",
+      "source_id": "FsTask.nfiles",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.nfiles",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.nfiles"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.nfiles_done",
+      "signature": "nfiles_done int Read-only",
+      "description": "number of files processed",
+      "source_id": "FsTask.nfiles_done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.nfiles_done",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.nfiles_done"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.total_bytes",
+      "signature": "total_bytes int Read-only",
+      "description": "total bytes to process",
+      "source_id": "FsTask.total_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.total_bytes",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.total_bytes"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.total_bytes_done",
+      "signature": "total_bytes_done int Read-only",
+      "description": "number of bytes processed",
+      "source_id": "FsTask.total_bytes_done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.total_bytes_done",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.total_bytes_done"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.curr_bytes",
+      "signature": "curr_bytes int Read-only",
+      "description": "size of the file currently processed",
+      "source_id": "FsTask.curr_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.curr_bytes",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.curr_bytes"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.curr_bytes_done",
+      "signature": "curr_bytes_done int Read-only",
+      "description": "number of bytes processed for the current file",
+      "source_id": "FsTask.curr_bytes_done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.curr_bytes_done",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.curr_bytes_done"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.rate",
+      "signature": "rate int Read-only",
+      "description": "processing rate in byte/s",
+      "source_id": "FsTask.rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.rate",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.rate"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.src",
+      "signature": "src [] array of string Read-only",
+      "description": "task source files",
+      "source_id": "FsTask.src",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.src",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.src"
+    },
+    {
+      "module": "fs",
+      "id": "FsTask.dst",
+      "signature": "dst string Read-only",
+      "description": "task destination path",
+      "source_id": "FsTask.dst",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask.dst",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FsTask.dst"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.path",
+      "signature": "path string Read-only",
+      "description": "file path (encoded in base64 as explained in Path Encoding )",
+      "source_id": "FileInfo.path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.path",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.path"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.name",
+      "signature": "name string Read-only",
+      "description": "file name (in clear text)",
+      "source_id": "FileInfo.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.name",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.name"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.mimetype",
+      "signature": "mimetype string Read-only",
+      "description": "file mimetype",
+      "source_id": "FileInfo.mimetype",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.mimetype",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.mimetype"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.type",
+      "signature": "type enum",
+      "description": "Type Description dir Directory file Regular file",
+      "source_id": "FileInfo.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.type",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.type"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.size",
+      "signature": "size int Read-only",
+      "description": "file size in bytes",
+      "source_id": "FileInfo.size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.size",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.size"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.modification",
+      "signature": "modification int Read-only",
+      "description": "file modification timestamp",
+      "source_id": "FileInfo.modification",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.modification",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.modification"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.index",
+      "signature": "index int Read-only",
+      "description": "display order for natural sort",
+      "source_id": "FileInfo.index",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.index",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.index"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.link",
+      "signature": "link boolean Read-only",
+      "description": "is this file a link",
+      "source_id": "FileInfo.link",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.link",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.link"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.target",
+      "signature": "target string Read-only",
+      "description": "symlink target path (encoded in base64 as explained in Path Encoding ) (only present when link is set to true)",
+      "source_id": "FileInfo.target",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.target",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.target"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.hidden",
+      "signature": "hidden boolean Read-only",
+      "description": "should the file be hidden to user",
+      "source_id": "FileInfo.hidden",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.hidden",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.hidden"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.foldercount",
+      "signature": "foldercount int Read-only",
+      "description": "number of subfolders only relevant for dir, only provided if \u201CcountSubFolder\u201D parameter is set",
+      "source_id": "FileInfo.foldercount",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.foldercount",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.foldercount"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.filecount",
+      "signature": "filecount int Read-only",
+      "description": "number of files inside directory only relevant for dir, only provided if \u201CcountSubFolder\u201D parameter is set",
+      "source_id": "FileInfo.filecount",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.filecount",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.filecount"
+    },
+    {
+      "module": "fs",
+      "id": "FileInfo.exif",
+      "signature": "exif object Read-only",
+      "description": "EXIF metadada if available. only relevant for supported image files (JPEG, HEIC), when the \u201CexifMode\u201D parameter is set",
+      "source_id": "FileInfo.exif",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.exif",
+      "markdown": "docs/reference/fichiers-telechargements/fs.md#FileInfo.exif"
+    }
+  ],
+  "events": []
+}

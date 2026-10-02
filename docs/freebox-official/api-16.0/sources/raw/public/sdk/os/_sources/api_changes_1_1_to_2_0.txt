@@ -1,0 +1,93 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===================================
+Api changes from version 1.1 to 2.0
+===================================
+
+Download Api Changes
+====================
+
+- Added 2 new error_code:
+
+   - invalid_address
+   - port_conflict
+
+- Added a new *'cookies'* parameter when adding a download by url.
+  This allow browser plugins to pass cookies along with url. This can be useful
+  for session based authentication.
+
+- Added new :json:object:`DownloadStats` attributes:
+
+   - conn_ready
+   - nb_peer
+   - blocklist_entries
+   - blocklist_hits
+   - dht_stats
+
+- Deprecate path attribute for :json:object:`DownloadFile`
+
+- Add new attributes to :json:object:`DownloadFile`
+
+   - filepath
+   - name
+   - mimetype
+
+- Added a :ref:`blacklist API <dl_blaklist_api>` to control bittorrent peers blacklist entries
+
+Download Configuration Api Changes
+==================================
+
+- Added new :json:object:`DownloadConfiguration` attributes
+
+   - main_port
+   - dht_port
+
+UPnP IGD Api Changes
+====================
+
+- Added a host property to :json:object:`UPnPRedir`
+
+Connection api Changes
+======================
+
+- Added a ipv6ll property to :json:object:`ConnectionIpv6Configuration`
+- Added a snr_10, attn_10 property to :json:object:`XdslStats`
+
+RRD Api Changes
+===============
+
+- Added new entries for :ref:`net <rrd_net_db>` database:
+
+   - vpn_rate_down
+   - vpn_rate_up
+
+- Added new entries for :ref:`temp <rrd_temp_db>` database:
+
+   - cpum
+   - cpub
+   - sw
+   - hdd
+   - fan_speed
+
+- Deprecate entries for :ref:`temp <rrd_temp_db>` database:
+
+   - temp1
+   - temp2
+   - temp3
+
+System Api Changes
+==================
+
+- Added uptime_val attribute to :json:object:`SystemConfig`
+
+Wifi Api Changes
+================
+
+- Completely rework Wifi API to be able to handle multiple Access Points.
+
+New API
+=======
+
+- Added an :ref:`Incoming port configuration Api <incoming_port_api>`
+- Added a :ref:`VPN Client Api <vpn_client_api>`
+- Added a :ref:`VPN Server Api <vpn_client_api>`

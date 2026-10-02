@@ -1,0 +1,997 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Storage API [UNSTABLE] &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Parental Control" href="../parental/" />
+    <link rel="prev" title="VPN Client [UNSTABLE]" href="../vpn_client/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="storage-api-unstable">
+<h1>Storage API [UNSTABLE]<a class="headerlink" href="#storage-api-unstable" title="Permalink to this headline">¶</a></h1>
+<p>This API allows you to manage the Freebox internal disk and disks
+connected to the Freebox</p>
+<p>This API is unstable, it can be modified without notice in next
+releases.</p>
+<div class="section" id="storage-api-errors">
+<h2>Storage API Errors<a class="headerlink" href="#storage-api-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access this API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>not_found</td>
+<td>No disk/partition with this id</td>
+</tr>
+<tr class="row-odd"><td>invalid_disk</td>
+<td>No such disk</td>
+</tr>
+<tr class="row-even"><td>is_a_partition</td>
+<td>This is not a disk but a partition</td>
+</tr>
+<tr class="row-odd"><td>is_internal</td>
+<td>This action is not permitted on internal disk</td>
+</tr>
+<tr class="row-even"><td>op_not_supported</td>
+<td>Operation not supported</td>
+</tr>
+<tr class="row-odd"><td>op_failed</td>
+<td>Operation failed</td>
+</tr>
+<tr class="row-even"><td>disk_busy</td>
+<td>Disk is busy</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="disk-partition-object">
+<h2>Disk Partition object<a class="headerlink" href="#disk-partition-object" title="Permalink to this headline">¶</a></h2>
+<p>Operation progress has the following attributes:</p>
+<dl class="object">
+<dt id="OperationProgress">
+<code class="descname">OperationProgress</code><a class="headerlink" href="#OperationProgress" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="OperationProgress.done_steps">
+<code class="descname">done_steps</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#OperationProgress.done_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of steps done</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="OperationProgress.max_steps">
+<code class="descname">max_steps</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#OperationProgress.max_steps" title="Permalink to this definition">¶</a></dt>
+<dd><p>total number of steps</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="OperationProgress.percent">
+<code class="descname">percent</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#OperationProgress.percent" title="Permalink to this definition">¶</a></dt>
+<dd><p>current step progress</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Disk partitions have the following attributes:</p>
+<dl class="object">
+<dt id="DiskPartition">
+<code class="descname">DiskPartition</code><a class="headerlink" href="#DiskPartition" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DiskPartition.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>unique partition id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.disk_id">
+<code class="descname">disk_id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.disk_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>related disk id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.state">
+<code class="descname">state</code><span> </span>enum<a class="headerlink" href="#DiskPartition.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>error</td>
+<td>Partition has error</td>
+</tr>
+<tr class="row-odd"><td>checking</td>
+<td>Partition check in progress</td>
+</tr>
+<tr class="row-even"><td>formatting</td>
+<td>Partition format in progress</td>
+</tr>
+<tr class="row-odd"><td>mounting</td>
+<td>Partition mount in progress</td>
+</tr>
+<tr class="row-even"><td>maintenance</td>
+<td>Partition is in maintenance mode</td>
+</tr>
+<tr class="row-odd"><td>mounted</td>
+<td>Partition is ready</td>
+</tr>
+<tr class="row-even"><td>umounting</td>
+<td>Partition umount in progress</td>
+</tr>
+<tr class="row-odd"><td>umounted</td>
+<td>Partition is umounted</td>
+</tr>
+<tr class="row-even"><td>ejecting</td>
+<td>Partition ejection in progress</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.fstype">
+<code class="descname">fstype</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.fstype" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="92%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">fstype</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>empty</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>unknown</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>xfs</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ext4</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>vfat</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ntf</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>hf</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>hfsplus</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>swap</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>exfat</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.label">
+<code class="descname">label</code><span> </span>string<a class="headerlink" href="#DiskPartition.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.path">
+<code class="descname">path</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition mount point (encoded in base64 as explained in fs API)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.total_bytes">
+<code class="descname">total_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.total_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition size (in bytes)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.used_bytes">
+<code class="descname">used_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.used_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition used space (in bytes)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.free_bytes">
+<code class="descname">free_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.free_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition free space (in bytes)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.fsck_result">
+<code class="descname">fsck_result</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.fsck_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>fsck result</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>no_run_yet</td>
+<td>Partition has not been checked yet</td>
+</tr>
+<tr class="row-odd"><td>running</td>
+<td>Check is in progress</td>
+</tr>
+<tr class="row-even"><td>fs_clean</td>
+<td>File system is ok</td>
+</tr>
+<tr class="row-odd"><td>fs_corrected</td>
+<td>File system was corrected</td>
+</tr>
+<tr class="row-even"><td>fs_needs_correction</td>
+<td>File system need correction</td>
+</tr>
+<tr class="row-odd"><td>failed</td>
+<td>File system has unrecoverable error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="DiskPartition.operation_pct">
+<code class="descname">operation_pct</code><span> </span><a class="reference internal" href="#OperationProgress" title="OperationProgress">OperationProgress</a><em class="property"> Read-only</em><a class="headerlink" href="#DiskPartition.operation_pct" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition operation progress</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="storage-disk-object">
+<h2>Storage Disk object<a class="headerlink" href="#storage-disk-object" title="Permalink to this headline">¶</a></h2>
+<p>Storage disks have the following attributes:</p>
+<dl class="object">
+<dt id="StorageDisk">
+<code class="descname">StorageDisk</code><a class="headerlink" href="#StorageDisk" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="StorageDisk.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>the disk id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>internal</td>
+<td>Freebox internal disk</td>
+</tr>
+<tr class="row-odd"><td>usb</td>
+<td>usb disk</td>
+</tr>
+<tr class="row-even"><td>sata</td>
+<td>sata disk</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.state">
+<code class="descname">state</code><span> </span>enum<a class="headerlink" href="#StorageDisk.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>error</td>
+<td>Disk has error</td>
+</tr>
+<tr class="row-odd"><td>disabled</td>
+<td>Disk is disabled</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>Disk is enabled</td>
+</tr>
+<tr class="row-odd"><td>formatting</td>
+<td>Disk is formatting</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.connector">
+<code class="descname">connector</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.connector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disk physical connector id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.total_bytes">
+<code class="descname">total_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.total_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disk size (in bytes)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.table_type">
+<code class="descname">table_type</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.table_type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="92%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">table_type</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>msdos</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>gpt</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>superfloppy</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>empty</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.model">
+<code class="descname">model</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disk model</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.serial">
+<code class="descname">serial</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.serial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disk serial number</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.firmware">
+<code class="descname">firmware</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.firmware" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disk firmware version</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.temp">
+<code class="descname">temp</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.temp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disk temperature (when supported) in °C</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.operation_pct">
+<code class="descname">operation_pct</code><span> </span><a class="reference internal" href="#OperationProgress" title="OperationProgress">OperationProgress</a><em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.operation_pct" title="Permalink to this definition">¶</a></dt>
+<dd><p>partition operation progress</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.partitions">
+<code class="descname">partitions</code><span>[] array of </span><a class="reference internal" href="#DiskPartition" title="DiskPartition">DiskPartition</a><em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.partitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of disk partitions</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.idle">
+<code class="descname">idle</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.idle" title="Permalink to this definition">¶</a></dt>
+<dd><p>is disk idle (when available)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.idle_duration">
+<code class="descname">idle_duration</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.idle_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>disk idle duration (in seconds) (when available)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.spinning">
+<code class="descname">spinning</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.spinning" title="Permalink to this definition">¶</a></dt>
+<dd><p>is disk spinning (when available)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.active_duration">
+<code class="descname">active_duration</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.active_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>disk activity duration (in seconds) (when available)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageDisk.time_before_spindown">
+<code class="descname">time_before_spindown</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#StorageDisk.time_before_spindown" title="Permalink to this definition">¶</a></dt>
+<dd><p>seconds left before disk spin down (in seconds) (when available)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="storage-disk-api">
+<h2>Storage Disk API<a class="headerlink" href="#storage-disk-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-disks">
+<h3>Get the list of disks<a class="headerlink" href="#get-the-list-of-disks" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-storage-disk-">
+<code class="descname">GET </code><code class="descname">/api/v4/storage/disk/</code><a class="headerlink" href="#get--api-v4-storage-disk-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#StorageDisk" title="StorageDisk"><code class="xref json json-object docutils literal"><span class="pre">StorageDisk</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/storage/disk/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;idle_duration&quot;</span><span class="o">:</span> <span class="mi">368</span><span class="p">,</span>
+            <span class="s2">&quot;spinning&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;table_type&quot;</span><span class="o">:</span> <span class="s2">&quot;msdos&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;firmware&quot;</span><span class="o">:</span> <span class="s2">&quot;PB2ICC0E&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;internal&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;idle&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;connector&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;time_before_spindown&quot;</span><span class="o">:</span> <span class="mi">232</span><span class="p">,</span>
+            <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">250059350016</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;Hitachi HCC545025B9A300&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;active_duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;temp&quot;</span><span class="o">:</span> <span class="mi">51</span><span class="p">,</span>
+            <span class="s2">&quot;serial&quot;</span><span class="o">:</span> <span class="s2">&quot;GSCH35VC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;partitions&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;ext4&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">245091500032</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+                    <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;mounted&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">68120969216</span><span class="p">,</span>
+                    <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">164520534016</span><span class="p">,</span>
+                    <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXI=&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;usb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">125435904</span><span class="p">,</span>
+            <span class="s2">&quot;connector&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+            <span class="s2">&quot;active_duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;partitions&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;ext4&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">121418752</span><span class="p">,</span>
+                    <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque 1&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1002</span><span class="p">,</span>
+                    <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;mounted&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+                    <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">108904448</span><span class="p">,</span>
+                    <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">6245376</span><span class="p">,</span>
+                    <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSAx&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;idle_duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;idle&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;spinning&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;table_type&quot;</span><span class="o">:</span> <span class="s2">&quot;gpt&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;temp&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;serial&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;firmware&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-given-disk-info">
+<h3>Get a given disk info<a class="headerlink" href="#get-a-given-disk-info" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-storage-disk-id">
+<code class="descname">GET </code><code class="descname">/api/v4/storage/disk/{id}</code><a class="headerlink" href="#get--api-v4-storage-disk-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#StorageDisk" title="StorageDisk"><code class="xref json json-object docutils literal"><span class="pre">StorageDisk</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/storage/disk/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;idle_duration&quot;</span><span class="o">:</span> <span class="mi">464</span><span class="p">,</span>
+        <span class="s2">&quot;spinning&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;table_type&quot;</span><span class="o">:</span> <span class="s2">&quot;msdos&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;firmware&quot;</span><span class="o">:</span> <span class="s2">&quot;PB2ICC0E&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;internal&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;idle&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;connector&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;time_before_spindown&quot;</span><span class="o">:</span> <span class="mi">136</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">250059350016</span><span class="p">,</span>
+        <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;Hitachi HCC545025B9A300&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;active_duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;temp&quot;</span><span class="o">:</span> <span class="mi">51</span><span class="p">,</span>
+        <span class="s2">&quot;serial&quot;</span><span class="o">:</span> <span class="s2">&quot;GSCH35VC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;partitions&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;ext4&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">245091500032</span><span class="p">,</span>
+                <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;mounted&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">68120969216</span><span class="p">,</span>
+                <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">164520534016</span><span class="p">,</span>
+                <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXI=&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-disk-state">
+<h3>Update a disk state<a class="headerlink" href="#update-a-disk-state" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-storage-disk-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/storage/disk/{id}</code><a class="headerlink" href="#put--api-v4-storage-disk-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable/Disable a disk</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/storage/disk/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;disabled&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;usb&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">125435904</span><span class="p">,</span>
+        <span class="s2">&quot;connector&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+        <span class="s2">&quot;active_duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;partitions&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;ext4&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">121418752</span><span class="p">,</span>
+                <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque 1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1002</span><span class="p">,</span>
+                <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;umounted&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+                <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">108904448</span><span class="p">,</span>
+                <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">6245376</span><span class="p">,</span>
+                <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSAx&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;idle_duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;disabled&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;idle&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;spinning&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;table_type&quot;</span><span class="o">:</span> <span class="s2">&quot;gpt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;temp&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;serial&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;firmware&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="format-a-disk">
+<h3>Format a disk<a class="headerlink" href="#format-a-disk" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-storage-disk-id-format-">
+<code class="descname">PUT </code><code class="descname">/api/v4/storage/disk/{id}/format/</code><a class="headerlink" href="#put--api-v4-storage-disk-id-format-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the disk with the given id</p>
+<p>To be able to format a disk you need to provide the following
+parameters (JSON encoded).  There will be one partition using all
+the available space on disk. All previous data will be lost.</p>
+<p>This parameters will be ignored if you format the Freebox internal
+disk</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>table_type</strong> (<em>string</em>) &#8211; The partition table format</li>
+<li><strong>fs_type</strong> (<em>string</em>) &#8211; The partition type</li>
+<li><strong>label</strong> (<em>string</em>) &#8211; The partition label</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: once started you can monitor the format process getting the
+disk information (see <a class="reference internal" href="#StorageDisk" title="StorageDisk"><code class="xref json json-object docutils literal"><span class="pre">StorageDisk</span></code></a> operation_pct
+field)</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/fs/storage/disk/1001/format</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;fs_type&quot;</span><span class="o">:</span> <span class="s2">&quot;vfat&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;table_type&quot;</span><span class="o">:</span> <span class="s2">&quot;msdos&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="storage-partition-api">
+<h2>Storage Partition API<a class="headerlink" href="#storage-partition-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-partitions">
+<h3>Get the list of partitions<a class="headerlink" href="#get-the-list-of-partitions" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-storage-partition-">
+<code class="descname">GET </code><code class="descname">/api/v4/storage/partition/</code><a class="headerlink" href="#get--api-v4-storage-partition-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#DiskPartition" title="DiskPartition"><code class="xref json json-object docutils literal"><span class="pre">DiskPartition</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/storage/partition/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;ext4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">245091500032</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;umounted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">68120969216</span><span class="p">,</span>
+            <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">164520534016</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXI=&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;vfat&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">123485184</span><span class="p">,</span>
+            <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1002</span><span class="p">,</span>
+            <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;mounted&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+            <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">123484672</span><span class="p">,</span>
+            <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">512</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L2ZyZWVib3g=&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-given-partition-info">
+<h3>Get a given partition info<a class="headerlink" href="#get-a-given-partition-info" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-storage-partition-id">
+<code class="descname">GET </code><code class="descname">/api/v4/storage/partition/{id}</code><a class="headerlink" href="#get--api-v4-storage-partition-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#DiskPartition" title="DiskPartition"><code class="xref json json-object docutils literal"><span class="pre">DiskPartition</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/storage/partition/1002</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;vfat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">123485184</span><span class="p">,</span>
+        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1002</span><span class="p">,</span>
+        <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;mounted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+        <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">123484672</span><span class="p">,</span>
+        <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L2ZyZWVib3g=&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-partition-state">
+<h3>Update a partition state<a class="headerlink" href="#update-a-partition-state" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-storage-partition-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/storage/partition/{id}</code><a class="headerlink" href="#put--api-v4-storage-partition-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable/Disable a partition</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/storage/partition/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;state&quot;</span> <span class="o">:</span> <span class="s2">&quot;umounted&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;fstype&quot;</span><span class="o">:</span> <span class="s2">&quot;vfat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">123485184</span><span class="p">,</span>
+        <span class="s2">&quot;label&quot;</span><span class="o">:</span> <span class="s2">&quot;freebox&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1002</span><span class="p">,</span>
+        <span class="s2">&quot;fsck_result&quot;</span><span class="o">:</span> <span class="s2">&quot;no_run_yet&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;umounted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;disk_id&quot;</span><span class="o">:</span> <span class="mi">1001</span><span class="p">,</span>
+        <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">123484672</span><span class="p">,</span>
+        <span class="s2">&quot;used_bytes&quot;</span><span class="o">:</span> <span class="mi">512</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L2ZyZWVib3g=&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="check-a-partition">
+<h3>Check a partition<a class="headerlink" href="#check-a-partition" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-storage-partition-id-check-">
+<code class="descname">PUT </code><code class="descname">/api/v4/storage/partition/{id}/check/</code><a class="headerlink" href="#put--api-v4-storage-partition-id-check-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the partition with the given id</p>
+<p>To be able to check a partition you need to provide the following
+parameters (JSON encoded):</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>checkmode</strong> (<em>enum</em>) &#8211; &#8216;ro&#8217; for read only check, &#8216;rw&#8217; to attempt to
+repair errors</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: once started you can monitor the fsck process getting the
+partition information (see <a class="reference internal" href="#DiskPartition" title="DiskPartition"><code class="xref json json-object docutils literal"><span class="pre">DiskPartition</span></code></a>
+operation_pct field)</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/fs/storage/partition/1002/check</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;checkmode&quot;</span><span class="o">:</span> <span class="s2">&quot;ro&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="storage-config">
+<h2>Storage Config<a class="headerlink" href="#storage-config" title="Permalink to this headline">¶</a></h2>
+<p>StorageConfig has the following attributes:</p>
+<dl class="object">
+<dt id="StorageConfig">
+<code class="descname">StorageConfig</code><a class="headerlink" href="#StorageConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="StorageConfig.external_pm_enabled">
+<code class="descname">external_pm_enabled</code><span> </span>bool<a class="headerlink" href="#StorageConfig.external_pm_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable/disable external disk power management</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="StorageConfig.external_pm_idle_before_spindown">
+<code class="descname">external_pm_idle_before_spindown</code><span> </span>int<a class="headerlink" href="#StorageConfig.external_pm_idle_before_spindown" title="Permalink to this definition">¶</a></dt>
+<dd><p>idle time in minutes to wait before spinning down an external disk</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="storage-config-api">
+<h2>Storage config API<a class="headerlink" href="#storage-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-storage-configuration">
+<h3>Get the current storage configuration<a class="headerlink" href="#get-the-current-storage-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-storage-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/storage/config/</code><a class="headerlink" href="#get--api-v4-storage-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#StorageConfig" title="StorageConfig"><code class="xref json json-object docutils literal"><span class="pre">StorageConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/storage/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+     <span class="s2">&quot;external_pm_idle_before_spindown&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+     <span class="s2">&quot;external_pm_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-external-storage-configuration">
+<h3>Update the External Storage configuration<a class="headerlink" href="#update-the-external-storage-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-storage-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/storage/config/</code><a class="headerlink" href="#put--api-v4-storage-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#StorageConfig" title="StorageConfig"><code class="xref json json-object docutils literal"><span class="pre">StorageConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/storage/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;external_pm_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;external_pm_idle_before_spindown&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;external_pm_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

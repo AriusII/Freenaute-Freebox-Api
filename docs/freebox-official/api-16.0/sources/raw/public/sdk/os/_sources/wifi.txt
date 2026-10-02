@@ -1,0 +1,1667 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+=====
+Wi-Fi
+=====
+
+The Wi-Fi API allow you to control the settings of the Freebox Wi-Fi.
+
+Wi-Fi Errors
+============
+
+When attempting to access this API, you may encounter the following
+errors:
+
+======================           ============================================================
+error_code                       Description
+======================           ============================================================
+inval                            invalid parameters
+exist                            entry already exists
+nospc                            maximum entry count reached
+nodev                            invalid device id
+noent                            invalid id
+busy                             device busy
+inval_band                       invalid wifi band
+inval_ssid                       invalid ssid
+inval_freq                       invalid wifi frequency
+inval_cipher                     invalid cipher mod
+inval_key_len                    invalid key length
+inval_key                        invalid key
+inval_ht_mode                    invalid 802.11n mode
+inval_ht_mode                    invalid wifi frequency for this 802.11n mode
+inval_ht_needs_wmm               wmm must be enabled for 802.11n
+inval_ac_needs_ht                invalid configuration 802.11ac need ht support
+inval_ac_not_2d4g                invalid configuration 802.11ac is not supported on 2.4G band
+======================           ============================================================
+
+Wi-Fi Global Config
+===================
+
+Global config gives quick access to major configuration settings (eg: toggle Wi-Fi)
+
+WifiGlobalConfig has the following attributes:
+
+.. json:object:: WifiGlobalConfig
+
+   .. json:property:: enabled bool
+
+      is wifi enabled
+
+   .. json:property:: mac_filter_state enum
+
+      ================   =========================================
+      mac_filter_state   Description
+      ================   =========================================
+      disabled           mac filter is disabled
+      whitelist          mac filter is enabled, using a whitelist
+      blacklist          mac filter is enabled, using a blacklist
+      ================   =========================================
+
+Wi-Fi global config API
+=======================
+
+Get the current Wi-Fi global configuration
+------------------------------------------
+
+.. http:get:: /api/v2/wifi/config/
+
+   Get the :json:object:`WifiGlobalConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "mac_filter_state": "blacklist"
+          }
+      }
+
+Update the Wi-Fi global configuration
+-------------------------------------
+
+.. http:put:: /api/v2/wifi/config/
+
+   Update the :json:object:`WifiGlobalConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v2/wifi/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "enabled": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "mac_filter_state": "blacklist"
+          }
+      }
+
+Wi-Fi Access Point
+==================
+
+Wi-Fi AP objects
+----------------
+
+The Freebox may have one or more access points, you can configure each access point with this api.
+
+.. json:object:: WifiAp
+
+   .. json:property:: id int [ro]
+
+      wifi ap id
+
+   .. json:property:: name string [ro]
+
+      wifi ap name
+
+   .. json:property:: status WifiApStatus [ro]
+
+      ap status
+
+   .. json:property:: capabilites WifiApCapabilities [ro]
+
+      ap capabilities
+
+   .. json:property:: config WifiApConfig
+
+      ap configuration
+
+.. json:object:: WifiApStatus
+
+   .. json:property:: state enum [ro]
+
+      =================  ===================================================
+      state              Description
+      =================  ===================================================
+      scanning           Ap is probing wifi channels
+      no_param           Ap is not configured
+      bad_param          Ap has an invalid configuration
+      disabled           Ap is permanently disabled
+      disabled_planning  Ap is currently disabled according to planning
+      no_active_bss      Ap has no active BSS
+      starting           Ap is starting
+      acs                Ap is selecting the best available channel
+      ht_scan            Ap is scanning for other access point
+      dfs                Ap is performing dynamic frequency selection
+      active             Ap is active
+      failed             Ap has failed to start
+      =================  ===================================================
+
+   .. json:property:: channel_width int [ro]
+
+      effective channel width (in MHz)
+
+    .. json:property:: primary_channel int [ro]
+
+      effective primary channel
+
+    .. json:property:: secondary_channel int [ro]
+
+      effective secondary channel
+
+    .. json:property:: dfs_cac_remaining_time int [ro]
+
+      time left in dfs state
+
+.. json:object:: WifiApCapabilities
+
+    [UNSTABLE]
+
+   .. json:property:: 2d4g int [ro]
+
+      map of capabilites in 2.4 GHz band
+
+   .. json:property:: 5g int [ro]
+
+      map of capabilites in 5 GHz band
+
+   .. json:property:: 60g int [ro]
+
+      map of capabilites in 60 GHz band
+
+NOTE: before enabling some feature in ap config, you should ensure that AP supports the
+feature using its provided capabilities.
+
+
+.. json:object:: WifiApHtConfig
+
+    .. json:property:: ac_enabled bool
+
+      enable 802.11ac
+
+    .. json:property:: ht_enabled bool
+
+      enable 802.11n
+
+      [UNSTABLE]
+
+.. json:object:: WifiApConfig
+
+    .. json:property:: band enum
+
+       ========   ================
+       band       Description
+       ========   ================
+       2d4g       2.4 GHz
+       5g         5 GHz
+       60g        60 GHz
+       ========   ================
+
+    .. json:property:: channel_width int
+
+       wanted channel width (in MHz) :
+
+         -  20 MHz
+         -  40 MHz
+         -  80 MHz
+         - 160 MHz
+
+    .. json:property:: primary_channel int
+
+      wanted primary channel, value of 0 means automatic selection
+
+    .. json:property:: secondary_channel int
+
+      wanted secondary channel, value of 0 means automatic selection
+
+    .. json:property:: dfs_enabled bool
+
+      enable channels that require DFS
+
+    .. json:property:: ht WifiApHtConfig
+
+      wifi ht config
+
+Wi-Fi AP API
+------------
+
+Get the ap list
+^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v2/wifi/ap/
+
+   Get the list of Freebox Access Points :json:object:`WifiAp`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/ap/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "capabilities": {
+                      "2d4g": {
+                          "shortgi20": true,
+                          "vht_rx_ldpc": false,
+
+                           [ ... ]
+
+                          "shortgi40": true,
+                      },
+                      "60g": {
+                           [ ... ]
+                      },
+                      "5g": {
+                           [ ... ]
+                      }
+                  },
+                  "name": "2.4G",
+                  "id": 0,
+                  "config": {
+                      "channel_width": "40",
+                      "ht": {
+                          "ht_enabled": true,
+                          "ac_enabled": false,
+
+                          [ ... ]
+                      },
+                      "dfs_enabled": false,
+                      "band": "2d4g",
+                      "secondary_channel": 13,
+                      "primary_channel": 9
+                  },
+                  "status": {
+                      "channel_width": "20",
+                      "primary_channel": 9,
+                      "dfs_cac_remaining_time": 0,
+                      "secondary_channel": 0,
+                      "state": "active"
+                  }
+              }
+          ]
+      }
+
+Get a particular AP
+^^^^^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v2/wifi/ap/{id}
+
+   Get the :json:object:`WifiAp` with the requested id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/ap/0 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+               "capabilities": {
+                   "2d4g": {
+                       "shortgi20": true,
+                       "vht_rx_ldpc": false,
+
+                        [ ... ]
+
+                       "shortgi40": true,
+                   },
+                   "60g": {
+                        [ ... ]
+                   },
+                   "5g": {
+                        [ ... ]
+                   }
+               },
+               "name": "2.4G",
+               "id": 0,
+               "config": {
+                   "channel_width": "40",
+                   "ht": {
+                       "ht_enabled": true,
+                       "ac_enabled": false,
+
+                       [ ... ]
+                   },
+                   "dfs_enabled": false,
+                   "band": "2d4g",
+                   "secondary_channel": 13,
+                   "primary_channel": 9
+               },
+               "status": {
+                   "channel_width": "20",
+                   "primary_channel": 9,
+                   "dfs_cac_remaining_time": 0,
+                   "secondary_channel": 0,
+                   "state": "active"
+               }
+           }
+      }
+
+Update an AP
+^^^^^^^^^^^^
+
+.. http:put:: /api/v2/wifi/ap/{id}
+
+   Update the :json:object:`WifiAp`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v2/wifi/ap/0 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+        "config": {
+          "channel_width": "20",
+          "ht": {
+              "ht_enabled": false
+          },
+          "primary_channel": 0,
+          "secondary_channel": 0
+        }
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "capabilities": [ ... ],
+              "name": "2.4G",
+              "id": 0,
+              "config": {
+                  "channel_width": "20",
+                  "ht": {
+                      "ht_enabled": false,
+                      "ac_enabled": false
+
+                      [ ... ]
+                  },
+                  "dfs_enabled": false,
+                  "band": "2d4g",
+                  "secondary_channel": 0,
+                  "primary_channel": 0
+              },
+              "status": {
+                  "channel_width": "20",
+                  "primary_channel": 0,
+                  "dfs_cac_remaining_time": 0,
+                  "secondary_channel": 0,
+                  "state": "scanning"
+              }
+          }
+      }
+
+Wi-Fi AP allowed channels
+-------------------------
+
+To be able to allow user to pick a valid channel combination for a given AP you should use
+the following api to retreive the list of allowed channel combination.
+
+.. json:object:: WifiAllowedComb
+
+   .. json:property:: band enum [ro]
+
+       the band for which the combination can be used
+
+       ========   ================
+       band       Description
+       ========   ================
+       2d4g       2.4 GHz
+       5g         5 GHz
+       60g        60 GHz
+       ========   ================
+
+   .. json:property:: channel_width string [ro]
+
+       the channel_width for which the combination can be used
+
+   .. json:property:: need_dfs bool [ro]
+
+       does this combination requires DFS.
+
+       You should only allow this combination if ap has allowed dfs.
+
+   .. json:property:: dfs_cac_time int [ro]
+
+       time required in dfs state before behing able to start the AP.
+
+   .. json:property:: primary int [ro]
+
+      primary channel
+
+   .. json:property:: secondary int [ro]
+
+      secondary channel (zero means that secondary channel will not be used)
+
+
+.. http:get:: /api/v2/wifi/ap/{id}/allowed_channel_comb
+
+   Get the :json:object:`WifiAllowedComb` for the given ap id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/ap/0/allowed_channel_comb HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "channel_width": "20",
+                  "dfs_cac_time": 0,
+                  "need_dfs": false,
+                  "primary": 1,
+                  "band": "2d4g",
+                  "secondary": 0
+              },
+
+              [ ... ]
+
+              {
+                  "channel_width": "20",
+                  "dfs_cac_time": 0,
+                  "need_dfs": false,
+                  "primary": 13,
+                  "band": "2d4g",
+                  "secondary": 0
+              },
+              {
+                  "channel_width": "40",
+                  "dfs_cac_time": 0,
+                  "need_dfs": false,
+                  "primary": 1,
+                  "band": "2d4g",
+                  "secondary": 5
+              },
+
+              [ ... ]
+
+              {
+                  "channel_width": "40",
+                  "dfs_cac_time": 0,
+                  "need_dfs": false,
+                  "primary": 13,
+                  "band": "2d4g",
+                  "secondary": 9
+              }
+          ]
+      }
+
+Wi-Fi AP stations
+-----------------
+
+Wi-Fi AP Stations objects
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+WifiStation has the following attributes:
+
+.. json:object:: WifiStation
+
+   .. json:property:: id string [ro]
+
+      station id
+
+   .. json:property:: mac string [ro]
+
+      client MAC address
+
+   .. json:property:: bssid string [ro]
+
+      bssid on which the client is associated
+
+   .. json:property:: hostname string [ro]
+
+      client host name
+
+   .. json:property:: host LanHost [ro]
+
+      client host information
+
+   .. json:property:: state enum [ro]
+
+      ===============  ===========================
+      state            Description
+      ===============  ===========================
+      associated       station is associated
+      authenticated    station is authenticated
+      ===============  ===========================
+
+   .. json:property:: inactive int [ro]
+
+      inactive duration (in seconds)
+
+   .. json:property:: conn_duration int [ro]
+
+      connection duration (in seconds)
+
+   .. json:property:: rx_bytes int [ro]
+
+      received bytes (from station to Freebox)
+
+   .. json:property:: tx_bytes int [ro]
+
+      transmitted bytes (from Freebox to station)
+
+   .. json:property:: tx_rate int [ro]
+
+      reception data rate (in bytes/s)
+
+   .. json:property:: rx_rate int [ro]
+
+      transmission data rate (in bytes/s)
+
+   .. json:property:: signal int [ro]
+
+      signal attenuation (in dB)
+
+   .. json:property:: flags WifiStationFlags [ro]
+
+      station flags
+
+   .. json:property:: last_rx WifiStationStats [ro]
+
+      last rx stats
+
+   .. json:property:: last_tx WifiStationStats [ro]
+
+      last tx stats
+
+.. json:object:: WifiStationFlags
+
+      [UNSTABLE]
+
+   .. json:property:: legacy bool [ro]
+
+      does station uses legacy wifi (802.11a, 802.11b)
+
+   .. json:property:: ht bool [ro]
+
+      does station support ht (802.11n)
+
+   .. json:property:: vht bool [ro]
+
+      does station support vht (802.11ac)
+
+   .. json:property:: authorized bool [ro]
+
+      is the station authenticated
+
+.. json:object:: WifiStationStats
+
+      [UNSTABLE]
+
+   .. json:property:: bitrate int [ro]
+
+      physical link rate (in 1/10th of MBit/s), -1 if unknown
+
+   .. json:property:: mcs int [ro]
+
+      current link mcs, -1 if not used
+
+   .. json:property:: vht_mcs int [ro]
+
+      current link vht mcs, -1 if not used
+
+   .. json:property:: width string [ro]
+
+      current channel width
+
+   .. json:property:: shortgi bool [ro]
+
+      is shortgi enabled
+
+Get Wi-Fi Stations List
+-----------------------
+
+.. http:get:: /api/v2/wifi/ap/{id}/stations/
+
+   Get the list of :json:object:`WifiStation` associated to the AP
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/ap/0/stations/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "mac": "18:AF:36:15:69:42",
+                  "last_rx": {
+                      "bitrate": 110,
+                      "mcs": -1,
+                      "shortgi": false,
+                      "vht_mcs": -1,
+                      "width": "20"
+                  },
+                  "tx_bytes": 2651,
+                  "last_tx": {
+                      "bitrate": 360,
+                      "mcs": -1,
+                      "shortgi": false,
+                      "vht_mcs": -1,
+                      "width": "20"
+                  },
+                  "id": "00:24:D4:AC:DC:88-18:AF:36:15:69:42",
+                  "bssid": "00:24:D4:AC:DC:88",
+                  "flags": {
+                      "vht": false,
+                      "legacy": false,
+                      "authorized": true,
+                      "ht": false
+                  },
+                  "tx_rate": 0,
+                  "host": {
+                      [ ... ]
+                  },
+                  "inactive": 168,
+                  "conn_duration": 263,
+                  "hostname": "iPhone-de-r0ro",
+                  "state": "authenticated",
+                  "rx_bytes": 781,
+                  "rx_rate": 0,
+                  "signal": -38
+              }
+          ]
+      }
+
+Wi-Fi BSS
+=========
+
+Each AP can manage a set of BSS, with this api you can manage BSS settings
+
+Wi-Fi BSS objects
+-----------------
+
+.. json:object:: WifiBss
+
+   .. json:property:: id int [ro]
+
+      bss id
+
+   .. json:property:: phy_id string [ro]
+
+      associated AP id
+
+   .. json:property:: status WifiBssStatus [ro]
+
+      bss status
+
+   .. json:property:: config WifiBssConfig
+
+      bss configuration
+
+.. json:object:: WifiBssStatus
+
+   .. json:property:: state enum [ro]
+
+      =================  ===================================================
+      state              Description
+      =================  ===================================================
+      phy_stopped        associated AP is stopped
+      no_param           bss is missing config
+      bad_param          bss has an invalid config
+      disabled           bss is disabled
+      starting           bss is starting
+      active             bss is active
+      failed             bss has failed to start
+      =================  ===================================================
+
+   .. json:property:: sta_count int [ro]
+
+      number of stations for this bss
+
+    .. json:property:: authorized_sta_count int [ro]
+
+      number of authenticated stations for this bss
+
+    .. json:property:: is_main_bss bool [ro]
+
+      if bss is main bs, its configuration will be reused for other bss with
+      attribute use_default_config set as true. This can be used to apply the
+      same configuration to 2 bss on 2 AP operating on different wifi bands.
+
+.. json:object:: WifiBssConfig
+
+    .. json:property:: enabled bool
+
+      enable this BSS. Note that if you want the AP to completely stop emitting wifi
+      you should use :json:object:`WifiGlobalConfig` enabled attribute, otherwise
+      FreeWifi and FreeWifi Secure may still be active.
+
+   .. json:property:: use_default_config bool
+
+      if true, share the configuration with the main bss
+
+    .. json:property:: ssid str
+
+      bss displayed name
+
+    .. json:property:: hide_ssid str
+
+      don't show bss in bss list
+
+    .. json:property:: encryption enum
+
+      ================ ======================
+      encryption       Description
+      ================ ======================
+      wep              wep (should not use)
+      wpa_psk_auto     wpa/psk auto
+      wpa_psk_tkip     wpa/psk tkip
+      wpa_psk_ccmp     wpa/psk ccmp
+      wpa2_psk_auto    wpa2/psk auto
+      wpa2_psk_tkip    wpa2/psk tkip
+      wpa2_psk_ccmp    wpa2/psk ccmp
+      ================ ======================
+
+   .. json:property:: key string [wo]
+
+      wifi key
+
+   .. json:property:: eapol_version int [ro]
+
+      eapol version
+
+Wi-Fi BSS API
+-------------
+
+Get the bss list
+^^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v2/wifi/bss/
+
+   Get the list of Freebox Access Points :json:object:`WifiBss`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/bss/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "id": "00:24:D4:AA:BB:CC",
+                  "config": {
+                      "enabled": true,
+                      "ssid": "Freebox r0ro",
+                      "encryption": "wpa2_psk_auto",
+                      "use_default_config": true,
+                      "hide_ssid": false,
+                      "eapol_version": 2,
+                      "key": "jesaispasdevine!"
+                  },
+                  "phy_id": 0,
+                  "status": {
+                      "state": "active",
+                      "sta_count": 1,
+                      "authorized_sta_count": 1,
+                      "is_main_bss": true
+                  }
+              },
+              {
+                  "id": "14:0C:76:AA:BB:CC",
+                  "config": {
+                      "enabled": true,
+                      "ssid": "Freebox r0ro",
+                      "encryption": "wpa2_psk_auto",
+                      "use_default_config": true,
+                      "hide_ssid": false,
+                      "eapol_version": 2,
+                      "key": "jesaispasdevine!"
+                  },
+                  "phy_id": 1,
+                  "status": {
+                      "state": "active",
+                      "sta_count": 0,
+                      "authorized_sta_count": 0,
+                      "is_main_bss": false
+                  }
+              }
+          ]
+      }
+
+Get a particular BSS
+^^^^^^^^^^^^^^^^^^^^
+
+.. http:get:: /api/v2/wifi/bss/{id}
+
+   Get the :json:object:`WifiBss` with the requested id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/bss/00:24:D4:AA:BB:CC HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+            "id": "00:24:D4:AA:BB:CC",
+            "config": {
+                "enabled": true,
+                "ssid": "Freebox r0ro",
+                "encryption": "wpa2_psk_auto",
+                "use_default_config": true,
+                "hide_ssid": false,
+                "eapol_version": 2,
+                "key": "jesaispasdevine!"
+            },
+            "phy_id": 0,
+            "status": {
+                "state": "active",
+                "sta_count": 1,
+                "authorized_sta_count": 1,
+                "is_main_bss": true
+            }
+          }
+      }
+
+Update an BSS
+^^^^^^^^^^^^^
+
+.. http:put:: /api/v2/wifi/bss/{id}
+
+   Update the :json:object:`WifiAp`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v2/wifi//bss/00:24:D4:AA:BB:CC HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+        "config": {
+          "key": "c'était trop facile"
+        }
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+            "id": "00:24:D4:AA:BB:CC",
+            "config": {
+                "enabled": true,
+                "ssid": "Freebox r0ro",
+                "encryption": "wpa2_psk_auto",
+                "use_default_config": true,
+                "hide_ssid": false,
+                "eapol_version": 2,
+                "key": "c'était trop facile"
+            },
+            "phy_id": 0,
+            "status": {
+                "state": "active",
+                "sta_count": 0,
+                "authorized_sta_count": 0,
+                "is_main_bss": true
+            }
+          }
+      }
+
+Wi-Fi Radar
+===========
+
+With this api you can list the surrounding Wi-Fi access points, and Wi-fi channel usage.
+
+This a new feature introduced in firmware 2.1.0 (api v2).
+
+A scan is automatically done at AP startup, if you need to refresh the information you can use the scan api
+
+Wi-Fi Neighbor Object
+---------------------
+
+WifiNeighbor has the following attributes:
+
+.. json:object:: WifiNeighbor
+
+   .. json:property:: bssid string [ro]
+
+      neighbor bssid
+
+   .. json:property:: ssid string [ro]
+
+      neighbor ssid
+
+   .. json:property:: band enum [ro]
+
+       the band for which the combination can be used
+
+       ========   ================
+       band       Description
+       ========   ================
+       2d4g       2.4 GHz
+       5g         5 GHz
+       60g        60 GHz
+       ========   ================
+
+   .. json:property:: channel_width int [ro]
+
+      neighbor channel_width
+
+   .. json:property:: channel int [ro]
+
+      neighbor primary channel
+
+   .. json:property:: secondary_channel int [ro]
+
+      neighbor secondary channel (0 for unused)
+
+   .. json:property:: signal int [ro]
+
+      signal attenuation in dB
+
+   .. json:property:: capabilities WifiNeighborCap [ro]
+
+      neighbor capabilities
+
+.. json:object:: WifiNeighborCap
+
+   .. json:property:: legacy bool [ro]
+
+      neighbor uses legacy wifi (802.11a, 802.11b)
+
+   .. json:property:: ht bool [ro]
+
+      neighbor supports ht (802.11n)
+
+   .. json:property:: vht bool [ro]
+
+      neighbor supports vht (802.11ac)
+
+List AP neighbors
+-----------------
+
+.. http:get:: /api/v2/wifi/ap/{id}/neighbors/
+
+   Get the list of :json:object:`WifiNeighbor` seen by the AP
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/ap/0/neighbors/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "channel_width": "20",
+                  "capabilities": {
+                      "legacy": false,
+                      "vht": false,
+                      "ht": true
+                  },
+                  "ssid": "FreeWifi_secure",
+                  "channel": 1,
+                  "band": "2d4g",
+                  "bssid": "00:24:D4:BA:BB:EE",
+                  "secondary_channel": 0,
+                  "signal": -27
+              },
+
+              [ ... ]
+
+              {
+                  "channel_width": "20",
+                  "capabilities": {
+                      "legacy": false,
+                      "vht": false,
+                      "ht": true
+                  },
+                  "ssid": "Encore une freebox",
+                  "channel": 1,
+                  "band": "2d4g",
+                  "bssid": "F4:CA:E5:5E:AC:4F",
+                  "secondary_channel": 0,
+                  "signal": -33
+              },
+              {
+                  "channel_width": "20",
+                  "capabilities": {
+                      "legacy": false,
+                      "vht": false,
+                      "ht": true
+                  },
+                  "ssid": "lav6-140c76670212",
+                  "channel": 1,
+                  "band": "2d4g",
+                  "bssid": "00:07:CB:00:00:FD",
+                  "secondary_channel": 0,
+                  "signal": -33
+              }
+          ]
+      }
+
+Wi-Fi Channel usage Object
+--------------------------
+
+.. json:object:: WifiChannelUsage
+
+   .. json:property:: channel int [ro]
+
+      channel number
+
+   .. json:property:: band enum [ro]
+
+       ========   ================
+       band       Description
+       ========   ================
+       2d4g       2.4 GHz
+       5g         5 GHz
+       60g        60 GHz
+       ========   ================
+
+   .. json:property:: noise_level int [ro]
+
+      noise level on channel in dB
+
+   .. json:property:: rx_busy_percent int [ro]
+
+      rx channel busy time percentage
+
+
+List Wi-Fi channels usage
+-------------------------
+
+.. http:get:: /api/v2/wifi/ap/{id}/channel_usage/
+
+   Get the list of :json:object:`WifiChannelUsage` for the given AP
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/ap/0/channel_usage/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": "result": [
+             {
+                 "band": "2d4g",
+                 "noise_level": -66,
+                 "rx_busy_percent": 35,
+                 "channel": 1
+             },
+
+             [ ... ]
+
+             {
+                 "band": "2d4g",
+                 "noise_level": -58,
+                 "rx_busy_percent": 46,
+                 "channel": 13
+             }
+         ]
+      }
+
+Refresh radar informations
+--------------------------
+
+**WARNING** durring the scan the AP will be unavailable. Therefore, you should ask for
+user confirmation prior to launching a scan.
+
+Once launched you should wait until the ap state comes back from scanning to get updated info.
+
+.. http:post:: /api/v2/wifi/ap/{id}/neighbors/scan
+
+   Launch a wifi scan on given ap
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v2/wifi/ap/0/neighbors/scan HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Wi-Fi Planning
+==============
+
+With api v2 you can now specify time range when you want to enable your wifi.
+
+Wi-Fi Planning Object
+---------------------
+
+.. json:object:: WifiPlanning
+
+   .. json:property:: use_planning bool
+
+      is the planning enabled
+
+   .. json:property:: resolution int [ro]
+
+      planning resolution (number of slots per day)
+
+   .. json:property:: mapping str[]
+
+      mapping for planning : "on" or "off"
+      mapping[0] is monday at 0:0
+      mapping[7 * resolution - 1] is sunday last slot
+
+      (each slot has a duration of 60 * 24 / resolution minutes)
+
+Get Wi-Fi Planning
+------------------
+
+.. http:get:: /api/v2/wifi/planning/
+
+   Get the list of :json:object:`WifiChannelUsage` for the given AP
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/planning/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "use_planning": false,
+              "resolution": 48,
+              "mapping": [
+                  "on",
+                  "on",
+                  "on",
+                  "on",
+
+                  [ ... ]
+
+                  "on",
+                  "on",
+                  "on",
+                  "on"
+              ]
+          }
+      }
+
+Update Wi-Fi Planning
+---------------------
+
+.. http:put:: /api/v2/wifi/planning/
+
+   Get the list of :json:object:`WifiChannelUsage` for the given AP
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v2/wifi/planning/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "use_planning": true
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "use_planning": true,
+              "resolution": 48,
+              "mapping": [
+                  "on",
+                  "on",
+                  "on",
+                  "on",
+
+                  [ ... ]
+
+                  "on",
+                  "on",
+                  "on",
+                  "on"
+              ]
+          }
+      }
+
+Wi-Fi MAC Filter API
+====================
+
+Wi-Fi MAC Filter object
+-----------------------
+
+WifiMacFilter has the following attributes:
+
+.. json:object:: WifiMacFilter
+
+   .. json:property:: id string [ro]
+
+      filter id
+
+   .. json:property:: mac string [ro]
+
+      MAC address to filter
+
+   .. json:property:: comment string
+
+      comment
+
+   .. json:property:: type enum
+
+      ========= ===============================================
+      type      Description
+      ========= ===============================================
+      whitelist if mac_filter is set to whitelist this station will be allowed
+      blacklist if mac_filter is set to blacklist this station will be rejected
+      ========= ===============================================
+
+   .. json:property:: hostname string [ro]
+
+      host name when available
+
+   .. json:property:: host LanHost [ro]
+
+      host information when available
+
+Get the MAC filter list
+-----------------------
+
+.. http:get:: /api/v2/wifi/mac_filter/
+
+   Get the list of :json:object:`WifiMacFilter`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/mac_filter/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "mac": "00:07:CB:01:02:03",
+                  "type": "whitelist",
+                  "comment": "test",
+                  "hostname": "00:07:CB:01:02:03",
+                  "id": "00:07:CB:01:02:03"
+              },
+              {
+                  "mac": "00:24:D4:00:00:69",
+                  "type": "blacklist",
+                  "comment": "plop",
+                  "hostname": "r0ro's iPad",
+                  "id": "00:24:D4:00:00:69",
+                  "host": {
+                     [ ... ]
+                  }
+              }
+          ]
+      }
+
+
+Getting a particular MAC filter
+-------------------------------
+
+.. http:get:: /api/v2/wifi/mac_filter/{filter_id}
+
+   Returns the requested :json:object:`WifiMacFilter` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v2/wifi/mac_filter/00:07:CB:01:02:03 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "mac": "00:07:CB:01:02:03",
+              "type": "whitelist",
+              "comment": "test",
+              "hostname": "00:07:CB:01:02:03",
+              "id": "00:07:CB:01:02:03"
+          }
+      }
+
+Updating a MAC filter
+---------------------
+
+.. http:put:: /api/v2/wifi/mac_filter/{filter_id}
+
+   Update a :json:object:`WifiMacFilter` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v2/wifi/mac_filter/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "comment": "filtre de test",
+         "type": "blacklist"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "mac": "00:07:CB:01:02:03",
+              "type": "blacklist",
+              "comment": "filtre de test",
+              "hostname": "00:07:CB:01:02:03",
+              "id": "00:07:CB:01:02:03"
+          }
+      }
+
+Delete a MAC filter
+-------------------
+
+.. http:delete:: /api/v2/wifi/mac_filter/{filter_id}
+
+   Delete the :json:object:`WifiMacFilter` with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v2/wifi/mac_filter/00:07:CB:01:02:03 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Create a new MAC filter
+-----------------------
+
+.. http:post:: /api/v2/wifi/mac_filter/
+
+   Crate a new the :json:object:`WifiMacFilter`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v2/wifi/mac_filter/00:07:CB:01:02:03 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "comment": "filtre de test",
+         "type": "blacklist",
+         "mac": "00:07:CB:CB:07:00"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "mac": "00:07:CB:CB:07:00",
+              "type": "blacklist",
+              "comment": "filtre de test",
+              "hostname": "00:07:CB:CB:07:00",
+              "id": "00:07:CB:CB:07:00"
+          }
+      }
+
+Wifi Config reset
+=================
+
+You can reset Wifi to default configuration with this api
+
+.. http:post:: /api/v2/wifi/config/reset/
+
+   Crate a new the :json:object:`WifiMacFilter`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v2/wifi/config/reset/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+..  LocalWords:  Wifi inval nospc nodev noent wifi ssid len wmm bss AP Freebox
+..  LocalWords:  WifiBssStatus bssid wps WifiStatus perso freewifi wo
+..  LocalWords:  WifiBssConfig wep wpa psk tkip ccmp whitelist eapol
+..  LocalWords:  WifiApConfig ap MHz WifiConfig configs rx tx
+..  LocalWords:  etpuisquoiencore params WifiStation LanHost ro's de
+..  LocalWords:  WifiMacFilter filtre

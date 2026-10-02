@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.cs text eol=lf
+*.csproj text eol=lf
+*.sln text eol=lf
+*.md text eol=lf
+# Keep the supplied evidence byte-exact, including its original line endings.
+docs/freebox-official/api-16.0/** -text

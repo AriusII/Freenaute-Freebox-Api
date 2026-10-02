@@ -1,0 +1,481 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AirMedia API &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="RRD [UNSTABLE]" href="../rrd/" />
+    <link rel="prev" title="File Upload" href="../upload/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="airmedia-api">
+<h1>AirMedia API<a class="headerlink" href="#airmedia-api" title="Permalink to this headline">¶</a></h1>
+<p>This API allows you to multimedia stream to any airmedia device
+reachable by the Freebox, as well as configuring the airmedia
+server hosted on the Freebox Server.</p>
+<div class="section" id="airmedia-errors">
+<h2>AirMedia Errors<a class="headerlink" href="#airmedia-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the file airmedia API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>unknown_target</td>
+<td>No airmedia device with this name in range</td>
+</tr>
+<tr class="row-odd"><td>no_client</td>
+<td>No airmedia client connected</td>
+</tr>
+<tr class="row-even"><td>set_pass</td>
+<td>Unable to update password</td>
+</tr>
+<tr class="row-odd"><td>set_onscreen_code</td>
+<td>Unable to activate onscreen code</td>
+</tr>
+<tr class="row-even"><td>no_ctrl</td>
+<td>Remote control is unavailable</td>
+</tr>
+<tr class="row-odd"><td>http</td>
+<td>Internal HTTP error</td>
+</tr>
+<tr class="row-even"><td>bad_session</td>
+<td>No stream session found</td>
+</tr>
+<tr class="row-odd"><td>bad_name</td>
+<td>Invalid airmedia name</td>
+</tr>
+<tr class="row-even"><td>bad_device_id</td>
+<td>No device with this id</td>
+</tr>
+<tr class="row-odd"><td>bad_remote_id</td>
+<td>No remote control with this id</td>
+</tr>
+<tr class="row-even"><td>req_in_progress</td>
+<td>You should try again, another request is still processing</td>
+</tr>
+<tr class="row-odd"><td>fetch</td>
+<td>Unable to get slideshow information</td>
+</tr>
+<tr class="row-even"><td>no_display</td>
+<td>No screen available</td>
+</tr>
+<tr class="row-odd"><td>playback_state</td>
+<td>Invalid playback state</td>
+</tr>
+<tr class="row-even"><td>no_slideshow_srv</td>
+<td>Slideshow is not supported</td>
+</tr>
+<tr class="row-odd"><td>no_mem</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>inout_file</td>
+<td>Unable to read input file</td>
+</tr>
+<tr class="row-odd"><td>no_volume_control</td>
+<td>Volume control is not available</td>
+</tr>
+<tr class="row-even"><td>connect</td>
+<td>Error connecting to the airmedia device</td>
+</tr>
+<tr class="row-odd"><td>unauthorized</td>
+<td>This device requests a password</td>
+</tr>
+<tr class="row-even"><td>unsupported_media</td>
+<td>The device does not support this format</td>
+</tr>
+<tr class="row-odd"><td>bad_type</td>
+<td>Invalid file type</td>
+</tr>
+<tr class="row-even"><td>unimplemented</td>
+<td>Unimplemented</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="airmedia-config-object">
+<h2>AirMedia Config Object<a class="headerlink" href="#airmedia-config-object" title="Permalink to this headline">¶</a></h2>
+<p>AirMedia config has the following attributes:</p>
+<dl class="object">
+<dt id="AirMediaConfig">
+<code class="descname">AirMediaConfig</code><a class="headerlink" href="#AirMediaConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="AirMediaConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#AirMediaConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable/Disable the airmedia server</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaConfig.password">
+<code class="descname">password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#AirMediaConfig.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>If not empty, the client will have to enter a password to be
+able to use this airmedia server</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="airmedia-configuration-api">
+<h2>AirMedia Configuration API<a class="headerlink" href="#airmedia-configuration-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-airmedia-configuration">
+<h3>Get the current AirMedia configuration<a class="headerlink" href="#get-the-current-airmedia-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-airmedia-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/airmedia/config/</code><a class="headerlink" href="#get--api-v4-airmedia-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#AirMediaConfig" title="AirMediaConfig"><code class="xref json json-object docutils literal"><span class="pre">AirMediaConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/airmedia/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-current-airmedia-configuration">
+<h3>Update the current AirMedia configuration<a class="headerlink" href="#update-the-current-airmedia-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-airmedia-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/airmedia/config/</code><a class="headerlink" href="#put--api-v4-airmedia-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current <a class="reference internal" href="#AirMediaConfig" title="AirMediaConfig"><code class="xref json json-object docutils literal"><span class="pre">AirMediaConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/airmedia/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;3615&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">enabled</span><span class="o">:</span> <span class="kc">true</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="airmedia-receiver-object">
+<h2>AirMedia Receiver Object<a class="headerlink" href="#airmedia-receiver-object" title="Permalink to this headline">¶</a></h2>
+<p>AirMedia receivers have the following attributes</p>
+<dl class="object">
+<dt id="AirMediaReceiver">
+<code class="descname">AirMediaReceiver</code><a class="headerlink" href="#AirMediaReceiver" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="AirMediaReceiver.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#AirMediaReceiver.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>AirMedia name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaReceiver.password_protected">
+<code class="descname">password_protected</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#AirMediaReceiver.password_protected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is set to true the receiver is protected by a password</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaReceiver.capabilities">
+<code class="descname">capabilities</code><span> </span>map<em class="property"> Read-only</em><a class="headerlink" href="#AirMediaReceiver.capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of receiver capabilities from the following list</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Capability</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>photo</td>
+<td>can display photos</td>
+</tr>
+<tr class="row-odd"><td>audio</td>
+<td>can play audio files</td>
+</tr>
+<tr class="row-even"><td>video</td>
+<td>can play video files</td>
+</tr>
+<tr class="row-odd"><td>screen</td>
+<td>can display remote screen</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="get-the-list-of-available-airmedia-receivers">
+<h3>Get the list of available AirMedia receivers<a class="headerlink" href="#get-the-list-of-available-airmedia-receivers" title="Permalink to this headline">¶</a></h3>
+<p>You can get the list of <a class="reference internal" href="#AirMediaReceiver" title="AirMediaReceiver"><code class="xref json json-object docutils literal"><span class="pre">AirMediaReceiver</span></code></a> connected to
+the Freebox Server using this API</p>
+<dl class="get">
+<dt id="get--api-v4-airmedia-receivers-">
+<code class="descname">GET </code><code class="descname">/api/v4/airmedia/receivers/</code><a class="headerlink" href="#get--api-v4-airmedia-receivers-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#AirMediaReceiver" title="AirMediaReceiver"><code class="xref json json-object docutils literal"><span class="pre">AirMediaReceiver</span></code></a> connected to the Freebox Server</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/airmedia/receivers/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+         <span class="nx">capabilities</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">photo</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">screen</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">audio</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">video</span><span class="o">:</span> <span class="kc">true</span>
+         <span class="p">},</span>
+         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Freebox Player&quot;</span><span class="p">,</span>
+         <span class="nx">password_protected</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="nx">capabilities</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">photo</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">screen</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">audio</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">video</span><span class="o">:</span> <span class="kc">false</span>
+         <span class="p">},</span>
+         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Freebox Server&quot;</span><span class="p">,</span>
+         <span class="nx">password_protected</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="interacting-with-an-airmedia-receiver">
+<h3>Interacting with an AirMedia receiver<a class="headerlink" href="#interacting-with-an-airmedia-receiver" title="Permalink to this headline">¶</a></h3>
+<p>Once you have selected an available <a class="reference internal" href="#AirMediaReceiver" title="AirMediaReceiver"><code class="xref json json-object docutils literal"><span class="pre">AirMediaReceiver</span></code></a>
+you can start interacting with it by sending media with the following
+API.</p>
+<div class="section" id="airmedia-receiver-request">
+<h4>AirMedia receiver request<a class="headerlink" href="#airmedia-receiver-request" title="Permalink to this headline">¶</a></h4>
+<dl class="object">
+<dt id="AirMediaReceiverRequest">
+<code class="descname">AirMediaReceiverRequest</code><a class="headerlink" href="#AirMediaReceiverRequest" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="AirMediaReceiverRequest.action">
+<code class="descname">action</code><span> </span>enum<a class="headerlink" href="#AirMediaReceiverRequest.action" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Action</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>start</td>
+<td>start playing a media</td>
+</tr>
+<tr class="row-odd"><td>stop</td>
+<td>stop playing a media</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaReceiverRequest.media_type">
+<code class="descname">media_type</code><span> </span>string<a class="headerlink" href="#AirMediaReceiverRequest.media_type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Media Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>photo</td>
+<td>display a photo</td>
+</tr>
+<tr class="row-odd"><td>video</td>
+<td>display a video</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaReceiverRequest.password">
+<code class="descname">password</code><span> </span>string<a class="headerlink" href="#AirMediaReceiverRequest.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional receiver password.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaReceiverRequest.position">
+<code class="descname">position</code><span> </span>int<a class="headerlink" href="#AirMediaReceiverRequest.position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start position for a video.</p>
+<p>The start position is expressed in percent * 1000, for instance
+50000 means 50% of the video</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="AirMediaReceiverRequest.media">
+<code class="descname">media</code><span> </span>string<a class="headerlink" href="#AirMediaReceiverRequest.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>The media to play.</p>
+<ul class="simple">
+<li>For video media, you have to specify the media URL, for instance
+<a class="reference external" href="http://anon.nasa-global.edgesuite.net/HD_downloads/GRAIL_launch_480.mov">http://anon.nasa-global.edgesuite.net/HD_downloads/GRAIL_launch_480.mov</a></li>
+<li>For photo media, you have to specify the file path on the
+Freebox Server (base64 encoded as returned in fs/ls call), for
+instance L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM0OTEuanBn</li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="sending-a-new-request-to-an-airmedia-receiver">
+<h4>Sending a new request to an AirMedia receiver<a class="headerlink" href="#sending-a-new-request-to-an-airmedia-receiver" title="Permalink to this headline">¶</a></h4>
+<dl class="post">
+<dt id="post--api-v4-airmedia-receviers-receiver_name-">
+<code class="descname">POST </code><code class="descname">/api/v4/airmedia/receviers/{receiver_name}/</code><a class="headerlink" href="#post--api-v4-airmedia-receviers-receiver_name-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example: display a photo on the Freebox Player</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/airmedia/receivers/Freebox%20Player/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;media_type&quot;</span><span class="p">:</span> <span class="s2">&quot;photo&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;media&quot;</span><span class="p">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM0OTEuanBn&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;1111&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example: play a video the Freebox Player</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/airmedia/receivers/Freebox%20Player/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;media_type&quot;</span><span class="p">:</span> <span class="s2">&quot;video&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;media&quot;</span><span class="p">:</span> <span class="s2">&quot;http://anon.nasa-global.edgesuite.net/HD_downloads/GRAIL_launch_480.mov&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;1111&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example: stop the current AirMedia video on Freebox Player</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/airmedia/receivers/Freebox%20Player/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;stop&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;media_type&quot;</span><span class="p">:</span> <span class="s2">&quot;video&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

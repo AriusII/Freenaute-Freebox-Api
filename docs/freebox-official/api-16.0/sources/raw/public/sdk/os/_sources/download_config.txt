@@ -1,0 +1,502 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+======================
+Download Configuration
+======================
+
+
+Download configuration object
+=============================
+
+The download configuration is a singleton used to store the downloader
+preferences.
+
+
+Global config
+-------------
+
+.. json:object:: DownloadConfiguration
+
+   .. json:property:: max_downloading_tasks int
+
+      max concurrent download tasks
+
+   .. json:property:: download_dir string
+
+      the default path where downloads will be stored (base64 encoded)
+
+   .. json:property:: watch_dir string
+
+      special folder that will be monitored. When a new supported file
+      (.nzb, .torrent) is copied in that folder, the task is
+      automatically added to the download queue.
+
+      (base64 encoded)
+
+   .. json:property:: use_watch_dir bool
+
+      if set to false, the watch_dir will not be monitored
+
+   .. json:property:: throttling DlThrottlingConfig
+
+      throttling configuration
+
+   .. json:property:: news DlNewsConfig
+
+      newsgroups configuration
+
+   .. json:property:: bt DlBtConfig
+
+      bittorrent configuration
+
+   .. json:property:: feed DlFeedConfig
+
+      RSS feed configuration
+
+   .. json:property:: blocklist DlBlockListConfig
+
+      block list configuration
+
+   .. json:property:: dns1 string
+
+      dns server ip to use for downloader (leave blank for default dns server)
+
+   .. json:property:: dns2 string
+
+      dns server ip to use for downloader
+
+
+Throttling config
+-----------------
+
+.. json:object:: DlThrottlingConfig
+
+   .. json:property:: normal DlRate
+
+      download rate for normal time slot (in B/s)
+
+   .. json:property:: slow DlRate
+
+      download rate for normal slow slot (in B/s)
+
+   .. json:property:: schedule enum[168]
+
+      The schedule array represent the list of week hours timeslot,
+      starting on monday a midnight.  Therefore the complete week is
+      represented in a array of 168 elements (24 * 7)
+
+      Each slot can have the following value:
+
+      ===============   ===========================================================
+      Type              Description
+      ===============   ===========================================================
+      normal            downloads will use normal DlRate config for this timeslot
+      slow              downloads will use slow DlRate config for this timeslot
+      hibernate         downloads will be paused for this timeslot
+      ===============   ===========================================================
+
+   .. json:property:: mode enum
+
+      Throttling mode can have to following values
+
+      ===============   ===========================================================
+      Type              Description
+      ===============   ===========================================================
+      normal            force use of normal rate limits (not using the scheduler)
+      slow              force use of slow rate limits (not using the scheduler)
+      hibernate         force hibernate (not using the scheduler)
+      schedule          use scheduded rate limit
+      ===============   ===========================================================
+
+.. json:object:: DlRate
+
+   .. json:property:: tx_rate int
+
+      maximum transmit rate (in byte/s)
+      0 means no limit
+
+   .. json:property:: rx_rate int
+
+      maximum receive rate (in byte/s)
+      0 means no limit
+
+
+Newsgroups config
+-----------------
+
+.. json:object:: DlNewsConfig
+
+   .. json:property:: server string
+
+      NNTP server hostname
+
+   .. json:property:: port int
+
+      NNTP server port
+
+   .. json:property:: ssl bool
+
+      Use SSL to connect to server if set to true
+
+   .. json:property:: user string
+
+      NNTP auth username (can be empty if no auth is required)
+
+   .. json:property:: password string [wo]
+
+      NNTP auth password (can be empty if no auth is required)
+
+   .. json:property:: nthreads int
+
+      maximum concurrent connections to the NNTP server
+
+   .. json:property:: auto_repair bool
+
+      automatically check and repair downloaded files using the
+      provided par2 files
+
+   .. json:property:: lazy_par2 bool
+
+       if set to true the downloader will download the par2 files only
+       if the download is corrupted
+
+   .. json:property:: auto_extract bool
+
+       automatically attempt to extract downloaded files
+
+   .. json:property:: erase_tmp bool
+
+       if auto_extract is enabled, delete archive files once
+       successfully extracted
+
+
+Bittorrent config
+-----------------
+
+.. json:object:: DlBtConfig
+
+   .. json:property:: max_peers int
+
+      maximum number of peers at a given time
+
+   .. json:property:: stop_ratio int
+
+      default stop_ratio for bt :json:object:`Download` tasks
+
+      **This value is scaled by a factor 100**, for instance a
+      stop_ratio of 200 means that the task will stop once
+      tx_bytes = 2 * size
+
+      A value of 0 means that the task will continue seeding until it
+      is manually stopped
+
+   .. json:property:: crypto_support enum
+
+      The crypto_support can have the following values
+
+      ===============   =======================================
+      Type              Description
+      ===============   =======================================
+      unsupported       will never use bittorrent crypto
+      allowed           will select plain during handshake
+      preferred          will select crypto during handshake
+      required          will allow plain bittorrent
+      ===============   =======================================
+
+   .. json:property:: enable_dht bool
+
+      enable the dht protocol
+
+   .. json:property:: enable_pex bool
+
+      enable the peer exchange protocol
+
+   .. json:property:: announce_timeout int
+
+      timeout in seconds for announcing to tracker
+
+   .. json:property:: main_port int
+
+      main bittorrent port
+
+   .. json:property:: dht_port int
+
+      bittorrent dht port
+
+Rss Feeds config
+----------------
+
+.. json:object:: DlFeedConfig
+
+   .. json:property:: fetch_interval int
+
+      interval between automatic RSS refresh (in minutes)
+
+   .. json:property:: max_items int
+
+      maximum feed item to keep
+
+BlockList config
+----------------
+
+.. json:object:: DlBlockListConfig
+
+   .. json:property:: sources[] string
+
+      list of block list URL source
+
+      The block list should be in cidr format
+
+      e.g.: http://list.iblocklist.com/?list=bt_level1&fileformat=cidr&archiveformat=
+
+Get the current Download configuration
+======================================
+
+.. http:get:: /api/v4/downloads/config/
+
+   Returns the current :json:object:`DownloadConfiguration`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+             "feed": {
+                 "max_items": 0,
+                 "fetch_interval": 60
+             },
+             "use_watch_dir": true,
+             "watch_dir": "L0Rpc3F1ZSBkdXIvLnF1ZXVl", /* /Disque dur/.queue */
+             "news": {
+                 "user": "",
+                 "erase_tmp": true,
+                 "port": 119,
+                 "nthreads": 1,
+                 "auto_repair": true,
+                 "ssl": false,
+                 "auto_extract": true,
+                 "lazy_par2": true,
+                 "server": "news.free.fr"
+             },
+             "bt": {
+                 "max_peers": 50,
+                 "stop_ratio": 150,
+                 "crypto_support": "allowed"
+             },
+             "max_downloading_tasks": 5,
+             "download_dir": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv", /* /Disque dur/Téléchargements/ */
+             "throttling": {
+                 "normal": {
+                     "rx_rate": 0,
+                     "tx_rate": 0
+                 },
+                 "slow": {
+                     "rx_rate": 512,
+                     "tx_rate": 42
+                 },
+                 "schedule": [
+                     "slow",
+                     "normal",
+                     "normal",
+
+                      [ ... ]
+
+                     "normal",
+                     "normal",
+                     "normal",
+                     "slow"
+                 ],
+                 "mode": "normal"
+             }
+         }
+      }
+
+Update the Download configuration
+=================================
+
+.. http:put:: /api/v4/downloads/config/
+
+   Updates the :json:object:`DownloadConfiguration`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/downloads/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+          "throttling": {
+              "normal": {
+                  "rx_rate": 512,
+                  "tx_rate": 40
+              },
+              "slow": {
+                  "rx_rate": 128,
+                  "tx_rate": 10
+              },
+              "mode": "normal",
+              "schedule": [
+                  "slow",
+                  "normal",
+                  "normal",
+
+                  [ ... ]
+
+                  "normal",
+                  "normal",
+                  "normal",
+                  "normal",
+                  "slow"
+              ]
+          },
+          "max_downloading_tasks": 5,
+          "download_dir": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv", /* /Disque dur/Téléchargements/ */
+          "use_watch_dir": true,
+          "watch_dir": "L0Rpc3F1ZSBkdXIvLnF1ZXVl", /* /Disque dur/.queue */
+          "news": {
+              "server": "news.free.fr",
+              "port": "119",
+              "ssl": false,
+              "nthreads": 1,
+              "user": "",
+              "lazy_par2": true,
+              "auto_repair": true,
+              "auto_extract": true,
+              "erase_tmp": true
+          },
+          "bt": {
+              "max_peers": 50,
+              "stop_ratio": 150,
+              "crypto_support": "allowed"
+          },
+          "feed": {
+              "fetch_interval": 60
+          }
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "feed": {
+                  "max_items": 0,
+                  "fetch_interval": 60
+              },
+              "use_watch_dir": true,
+              "watch_dir": "L0Rpc3F1ZSBkdXIvLnF1ZXVl", /* /Disque dur/.queue */
+              "news": {
+                  "user": "",
+                  "erase_tmp": true,
+                  "port": 119,
+                  "nthreads": 1,
+                  "auto_repair": true,
+                  "ssl": false,
+                  "auto_extract": true,
+                  "lazy_par2": true,
+                  "server": "news.free.fr"
+              },
+              "bt": {
+                  "max_peers": 50,
+                  "stop_ratio": 150,
+                  "crypto_support": "allowed"
+              },
+              "max_downloading_tasks": 5,
+              "download_dir": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv", /* /Disque dur/Téléchargements/ */
+              "throttling": {
+                  "normal": {
+                      "rx_rate": 512,
+                      "tx_rate": 40
+                  },
+                  "slow": {
+                      "rx_rate": 128,
+                      "tx_rate": 10
+                  },
+                  "schedule": [
+                      "slow",
+                      "normal",
+                      "normal",
+                      "normal",
+
+                      [ ... ]
+
+                      "normal",
+                      "normal",
+                      "normal",
+                      "slow"
+                  ],
+                  "mode": "normal"
+              }
+          }
+
+      }
+
+Updating the current Throttling mode
+------------------------------------
+
+.. http:put:: /api/v4/downloads/throttling
+
+   You can force the throttling mode using this method.  You can use
+   any of the throttling modes defined in
+   :json:object:`DlThrottlingConfig`.  Setting to schedule will
+   automatically set correct throttling mode.  Other values will force
+   the throttling mode until you set it back to schedule.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/downloads/throttling HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+          throttling: "slow"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "is_scheduled": false,
+              "throttling": "slow"
+          }
+      }
+
+
+..  LocalWords:  DownloadConfiguration dir nzb DlThrottlingConfig bt
+..  LocalWords:  DlNewsConfig DlBtConfig DlFeedConfig rss blocklist
+..  LocalWords:  DlBlockListConfig DlRate timeslot monday scheduded
+..  LocalWords:  tx rx NNTP ssl auth wo nthreads tmp crypto dht pex
+..  LocalWords:  BlockList cidr ZSBkdXIvLnF ZXVl

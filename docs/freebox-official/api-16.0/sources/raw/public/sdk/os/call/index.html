@@ -1,0 +1,344 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Call &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Contacts" href="../contacts/" />
+    <link rel="prev" title="RRD [UNSTABLE]" href="../rrd/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="call">
+<h1>Call<a class="headerlink" href="#call" title="Permalink to this headline">¶</a></h1>
+<p>With the call API you access the Freebox call logs.</p>
+<div class="section" id="call-errors">
+<h2>Call Errors<a class="headerlink" href="#call-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the call API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-odd"><td>invalid_id</td>
+<td>No call with this id</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="call-object">
+<h2>Call Object<a class="headerlink" href="#call-object" title="Permalink to this headline">¶</a></h2>
+<p>Call entries have the following properties</p>
+<dl class="object">
+<dt id="CallEntry">
+<code class="descname">CallEntry</code><a class="headerlink" href="#CallEntry" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="CallEntry.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid call types are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>missed</td>
+<td>Missed incoming call</td>
+</tr>
+<tr class="row-odd"><td>accepted</td>
+<td>Incoming call</td>
+</tr>
+<tr class="row-even"><td>outgoing</td>
+<td>Outgoing call</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.datetime">
+<code class="descname">datetime</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call creation timestamp.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.number">
+<code class="descname">number</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callee number for outgoing calls.
+Caller number for incoming calls.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callee name for outgoing calls.
+Caller name for incoming calls.</p>
+<p>For incoming call if the network does not provide a contact
+name, we try to use the contact database to find a suitable name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.duration">
+<code class="descname">duration</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call duration in seconds.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.new">
+<code class="descname">new</code><span> </span>bool<a class="headerlink" href="#CallEntry.new" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call entry as not been acknowledged yet.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="CallEntry.contact_id">
+<code class="descname">contact_id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#CallEntry.contact_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the number matches an entry in the contact database, the id
+of the matching contact.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="call-api">
+<h2>Call API<a class="headerlink" href="#call-api" title="Permalink to this headline">¶</a></h2>
+<p>This is the call API</p>
+<div class="section" id="list-every-calls">
+<h3>List every calls<a class="headerlink" href="#list-every-calls" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-call-log-">
+<code class="descname">GET </code><code class="descname">/api/v4/call/log/</code><a class="headerlink" href="#get--api-v4-call-log-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#CallEntry" title="CallEntry"><code class="xref json json-object docutils literal"><span class="pre">CallEntry</span></code></a> call entries</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/call/log/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+         <span class="nx">number</span><span class="o">:</span> <span class="s2">&quot;0102030405&quot;</span><span class="p">,</span>
+         <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;missed&quot;</span><span class="p">,</span>
+         <span class="nx">id</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+         <span class="nx">duration</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+         <span class="nx">datetime</span><span class="o">:</span> <span class="mi">1359546363</span><span class="p">,</span>
+         <span class="nx">contact_id</span><span class="o">:</span> <span class="mi">56</span><span class="p">,</span>
+         <span class="nx">line_id</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;r0ro (Freebox)&quot;</span><span class="p">,</span>
+         <span class="k">new</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="nx">number</span><span class="o">:</span> <span class="s2">&quot;**1&quot;</span><span class="p">,</span>
+         <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;outgoing&quot;</span><span class="p">,</span>
+         <span class="nx">id</span><span class="o">:</span> <span class="mi">68</span><span class="p">,</span>
+         <span class="nx">duration</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+         <span class="nx">datetime</span><span class="o">:</span> <span class="mi">1359545960</span><span class="p">,</span>
+         <span class="nx">contact_id</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">line_id</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;**1&quot;</span><span class="p">,</span>
+         <span class="k">new</span><span class="o">:</span> <span class="kc">false</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-every-calls">
+<h3>Delete every calls<a class="headerlink" href="#delete-every-calls" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-call-log-delete_all-">
+<code class="descname">POST </code><code class="descname">/api/v4/call/log/delete_all/</code><a class="headerlink" href="#post--api-v4-call-log-delete_all-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all <a class="reference internal" href="#CallEntry" title="CallEntry"><code class="xref json json-object docutils literal"><span class="pre">CallEntry</span></code></a> call entries</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/call/log/delete_all</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="mark-every-calls-as-read">
+<h3>Mark every calls as read<a class="headerlink" href="#mark-every-calls-as-read" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-call-log-mark_all_as_read-">
+<code class="descname">POST </code><code class="descname">/api/v4/call/log/mark_all_as_read/</code><a class="headerlink" href="#post--api-v4-call-log-mark_all_as_read-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark all <a class="reference internal" href="#CallEntry" title="CallEntry"><code class="xref json json-object docutils literal"><span class="pre">CallEntry</span></code></a> call entries as read</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/call/log/mark_all_as_read</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="access-a-given-call-entry">
+<h3>Access a given call entry<a class="headerlink" href="#access-a-given-call-entry" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-call-log-id">
+<code class="descname">GET </code><code class="descname">/api/v4/call/log/{id}</code><a class="headerlink" href="#get--api-v4-call-log-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#CallEntry" title="CallEntry"><code class="xref json json-object docutils literal"><span class="pre">CallEntry</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/call/log/69</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">number</span><span class="o">:</span> <span class="s2">&quot;0102030405&quot;</span><span class="p">,</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;missed&quot;</span><span class="p">,</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+      <span class="nx">duration</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nx">datetime</span><span class="o">:</span> <span class="mi">1359546363</span><span class="p">,</span>
+      <span class="nx">contact_id</span><span class="o">:</span> <span class="mi">56</span><span class="p">,</span>
+      <span class="nx">line_id</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Romain Bureau&quot;</span><span class="p">,</span>
+      <span class="k">new</span><span class="o">:</span> <span class="kc">true</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-call">
+<h3>Delete a call<a class="headerlink" href="#delete-a-call" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-call-log-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/call/log/{id}</code><a class="headerlink" href="#delete--api-v4-call-log-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#CallEntry" title="CallEntry"><code class="xref json json-object docutils literal"><span class="pre">CallEntry</span></code></a> with the given id.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/call/log/69</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-call-entry">
+<h3>Update a call entry<a class="headerlink" href="#update-a-call-entry" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-call-log-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/call/log/{id}</code><a class="headerlink" href="#put--api-v4-call-log-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#CallEntry" title="CallEntry"><code class="xref json json-object docutils literal"><span class="pre">CallEntry</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/call/log/69</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;new&quot;</span><span class="o">:</span> <span class="s2">&quot;false&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">number</span><span class="o">:</span> <span class="s2">&quot;0102030405&quot;</span><span class="p">,</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;missed&quot;</span><span class="p">,</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+      <span class="nx">duration</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="nx">datetime</span><span class="o">:</span> <span class="mi">1359546363</span><span class="p">,</span>
+      <span class="nx">contact_id</span><span class="o">:</span> <span class="mi">56</span><span class="p">,</span>
+      <span class="nx">line_id</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Romain Bureau&quot;</span><span class="p">,</span>
+      <span class="k">new</span><span class="o">:</span> <span class="kc">false</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

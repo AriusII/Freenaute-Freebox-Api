@@ -1,0 +1,1608 @@
+{
+  "format_version": 1,
+  "generator": "freenaute-freebox-documentation-net10",
+  "api_version": "16.0",
+  "task_count": 45,
+  "tasks": [
+    {
+      "task_id": "review16-00_index",
+      "module": "00_index",
+      "group": "protocol",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#developer-api-documentation",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fondamentaux/00_index.md",
+        "sha256": "83391b8923cc6e8a580699fd9c7106efe5d2c7e1b3d964175bbff981dd15085b",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/protocol.json",
+      "review_sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7",
+      "context_file": "tasks/review16-00_index.md",
+      "projection_file": "sources/review16-00_index.json",
+      "counts": {
+        "endpoints": 0,
+        "objects": 1,
+        "properties": 4,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-login",
+      "module": "login",
+      "group": "protocol",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#login",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fondamentaux/login.md",
+        "sha256": "f75ee125e107214088c3f229b3729cd97bf7e486f68ebffacd44f4128a84e344",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/protocol.json",
+      "review_sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7",
+      "context_file": "tasks/review16-login.md",
+      "projection_file": "sources/review16-login.json",
+      "counts": {
+        "endpoints": 5,
+        "objects": 2,
+        "properties": 7,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-websocket",
+      "module": "websocket",
+      "group": "protocol",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#ws-api",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fondamentaux/websocket.md",
+        "sha256": "ad2796bd8909c830e8c6dab2a20a080e695f1e08832fe79770f9d9fa410661ab",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-lan",
+        "review16-login",
+        "review16-vm"
+      ],
+      "review_file": "docs/freebox-official/reviews/protocol.json",
+      "review_sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7",
+      "context_file": "tasks/review16-websocket.md",
+      "projection_file": "sources/review16-websocket.json",
+      "counts": {
+        "endpoints": 1,
+        "objects": 4,
+        "properties": 15,
+        "events": 4
+      }
+    },
+    {
+      "task_id": "review16-airmedia",
+      "module": "airmedia",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#airmedia-api",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/airmedia.md",
+        "sha256": "36465a362f5494131e8870a9f76300a78e49b9b4b3bd6d7ffc1929a0e9d6e086",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-airmedia.md",
+      "projection_file": "sources/review16-airmedia.json",
+      "counts": {
+        "endpoints": 4,
+        "objects": 3,
+        "properties": 10,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-call",
+      "module": "call",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#call",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/call.md",
+        "sha256": "78921612634bd8a98e2242cdb1579bab4e6a6f62215953b0d286076eaaa8054a",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-call.md",
+      "projection_file": "sources/review16-call.json",
+      "counts": {
+        "endpoints": 12,
+        "objects": 2,
+        "properties": 14,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-contacts",
+      "module": "contacts",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#contacts",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/contacts.md",
+        "sha256": "fedc7385b628f3c23bc05625313e7e177c79127eb42a8ffd81cadd2c444223a5",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-contacts.md",
+      "projection_file": "sources/review16-contacts.json",
+      "counts": {
+        "endpoints": 10,
+        "objects": 5,
+        "properties": 35,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-connection",
+      "module": "connection",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#connection-api",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/connection.md",
+        "sha256": "0731d64dd61ba70faa2cfebd08ce0de86430c3f1c8b1402133f312994a1b69e0",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-connection.md",
+      "projection_file": "sources/review16-connection.json",
+      "counts": {
+        "endpoints": 13,
+        "objects": 17,
+        "properties": 124,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-lan",
+      "module": "lan",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#lan",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/lan.md",
+        "sha256": "c2698e7b2e410f3c4db04783fc20260581792c2e872c216f7e956e5694302245",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-lan.md",
+      "projection_file": "sources/review16-lan.json",
+      "counts": {
+        "endpoints": 10,
+        "objects": 7,
+        "properties": 41,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-freeplug",
+      "module": "freeplug",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#freeplug",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/freeplug.md",
+        "sha256": "fb0300052f6f9b7952bafec4fed466ee718f8b0620e893faca7aae77ba7eb02d",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-freeplug.md",
+      "projection_file": "sources/review16-freeplug.json",
+      "counts": {
+        "endpoints": 3,
+        "objects": 2,
+        "properties": 14,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-dhcp",
+      "module": "dhcp",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#dhcp",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/dhcp.md",
+        "sha256": "e3f10687707544a3a57c8b2572d5e0015a7a513d83d60b80fd108775d72a533b",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-dhcp.md",
+      "projection_file": "sources/review16-dhcp.json",
+      "counts": {
+        "endpoints": 8,
+        "objects": 4,
+        "properties": 29,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-dhcpv6",
+      "module": "dhcpv6",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#dhcpv6",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/dhcpv6.md",
+        "sha256": "f988a019208deee6a08549774a550cec35a947f201b8f8391c2a7cff72adf26f",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-dhcpv6.md",
+      "projection_file": "sources/review16-dhcpv6.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 3,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-ftp",
+      "module": "ftp",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#ftp",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/ftp.md",
+        "sha256": "5ccd85fffafb6057eb56d6893617bd67cc20498be6389129b437efa1ff50741c",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-ftp.md",
+      "projection_file": "sources/review16-ftp.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 10,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-tftp",
+      "module": "tftp",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#tftp",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/tftp.md",
+        "sha256": "750748a4df9aa92ba1c2c8d91120dc7b2008a6d27b49cc542686490e2590de74",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-tftp.md",
+      "projection_file": "sources/review16-tftp.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 2,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-nat",
+      "module": "nat",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#nat",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/nat.md",
+        "sha256": "1fbd73ea2d344a25da7c8ef91c0b12653e0d9fe463aa997a23d8afeadd7cfec5",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-lan",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-nat.md",
+      "projection_file": "sources/review16-nat.json",
+      "counts": {
+        "endpoints": 10,
+        "objects": 3,
+        "properties": 23,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-igd",
+      "module": "igd",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#upnp-igd",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/igd.md",
+        "sha256": "afb23d046e93d2724f7cf8f8927eaa4066c2a565abb2bdf80cf63630f1b954a7",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-igd.md",
+      "projection_file": "sources/review16-igd.json",
+      "counts": {
+        "endpoints": 4,
+        "objects": 2,
+        "properties": 12,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-lcd",
+      "module": "lcd",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#lcd-315",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/lcd.md",
+        "sha256": "20036e6ed1869130882b6fda3d23d42f6923dcf2fc65cd50bd15519075d69db7",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-lcd.md",
+      "projection_file": "sources/review16-lcd.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 10,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-ledstrip",
+      "module": "ledstrip",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#ledstrip",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/ledstrip.md",
+        "sha256": "7a3f06b0e0ffdea4d73ed90ea9a2abe73e41e1aeba97a4d69009bb0ac2bebd66",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-ledstrip.md",
+      "projection_file": "sources/review16-ledstrip.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 2,
+        "properties": 6,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-network_share",
+      "module": "network_share",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#network-share",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/network_share.md",
+        "sha256": "42d6fcd02216e908ac62c46ab15c3ba19327a5024fdb59c07d50b539aae2bdc3",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-network_share.md",
+      "projection_file": "sources/review16-network_share.json",
+      "counts": {
+        "endpoints": 4,
+        "objects": 2,
+        "properties": 12,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-upnpav",
+      "module": "upnpav",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#upnp-av",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/upnpav.md",
+        "sha256": "c31565177793386561d70633d5eeddb575cb84e87c4f6cbb2a2529b70b58bcae",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-upnpav.md",
+      "projection_file": "sources/review16-upnpav.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 1,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-switch",
+      "module": "switch",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#switch",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/switch.md",
+        "sha256": "3f22abf12d34c4b82283a5fc984d19a85a2e7eb273200421cec5355f27fb085c",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-switch.md",
+      "projection_file": "sources/review16-switch.json",
+      "counts": {
+        "endpoints": 4,
+        "objects": 3,
+        "properties": 39,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-wifi",
+      "module": "wifi",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#wi-fi",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/wifi.md",
+        "sha256": "3a23fb2bf4b012808e7f2dba01a646612f4233067b21961010c163acb7cd9e0f",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-wifi.md",
+      "projection_file": "sources/review16-wifi.json",
+      "counts": {
+        "endpoints": 50,
+        "objects": 32,
+        "properties": 154,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-system",
+      "module": "system",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#system-438",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/system.md",
+        "sha256": "0c209bab4be702dd2a869e050e3c51e5131ed9beb165f078742cc125df6631c2",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-system.md",
+      "projection_file": "sources/review16-system.json",
+      "counts": {
+        "endpoints": 3,
+        "objects": 5,
+        "properties": 44,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-vpn",
+      "module": "vpn",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#vpn-server-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/vpn.md",
+        "sha256": "297afdcf035a207b416661c9557ec73f83b69428e52788b34b01d0384bf112ad",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-vpn.md",
+      "projection_file": "sources/review16-vpn.json",
+      "counts": {
+        "endpoints": 12,
+        "objects": 10,
+        "properties": 50,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-vpn_client",
+      "module": "vpn_client",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#vpn-client-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/services/vpn_client.md",
+        "sha256": "d75853f40d9eb876a4b9b68fc4a1457f4bca48908617b9ff417634d45565879a",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-vpn",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-vpn_client.md",
+      "projection_file": "sources/review16-vpn_client.json",
+      "counts": {
+        "endpoints": 7,
+        "objects": 7,
+        "properties": 43,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-slowness",
+      "module": "slowness",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#slowness",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/slowness.md",
+        "sha256": "b4b1cd1ced73c5e7a4f0a76ab5f4f00f20804aefd1fa0d9ec859684d51ccea23",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-slowness.md",
+      "projection_file": "sources/review16-slowness.json",
+      "counts": {
+        "endpoints": 0,
+        "objects": 0,
+        "properties": 0,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-download",
+      "module": "download",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#download",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fichiers-telechargements/download.md",
+        "sha256": "e332d610df755d08ab847acf116ca4bdca355b5ecec5255c18e4b32839100943",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-download.md",
+      "projection_file": "sources/review16-download.json",
+      "counts": {
+        "endpoints": 21,
+        "objects": 8,
+        "properties": 89,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-download_feeds",
+      "module": "download_feeds",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#download-feeds",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fichiers-telechargements/download_feeds.md",
+        "sha256": "60a9935d9b6ed339c4456f328437b26f244f97d1099ceafa5b3fa7bb76fc6e73",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-download",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-download_feeds.md",
+      "projection_file": "sources/review16-download_feeds.json",
+      "counts": {
+        "endpoints": 11,
+        "objects": 2,
+        "properties": 25,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-download_config",
+      "module": "download_config",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#download-configuration",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fichiers-telechargements/download_config.md",
+        "sha256": "fb13a41cd1d33ee46ecdad175cc8f9b2f3090abb67456f9784b62ba9476fcd51",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-download_config.md",
+      "projection_file": "sources/review16-download_config.json",
+      "counts": {
+        "endpoints": 3,
+        "objects": 7,
+        "properties": 38,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-fs",
+      "module": "fs",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#file-system-558",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fichiers-telechargements/fs.md",
+        "sha256": "14834fc777173feeffb24ea8d6be8516a017e2ed8bebc9aac0f5340d818ea498",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-fs.md",
+      "projection_file": "sources/review16-fs.json",
+      "counts": {
+        "endpoints": 19,
+        "objects": 2,
+        "properties": 34,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-share",
+      "module": "share",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#file-sharing-link",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fichiers-telechargements/share.md",
+        "sha256": "39537ec8f125d3731ec96bf2e0b1e41b2a65d56e71ae57eb0ac17b8c044591a5",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-share.md",
+      "projection_file": "sources/review16-share.json",
+      "counts": {
+        "endpoints": 4,
+        "objects": 1,
+        "properties": 5,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-upload",
+      "module": "upload",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#file-upload",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/fichiers-telechargements/upload.md",
+        "sha256": "e733134ee2d625478cc403518b5cd0b2d90d3070e646ed8bc9bb022c773764d0",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-upload.md",
+      "projection_file": "sources/review16-upload.json",
+      "counts": {
+        "endpoints": 5,
+        "objects": 5,
+        "properties": 21,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-home",
+      "module": "home",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#home-api",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/maison-profils/home.md",
+        "sha256": "3b622885fdca3c9babedee41ed34583feecfc1cc11e8a7b492a97f014c144e93",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-home.md",
+      "projection_file": "sources/review16-home.json",
+      "counts": {
+        "endpoints": 15,
+        "objects": 11,
+        "properties": 62,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-camera",
+      "module": "camera",
+      "group": "protocol",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#cameras",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/maison-profils/camera.md",
+        "sha256": "e491612989acf8c37292e7c082e809f003b90729fa30f99629ff6704792d4a5e",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/protocol.json",
+      "review_sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7",
+      "context_file": "tasks/review16-camera.md",
+      "projection_file": "sources/review16-camera.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 5,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-lang",
+      "module": "lang",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#language-support",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/lang.md",
+        "sha256": "64112db205490e52fe885d5ef3be5fdfabe56b0de0758865bf055fadca155a43",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-lang.md",
+      "projection_file": "sources/review16-lang.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 2,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-notif",
+      "module": "notif",
+      "group": "protocol",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#notif",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/maison-profils/notif.md",
+        "sha256": "311e038265ad99c236cfcf3c5b4225beb447de04e8b5beaf642aeaf290eefb0e",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/protocol.json",
+      "review_sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7",
+      "context_file": "tasks/review16-notif.md",
+      "projection_file": "sources/review16-notif.json",
+      "counts": {
+        "endpoints": 8,
+        "objects": 6,
+        "properties": 26,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-profile",
+      "module": "profile",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#profile-management",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/maison-profils/profile.md",
+        "sha256": "b33abf47a356e7f13865b79abf599e41142f2ef14e95d5177c1e4f831214127c",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-profile.md",
+      "projection_file": "sources/review16-profile.json",
+      "counts": {
+        "endpoints": 15,
+        "objects": 3,
+        "properties": 22,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-player",
+      "module": "player",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#player-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/multimedia/player.md",
+        "sha256": "435399fcd3aa294914837155d92db858379317bff85631dccf16dd7d548508c8",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-player.md",
+      "projection_file": "sources/review16-player.json",
+      "counts": {
+        "endpoints": 6,
+        "objects": 5,
+        "properties": 32,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-pvr",
+      "module": "pvr",
+      "group": "services-media",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#pvr-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/multimedia/pvr.md",
+        "sha256": "547d7ea75a8667e6d1447df893a809b9d877a24d1f6da067f245911d95b013d2",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/services-media.json",
+      "review_sha256": "fa1d9b6dfc40eb631c60c2e3e9b0f46e4fa58334f485f4714ec8d6d461538b70",
+      "context_file": "tasks/review16-pvr.md",
+      "projection_file": "sources/review16-pvr.json",
+      "counts": {
+        "endpoints": 14,
+        "objects": 5,
+        "properties": 51,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-rrd",
+      "module": "rrd",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#rrd-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/stockage-vm/rrd.md",
+        "sha256": "2d37ee5e06440c149484732fbae226fa413c685a828e7a24e3f09b17d50917b2",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-rrd.md",
+      "projection_file": "sources/review16-rrd.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 1,
+        "properties": 5,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-standby",
+      "module": "standby",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#standby-743",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/standby.md",
+        "sha256": "d9a8de6e1f994f0ab5274951e89e90c267c7e3d9ddfd45aa76c19a4a44ee6589",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-standby.md",
+      "projection_file": "sources/review16-standby.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 2,
+        "properties": 8,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-storage",
+      "module": "storage",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#storage-api-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/stockage-vm/storage.md",
+        "sha256": "e1153146b8010f0a06748e3e313b9f9817d0a0667f08edac4b2ab1d811a5e0bc",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-storage.md",
+      "projection_file": "sources/review16-storage.json",
+      "counts": {
+        "endpoints": 11,
+        "objects": 4,
+        "properties": 37,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-raid",
+      "module": "raid",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#raid-api-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/stockage-vm/raid.md",
+        "sha256": "de189eaa162691e78480b2e5eac1bd0319c01cd619da789e8cd421a924fa82b8",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-raid.md",
+      "projection_file": "sources/review16-raid.json",
+      "counts": {
+        "endpoints": 9,
+        "objects": 3,
+        "properties": 36,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-sfp",
+      "module": "sfp",
+      "group": "network",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#sfp-788",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/reseau/sfp.md",
+        "sha256": "844e6160f2c2534b86ef2a370fb39f0ee3612a2bc5d071fd1c7e3b788ebd666f",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/network.json",
+      "review_sha256": "8ae443445fb0f6f0bcaf8b421fce485b16462c810dda6172ce05abfaba674c9c",
+      "context_file": "tasks/review16-sfp.md",
+      "projection_file": "sources/review16-sfp.json",
+      "counts": {
+        "endpoints": 2,
+        "objects": 2,
+        "properties": 13,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-update",
+      "module": "update",
+      "group": "system-home",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#update-status",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/systeme/update.md",
+        "sha256": "e8fa12b85dd6d9f7578313b0e1be2eb012fc7b418dbaf038515d710c74ae1502",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/system-home.json",
+      "review_sha256": "7dfaf043f4ea22a3305dbb60f87f19661dec9ba6a92530c174290d6e27925f80",
+      "context_file": "tasks/review16-update.md",
+      "projection_file": "sources/review16-update.json",
+      "counts": {
+        "endpoints": 1,
+        "objects": 2,
+        "properties": 7,
+        "events": 0
+      }
+    },
+    {
+      "task_id": "review16-vm",
+      "module": "vm",
+      "group": "files-storage",
+      "phase": "review",
+      "status": "ready_for_review",
+      "implementation_ready": false,
+      "source": {
+        "url": "http://mafreebox.freebox.fr/doc/index.html#vm-api-unstable",
+        "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+        "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+        "api_version": "16.0",
+        "source_authenticity": "user_supplied_snapshot"
+      },
+      "reference": {
+        "file": "docs/freebox-official/api-16.0/docs/reference/stockage-vm/vm.md",
+        "sha256": "ea8f68e8726015fbb5e6103ee016343fc8fea788fce71bf252439d3868491ac8",
+        "kind": "supplied_filtered_projection_requires_raw_review"
+      },
+      "reading_dependencies": [
+        "review16-00_index",
+        "review16-login",
+        "review16-websocket"
+      ],
+      "review_file": "docs/freebox-official/reviews/files-storage.json",
+      "review_sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf",
+      "context_file": "tasks/review16-vm.md",
+      "projection_file": "sources/review16-vm.json",
+      "counts": {
+        "endpoints": 18,
+        "objects": 6,
+        "properties": 34,
+        "events": 0
+      }
+    }
+  ],
+  "status": "ready_for_review",
+  "implementation_ready": false,
+  "corpus_bytes_verified": true,
+  "import_report_sha256": "6bb0ab2bfa59ee5a17af5af9a6152627b91b4cb8332a80a2b4ba39e26500e6ef",
+  "source": {
+    "url": "http://mafreebox.freebox.fr/doc/index.html",
+    "raw_file": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+    "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+  },
+  "provenance": {
+    "acquisition": "user_supplied_archive",
+    "origin_independently_verified": false,
+    "version_scope": "target_snapshot",
+    "transport": "Recorded local HTTP documentation and historical public HTTPS source metadata"
+  },
+  "catalogue_counts": {
+    "modules": 45,
+    "endpoints": 342,
+    "operations": 338,
+    "objects": 195,
+    "properties": 1254,
+    "events": 4
+  }
+}

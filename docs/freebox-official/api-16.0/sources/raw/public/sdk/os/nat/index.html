@@ -1,0 +1,751 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NAT &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="UPnP IGD" href="../igd/" />
+    <link rel="prev" title="Ftp" href="../ftp/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nat">
+<h1>NAT<a class="headerlink" href="#nat" title="Permalink to this headline">¶</a></h1>
+<p>With the nat API you control port forwarding on your network</p>
+<div class="section" id="nat-errors">
+<h2>NAT Errors<a class="headerlink" href="#nat-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the LAN API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>noent</td>
+<td>Invalid id</td>
+</tr>
+<tr class="row-odd"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>exist</td>
+<td>Conflict with an existing redirection</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dmz-config">
+<h2>Dmz Config<a class="headerlink" href="#dmz-config" title="Permalink to this headline">¶</a></h2>
+<p>Dmz config has the following attributes:</p>
+<dl class="object">
+<dt id="DmzConfig">
+<code class="descname">DmzConfig</code><a class="headerlink" href="#DmzConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="DmzConfig.ip">
+<code class="descname">ip</code><span> </span>string<a class="headerlink" href="#DmzConfig.ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>dmz host IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="DmzConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#DmzConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is dmz enabled</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="dmz-config-api">
+<h2>Dmz Config API<a class="headerlink" href="#dmz-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-dmz-configuration">
+<h3>Get the current Dmz configuration<a class="headerlink" href="#get-the-current-dmz-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fw-dmz-">
+<code class="descname">GET </code><code class="descname">/api/v4/fw/dmz/</code><a class="headerlink" href="#get--api-v4-fw-dmz-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#DmzConfig" title="DmzConfig"><code class="xref json json-object docutils literal"><span class="pre">DmzConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fw/dmz/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-current-dmz-configuration">
+<h3>Update the current Dmz configuration<a class="headerlink" href="#update-the-current-dmz-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-fw-dmz-">
+<code class="descname">PUT </code><code class="descname">/api/v4/fw/dmz/</code><a class="headerlink" href="#put--api-v4-fw-dmz-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current <a class="reference internal" href="../lan/#LanConfig" title="LanConfig"><code class="xref json json-object docutils literal"><span class="pre">LanConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/lan/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nt">&quot;ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.1.42&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.42&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="port-forwarding">
+<h1>Port Forwarding<a class="headerlink" href="#port-forwarding" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="port-forwarding-config">
+<h2>Port Forwarding Config<a class="headerlink" href="#port-forwarding-config" title="Permalink to this headline">¶</a></h2>
+<p>Port forwarding config has the following attributes:</p>
+<dl class="object">
+<dt id="PortForwardingConfig">
+<code class="descname">PortForwardingConfig</code><a class="headerlink" href="#PortForwardingConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="PortForwardingConfig.id">
+<code class="descname">id</code><span> </span>int<a class="headerlink" href="#PortForwardingConfig.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#PortForwardingConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is forwarding enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.ip_proto">
+<code class="descname">ip_proto</code><span> </span>enum<a class="headerlink" href="#PortForwardingConfig.ip_proto" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ip_proto</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tcp</td>
+<td>TCP</td>
+</tr>
+<tr class="row-odd"><td>udp</td>
+<td>UDP</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.wan_port_start">
+<code class="descname">wan_port_start</code><span> </span>string<a class="headerlink" href="#PortForwardingConfig.wan_port_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding range start</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.wan_port_end">
+<code class="descname">wan_port_end</code><span> </span>int<a class="headerlink" href="#PortForwardingConfig.wan_port_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding range end</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.lan_ip">
+<code class="descname">lan_ip</code><span> </span>string<a class="headerlink" href="#PortForwardingConfig.lan_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding target on LAN</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.lan_port">
+<code class="descname">lan_port</code><span> </span>int<a class="headerlink" href="#PortForwardingConfig.lan_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding target start port on LAN, (last port is lan_port +
+wan_port_end - wan_port_start)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.hostname">
+<code class="descname">hostname</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#PortForwardingConfig.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding target host name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.host">
+<code class="descname">host</code><span> </span><a class="reference internal" href="../lan/#LanHost" title="LanHost">LanHost</a><em class="property"> Read-only</em><a class="headerlink" href="#PortForwardingConfig.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>forwarding target host information
+(see: <a class="reference internal" href="../lan/#LanHost" title="LanHost"><code class="xref json json-object docutils literal"><span class="pre">LanHost</span></code></a>)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.src_ip">
+<code class="descname">src_ip</code><span> </span>string<a class="headerlink" href="#PortForwardingConfig.src_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>if src_ip == 0.0.0.0 this rule will apply to any src ip
+otherwise it will only apply to the specified ip address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PortForwardingConfig.comment">
+<code class="descname">comment</code><span> </span>string<a class="headerlink" href="#PortForwardingConfig.comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>comment</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="port-forwarding-api">
+<h2>Port Forwarding API<a class="headerlink" href="#port-forwarding-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-list-of-port-forwarding">
+<h3>Getting the list of port forwarding<a class="headerlink" href="#getting-the-list-of-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fw-redir-">
+<code class="descname">GET </code><code class="descname">/api/v4/fw/redir/</code><a class="headerlink" href="#get--api-v4-fw-redir-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fw/redir/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;android-c5fe44a2c27be1e2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lan_port&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+            <span class="s2">&quot;wan_port_end&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+            <span class="s2">&quot;wan_port_start&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+            <span class="s2">&quot;lan_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.22&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip_proto&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;8.8.8.8&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;android-c5fe44a2c27be1e2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lan_port&quot;</span><span class="o">:</span> <span class="mi">1337</span><span class="p">,</span>
+            <span class="s2">&quot;wan_port_end&quot;</span><span class="o">:</span> <span class="mi">1340</span><span class="p">,</span>
+            <span class="s2">&quot;wan_port_start&quot;</span><span class="o">:</span> <span class="mi">1337</span><span class="p">,</span>
+            <span class="s2">&quot;lan_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.22&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ip_proto&quot;</span><span class="o">:</span> <span class="s2">&quot;udp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="getting-a-specific-port-forwarding">
+<h3>Getting a specific port forwarding<a class="headerlink" href="#getting-a-specific-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fw-redir-redir_id">
+<code class="descname">GET </code><code class="descname">/api/v4/fw/redir/{redir_id}</code><a class="headerlink" href="#get--api-v4-fw-redir-redir_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the requested <a class="reference internal" href="#PortForwardingConfig" title="PortForwardingConfig"><code class="xref json json-object docutils literal"><span class="pre">PortForwardingConfig</span></code></a>
+properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fw/redir/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;android-c5fe44a2c27be1e2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lan_port&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+        <span class="s2">&quot;wan_port_end&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+        <span class="s2">&quot;wan_port_start&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+        <span class="s2">&quot;lan_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_proto&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="updating-a-port-forwarding">
+<h3>Updating a port forwarding<a class="headerlink" href="#updating-a-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-fw-redir-redir_id">
+<code class="descname">PUT </code><code class="descname">/api/v4/fw/redir/{redir_id}</code><a class="headerlink" href="#put--api-v4-fw-redir-redir_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="#PortForwardingConfig" title="PortForwardingConfig"><code class="xref json json-object docutils literal"><span class="pre">PortForwardingConfig</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/fw/redir/1</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;android-c5fe44a2c27be1e2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lan_port&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+        <span class="s2">&quot;wan_port_end&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+        <span class="s2">&quot;wan_port_start&quot;</span><span class="o">:</span> <span class="mi">69</span><span class="p">,</span>
+        <span class="s2">&quot;lan_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.22&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_proto&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-port-forwarding">
+<h3>Add a port forwarding<a class="headerlink" href="#add-a-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fw-redir-">
+<code class="descname">POST </code><code class="descname">/api/v4/fw/redir/</code><a class="headerlink" href="#post--api-v4-fw-redir-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a <a class="reference internal" href="#PortForwardingConfig" title="PortForwardingConfig"><code class="xref json json-object docutils literal"><span class="pre">PortForwardingConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fw/redir/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lan_port&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+    <span class="s2">&quot;wan_port_end&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+    <span class="s2">&quot;wan_port_start&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+    <span class="s2">&quot;lan_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.42&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ip_proto&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;Mac-mini-de-Romain&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;lan_port&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+        <span class="s2">&quot;wan_port_end&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+        <span class="s2">&quot;wan_port_start&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+        <span class="s2">&quot;lan_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.1.42&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_proto&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-port-forwarding">
+<h3>Delete a port forwarding<a class="headerlink" href="#delete-a-port-forwarding" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-fw-redir-redir_id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/fw/redir/{redir_id}</code><a class="headerlink" href="#delete--api-v4-fw-redir-redir_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="#PortForwardingConfig" title="PortForwardingConfig"><code class="xref json json-object docutils literal"><span class="pre">PortForwardingConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/fw/redir/3</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="incoming-port-configuration">
+<h1>Incoming port configuration<a class="headerlink" href="#incoming-port-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Some services hosted on the Freebox Server need to listen to public ip address port.
+Incoming port api allow to enable/disable incoming port binding, and select the bind port to
+prevent conflit with your own nat port forwarding rules.</p>
+<p>NOTE: you can&#8217;t add or remove incoming ports, this ports are managed by Freebox services.</p>
+<p>NOTE: in case of conflict with a nat port forwarding rule, this rule will have a higher priority and
+override the port forwarding rule.</p>
+<div class="section" id="incoming-port-config">
+<h2>Incoming port Config<a class="headerlink" href="#incoming-port-config" title="Permalink to this headline">¶</a></h2>
+<p>Incoming port config has the following attributes:</p>
+<dl class="object">
+<dt id="IncomingPortConfig">
+<code class="descname">IncomingPortConfig</code><a class="headerlink" href="#IncomingPortConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="IncomingPortConfig.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>incoming port id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">id</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>http</td>
+<td>http port for remote access to Freebox OS</td>
+</tr>
+<tr class="row-odd"><td>https</td>
+<td>https port for tls remote access to Freebox OS</td>
+</tr>
+<tr class="row-even"><td>bittorrent-main</td>
+<td>main bittorrent port for Freebox downloader</td>
+</tr>
+<tr class="row-odd"><td>bittorrent-dht</td>
+<td>bittorrent port for DHT</td>
+</tr>
+<tr class="row-even"><td>openvpn_routed</td>
+<td>routed openvpn port</td>
+</tr>
+<tr class="row-odd"><td>openvpn_bridge</td>
+<td>bridged openvpn port</td>
+</tr>
+<tr class="row-even"><td>ipsec_ike</td>
+<td>ipsec ikev2 vpn port</td>
+</tr>
+<tr class="row-odd"><td>ipsec_nat</td>
+<td>ipsec nat vpn port</td>
+</tr>
+<tr class="row-even"><td>pptp</td>
+<td>pptp vpn server port</td>
+</tr>
+<tr class="row-odd"><td>ftp</td>
+<td>ftp control port for FTP remote access</td>
+</tr>
+<tr class="row-even"><td>ftp_pasv</td>
+<td>ftp data port for FTP remote access</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#IncomingPortConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the port binding allowed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.active">
+<code class="descname">active</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the port binding currently active</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ip_proto</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tcp</td>
+<td>TCP</td>
+</tr>
+<tr class="row-odd"><td>udp</td>
+<td>UDP</td>
+</tr>
+<tr class="row-even"><td>tcp_udp</td>
+<td>both TCP and UDP</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.in_port">
+<code class="descname">in_port</code><span> </span>int<a class="headerlink" href="#IncomingPortConfig.in_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>binding port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.netns">
+<code class="descname">netns</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.netns" title="Permalink to this definition">¶</a></dt>
+<dd><p>network namespace. The service may be running on a different namespace (for instance
+if the service uses the vpn client).</p>
+</dd></dl>
+
+<dl class="property">
+<dt>
+<code class="descname">in_port</code><span> </span>int</dt>
+<dd><p>binding port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.min_port">
+<code class="descname">min_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.min_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This field indicate the minimum possible value for in_port
+(see <a class="reference internal" href="../connection/#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.max_port">
+<code class="descname">max_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.max_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This field indicate the maximum possible value for in_port
+(see <a class="reference internal" href="../connection/#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="IncomingPortConfig.readonly">
+<code class="descname">readonly</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#IncomingPortConfig.readonly" title="Permalink to this definition">¶</a></dt>
+<dd><p>If set to true, the in_port field cannot be changed because
+of the underlying protocol does not allow it</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="incoming-port-api">
+<span id="id1"></span><h2>Incoming port API<a class="headerlink" href="#incoming-port-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-list-of-incoming-ports">
+<h3>Getting the list of incoming ports<a class="headerlink" href="#getting-the-list-of-incoming-ports" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fw-incoming-">
+<code class="descname">GET </code><code class="descname">/api/v4/fw/incoming/</code><a class="headerlink" href="#get--api-v4-fw-incoming-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fw/incoming/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in_port&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;http&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;netns&quot;</span><span class="o">:</span> <span class="s2">&quot;init&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max_port&quot;</span><span class="o">:</span> <span class="mi">65535</span><span class="p">,</span>
+            <span class="s2">&quot;min_port&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in_port&quot;</span><span class="o">:</span> <span class="mi">17591</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;bittorrent-main&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;netns&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max_port&quot;</span><span class="o">:</span> <span class="mi">65535</span><span class="p">,</span>
+            <span class="s2">&quot;min_port&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;udp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;in_port&quot;</span><span class="o">:</span> <span class="mi">28946</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;bittorrent-dht&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;netns&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max_port&quot;</span><span class="o">:</span> <span class="mi">65535</span><span class="p">,</span>
+            <span class="s2">&quot;min_port&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="getting-a-specific-incoming-port">
+<h3>Getting a specific incoming port<a class="headerlink" href="#getting-a-specific-incoming-port" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fw-incoming-port_id">
+<code class="descname">GET </code><code class="descname">/api/v4/fw/incoming/{port_id}</code><a class="headerlink" href="#get--api-v4-fw-incoming-port_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the requested <a class="reference internal" href="#IncomingPortConfig" title="IncomingPortConfig"><code class="xref json json-object docutils literal"><span class="pre">IncomingPortConfig</span></code></a>
+properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fw/incoming/bittorrent-main</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;in_port&quot;</span><span class="o">:</span> <span class="mi">17591</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;bittorrent-main&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;netns&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_port&quot;</span><span class="o">:</span> <span class="mi">65535</span><span class="p">,</span>
+        <span class="s2">&quot;min_port&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="updating-an-incoming-port">
+<h3>Updating an incoming port<a class="headerlink" href="#updating-an-incoming-port" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-fw-incoming-port_id">
+<code class="descname">PUT </code><code class="descname">/api/v4/fw/incoming/{port_id}</code><a class="headerlink" href="#put--api-v4-fw-incoming-port_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="#IncomingPortConfig" title="IncomingPortConfig"><code class="xref json json-object docutils literal"><span class="pre">IncomingPortConfig</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/lan/fw/incoming/bittorrent-main</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;in_port&quot;</span><span class="p">:</span> <span class="mi">3615</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;in_port&quot;</span><span class="o">:</span> <span class="mi">3615</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;bittorrent-main&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;netns&quot;</span><span class="o">:</span> <span class="s2">&quot;vpn&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_port&quot;</span><span class="o">:</span> <span class="mi">65535</span><span class="p">,</span>
+        <span class="s2">&quot;min_port&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

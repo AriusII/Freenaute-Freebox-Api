@@ -1,0 +1,17 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===================================
+Api changes from version 2.0 to 3.0
+===================================
+
+Connection api Changes
+======================
+
+- Added a ginp, rtx_tx, rtx_c, rtx_uc property to :json:object:`XdslStats`
+
+
+New API
+=======
+
+- Some tv, epg and pvr api have been added. Those api are undocumented and should
+  be considered UNSTABLE (may be modifed without further notice).

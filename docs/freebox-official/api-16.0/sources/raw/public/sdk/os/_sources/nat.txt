@@ -1,0 +1,630 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===
+NAT
+===
+
+With the nat API you control port forwarding on your network
+
+NAT Errors
+==========
+
+When attempting to access the LAN API, you may encounter the following
+errors:
+
+=============== ======================
+error_code      Description
+=============== ======================
+noent           Invalid id
+internal_error  Internal error
+exist           Conflict with an existing redirection
+=============== ======================
+
+Dmz Config
+==========
+
+Dmz config has the following attributes:
+
+.. json:object:: DmzConfig
+
+   .. json:property:: ip string
+
+       dmz host IP
+
+   .. json:property:: enabled bool
+
+       is dmz enabled
+
+Dmz Config API
+==============
+
+Get the current Dmz configuration
+---------------------------------
+
+.. http:get:: /api/v4/fw/dmz/
+
+   Returns the current :json:object:`DmzConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fw/dmz/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "ip": ""
+          }
+      }
+
+Update the current Dmz configuration
+------------------------------------
+
+.. http:put:: /api/v4/fw/dmz/
+
+   Update the current :json:object:`LanConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/lan/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "enabled": true,
+         "ip": "192.168.1.42"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "ip": "192.168.1.42"
+          }
+      }
+
+
+===============
+Port Forwarding
+===============
+
+Port Forwarding Config
+======================
+
+Port forwarding config has the following attributes:
+
+.. json:object:: PortForwardingConfig
+
+   .. json:property:: id int
+
+      forwarding id
+
+   .. json:property:: enabled bool
+
+      is forwarding enabled
+
+   .. json:property:: ip_proto enum
+
+      =========== ======================
+      ip_proto    Description
+      =========== ======================
+      tcp         TCP
+      udp         UDP
+      =========== ======================
+
+   .. json:property:: wan_port_start string
+
+      forwarding range start
+
+   .. json:property:: wan_port_end int
+
+      forwarding range end
+
+   .. json:property:: lan_ip string
+
+      forwarding target on LAN
+
+   .. json:property:: lan_port int
+
+      forwarding target start port on LAN, (last port is lan_port +
+      wan_port_end - wan_port_start)
+
+   .. json:property:: hostname string [ro]
+
+      forwarding target host name
+
+   .. json:property:: host LanHost [ro]
+
+      forwarding target host information
+      (see: :json:object:`LanHost`)
+
+   .. json:property:: src_ip string
+
+      if src_ip == 0.0.0.0 this rule will apply to any src ip
+      otherwise it will only apply to the specified ip address
+
+   .. json:property:: comment string
+
+      comment
+
+Port Forwarding API
+===================
+
+Getting the list of port forwarding
+-----------------------------------
+
+.. http:get:: /api/v4/fw/redir/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fw/redir/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "enabled": true,
+                  "comment": "",
+                  "id": 1,
+                  "host": {
+                      [ ... ]
+                  },
+                  "hostname": "android-c5fe44a2c27be1e2",
+                  "lan_port": 69,
+                  "wan_port_end": 69,
+                  "wan_port_start": 69,
+                  "lan_ip": "192.168.1.22",
+                  "ip_proto": "tcp",
+                  "src_ip": "8.8.8.8"
+              },
+              {
+                  "enabled": true,
+                  "comment": "",
+                  "id": 2,
+                  "host": {
+                      [ ... ]
+                  },
+                  "hostname": "android-c5fe44a2c27be1e2",
+                  "lan_port": 1337,
+                  "wan_port_end": 1340,
+                  "wan_port_start": 1337,
+                  "lan_ip": "192.168.1.22",
+                  "ip_proto": "udp",
+                  "src_ip": "0.0.0.0"
+              }
+          ]
+      }
+
+Getting a specific port forwarding
+----------------------------------
+
+.. http:get:: /api/v4/fw/redir/{redir_id}
+
+   Returns the requested :json:object:`PortForwardingConfig`
+   properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fw/redir/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "comment": "",
+              "id": 1,
+              "host": {
+                  [ ... ]
+              },
+              "hostname": "android-c5fe44a2c27be1e2",
+              "lan_port": 69,
+              "wan_port_end": 69,
+              "wan_port_start": 69,
+              "lan_ip": "192.168.1.22",
+              "ip_proto": "tcp",
+              "src_ip": "0.0.0.0"
+          }
+
+      }
+
+Updating a port forwarding
+--------------------------
+
+.. http:put:: /api/v4/fw/redir/{redir_id}
+
+   Update a :json:object:`PortForwardingConfig` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/fw/redir/1 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "enabled": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "comment": "",
+              "id": 1,
+              "host": {
+                  [ ... ]
+              },
+              "hostname": "android-c5fe44a2c27be1e2",
+              "lan_port": 69,
+              "wan_port_end": 69,
+              "wan_port_start": 69,
+              "lan_ip": "192.168.1.22",
+              "ip_proto": "tcp",
+              "src_ip": "0.0.0.0"
+          }
+
+      }
+
+Add a port forwarding
+---------------------
+
+.. http:post:: /api/v4/fw/redir/
+
+   Create a :json:object:`PortForwardingConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/fw/redir/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+          "enabled": true,
+          "comment": "test",
+          "lan_port": 4242,
+          "wan_port_end": 4242,
+          "wan_port_start": 4242,
+          "lan_ip": "192.168.1.42",
+          "ip_proto": "tcp",
+          "src_ip": "0.0.0.0"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "comment": "test",
+              "id": 3,
+              "host": {
+                  [ ... ]
+              },
+              "hostname": "Mac-mini-de-Romain",
+              "lan_port": 4242,
+              "wan_port_end": 4242,
+              "wan_port_start": 4242,
+              "lan_ip": "192.168.1.42",
+              "ip_proto": "tcp",
+              "src_ip": "0.0.0.0"
+          }
+      }
+
+Delete a port forwarding
+------------------------
+
+.. http:delete:: /api/v4/fw/redir/{redir_id}
+
+   Delete a :json:object:`PortForwardingConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/fw/redir/3 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+===========================
+Incoming port configuration
+===========================
+
+Some services hosted on the Freebox Server need to listen to public ip address port.
+Incoming port api allow to enable/disable incoming port binding, and select the bind port to
+prevent conflit with your own nat port forwarding rules.
+
+NOTE: you can't add or remove incoming ports, this ports are managed by Freebox services.
+
+NOTE: in case of conflict with a nat port forwarding rule, this rule will have a higher priority and
+override the port forwarding rule.
+
+Incoming port Config
+====================
+
+Incoming port config has the following attributes:
+
+.. json:object:: IncomingPortConfig
+
+   .. json:property:: id string [ro]
+
+      incoming port id
+
+      ===============   ==============================================
+      id                Description
+      ===============   ==============================================
+      http              http port for remote access to Freebox OS
+      https             https port for tls remote access to Freebox OS
+      bittorrent-main   main bittorrent port for Freebox downloader
+      bittorrent-dht    bittorrent port for DHT
+      openvpn_routed    routed openvpn port
+      openvpn_bridge    bridged openvpn port
+      ipsec_ike         ipsec ikev2 vpn port
+      ipsec_nat         ipsec nat vpn port
+      pptp              pptp vpn server port
+      ftp               ftp control port for FTP remote access
+      ftp_pasv          ftp data port for FTP remote access
+      ===============   ==============================================
+
+   .. json:property:: enabled bool
+
+      is the port binding allowed
+
+   .. json:property:: active bool [ro]
+
+      is the port binding currently active
+
+   .. json:property:: type enum [ro]
+
+      =========== ======================
+      ip_proto    Description
+      =========== ======================
+      tcp         TCP
+      udp         UDP
+      tcp_udp     both TCP and UDP
+      =========== ======================
+
+   .. json:property:: in_port int
+
+      binding port
+
+   .. json:property:: netns string [ro]
+
+      network namespace. The service may be running on a different namespace (for instance
+      if the service uses the vpn client).
+
+   .. json:property:: in_port int
+
+      binding port
+
+   .. json:property:: min_port int [ro]
+
+      This field indicate the minimum possible value for in_port
+      (see :json:object:`ConnectionStatus` ipv4_port_range)
+
+   .. json:property:: max_port int [ro]
+
+      This field indicate the maximum possible value for in_port
+      (see :json:object:`ConnectionStatus` ipv4_port_range)
+
+   .. json:property:: readonly bool [ro]
+
+      If set to true, the in_port field cannot be changed because
+      of the underlying protocol does not allow it
+
+
+.. _incoming_port_api:
+
+Incoming port API
+=================
+
+Getting the list of incoming ports
+----------------------------------
+
+.. http:get:: /api/v4/fw/incoming/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fw/incoming/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "enabled": false,
+                  "type": "tcp",
+                  "in_port": 80,
+                  "id": "http",
+                  "netns": "init",
+                  "max_port": 65535,
+                  "min_port": 0
+              },
+              {
+                  "enabled": true,
+                  "type": "tcp",
+                  "in_port": 17591,
+                  "id": "bittorrent-main",
+                  "netns": "vpn",
+                  "max_port": 65535,
+                  "min_port": 0
+              },
+              {
+                  "enabled": true,
+                  "type": "udp",
+                  "in_port": 28946,
+                  "id": "bittorrent-dht",
+                  "netns": "vpn",
+                  "max_port": 65535,
+                  "min_port": 0
+              }
+          ]
+      }
+
+Getting a specific incoming port
+--------------------------------
+
+.. http:get:: /api/v4/fw/incoming/{port_id}
+
+   Returns the requested :json:object:`IncomingPortConfig`
+   properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/fw/incoming/bittorrent-main HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "type": "tcp",
+              "in_port": 17591,
+              "id": "bittorrent-main",
+              "netns": "vpn",
+              "max_port": 65535,
+              "min_port": 0
+          }
+      }
+
+Updating an incoming port
+-------------------------
+
+.. http:put:: /api/v4/fw/incoming/{port_id}
+
+   Update a :json:object:`IncomingPortConfig` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/lan/fw/incoming/bittorrent-main HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "in_port": 3615
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "type": "tcp",
+              "in_port": 3615,
+              "id": "bittorrent-main",
+              "netns": "vpn",
+              "max_port": 65535,
+              "min_port": 0
+          }
+      }
+
+..  LocalWords:  lan noent Dmz DmzConfig ip dmz LanConfig proto tcp
+..  LocalWords:  PortForwardingConfig TCP udp UDP LanHost fe redir de
+..  LocalWords:  Romain

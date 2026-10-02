@@ -1,0 +1,162 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+======
+System
+======
+
+System Config [UNSTABLE]
+========================
+
+SystemConfig has the following attributes:
+
+.. json:object:: SystemConfig
+
+   .. json:property:: firmware_version string [ro]
+
+      freebox firmware version
+
+   .. json:property:: mac string [ro]
+
+      freebox mac address
+
+   .. json:property:: serial string [ro]
+
+      freebox serial number
+
+   .. json:property:: uptime string [ro]
+
+      readable freebox uptime
+
+   .. json:property:: uptime_val int [ro]
+
+      freebox uptime (in seconds)
+
+   .. json:property:: board_name string [ro]
+
+      freebox hardware revision
+
+   .. json:property:: temp_cpum int [ro]
+
+      temp cpum (°C)
+
+   .. json:property:: temp_sw int [ro]
+
+      temp sw (°C)
+
+   .. json:property:: temp_cpub int [ro]
+
+      temp cpub (°C)
+
+   .. json:property:: fan_rpm int [ro]
+
+      fan rpm
+
+   .. json:property:: box_authenticated bool [ro]
+
+      is the box authenticated ("étape 6")
+
+   .. json:property:: disk_status enum [ro]
+
+      the internal disk status
+
+      ===============   ======================
+      Value             Description
+      ===============   ======================
+      not_detected      The disk as not been detected
+      disabled          The disk is disabled
+      initializing      The disk is initializing
+      error             The disk failed to mount
+      active            The disk is ready
+      ===============   ======================
+
+   .. json:property:: box_flavor enum [ro]
+
+      the box 'flavor' for a given model
+
+      ===============   ======================
+      Value             Description
+      ===============   ======================
+      full              The box has an internal storage
+      light             The box has no internal storage
+      ===============   ======================
+
+   .. json:property:: user_main_storage string
+
+      The label of the storage partition to use
+      for user data. (Matches the label of the :json:object:`DiskPartition`)
+      In case of 'light' box flavor, it must be set by to
+      a permanently attached external storage
+
+
+System API
+==========
+
+Get the current system info [UNSTABLE]
+--------------------------------------
+
+.. http:get:: /api/v4/system/
+
+   Get the :json:object:`SystemConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/system/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+            "success": true,
+            "result": {
+                  "mac": "F4:CA:E5:5C:EA:14",
+                  "box_flavor": "light",
+                  "temp_cpub": 63,
+                  "disk_status": "active",
+                  "box_authenticated": true,
+                  "board_name": "fbxgw1r",
+                  "fan_rpm": 1832,
+                  "temp_sw": 52,
+                  "uptime": "6 jours 22 heures 9 minutes 46 secondes",
+                  "uptime_val": 598186,
+                  "user_main_storage": "Disque 1",
+                  "temp_cpum": 62,
+                  "serial": "805400T144100853",
+                  "firmware_version": "6.6.6"
+            }
+      }
+
+Reboot the system
+-----------------
+
+.. http:post:: /api/v4/system/reboot/
+
+   Reboot the Freebox
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/system/reboot/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }

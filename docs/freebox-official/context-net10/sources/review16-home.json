@@ -1,0 +1,987 @@
+{
+  "module": {
+    "module": "home",
+    "title": "Home API",
+    "category": "maison-profils",
+    "path": "docs/reference/maison-profils/home.md",
+    "http_signatures": 15,
+    "objects": 11,
+    "properties": 62,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#home-api",
+    "source_pre_blocks": 51,
+    "markdown_code_blocks": 51,
+    "source_tables": 24
+  },
+  "endpoints": [
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/adapters",
+      "path_template": "/api/v{major}/home/adapters",
+      "documented_major": 8,
+      "title": "Get Home Adapters List",
+      "id": "get--api-v8-home-adapters",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-adapters",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-adapters",
+      "referenced_objects": [
+        "HomeAdapter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-adapters"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/adapters/{id}",
+      "path_template": "/api/v{major}/home/adapters/{id}",
+      "documented_major": 8,
+      "title": "Get a Home Adapter",
+      "id": "get--api-v8-home-adapters-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-adapters-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-adapters-id",
+      "referenced_objects": [
+        "HomeAdapter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-adapters-id"
+    },
+    {
+      "module": "home",
+      "method": "PUT",
+      "documented_path": "/api/v8/home/adapters/{id}",
+      "path_template": "/api/v{major}/home/adapters/{id}",
+      "documented_major": 8,
+      "title": "Change a Home Adapter status",
+      "id": "put--api-v8-home-adapters-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-home-adapters-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#put--api-v8-home-adapters-id",
+      "referenced_objects": [
+        "HomeAdapter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-home-adapters-id"
+    },
+    {
+      "module": "home",
+      "method": "POST",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "path_template": "/api/v{major}/home/pairing/{adapter_id}",
+      "documented_major": 8,
+      "title": "Start Pairing",
+      "id": "post--api-v8-home-pairing-adapter_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-home-pairing-adapter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#post--api-v8-home-pairing-adapter_id",
+      "referenced_objects": [
+        "HomeAdapter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-home-pairing-adapter_id"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "path_template": "/api/v{major}/home/pairing/{adapter_id}",
+      "documented_major": 8,
+      "title": "Current Pairing Step",
+      "id": "get--api-v8-home-pairing-adapter_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-pairing-adapter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-pairing-adapter_id",
+      "referenced_objects": [
+        "HomeAdapter",
+        "HomePairingStep"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-pairing-adapter_id"
+    },
+    {
+      "module": "home",
+      "method": "POST",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "path_template": "/api/v{major}/home/pairing/{adapter_id}",
+      "documented_major": 8,
+      "title": "Next Step",
+      "id": "post--api-v8-home-pairing-adapter_id--variante-2",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-home-pairing-adapter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#post--api-v8-home-pairing-adapter_id--variante-2",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-home-pairing-adapter_id"
+    },
+    {
+      "module": "home",
+      "method": "POST",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "path_template": "/api/v{major}/home/pairing/{adapter_id}",
+      "documented_major": 8,
+      "title": "Stop Pairing",
+      "id": "post--api-v8-home-pairing-adapter_id--variante-3",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-home-pairing-adapter_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#post--api-v8-home-pairing-adapter_id--variante-3",
+      "referenced_objects": [
+        "HomeAdapter"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-home-pairing-adapter_id"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/nodes",
+      "path_template": "/api/v{major}/home/nodes",
+      "documented_major": 8,
+      "title": "Get Home Nodes",
+      "id": "get--api-v8-home-nodes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-nodes",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-nodes",
+      "referenced_objects": [
+        "HomeNode"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-nodes"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/nodes/{id}",
+      "path_template": "/api/v{major}/home/nodes/{id}",
+      "documented_major": 8,
+      "title": "Get a Home Node",
+      "id": "get--api-v8-home-nodes-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-nodes-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-nodes-id",
+      "referenced_objects": [
+        "HomeNode"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-nodes-id"
+    },
+    {
+      "module": "home",
+      "method": "PUT",
+      "documented_path": "/api/v8/home/nodes/{id}",
+      "path_template": "/api/v{major}/home/nodes/{id}",
+      "documented_major": 8,
+      "title": "Rename a Home Node",
+      "id": "put--api-v8-home-nodes-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-home-nodes-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#put--api-v8-home-nodes-id",
+      "referenced_objects": [
+        "HomeNode"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-home-nodes-id"
+    },
+    {
+      "module": "home",
+      "method": "DELETE",
+      "documented_path": "/api/v8/home/nodes/{id}",
+      "path_template": "/api/v{major}/home/nodes/{id}",
+      "documented_major": 8,
+      "title": "Delete a Home Node",
+      "id": "delete--api-v8-home-nodes-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-home-nodes-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#delete--api-v8-home-nodes-id",
+      "referenced_objects": [
+        "HomeNode"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-home-nodes-id"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/endpoints/{node_id}/{endpoint_id}",
+      "path_template": "/api/v{major}/home/endpoints/{node_id}/{endpoint_id}",
+      "documented_major": 8,
+      "title": "Fetch Endpoint Value",
+      "id": "get--api-v8-home-endpoints-node_id-endpoint_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-endpoints-node_id-endpoint_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-endpoints-node_id-endpoint_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-endpoints-node_id-endpoint_id"
+    },
+    {
+      "module": "home",
+      "method": "PUT",
+      "documented_path": "/api/v8/home/endpoints/{node_id}/{endpoint_id}",
+      "path_template": "/api/v{major}/home/endpoints/{node_id}/{endpoint_id}",
+      "documented_major": 8,
+      "title": "Change Endpoint Value",
+      "id": "put--api-v8-home-endpoints-node_id-endpoint_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-home-endpoints-node_id-endpoint_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#put--api-v8-home-endpoints-node_id-endpoint_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-home-endpoints-node_id-endpoint_id"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/tileset/all",
+      "path_template": "/api/v{major}/home/tileset/all",
+      "documented_major": 8,
+      "title": "List all Tiles",
+      "id": "get--api-v8-home-tileset-all",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-tileset-all",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-tileset-all",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-tileset-all"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/tileset/{node_id}",
+      "path_template": "/api/v{major}/home/tileset/{node_id}",
+      "documented_major": 8,
+      "title": "List a Node sub-tileset",
+      "id": "get--api-v8-home-tileset-node_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-tileset-node_id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/maison-profils/home.md#get--api-v8-home-tileset-node_id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-home-tileset-node_id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "home",
+      "name": "HomeAdapter",
+      "id": "HomeAdapter",
+      "properties": [
+        "HomeAdapter.id",
+        "HomeAdapter.icon_url",
+        "HomeAdapter.label",
+        "HomeAdapter.status",
+        "HomeAdapter.type",
+        "HomeAdapter.props"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter"
+    },
+    {
+      "module": "home",
+      "name": "HomePairingStep",
+      "id": "HomePairingStep",
+      "properties": [
+        "HomePairingStep.fields",
+        "HomePairingStep.icon_url",
+        "HomePairingStep.pageid",
+        "HomePairingStep.refresh",
+        "HomePairingStep.session"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStep"
+    },
+    {
+      "module": "home",
+      "name": "HomePairingStepField",
+      "id": "HomePairingStepField",
+      "properties": [
+        "HomePairingStepField.widget",
+        "HomePairingStepField.text"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStepField",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStepField"
+    },
+    {
+      "module": "home",
+      "name": "HomeNode",
+      "id": "HomeNode",
+      "properties": [
+        "HomeNode.adapter",
+        "HomeNode.category",
+        "HomeNode.id",
+        "HomeNode.label",
+        "HomeNode.name",
+        "HomeNode.show_endpoints",
+        "HomeNode.signal_links",
+        "HomeNode.slot_links",
+        "HomeNode.status",
+        "HomeNode.type"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeEndpoint",
+      "id": "HomeNodeEndpoint",
+      "properties": [
+        "HomeNodeEndpoint.category",
+        "HomeNodeEndpoint.ep_type",
+        "HomeNodeEndpoint.id",
+        "HomeNodeEndpoint.visibility",
+        "HomeNodeEndpoint.access"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeType",
+      "id": "HomeNodeType",
+      "properties": [
+        "HomeNodeType.icon",
+        "HomeNodeType.label",
+        "propriete-sans-ancre-home-31",
+        "HomeNodeType.physical"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeType"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeEndpointUi",
+      "id": "HomeNodeEndpointUi",
+      "properties": [
+        "HomeNodeEndpointUi.display",
+        "HomeNodeEndpointUi.icon_url",
+        "HomeNodeEndpointUi.unit",
+        "HomeNodeEndpointUi.icon_color",
+        "HomeNodeEndpointUi.text_color",
+        "HomeNodeEndpointUi.value_color",
+        "HomeNodeEndpointUi.range",
+        "HomeNodeEndpointUi.icon_color_range",
+        "HomeNodeEndpointUi.text_color_range",
+        "HomeNodeEndpointUi.value_color_range",
+        "HomeNodeEndpointUi.status_text_range"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeEndpointValue",
+      "id": "HomeNodeEndpointValue",
+      "properties": [
+        "HomeNodeEndpointValue.value",
+        "HomeNodeEndpointValue.unit",
+        "HomeNodeEndpointValue.refresh",
+        "HomeNodeEndpointValue.value_type"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointValue"
+    },
+    {
+      "module": "home",
+      "name": "HomeTile",
+      "id": "HomeTile",
+      "properties": [
+        "HomeTile.node_id",
+        "HomeTile.label",
+        "HomeTile.action",
+        "HomeTile.type",
+        "HomeTile.group",
+        "HomeTile.data"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeGroup",
+      "id": "HomeNodeGroup",
+      "properties": [
+        "HomeNodeGroup.label",
+        "HomeNodeGroup.icon_url"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeGroup",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeGroup"
+    },
+    {
+      "module": "home",
+      "name": "HomeTileData",
+      "id": "HomeTileData",
+      "properties": [
+        "HomeTileData.refresh",
+        "HomeTileData.label",
+        "HomeTileData.ep_id",
+        "HomeTileData.value_type",
+        "HomeTileData.value",
+        "propriete-sans-ancre-home-61",
+        "HomeTileData.ui"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData"
+    }
+  ],
+  "properties": [
+    {
+      "module": "home",
+      "id": "HomeAdapter.id",
+      "signature": "id int Read-only",
+      "description": "this object id",
+      "source_id": "HomeAdapter.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter.id",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter.id"
+    },
+    {
+      "module": "home",
+      "id": "HomeAdapter.icon_url",
+      "signature": "icon_url String Read-only",
+      "description": "Url of the adapter icon",
+      "source_id": "HomeAdapter.icon_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter.icon_url",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter.icon_url"
+    },
+    {
+      "module": "home",
+      "id": "HomeAdapter.label",
+      "signature": "label String Read-only",
+      "description": "The displayable name of this adapter",
+      "source_id": "HomeAdapter.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter.label",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter.label"
+    },
+    {
+      "module": "home",
+      "id": "HomeAdapter.status",
+      "signature": "status enum",
+      "description": "Adapter status status Description unplugged The adapter is not available disabled The adapter has been disabled active the adapter is active",
+      "source_id": "HomeAdapter.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter.status",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter.status"
+    },
+    {
+      "module": "home",
+      "id": "HomeAdapter.type",
+      "signature": "type AdapterType Read-only",
+      "description": "The technical type of this adapter.",
+      "source_id": "HomeAdapter.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter.type",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter.type"
+    },
+    {
+      "module": "home",
+      "id": "HomeAdapter.props",
+      "signature": "props Map",
+      "description": "Technical data related to this adapter, useful fo developers",
+      "source_id": "HomeAdapter.props",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter.props",
+      "markdown": "docs/reference/maison-profils/home.md#HomeAdapter.props"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStep.fields",
+      "signature": "fields [] array of HomePairingStepField Read-only",
+      "description": "A collection of ui elements to display.",
+      "source_id": "HomePairingStep.fields",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep.fields",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStep.fields"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStep.icon_url",
+      "signature": "icon_url String Read-only",
+      "description": "The url of an image which represents this step.",
+      "source_id": "HomePairingStep.icon_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep.icon_url",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStep.icon_url"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStep.pageid",
+      "signature": "pageid int Read-only",
+      "description": "The identifier of this step.",
+      "source_id": "HomePairingStep.pageid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep.pageid",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStep.pageid"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStep.refresh",
+      "signature": "refresh int",
+      "description": "The delay in millisecond after which to request a new step update.",
+      "source_id": "HomePairingStep.refresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep.refresh",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStep.refresh"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStep.session",
+      "signature": "session int Read-only",
+      "description": "The id of this session process.",
+      "source_id": "HomePairingStep.session",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep.session",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStep.session"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStepField.widget",
+      "signature": "widget enum Read-only",
+      "description": "The type of ui element to display. widget Description label A simple text field select A selectable list item button A clickable button display_qrcode A qrcode input An input text field checkbox A checkable button progress A progress bar bar_button_left A button displayed at the left of the bottom nav bar bar_button_right A button displayed at the right of the bottom nav bar",
+      "source_id": "HomePairingStepField.widget",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStepField.widget",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStepField.widget"
+    },
+    {
+      "module": "home",
+      "id": "HomePairingStepField.text",
+      "signature": "text string Read-only",
+      "description": "The data to use with the displayed widget. widget text usage label The label text select The item caption button The button caption display_qrcode The data to encode in the qrcode input The default text checkbox The button caption progress The progress value, in percent, as int bar_button_left The button caption bar_button_right The button caption",
+      "source_id": "HomePairingStepField.text",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStepField.text",
+      "markdown": "docs/reference/maison-profils/home.md#HomePairingStepField.text"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.adapter",
+      "signature": "adapter int Read-only",
+      "description": "Id of the HomeAdapter this node is connected to.",
+      "source_id": "HomeNode.adapter",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.adapter",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.adapter"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.category",
+      "signature": "category String Read-only",
+      "description": "???",
+      "source_id": "HomeNode.category",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.category",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.category"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.id",
+      "signature": "id int Read-only",
+      "description": "Id of this node.",
+      "source_id": "HomeNode.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.id",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.id"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.label",
+      "signature": "label String Read-only",
+      "description": "Displayable name of this node",
+      "source_id": "HomeNode.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.label",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.label"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.name",
+      "signature": "name String Read-only",
+      "description": "Technical name of this node",
+      "source_id": "HomeNode.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.name",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.name"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.show_endpoints",
+      "signature": "show_endpoints [] array of HomeNodeEndpoint Read-only",
+      "description": "Endpoints exposed by this node",
+      "source_id": "HomeNode.show_endpoints",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.show_endpoints",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.show_endpoints"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.signal_links",
+      "signature": "signal_links [] array of HomeNodeLink Read-only",
+      "description": "Links from other objects to this node signals",
+      "source_id": "HomeNode.signal_links",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.signal_links",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.signal_links"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.slot_links",
+      "signature": "slot_links [] array of HomeNodeLink Read-only",
+      "description": "Links from other objects to this node slots",
+      "source_id": "HomeNode.slot_links",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.slot_links",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.slot_links"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.status",
+      "signature": "status enum Read-only",
+      "description": "Status of this node status Description unreachable The adapter is not reachable disabled The node has been disabled active The node is connected unpaired The node has not been paired to any network",
+      "source_id": "HomeNode.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.status",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.status"
+    },
+    {
+      "module": "home",
+      "id": "HomeNode.type",
+      "signature": "type HomeNodeType Read-only",
+      "description": "Node type info",
+      "source_id": "HomeNode.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.type",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNode.type"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpoint.category",
+      "signature": "category String Read-only",
+      "description": "???",
+      "source_id": "HomeNodeEndpoint.category",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint.category",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint.category"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpoint.ep_type",
+      "signature": "ep_type enum Read-only",
+      "description": "The endpoint type ep_type Description signal The endpoint outputs an information slot A endpoint that controls the object",
+      "source_id": "HomeNodeEndpoint.ep_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint.ep_type",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint.ep_type"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpoint.id",
+      "signature": "id int Read-only",
+      "description": "The endpoint id",
+      "source_id": "HomeNodeEndpoint.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint.id",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint.id"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpoint.visibility",
+      "signature": "visibility enum Read-only",
+      "description": "Visibility level of this endpoint visibility Description internal For internal use only, never exposed normal The endpoint is available for scenarii but does not display info to the user dashboard The endpoint expose data that can be displayed on UI",
+      "source_id": "HomeNodeEndpoint.visibility",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint.visibility",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint.visibility"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpoint.access",
+      "signature": "access enum Read-only",
+      "description": "Access mode of this endpoint access Description r Read only w Write only rw Read and write",
+      "source_id": "HomeNodeEndpoint.access",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint.access",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpoint.access"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeType.icon",
+      "signature": "icon String Read-only",
+      "description": "The node icon name or url",
+      "source_id": "HomeNodeType.icon",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType.icon",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeType.icon"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeType.label",
+      "signature": "label String Read-only",
+      "description": "The node displayable type",
+      "source_id": "HomeNodeType.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType.label",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeType.label"
+    },
+    {
+      "module": "home",
+      "id": "propriete-sans-ancre-home-31",
+      "signature": "label name Read-only",
+      "description": "The node type technical name",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#home-node-object",
+      "markdown": "docs/reference/maison-profils/home.md#propriete-sans-ancre-home-31"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeType.physical",
+      "signature": "physical boolean Read-only",
+      "description": "True when the node is an actual connected object, false when it\u2019s a virtual node",
+      "source_id": "HomeNodeType.physical",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType.physical",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeType.physical"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.display",
+      "signature": "display enum Read-only",
+      "description": "Display mode of this data display Description text This displays the endpoint value as text. Read access is always allowed when \u201Ctext\u201D is used. When write access is allowed, the text may be editable on user request. When the \u201Cunit\u201D entry is present and not null, it specifies the physical unit associated to the endpoint value. icon This displays the icon fetched from \u201Cicon_url\u201D with % being replaced by the string representation of the endpoint value. For string value type, the % is replaced by the endpoint value. For int and float value types, this requires an \u201Cicon_ranges\u201D array of threshold values. The % is replaced by the index in the \u201Crange\u201D array which is just below the endpoint value. For boolean value type, the % is replaced by \u201Con\u201D or \u201Coff\u201D. When the \u201Cvalue\u201D is null, the % is replaced by the empty string. Read access is always allowed when \u201Cicon\u201D is used. Write access is not used. button This displays a push button. Write access is always allowed when \u201Cbutton\u201D is used. A null value must be send to the endpoint when pushed. slider This displays a slider with the cursor located according to the endpoint value in the range specified by \u201Crange\u201D. Read access is always allowed when \u201Cslider\u201D is used. When write access is allowed, the cursor may be moved by the user. When write access is not allowed it may be displayed as a progress bar. toggle This displays an on/off switch. Read access is always allowed when \u201Cswitch\u201D is used. When write access is allowed, switch may be toggled by the user. A boolean value must be send to the endpoint when toggled. color This displays a color value. The value type is an int representing the RGB color. Read access is always allowed when \u201Ccolor\u201D is used. warning This display the icon fetched from \u201Cicon_url\u201D when the value condition is true. For boolean value type, the value is the condition. For int and float value types, this requires a \u201Crange\u201D of size 2. If the value is within the range, the condition is true.",
+      "source_id": "HomeNodeEndpointUi.display",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.display",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.display"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.icon_url",
+      "signature": "icon_url String Read-only",
+      "description": "Url or name of the icon to display. The icon may be displayed for any value of \u201Cdisplay\u201D.",
+      "source_id": "HomeNodeEndpointUi.icon_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.icon_url",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.icon_url"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.unit",
+      "signature": "unit String Read-only",
+      "description": "The unit of the value to display.",
+      "source_id": "HomeNodeEndpointUi.unit",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.unit",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.unit"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.icon_color",
+      "signature": "icon_color String Read-only",
+      "description": "The hexadecimal presentation of the tint to apply to the icon fetched from \u201Cicon_url\u201D.",
+      "source_id": "HomeNodeEndpointUi.icon_color",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.icon_color",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.icon_color"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.text_color",
+      "signature": "text_color String Read-only",
+      "description": "The hexadecimal presentation of the color of this endpoint label.",
+      "source_id": "HomeNodeEndpointUi.text_color",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.text_color",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.text_color"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.value_color",
+      "signature": "value_color String Read-only",
+      "description": "The hexadecimal presentation of the color of this endpoint value.",
+      "source_id": "HomeNodeEndpointUi.value_color",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.value_color",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.value_color"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.range",
+      "signature": "range [] array of double Read-only",
+      "description": "Range of array of threshold values for this endpoint value.",
+      "source_id": "HomeNodeEndpointUi.range",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.range",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.range"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.icon_color_range",
+      "signature": "icon_color_range [] array of String Read-only",
+      "description": "A range of colors to choose from instead of \u201Cicon_color\u201D. The index in the range is the index in the \u201Crange\u201D array which is just below the endpoint value.",
+      "source_id": "HomeNodeEndpointUi.icon_color_range",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.icon_color_range",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.icon_color_range"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.text_color_range",
+      "signature": "text_color_range [] array of String Read-only",
+      "description": "A range of colors to choose from instead of \u201Ctext_color\u201D. The index in the range is the index in the \u201Crange\u201D array which is just below the endpoint value.",
+      "source_id": "HomeNodeEndpointUi.text_color_range",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.text_color_range",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.text_color_range"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.value_color_range",
+      "signature": "value_color_range [] array of String Read-only",
+      "description": "A range of colors to choose from instead of \u201Cvalue_color\u201D. The index in the range is the index in the \u201Crange\u201D array which is just below the endpoint value.",
+      "source_id": "HomeNodeEndpointUi.value_color_range",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.value_color_range",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.value_color_range"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointUi.status_text_range",
+      "signature": "status_text_range [] array of String Read-only",
+      "description": "Text values to display instead of the value itself. The index in the range is the index in the \u201Crange\u201D array which is just below the endpoint value.",
+      "source_id": "HomeNodeEndpointUi.status_text_range",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi.status_text_range",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointUi.status_text_range"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointValue.value",
+      "signature": "value String Read-only",
+      "description": "The current value of the endpoint",
+      "source_id": "HomeNodeEndpointValue.value",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue.value",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointValue.value"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointValue.unit",
+      "signature": "unit String Read-only",
+      "description": "The displayable unit of the value",
+      "source_id": "HomeNodeEndpointValue.unit",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue.unit",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointValue.unit"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointValue.refresh",
+      "signature": "refresh int Read-only",
+      "description": "The period this value need to be refreshed",
+      "source_id": "HomeNodeEndpointValue.refresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue.refresh",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointValue.refresh"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeEndpointValue.value_type",
+      "signature": "value_type enum Read-only",
+      "description": "The type of value this endpoint expose value_type bool int float void",
+      "source_id": "HomeNodeEndpointValue.value_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue.value_type",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeEndpointValue.value_type"
+    },
+    {
+      "module": "home",
+      "id": "HomeTile.node_id",
+      "signature": "node_id int Read-only",
+      "description": "Id of the HomeNode providing this tile data",
+      "source_id": "HomeTile.node_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile.node_id",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile.node_id"
+    },
+    {
+      "module": "home",
+      "id": "HomeTile.label",
+      "signature": "label String Read-only",
+      "description": "Displayable label of this tile",
+      "source_id": "HomeTile.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile.label",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile.label"
+    },
+    {
+      "module": "home",
+      "id": "HomeTile.action",
+      "signature": "action enum Read-only",
+      "description": "Action provided by this tile action Description tileset Open the related node sub-tileset graph Open a graph detail page store Display a store simple command store_slider Display a store slider command color_picker Display a color selection widget heat_picker Display a white tone selection widget intensity_picker Display an intensity selection widget none No action",
+      "source_id": "HomeTile.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile.action",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile.action"
+    },
+    {
+      "module": "home",
+      "id": "HomeTile.type",
+      "signature": "type enum Read-only",
+      "description": "The type of tile to display type Description action A button tile that present no data info A generic tile that displays datas according to their UI field light A light control tile with color, intensity and head pickers alarm_sensor A tile representing a sensor that belongs to an alarm system alarm_control A tile representing an alarm system control camera A tile representing a camera",
+      "source_id": "HomeTile.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile.type",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile.type"
+    },
+    {
+      "module": "home",
+      "id": "HomeTile.group",
+      "signature": "group HomeNodeGroup Read-only",
+      "description": "Displayable label of this tile",
+      "source_id": "HomeTile.group",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile.group",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile.group"
+    },
+    {
+      "module": "home",
+      "id": "HomeTile.data",
+      "signature": "data [] array of HomeTileData Read-only",
+      "description": "Displayable label of this tile",
+      "source_id": "HomeTile.data",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile.data",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTile.data"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeGroup.label",
+      "signature": "label String Read-only",
+      "description": "The displayable name of this group",
+      "source_id": "HomeNodeGroup.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeGroup.label",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeGroup.label"
+    },
+    {
+      "module": "home",
+      "id": "HomeNodeGroup.icon_url",
+      "signature": "icon_url String Read-only",
+      "description": "The icon url or name",
+      "source_id": "HomeNodeGroup.icon_url",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeGroup.icon_url",
+      "markdown": "docs/reference/maison-profils/home.md#HomeNodeGroup.icon_url"
+    },
+    {
+      "module": "home",
+      "id": "HomeTileData.refresh",
+      "signature": "refresh int Read-only",
+      "description": "The period this data needs to be refreshed",
+      "source_id": "HomeTileData.refresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData.refresh",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData.refresh"
+    },
+    {
+      "module": "home",
+      "id": "HomeTileData.label",
+      "signature": "label String Read-only",
+      "description": "The displayable name of this data",
+      "source_id": "HomeTileData.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData.label",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData.label"
+    },
+    {
+      "module": "home",
+      "id": "HomeTileData.ep_id",
+      "signature": "ep_id int Read-only",
+      "description": "Id of the HomeNodeEndpoint related to this data",
+      "source_id": "HomeTileData.ep_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData.ep_id",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData.ep_id"
+    },
+    {
+      "module": "home",
+      "id": "HomeTileData.value_type",
+      "signature": "value_type enum Read-only",
+      "description": "The data value type value_type bool int float string",
+      "source_id": "HomeTileData.value_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData.value_type",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData.value_type"
+    },
+    {
+      "module": "home",
+      "id": "HomeTileData.value",
+      "signature": "value String",
+      "description": "The data value",
+      "source_id": "HomeTileData.value",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData.value",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData.value"
+    },
+    {
+      "module": "home",
+      "id": "propriete-sans-ancre-home-61",
+      "signature": "value String Read-only",
+      "description": "The data value history as string in the format: \u201Ctimestamp:value\u201D separated by semicolons",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#hometileobject",
+      "markdown": "docs/reference/maison-profils/home.md#propriete-sans-ancre-home-61"
+    },
+    {
+      "module": "home",
+      "id": "HomeTileData.ui",
+      "signature": "ui HomeNodeEndpointUi Read-only",
+      "description": "Ui descriptor for this data to know how to display it",
+      "source_id": "HomeTileData.ui",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData.ui",
+      "markdown": "docs/reference/maison-profils/home.md#HomeTileData.ui"
+    }
+  ],
+  "events": []
+}

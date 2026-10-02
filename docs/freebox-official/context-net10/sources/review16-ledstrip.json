@@ -1,0 +1,130 @@
+{
+  "module": {
+    "module": "ledstrip",
+    "title": "Ledstrip",
+    "category": "systeme",
+    "path": "docs/reference/systeme/ledstrip.md",
+    "http_signatures": 2,
+    "objects": 2,
+    "properties": 6,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ledstrip",
+    "source_pre_blocks": 10,
+    "markdown_code_blocks": 10,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "ledstrip",
+      "method": "GET",
+      "documented_path": "/api/v16/ledstrip/status",
+      "path_template": "/api/v{major}/ledstrip/status",
+      "documented_major": 16,
+      "title": "Get ledstrip status",
+      "id": "get--api-v16-ledstrip-status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-ledstrip-status",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/ledstrip.md#get--api-v16-ledstrip-status",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v16-ledstrip-status"
+    },
+    {
+      "module": "ledstrip",
+      "method": "PUT",
+      "documented_path": "/api/v16/ledstrip/planning",
+      "path_template": "/api/v{major}/ledstrip/planning",
+      "documented_major": 16,
+      "title": "Update ledstrip planning",
+      "id": "put--api-v16-ledstrip-planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-ledstrip-planning",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/systeme/ledstrip.md#put--api-v16-ledstrip-planning",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v16-ledstrip-planning"
+    }
+  ],
+  "objects": [
+    {
+      "module": "ledstrip",
+      "name": "LedstripPlanning",
+      "id": "LedstripPlanning",
+      "properties": [
+        "LedstripPlanning.use_planning",
+        "LedstripPlanning.planning_mode",
+        "LedstripPlanning.resolution",
+        "LedstripPlanning.mapping"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripPlanning"
+    },
+    {
+      "module": "ledstrip",
+      "name": "LedstripStatus",
+      "id": "LedstripStatus",
+      "properties": [
+        "LedstripStatus.use_planning",
+        "LedstripStatus.next_change"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripStatus",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripStatus"
+    }
+  ],
+  "properties": [
+    {
+      "module": "ledstrip",
+      "id": "LedstripPlanning.use_planning",
+      "signature": "use_planning bool",
+      "description": "is the planning enabled",
+      "source_id": "LedstripPlanning.use_planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning.use_planning",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripPlanning.use_planning"
+    },
+    {
+      "module": "ledstrip",
+      "id": "LedstripPlanning.planning_mode",
+      "signature": "planning_mode enum",
+      "description": "current planning mode Type Description ledstrip_off ledstrip disabled",
+      "source_id": "LedstripPlanning.planning_mode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning.planning_mode",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripPlanning.planning_mode"
+    },
+    {
+      "module": "ledstrip",
+      "id": "LedstripPlanning.resolution",
+      "signature": "resolution int Read-only",
+      "description": "planning resolution (number of slots per day)",
+      "source_id": "LedstripPlanning.resolution",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning.resolution",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripPlanning.resolution"
+    },
+    {
+      "module": "ledstrip",
+      "id": "LedstripPlanning.mapping",
+      "signature": "mapping [] array of bool",
+      "description": "mapping for planning : true or false mapping[0] is monday at 0:0 mapping[7 * resolution - 1] is sunday last slot (each slot has a duration of 60 * 24 / resolution minutes) The boolean value indicates whether the planning is in effect (i.e: ledstrip disabled)",
+      "source_id": "LedstripPlanning.mapping",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning.mapping",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripPlanning.mapping"
+    },
+    {
+      "module": "ledstrip",
+      "id": "LedstripStatus.use_planning",
+      "signature": "use_planning bool Read-only",
+      "description": "is the planning enabled",
+      "source_id": "LedstripStatus.use_planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripStatus.use_planning",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripStatus.use_planning"
+    },
+    {
+      "module": "ledstrip",
+      "id": "LedstripStatus.next_change",
+      "signature": "next_change timestamp Read-only",
+      "description": "timestamp of the scheduled next change, according to planning",
+      "source_id": "LedstripStatus.next_change",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripStatus.next_change",
+      "markdown": "docs/reference/systeme/ledstrip.md#LedstripStatus.next_change"
+    }
+  ],
+  "events": []
+}

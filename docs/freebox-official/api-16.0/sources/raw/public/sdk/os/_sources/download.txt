@@ -1,0 +1,1581 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+========
+Download
+========
+
+With the download API you can control the download queue of the
+Freebox.  The Freebox supports downloads from HTTP, FTP, Magnet link,
+``.torrent`` files and newsgroups (NNTP).  Each download task is
+represented by a :json:object:`Download` object.
+
+Download Errors
+===============
+
+When attempting to access the download API, you may encounter the
+following errors:
+
+======================  ======================
+error_code              Description
+======================  ======================
+task_not_found          No task was found with the given id
+invalid_operation       Attempt to perform an invalid operation
+invalid_file            Error with the download file (invalid format ?)
+invalid_url             URL is invalid
+not_implemented         Method not implemented
+out_of_memory           No more memory available to perform the requested action
+invalid_task_type       The task type is invalid
+hibernating             The downloader is hibernating
+need_bt_stopped_done    This action is only valid for Bittorrent task in stopped or done state
+bt_tracker_not_found    Attempt to access an invalid tracker object
+too_many_tasks          Too many tasks
+invalid_address         Invalid peer address
+port_conflict           Port conflict when setting config
+invalid_priority        Invalid priority
+internal_error          Internal error
+ctx_file_error          Failed to initialize task context file (need to check disk)
+exists                  Same task already exists
+port_outside_range      Incoming port is not available for this customer
+                        (see :json:object:`ConnectionStatus` ipv4_port_range)
+======================  ======================
+
+Download Task / TaskFile Errors
+===============================
+
+Each download task can encounter one of the following errors:
+
+   ===========================   ======================
+   Error                         Description
+   ===========================   ======================
+   none                          No error
+   internal                      Internal error
+   disk_full                     The disk is full
+   unknown                       Unknown error
+   parse_error                   Parse error
+   http_301                      HTTP 301 error
+   http_400                      HTTP 400 error
+   http_401
+   http_402
+   http_403
+   http_404
+   http_405
+   http_406
+   http_407
+   http_408
+   http_409
+   http_410
+   http_411
+   http_412                      [ ... ]
+   http_413
+   http_414
+   http_415
+   http_416
+   http_417
+   http_422
+   http_423
+   http_424
+   http_425
+   http_426
+   http_427
+   http_428
+   http_429
+   http_430
+   http_431
+   http_4xx                      Other 4xx HTTP errors
+   http_500                      HTTP 500 error
+   http_501
+   http_502
+   http_503
+   http_504
+   http_505
+   http_506                      [ ... ]
+   http_507
+   http_508
+   http_509
+   http_510
+   http_511
+   http_5xx                      Other 5xx HTTP errors
+   http_redirections_exceeded    Too many HTTP redirections
+   nzb_no_group                  Cannot find the requested group on server
+   nzb_not_found                 Article not fount on the server
+   nzb_invalid_crc               Invalid article CRC
+   nzb_invalid_size              Invalid article size
+   nzb_invalid_filename          Invalid filename
+   nzb_open_failed               Error opening
+   nzb_write_failed              Error writing
+   nzb_missing_size              Missing article size
+   nzb_decode_error              Article decoding error
+   nzb_missing_segments          Missing article segments
+   nzb_error                     Other nzb error
+   unknown_host                  Unknown host
+   timeout                       Timeout
+   bad_authentication            Invalid credentials
+   connection_refused            Remote host refused connection
+   nzb_authentication_required   Nzb server need authentication
+   bt_tracker_error              Unable to announce on tracker
+   bt_missing_files              Missing torrent files
+   bt_file_error                 Error accessing torrent files
+   missing_ctx_file              Error accessing task context file
+   ===========================   ======================
+
+Download object
+===============
+
+Download objects have the following attributes:
+
+.. json:object:: Download
+
+   .. json:property:: id int [ro]
+
+       id
+
+   .. json:property:: type enum [ro]
+
+      The valid download types are:
+
+      ===============   ======================
+      Type              Description
+      ===============   ======================
+      bt                bittorrent download
+      nzb               newsgroup download
+      http              HTTP download
+      ftp               FTP download
+      ===============   ======================
+
+   .. json:property:: name string [ro]
+   .. json:property:: status enum
+
+      The valid download status are:
+
+      ============     =========================================================
+      Status           Description
+      ============     =========================================================
+      stopped          task is stopped, can be resumed by setting the status
+                       to downloading
+      queued           task will start when a new download slot is available
+                       the queue position is stored in queue_pos attribute
+      starting         task is preparing to start download
+      downloading
+      stopping         task is gracefully stopping
+      error            there was a problem with the download, you can get an
+                       error code in the error field
+      done             the download is over. For bt you can resume seeding
+                       setting the status to seeding if the ratio is not
+                       reached yet
+      checking         (only valid for nzb) download is over, the downloaded
+                       files are being checked using par2
+      repairing        (only valid for nzb) download is over, the downloaded
+                       files are being repaired using par2
+      extracting       only valid for nzb) download is over, the downloaded
+                       files are being extracted
+      seeding          (only valid for bt) download is over, the content is
+                       Change to being shared to other users. The task will
+                       automatically stop once the seed ratio has been
+                       reached
+      retry            You can set a task status to 'retry' to restart the download
+                       task.
+      ============     =========================================================
+
+   .. json:property:: size int [ro]
+
+      download size (in Bytes)
+
+   .. json:property:: queue_pos int
+
+      position in download queue (0 if not queued)
+
+   .. json:property:: io_priority enum
+
+      The valid download priorities are:
+
+      ===============   ======================
+      Priority          Description
+      ===============   ======================
+      low               low
+      normal            normal
+      high              high
+      ===============   ======================
+
+   .. json:property:: tx_bytes int [ro]
+
+      transmitted bytes (including protocol overhead)
+
+   .. json:property:: rx_bytes int [ro]
+
+      received bytes (including protocol overhead)
+
+   .. json:property:: tx_rate int [ro]
+
+      current transmit rate (in byte/s)
+
+   .. json:property:: rx_rate int [ro]
+
+      current receive rate (in byte/s)
+
+   .. json:property:: tx_pct int [ro]
+
+      transmit percentage (without protocol overhead)
+
+      To improve precision the value as been scaled by 100 so that a
+      tx_pct of 123 means 1.23%
+
+   .. json:property:: rx_pct int [ro]
+
+      received percentage (without protocol overhead)
+
+      To improve precision the value as been scaled by 100 so that a
+      tx_pct of 123 means 1.23%
+
+   .. json:property:: error enum [ro]
+
+      An error code
+
+   .. json:property:: created_ts timestamp [ro]
+
+      timestamp of the download creation time
+
+   .. json:property:: eta int [ro]
+
+      estimated remaining download time (in seconds)
+
+   .. json:property:: download_dir string [ro]
+
+      directory where the file(s) will be saved (base64 encoded)
+
+   .. json:property:: stop_ratio int [ro]
+
+      Only relevant for bittorrent tasks.  Once the transmit ration
+      has been reached the task will stop seeding.
+
+      The ratio is scaled by 100 to improve resolution.
+
+      A stop_ratio of 150 means that the task will stop seeding once
+      tx_bytes = 1.5 * rx_bytes.
+
+   .. json:property:: archive_password string
+
+      (**only relevant for nzb**) password for extracting downloaded
+      archives
+
+   .. json:property:: info_hash string
+
+      (**only relevant for bt**) torrent info_hash encoded in hexa
+
+   .. json:property:: piece_length int
+
+      (**only relevant for bt**) torrent piece length in bytes
+
+
+
+Download API
+============
+
+Retrieve a Download task
+------------------------
+
+.. http:get:: /api/v4/downloads/
+
+   Returns the collection of all :json:object:`Download` tasks
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+            "success": true,
+            "result": {
+                  "rx_bytes": 147450,
+                  "tx_bytes": 3460,
+                  "download_dir": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv",
+                  "archive_password": "",
+                  "eta": 60290,
+                  "status": "downloading",
+                  "io_priority": "normal",
+                  "type": "bt",
+                  "piece_length": 524288,
+                  "queue_pos": 2,
+                  "id": 1273,
+                  "info_hash": "A7055D06E5A8F7F816EC01AC7F7F5243D3CB008F",
+                  "created_ts": 1485513882,
+                  "stop_ratio": 150,
+                  "tx_rate": 202,
+                  "name": "debian-8.7.1-amd64-CD-1.iso",
+                  "tx_pct": 0,
+                  "rx_pct": 0,
+                  "rx_rate": 10950,
+                  "error": "none",
+                  "size": 660600000
+            }
+      }
+
+.. http:get:: /api/v4/downloads/{id}
+
+   Returns the :json:object:`Download` task with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/16 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "rx_bytes": 688005364,
+              "tx_bytes": 3232055279,
+              "download_dir": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv", /* /Disque dur/Téléchargements/ */
+              "archive_password": "",
+              "eta": 331896,
+              "status": "seeding",
+              "io_priority": "high",
+              "size": 678428672,
+              "type": "bt",
+              "error": "none",
+              "queue_pos": 0,
+              "id": 14,
+              "created_ts": 1349786169,
+              "tx_rate": 0,
+              "name": "debian-6.0.6-amd64-CD-1.iso",
+              "rx_pct": 10000,
+              "rx_rate": 0,
+              "tx_pct": 0
+          }
+
+      }
+
+Delete a Download task
+----------------------
+
+.. http:delete:: /api/v4/downloads/{id}
+
+   Deletes the :json:object:`Download` task with the given id,
+   **without** erasing the downloaded files If the task was not done
+   it is stopped
+
+   You can call this method to remove done tasks from the task list.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/downloads/16 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+.. http:delete:: /api/v4/downloads/{id}/erase
+
+   Same as previous, but **erases** the downloaded files
+
+Update a Download task
+----------------------
+
+.. http:put:: /api/v4/downloads/{id}
+
+   Updates the :json:object:`Download` task with the given id
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/downloads/16 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "io_priority": "high",
+         "status": "stopped"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "rx_bytes": 683407058,
+              "tx_bytes": 17866436,
+              "download_dir": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv", /* /Disque dur/Téléchargements/ */
+              "eta": 1075260392,
+              "status": "stopping",
+              "io_priority": "high",
+              "size": 678428672,
+              "type": "bt",
+              "error": "none",
+              "queue_pos": 0,
+              "id": 14,
+              "created_ts": 1349786169,
+              "tx_rate": 0,
+              "name": "debian-6.0.6-amd64-CD-1.iso",
+              "stop_ratio": 55936,
+              "rx_pct": 10000,
+              "rx_rate": 0,
+              "tx_pct": 4
+          }
+      }
+
+Get download log
+----------------
+
+.. http:get:: /api/v4/downloads/{id}/log
+
+   Get the log.
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/16/log HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": "log line\nanother log line\n"
+      }
+
+Adding a new Download task
+--------------------------
+
+Adding by URL
+^^^^^^^^^^^^^
+
+Supported URL scheme are ``http://``, ``ftp://``, ``magnet:``
+
+You can start a recursive download by setting the recursive parameter.
+The downloader will then extract links from each donwloaded html page
+and continue downloading files on the same domain and on the same root
+path.  This can be used to download all the files on a directory
+index.
+
+You can add multiple downloads at once by passing a list of URL
+(separated by a new line delimiter) in download_url_list instead of
+using download_url.
+
+/!\ NOTE: for this API the request arguments must be encoded using
+"application/x-www-form-urlencoded" (or "multipart/form-data" for file
+upload) instead of "application/json"
+
+.. http:post:: /api/v4/downloads/add
+
+   :param string download_url: The URL
+   :param string download_url_list: A list of URL separated by a new
+                                    line delimiter (use download_url
+                                    or download_url_list)
+   :param string download_dir: The download destination directory
+                               (optional: will use the
+                               configuration download_dir by
+                               default)
+   :param bool recursive: If true the download will be recursive
+   :param string username: Auth username (optional)
+   :param string password: Auth password (optional)
+   :param string archive_password: The password required to extract
+                                    downloaded content (only relevant
+                                    for nzb)
+   :param string cookies: The http cookies (to be able to pass
+                          session cookies along with url)
+
+   NOTE: instead of passing password and username you can include them in the URL.
+
+   **Example request : Single download add**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/downloads/add HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      download_url=http%3A%2F%2Fcdimage.debian.org%2Fdebian-cd%2F6.0.6%2Famd64%2Fbt-cd%2Fdebian-6.0.6-amd64-CD-1.iso.torrent
+      &download_dir=L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv
+
+   **Example response**:
+
+   On success you'll get the id of the new download task.
+
+   .. sourcecode:: javascript
+
+      {
+         "result": {
+            "id": 23
+          },
+         "success": true
+      }
+
+   **Example request : Multiple downloads at once**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/downloads/add HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      download_url_list=ftp%3A%2F%2Ftest-debit.free.fr%2F1024.rnd
+               %0Ahttp%3A%2F%2Ftest-debit.free.fr%2F4096.rnd
+               %0Ahttp%3A%2F%2Ftest-debit.free.fr%2F32768.rnd
+      &download_dir=L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv
+
+   **Example response**:
+
+   On success you'll get the list of id of the new download tasks.
+
+   .. sourcecode:: javascript
+
+      {
+         "result": {
+             "id": [
+                 32,
+                 33,
+                 34
+             ]
+          },
+          "success": true
+      }
+
+Adding by file upload
+^^^^^^^^^^^^^^^^^^^^^
+
+Supported files are .torrent, .nzb,
+
+.. http:post:: /api/v4/downloads/add
+
+   :param string download_file: The download file (must be uploaded
+                                using multipart/form-data
+   :param string download_dir: The download destination directory
+                               (optional: will use the
+                               configuration download_dir by
+                               default)
+   :param string archive_password: The password required to extract
+                                   downloaded content (only relevant
+                                   for nzb)
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/downloads/add HTTP/1.1
+      Host: mafreebox.freebox.fr
+      Content-Type: multipart/form-data; boundary=---------------------------176791920111939857911845395343
+      Content-Length: 26651
+
+      -----------------------------176791920111939857911845395343
+      Content-Disposition: form-data; name="download_dir"
+
+      L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMv
+      -----------------------------176791920111939857911845395343
+      Content-Disposition: form-data; name="archive_password"
+
+
+      -----------------------------176791920111939857911845395343
+      Content-Disposition: form-data; name="download_file"; filename="debian-6.0.6-amd64-CD-1.iso.torrent"
+      Content-Type: application/x-bittorrent
+
+      d8:announce41:http://bttracker.debian.org:6969/announce7:comment [ ... ]
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+         "result": {
+            "id": 42
+         },
+         "success": true
+      }
+
+
+==============
+Download Stats
+==============
+
+If you just want to display synthetic information about downloader
+this is the method to use.
+
+Download Nzb configuration status Object
+========================================
+
+.. json:object:: NzbConfigStatus
+
+   .. json:property:: status enum [ro]
+
+      The valid config status are:
+
+      ===============   ===============================
+      Type              Description
+      ===============   ===============================
+      not_checked       config has not been checked yet
+      checking          test in progress
+      error             config is invalid, see error
+      ok                config is ok
+      ===============   ===============================
+
+   .. json:property:: error enum [ro]
+
+      The valid config status are:
+
+      ============================  ===============================
+      Type                          Description
+      ============================  ===============================
+      none                          test is ok
+      nzb_authentication_required   authentication is required
+      bad_authentication            incorrect credentials
+      connection_refused            unable to connect to NNTP server
+      ============================  ===============================
+
+Download DHT stats Object
+=========================
+
+.. json:object:: DhtStats
+
+   .. json:property:: enabled bool [ro]
+
+      is the dht enabled
+
+   .. json:property:: node_count int [ro]
+
+      number of active nodes
+
+   .. json:property:: enabled_ipv6 bool [ro]
+
+      is the dht enabled on IPv6
+
+   .. json:property:: node_count_ipv6 int [ro]
+
+      number of active nodes on IPv6
+
+
+Download Stats Object
+=====================
+
+.. json:object:: DownloadStats
+
+   .. json:property:: nb_tasks int [ro]
+
+      total number of tasks
+
+   .. json:property:: nb_tasks_stopped int [ro]
+
+      number of stopped tasks
+
+   .. json:property:: nb_tasks_checking int [ro]
+
+      number of checking tasks
+
+   .. json:property:: nb_tasks_queued int [ro]
+
+      number of queued tasks
+
+   .. json:property:: nb_tasks_extracting int [ro]
+
+      number of extracting tasks
+
+   .. json:property:: nb_tasks_done int [ro]
+
+      number of done tasks
+
+   .. json:property:: nb_tasks_repairing int [ro]
+
+      number of repairing tasks
+
+   .. json:property:: nb_tasks_seeding int [ro]
+
+      number of seeding tasks
+
+   .. json:property:: nb_tasks_downloading int [ro]
+
+      number of downloading tasks
+
+   .. json:property:: nb_tasks_error int [ro]
+
+      number of error tasks
+
+   .. json:property:: nb_tasks_stopping int [ro]
+
+      number of stopping tasks
+
+   .. json:property:: nb_tasks_active int [ro]
+
+      number of active tasks (checking + queued + extracting +
+      repairing + seeding + downloading)
+
+   .. json:property:: nb_rss int [ro]
+
+      number of RSS feed subscriptions
+
+   .. json:property:: nb_rss_items_unread int [ro]
+
+      number of unread RSS items
+
+   .. json:property:: rx_rate int [ro]
+
+      current receive rate in bytes / second
+
+   .. json:property:: tx_rate int [ro]
+
+      current transmit rate in bytes / second
+
+   .. json:property:: throttling_mode enum [ro]
+
+      active throttling_mode (see :json:object:`DlThrottlingConfig`)
+
+   .. json:property:: throttling_is_scheduled bool [ro]
+
+      if true, the current throttling mode has been computed using the
+      throttling schedule
+
+      if false, the current throttling mode has been manually forced
+
+   .. json:property:: throttling_rate :json:object:`DlRate` [ro]
+
+      current rate for throttling
+
+   .. json:property:: nzb_config_status :json:object:`NzbConfigStatus` [ro]
+
+      current nzb configuration status
+
+   .. json:property:: conn_ready bool [ro]
+
+      is the connection ready
+
+   .. json:property:: nb_peer int [ro]
+
+      number of bittorrent peers
+
+   .. json:property:: blocklist_entries int [ro]
+
+      number of rules in blocklist
+
+   .. json:property:: blocklist_hits int [ro]
+
+      number of hits in blocklist
+
+   .. json:property:: dht_stats :json:object:`DhtStats` [ro]
+
+      dht stats
+
+Get the Download Stats
+----------------------
+
+.. http:get:: /api/v4/downloads/stats
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/stats HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "throttling_rate": {
+                  "rx_rate": 0,
+                  "tx_rate": 0
+              },
+              "nb_tasks_stopped": 1,
+              "nb_tasks_checking": 0,
+              "nb_tasks_queued": 0,
+              "nb_tasks_extracting": 4,
+              "nb_tasks_done": 1,
+              "nb_tasks_repairing": 0,
+              "throttling_mode": "normal",
+              "nb_tasks_active": 11,
+              "tx_rate": 4294,
+              "nb_tasks_downloading": 4,
+              "throttling_is_scheduled": true,
+              "nb_tasks": 13,
+              "nb_tasks_error": 0,
+              "nb_tasks_stopping": 0,
+              "nb_rss_items_unread": 5,
+              "rx_rate": 14222,
+              "nb_tasks_seeding": 3
+          }
+      }
+
+==============
+Download Files
+==============
+
+Download Files Object
+=====================
+
+Each :json:object:`Download` has one or more :json:object:`DownloadFile`.
+
+.. json:object:: DownloadFile
+
+   .. json:property:: id string [ro]
+
+      opaque id
+
+   .. json:property:: task_id int [ro]
+
+      id of the download task
+
+   .. json:property:: path string [ro]
+
+      [ DEPRECATED ]
+
+   .. json:property:: filepath string [ro]
+
+      full filepath on the disk (encoded as in file system api)
+
+   .. json:property:: name string [ro]
+
+      file name
+
+   .. json:property:: mimetype string [ro]
+
+      file mimetype
+
+   .. json:property:: size int [ro]
+
+      file size in bytes
+
+   .. json:property:: rx int [ro]
+
+      received bytes
+
+   .. json:property:: status enum [ro]
+
+      file download status
+
+      ============     =========================================================
+      Status           Description
+      ============     =========================================================
+      queued           file is queued for download
+      error            there was a problem with this file, see error to get the error code
+      done             file download is completed
+      ============     =========================================================
+
+   .. json:property:: error enum [ro]
+
+       file error code in case status is error
+
+   .. json:property:: priority string
+
+       file download priority inside the download task
+
+      ============     =========================================================
+      Priority         Description
+      ============     =========================================================
+      no_dl            this file will not be downloaded
+      low              low priority
+      normal           default priority
+      high             high priority
+      ============     =========================================================
+
+   .. json:property:: preview_url string [ro]
+
+       url to preview downloaded file (only available for bittorrent)
+       as a share link, this url can be use without requiring any
+       form of authentication so that it can be passed as-is to any
+       software.
+
+Download Files API
+==================
+
+Get the list of files for a given Download
+------------------------------------------
+
+.. http:get:: /api/v4/downloads/{task_id}/files
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/37/files HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+            {
+                "path": "/Disque dur/Téléchargements//test-debit.free.fr.html",
+                "id": "5-1",
+                "task_id": "5",
+                "filepath": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMvL3Rlc3QtZGViaXQuZnJlZS5mci5odG1s",
+                "mimetype": "text/html",
+                "name": "test-debit.free.fr.html",
+                "rx": 0,
+                "status": "done",
+                "priority": "normal",
+                "error": "none",
+                "size": 0
+
+            },
+            {
+                "path": "/Disque dur/Téléchargements//test-debit.free.fr/1024.rnd",
+                "id": "5-7",
+                "task_id": "5",
+                "filepath": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMvL3Rlc3QtZGViaXQuZnJlZS5mci8xMDI0LnJuZA==",
+                "mimetype": "application/octet-stream",
+                "name": "1024.rnd",
+                "rx": 1048576,
+                "status": "done",
+                "priority": "low",
+                "error": "none",
+                "size": 1048576
+            },
+
+              [ ... ]
+
+            {
+                "path": "/Disque dur/Téléchargements//test-debit.free.fr/image.iso",
+                "id": "5-16",
+                "task_id": "5",
+                "filepath": "L0Rpc3F1ZSBkdXIvVMOpbMOpY2hhcmdlbWVudHMvL3Rlc3QtZGViaXQuZnJlZS5mci9pbWFnZS5pc28=",
+                "mimetype": "application/x-cd-image",
+                "name": "image.iso",
+                "rx": 678428672,
+                "status": "done",
+                "priority": "low",
+                "error": "none",
+                "size": 678428672
+            }
+          ]
+
+      }
+
+Change the priority of a Download File
+--------------------------------------
+
+.. http:put:: /api/v4/downloads/{task_id}/files/{file_id}
+
+   :param string task_id:     The download task id
+   :param string path:        The file_id
+   :param string priority:    The new file download priority
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/downloads/37/files/37-4 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "priority" : "high"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true
+      }
+
+
+============================
+Download Trackers [UNSTABLE]
+============================
+
+Download Tracker Object
+=======================
+
+Each torrent :json:object:`Download` task has one or more
+:json:object:`DownloadTracker`.
+
+Each tracker is identified by its announce URL.
+
+.. json:object:: DownloadTracker
+
+   .. json:property:: announce string [ro]
+
+      tracker announce URL
+
+   .. json:property:: is_backup bool [ro]
+
+      true if the tracker is a backup tracker (the downloader won't
+      connect to this tracker unless the primary tracker fails)
+
+   .. json:property:: status enum [ro]
+
+      tracker status
+
+      ================     =========================================================
+      Status               Description
+      ================     =========================================================
+      unannounced          not announced
+      announcing           announcing
+      announce_failed      an error occurred while trying to announce
+      announced            announced
+      ================     =========================================================
+
+   .. json:property:: interval int [ro]
+
+      desired interval between two announces (in seconds)
+
+   .. json:property:: min_interval int [ro]
+
+      minimum interval between two announces (in seconds)
+
+   .. json:property:: reannounce_in int [ro]
+
+      time left before reannounce (in seconds)
+
+   .. json:property:: nseeders int [ro]
+
+      number of seeders announced on tracker
+
+   .. json:property:: nleechers int [ro]
+
+      number of leechers announced on tracker
+
+   .. json:property:: is_enabled bool
+
+      is the tracker enabled
+
+
+Download Tracker API
+====================
+
+Get the list of trackers for a given Download
+---------------------------------------------
+
+Attempting to call this method on a download other than bittorent will
+fail
+
+.. http:get:: /api/v4/downloads/{task_id}/trackers
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/35/tracker HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "nseeders": 0,
+                  "nleechers": 0,
+                  "reannounce_in": 790,
+                  "is_backup": false,
+                  "interval": 900,
+                  "min_interval": 60,
+                  "announce": "http://bttracker.debian.org:6969/announce",
+                  "status": "announced"
+              }
+          ]
+      }
+
+Add a new tracker
+-----------------
+
+Attempting to call this method on a download other than bittorent will
+fail
+
+.. http:post:: /api/v4/downloads/{task_id}/trackers
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/downloads/35/tracker HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "announce": "udp://tracker.openbittorrent.com:80"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+Remove a tracker
+----------------
+
+.. http:delete:: /api/v4/downloads/{task_id}/trackers/{announce}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/downloads/35/tracker/udp%3A%2F%2Ftracker.openbittorrent.com%3A80 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "announce": "udp://tracker.openbittorrent.com:80"
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+
+Update a tracker
+----------------
+
+.. http:put:: /api/v4/downloads/{task_id}/trackers/{announce}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/downloads/35/tracker/udp%3A%2F%2Ftracker.openbittorrent.com%3A80 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "announce": "udp://tracker.openbittorrent.com:80",
+        "is_enabled": true
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+
+=========================
+Download Peers [UNSTABLE]
+=========================
+
+Download Peer Object
+====================
+
+Each torrent :json:object:`Download` task has one or more
+:json:object:`DownloadPeer`.
+
+.. json:object:: DownloadPeer
+
+   .. json:property:: host string [ro]
+
+      peer IP
+
+   .. json:property:: port int [ro]
+
+      peer port
+
+   .. json:property:: state enum [ro]
+
+      peer state
+
+      ================     =========================================================
+      State                Description
+      ================     =========================================================
+      disconnected         not connected
+      connecting           trying to connect to the peer
+      handshaking          connected to the peer, negotiating capabilities
+      ready                ready to exchange data
+      ================     =========================================================
+
+   .. json:property:: origin enum [ro]
+
+      peer origin
+
+      ================     =========================================================
+      Origin                Description
+      ================     =========================================================
+      tracker              got the peer from the tracker
+      incoming             incoming peer
+      dht                  got the peer from DHT
+      pex                  got the peer from Peer exchange protocol
+      user                 manually added peer
+      ================     =========================================================
+
+   .. json:property:: protocol enum [ro]
+
+      ================     =========================================================
+      Protocol             Description
+      ================     =========================================================
+      tcp                  TCP
+      tcp_obfuscated       Obfuscated TCP
+      udp                  UDP
+      ================     =========================================================
+
+   .. json:property:: client string [ro]
+
+      Bittorrent client name
+
+   .. json:property:: country_code string [ro]
+
+      Peer country code (iso 3166)
+
+      If country code is not available it will have the value "??"
+
+   .. json:property:: tx int [ro]
+
+      transmitted bytes
+
+   .. json:property:: rx int [ro]
+
+      received bytes
+
+   .. json:property:: tx_rate int [ro]
+
+      current transmit rate in byte/s
+
+   .. json:property:: rx_rate int [ro]
+
+      current receive rate in byte/s
+
+   .. json:property:: progress int [ro]
+
+      peer current download progress
+
+   .. json:property:: requests int[] [ro]
+
+      current requested pieces
+
+
+
+Get the list of peers for a given Download
+------------------------------------------
+
+Attempting to call this method on a download other than bittorent will fail
+
+.. http:get:: /api/v4/downloads/{task_id}/peers
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/downloads/42/peers HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "protocol": "tcp_obfuscated",
+                  "origin": "tracker",
+                  "progress": 91,
+                  "remote_choke": true,
+                  "requests": { },
+                  "host": "186.213.200.201",
+                  "port": 0,
+                  "client": "Azureus 4.7.2.0",
+                  "country_code": "BR",
+                  "local_interest": false,
+                  "state": "ready",
+                  "rx": 1617,
+                  "tx": 836670,
+                  "remote_interest": true,
+                  "tx_rate": 0,
+                  "rx_rate": 0,
+                  "local_choke": false
+              },
+
+              [ ... ]
+
+              {
+                "protocol": "tcp",
+                "origin": "tracker",
+                "progress": 11,
+                "remote_choke": true,
+                "requests": { },
+                "host": "208.127.4.60",
+                "port": 0,
+                "client": "Transmission 2.51",
+                "country_code": "US",
+                "local_interest": false,
+                "state": "ready",
+                "rx": 8929,
+                "tx": 7592234,
+                "remote_interest": true,
+                "tx_rate": 0,
+                "rx_rate": 0,
+                "local_choke": false
+              }
+          ]
+
+      }
+
+.. _dl_pieces_api:
+
+===============
+Download Pieces
+===============
+
+   Each Torrent is split in 'pieces' of fixed size. The Download Piece Api allow
+   tracking the download state of each pieces of a Torrent
+
+Get the pieces status a given download
+======================================
+
+   The result value is a string, with each character representing a piece status.
+   Piece status can be:
+
+   ================     =========================================================
+   Status               Description
+   ================     =========================================================
+   X                    piece is complete
+   +                    piece is currently downloading
+   .                    piece is wanted but not downloading yet
+   -                    piece is not wanted and will not be downloaded
+   /                    piece is downloading with high priority as it is needed for file preview
+   U                    piece is scheduled with high priority as it is needed for file preview
+   ================     =========================================================
+
+.. http:get:: /api/v4/downloads/{task_id}/pieces
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/api/v1/downloads/5/pieces HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": "XXXXX//++....-- [ ... ] XXX"
+      }
+
+
+.. _dl_blaklist_api:
+
+=============================
+Download Blacklist [UNSTABLE]
+=============================
+
+   For bittorrent downloads, we use a blacklist to store information about "useless" or broken peers.
+   For instance if a peer is complete and we are trying to seed data, there is no use attempting to connect
+   to this peer again.
+
+   The download blacklist api allow you to retreive information about this blacklist, and remove, or add peers
+   to the blacklist.
+
+   Each  :json:object:`DownloadBlacklistEntry` can be specific to a torrent, or "global" and apply to any torrent.
+
+Download Blacklist Object
+=========================
+
+.. json:object:: DownloadBlacklistEntry
+
+   .. json:property:: host string [ro]
+
+      entry ip
+
+   .. json:property:: reason enum [ro]
+
+      blacklist reason
+
+      ================     =========================================================
+      State                Description
+      ================     =========================================================
+      disconnected         not connected
+      connecting           trying to connect to the peer
+      handshaking          connected to the peer, negotiating capabilities
+      ready                ready to exchange data
+      ================     =========================================================
+
+   .. json:property:: expire int [ro]
+
+      time left before blacklist removal
+
+   .. json:property:: global bool [ro]
+
+      does this entry applies to all torrents
+
+
+Get the list of blacklist entries for a given download
+------------------------------------------------------
+
+Attempting to call this method on a download other than bittorent will fail.
+
+.. http:get:: /api/v4/downloads/{task_id}/blacklist
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/api/v1/downloads/5/blacklist HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "host": "89.215.188.6",
+                  "expire": 90,
+                  "global": true,
+                  "reason": "torrent_not_found"
+              },
+              {
+                  "host": "94.23.0.89",
+                  "expire": 120,
+                  "global": true,
+                  "reason": "conn_closed"
+              },
+              {
+                  "host": "188.254.151.215",
+                  "expire": 150,
+                  "global": true,
+                  "reason": "timeout"
+              },
+              {
+                  "host": "201.25.54.26",
+                  "expire": 180,
+                  "global": true,
+                  "reason": "timeout"
+              }
+          ]
+      }
+
+Empty the blacklist for a given download
+----------------------------------------
+
+This call allow to remove all global entries, and entries related to the given download
+
+.. http:delete:: /api/v4/downloads/{task_id}/blacklist/empty
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/api/v1/downloads/5/blacklist/empty HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true
+      }
+
+Delete a particular blacklist entry
+-----------------------------------
+
+.. http:delete:: /api/v4/downloads/blacklist/{host}
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/api/v1/downloads/blacklist/201.25.54.26 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+         "success": true
+      }
+
+Add a blacklist entry
+---------------------
+
+.. http:post:: /api/v4/downloads/blacklist
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/downloads/blacklist HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+        "host": "8.8.8.8",
+        "expire": 3600
+      }
+
+   **Example response**:
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result":
+             {
+                "host": "197.200.139.87",
+                "expire": 300,
+                "global": true,
+                "reason": "user"
+             }
+      }
+
+
+..  LocalWords:  Freebox http json url Url downloader bt TaskFile
+..  LocalWords:  Bittorrent redirections nzb crc CRC filename ro enum
+..  LocalWords:  bittorrent pos io tx rx timestamp dir sourcecode www
+..  LocalWords:  charset javascript donwloaded html urlencoded param
+..  LocalWords:  multipart bool username Auth ok NNTP DownloadStats
+..  LocalWords:  nb rss DlThrottlingConfig DlRate DownloadFile dl ip
+..  LocalWords:  yEnc errmsg DownloadTracker reannounce nseeders dht
+..  LocalWords:  nleechers leechers DownloadPeer DHT pex tcp TCP udp
+..  LocalWords:  UDP Azureus

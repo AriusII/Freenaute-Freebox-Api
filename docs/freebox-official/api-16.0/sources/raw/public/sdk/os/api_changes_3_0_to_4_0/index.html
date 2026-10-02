@@ -1,0 +1,91 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Api changes from version 3.0 to 4.0 &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Login" href="../login/" />
+    <link rel="prev" title="Api changes from version 2.0 to 3.0" href="../api_changes_2_0_to_3_0/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-changes-from-version-3-0-to-4-0">
+<h1>Api changes from version 3.0 to 4.0<a class="headerlink" href="#api-changes-from-version-3-0-to-4-0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="secure-access">
+<h2>Secure Access<a class="headerlink" href="#secure-access" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The Freebox OS API can now be reached over HTTPS. All applications MUST
+switch to https access. Unsecure access will be removed at some point.</li>
+</ul>
+</div>
+<div class="section" id="deprecated-api">
+<h2>Deprecated api<a class="headerlink" href="#deprecated-api" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The old upload api as been deprecated in favor of the
+<a class="reference internal" href="../upload/#ws-upload-api"><span>WebSocket upload api</span></a>.
+The v3 upload api will be removed in next firmware release.
+All new apps should only use websocket upload api. However tracking of uploads has not been changed.</li>
+</ul>
+</div>
+<div class="section" id="changed-api">
+<h2>Changed API<a class="headerlink" href="#changed-api" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The File System api now return more details error codes, and can now
+return &#8216;access_denied&#8217; and &#8216;disk_full&#8217; in case of IO errors</li>
+<li><a class="reference internal" href="../system/#SystemConfig" title="SystemConfig"><code class="xref json json-object docutils literal"><span class="pre">SystemConfig</span></code></a> has new &#8216;disk_status&#8217;, &#8216;box_flavor&#8217; attributes</li>
+<li><a class="reference internal" href="../connection/#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> now expose &#8216;ipv4_port_range&#8217; for customers
+that don&#8217;t have a &#8216;full&#8217; IPv4</li>
+<li>Added new &#8216;port_outside_range&#8217; error_code when attempting to use a port outside
+of assigned &#8216;ipv4_port_range&#8217;</li>
+<li>Added &#8216;remote_access_min_port&#8217; and &#8216;remote_access_max_port&#8217; to
+<a class="reference internal" href="../connection/#ConnectionConfiguration" title="ConnectionConfiguration"><code class="xref json json-object docutils literal"><span class="pre">ConnectionConfiguration</span></code></a></li>
+<li>Added &#8216;min_port&#8217;, &#8216;max_port&#8217; for <a class="reference internal" href="../nat/#IncomingPortConfig" title="IncomingPortConfig"><code class="xref json json-object docutils literal"><span class="pre">IncomingPortConfig</span></code></a>,
+<a class="reference internal" href="../vpn/#VPNServerConfig" title="VPNServerConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNServerConfig</span></code></a></li>
+<li>Added &#8216;readonly&#8217; for <a class="reference internal" href="../nat/#IncomingPortConfig" title="IncomingPortConfig"><code class="xref json json-object docutils literal"><span class="pre">IncomingPortConfig</span></code></a></li>
+<li>Added &#8216;allow_remote_access&#8217; for <a class="reference internal" href="../ftp/#FtpConfig" title="FtpConfig"><code class="xref json json-object docutils literal"><span class="pre">FtpConfig</span></code></a></li>
+<li>Added &#8216;mark_all_as_read&#8217; and &#8216;delete_all&#8217; for Call api</li>
+<li>Added &#8216;enabled_ipv6&#8217; and &#8216;node_count_ipv6&#8217; for <a class="reference internal" href="../download/#DhtStats" title="DhtStats"><code class="xref json json-object docutils literal"><span class="pre">DhtStats</span></code></a></li>
+<li>Added &#8216;preview_url&#8217; to <a class="reference internal" href="../download/#DownloadFile" title="DownloadFile"><code class="xref json json-object docutils literal"><span class="pre">DownloadFile</span></code></a> for bittorrent downloads</li>
+<li>Added &#8216;info_hash&#8217;, &#8216;piece_length&#8217; to <a class="reference internal" href="../download/#Download" title="Download"><code class="xref json json-object docutils literal"><span class="pre">Download</span></code></a> for bittorrent downloads</li>
+</ul>
+</div>
+<div class="section" id="new-api">
+<h2>New API<a class="headerlink" href="#new-api" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added <a class="reference internal" href="../storage/#StorageConfig" title="StorageConfig"><code class="xref json json-object docutils literal"><span class="pre">StorageConfig</span></code></a> api</li>
+<li>Added <a class="reference internal" href="../download/#dl-pieces-api"><span>Download Pieces</span></a> information</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

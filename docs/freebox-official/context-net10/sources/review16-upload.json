@@ -1,0 +1,358 @@
+{
+  "module": {
+    "module": "upload",
+    "title": "File Upload",
+    "category": "fichiers-telechargements",
+    "path": "docs/reference/fichiers-telechargements/upload.md",
+    "http_signatures": 5,
+    "objects": 5,
+    "properties": 21,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#file-upload",
+    "source_pre_blocks": 21,
+    "markdown_code_blocks": 21,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/ws/upload",
+      "path_template": "/api/v{major}/ws/upload",
+      "documented_major": 8,
+      "title": "File Upload example",
+      "id": "get--api-v8-ws-upload",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-upload",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#get--api-v8-ws-upload",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-ws-upload"
+    },
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/upload/",
+      "path_template": "/api/v{major}/upload/",
+      "documented_major": 8,
+      "title": "Get the list of uploads",
+      "id": "get--api-v8-upload-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upload-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#get--api-v8-upload-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-upload-"
+    },
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/upload/{id}",
+      "path_template": "/api/v{major}/upload/{id}",
+      "documented_major": 8,
+      "title": "Track an upload status",
+      "id": "get--api-v8-upload-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upload-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#get--api-v8-upload-id",
+      "referenced_objects": [
+        "FileUpload"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-upload-id"
+    },
+    {
+      "module": "upload",
+      "method": "DELETE",
+      "documented_path": "/api/v8/upload/{id}/cancel",
+      "path_template": "/api/v{major}/upload/{id}/cancel",
+      "documented_major": 8,
+      "title": "Cancel an upload",
+      "id": "delete--api-v8-upload-id-cancel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-upload-id-cancel",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#delete--api-v8-upload-id-cancel",
+      "referenced_objects": [
+        "FileUpload"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-upload-id-cancel"
+    },
+    {
+      "module": "upload",
+      "method": "DELETE",
+      "documented_path": "/api/v8/upload/{id}",
+      "path_template": "/api/v{major}/upload/{id}",
+      "documented_major": 8,
+      "title": "Delete an upload",
+      "id": "delete--api-v8-upload-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-upload-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#delete--api-v8-upload-id",
+      "referenced_objects": [
+        "FileUpload"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-upload-id"
+    }
+  ],
+  "objects": [
+    {
+      "module": "upload",
+      "name": "FileUpload",
+      "id": "FileUpload",
+      "properties": [
+        "FileUpload.id",
+        "FileUpload.size",
+        "FileUpload.uploaded",
+        "FileUpload.status",
+        "FileUpload.start_date",
+        "FileUpload.last_update",
+        "FileUpload.upload_name",
+        "FileUpload.dirname"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadStartAction",
+      "id": "FileUploadStartAction",
+      "properties": [
+        "FileUploadStartAction.request_id",
+        "FileUploadStartAction.action",
+        "FileUploadStartAction.size",
+        "FileUploadStartAction.dirname",
+        "FileUploadStartAction.filename",
+        "FileUploadStartAction.force"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadFinalizeAction",
+      "id": "FileUploadFinalizeAction",
+      "properties": [
+        "FileUploadFinalizeAction.request_id",
+        "FileUploadFinalizeAction.action"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadFinalizeAction",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadFinalizeAction"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadCancelAction",
+      "id": "FileUploadCancelAction",
+      "properties": [
+        "FileUploadCancelAction.request_id",
+        "FileUploadCancelAction.action"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadCancelAction",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadCancelAction"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadChunkResponse",
+      "id": "FileUploadChunkResponse",
+      "properties": [
+        "FileUploadChunkResponse.total_len",
+        "FileUploadChunkResponse.complete",
+        "FileUploadChunkResponse.cancelled"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadChunkResponse",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadChunkResponse"
+    }
+  ],
+  "properties": [
+    {
+      "module": "upload",
+      "id": "FileUpload.id",
+      "signature": "id int Read-only",
+      "description": "upload id",
+      "source_id": "FileUpload.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.id",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.id"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.size",
+      "signature": "size int Read-only",
+      "description": "Upload file size in bytes",
+      "source_id": "FileUpload.size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.size",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.size"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.uploaded",
+      "signature": "uploaded int Read-only",
+      "description": "Uploaded bytes",
+      "source_id": "FileUpload.uploaded",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.uploaded",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.uploaded"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.status",
+      "signature": "status enum Read-only",
+      "description": "upload status can have the following values status Description authorized Upload authorization is valid, upload has not started yet in_progress Upload in progress done Upload done failed Upload failed conflict Destination file conflict timeout Upload authorization is no longer valid cancelled Upload cancelled by user",
+      "source_id": "FileUpload.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.status",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.status"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.start_date",
+      "signature": "start_date timestamp Read-only",
+      "description": "upload start date",
+      "source_id": "FileUpload.start_date",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.start_date",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.start_date"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.last_update",
+      "signature": "last_update timestamp Read-only",
+      "description": "last update of file upload object",
+      "source_id": "FileUpload.last_update",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.last_update",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.last_update"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.upload_name",
+      "signature": "upload_name string Read-only",
+      "description": "name of the file uploaded",
+      "source_id": "FileUpload.upload_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.upload_name",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.upload_name"
+    },
+    {
+      "module": "upload",
+      "id": "FileUpload.dirname",
+      "signature": "dirname string Read-only",
+      "description": "upload destination directory",
+      "source_id": "FileUpload.dirname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload.dirname",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUpload.dirname"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadStartAction.request_id",
+      "signature": "request_id int",
+      "description": "optional request_id",
+      "source_id": "FileUploadStartAction.request_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction.request_id",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction.request_id"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadStartAction.action",
+      "signature": "action string",
+      "description": "must be \u2018upload_start\u2019",
+      "source_id": "FileUploadStartAction.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction.action",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction.action"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadStartAction.size",
+      "signature": "size int",
+      "description": "optional file size",
+      "source_id": "FileUploadStartAction.size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction.size",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction.size"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadStartAction.dirname",
+      "signature": "dirname string",
+      "description": "the destination directory (encoded value)",
+      "source_id": "FileUploadStartAction.dirname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction.dirname",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction.dirname"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadStartAction.filename",
+      "signature": "filename string",
+      "description": "the destination filename",
+      "source_id": "FileUploadStartAction.filename",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction.filename",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction.filename"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadStartAction.force",
+      "signature": "force enum",
+      "description": "select the way conflicts are handled Force mode Description missing The response to the FileUploadStartAction will be an error with \u2018destination_conflict\u2019 if the destination file already exists. The response will also contain a file_size attribute containing the existing file length (useful for resuming upload) overwrite If the target file already exists it will be overridden resume The upload will resume, all sent chunks will then be appended to the existing file.",
+      "source_id": "FileUploadStartAction.force",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction.force",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadStartAction.force"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadFinalizeAction.request_id",
+      "signature": "request_id int",
+      "description": "optional request_id",
+      "source_id": "FileUploadFinalizeAction.request_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadFinalizeAction.request_id",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadFinalizeAction.request_id"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadFinalizeAction.action",
+      "signature": "action string",
+      "description": "must be \u2018upload_finalize\u2019",
+      "source_id": "FileUploadFinalizeAction.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadFinalizeAction.action",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadFinalizeAction.action"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadCancelAction.request_id",
+      "signature": "request_id int",
+      "description": "optional request_id",
+      "source_id": "FileUploadCancelAction.request_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadCancelAction.request_id",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadCancelAction.request_id"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadCancelAction.action",
+      "signature": "action string",
+      "description": "must be \u2018upload_cancel\u2019",
+      "source_id": "FileUploadCancelAction.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadCancelAction.action",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadCancelAction.action"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadChunkResponse.total_len",
+      "signature": "total_len int",
+      "description": "target file current length",
+      "source_id": "FileUploadChunkResponse.total_len",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadChunkResponse.total_len",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadChunkResponse.total_len"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadChunkResponse.complete",
+      "signature": "complete bool",
+      "description": "will be true in a reply to FileUploadFinalizeAction or FileUploadCancelAction",
+      "source_id": "FileUploadChunkResponse.complete",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadChunkResponse.complete",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadChunkResponse.complete"
+    },
+    {
+      "module": "upload",
+      "id": "FileUploadChunkResponse.cancelled",
+      "signature": "cancelled bool",
+      "description": "will be true in a reply FileUploadCancelAction",
+      "source_id": "FileUploadChunkResponse.cancelled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadChunkResponse.cancelled",
+      "markdown": "docs/reference/fichiers-telechargements/upload.md#FileUploadChunkResponse.cancelled"
+    }
+  ],
+  "events": []
+}

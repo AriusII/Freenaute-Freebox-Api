@@ -1,0 +1,146 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>UPnP AV &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Switch" href="../switch/" />
+    <link rel="prev" title="Network Share" href="../network_share/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="upnp-av">
+<h1>UPnP AV<a class="headerlink" href="#upnp-av" title="Permalink to this headline">¶</a></h1>
+<p>The UPnP AV API allow you to control the settings of the Freebox UPnP
+AV service.</p>
+<div class="section" id="upnp-av-errors">
+<h2>UPnP AV Errors<a class="headerlink" href="#upnp-av-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the UPnP AV API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>internal_error</td>
+<td>internal error</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="upnp-av-config">
+<h2>UPnP AV Config<a class="headerlink" href="#upnp-av-config" title="Permalink to this headline">¶</a></h2>
+<p>UPnPAVConfig has the following attributes:</p>
+<dl class="object">
+<dt id="UPnPAVConfig">
+<code class="descname">UPnPAVConfig</code><a class="headerlink" href="#UPnPAVConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="UPnPAVConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#UPnPAVConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the UPnP AV service enabled</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="upnp-av-config-api">
+<h2>UPnP AV config API<a class="headerlink" href="#upnp-av-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-upnp-av-configuration">
+<h3>Get the current UPnP AV configuration<a class="headerlink" href="#get-the-current-upnp-av-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-upnpav-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/upnpav/config/</code><a class="headerlink" href="#get--api-v4-upnpav-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#UPnPAVConfig" title="UPnPAVConfig"><code class="xref json json-object docutils literal"><span class="pre">UPnPAVConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/upnpav/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-upnp-av-configuration">
+<h3>Update the UPnP AV configuration<a class="headerlink" href="#update-the-upnp-av-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-upnpav-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/upnpav/config/</code><a class="headerlink" href="#put--api-v4-upnpav-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#UPnPAVConfig" title="UPnPAVConfig"><code class="xref json json-object docutils literal"><span class="pre">UPnPAVConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/upnpigd/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

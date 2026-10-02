@@ -1,0 +1,364 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Freeplug &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="DHCP" href="../dhcp/" />
+    <link rel="prev" title="Lan" href="../lan/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="freeplug">
+<h1>Freeplug<a class="headerlink" href="#freeplug" title="Permalink to this headline">¶</a></h1>
+<p>The freeplug API allow you to list the freeplugs on the Freebox
+network and get stats</p>
+<div class="section" id="freeplug-errors">
+<h2>Freeplug Errors<a class="headerlink" href="#freeplug-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the freeplug API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>Invalid request</td>
+</tr>
+<tr class="row-odd"><td>nomem</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>nosta</td>
+<td>No freeplug with this id</td>
+</tr>
+<tr class="row-odd"><td>nopeer</td>
+<td>No freeplug with this id</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="freeplug-network">
+<h2>Freeplug Network<a class="headerlink" href="#freeplug-network" title="Permalink to this headline">¶</a></h2>
+<p>FreeplugNetwork has the following attributes:</p>
+<dl class="object">
+<dt id="FreeplugNetwork">
+<code class="descname">FreeplugNetwork</code><a class="headerlink" href="#FreeplugNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FreeplugNetwork.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FreeplugNetwork.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network unique id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FreeplugNetwork.members">
+<code class="descname">members</code><span>[] array of </span><a class="reference internal" href="#Freeplug" title="Freeplug">Freeplug</a><em class="property"> Read-only</em><a class="headerlink" href="#FreeplugNetwork.members" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of freeplugs member of this network</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="freeplug-object">
+<h2>Freeplug Object<a class="headerlink" href="#freeplug-object" title="Permalink to this headline">¶</a></h2>
+<p>Freeplug has the following attributes:</p>
+<dl class="object">
+<dt id="Freeplug">
+<code class="descname">Freeplug</code><a class="headerlink" href="#Freeplug" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="Freeplug.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freeplug unique id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.local">
+<code class="descname">local</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.local" title="Permalink to this definition">¶</a></dt>
+<dd><p>if true the Freeplug is connected directly to the Freebox</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.net_role">
+<code class="descname">net_role</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.net_role" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Freeplug network role</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sta</td>
+<td>Freeplug Station</td>
+</tr>
+<tr class="row-odd"><td>pco</td>
+<td>Freeplug proxy coordinator</td>
+</tr>
+<tr class="row-even"><td>cco</td>
+<td>Central coordinator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.model">
+<code class="descname">model</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Freebox Server netbios name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.eth_port_status">
+<code class="descname">eth_port_status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.eth_port_status" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>up</td>
+<td>The ethernet port is up</td>
+</tr>
+<tr class="row-odd"><td>down</td>
+<td>The ethernet port is down</td>
+</tr>
+<tr class="row-even"><td>unknown</td>
+<td>The ethernet port state is unknown</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.eth_full_duplex">
+<code class="descname">eth_full_duplex</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.eth_full_duplex" title="Permalink to this definition">¶</a></dt>
+<dd><p>ethernet link is full duplex</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.has_network">
+<code class="descname">has_network</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.has_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>is connected to the network</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.eth_speed">
+<code class="descname">eth_speed</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.eth_speed" title="Permalink to this definition">¶</a></dt>
+<dd><p>ethernet port speed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.inactive">
+<code class="descname">inactive</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.inactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>seconds since last activity</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.net_id">
+<code class="descname">net_id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.net_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>network id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.rx_rate">
+<code class="descname">rx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.rx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>rx rate (from the freeplugs to the &#8220;cco&#8221; freeplug) (in Mb/s)
+-1 if not available</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Freeplug.tx_rate">
+<code class="descname">tx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Freeplug.tx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>tx rate (from the &#8220;cco&#8221; freeplug to the freeplugs) (in Mb/s)
+-1 if not available</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="freeplug-api">
+<h2>Freeplug API<a class="headerlink" href="#freeplug-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-freeplugs-networks">
+<h3>Get the current Freeplugs networks<a class="headerlink" href="#get-the-current-freeplugs-networks" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-freeplug-">
+<code class="descname">GET </code><code class="descname">/api/v4/freeplug/</code><a class="headerlink" href="#get--api-v4-freeplug-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of <a class="reference internal" href="#FreeplugNetwork" title="FreeplugNetwork"><code class="xref json json-object docutils literal"><span class="pre">FreeplugNetwork</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/freeplug/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;c8:f7:b9:83:f5:10:01&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;members&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:36:4C:CF&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">148</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_port_status&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">148</span><span class="p">,</span>
+                    <span class="s2">&quot;net_role&quot;</span><span class="o">:</span> <span class="s2">&quot;sta&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;inactive&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;net_id&quot;</span><span class="o">:</span> <span class="s2">&quot;c8:f7:b9:83:f5:10:01&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;int6400&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_speed&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+                    <span class="s2">&quot;local&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_full_duplex&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;has_network&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;F4:CA:E5:1D:46:AE&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">149</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_port_status&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">148</span><span class="p">,</span>
+                    <span class="s2">&quot;net_role&quot;</span><span class="o">:</span> <span class="s2">&quot;sta&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;inactive&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;net_id&quot;</span><span class="o">:</span> <span class="s2">&quot;c8:f7:b9:83:f5:10:01&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;int6400&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_speed&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+                    <span class="s2">&quot;local&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_full_duplex&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;has_network&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:1B:15:D0&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_port_status&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;net_role&quot;</span><span class="o">:</span> <span class="s2">&quot;cco&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;inactive&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;net_id&quot;</span><span class="o">:</span> <span class="s2">&quot;c8:f7:b9:83:f5:10:01&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;int6400&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_speed&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+                    <span class="s2">&quot;local&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                    <span class="s2">&quot;eth_full_duplex&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;has_network&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-particular-freeplug-information">
+<h3>Get a particular Freeplug information<a class="headerlink" href="#get-a-particular-freeplug-information" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-freeplug-id-">
+<code class="descname">GET </code><code class="descname">/api/v4/freeplug/{id}/</code><a class="headerlink" href="#get--api-v4-freeplug-id-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of <a class="reference internal" href="#Freeplug" title="Freeplug"><code class="xref json json-object docutils literal"><span class="pre">Freeplug</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/freeplug/F4:CA:E5:1D:46:AE/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:36:4C:CF&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;eth_port_status&quot;</span><span class="o">:</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;net_role&quot;</span><span class="o">:</span> <span class="s2">&quot;sta&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;inactive&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;net_id&quot;</span><span class="o">:</span> <span class="s2">&quot;c8:f7:b9:83:f5:10:01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;model&quot;</span><span class="o">:</span> <span class="s2">&quot;int6400&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;eth_speed&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;local&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;eth_full_duplex&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;has_network&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="reset-a-freeplug">
+<h3>Reset a Freeplug<a class="headerlink" href="#reset-a-freeplug" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-freeplug-id-reset-">
+<code class="descname">POST </code><code class="descname">/api/v4/freeplug/{id}/reset/</code><a class="headerlink" href="#post--api-v4-freeplug-id-reset-" title="Permalink to this definition">¶</a></dt>
+<dd><p>reset the given <a class="reference internal" href="#Freeplug" title="Freeplug"><code class="xref json json-object docutils literal"><span class="pre">Freeplug</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/freeplug/F4:CA:E5:1D:46:AE/reset/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span><span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

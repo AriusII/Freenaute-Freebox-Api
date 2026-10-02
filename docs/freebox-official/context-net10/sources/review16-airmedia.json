@@ -1,0 +1,215 @@
+{
+  "module": {
+    "module": "airmedia",
+    "title": "AirMedia API",
+    "category": "services",
+    "path": "docs/reference/services/airmedia.md",
+    "http_signatures": 4,
+    "objects": 3,
+    "properties": 10,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#airmedia-api",
+    "source_pre_blocks": 18,
+    "markdown_code_blocks": 18,
+    "source_tables": 4
+  },
+  "endpoints": [
+    {
+      "module": "airmedia",
+      "method": "GET",
+      "documented_path": "/api/v8/airmedia/config/",
+      "path_template": "/api/v{major}/airmedia/config/",
+      "documented_major": 8,
+      "title": "Get the current AirMedia configuration",
+      "id": "get--api-v8-airmedia-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-airmedia-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/airmedia.md#get--api-v8-airmedia-config-",
+      "referenced_objects": [
+        "AirMediaConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-airmedia-config-"
+    },
+    {
+      "module": "airmedia",
+      "method": "PUT",
+      "documented_path": "/api/v8/airmedia/config/",
+      "path_template": "/api/v{major}/airmedia/config/",
+      "documented_major": 8,
+      "title": "Update the current AirMedia configuration",
+      "id": "put--api-v8-airmedia-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-airmedia-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/airmedia.md#put--api-v8-airmedia-config-",
+      "referenced_objects": [
+        "AirMediaConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-airmedia-config-"
+    },
+    {
+      "module": "airmedia",
+      "method": "GET",
+      "documented_path": "/api/v8/airmedia/receivers/",
+      "path_template": "/api/v{major}/airmedia/receivers/",
+      "documented_major": 8,
+      "title": "Get the list of available AirMedia receivers",
+      "id": "get--api-v8-airmedia-receivers-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-airmedia-receivers-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/airmedia.md#get--api-v8-airmedia-receivers-",
+      "referenced_objects": [
+        "AirMediaReceiver"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-airmedia-receivers-"
+    },
+    {
+      "module": "airmedia",
+      "method": "POST",
+      "documented_path": "/api/v8/airmedia/receviers/{receiver_name}/",
+      "path_template": "/api/v{major}/airmedia/receviers/{receiver_name}/",
+      "documented_major": 8,
+      "title": "Sending a new request to an AirMedia receiver",
+      "id": "post--api-v8-airmedia-receviers-receiver_name-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-airmedia-receviers-receiver_name-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/airmedia.md#post--api-v8-airmedia-receviers-receiver_name-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-airmedia-receviers-receiver_name-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "airmedia",
+      "name": "AirMediaConfig",
+      "id": "AirMediaConfig",
+      "properties": [
+        "AirMediaConfig.enabled",
+        "AirMediaConfig.password"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaConfig",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaConfig"
+    },
+    {
+      "module": "airmedia",
+      "name": "AirMediaReceiver",
+      "id": "AirMediaReceiver",
+      "properties": [
+        "AirMediaReceiver.name",
+        "AirMediaReceiver.password_protected",
+        "AirMediaReceiver.capabilities"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiver",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiver"
+    },
+    {
+      "module": "airmedia",
+      "name": "AirMediaReceiverRequest",
+      "id": "AirMediaReceiverRequest",
+      "properties": [
+        "AirMediaReceiverRequest.action",
+        "AirMediaReceiverRequest.media_type",
+        "AirMediaReceiverRequest.password",
+        "AirMediaReceiverRequest.position",
+        "AirMediaReceiverRequest.media"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest"
+    }
+  ],
+  "properties": [
+    {
+      "module": "airmedia",
+      "id": "AirMediaConfig.enabled",
+      "signature": "enabled bool",
+      "description": "Enable/Disable the airmedia server",
+      "source_id": "AirMediaConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaConfig.enabled",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaConfig.enabled"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaConfig.password",
+      "signature": "password string Write-only",
+      "description": "If not empty, the client will have to enter a password to be able to use this airmedia server",
+      "source_id": "AirMediaConfig.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaConfig.password",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaConfig.password"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiver.name",
+      "signature": "name string Read-only",
+      "description": "AirMedia name",
+      "source_id": "AirMediaReceiver.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiver.name",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiver.name"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiver.password_protected",
+      "signature": "password_protected bool Read-only",
+      "description": "Is set to true the receiver is protected by a password",
+      "source_id": "AirMediaReceiver.password_protected",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiver.password_protected",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiver.password_protected"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiver.capabilities",
+      "signature": "capabilities map Read-only",
+      "description": "List of receiver capabilities from the following list Capability Description photo can display photos audio can play audio files video can play video files screen can display remote screen",
+      "source_id": "AirMediaReceiver.capabilities",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiver.capabilities",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiver.capabilities"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiverRequest.action",
+      "signature": "action enum",
+      "description": "Action Description start start playing a media stop stop playing a media",
+      "source_id": "AirMediaReceiverRequest.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest.action",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest.action"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiverRequest.media_type",
+      "signature": "media_type string",
+      "description": "Media Type Description photo display a photo video display a video",
+      "source_id": "AirMediaReceiverRequest.media_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest.media_type",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest.media_type"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiverRequest.password",
+      "signature": "password string",
+      "description": "Optional receiver password.",
+      "source_id": "AirMediaReceiverRequest.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest.password",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest.password"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiverRequest.position",
+      "signature": "position int",
+      "description": "Start position for a video. The start position is expressed in percent * 1000, for instance 50000 means 50% of the video",
+      "source_id": "AirMediaReceiverRequest.position",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest.position",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest.position"
+    },
+    {
+      "module": "airmedia",
+      "id": "AirMediaReceiverRequest.media",
+      "signature": "media string",
+      "description": "The media to play. For video media, you have to specify the media URL, for instance http://anon.nasa-global.edgesuite.net/HD_downloads/GRAIL_launch_480.mov For photo media, you have to specify the file path on the Freebox Server (base64 encoded as returned in fs/ls call), for instance L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM0OTEuanBn",
+      "source_id": "AirMediaReceiverRequest.media",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#AirMediaReceiverRequest.media",
+      "markdown": "docs/reference/services/airmedia.md#AirMediaReceiverRequest.media"
+    }
+  ],
+  "events": []
+}

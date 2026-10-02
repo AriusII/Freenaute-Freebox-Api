@@ -1,0 +1,903 @@
+{
+  "api_version": "16.0",
+  "snapshot_date_europe_paris": "2026-10-02",
+  "source_build": "c1fd8795",
+  "scope": "Official documented Freebox Server API on target; deprecated contracts excluded from active reference",
+  "files": [
+    {
+      "path": "audits/adapted-examples.json",
+      "bytes": 1818,
+      "sha256": "3db9e67650aef7941fceae785422dc5cf7731934f50b326b1ecc72c28db9829e"
+    },
+    {
+      "path": "audits/applied-exclusions.json",
+      "bytes": 17284,
+      "sha256": "004d1df8a1edd9683ddc516094131ce6370de3fd3945ec215fcb91a61a0446aa"
+    },
+    {
+      "path": "audits/build-summary.json",
+      "bytes": 548,
+      "sha256": "94f1674fe0410de1b7549fe42a27a0d683449bd36ba22249b3ed9530d0408567"
+    },
+    {
+      "path": "audits/changelog-deprecation-findings.md",
+      "bytes": 7363,
+      "sha256": "775fcbbc7cc30e1d119b153e7ed6752bcd8df5dd40f8a6edb891c106c2d48c3d"
+    },
+    {
+      "path": "audits/coverage-freebox-server.json",
+      "bytes": 6184,
+      "sha256": "33806924cbc357b7fe6c1bebc97b91afb499f149bee5577c066de6f7862a1d16"
+    },
+    {
+      "path": "audits/coverage-freebox-server.md",
+      "bytes": 9007,
+      "sha256": "05582a7b790824ace54188580040f5bef92bc4f6abf45acf2546c785c35ea847"
+    },
+    {
+      "path": "audits/deprecation-audit.md",
+      "bytes": 5662,
+      "sha256": "f6588fa58bd58cac69e41c95174385a5400e8d86ca18e7623a3bb01b5f563a81"
+    },
+    {
+      "path": "audits/deprecation-exclusions.json",
+      "bytes": 22195,
+      "sha256": "f7ad7f04e54bf3e981ce2ca828bc35e47eb7fd51ce84d1d9f5802de4cb94a962"
+    },
+    {
+      "path": "audits/duplicate-source-ids.json",
+      "bytes": 1151,
+      "sha256": "4e3ce9b506c74e80689e7fbb604894ac0f717e4701817a28358bb9475a98e880"
+    },
+    {
+      "path": "audits/final-coverage-review.json",
+      "bytes": 4006,
+      "sha256": "3928a5c5277790cd2d9bcbb2e6790209571f2127fcc5634b35b911888210722c"
+    },
+    {
+      "path": "audits/final-coverage-review.md",
+      "bytes": 5764,
+      "sha256": "d039d1607615bfd2e5150a9e80b2a07ce6e2cd92f9bba396799219f1c0417d87"
+    },
+    {
+      "path": "audits/freshness-sources.json",
+      "bytes": 5095,
+      "sha256": "c5e1b3f38766726f6402a50169f7d2cd2be1c28c1348e3c2d3c08970a6bbf280"
+    },
+    {
+      "path": "audits/freshness.md",
+      "bytes": 10141,
+      "sha256": "7b7864bdb1a428feb245ef7822dbc9be92d5643719c94979bebf203952946cf5"
+    },
+    {
+      "path": "audits/hidden-sources-local-v16.json",
+      "bytes": 2676,
+      "sha256": "3950254180c1fb02f0131df8427cc6418cb9252279297fc8bcfb00b9778f7846"
+    },
+    {
+      "path": "audits/hidden-sources-local-v16.md",
+      "bytes": 6194,
+      "sha256": "b7a2b64c46a3b47632307ac9e5e7f612f4e10903fc420e0e0bc0372a2bde0744"
+    },
+    {
+      "path": "audits/reference-deprecation-findings.md",
+      "bytes": 8404,
+      "sha256": "6bf5d736a8534984d80d68602ddaa3b1d31436a4aee2aaf71e687d1d68a6fb23"
+    },
+    {
+      "path": "audits/source-link-defects.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "audits/unanchored-source-properties.json",
+      "bytes": 1830,
+      "sha256": "e448d0d3392d3f22695a5c54c6383cc06d74a6d82d6fd8f182c3f2490b0a6dcd"
+    },
+    {
+      "path": "audits/validation.json",
+      "bytes": 230,
+      "sha256": "a5e8a0b5397171798c7368db733b5240a3bf83aac8026a8ee24ef2123d0c55ae"
+    },
+    {
+      "path": "catalogue/endpoints.json",
+      "bytes": 225477,
+      "sha256": "245e575d64769f561a2a46ff9b6be57d7a22fc57cc7c55780a69cbc6f166b767"
+    },
+    {
+      "path": "catalogue/events.json",
+      "bytes": 1052,
+      "sha256": "1b8acde0afe969479ce33b9f420c87f812872471f623fb320606a9bc48b13372"
+    },
+    {
+      "path": "catalogue/modules.json",
+      "bytes": 16400,
+      "sha256": "1841d1a19e3b71bb1dcf3fd409d458d4cdf2819147eec671f11eb311a85414f8"
+    },
+    {
+      "path": "catalogue/objects.json",
+      "bytes": 91117,
+      "sha256": "4bf4ea87f9750bdd67447b3dfc47693c3c14e3f745cb3ee328bcb0100c916f42"
+    },
+    {
+      "path": "catalogue/operations.json",
+      "bytes": 283784,
+      "sha256": "9c723559f8ca885efece499f165c2d5f616e452816c0eb5caf86995bf32a4b12"
+    },
+    {
+      "path": "catalogue/properties.json",
+      "bytes": 499754,
+      "sha256": "6982f876947a7640e3e46562d793855e7cc022cec467ba1b4914ddafb158491c"
+    },
+    {
+      "path": "docs/ENDPOINTS.md",
+      "bytes": 56909,
+      "sha256": "f7b4e88024e0b0beafd91400a3d537daf56217ce5dc5f6c36e79a243eafb891b"
+    },
+    {
+      "path": "docs/EVENEMENTS.md",
+      "bytes": 1645,
+      "sha256": "912a4e93b2b63e3c1116fcf7c333f73cfef1e1efa6836469f96106967b868e8b"
+    },
+    {
+      "path": "docs/EVOLUTIONS.md",
+      "bytes": 11704,
+      "sha256": "438c604b6e6b1f087a4650eae888857be93e0968aa2c184b7e98cd2e90d5607a"
+    },
+    {
+      "path": "docs/GUIDE-SDK.md",
+      "bytes": 20091,
+      "sha256": "b4da92696cdbb5d3ba401128c51b97cc6e5798d4c36fc156523d2017f9a5370d"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 4123,
+      "sha256": "d0b2e81f8c321aca2bf5beae26d6ee0b425da567b467ae6cb778fdb8834bf374"
+    },
+    {
+      "path": "docs/MIGRATIONS-EXCLUSIONS.md",
+      "bytes": 5599,
+      "sha256": "72a87721a2778e1600a6a14f9e6a6cce65b1edfb0e1468cfda5948404ffaa303"
+    },
+    {
+      "path": "docs/OBJETS.md",
+      "bytes": 15932,
+      "sha256": "99b916f27ebf62964e8ab92224b3acd46db03e2a1663287ee94243e82b185a98"
+    },
+    {
+      "path": "docs/QUALITE-SOURCES.md",
+      "bytes": 6384,
+      "sha256": "cbb16aa96163a4fd961a8f3013cdc704f01565a4929662155474224dfca4776f"
+    },
+    {
+      "path": "docs/reference/fichiers-telechargements/download.md",
+      "bytes": 40457,
+      "sha256": "e332d610df755d08ab847acf116ca4bdca355b5ecec5255c18e4b32839100943"
+    },
+    {
+      "path": "docs/reference/fichiers-telechargements/download_config.md",
+      "bytes": 12657,
+      "sha256": "fb13a41cd1d33ee46ecdad175cc8f9b2f3090abb67456f9784b62ba9476fcd51"
+    },
+    {
+      "path": "docs/reference/fichiers-telechargements/download_feeds.md",
+      "bytes": 13275,
+      "sha256": "60a9935d9b6ed339c4456f328437b26f244f97d1099ceafa5b3fa7bb76fc6e73"
+    },
+    {
+      "path": "docs/reference/fichiers-telechargements/fs.md",
+      "bytes": 31925,
+      "sha256": "14834fc777173feeffb24ea8d6be8516a017e2ed8bebc9aac0f5340d818ea498"
+    },
+    {
+      "path": "docs/reference/fichiers-telechargements/share.md",
+      "bytes": 5296,
+      "sha256": "39537ec8f125d3731ec96bf2e0b1e41b2a65d56e71ae57eb0ac17b8c044591a5"
+    },
+    {
+      "path": "docs/reference/fichiers-telechargements/upload.md",
+      "bytes": 12728,
+      "sha256": "e733134ee2d625478cc403518b5cd0b2d90d3070e646ed8bc9bb022c773764d0"
+    },
+    {
+      "path": "docs/reference/fondamentaux/00_index.md",
+      "bytes": 15006,
+      "sha256": "83391b8923cc6e8a580699fd9c7106efe5d2c7e1b3d964175bbff981dd15085b"
+    },
+    {
+      "path": "docs/reference/fondamentaux/login.md",
+      "bytes": 11246,
+      "sha256": "f75ee125e107214088c3f229b3729cd97bf7e486f68ebffacd44f4128a84e344"
+    },
+    {
+      "path": "docs/reference/fondamentaux/websocket.md",
+      "bytes": 5899,
+      "sha256": "ad2796bd8909c830e8c6dab2a20a080e695f1e08832fe79770f9d9fa410661ab"
+    },
+    {
+      "path": "docs/reference/maison-profils/camera.md",
+      "bytes": 3050,
+      "sha256": "e491612989acf8c37292e7c082e809f003b90729fa30f99629ff6704792d4a5e"
+    },
+    {
+      "path": "docs/reference/maison-profils/home.md",
+      "bytes": 35143,
+      "sha256": "3b622885fdca3c9babedee41ed34583feecfc1cc11e8a7b492a97f014c144e93"
+    },
+    {
+      "path": "docs/reference/maison-profils/notif.md",
+      "bytes": 10614,
+      "sha256": "311e038265ad99c236cfcf3c5b4225beb447de04e8b5beaf642aeaf290eefb0e"
+    },
+    {
+      "path": "docs/reference/maison-profils/profile.md",
+      "bytes": 12208,
+      "sha256": "b33abf47a356e7f13865b79abf599e41142f2ef14e95d5177c1e4f831214127c"
+    },
+    {
+      "path": "docs/reference/multimedia/player.md",
+      "bytes": 9082,
+      "sha256": "435399fcd3aa294914837155d92db858379317bff85631dccf16dd7d548508c8"
+    },
+    {
+      "path": "docs/reference/multimedia/pvr.md",
+      "bytes": 23224,
+      "sha256": "547d7ea75a8667e6d1447df893a809b9d877a24d1f6da067f245911d95b013d2"
+    },
+    {
+      "path": "docs/reference/reseau/connection.md",
+      "bytes": 29963,
+      "sha256": "0731d64dd61ba70faa2cfebd08ce0de86430c3f1c8b1402133f312994a1b69e0"
+    },
+    {
+      "path": "docs/reference/reseau/dhcp.md",
+      "bytes": 18139,
+      "sha256": "e3f10687707544a3a57c8b2572d5e0015a7a513d83d60b80fd108775d72a533b"
+    },
+    {
+      "path": "docs/reference/reseau/dhcpv6.md",
+      "bytes": 3343,
+      "sha256": "f988a019208deee6a08549774a550cec35a947f201b8f8391c2a7cff72adf26f"
+    },
+    {
+      "path": "docs/reference/reseau/freeplug.md",
+      "bytes": 6540,
+      "sha256": "fb0300052f6f9b7952bafec4fed466ee718f8b0620e893faca7aae77ba7eb02d"
+    },
+    {
+      "path": "docs/reference/reseau/igd.md",
+      "bytes": 5046,
+      "sha256": "afb23d046e93d2724f7cf8f8927eaa4066c2a565abb2bdf80cf63630f1b954a7"
+    },
+    {
+      "path": "docs/reference/reseau/lan.md",
+      "bytes": 22238,
+      "sha256": "c2698e7b2e410f3c4db04783fc20260581792c2e872c216f7e956e5694302245"
+    },
+    {
+      "path": "docs/reference/reseau/nat.md",
+      "bytes": 13759,
+      "sha256": "1fbd73ea2d344a25da7c8ef91c0b12653e0d9fe463aa997a23d8afeadd7cfec5"
+    },
+    {
+      "path": "docs/reference/reseau/sfp.md",
+      "bytes": 4979,
+      "sha256": "844e6160f2c2534b86ef2a370fb39f0ee3612a2bc5d071fd1c7e3b788ebd666f"
+    },
+    {
+      "path": "docs/reference/reseau/switch.md",
+      "bytes": 9407,
+      "sha256": "3f22abf12d34c4b82283a5fc984d19a85a2e7eb273200421cec5355f27fb085c"
+    },
+    {
+      "path": "docs/reference/reseau/wifi.md",
+      "bytes": 77385,
+      "sha256": "3a23fb2bf4b012808e7f2dba01a646612f4233067b21961010c163acb7cd9e0f"
+    },
+    {
+      "path": "docs/reference/services/airmedia.md",
+      "bytes": 8559,
+      "sha256": "36465a362f5494131e8870a9f76300a78e49b9b4b3bd6d7ffc1929a0e9d6e086"
+    },
+    {
+      "path": "docs/reference/services/call.md",
+      "bytes": 10857,
+      "sha256": "78921612634bd8a98e2242cdb1579bab4e6a6f62215953b0d286076eaaa8054a"
+    },
+    {
+      "path": "docs/reference/services/contacts.md",
+      "bytes": 15899,
+      "sha256": "fedc7385b628f3c23bc05625313e7e177c79127eb42a8ffd81cadd2c444223a5"
+    },
+    {
+      "path": "docs/reference/services/ftp.md",
+      "bytes": 3462,
+      "sha256": "5ccd85fffafb6057eb56d6893617bd67cc20498be6389129b437efa1ff50741c"
+    },
+    {
+      "path": "docs/reference/services/network_share.md",
+      "bytes": 5581,
+      "sha256": "42d6fcd02216e908ac62c46ab15c3ba19327a5024fdb59c07d50b539aae2bdc3"
+    },
+    {
+      "path": "docs/reference/services/tftp.md",
+      "bytes": 2413,
+      "sha256": "750748a4df9aa92ba1c2c8d91120dc7b2008a6d27b49cc542686490e2590de74"
+    },
+    {
+      "path": "docs/reference/services/upnpav.md",
+      "bytes": 2263,
+      "sha256": "c31565177793386561d70633d5eeddb575cb84e87c4f6cbb2a2529b70b58bcae"
+    },
+    {
+      "path": "docs/reference/services/vpn.md",
+      "bytes": 18585,
+      "sha256": "297afdcf035a207b416661c9557ec73f83b69428e52788b34b01d0384bf112ad"
+    },
+    {
+      "path": "docs/reference/services/vpn_client.md",
+      "bytes": 15699,
+      "sha256": "d75853f40d9eb876a4b9b68fc4a1457f4bca48908617b9ff417634d45565879a"
+    },
+    {
+      "path": "docs/reference/stockage-vm/raid.md",
+      "bytes": 21064,
+      "sha256": "de189eaa162691e78480b2e5eac1bd0319c01cd619da789e8cd421a924fa82b8"
+    },
+    {
+      "path": "docs/reference/stockage-vm/rrd.md",
+      "bytes": 4730,
+      "sha256": "2d37ee5e06440c149484732fbae226fa413c685a828e7a24e3f09b17d50917b2"
+    },
+    {
+      "path": "docs/reference/stockage-vm/storage.md",
+      "bytes": 20792,
+      "sha256": "e1153146b8010f0a06748e3e313b9f9817d0a0667f08edac4b2ab1d811a5e0bc"
+    },
+    {
+      "path": "docs/reference/stockage-vm/vm.md",
+      "bytes": 13672,
+      "sha256": "ea8f68e8726015fbb5e6103ee016343fc8fea788fce71bf252439d3868491ac8"
+    },
+    {
+      "path": "docs/reference/systeme/lang.md",
+      "bytes": 2114,
+      "sha256": "64112db205490e52fe885d5ef3be5fdfabe56b0de0758865bf055fadca155a43"
+    },
+    {
+      "path": "docs/reference/systeme/lcd.md",
+      "bytes": 3914,
+      "sha256": "20036e6ed1869130882b6fda3d23d42f6923dcf2fc65cd50bd15519075d69db7"
+    },
+    {
+      "path": "docs/reference/systeme/ledstrip.md",
+      "bytes": 4413,
+      "sha256": "7a3f06b0e0ffdea4d73ed90ea9a2abe73e41e1aeba97a4d69009bb0ac2bebd66"
+    },
+    {
+      "path": "docs/reference/systeme/slowness.md",
+      "bytes": 1268,
+      "sha256": "b4b1cd1ced73c5e7a4f0a76ab5f4f00f20804aefd1fa0d9ec859684d51ccea23"
+    },
+    {
+      "path": "docs/reference/systeme/standby.md",
+      "bytes": 4967,
+      "sha256": "d9a8de6e1f994f0ab5274951e89e90c267c7e3d9ddfd45aa76c19a4a44ee6589"
+    },
+    {
+      "path": "docs/reference/systeme/system.md",
+      "bytes": 11092,
+      "sha256": "0c209bab4be702dd2a869e050e3c51e5131ed9beb165f078742cc125df6631c2"
+    },
+    {
+      "path": "docs/reference/systeme/update.md",
+      "bytes": 2982,
+      "sha256": "e8fa12b85dd6d9f7578313b0e1be2eb012fc7b418dbaf038515d710c74ae1502"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5602,
+      "sha256": "6adb867a901d7729bcd371b79aa2826d33a7f10f8bddf7ca3d22b29f85f65553"
+    },
+    {
+      "path": "sources/api-version.json",
+      "bytes": 426,
+      "sha256": "1f6bcbb74eb1a7c7d4bdf0ad955b6e12ad9432976f38e16fb93846ce4cbc2284"
+    },
+    {
+      "path": "sources/links.json",
+      "bytes": 1679519,
+      "sha256": "1e90dfd7bd8ffcc61a970b02079474c820bfd4986542a42cc3dbbd8239e64a59"
+    },
+    {
+      "path": "sources/manifest.json",
+      "bytes": 48586,
+      "sha256": "eb1a679ed7fba4e8cfcfb2500c970e083f0508a349b1db1cf3569c2dd73e0bbb"
+    },
+    {
+      "path": "sources/raw/embedded/doc/_static/documentation_options.js",
+      "bytes": 322,
+      "sha256": "8fb7838b1bb00f345a93d33bdb50b435dbf3e9a0fdcc49df802aff2f0fdabd2b"
+    },
+    {
+      "path": "sources/raw/embedded/doc/_static/fbx.js",
+      "bytes": 934,
+      "sha256": "d7f7c961f2a0a7ae29f59ff30f61ebb1c5378296943cb2cc167ff5f32d45f630"
+    },
+    {
+      "path": "sources/raw/embedded/doc/_static/main.css",
+      "bytes": 1872,
+      "sha256": "e9381f14cfe9c21bac19f13c232e372adae7527396c33e2b6e9efebb25a085f8"
+    },
+    {
+      "path": "sources/raw/embedded/doc/_static/pygments.css",
+      "bytes": 4367,
+      "sha256": "d9dcdbf23767251eeb68b7f73713beb0c7f7eeb6a5eed7424c140884b4fdff17"
+    },
+    {
+      "path": "sources/raw/embedded/doc/index.html",
+      "bytes": 1816775,
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    },
+    {
+      "path": "sources/raw/public/sdk/freeboxos.png",
+      "bytes": 9046,
+      "sha256": "8e8c4b1f1423a75e03e7248789c30b4f870fa5232a2ebd364f98ce2de449d12d"
+    },
+    {
+      "path": "sources/raw/public/sdk/index.html",
+      "bytes": 1743,
+      "sha256": "3847f1497fc447cf208ecf0f897e57ec4a83a91064f5399a951c786a7c5431cd"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/airmedia.txt",
+      "bytes": 9383,
+      "sha256": "18f4b8ab4b4891da40913c7ae471ea3d99f25f8e12b46569f9e7687941ff75f2"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/api_changes_1_1_to_2_0.txt",
+      "bytes": 2005,
+      "sha256": "788e7f93ce8dc38bc95b12e73a34fe29344b2bd1285e843100aeadeb8f5677bb"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/api_changes_2_0_to_3_0.txt",
+      "bytes": 435,
+      "sha256": "dd8ceeecc9e5360d57af73ddd77f942ae414a10ce86366e1df2a0afb0927253a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/api_changes_3_0_to_4_0.txt",
+      "bytes": 1832,
+      "sha256": "b39ebb83df9959d3183bb4333ca902d5b84727d3864fb1f5406ddb691bf2e932"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/call.txt",
+      "bytes": 5803,
+      "sha256": "457516caa346826c0e3ccc78e65733ce8ffe79aa287fd887b1d5d039e1700bf3"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/connection.txt",
+      "bytes": 23367,
+      "sha256": "12cb45bd269da04a3d9c2d8cf1fd8f9af7e1244b6c15d81ac1e11f7ad31cf385"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/contacts.txt",
+      "bytes": 17073,
+      "sha256": "1118aeb0b994d78d01c8ab6a3cea35115d8c99cb1417033567d48a394d227f9c"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/dhcp.txt",
+      "bytes": 10910,
+      "sha256": "6ce55cabaf47ce195f39b0addfdb0cada21e25d47f18543de08ef0f990cd6337"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/download.txt",
+      "bytes": 43387,
+      "sha256": "f5adb8bb9d9337803a83027b06e408da335540b95b8241bb8b83657ef9545629"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/download_config.txt",
+      "bytes": 13134,
+      "sha256": "14c80a548db8ff70523fab13643bf87dafee21bf50e21eb83a7b0d788a532988"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/download_feeds.txt",
+      "bytes": 13139,
+      "sha256": "176fdf388fa62b2a1d3052da68cb2a92f839165ba259710bc36d4fc49ed07191"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/freeplug.txt",
+      "bytes": 6876,
+      "sha256": "fb52d211a0e4a450f416a3df91ae5ca7ca4f5ebfee918a7d773cd7c436f9ea14"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/fs.txt",
+      "bytes": 32336,
+      "sha256": "a3f1eb857b81d75d452d9738d4bc8090da0f2668c1b80fd941093fcbc3fd2fe8"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/ftp.txt",
+      "bytes": 3080,
+      "sha256": "1dacc4a3529dee35ddb4bb068afc2ce8ebc645886dbb21cad407b30222e9ecf5"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/igd.txt",
+      "bytes": 4663,
+      "sha256": "b96a751784a4b0c7de9d355783d5b3e31535d201903a9e9d9404bfddb3cd294e"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/index.txt",
+      "bytes": 12649,
+      "sha256": "5f178010e0bc2db4495d159bb871e4849dabec7a87956d929558025dca47f560"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/lan.txt",
+      "bytes": 16068,
+      "sha256": "d0a91234e7e7c058b2fc8e773224c082e9e598f21ef0db7d36e14e38763e3fb3"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/lcd.txt",
+      "bytes": 2284,
+      "sha256": "ef536de8405e97f91c529a85e7753b3687414b0ebcad77847f419a6fbc0db486"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/login.txt",
+      "bytes": 11320,
+      "sha256": "a127b9b6f59b52d7e2c51dd363f92122b713c9e5ef258a523bea09197a0a3c62"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/nat.txt",
+      "bytes": 14220,
+      "sha256": "e2169439b59ada871c77fa561169d3a8503b01faea932a406f87c123c58d053a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/network_share.txt",
+      "bytes": 5329,
+      "sha256": "02a7e3f778d16fb1e5afa887a7955f63dad7a9e30e199b4757f013710e1823b0"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/parental.txt",
+      "bytes": 15514,
+      "sha256": "c52f07ee6dac94024ca287230a638302a2f2f0337ab6836d1ce49b40f441efc7"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/pvr.txt",
+      "bytes": 25168,
+      "sha256": "11ea7456d2515aaf760edd8e51ffa819e6f0586cb8b42e2314bdd4be4ebd6141"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/rrd.txt",
+      "bytes": 5732,
+      "sha256": "372ceac61a911556dd72ade361538c5737b424f40f437f450b1cc289a9cb11d1"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/share.txt",
+      "bytes": 5321,
+      "sha256": "a67f12542d24460dcee429806d8bec6e28a8f634add3f6ab7c304b79f34a6ce4"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/storage.txt",
+      "bytes": 19676,
+      "sha256": "bdaa7d7a7bf177ccbaa45447eaf65c8936c38afa66c1795bccde1cc3f0057266"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/switch.txt",
+      "bytes": 9749,
+      "sha256": "7356d4179a66032ebf1e089f0e41a805cd3bb48de618bd86ed3b00e4bd365ebc"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/system.txt",
+      "bytes": 3697,
+      "sha256": "021ea8355fb090596a8df19897cb44f7a1344108e6f7ef077b6420479a52c66a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/upload.txt",
+      "bytes": 12821,
+      "sha256": "4c8f027d10204011be18b7029dde58291f46664bd9d0d14b7d9b5a1f0a6523ce"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/upnpav.txt",
+      "bytes": 1947,
+      "sha256": "bbe5525ebdef60c50fa338cda7387b364e0a24c73f22de73d25fc4805046e7ac"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/vpn.txt",
+      "bytes": 16880,
+      "sha256": "325c17556a8c19df72a643d7c0f39c5f8ddd5e89307bce7faf94ccbb429f7f0f"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/vpn_client.txt",
+      "bytes": 14788,
+      "sha256": "4ead50ea634c312d0495dda3149c6c4bbf04db7ee7737e08f7dfef3c2ec44ef3"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_sources/wifi.txt",
+      "bytes": 39373,
+      "sha256": "cd1c97183300e1deabc7d5ea15cd33af99355b5d1f58d1ca35fd8c042716bc79"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_static/favicon.ico",
+      "bytes": 1151,
+      "sha256": "74285291ceace8ca4f0291daf5d974f1a9bfffc14250d0ce124d25f705142321"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_static/fbx.js",
+      "bytes": 934,
+      "sha256": "d7f7c961f2a0a7ae29f59ff30f61ebb1c5378296943cb2cc167ff5f32d45f630"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_static/main.css",
+      "bytes": 1630,
+      "sha256": "1401d9ee7158826fca60e9c9273a3402d13a7ccc48b6bf607856504e8ac71ee4"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/_static/pygments.css",
+      "bytes": 4121,
+      "sha256": "5ac67bf51dc22e4e380a949f4e534bb8580952b747f703905a7aa2ad84d9213a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/airmedia/index.html",
+      "bytes": 24328,
+      "sha256": "d0afb118b43112dcc82908be6e12885b0d4478dd793fb44867524ebbe3bb37a1"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/api_changes_1_1_to_2_0/index.html",
+      "bytes": 7287,
+      "sha256": "a9c61f33209e1e003868042fab56eab29613a873c1fb9a438f70699c9973562a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/api_changes_2_0_to_3_0/index.html",
+      "bytes": 2421,
+      "sha256": "4087484dfb39a3ba3e364e31bb275c3848cb65c777c3e16d6a9c6fe7d059fe59"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/api_changes_3_0_to_4_0/index.html",
+      "bytes": 6113,
+      "sha256": "3fde14a4aa44c6386f4ee12c59cddfabef984be09bcf42020a5ea186f951b669"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/call/index.html",
+      "bytes": 19881,
+      "sha256": "d46ad4cfd39e06a12a6cec0bf910ba18cf5cab0cf758ad31f1043c53ff0d79a9"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/connection/index.html",
+      "bytes": 73084,
+      "sha256": "70cd38aba4d5e4f230ce7518a1460bfc82e7c881367fed438bbca321a8887128"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/contacts/index.html",
+      "bytes": 57203,
+      "sha256": "48256ba5ffd71ed939fbee7066a048144a4ccfb42c9587325344ee0e017a07b3"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/dhcp/index.html",
+      "bytes": 34764,
+      "sha256": "52c2fffddbe2b265dc6cf9a91edcfea6092a248899eb74132b0896d9bcb98c99"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/download/index.html",
+      "bytes": 113547,
+      "sha256": "dd38df97ceb61f4a6b5ebf562bdb61ab5a571c7949bfb42b88dfb888e6b4723a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/download_config/index.html",
+      "bytes": 35249,
+      "sha256": "09e5163667c0592176ee6ddc40cea50b217e7bbe0c12d86279278cff0801e619"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/download_feeds/index.html",
+      "bytes": 43518,
+      "sha256": "c8e588300f961c0b9df2b5d4d19af7e9458ed9e17d262bff466ba93d520b401d"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/freeplug/index.html",
+      "bytes": 21397,
+      "sha256": "9d517c6788a79a2ced114d0f1bba7749554dcc724e415ff2919a1626d31a4abf"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/fs/index.html",
+      "bytes": 98304,
+      "sha256": "71491d25d1804547e1d03b3dfb3d36a95f6ca0d0bcdab06950f1dd43ac8ecff8"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/ftp/index.html",
+      "bytes": 10421,
+      "sha256": "0f79e2f4f439fcd6c71dcd5d3739199b6750e3d3f7c43adde61ff164af57eeb3"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/genindex/index.html",
+      "bytes": 96397,
+      "sha256": "4d1d5a89b516ccc7cbea7346fc8e1c69bf52b1748d44d58a67432743a85be5b0"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/igd/index.html",
+      "bytes": 16119,
+      "sha256": "96d360c82063f15532c8ca8ceb5ed8c7700df17c015f3514c888d85e294a018c"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/index.html",
+      "bytes": 32423,
+      "sha256": "9f26ff0e43b4522d29cf3853e730cf29129adf42c35dc5b42f24ae0ae83894ec"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/lan/index.html",
+      "bytes": 46122,
+      "sha256": "b15f4c04c810fa1651662d2af4eefb4705cf39fac58c2d3afb75e9b1bbadbb72"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/lcd/index.html",
+      "bytes": 8110,
+      "sha256": "4215ef7fa6e28a13fc0b38323796703853bea35af96f0e35173b1cdb52713ff0"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/login/index.html",
+      "bytes": 25798,
+      "sha256": "07492c0782d7f3229a954d7801299141bfe6a5c6bcf4426f384a184056cefacf"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/nat/index.html",
+      "bytes": 46848,
+      "sha256": "3f76d025b56340f1814447cdea8f8a03c6efac48e8816e666bb94479cdc9c197"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/network_share/index.html",
+      "bytes": 17685,
+      "sha256": "c237a5731472837b1bfea980c5a2cfd32c4a8d8455bd39e4cae6c932ced96c22"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/objects.inv",
+      "bytes": 8344,
+      "sha256": "fc2bc614bac6514adc82216324b203228e12b3cde36179ca40a0a49188bc33e0"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/parental/index.html",
+      "bytes": 45590,
+      "sha256": "ffff13525b1cf2ff1369b6e2600846357551ba506f148c6e4e5938e8d904011b"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/pvr/index.html",
+      "bytes": 81375,
+      "sha256": "c166cb9b9991667fad66b540885bdda7220b3305141e8cd0e47e8cfcfcb9b338"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/rrd/index.html",
+      "bytes": 11839,
+      "sha256": "1ec2b1ec961f84243bed3cc8a0866e4d5ba5eab875cc9ed77d223bbcfe47325a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/search/index.html",
+      "bytes": 2150,
+      "sha256": "2d2eb46ef0e3b0a482109cd89e6cd4043a591f0d6cecc3bacbbff64a56c41a2a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/searchindex.js",
+      "bytes": 89889,
+      "sha256": "b05687ae99eb937bcfa95f2d23a47f71e65d5eb1c5011667cf3c6e484784daae"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/share/index.html",
+      "bytes": 15612,
+      "sha256": "3809792b701209e49fc5d11d7587c053bb8a08c24edf631803ffe437001ace18"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/storage/index.html",
+      "bytes": 60269,
+      "sha256": "f431aaff2ab4d78b37621470f194699895c7d0723f435f716cffd6febc4ed0c6"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/switch/index.html",
+      "bytes": 32791,
+      "sha256": "a30c5053108c06e27f0ba406a61c0d8760a8e28a5f181477917ae38cb831a2dc"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/system/index.html",
+      "bytes": 12878,
+      "sha256": "091aca3a586c563a963486d0c1da95e01fceecc806ee9d03bec3815fbaddfb65"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/upload/index.html",
+      "bytes": 36942,
+      "sha256": "b4f9d43f01865c97c02c8c8f2b4371b4fbb9c0ea6268fd112f771363f159dd7e"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/upnpav/index.html",
+      "bytes": 7008,
+      "sha256": "e899e547aaa54a7ed80380fece7a3dd28d34436472157b15fd50a7e2c4c873bb"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/vpn/index.html",
+      "bytes": 54728,
+      "sha256": "e7421ecc2de00c6a0f2dc704a32f644306d6be3d86ead6074c1c961481f20fa8"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/vpn_client/index.html",
+      "bytes": 46581,
+      "sha256": "ac1da6c8a31dbf14358792df8227da5569b193e8c2064eba50dc85fc3211a11a"
+    },
+    {
+      "path": "sources/raw/public/sdk/os/wifi/index.html",
+      "bytes": 125306,
+      "sha256": "079e6aff8a837605bd23cd05c4d9079b5465fddcef6c849265253dac37af446d"
+    },
+    {
+      "path": "sources/raw/public/sdk/server.html",
+      "bytes": 2795,
+      "sha256": "428202643bb24917a926bfa6904b5d87ea164608fb947f2565b20b6cb3c89136"
+    },
+    {
+      "path": "sources/raw/public/sdk/style.css",
+      "bytes": 1788,
+      "sha256": "c0eb00d271ec7bc94c6bcf013ea48ec983ab9d7ad4181ef94879d45f11776714"
+    },
+    {
+      "path": "sources/README.md",
+      "bytes": 1376,
+      "sha256": "142e9cc5f233c24c5c033d133b2b47b3517b6a75bfa184afee11eb1077609a98"
+    },
+    {
+      "path": "sources/seed/local-doc.headers",
+      "bytes": 294,
+      "sha256": "8cf55ec3325af013d860658924bf74286fbc4bf1abcfb14707a90b9ed0507570"
+    },
+    {
+      "path": "sources/seed/local-doc.html",
+      "bytes": 1816775,
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    },
+    {
+      "path": "sources/seed/os.headers",
+      "bytes": 255,
+      "sha256": "2bae8be08bbea8a19b43d10797e4534c4d99b0ff1c821ebd208d33bf65329038"
+    },
+    {
+      "path": "sources/seed/os.html",
+      "bytes": 32423,
+      "sha256": "9f26ff0e43b4522d29cf3853e730cf29129adf42c35dc5b42f24ae0ae83894ec"
+    },
+    {
+      "path": "sources/seed/sdk.headers",
+      "bytes": 253,
+      "sha256": "0addbd10290b023466158f0f53367aa61e21fa4d1edaedaa1992b7f30ebf9f0b"
+    },
+    {
+      "path": "sources/seed/sdk.html",
+      "bytes": 1743,
+      "sha256": "3847f1497fc447cf208ecf0f897e57ec4a83a91064f5399a951c786a7c5431cd"
+    },
+    {
+      "path": "sources/seed/server.headers",
+      "bytes": 253,
+      "sha256": "255baf6c882cd2fd76e187b759cca5d10d738ee19a2cfafb42eb82e123e4792c"
+    },
+    {
+      "path": "sources/seed/server.html",
+      "bytes": 2795,
+      "sha256": "428202643bb24917a926bfa6904b5d87ea164608fb947f2565b20b6cb3c89136"
+    },
+    {
+      "path": "tools/build_docs.py",
+      "bytes": 28716,
+      "sha256": "84c6300e79fb2e288f2c3c59578b8ba5d22737c0febc8ddb2efc70ab9c5e2861"
+    },
+    {
+      "path": "tools/crawl.py",
+      "bytes": 7925,
+      "sha256": "05b63e228275d1835628f21b5db40f2bb337960516a9409c6a4e3bd078f60032"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 2512,
+      "sha256": "790e6db92c4057c477bbe856c1e7de66f216c723190c4d9bbe517426c9fbe8bf"
+    },
+    {
+      "path": "tools/requirements.txt",
+      "bytes": 42,
+      "sha256": "98afdcc75e11d3e6b74b1d5c2ff5f219a9927298eeec1cf914aee157939c30af"
+    },
+    {
+      "path": "tools/validate_docs.py",
+      "bytes": 6309,
+      "sha256": "69a1642a115eed49ab037798fceebc7c656a39eda97c53164c57001ff396a7a3"
+    }
+  ]
+}

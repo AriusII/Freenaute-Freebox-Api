@@ -1,0 +1,1374 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PVR [UNSTABLE] &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="prev" title="Parental Control" href="../parental/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pvr-unstable">
+<h1>PVR [UNSTABLE]<a class="headerlink" href="#pvr-unstable" title="Permalink to this headline">¶</a></h1>
+<p><strong>*</strong> INTERNAL USE ONLY <strong>*</strong></p>
+<div class="section" id="pvr-errors">
+<h2>PVR Errors<a class="headerlink" href="#pvr-errors" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>noent</td>
+<td>wrong id</td>
+</tr>
+<tr class="row-odd"><td>inval</td>
+<td>invalid params</td>
+</tr>
+<tr class="row-even"><td>inval_date_fmt</td>
+<td>invalid date format</td>
+</tr>
+<tr class="row-odd"><td>inval_end_before_start</td>
+<td>start time must be before end time</td>
+</tr>
+<tr class="row-even"><td>system_time_incorrect</td>
+<td>system time not available</td>
+</tr>
+<tr class="row-odd"><td>record_duration_too_long</td>
+<td>record duration is too long</td>
+</tr>
+<tr class="row-even"><td>record_date_in_past</td>
+<td>record date is already passed</td>
+</tr>
+<tr class="row-odd"><td>unknown_channel</td>
+<td>unknown channel</td>
+</tr>
+<tr class="row-even"><td>no_channel_svc</td>
+<td>no service for this channel</td>
+</tr>
+<tr class="row-odd"><td>only_auto_disable</td>
+<td>can&#8217;t disable manual precord</td>
+</tr>
+<tr class="row-even"><td>cannot_change_en_state</td>
+<td>can&#8217;t change enabled state</td>
+</tr>
+<tr class="row-odd"><td>cannot_disable_has_data</td>
+<td>can&#8217;t disable started record</td>
+</tr>
+<tr class="row-even"><td>internal_error</td>
+<td>internal error</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pvr-config">
+<h2>PVR Config<a class="headerlink" href="#pvr-config" title="Permalink to this headline">¶</a></h2>
+<p>PVR config has the following attributes:</p>
+<dl class="object">
+<dt id="PvrConfig">
+<code class="descname">PvrConfig</code><a class="headerlink" href="#PvrConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="PvrConfig.margin_before">
+<code class="descname">margin_before</code><span> </span>int<a class="headerlink" href="#PvrConfig.margin_before" title="Permalink to this definition">¶</a></dt>
+<dd><p>default margin before recording start time</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PvrConfig.margin_after">
+<code class="descname">margin_after</code><span> </span>int<a class="headerlink" href="#PvrConfig.margin_after" title="Permalink to this definition">¶</a></dt>
+<dd><p>default margin after recording end time</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="pvr-config-api">
+<h2>PVR Config API<a class="headerlink" href="#pvr-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-pvr-configuration">
+<h3>Get the current PVR configuration<a class="headerlink" href="#get-the-current-pvr-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/config/</code><a class="headerlink" href="#get--api-v4-pvr-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current <a class="reference internal" href="#PvrConfig" title="PvrConfig"><code class="xref json json-object docutils literal"><span class="pre">PvrConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;margin_before&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;margin_after&quot;</span><span class="o">:</span> <span class="mi">5</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-current-pvr-configuration">
+<h3>Update the current PVR configuration<a class="headerlink" href="#update-the-current-pvr-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-pvr-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/pvr/config/</code><a class="headerlink" href="#put--api-v4-pvr-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current <a class="reference internal" href="#PvrConfig" title="PvrConfig"><code class="xref json json-object docutils literal"><span class="pre">PvrConfig</span></code></a></p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="pvr-quota">
+<h2>PVR Quota<a class="headerlink" href="#pvr-quota" title="Permalink to this headline">¶</a></h2>
+<p>PVR Quota has the following attributes:</p>
+<dl class="object">
+<dt id="PvrQuota">
+<code class="descname">PvrQuota</code><a class="headerlink" href="#PvrQuota" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="PvrQuota.quota_exceeded">
+<code class="descname">quota_exceeded</code><span> </span>bool<a class="headerlink" href="#PvrQuota.quota_exceeded" title="Permalink to this definition">¶</a></dt>
+<dd><p>is quota exceeded</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PvrQuota.needed_tresh">
+<code class="descname">needed_tresh</code><span> </span>int<a class="headerlink" href="#PvrQuota.needed_tresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>needed quota threshold</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="PvrQuota.cur_tresh">
+<code class="descname">cur_tresh</code><span> </span>int<a class="headerlink" href="#PvrQuota.cur_tresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>current quota threshold</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="pvr-quota-api">
+<h2>PVR Quota API<a class="headerlink" href="#pvr-quota-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-current-quota-info">
+<h3>Getting the current quota info<a class="headerlink" href="#getting-the-current-quota-info" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-quota-">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/quota/</code><a class="headerlink" href="#get--api-v4-pvr-quota-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/quota/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;quota_exceeded&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;needed_tresh&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+        <span class="s2">&quot;cur_tresh&quot;</span><span class="o">:</span> <span class="mi">40</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="request-next-quota-threshold">
+<h3>Request next quota threshold<a class="headerlink" href="#request-next-quota-threshold" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-pvr-quota-">
+<code class="descname">PUT </code><code class="descname">/api/v4/pvr/quota/</code><a class="headerlink" href="#put--api-v4-pvr-quota-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request next quota threshold. You don&#8217;t have to provide any arguments,
+the quota will be adjusted automatically if needed.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/pvr/quota/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;quota_exceeded&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;needed_tresh&quot;</span><span class="o">:</span> <span class="mi">80</span><span class="p">,</span>
+        <span class="s2">&quot;cur_tresh&quot;</span><span class="o">:</span> <span class="mi">80</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="pvr-programmed-records">
+<h1>PVR Programmed records<a class="headerlink" href="#pvr-programmed-records" title="Permalink to this headline">¶</a></h1>
+<p>Precords (Programmed records) are records that are planned. Precords can be
+manual, or generated using a PVR Generator (see below). Only manual Precords
+can be edited directly.</p>
+<div class="section" id="precord">
+<h2>Precord<a class="headerlink" href="#precord" title="Permalink to this headline">¶</a></h2>
+<p>Precord has the following attributes:</p>
+<dl class="object">
+<dt id="Precord">
+<code class="descname">Precord</code><a class="headerlink" href="#Precord" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="Precord.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Precord.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>precord id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.media">
+<code class="descname">media</code><span> </span>string<a class="headerlink" href="#Precord.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>media name on which the record will be written to. See the <a class="reference internal" href="#media-api">Media API</a>
+for more info. This property and can be empty when the file backing the
+record is not available, for example when secure is set.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.path">
+<code class="descname">path</code><span> </span>string<a class="headerlink" href="#Precord.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>destination directory on the media storage where the record will be
+written to</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.has_record_gen">
+<code class="descname">has_record_gen</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Precord.has_record_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>if true, this precord has been generated using a Generator</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.record_gen_id">
+<code class="descname">record_gen_id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Precord.record_gen_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>if has_record_gen, this is the id of the generator</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.conflict">
+<code class="descname">conflict</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Precord.conflict" title="Permalink to this definition">¶</a></dt>
+<dd><p>if true this record may conflict with another record</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.overlap_list">
+<code class="descname">overlap_list</code><span>[] array of </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Precord.overlap_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>in case of conflict, this will contain the list of records id that may
+conflict with this record</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#Precord.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>it only applies to generated records. If false the generated precord will
+be skipped.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.altered">
+<code class="descname">altered</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Precord.altered" title="Permalink to this definition">¶</a></dt>
+<dd><p>a precord is altered when some part of the recording may be missing.
+This can be the case if a conflict occurred during the recording
+(or connection was down)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Precord.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disabled</td>
+<td>disabled</td>
+</tr>
+<tr class="row-odd"><td>start_error</td>
+<td>failed to start</td>
+</tr>
+<tr class="row-even"><td>waiting_start_time</td>
+<td>scheduled</td>
+</tr>
+<tr class="row-odd"><td>starting</td>
+<td>starting</td>
+</tr>
+<tr class="row-even"><td>running</td>
+<td>running</td>
+</tr>
+<tr class="row-odd"><td>running_error</td>
+<td>running with error</td>
+</tr>
+<tr class="row-even"><td>failed</td>
+<td>failed</td>
+</tr>
+<tr class="row-odd"><td>finished</td>
+<td>finished</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Precord.error" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>file_access_error</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>disk_full</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>private_but_no_private_dir</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>network_problem</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>resource_problem</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>no_stream_available</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>no_data_received</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>missed</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>stopped</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>internal_error</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>unknown_error</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.channel_uuid">
+<code class="descname">channel_uuid</code><span> </span>string<a class="headerlink" href="#Precord.channel_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>channel uuid</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.channel_name">
+<code class="descname">channel_name</code><span> </span>string<a class="headerlink" href="#Precord.channel_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional channel name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.channel_quality">
+<code class="descname">channel_quality</code><span> </span>enum<a class="headerlink" href="#Precord.channel_quality" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">channel_quality</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>auto</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>hd</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>sd</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ld</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>3d</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.channel_type">
+<code class="descname">channel_type</code><span> </span>enum<a class="headerlink" href="#Precord.channel_type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">channel_type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8216;&#8217; (empty string)</td>
+<td>auto</td>
+</tr>
+<tr class="row-odd"><td>iptv</td>
+<td>use only iptv streams</td>
+</tr>
+<tr class="row-even"><td>dvb</td>
+<td>use only dvb streams</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.name">
+<code class="descname">name</code><span> </span>string<a class="headerlink" href="#Precord.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>record name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.subname">
+<code class="descname">subname</code><span> </span>string<a class="headerlink" href="#Precord.subname" title="Permalink to this definition">¶</a></dt>
+<dd><p>record subname</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.broadcast_type">
+<code class="descname">broadcast_type</code><span> </span>enum<a class="headerlink" href="#Precord.broadcast_type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">broadcast_type</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tv</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>radio</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.start">
+<code class="descname">start</code><span> </span>int<a class="headerlink" href="#Precord.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>record start timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.end">
+<code class="descname">end</code><span> </span>int<a class="headerlink" href="#Precord.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>record end timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.legacy_uri">
+<code class="descname">legacy_uri</code><span> </span>string<a class="headerlink" href="#Precord.legacy_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>only used for legacy apps. Use channel_uuid instead when available
+NOTE: only visible when called from player</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Precord.force_channel_name">
+<code class="descname">force_channel_name</code><span> </span>string<a class="headerlink" href="#Precord.force_channel_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>only used for legacy apps. Use channel_uuid instead when available
+NOTE: only visible when called from player</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="precord-api">
+<h2>Precord API<a class="headerlink" href="#precord-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-list-of-precords">
+<h3>Getting the list of precords<a class="headerlink" href="#getting-the-list-of-precords" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-programmed-">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/programmed/</code><a class="headerlink" href="#get--api-v4-pvr-programmed-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/programmed/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;France 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;overlap_list&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="mi">195</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1403755697</span><span class="p">,</span>
+            <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">190</span><span class="p">,</span>
+            <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1403755628</span><span class="p">,</span>
+            <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;waiting_start_time&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Test Repeat&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conflict&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-201&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;France 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;overlap_list&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">],</span>
+            <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1403541511</span><span class="p">,</span>
+            <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;NO NAME&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">236</span><span class="p">,</span>
+            <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1403541361</span><span class="p">,</span>
+            <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;Sub Test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;iptv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conflict&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-201&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="getting-a-specific-precord">
+<h3>Getting a specific precord<a class="headerlink" href="#getting-a-specific-precord" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-programmed-id">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/programmed/{id}</code><a class="headerlink" href="#get--api-v4-pvr-programmed-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the requested <a class="reference internal" href="#Precord" title="Precord"><code class="xref json json-object docutils literal"><span class="pre">Precord</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/programmed/236</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;France 2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;overlap_list&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">],</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1403541511</span><span class="p">,</span>
+        <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;NO NAME&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">236</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1403541361</span><span class="p">,</span>
+        <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;Sub Test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;iptv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conflict&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-201&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="updating-a-precord">
+<h3>Updating a precord<a class="headerlink" href="#updating-a-precord" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-pvr-programmed-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/pvr/programmed/{id}</code><a class="headerlink" href="#put--api-v4-pvr-programmed-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="#Precord" title="Precord"><code class="xref json json-object docutils literal"><span class="pre">Precord</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/pvr/programmed/236</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test 2&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;France 2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;overlap_list&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">],</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1403541511</span><span class="p">,</span>
+        <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;NO NAME&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">236</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1403541361</span><span class="p">,</span>
+        <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;Sub Test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;iptv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;test 2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conflict&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-201&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-precord">
+<h3>Delete a precord<a class="headerlink" href="#delete-a-precord" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-pvr-programmed-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/pvr/programmed/{id}</code><a class="headerlink" href="#delete--api-v4-pvr-programmed-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="#Precord" title="Precord"><code class="xref json json-object docutils literal"><span class="pre">Precord</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/pvr/programmed/236</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="create-a-precord">
+<h3>Create a precord<a class="headerlink" href="#create-a-precord" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-pvr-programmed-">
+<code class="descname">POST </code><code class="descname">/api/v4/pvr/programmed/</code><a class="headerlink" href="#post--api-v4-pvr-programmed-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new <a class="reference internal" href="#Precord" title="Precord"><code class="xref json json-object docutils literal"><span class="pre">Precord</span></code></a></p>
+<p>** Example request**:</p>
+<p>** Example response**:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">63</span><span class="p">,</span>
+        <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-374&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;NT1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1444240500</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1444244100</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Secret Story&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;La soirée des habitants&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;starting&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;conflict&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;overlap_list&quot;</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;margin_before&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;margin_after&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="pvr-finished-records">
+<h1>PVR Finished records<a class="headerlink" href="#pvr-finished-records" title="Permalink to this headline">¶</a></h1>
+<p>Frecords (Finished records) are records that are finished or in progress.
+An <cite>Frecord</cite> object is created automatically when a <cite>Precord</cite> start time is
+reached.</p>
+<div class="section" id="frecord">
+<h2>Frecord<a class="headerlink" href="#frecord" title="Permalink to this headline">¶</a></h2>
+<p>Frecord has the following attributes:</p>
+<dl class="object">
+<dt id="Frecord">
+<code class="descname">Frecord</code><a class="headerlink" href="#Frecord" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="Frecord.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>frecord id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.media">
+<code class="descname">media</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>media name on which the record is written. See the <a class="reference internal" href="#media-api">Media API</a> for more
+info. This property and can be empty when the file backing the record is
+not available, for example when secure is set.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.path">
+<code class="descname">path</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>destination directory on the media storage</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.filename">
+<code class="descname">filename</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>filename of the record</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.byte_size">
+<code class="descname">byte_size</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.byte_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>size of the record file in bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.has_record_gen">
+<code class="descname">has_record_gen</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.has_record_gen" title="Permalink to this definition">¶</a></dt>
+<dd><p>if true, this frecord has been generated using a Generator</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.record_gen_id">
+<code class="descname">record_gen_id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.record_gen_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>if has_record_gen, this is the id of the generator</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.altered">
+<code class="descname">altered</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.altered" title="Permalink to this definition">¶</a></dt>
+<dd><p>an frecord is altered when some part of the recording may be missing.
+This can be the case if a conflict occurred during the recording
+(or connection was down)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disabled</td>
+<td>disabled</td>
+</tr>
+<tr class="row-odd"><td>start_error</td>
+<td>failed to start</td>
+</tr>
+<tr class="row-even"><td>waiting_start_time</td>
+<td>scheduled</td>
+</tr>
+<tr class="row-odd"><td>starting</td>
+<td>starting</td>
+</tr>
+<tr class="row-even"><td>running</td>
+<td>running</td>
+</tr>
+<tr class="row-odd"><td>running_error</td>
+<td>running with error</td>
+</tr>
+<tr class="row-even"><td>failed</td>
+<td>failed</td>
+</tr>
+<tr class="row-odd"><td>finished</td>
+<td>finished</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.error" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>file_access_error</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>disk_full</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>private_but_no_private_dir</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>network_problem</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>resource_problem</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>no_stream_available</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>no_data_received</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>missed</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>stopped</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>internal_error</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>unknown_error</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.channel_uuid">
+<code class="descname">channel_uuid</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.channel_uuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>channel uuid</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.channel_name">
+<code class="descname">channel_name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.channel_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional channel name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.channel_quality">
+<code class="descname">channel_quality</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.channel_quality" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">channel_quality</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>auto</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>hd</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>sd</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ld</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>3d</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.channel_type">
+<code class="descname">channel_type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.channel_type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">channel_type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#8216;&#8217; (empty string)</td>
+<td>auto</td>
+</tr>
+<tr class="row-odd"><td>iptv</td>
+<td>use only iptv streams</td>
+</tr>
+<tr class="row-even"><td>dvb</td>
+<td>use only dvb streams</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.name">
+<code class="descname">name</code><span> </span>string<a class="headerlink" href="#Frecord.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>record name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.subname">
+<code class="descname">subname</code><span> </span>string<a class="headerlink" href="#Frecord.subname" title="Permalink to this definition">¶</a></dt>
+<dd><p>record subname</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.broadcast_type">
+<code class="descname">broadcast_type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.broadcast_type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="93%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">broadcast_type</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tv</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>radio</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.start">
+<code class="descname">start</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>record start timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.end">
+<code class="descname">end</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.end" title="Permalink to this definition">¶</a></dt>
+<dd><p>record end timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Frecord.secure">
+<code class="descname">secure</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#Frecord.secure" title="Permalink to this definition">¶</a></dt>
+<dd><p>flag set when the record is protected by DRM</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="frecord-api">
+<h2>Frecord API<a class="headerlink" href="#frecord-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-list-of-frecords">
+<h3>Getting the list of frecords<a class="headerlink" href="#getting-the-list-of-frecords" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-finished-">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/finished/</code><a class="headerlink" href="#get--api-v4-pvr-finished-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/finished/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;M6 - Fier de ma maison - 27-06-2013 16h35 01h15 (5).m2ts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;byte_size&quot;</span><span class="o">:</span> <span class="mi">4433869440</span><span class="p">,</span>
+            <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-613&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;M6&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;dvb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;hd&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Fier de ma maison&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1372343700</span><span class="p">,</span>
+            <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1372348200</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;secure&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">22</span><span class="p">,</span>
+            <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;TF1 - Nos chers voisins - 17-09-2014 15h23 01h (22).m2ts&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;byte_size&quot;</span><span class="o">:</span> <span class="mi">2421095040</span><span class="p">,</span>
+            <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-612&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;TF1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Nos chers voisins&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1410960180</span><span class="p">,</span>
+            <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1410963780</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;secure&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="getting-a-specific-frecord">
+<h3>Getting a specific frecord<a class="headerlink" href="#getting-a-specific-frecord" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-finished-id">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/finished/{id}</code><a class="headerlink" href="#get--api-v4-pvr-finished-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the requested <a class="reference internal" href="#Frecord" title="Frecord"><code class="xref json json-object docutils literal"><span class="pre">Frecord</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/finished/236</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">236</span><span class="p">,</span>
+        <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;NO NAME&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;France 3 - Tout le sport - 10-04-2015 20h00 10m (24).m2ts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;byte_size&quot;</span><span class="o">:</span> <span class="mi">341752320</span><span class="p">,</span>
+        <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-202&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;France 3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Tout le sport&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1428688800</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1428689400</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;secure&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="updating-an-frecord">
+<h3>Updating an frecord<a class="headerlink" href="#updating-an-frecord" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-pvr-finished-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/pvr/finished/{id}</code><a class="headerlink" href="#put--api-v4-pvr-finished-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="#Frecord" title="Frecord"><code class="xref json json-object docutils literal"><span class="pre">Frecord</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/pvr/finished/236</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tout le sport&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;subname&quot;</span><span class="p">:</span> <span class="s2">&quot;On est les champions&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">236</span><span class="p">,</span>
+        <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;NO NAME&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;France 3 - Tout le sport - 10-04-2015 20h00 10m (24).m2ts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;byte_size&quot;</span><span class="o">:</span> <span class="mi">341752320</span><span class="p">,</span>
+        <span class="s2">&quot;has_record_gen&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;record_gen_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;broadcast_type&quot;</span><span class="o">:</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_uuid&quot;</span><span class="o">:</span> <span class="s2">&quot;uuid-webtv-202&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_name&quot;</span><span class="o">:</span> <span class="s2">&quot;France 3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_type&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;channel_quality&quot;</span><span class="o">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Tout le sport&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;subname&quot;</span><span class="o">:</span> <span class="s2">&quot;On est les champions&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;start&quot;</span><span class="o">:</span> <span class="mi">1428688800</span><span class="p">,</span>
+        <span class="s2">&quot;end&quot;</span><span class="o">:</span> <span class="mi">1428689400</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;altered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;secure&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-an-frecord">
+<h3>Delete an frecord<a class="headerlink" href="#delete-an-frecord" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-pvr-finished-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/pvr/finished/{id}</code><a class="headerlink" href="#delete--api-v4-pvr-finished-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="#Frecord" title="Frecord"><code class="xref json json-object docutils literal"><span class="pre">Frecord</span></code></a> and associated files</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/pvr/finished/236</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="storage-media">
+<h1>Storage media<a class="headerlink" href="#storage-media" title="Permalink to this headline">¶</a></h1>
+<p>Media objects represent a storage on which records can be written to, typically
+a disk.</p>
+<div class="section" id="media">
+<h2>Media<a class="headerlink" href="#media" title="Permalink to this headline">¶</a></h2>
+<p>Media has the following attributes:</p>
+<dl class="object">
+<dt id="Media">
+<code class="descname">Media</code><a class="headerlink" href="#Media" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="Media.media">
+<code class="descname">media</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#Media.media" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the storage medium</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Media.free_bytes">
+<code class="descname">free_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Media.free_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of free bytes on the medium</p>
+</dd></dl>
+
+<dl class="property">
+<dt>
+<code class="descname">total bytes int [ro]</code></dt>
+<dd><p>total number of bytes on the medium</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="Media.record_time">
+<code class="descname">record_time</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#Media.record_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimated record time in seconds for multiple channel types and qualities</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="media-api">
+<h2>Media API<a class="headerlink" href="#media-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-list-of-media">
+<h3>Getting the list of media<a class="headerlink" href="#getting-the-list-of-media" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-pvr-media-">
+<code class="descname">GET </code><code class="descname">/api/v4/pvr/media/</code><a class="headerlink" href="#get--api-v4-pvr-media-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/pvr/media/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;media&quot;</span><span class="o">:</span> <span class="s2">&quot;Disque dur&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">39700000000</span><span class="p">,</span>
+            <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">244950000000</span><span class="p">,</span>
+            <span class="s2">&quot;record_time&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;dvb&quot;</span><span class="o">:</span>  <span class="p">{</span> <span class="s2">&quot;sd&quot;</span><span class="o">:</span> <span class="mi">48461</span><span class="p">,</span> <span class="s2">&quot;hd&quot;</span><span class="o">:</span> <span class="mi">35245</span><span class="p">,</span> <span class="s2">&quot;3d&quot;</span><span class="o">:</span> <span class="mi">35245</span> <span class="p">},</span>
+                <span class="s2">&quot;iptv&quot;</span><span class="o">:</span>  <span class="p">{</span> <span class="s2">&quot;ld&quot;</span><span class="o">:</span> <span class="mi">155078</span><span class="p">,</span> <span class="s2">&quot;sd&quot;</span><span class="o">:</span> <span class="mi">110770</span><span class="p">,</span> <span class="s2">&quot;hd&quot;</span><span class="o">:</span> <span class="mi">51012</span><span class="p">,</span> <span class="s2">&quot;3d&quot;</span><span class="o">:</span> <span class="mi">51012</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;media&quot;</span><span class="o">:</span>  <span class="s2">&quot;NO NAME&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;free_bytes&quot;</span><span class="o">:</span> <span class="mi">873930000</span><span class="p">,</span>
+            <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span>  <span class="mi">7790000000</span><span class="p">,</span>
+            <span class="s2">&quot;record_time&quot;</span><span class="o">:</span>  <span class="p">{</span>
+                <span class="s2">&quot;dvb&quot;</span><span class="o">:</span>  <span class="p">{</span> <span class="s2">&quot;sd&quot;</span><span class="o">:</span> <span class="mi">1066</span><span class="p">,</span> <span class="s2">&quot;hd&quot;</span><span class="o">:</span> <span class="mi">775</span><span class="p">,</span> <span class="s2">&quot;3d&quot;</span><span class="o">:</span> <span class="mi">775</span> <span class="p">},</span>
+                <span class="s2">&quot;iptv&quot;</span><span class="o">:</span>  <span class="p">{</span> <span class="s2">&quot;ld&quot;</span><span class="o">:</span> <span class="mi">3413</span><span class="p">,</span> <span class="s2">&quot;sd&quot;</span><span class="o">:</span> <span class="mi">2438</span><span class="p">,</span> <span class="s2">&quot;hd&quot;</span><span class="o">:</span> <span class="mi">1122</span><span class="p">,</span> <span class="s2">&quot;3d&quot;</span><span class="o">:</span> <span class="mi">1122</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

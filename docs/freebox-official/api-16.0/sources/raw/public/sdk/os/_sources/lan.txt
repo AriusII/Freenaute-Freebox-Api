@@ -1,0 +1,608 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===
+Lan
+===
+
+With the LAN API you get information and modify the Freebox Server
+network configuration.
+
+Lan Errors
+==========
+
+When attempting to access the LAN API, you may encounter the following
+errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+noent                            Invalid id
+internal_error                   Internal error
+ioerror                          Internal error
+inval                            Invalid parameter
+inval_gateway_ip                 Invalid Gateway IP
+======================           ======================
+
+Lan Config
+==========
+
+Lan config has the following attributes:
+
+.. json:object:: LanConfig
+
+   .. json:property:: ip string
+
+       Freebox Server IPv4 address
+
+   .. json:property:: name string
+
+       Freebox Server name
+
+   .. json:property:: name_dns string
+
+       Freebox Server DNS name
+
+   .. json:property:: name_mdns string
+
+       Freebox Server mDNS name
+
+   .. json:property:: name_netbios string
+
+       Freebox Server netbios name
+
+   .. json:property:: type enum
+
+      The valid LAN modes are:
+
+      ===============   =====================================
+      Type              Description
+      ===============   =====================================
+      router            The Freebox acts as a network router
+      bridge            The Freebox acts as a network bridge
+      ===============   =====================================
+
+      NOTE: in bridge mode, most of Freebox services are disabled.  It
+      is recommended to use the router mode, and third party apps
+      should not change this setting
+
+
+Lan Config API
+==============
+
+Get the current Lan configuration
+---------------------------------
+
+.. http:get:: /api/v4/lan/config/
+
+   Returns the current :json:object:`LanConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/lan/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "name_dns": "freebox-r0ro",
+              "name_mdns": "Freebox-r0ro",
+              "name": "Freebox r0ro",
+              "mode": "router",
+              "name_netbios": "Freebox_r0ro",
+              "ip": "192.168.1.254"
+          }
+      }
+
+Update the current Lan configuration
+------------------------------------
+
+.. http:put:: /api/v4/lan/config/
+
+   Update the current :json:object:`LanConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/lan/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "mode":"router",
+         "ip":"192.168.69.254",
+         "name":"Freebox de r0ro",
+         "name_dns":"freebox-de-r0ro",
+         "name_mdns":"Freebox-de-r0ro",
+         "name_netbios":"Freebox_de_r0ro"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         "success":true,
+         "result": {
+            "name_dns":"freebox-de-r0ro",
+            "name_mdns":"Freebox-de-r0ro",
+            "name":"Freebox de r0ro",
+            "mode":"router",
+            "name_netbios":"Freebox_de_r0ro",
+            "ip":"192.168.69.254"
+         }
+      }
+
+
+===========
+Lan Browser
+===========
+
+With the LAN browser API you get information on hosts on the Freebox
+Server local network.
+
+Errors
+======
+
+When attempting to access the LAN browser API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+inval                            Invalid parameter
+nodev                            Invalid interface
+nohost                           Invalid host id
+nomem                            Internal error
+netdown                          Network is down
+======================           ======================
+
+
+Lan Browser API
+===============
+
+Lan browser API allow you to discover hosts on the local network
+
+Getting the list of browsable LAN interfaces
+--------------------------------------------
+
+.. http:get:: /api/v4/lan/browser/interfaces/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/lan/browser/interfaces/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         success: true,
+         result: [
+            {
+               name: "pub",
+               host_count: 3
+            }
+         ]
+      }
+
+Lan Host object
+---------------
+
+Lan Host has the following attributes:
+
+.. json:object:: LanHost
+
+   .. json:property:: id string [ro]
+
+       Host id (unique on this interface)
+
+   .. json:property:: primary_name string
+
+       Host primary name (chosen from the list of available names, or
+       manually set by user)
+
+   .. json:property:: host_type enum
+
+      When possible, the Freebox will try to guess the host_type, but
+      you can manually override this to the correct value
+
+      Possible values are:
+
+      ======================           ======================
+      source                           Description
+      ======================           ======================
+      workstation                      Workstation
+      laptop                           Laptop
+      smartphone                       Smartphone
+      tablet                           Tablet
+      printer                          Printer
+      vg_console                       Video game console
+      television                       TV
+      nas                              Nas
+      ip_camera                        IP Camera
+      ip_phone                         IP Phone
+      freebox_player                   Freebox Player
+      freebox_hd                       Freebox Server
+      networking_device                Networking device
+      multimedia_device                Multimedia device
+      other                            Other
+      ======================           ======================
+
+   .. json:property:: primary_name_manual bool [ro]
+
+       If true the primary name has been set manually
+
+   .. json:property:: l2ident LanHostL2Ident[] [ro]
+
+       Layer 2 network id and its type
+
+   .. json:property:: vendor_name string [ro]
+
+       Host vendor name (from the mac address)
+
+   .. json:property:: persistent bool
+
+       If true the host is always shown even if it has not been active
+       since the Freebox startup
+
+   .. json:property:: reachable bool [ro]
+
+       If true the host can receive traffic from the Freebox
+
+   .. json:property:: last_time_reachable timestamp [ro]
+
+       Last time the host was reached
+
+   .. json:property:: active bool [ro]
+
+      If true the host sends traffic to the Freebox
+
+   .. json:property:: last_activity timestamp [ro]
+
+       Last time the host sent traffic
+
+   .. json:property:: names LanHostName[] [ro]
+
+      List of available names, and their source
+
+   .. json:property:: l3connectivities LanHostL3Connectivity[] [ro]
+
+      List of available layer 3 network connections
+
+.. json:object:: LanHostName
+
+   .. json:property:: name string [ro]
+
+       Host name
+
+   .. json:property:: source enum [ro]
+
+       source of the name
+
+.. json:object:: LanHostL2Ident
+
+   .. json:property:: id string [ro]
+
+       Layer 2 id
+
+   .. json:property:: type string [ro]
+
+       Type of layer 2 address
+
+      ======================           ======================
+      source                           Description
+      ======================           ======================
+      dhcp                             DHCP
+      netbios                          Netbios
+      mdns                             mDNS
+      upnp                             UPnP
+      ======================           ======================
+
+.. json:object:: LanHostL3Connectivity
+
+   .. json:property:: addr string [ro]
+
+       Layer 3 address
+
+   .. json:property:: af enum [ro]
+
+      ======================           ======================
+      af                               Description
+      ======================           ======================
+      ipv4                             IPv4
+      ipv6                             IPv6
+      ======================           ======================
+
+   .. json:property:: active bool [ro]
+
+      is the connection active
+
+   .. json:property:: reachable bool [ro]
+
+      is the connection reachable
+
+   .. json:property:: last_activity timestamp [ro]
+
+      last activity timestamp
+
+   .. json:property:: last_time_reachable timestamp [ro]
+
+      last reachable timestamp
+
+Getting the list of hosts on a given interface
+----------------------------------------------
+
+.. http:get:: /api/v4/lan/browser/{interface}/
+
+   Returns the list of :json:object:`LanHost` on this interface
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/lan/browser/pub/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "l2ident": {
+                      "id": "d0:23:db:36:15:aa",
+                      "type": "mac_address"
+                  },
+                  "active": true,
+                  "id": "ether-d0:23:db:36:15:aa",
+                  "last_time_reachable": 1360669498,
+                  "persistent": true,
+                  "names": [
+                      {
+                          "name": "iPhone-r0ro",
+                          "source": "dhcp"
+                      }
+                  ],
+                  "vendor_name": "Apple, Inc.",
+                  "l3connectivities": [
+                      {
+                          "addr": "192.168.69.20",
+                          "active": true,
+                          "af": "ipv4",
+                          "reachable": true,
+                          "last_activity": 1360669498,
+                          "last_time_reachable": 1360669498
+                      }
+                  ],
+                  "reachable": true,
+                  "last_activity": 1360669498,
+                  "primary_name_manual": true,
+                  "primary_name": "iPhone r0ro"
+              },
+              {
+                  "l2ident": {
+                      "id": "00:24:d4:7e:00:4c",
+                      "type": "mac_address"
+                  },
+                  "active": true,
+                  "id": "ether-00:24:d4:7e:00:4c",
+                  "last_time_reachable": 1360669491,
+                  "persistent": false,
+                  "names": [
+                      {
+                          "name": "Freebox Player",
+                          "source": "dhcp"
+                      }
+                  ],
+                  "vendor_name": "FREEBOX SA",
+                  "l3connectivities": [
+                      {
+                          "addr": "192.168.69.30",
+                          "active": true,
+                          "af": "ipv4",
+                          "reachable": true,
+                          "last_activity": 1360669491,
+                          "last_time_reachable": 1360669491
+                      }
+                  ],
+                  "reachable": true,
+                  "last_activity": 1360669491,
+                  "primary_name_manual": false,
+                  "primary_name": "Freebox Player"
+              }
+          ]
+      }
+
+Getting an host information
+---------------------------
+
+.. http:get:: /api/v4/lan/browser/{interface}/{hostid}/
+
+   Returns the requested :json:object:`LanHost` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/lan/browser/pub/ether-00:24:d4:7e:00:4c/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "l2ident": {
+                  "id": "00:24:d4:7e:00:4c",
+                  "type": "mac_address"
+              },
+              "active": true,
+              "id": "ether-00:24:d4:7e:00:4c",
+              "last_time_reachable": 1360669611,
+              "persistent": false,
+              "names": [
+                  {
+                      "name": "Freebox Player",
+                      "source": "dhcp"
+                  }
+              ],
+              "vendor_name": "FREEBOX SA",
+              "l3connectivities": [
+                  {
+                      "addr": "192.168.69.30",
+                      "active": true,
+                      "af": "ipv4",
+                      "reachable": true,
+                      "last_activity": 1360669611,
+                      "last_time_reachable": 1360669611
+                  }
+              ],
+              "reachable": true,
+              "last_activity": 1360669611,
+              "primary_name_manual": false,
+              "primary_name": "Freebox Player"
+          }
+      }
+
+Updating an host information
+----------------------------
+
+.. http:put:: /api/v4/lan/browser/{interface}/{hostid}/
+
+   Update a :json:object:`LanHost` properties
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/lan/browser/pub/ether-00:24:d4:7e:00:4c/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "id":"ether-00:24:d4:7e:00:4c",
+         "primary_name":"Freebox Tv"
+      }
+
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "l2ident": {
+                  "id": "00:24:d4:7e:00:4c",
+                  "type": "mac_address"
+              },
+              "active": true,
+              "id": "ether-00:24:d4:7e:00:4c",
+              "last_time_reachable": 1360669851,
+              "persistent": true,
+              "names": [
+                  {
+                      "name": "Freebox Player",
+                      "source": "dhcp"
+                  }
+              ],
+              "vendor_name": "FREEBOX SA",
+              "l3connectivities": [
+                  {
+                      "addr": "192.168.69.30",
+                      "active": true,
+                      "af": "ipv4",
+                      "reachable": true,
+                      "last_activity": 1360669851,
+                      "last_time_reachable": 1360669851
+                  }
+              ],
+              "reachable": true,
+              "last_activity": 1360669851,
+              "primary_name_manual": true,
+              "primary_name": "Freebox Tv"
+          }
+      }
+
+Wake on LAN
+===========
+
+Send Wake ok Lan packet to an host
+----------------------------------
+
+.. http:post:: /api/v4/lan/wol/{interface}/
+
+   Send a wake on LAN packet to the specified host with an optional password
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/lan/wol/pub/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+      {
+         "mac": "00:24:d4:7e:00:4c",
+         "password": ""
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+..  LocalWords:  Lan lan noent ioerror inval ip IP LanConfig IPv mdns
+..  LocalWords:  mDNS netbios de nodev nohost nomem netdown browsable
+..  LocalWords:  LanHost smartphone Smartphone vg nas Nas hd ident af
+..  LocalWords:  LanHostL Ident LanHostName connectivities Tv upnp
+..  LocalWords:  UPnP addr ipv hostid ok

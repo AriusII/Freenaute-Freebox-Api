@@ -1,0 +1,2075 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Wi-Fi &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="System" href="../system/" />
+    <link rel="prev" title="Switch" href="../switch/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wi-fi">
+<h1>Wi-Fi<a class="headerlink" href="#wi-fi" title="Permalink to this headline">¶</a></h1>
+<p>The Wi-Fi API allow you to control the settings of the Freebox Wi-Fi.</p>
+<div class="section" id="wi-fi-errors">
+<h2>Wi-Fi Errors<a class="headerlink" href="#wi-fi-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access this API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>invalid parameters</td>
+</tr>
+<tr class="row-odd"><td>exist</td>
+<td>entry already exists</td>
+</tr>
+<tr class="row-even"><td>nospc</td>
+<td>maximum entry count reached</td>
+</tr>
+<tr class="row-odd"><td>nodev</td>
+<td>invalid device id</td>
+</tr>
+<tr class="row-even"><td>noent</td>
+<td>invalid id</td>
+</tr>
+<tr class="row-odd"><td>busy</td>
+<td>device busy</td>
+</tr>
+<tr class="row-even"><td>inval_band</td>
+<td>invalid wifi band</td>
+</tr>
+<tr class="row-odd"><td>inval_ssid</td>
+<td>invalid ssid</td>
+</tr>
+<tr class="row-even"><td>inval_freq</td>
+<td>invalid wifi frequency</td>
+</tr>
+<tr class="row-odd"><td>inval_cipher</td>
+<td>invalid cipher mod</td>
+</tr>
+<tr class="row-even"><td>inval_key_len</td>
+<td>invalid key length</td>
+</tr>
+<tr class="row-odd"><td>inval_key</td>
+<td>invalid key</td>
+</tr>
+<tr class="row-even"><td>inval_ht_mode</td>
+<td>invalid 802.11n mode</td>
+</tr>
+<tr class="row-odd"><td>inval_ht_mode</td>
+<td>invalid wifi frequency for this 802.11n mode</td>
+</tr>
+<tr class="row-even"><td>inval_ht_needs_wmm</td>
+<td>wmm must be enabled for 802.11n</td>
+</tr>
+<tr class="row-odd"><td>inval_ac_needs_ht</td>
+<td>invalid configuration 802.11ac need ht support</td>
+</tr>
+<tr class="row-even"><td>inval_ac_not_2d4g</td>
+<td>invalid configuration 802.11ac is not supported on 2.4G band</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="wi-fi-global-config">
+<h2>Wi-Fi Global Config<a class="headerlink" href="#wi-fi-global-config" title="Permalink to this headline">¶</a></h2>
+<p>Global config gives quick access to major configuration settings (eg: toggle Wi-Fi)</p>
+<p>WifiGlobalConfig has the following attributes:</p>
+<dl class="object">
+<dt id="WifiGlobalConfig">
+<code class="descname">WifiGlobalConfig</code><a class="headerlink" href="#WifiGlobalConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiGlobalConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#WifiGlobalConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is wifi enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiGlobalConfig.mac_filter_state">
+<code class="descname">mac_filter_state</code><span> </span>enum<a class="headerlink" href="#WifiGlobalConfig.mac_filter_state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">mac_filter_state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disabled</td>
+<td>mac filter is disabled</td>
+</tr>
+<tr class="row-odd"><td>whitelist</td>
+<td>mac filter is enabled, using a whitelist</td>
+</tr>
+<tr class="row-even"><td>blacklist</td>
+<td>mac filter is enabled, using a blacklist</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="wi-fi-global-config-api">
+<h2>Wi-Fi global config API<a class="headerlink" href="#wi-fi-global-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-wi-fi-global-configuration">
+<h3>Get the current Wi-Fi global configuration<a class="headerlink" href="#get-the-current-wi-fi-global-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-config-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/config/</code><a class="headerlink" href="#get--api-v2-wifi-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#WifiGlobalConfig" title="WifiGlobalConfig"><code class="xref json json-object docutils literal"><span class="pre">WifiGlobalConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;mac_filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-wi-fi-global-configuration">
+<h3>Update the Wi-Fi global configuration<a class="headerlink" href="#update-the-wi-fi-global-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v2-wifi-config-">
+<code class="descname">PUT </code><code class="descname">/api/v2/wifi/config/</code><a class="headerlink" href="#put--api-v2-wifi-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#WifiGlobalConfig" title="WifiGlobalConfig"><code class="xref json json-object docutils literal"><span class="pre">WifiGlobalConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v2/wifi/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;mac_filter_state&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wi-fi-access-point">
+<h2>Wi-Fi Access Point<a class="headerlink" href="#wi-fi-access-point" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wi-fi-ap-objects">
+<h3>Wi-Fi AP objects<a class="headerlink" href="#wi-fi-ap-objects" title="Permalink to this headline">¶</a></h3>
+<p>The Freebox may have one or more access points, you can configure each access point with this api.</p>
+<dl class="object">
+<dt id="WifiAp">
+<code class="descname">WifiAp</code><a class="headerlink" href="#WifiAp" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiAp.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiAp.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>wifi ap id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAp.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiAp.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>wifi ap name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAp.status">
+<code class="descname">status</code><span> </span><a class="reference internal" href="#WifiApStatus" title="WifiApStatus">WifiApStatus</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiAp.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>ap status</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAp.capabilites">
+<code class="descname">capabilites</code><span> </span><a class="reference internal" href="#WifiApCapabilities" title="WifiApCapabilities">WifiApCapabilities</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiAp.capabilites" title="Permalink to this definition">¶</a></dt>
+<dd><p>ap capabilities</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAp.config">
+<code class="descname">config</code><span> </span><a class="reference internal" href="#WifiApConfig" title="WifiApConfig">WifiApConfig</a><a class="headerlink" href="#WifiAp.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>ap configuration</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiApStatus">
+<code class="descname">WifiApStatus</code><a class="headerlink" href="#WifiApStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiApStatus.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#WifiApStatus.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>scanning</td>
+<td>Ap is probing wifi channels</td>
+</tr>
+<tr class="row-odd"><td>no_param</td>
+<td>Ap is not configured</td>
+</tr>
+<tr class="row-even"><td>bad_param</td>
+<td>Ap has an invalid configuration</td>
+</tr>
+<tr class="row-odd"><td>disabled</td>
+<td>Ap is permanently disabled</td>
+</tr>
+<tr class="row-even"><td>disabled_planning</td>
+<td>Ap is currently disabled according to planning</td>
+</tr>
+<tr class="row-odd"><td>no_active_bss</td>
+<td>Ap has no active BSS</td>
+</tr>
+<tr class="row-even"><td>starting</td>
+<td>Ap is starting</td>
+</tr>
+<tr class="row-odd"><td>acs</td>
+<td>Ap is selecting the best available channel</td>
+</tr>
+<tr class="row-even"><td>ht_scan</td>
+<td>Ap is scanning for other access point</td>
+</tr>
+<tr class="row-odd"><td>dfs</td>
+<td>Ap is performing dynamic frequency selection</td>
+</tr>
+<tr class="row-even"><td>active</td>
+<td>Ap is active</td>
+</tr>
+<tr class="row-odd"><td>failed</td>
+<td>Ap has failed to start</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApStatus.channel_width">
+<code class="descname">channel_width</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApStatus.channel_width" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>effective channel width (in MHz)</div></blockquote>
+<dl class="property">
+<dt id="WifiApStatus.primary_channel">
+<code class="descname">primary_channel</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApStatus.primary_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>effective primary channel</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApStatus.secondary_channel">
+<code class="descname">secondary_channel</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApStatus.secondary_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>effective secondary channel</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApStatus.dfs_cac_remaining_time">
+<code class="descname">dfs_cac_remaining_time</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApStatus.dfs_cac_remaining_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>time left in dfs state</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiApCapabilities">
+<code class="descname">WifiApCapabilities</code><a class="headerlink" href="#WifiApCapabilities" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>[UNSTABLE]</div></blockquote>
+<dl class="property">
+<dt id="WifiApCapabilities.2d4g">
+<code class="descname">2d4g</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApCapabilities.2d4g" title="Permalink to this definition">¶</a></dt>
+<dd><p>map of capabilites in 2.4 GHz band</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApCapabilities.5g">
+<code class="descname">5g</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApCapabilities.5g" title="Permalink to this definition">¶</a></dt>
+<dd><p>map of capabilites in 5 GHz band</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApCapabilities.60g">
+<code class="descname">60g</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiApCapabilities.60g" title="Permalink to this definition">¶</a></dt>
+<dd><p>map of capabilites in 60 GHz band</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>NOTE: before enabling some feature in ap config, you should ensure that AP supports the
+feature using its provided capabilities.</p>
+<dl class="object">
+<dt id="WifiApHtConfig">
+<code class="descname">WifiApHtConfig</code><a class="headerlink" href="#WifiApHtConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiApHtConfig.ac_enabled">
+<code class="descname">ac_enabled</code><span> </span>bool<a class="headerlink" href="#WifiApHtConfig.ac_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable 802.11ac</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApHtConfig.ht_enabled">
+<code class="descname">ht_enabled</code><span> </span>bool<a class="headerlink" href="#WifiApHtConfig.ht_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable 802.11n</p>
+<p>[UNSTABLE]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiApConfig">
+<code class="descname">WifiApConfig</code><a class="headerlink" href="#WifiApConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiApConfig.band">
+<code class="descname">band</code><span> </span>enum<a class="headerlink" href="#WifiApConfig.band" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">band</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2d4g</td>
+<td>2.4 GHz</td>
+</tr>
+<tr class="row-odd"><td>5g</td>
+<td>5 GHz</td>
+</tr>
+<tr class="row-even"><td>60g</td>
+<td>60 GHz</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApConfig.channel_width">
+<code class="descname">channel_width</code><span> </span>int<a class="headerlink" href="#WifiApConfig.channel_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>wanted channel width (in MHz) :</p>
+<blockquote>
+<div><ul class="simple">
+<li>20 MHz</li>
+<li>40 MHz</li>
+<li>80 MHz</li>
+<li>160 MHz</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApConfig.primary_channel">
+<code class="descname">primary_channel</code><span> </span>int<a class="headerlink" href="#WifiApConfig.primary_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>wanted primary channel, value of 0 means automatic selection</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApConfig.secondary_channel">
+<code class="descname">secondary_channel</code><span> </span>int<a class="headerlink" href="#WifiApConfig.secondary_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>wanted secondary channel, value of 0 means automatic selection</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApConfig.dfs_enabled">
+<code class="descname">dfs_enabled</code><span> </span>bool<a class="headerlink" href="#WifiApConfig.dfs_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable channels that require DFS</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiApConfig.ht">
+<code class="descname">ht</code><span> </span><a class="reference internal" href="#WifiApHtConfig" title="WifiApHtConfig">WifiApHtConfig</a><a class="headerlink" href="#WifiApConfig.ht" title="Permalink to this definition">¶</a></dt>
+<dd><p>wifi ht config</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="wi-fi-ap-api">
+<h3>Wi-Fi AP API<a class="headerlink" href="#wi-fi-ap-api" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="get-the-ap-list">
+<h4>Get the ap list<a class="headerlink" href="#get-the-ap-list" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--api-v2-wifi-ap-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/ap/</code><a class="headerlink" href="#get--api-v2-wifi-ap-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of Freebox Access Points <a class="reference internal" href="#WifiAp" title="WifiAp"><code class="xref json json-object docutils literal"><span class="pre">WifiAp</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/ap/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;capabilities&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;2d4g&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;shortgi20&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;vht_rx_ldpc&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+                     <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+                    <span class="s2">&quot;shortgi40&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;60g&quot;</span><span class="o">:</span> <span class="p">{</span>
+                     <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;5g&quot;</span><span class="o">:</span> <span class="p">{</span>
+                     <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;2.4G&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;40&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;ht_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;ac_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+                    <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;dfs_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+                <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">9</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
+                <span class="s2">&quot;dfs_cac_remaining_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;active&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-particular-ap">
+<h4>Get a particular AP<a class="headerlink" href="#get-a-particular-ap" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--api-v2-wifi-ap-id">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/ap/{id}</code><a class="headerlink" href="#get--api-v2-wifi-ap-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#WifiAp" title="WifiAp"><code class="xref json json-object docutils literal"><span class="pre">WifiAp</span></code></a> with the requested id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/ap/0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;capabilities&quot;</span><span class="o">:</span> <span class="p">{</span>
+             <span class="s2">&quot;2d4g&quot;</span><span class="o">:</span> <span class="p">{</span>
+                 <span class="s2">&quot;shortgi20&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="s2">&quot;vht_rx_ldpc&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+                  <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+                 <span class="s2">&quot;shortgi40&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;60g&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;5g&quot;</span><span class="o">:</span> <span class="p">{</span>
+                  <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+             <span class="p">}</span>
+         <span class="p">},</span>
+         <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;2.4G&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+             <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;40&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="p">{</span>
+                 <span class="s2">&quot;ht_enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                 <span class="s2">&quot;ac_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+
+                 <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+             <span class="p">},</span>
+             <span class="s2">&quot;dfs_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+             <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+             <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">9</span>
+         <span class="p">},</span>
+         <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+             <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
+             <span class="s2">&quot;dfs_cac_remaining_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+             <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+             <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;active&quot;</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-an-ap">
+<h4>Update an AP<a class="headerlink" href="#update-an-ap" title="Permalink to this headline">¶</a></h4>
+<dl class="put">
+<dt id="put--api-v2-wifi-ap-id">
+<code class="descname">PUT </code><code class="descname">/api/v2/wifi/ap/{id}</code><a class="headerlink" href="#put--api-v2-wifi-ap-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#WifiAp" title="WifiAp"><code class="xref json json-object docutils literal"><span class="pre">WifiAp</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v2/wifi/ap/0</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ht_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;capabilities&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">...</span> <span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;2.4G&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;ht_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;ac_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span>
+
+                <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;dfs_enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;primary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;dfs_cac_remaining_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;scanning&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wi-fi-ap-allowed-channels">
+<h3>Wi-Fi AP allowed channels<a class="headerlink" href="#wi-fi-ap-allowed-channels" title="Permalink to this headline">¶</a></h3>
+<p>To be able to allow user to pick a valid channel combination for a given AP you should use
+the following api to retreive the list of allowed channel combination.</p>
+<dl class="object">
+<dt id="WifiAllowedComb">
+<code class="descname">WifiAllowedComb</code><a class="headerlink" href="#WifiAllowedComb" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiAllowedComb.band">
+<code class="descname">band</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#WifiAllowedComb.band" title="Permalink to this definition">¶</a></dt>
+<dd><p>the band for which the combination can be used</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">band</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2d4g</td>
+<td>2.4 GHz</td>
+</tr>
+<tr class="row-odd"><td>5g</td>
+<td>5 GHz</td>
+</tr>
+<tr class="row-even"><td>60g</td>
+<td>60 GHz</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAllowedComb.channel_width">
+<code class="descname">channel_width</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiAllowedComb.channel_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>the channel_width for which the combination can be used</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAllowedComb.need_dfs">
+<code class="descname">need_dfs</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiAllowedComb.need_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>does this combination requires DFS.</p>
+<p>You should only allow this combination if ap has allowed dfs.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAllowedComb.dfs_cac_time">
+<code class="descname">dfs_cac_time</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiAllowedComb.dfs_cac_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>time required in dfs state before behing able to start the AP.</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAllowedComb.primary">
+<code class="descname">primary</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiAllowedComb.primary" title="Permalink to this definition">¶</a></dt>
+<dd><p>primary channel</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiAllowedComb.secondary">
+<code class="descname">secondary</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiAllowedComb.secondary" title="Permalink to this definition">¶</a></dt>
+<dd><p>secondary channel (zero means that secondary channel will not be used)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="get">
+<dt id="get--api-v2-wifi-ap-id-allowed_channel_comb">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/ap/{id}/allowed_channel_comb</code><a class="headerlink" href="#get--api-v2-wifi-ap-id-allowed_channel_comb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#WifiAllowedComb" title="WifiAllowedComb"><code class="xref json json-object docutils literal"><span class="pre">WifiAllowedComb</span></code></a> for the given ap id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/ap/0/allowed_channel_comb</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dfs_cac_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;need_dfs&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;primary&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dfs_cac_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;need_dfs&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;primary&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;40&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dfs_cac_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;need_dfs&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;primary&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="o">:</span> <span class="mi">5</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;40&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dfs_cac_time&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;need_dfs&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;primary&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary&quot;</span><span class="o">:</span> <span class="mi">9</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="wi-fi-ap-stations">
+<h3>Wi-Fi AP stations<a class="headerlink" href="#wi-fi-ap-stations" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wi-fi-ap-stations-objects">
+<h4>Wi-Fi AP Stations objects<a class="headerlink" href="#wi-fi-ap-stations-objects" title="Permalink to this headline">¶</a></h4>
+<p>WifiStation has the following attributes:</p>
+<dl class="object">
+<dt id="WifiStation">
+<code class="descname">WifiStation</code><a class="headerlink" href="#WifiStation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiStation.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>station id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.mac">
+<code class="descname">mac</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>client MAC address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.bssid">
+<code class="descname">bssid</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.bssid" title="Permalink to this definition">¶</a></dt>
+<dd><p>bssid on which the client is associated</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.hostname">
+<code class="descname">hostname</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>client host name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.host">
+<code class="descname">host</code><span> </span><a class="reference internal" href="../lan/#LanHost" title="LanHost">LanHost</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>client host information</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>associated</td>
+<td>station is associated</td>
+</tr>
+<tr class="row-odd"><td>authenticated</td>
+<td>station is authenticated</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.inactive">
+<code class="descname">inactive</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.inactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>inactive duration (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.conn_duration">
+<code class="descname">conn_duration</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.conn_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>connection duration (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.rx_bytes">
+<code class="descname">rx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.rx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>received bytes (from station to Freebox)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.tx_bytes">
+<code class="descname">tx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.tx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>transmitted bytes (from Freebox to station)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.tx_rate">
+<code class="descname">tx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.tx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>reception data rate (in bytes/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.rx_rate">
+<code class="descname">rx_rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.rx_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>transmission data rate (in bytes/s)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.signal">
+<code class="descname">signal</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>signal attenuation (in dB)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.flags">
+<code class="descname">flags</code><span> </span><a class="reference internal" href="#WifiStationFlags" title="WifiStationFlags">WifiStationFlags</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>station flags</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.last_rx">
+<code class="descname">last_rx</code><span> </span><a class="reference internal" href="#WifiStationStats" title="WifiStationStats">WifiStationStats</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.last_rx" title="Permalink to this definition">¶</a></dt>
+<dd><p>last rx stats</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStation.last_tx">
+<code class="descname">last_tx</code><span> </span><a class="reference internal" href="#WifiStationStats" title="WifiStationStats">WifiStationStats</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiStation.last_tx" title="Permalink to this definition">¶</a></dt>
+<dd><p>last tx stats</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiStationFlags">
+<code class="descname">WifiStationFlags</code><a class="headerlink" href="#WifiStationFlags" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>[UNSTABLE]</div></blockquote>
+<dl class="property">
+<dt id="WifiStationFlags.legacy">
+<code class="descname">legacy</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationFlags.legacy" title="Permalink to this definition">¶</a></dt>
+<dd><p>does station uses legacy wifi (802.11a, 802.11b)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationFlags.ht">
+<code class="descname">ht</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationFlags.ht" title="Permalink to this definition">¶</a></dt>
+<dd><p>does station support ht (802.11n)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationFlags.vht">
+<code class="descname">vht</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationFlags.vht" title="Permalink to this definition">¶</a></dt>
+<dd><p>does station support vht (802.11ac)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationFlags.authorized">
+<code class="descname">authorized</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationFlags.authorized" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the station authenticated</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiStationStats">
+<code class="descname">WifiStationStats</code><a class="headerlink" href="#WifiStationStats" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>[UNSTABLE]</div></blockquote>
+<dl class="property">
+<dt id="WifiStationStats.bitrate">
+<code class="descname">bitrate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationStats.bitrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>physical link rate (in 1/10th of MBit/s), -1 if unknown</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationStats.mcs">
+<code class="descname">mcs</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationStats.mcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>current link mcs, -1 if not used</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationStats.vht_mcs">
+<code class="descname">vht_mcs</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationStats.vht_mcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>current link vht mcs, -1 if not used</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationStats.width">
+<code class="descname">width</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationStats.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>current channel width</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiStationStats.shortgi">
+<code class="descname">shortgi</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiStationStats.shortgi" title="Permalink to this definition">¶</a></dt>
+<dd><p>is shortgi enabled</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="get-wi-fi-stations-list">
+<h3>Get Wi-Fi Stations List<a class="headerlink" href="#get-wi-fi-stations-list" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-ap-id-stations-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/ap/{id}/stations/</code><a class="headerlink" href="#get--api-v2-wifi-ap-id-stations-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#WifiStation" title="WifiStation"><code class="xref json json-object docutils literal"><span class="pre">WifiStation</span></code></a> associated to the AP</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/ap/0/stations/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;18:AF:36:15:69:42&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_rx&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;bitrate&quot;</span><span class="o">:</span> <span class="mi">110</span><span class="p">,</span>
+                <span class="s2">&quot;mcs&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;shortgi&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;vht_mcs&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;tx_bytes&quot;</span><span class="o">:</span> <span class="mi">2651</span><span class="p">,</span>
+            <span class="s2">&quot;last_tx&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;bitrate&quot;</span><span class="o">:</span> <span class="mi">360</span><span class="p">,</span>
+                <span class="s2">&quot;mcs&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;shortgi&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;vht_mcs&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:AC:DC:88-18:AF:36:15:69:42&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bssid&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:AC:DC:88&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;flags&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;vht&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;legacy&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;authorized&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;tx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;inactive&quot;</span><span class="o">:</span> <span class="mi">168</span><span class="p">,</span>
+            <span class="s2">&quot;conn_duration&quot;</span><span class="o">:</span> <span class="mi">263</span><span class="p">,</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;iPhone-de-r0ro&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;authenticated&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;rx_bytes&quot;</span><span class="o">:</span> <span class="mi">781</span><span class="p">,</span>
+            <span class="s2">&quot;rx_rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;signal&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">38</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wi-fi-bss">
+<h2>Wi-Fi BSS<a class="headerlink" href="#wi-fi-bss" title="Permalink to this headline">¶</a></h2>
+<p>Each AP can manage a set of BSS, with this api you can manage BSS settings</p>
+<div class="section" id="wi-fi-bss-objects">
+<h3>Wi-Fi BSS objects<a class="headerlink" href="#wi-fi-bss-objects" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="WifiBss">
+<code class="descname">WifiBss</code><a class="headerlink" href="#WifiBss" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiBss.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiBss.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>bss id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBss.phy_id">
+<code class="descname">phy_id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiBss.phy_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>associated AP id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBss.status">
+<code class="descname">status</code><span> </span><a class="reference internal" href="#WifiBssStatus" title="WifiBssStatus">WifiBssStatus</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiBss.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>bss status</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBss.config">
+<code class="descname">config</code><span> </span><a class="reference internal" href="#WifiBssConfig" title="WifiBssConfig">WifiBssConfig</a><a class="headerlink" href="#WifiBss.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>bss configuration</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiBssStatus">
+<code class="descname">WifiBssStatus</code><a class="headerlink" href="#WifiBssStatus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiBssStatus.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#WifiBssStatus.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>phy_stopped</td>
+<td>associated AP is stopped</td>
+</tr>
+<tr class="row-odd"><td>no_param</td>
+<td>bss is missing config</td>
+</tr>
+<tr class="row-even"><td>bad_param</td>
+<td>bss has an invalid config</td>
+</tr>
+<tr class="row-odd"><td>disabled</td>
+<td>bss is disabled</td>
+</tr>
+<tr class="row-even"><td>starting</td>
+<td>bss is starting</td>
+</tr>
+<tr class="row-odd"><td>active</td>
+<td>bss is active</td>
+</tr>
+<tr class="row-even"><td>failed</td>
+<td>bss has failed to start</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBssStatus.sta_count">
+<code class="descname">sta_count</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiBssStatus.sta_count" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>number of stations for this bss</div></blockquote>
+<dl class="property">
+<dt id="WifiBssStatus.authorized_sta_count">
+<code class="descname">authorized_sta_count</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiBssStatus.authorized_sta_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of authenticated stations for this bss</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBssStatus.is_main_bss">
+<code class="descname">is_main_bss</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiBssStatus.is_main_bss" title="Permalink to this definition">¶</a></dt>
+<dd><p>if bss is main bs, its configuration will be reused for other bss with
+attribute use_default_config set as true. This can be used to apply the
+same configuration to 2 bss on 2 AP operating on different wifi bands.</p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiBssConfig">
+<code class="descname">WifiBssConfig</code><a class="headerlink" href="#WifiBssConfig" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="property">
+<dt id="WifiBssConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#WifiBssConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable this BSS. Note that if you want the AP to completely stop emitting wifi
+you should use <a class="reference internal" href="#WifiGlobalConfig" title="WifiGlobalConfig"><code class="xref json json-object docutils literal"><span class="pre">WifiGlobalConfig</span></code></a> enabled attribute, otherwise
+FreeWifi and FreeWifi Secure may still be active.</p>
+</dd></dl>
+
+</div></blockquote>
+<dl class="property">
+<dt id="WifiBssConfig.use_default_config">
+<code class="descname">use_default_config</code><span> </span>bool<a class="headerlink" href="#WifiBssConfig.use_default_config" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>if true, share the configuration with the main bss</div></blockquote>
+<dl class="property">
+<dt id="WifiBssConfig.ssid">
+<code class="descname">ssid</code><span> </span>str<a class="headerlink" href="#WifiBssConfig.ssid" title="Permalink to this definition">¶</a></dt>
+<dd><p>bss displayed name</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBssConfig.hide_ssid">
+<code class="descname">hide_ssid</code><span> </span>str<a class="headerlink" href="#WifiBssConfig.hide_ssid" title="Permalink to this definition">¶</a></dt>
+<dd><p>don&#8217;t show bss in bss list</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBssConfig.encryption">
+<code class="descname">encryption</code><span> </span>enum<a class="headerlink" href="#WifiBssConfig.encryption" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="42%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">encryption</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>wep</td>
+<td>wep (should not use)</td>
+</tr>
+<tr class="row-odd"><td>wpa_psk_auto</td>
+<td>wpa/psk auto</td>
+</tr>
+<tr class="row-even"><td>wpa_psk_tkip</td>
+<td>wpa/psk tkip</td>
+</tr>
+<tr class="row-odd"><td>wpa_psk_ccmp</td>
+<td>wpa/psk ccmp</td>
+</tr>
+<tr class="row-even"><td>wpa2_psk_auto</td>
+<td>wpa2/psk auto</td>
+</tr>
+<tr class="row-odd"><td>wpa2_psk_tkip</td>
+<td>wpa2/psk tkip</td>
+</tr>
+<tr class="row-even"><td>wpa2_psk_ccmp</td>
+<td>wpa2/psk ccmp</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBssConfig.key">
+<code class="descname">key</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#WifiBssConfig.key" title="Permalink to this definition">¶</a></dt>
+<dd><p>wifi key</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiBssConfig.eapol_version">
+<code class="descname">eapol_version</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiBssConfig.eapol_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>eapol version</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="wi-fi-bss-api">
+<h3>Wi-Fi BSS API<a class="headerlink" href="#wi-fi-bss-api" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="get-the-bss-list">
+<h4>Get the bss list<a class="headerlink" href="#get-the-bss-list" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--api-v2-wifi-bss-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/bss/</code><a class="headerlink" href="#get--api-v2-wifi-bss-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of Freebox Access Points <a class="reference internal" href="#WifiBss" title="WifiBss"><code class="xref json json-object docutils literal"><span class="pre">WifiBss</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/bss/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:AA:BB:CC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox r0ro&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;encryption&quot;</span><span class="o">:</span> <span class="s2">&quot;wpa2_psk_auto&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;use_default_config&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;hide_ssid&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;eapol_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;jesaispasdevine!&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;phy_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sta_count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;authorized_sta_count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;is_main_bss&quot;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;14:0C:76:AA:BB:CC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox r0ro&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;encryption&quot;</span><span class="o">:</span> <span class="s2">&quot;wpa2_psk_auto&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;use_default_config&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;hide_ssid&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;eapol_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;jesaispasdevine!&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;phy_id&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sta_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;authorized_sta_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="s2">&quot;is_main_bss&quot;</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-particular-bss">
+<h4>Get a particular BSS<a class="headerlink" href="#get-a-particular-bss" title="Permalink to this headline">¶</a></h4>
+<dl class="get">
+<dt id="get--api-v2-wifi-bss-id">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/bss/{id}</code><a class="headerlink" href="#get--api-v2-wifi-bss-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#WifiBss" title="WifiBss"><code class="xref json json-object docutils literal"><span class="pre">WifiBss</span></code></a> with the requested id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/bss/00:24:D4:AA:BB:CC</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:AA:BB:CC&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox r0ro&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;encryption&quot;</span><span class="o">:</span> <span class="s2">&quot;wpa2_psk_auto&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;use_default_config&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;hide_ssid&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="s2">&quot;eapol_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;jesaispasdevine!&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;phy_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;sta_count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;authorized_sta_count&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+          <span class="s2">&quot;is_main_bss&quot;</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-an-bss">
+<h4>Update an BSS<a class="headerlink" href="#update-an-bss" title="Permalink to this headline">¶</a></h4>
+<dl class="put">
+<dt id="put--api-v2-wifi-bss-id">
+<code class="descname">PUT </code><code class="descname">/api/v2/wifi/bss/{id}</code><a class="headerlink" href="#put--api-v2-wifi-bss-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#WifiAp" title="WifiAp"><code class="xref json json-object docutils literal"><span class="pre">WifiAp</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v2/wifi//bss/00:24:D4:AA:BB:CC</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;c&#39;était trop facile&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:AA:BB:CC&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;Freebox r0ro&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;encryption&quot;</span><span class="o">:</span> <span class="s2">&quot;wpa2_psk_auto&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;use_default_config&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;hide_ssid&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="s2">&quot;eapol_version&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;c&#39;était trop facile&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;phy_id&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;sta_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;authorized_sta_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;is_main_bss&quot;</span><span class="o">:</span> <span class="kc">true</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="wi-fi-radar">
+<h2>Wi-Fi Radar<a class="headerlink" href="#wi-fi-radar" title="Permalink to this headline">¶</a></h2>
+<p>With this api you can list the surrounding Wi-Fi access points, and Wi-fi channel usage.</p>
+<p>This a new feature introduced in firmware 2.1.0 (api v2).</p>
+<p>A scan is automatically done at AP startup, if you need to refresh the information you can use the scan api</p>
+<div class="section" id="wi-fi-neighbor-object">
+<h3>Wi-Fi Neighbor Object<a class="headerlink" href="#wi-fi-neighbor-object" title="Permalink to this headline">¶</a></h3>
+<p>WifiNeighbor has the following attributes:</p>
+<dl class="object">
+<dt id="WifiNeighbor">
+<code class="descname">WifiNeighbor</code><a class="headerlink" href="#WifiNeighbor" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiNeighbor.bssid">
+<code class="descname">bssid</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.bssid" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor bssid</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.ssid">
+<code class="descname">ssid</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.ssid" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor ssid</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.band">
+<code class="descname">band</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.band" title="Permalink to this definition">¶</a></dt>
+<dd><p>the band for which the combination can be used</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">band</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2d4g</td>
+<td>2.4 GHz</td>
+</tr>
+<tr class="row-odd"><td>5g</td>
+<td>5 GHz</td>
+</tr>
+<tr class="row-even"><td>60g</td>
+<td>60 GHz</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.channel_width">
+<code class="descname">channel_width</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.channel_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor channel_width</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.channel">
+<code class="descname">channel</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor primary channel</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.secondary_channel">
+<code class="descname">secondary_channel</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.secondary_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor secondary channel (0 for unused)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.signal">
+<code class="descname">signal</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>signal attenuation in dB</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighbor.capabilities">
+<code class="descname">capabilities</code><span> </span><a class="reference internal" href="#WifiNeighborCap" title="WifiNeighborCap">WifiNeighborCap</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighbor.capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor capabilities</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="WifiNeighborCap">
+<code class="descname">WifiNeighborCap</code><a class="headerlink" href="#WifiNeighborCap" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiNeighborCap.legacy">
+<code class="descname">legacy</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighborCap.legacy" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor uses legacy wifi (802.11a, 802.11b)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighborCap.ht">
+<code class="descname">ht</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighborCap.ht" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor supports ht (802.11n)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiNeighborCap.vht">
+<code class="descname">vht</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#WifiNeighborCap.vht" title="Permalink to this definition">¶</a></dt>
+<dd><p>neighbor supports vht (802.11ac)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="list-ap-neighbors">
+<h3>List AP neighbors<a class="headerlink" href="#list-ap-neighbors" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-ap-id-neighbors-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/ap/{id}/neighbors/</code><a class="headerlink" href="#get--api-v2-wifi-ap-id-neighbors-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#WifiNeighbor" title="WifiNeighbor"><code class="xref json json-object docutils literal"><span class="pre">WifiNeighbor</span></code></a> seen by the AP</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/ap/0/neighbors/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;capabilities&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;legacy&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;vht&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;FreeWifi_secure&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bssid&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:BA:BB:EE&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;signal&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">27</span>
+        <span class="p">},</span>
+
+        <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;capabilities&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;legacy&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;vht&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;Encore une freebox&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bssid&quot;</span><span class="o">:</span> <span class="s2">&quot;F4:CA:E5:5E:AC:4F&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;signal&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">33</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;channel_width&quot;</span><span class="o">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;capabilities&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;legacy&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;vht&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+                <span class="s2">&quot;ht&quot;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;ssid&quot;</span><span class="o">:</span> <span class="s2">&quot;lav6-140c76670212&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;channel&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bssid&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:00:00:FD&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;secondary_channel&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;signal&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">33</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="wi-fi-channel-usage-object">
+<h3>Wi-Fi Channel usage Object<a class="headerlink" href="#wi-fi-channel-usage-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="WifiChannelUsage">
+<code class="descname">WifiChannelUsage</code><a class="headerlink" href="#WifiChannelUsage" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiChannelUsage.channel">
+<code class="descname">channel</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiChannelUsage.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>channel number</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiChannelUsage.band">
+<code class="descname">band</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#WifiChannelUsage.band" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">band</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>2d4g</td>
+<td>2.4 GHz</td>
+</tr>
+<tr class="row-odd"><td>5g</td>
+<td>5 GHz</td>
+</tr>
+<tr class="row-even"><td>60g</td>
+<td>60 GHz</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiChannelUsage.noise_level">
+<code class="descname">noise_level</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiChannelUsage.noise_level" title="Permalink to this definition">¶</a></dt>
+<dd><p>noise level on channel in dB</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiChannelUsage.rx_busy_percent">
+<code class="descname">rx_busy_percent</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiChannelUsage.rx_busy_percent" title="Permalink to this definition">¶</a></dt>
+<dd><p>rx channel busy time percentage</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="list-wi-fi-channels-usage">
+<h3>List Wi-Fi channels usage<a class="headerlink" href="#list-wi-fi-channels-usage" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-ap-id-channel_usage-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/ap/{id}/channel_usage/</code><a class="headerlink" href="#get--api-v2-wifi-ap-id-channel_usage-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#WifiChannelUsage" title="WifiChannelUsage"><code class="xref json json-object docutils literal"><span class="pre">WifiChannelUsage</span></code></a> for the given AP</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/ap/0/channel_usage/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;noise_level&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">66</span><span class="p">,</span>
+           <span class="s2">&quot;rx_busy_percent&quot;</span><span class="o">:</span> <span class="mi">35</span><span class="p">,</span>
+           <span class="s2">&quot;channel&quot;</span><span class="o">:</span> <span class="mi">1</span>
+       <span class="p">},</span>
+
+       <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+       <span class="p">{</span>
+           <span class="s2">&quot;band&quot;</span><span class="o">:</span> <span class="s2">&quot;2d4g&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;noise_level&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">58</span><span class="p">,</span>
+           <span class="s2">&quot;rx_busy_percent&quot;</span><span class="o">:</span> <span class="mi">46</span><span class="p">,</span>
+           <span class="s2">&quot;channel&quot;</span><span class="o">:</span> <span class="mi">13</span>
+       <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="refresh-radar-informations">
+<h3>Refresh radar informations<a class="headerlink" href="#refresh-radar-informations" title="Permalink to this headline">¶</a></h3>
+<p><strong>WARNING</strong> durring the scan the AP will be unavailable. Therefore, you should ask for
+user confirmation prior to launching a scan.</p>
+<p>Once launched you should wait until the ap state comes back from scanning to get updated info.</p>
+<dl class="post">
+<dt id="post--api-v2-wifi-ap-id-neighbors-scan">
+<code class="descname">POST </code><code class="descname">/api/v2/wifi/ap/{id}/neighbors/scan</code><a class="headerlink" href="#post--api-v2-wifi-ap-id-neighbors-scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>Launch a wifi scan on given ap</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v2/wifi/ap/0/neighbors/scan</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wi-fi-planning">
+<h2>Wi-Fi Planning<a class="headerlink" href="#wi-fi-planning" title="Permalink to this headline">¶</a></h2>
+<p>With api v2 you can now specify time range when you want to enable your wifi.</p>
+<div class="section" id="wi-fi-planning-object">
+<h3>Wi-Fi Planning Object<a class="headerlink" href="#wi-fi-planning-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="WifiPlanning">
+<code class="descname">WifiPlanning</code><a class="headerlink" href="#WifiPlanning" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiPlanning.use_planning">
+<code class="descname">use_planning</code><span> </span>bool<a class="headerlink" href="#WifiPlanning.use_planning" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the planning enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiPlanning.resolution">
+<code class="descname">resolution</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#WifiPlanning.resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>planning resolution (number of slots per day)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiPlanning.mapping">
+<code class="descname">mapping</code><span>[] array of </span>str<a class="headerlink" href="#WifiPlanning.mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>mapping for planning : &#8220;on&#8221; or &#8220;off&#8221;
+mapping[0] is monday at 0:0
+mapping[7 * resolution - 1] is sunday last slot</p>
+<p>(each slot has a duration of 60 * 24 / resolution minutes)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-wi-fi-planning">
+<h3>Get Wi-Fi Planning<a class="headerlink" href="#get-wi-fi-planning" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-planning-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/planning/</code><a class="headerlink" href="#get--api-v2-wifi-planning-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#WifiChannelUsage" title="WifiChannelUsage"><code class="xref json json-object docutils literal"><span class="pre">WifiChannelUsage</span></code></a> for the given AP</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/planning/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;use_planning&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;resolution&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="s2">&quot;mapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-wi-fi-planning">
+<h3>Update Wi-Fi Planning<a class="headerlink" href="#update-wi-fi-planning" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v2-wifi-planning-">
+<code class="descname">PUT </code><code class="descname">/api/v2/wifi/planning/</code><a class="headerlink" href="#put--api-v2-wifi-planning-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#WifiChannelUsage" title="WifiChannelUsage"><code class="xref json json-object docutils literal"><span class="pre">WifiChannelUsage</span></code></a> for the given AP</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v2/wifi/planning/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;use_planning&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;use_planning&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;resolution&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="s2">&quot;mapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+
+            <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;on&quot;</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wi-fi-mac-filter-api">
+<h2>Wi-Fi MAC Filter API<a class="headerlink" href="#wi-fi-mac-filter-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wi-fi-mac-filter-object">
+<h3>Wi-Fi MAC Filter object<a class="headerlink" href="#wi-fi-mac-filter-object" title="Permalink to this headline">¶</a></h3>
+<p>WifiMacFilter has the following attributes:</p>
+<dl class="object">
+<dt id="WifiMacFilter">
+<code class="descname">WifiMacFilter</code><a class="headerlink" href="#WifiMacFilter" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="WifiMacFilter.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiMacFilter.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiMacFilter.mac">
+<code class="descname">mac</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiMacFilter.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>MAC address to filter</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiMacFilter.comment">
+<code class="descname">comment</code><span> </span>string<a class="headerlink" href="#WifiMacFilter.comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>comment</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiMacFilter.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#WifiMacFilter.type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>whitelist</td>
+<td>if mac_filter is set to whitelist this station will be allowed</td>
+</tr>
+<tr class="row-odd"><td>blacklist</td>
+<td>if mac_filter is set to blacklist this station will be rejected</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiMacFilter.hostname">
+<code class="descname">hostname</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#WifiMacFilter.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>host name when available</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="WifiMacFilter.host">
+<code class="descname">host</code><span> </span><a class="reference internal" href="../lan/#LanHost" title="LanHost">LanHost</a><em class="property"> Read-only</em><a class="headerlink" href="#WifiMacFilter.host" title="Permalink to this definition">¶</a></dt>
+<dd><p>host information when available</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-mac-filter-list">
+<h3>Get the MAC filter list<a class="headerlink" href="#get-the-mac-filter-list" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-mac_filter-">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/mac_filter/</code><a class="headerlink" href="#get--api-v2-wifi-mac_filter-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#WifiMacFilter" title="WifiMacFilter"><code class="xref json json-object docutils literal"><span class="pre">WifiMacFilter</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/mac_filter/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:00:00:69&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;plop&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;r0ro&#39;s iPad&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:24:D4:00:00:69&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="getting-a-particular-mac-filter">
+<h3>Getting a particular MAC filter<a class="headerlink" href="#getting-a-particular-mac-filter" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v2-wifi-mac_filter-filter_id">
+<code class="descname">GET </code><code class="descname">/api/v2/wifi/mac_filter/{filter_id}</code><a class="headerlink" href="#get--api-v2-wifi-mac_filter-filter_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the requested <a class="reference internal" href="#WifiMacFilter" title="WifiMacFilter"><code class="xref json json-object docutils literal"><span class="pre">WifiMacFilter</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v2/wifi/mac_filter/00:07:CB:01:02:03</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="updating-a-mac-filter">
+<h3>Updating a MAC filter<a class="headerlink" href="#updating-a-mac-filter" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v2-wifi-mac_filter-filter_id">
+<code class="descname">PUT </code><code class="descname">/api/v2/wifi/mac_filter/{filter_id}</code><a class="headerlink" href="#put--api-v2-wifi-mac_filter-filter_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update a <a class="reference internal" href="#WifiMacFilter" title="WifiMacFilter"><code class="xref json json-object docutils literal"><span class="pre">WifiMacFilter</span></code></a> properties</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v2/wifi/mac_filter/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;filtre de test&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;filtre de test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:01:02:03&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-mac-filter">
+<h3>Delete a MAC filter<a class="headerlink" href="#delete-a-mac-filter" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v2-wifi-mac_filter-filter_id">
+<code class="descname">DELETE </code><code class="descname">/api/v2/wifi/mac_filter/{filter_id}</code><a class="headerlink" href="#delete--api-v2-wifi-mac_filter-filter_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the <a class="reference internal" href="#WifiMacFilter" title="WifiMacFilter"><code class="xref json json-object docutils literal"><span class="pre">WifiMacFilter</span></code></a> with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v2/wifi/mac_filter/00:07:CB:01:02:03</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="create-a-new-mac-filter">
+<h3>Create a new MAC filter<a class="headerlink" href="#create-a-new-mac-filter" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v2-wifi-mac_filter-">
+<code class="descname">POST </code><code class="descname">/api/v2/wifi/mac_filter/</code><a class="headerlink" href="#post--api-v2-wifi-mac_filter-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crate a new the <a class="reference internal" href="#WifiMacFilter" title="WifiMacFilter"><code class="xref json json-object docutils literal"><span class="pre">WifiMacFilter</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v2/wifi/mac_filter/00:07:CB:01:02:03</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;filtre de test&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:CB:07:00&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mac&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:CB:07:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;comment&quot;</span><span class="o">:</span> <span class="s2">&quot;filtre de test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:CB:07:00&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;00:07:CB:CB:07:00&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="wifi-config-reset">
+<h2>Wifi Config reset<a class="headerlink" href="#wifi-config-reset" title="Permalink to this headline">¶</a></h2>
+<p>You can reset Wifi to default configuration with this api</p>
+<dl class="post">
+<dt id="post--api-v2-wifi-config-reset-">
+<code class="descname">POST </code><code class="descname">/api/v2/wifi/config/reset/</code><a class="headerlink" href="#post--api-v2-wifi-config-reset-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crate a new the <a class="reference internal" href="#WifiMacFilter" title="WifiMacFilter"><code class="xref json json-object docutils literal"><span class="pre">WifiMacFilter</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v2/wifi/config/reset/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

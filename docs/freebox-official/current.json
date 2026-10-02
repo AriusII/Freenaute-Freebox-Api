@@ -1,0 +1,19 @@
+{
+  "format_version": 1,
+  "selected_at": "2026-10-02",
+  "source_kind": "user_supplied_archive",
+  "api_version": "16.0",
+  "version_scope": "supplied_target_snapshot",
+  "snapshot": "api-16.0",
+  "archive_name": "Freebox-Server-API-16.0-2026-10-02.zip",
+  "archive_sha256": "8d53243e3855ae2ec077c2e3ac9b890120d9ba9eaedc3ba955cdfe0b034b2094",
+  "raw_document": "api-16.0/sources/raw/embedded/doc/index.html",
+  "raw_document_sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+  "import_report": "import-report.json",
+  "context": "context-net10/index.json",
+  "review_coverage": "coverage-net10/coverage.json",
+  "byte_integrity_verified": true,
+  "origin_independently_verified": false,
+  "full_sdk_implemented": false,
+  "historical_public_api_version": "4.0"
+}

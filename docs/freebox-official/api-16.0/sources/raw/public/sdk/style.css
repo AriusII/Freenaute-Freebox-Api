@@ -1,0 +1,129 @@
+body {
+	margin: 0px;
+	font-family: ubuntu, Arial, sans-serif;
+	background: #F9F9F9;
+	height: 100%;
+	line-height: 160%;
+}
+
+h1 {
+	color: #333333;
+}
+
+h2 {
+	color: #333333;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+.body {
+	margin: 0px auto;
+	width: 900px;
+	padding: 0px;
+	background: #FFFFFF;
+	min-height: 100vh;
+}
+
+.footer {
+	text-align: right;
+	font-size: 10px;
+	Position: fixed;
+	bottom: 0;
+	background: #EEEEEE;
+	border-top: 4px solid #DDDDDD;
+	color: #333333;
+	width: 900px;
+}
+
+.footer p{
+	margin-right: 10px;
+}
+
+.main {
+	text-align: justify;
+	min-height: 100%; 
+	margin: 0px 30px 100px 30px; 
+	padding: 0px;
+}
+
+
+.main a {
+	color: #c70119;
+	text-decoration: none;
+	border: 1px solid transparent;
+	padding: 2px 3px;
+
+	border-radius: 2px;
+	background: transparent none repeat scroll 0% 0%;
+	transition: border 0.5s ease 0s, background 0.25s ease 0s;
+}
+
+.main a:hover {
+	color: #c70119;
+	text-decoration: none;
+	background: #F9F9F9;
+	border: 1px solid #c70119;
+	padding: 2px 3px;
+}
+
+.main li {
+	margin: 6px 0px 6px 0px;
+	list-style-image: url("list_arrow.png");
+}
+
+
+.side {
+	float: right;
+	margin-left: 20px;
+}
+
+.menu {
+	background: url("freebox_white.png") no-repeat #c70119;
+	text-align: right;
+	padding-right: 10px;
+	transition: background 0.25s ease 0s;
+}
+
+.menu:hover {
+	background: url("freebox_white.png") no-repeat #CC0000;
+}
+
+.menu ul {
+	list-style: none;
+	height: 60px;
+	margin: 0px;
+}
+
+.menu li {
+	list-style-type: none;
+}
+
+.menu li.selected {
+	border-bottom: 3px solid #FFFFFF;
+}
+
+.menu li, .menu a {
+	display: inline-block;
+	margin: 0.5em;
+	color: white;
+	text-align: center;
+}
+
+.banner {
+	background: url("banner_home_1.png") no-repeat #FFFFFF;
+	height: 230px;
+}

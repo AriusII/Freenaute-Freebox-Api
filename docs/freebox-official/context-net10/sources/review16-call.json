@@ -1,0 +1,380 @@
+{
+  "module": {
+    "module": "call",
+    "title": "Call",
+    "category": "services",
+    "path": "docs/reference/services/call.md",
+    "http_signatures": 12,
+    "objects": 2,
+    "properties": 14,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#call",
+    "source_pre_blocks": 35,
+    "markdown_code_blocks": 35,
+    "source_tables": 3
+  },
+  "endpoints": [
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/log/",
+      "path_template": "/api/v{major}/call/log/",
+      "documented_major": 10,
+      "title": "List every calls",
+      "id": "get--api-v10-call-log-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-log-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#get--api-v10-call-log-",
+      "referenced_objects": [
+        "CallEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-call-log-"
+    },
+    {
+      "module": "call",
+      "method": "POST",
+      "documented_path": "/api/v10/call/log/delete_all/",
+      "path_template": "/api/v{major}/call/log/delete_all/",
+      "documented_major": 10,
+      "title": "Delete all calls",
+      "id": "post--api-v10-call-log-delete_all-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v10-call-log-delete_all-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#post--api-v10-call-log-delete_all-",
+      "referenced_objects": [
+        "CallEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v10-call-log-delete_all-"
+    },
+    {
+      "module": "call",
+      "method": "POST",
+      "documented_path": "/api/v10/call/log/mark_all_as_read/",
+      "path_template": "/api/v{major}/call/log/mark_all_as_read/",
+      "documented_major": 10,
+      "title": "Mark all calls as read",
+      "id": "post--api-v10-call-log-mark_all_as_read-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v10-call-log-mark_all_as_read-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#post--api-v10-call-log-mark_all_as_read-",
+      "referenced_objects": [
+        "CallEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v10-call-log-mark_all_as_read-"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/log/{id}",
+      "path_template": "/api/v{major}/call/log/{id}",
+      "documented_major": 10,
+      "title": "Access a given call entry",
+      "id": "get--api-v10-call-log-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-log-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#get--api-v10-call-log-id",
+      "referenced_objects": [
+        "CallEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-call-log-id"
+    },
+    {
+      "module": "call",
+      "method": "DELETE",
+      "documented_path": "/api/v10/call/log/{id}",
+      "path_template": "/api/v{major}/call/log/{id}",
+      "documented_major": 10,
+      "title": "Delete a call",
+      "id": "delete--api-v10-call-log-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v10-call-log-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#delete--api-v10-call-log-id",
+      "referenced_objects": [
+        "CallEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v10-call-log-id"
+    },
+    {
+      "module": "call",
+      "method": "PUT",
+      "documented_path": "/api/v10/call/log/{id}",
+      "path_template": "/api/v{major}/call/log/{id}",
+      "documented_major": 10,
+      "title": "Update a call entry",
+      "id": "put--api-v10-call-log-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v10-call-log-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#put--api-v10-call-log-id",
+      "referenced_objects": [
+        "CallEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v10-call-log-id"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/account",
+      "path_template": "/api/v{major}/call/account",
+      "documented_major": 10,
+      "title": "Account",
+      "id": "get--api-v10-call-account",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-account",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#get--api-v10-call-account",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-call-account"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/voicemail/",
+      "path_template": "/api/v{major}/call/voicemail/",
+      "documented_major": 10,
+      "title": "List voicemails",
+      "id": "get--api-v10-call-voicemail-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-voicemail-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#get--api-v10-call-voicemail-",
+      "referenced_objects": [
+        "VoicemailEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-call-voicemail-"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/voicemail/{id}",
+      "path_template": "/api/v{major}/call/voicemail/{id}",
+      "documented_major": 10,
+      "title": "Access a specific voicemail entry",
+      "id": "get--api-v10-call-voicemail-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-voicemail-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#get--api-v10-call-voicemail-id",
+      "referenced_objects": [
+        "VoicemailEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-call-voicemail-id"
+    },
+    {
+      "module": "call",
+      "method": "DELETE",
+      "documented_path": "/api/v10/call/voicemail/{id}",
+      "path_template": "/api/v{major}/call/voicemail/{id}",
+      "documented_major": 10,
+      "title": "Delete a voicemail",
+      "id": "delete--api-v10-call-voicemail-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v10-call-voicemail-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#delete--api-v10-call-voicemail-id",
+      "referenced_objects": [
+        "VoicemailEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v10-call-voicemail-id"
+    },
+    {
+      "module": "call",
+      "method": "PUT",
+      "documented_path": "/api/v10/call/voicemail/{id}",
+      "path_template": "/api/v{major}/call/voicemail/{id}",
+      "documented_major": 10,
+      "title": "Update a voicemail entry",
+      "id": "put--api-v10-call-voicemail-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v10-call-voicemail-id",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#put--api-v10-call-voicemail-id",
+      "referenced_objects": [
+        "VoicemailEntry"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v10-call-voicemail-id"
+    },
+    {
+      "module": "call",
+      "method": "GET",
+      "documented_path": "/api/v10/call/voicemail/{id}/audio_file",
+      "path_template": "/api/v{major}/call/voicemail/{id}/audio_file",
+      "documented_major": 10,
+      "title": "Retrieve a voicemail",
+      "id": "get--api-v10-call-voicemail-id-audio_file",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v10-call-voicemail-id-audio_file",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/services/call.md#get--api-v10-call-voicemail-id-audio_file",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v10-call-voicemail-id-audio_file"
+    }
+  ],
+  "objects": [
+    {
+      "module": "call",
+      "name": "CallEntry",
+      "id": "CallEntry",
+      "properties": [
+        "CallEntry.id",
+        "CallEntry.type",
+        "CallEntry.datetime",
+        "CallEntry.number",
+        "CallEntry.name",
+        "CallEntry.duration",
+        "CallEntry.new",
+        "CallEntry.contact_id"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry",
+      "markdown": "docs/reference/services/call.md#CallEntry"
+    },
+    {
+      "module": "call",
+      "name": "VoicemailEntry",
+      "id": "VoicemailEntry",
+      "properties": [
+        "VoicemailEntry.id",
+        "VoicemailEntry.country_code",
+        "VoicemailEntry.phone_number",
+        "VoicemailEntry.date",
+        "VoicemailEntry.read",
+        "VoicemailEntry.duration"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry"
+    }
+  ],
+  "properties": [
+    {
+      "module": "call",
+      "id": "CallEntry.id",
+      "signature": "id int Read-only",
+      "description": "id",
+      "source_id": "CallEntry.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.id",
+      "markdown": "docs/reference/services/call.md#CallEntry.id"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.type",
+      "signature": "type enum Read-only",
+      "description": "The valid call types are: Type Description missed Missed incoming call accepted Incoming call outgoing Outgoing call",
+      "source_id": "CallEntry.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.type",
+      "markdown": "docs/reference/services/call.md#CallEntry.type"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.datetime",
+      "signature": "datetime timestamp Read-only",
+      "description": "Call creation timestamp.",
+      "source_id": "CallEntry.datetime",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.datetime",
+      "markdown": "docs/reference/services/call.md#CallEntry.datetime"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.number",
+      "signature": "number string Read-only",
+      "description": "Callee number for outgoing calls. Caller number for incoming calls.",
+      "source_id": "CallEntry.number",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.number",
+      "markdown": "docs/reference/services/call.md#CallEntry.number"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.name",
+      "signature": "name string Read-only",
+      "description": "Callee name for outgoing calls. Caller name for incoming calls. For incoming call if the network does not provide a contact name, we try to use the contact database to find a suitable name",
+      "source_id": "CallEntry.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.name",
+      "markdown": "docs/reference/services/call.md#CallEntry.name"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.duration",
+      "signature": "duration int Read-only",
+      "description": "Call duration in seconds.",
+      "source_id": "CallEntry.duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.duration",
+      "markdown": "docs/reference/services/call.md#CallEntry.duration"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.new",
+      "signature": "new bool",
+      "description": "Call entry has not been acknowledged yet.",
+      "source_id": "CallEntry.new",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.new",
+      "markdown": "docs/reference/services/call.md#CallEntry.new"
+    },
+    {
+      "module": "call",
+      "id": "CallEntry.contact_id",
+      "signature": "contact_id int Read-only",
+      "description": "If the number matches an entry in the contact database, the id of the matching contact.",
+      "source_id": "CallEntry.contact_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry.contact_id",
+      "markdown": "docs/reference/services/call.md#CallEntry.contact_id"
+    },
+    {
+      "module": "call",
+      "id": "VoicemailEntry.id",
+      "signature": "id string Read-only",
+      "description": "id",
+      "source_id": "VoicemailEntry.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.id",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry.id"
+    },
+    {
+      "module": "call",
+      "id": "VoicemailEntry.country_code",
+      "signature": "country_code string Read-only",
+      "description": "Country code part of the caller number. May be empty.",
+      "source_id": "VoicemailEntry.country_code",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.country_code",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry.country_code"
+    },
+    {
+      "module": "call",
+      "id": "VoicemailEntry.phone_number",
+      "signature": "phone_number string Read-only",
+      "description": "Caller number. May be empty.",
+      "source_id": "VoicemailEntry.phone_number",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.phone_number",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry.phone_number"
+    },
+    {
+      "module": "call",
+      "id": "VoicemailEntry.date",
+      "signature": "date timestamp Read-only",
+      "description": "Voicemail creation timestamp.",
+      "source_id": "VoicemailEntry.date",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.date",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry.date"
+    },
+    {
+      "module": "call",
+      "id": "VoicemailEntry.read",
+      "signature": "read bool",
+      "description": "Voicemail read status",
+      "source_id": "VoicemailEntry.read",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.read",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry.read"
+    },
+    {
+      "module": "call",
+      "id": "VoicemailEntry.duration",
+      "signature": "duration int Read-only",
+      "description": "Voicemail duration in seconds",
+      "source_id": "VoicemailEntry.duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VoicemailEntry.duration",
+      "markdown": "docs/reference/services/call.md#VoicemailEntry.duration"
+    }
+  ],
+  "events": []
+}

@@ -1,0 +1,995 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>VPN Server [UNSTABLE] &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="VPN Client [UNSTABLE]" href="../vpn_client/" />
+    <link rel="prev" title="System" href="../system/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="vpn-server-unstable">
+<span id="vpn-server-api"></span><h1>VPN Server [UNSTABLE]<a class="headerlink" href="#vpn-server-unstable" title="Permalink to this headline">¶</a></h1>
+<p>The VPN Server API allows you to control the Freebox VPN Server</p>
+<div class="section" id="vpn-server-errors">
+<h2>VPN Server Errors<a class="headerlink" href="#vpn-server-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access this API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>inval</td>
+<td>invalid parameters</td>
+</tr>
+<tr class="row-odd"><td>exist</td>
+<td>entry already exists</td>
+</tr>
+<tr class="row-even"><td>noent</td>
+<td>invalid id</td>
+</tr>
+<tr class="row-odd"><td>nomem</td>
+<td>internal error</td>
+</tr>
+<tr class="row-even"><td>unsupp</td>
+<td>not supported</td>
+</tr>
+<tr class="row-odd"><td>inuse</td>
+<td>resource in use</td>
+</tr>
+<tr class="row-even"><td>busy</td>
+<td>resource is busy</td>
+</tr>
+<tr class="row-odd"><td>ioerror</td>
+<td>internal error</td>
+</tr>
+<tr class="row-even"><td>size</td>
+<td>too many elements</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vpn-server-list">
+<h2>VPN Server List<a class="headerlink" href="#vpn-server-list" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vpn-server-object">
+<h3>VPN Server Object<a class="headerlink" href="#vpn-server-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="VPNServer">
+<code class="descname">VPNServer</code><a class="headerlink" href="#VPNServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPNServer has the following attributes:</p>
+<dl class="property">
+<dt id="VPNServer.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNServer.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN server name (id)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServer.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VPNServer.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN server type</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pptp</td>
+<td>PPTP VPN server</td>
+</tr>
+<tr class="row-odd"><td>openvpn</td>
+<td>OpenVPN server</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServer.state">
+<code class="descname">state</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VPNServer.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>server state</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="94%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">state</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>stopped</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>starting</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>started</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>stopping</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>error</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServer.connection_count">
+<code class="descname">connection_count</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNServer.connection_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of active connections</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServer.auth_connection_count">
+<code class="descname">auth_connection_count</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNServer.auth_connection_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of active connections that have passed authentication</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vpn-server-list-api">
+<h3>VPN Server List API<a class="headerlink" href="#vpn-server-list-api" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/</code><a class="headerlink" href="#get--api-v4-vpn-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#VPNServer" title="VPNServer"><code class="xref json json-object docutils literal"><span class="pre">VPNServer</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;connection_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;auth_connection_count&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn_routed&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;connection_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;auth_connection_count&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;stopped&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn_bridge&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;connection_count&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;auth_connection_count&quot;</span><span class="o">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="vpn-server-config">
+<h2>VPN Server Config<a class="headerlink" href="#vpn-server-config" title="Permalink to this headline">¶</a></h2>
+<dl class="object">
+<dt id="VPNPPTPConfig">
+<code class="descname">VPNPPTPConfig</code><a class="headerlink" href="#VPNPPTPConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPNServerConfig has the following attributes:</p>
+<dl class="property">
+<dt id="VPNPPTPConfig.mppe">
+<code class="descname">mppe</code><span> </span>enum<a class="headerlink" href="#VPNPPTPConfig.mppe" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">mppe</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>disable</td>
+<td>disable mppe</td>
+</tr>
+<tr class="row-odd"><td>require</td>
+<td>require mppe</td>
+</tr>
+<tr class="row-even"><td>require_128</td>
+<td>require 128 bits mppe</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNPPTPConfig.allowed_auth">
+<code class="descname">allowed_auth</code><span> </span>dict<a class="headerlink" href="#VPNPPTPConfig.allowed_auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>allowed authentication methods dictionnary with following entries:</p>
+<blockquote>
+<div><ul class="simple">
+<li>pap</li>
+<li>chap</li>
+<li>mschapv2</li>
+</ul>
+</div></blockquote>
+<p>values are booleans.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="VPNOpenVpnConfig">
+<code class="descname">VPNOpenVpnConfig</code><a class="headerlink" href="#VPNOpenVpnConfig" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="property">
+<dt id="VPNOpenVpnConfig.cipher">
+<code class="descname">cipher</code><span> </span>enum<a class="headerlink" href="#VPNOpenVpnConfig.cipher" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="94%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">cipher</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>blowfish</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>aes128</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>aes256</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div></blockquote>
+<dl class="property">
+<dt id="VPNOpenVpnConfig.disable_fragment">
+<code class="descname">disable_fragment</code><span> </span>bool<a class="headerlink" href="#VPNOpenVpnConfig.disable_fragment" title="Permalink to this definition">¶</a></dt>
+<dd><p>disable fragment configuration option</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNOpenVpnConfig.use_tcp">
+<code class="descname">use_tcp</code><span> </span>bool<a class="headerlink" href="#VPNOpenVpnConfig.use_tcp" title="Permalink to this definition">¶</a></dt>
+<dd><p>use TCP instead of UDP</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="VPNIPSecAuthMode">
+<code class="descname">VPNIPSecAuthMode</code><a class="headerlink" href="#VPNIPSecAuthMode" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="VPNIPSecAuthMode.id_source">
+<code class="descname">id_source</code><span> </span>enum<a class="headerlink" href="#VPNIPSecAuthMode.id_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>source of the connection id</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="94%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">id_source</th>
+<th class="head">&nbsp;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>custom</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNIPSecAuthMode.id_custom">
+<code class="descname">id_custom</code><span> </span>string<a class="headerlink" href="#VPNIPSecAuthMode.id_custom" title="Permalink to this definition">¶</a></dt>
+<dd><p>value of the source id when id_source is custom</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="VPNIPSecConfig">
+<code class="descname">VPNIPSecConfig</code><a class="headerlink" href="#VPNIPSecConfig" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="property">
+<dt id="VPNIPSecConfig.ike_version">
+<code class="descname">ike_version</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNIPSecConfig.ike_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>IKE protocol version</p>
+</dd></dl>
+
+</div></blockquote>
+<dl class="property">
+<dt id="VPNIPSecConfig.auth_modes">
+<code class="descname">auth_modes</code><span>[] array of </span><a class="reference internal" href="#VPNIPSecAuthMode" title="VPNIPSecAuthMode">VPNIPSecAuthMode</a><em class="property"> Read-only</em><a class="headerlink" href="#VPNIPSecConfig.auth_modes" title="Permalink to this definition">¶</a></dt>
+<dd><p>map of supported auth modes, currently only psk is supported</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="object">
+<dt id="VPNServerConfig">
+<code class="descname">VPNServerConfig</code><a class="headerlink" href="#VPNServerConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="VPNServerConfig.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN server id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN server type</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pptp</td>
+<td>PPTP VPN server</td>
+</tr>
+<tr class="row-odd"><td>openvpn</td>
+<td>OpenVPN server</td>
+</tr>
+<tr class="row-even"><td>ipsec</td>
+<td>IPsec IKEv2 server</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#VPNServerConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the VPN server enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.enable_ipv4">
+<code class="descname">enable_ipv4</code><span> </span>bool<a class="headerlink" href="#VPNServerConfig.enable_ipv4" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable IPv4 on this server</p>
+<p>NOTE: Not relevant for openvpn_bridge, and pptp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.enable_ipv6">
+<code class="descname">enable_ipv6</code><span> </span>bool<a class="headerlink" href="#VPNServerConfig.enable_ipv6" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable IPv4 on this server</p>
+<p>NOTE: Not relevant for openvpn_bridge, and pptp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.port">
+<code class="descname">port</code><span> </span>int<a class="headerlink" href="#VPNServerConfig.port" title="Permalink to this definition">¶</a></dt>
+<dd><p>the server port</p>
+<p>NOTE: you can only edit the server port when type is openvpn</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.min_port">
+<code class="descname">min_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.min_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This field indicate the minimum possible value for port
+(see <a class="reference internal" href="../connection/#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.max_port">
+<code class="descname">max_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.max_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>This field indicate the maximum possible value for port
+(see <a class="reference internal" href="../connection/#ConnectionStatus" title="ConnectionStatus"><code class="xref json json-object docutils literal"><span class="pre">ConnectionStatus</span></code></a> ipv4_port_range)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.port_ike">
+<code class="descname">port_ike</code><span> </span>int<a class="headerlink" href="#VPNServerConfig.port_ike" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPSec ike server port</p>
+<p>NOTE: only present for ipsec server</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.port_nat">
+<code class="descname">port_nat</code><span> </span>int<a class="headerlink" href="#VPNServerConfig.port_nat" title="Permalink to this definition">¶</a></dt>
+<dd><p>IPSec nat server port</p>
+<p>NOTE: only present for ipsec server</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.conf_pptp">
+<code class="descname">conf_pptp</code><span> </span><a class="reference internal" href="#VPNPPTPConfig" title="VPNPPTPConfig">VPNPPTPConfig</a><a class="headerlink" href="#VPNServerConfig.conf_pptp" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when type is PPTP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.conf_openvpn">
+<code class="descname">conf_openvpn</code><span> </span><a class="reference internal" href="#VPNOpenVpnConfig" title="VPNOpenVpnConfig">VPNOpenVpnConfig</a><a class="headerlink" href="#VPNServerConfig.conf_openvpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when type is OpenVPN</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.conf_ipsec">
+<code class="descname">conf_ipsec</code><span> </span><a class="reference internal" href="#VPNIPSecConfig" title="VPNIPSecConfig">VPNIPSecConfig</a><a class="headerlink" href="#VPNServerConfig.conf_ipsec" title="Permalink to this definition">¶</a></dt>
+<dd><p>only available when type is IPsec</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.ip_start">
+<code class="descname">ip_start</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.ip_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>start of the IP range that will be used to give clients an IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.ip_end">
+<code class="descname">ip_end</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.ip_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>end of the IP range that will be used to give clients an IP</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.ip6_start">
+<code class="descname">ip6_start</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.ip6_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>start of the IPv6 range that will be used to give clients an IPv6</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNServerConfig.ip6_end">
+<code class="descname">ip6_end</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNServerConfig.ip6_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>end of the IPv6 range that will be used to give clients an IPv6</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vpn-server-config-api">
+<h2>VPN Server Config API<a class="headerlink" href="#vpn-server-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-a-vpn-config">
+<h3>Get a VPN config<a class="headerlink" href="#get-a-vpn-config" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-vpn_id-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/{vpn_id}/config/</code><a class="headerlink" href="#get--api-v4-vpn-vpn_id-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#VPNServerConfig" title="VPNServerConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNServerConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/openvpn_routed/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mi">1194</span><span class="p">,</span>
+        <span class="s2">&quot;conf_openvpn&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;cipher&quot;</span><span class="o">:</span> <span class="s2">&quot;aes128&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn_routed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_start&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.65&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_end&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.95&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-vpn-configuration">
+<h3>Update the VPN configuration<a class="headerlink" href="#update-the-vpn-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-vpn-openvpn_routed-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/vpn/openvpn_routed/config/</code><a class="headerlink" href="#put--api-v4-vpn-openvpn_routed-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#VPNServerConfig" title="VPNServerConfig"><code class="xref json json-object docutils literal"><span class="pre">VPNServerConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/vpn/openvpn_routed/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;conf_openvpn&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;cipher&quot;</span><span class="o">:</span> <span class="s2">&quot;blowfish&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mi">1194</span><span class="p">,</span>
+        <span class="s2">&quot;conf_openvpn&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;cipher&quot;</span><span class="o">:</span> <span class="s2">&quot;blowfish&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn_routed&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_start&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.65&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_end&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.95&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;openvpn&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="vpn-server-user-api">
+<h2>VPN Server User API<a class="headerlink" href="#vpn-server-user-api" title="Permalink to this headline">¶</a></h2>
+<p>VPN users are common to all VPN servers.</p>
+<div class="section" id="vpn-server-user-object">
+<h3>VPN Server User Object<a class="headerlink" href="#vpn-server-user-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="VPNUser">
+<code class="descname">VPNUser</code><a class="headerlink" href="#VPNUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPNUser has the following attributes:</p>
+<dl class="property">
+<dt id="VPNUser.login">
+<code class="descname">login</code><span> </span>string<a class="headerlink" href="#VPNUser.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN user login</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNUser.password">
+<code class="descname">password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#VPNUser.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPN user password (length must be between 8 and 32)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNUser.password_set">
+<code class="descname">password_set</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#VPNUser.password_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if a password was provided for this user</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNUser.ip_reservation">
+<code class="descname">ip_reservation</code><span> </span>ipv4<a class="headerlink" href="#VPNUser.ip_reservation" title="Permalink to this definition">¶</a></dt>
+<dd><p>You can specify the IP you want to assign to this user.
+If you don&#8217;t want to use a specific IP pass an empty string or omit this
+property.</p>
+<p>The IP must be in the VPN range (see ip_start, ip_end).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="vpn-server-user-list">
+<h3>VPN Server User List<a class="headerlink" href="#vpn-server-user-list" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-user-">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/user/</code><a class="headerlink" href="#get--api-v4-vpn-user-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/user/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;ip_reservation&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;login&quot;</span><span class="o">:</span> <span class="s2">&quot;test-1392677633-np&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password_set&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;ip_reservation&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;login&quot;</span><span class="o">:</span> <span class="s2">&quot;test-1392677633&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;password_set&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-a-vpn-user">
+<h3>Get a VPN user<a class="headerlink" href="#get-a-vpn-user" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-user-login">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/user/{login}</code><a class="headerlink" href="#get--api-v4-vpn-user-login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a> with the given login</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/user/test-1392677633-np</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ip_reservation&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="o">:</span> <span class="s2">&quot;test-1392677633-np&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password_set&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="add-a-vpn-user">
+<h3>Add a VPN User<a class="headerlink" href="#add-a-vpn-user" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-vpn-user-">
+<code class="descname">POST </code><code class="descname">/api/v4/vpn/user/</code><a class="headerlink" href="#post--api-v4-vpn-user-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a>.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/vpn/user/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+  <span class="nt">&quot;login&quot;</span><span class="p">:</span> <span class="s2">&quot;vpnuser01&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;thisisasecret&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ip_reservation&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.27.69&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ip_reservation&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.69&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="o">:</span> <span class="s2">&quot;vpnuser01&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password_set&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-vpn-user">
+<h3>Delete a VPN User<a class="headerlink" href="#delete-a-vpn-user" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-vpn-user-login">
+<code class="descname">DELETE </code><code class="descname">/api/v4/vpn/user/{login}</code><a class="headerlink" href="#delete--api-v4-vpn-user-login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/vpn/user/vpnuser01</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-vpn-user">
+<h3>Update a VPN User<a class="headerlink" href="#update-a-vpn-user" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-vpn-user-login">
+<code class="descname">PUT </code><code class="descname">/api/v4/vpn/user/{login}</code><a class="headerlink" href="#put--api-v4-vpn-user-login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a> task with the given login</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/vpn/user/test-1392677633-np</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;donttellanyone&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ip_reservation&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;login&quot;</span><span class="o">:</span> <span class="s2">&quot;test-1392677633-np&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password_set&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="vpn-ip-pool">
+<h2>VPN IP Pool<a class="headerlink" href="#vpn-ip-pool" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-vpn-server-ip-pool-reservations">
+<h3>Get the VPN server IP pool reservations<a class="headerlink" href="#get-the-vpn-server-ip-pool-reservations" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-ip_pool-">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/ip_pool/</code><a class="headerlink" href="#get--api-v4-vpn-ip_pool-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a> with the given login</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/ip_pool/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ip_start&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.65&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ip_end&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.95&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;reservations&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;login&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.69&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="vpn-server-connection-api">
+<h2>VPN Server Connection API<a class="headerlink" href="#vpn-server-connection-api" title="Permalink to this headline">¶</a></h2>
+<p>This API allows listing the active connections to the VPN server</p>
+<div class="section" id="vpn-connection-object">
+<h3>VPN Connection Object<a class="headerlink" href="#vpn-connection-object" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="VPNConnection">
+<code class="descname">VPNConnection</code><a class="headerlink" href="#VPNConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>VPNConnection has the following attributes:</p>
+<dl class="property">
+<dt id="VPNConnection.id">
+<code class="descname">id</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>connection id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.vpn">
+<code class="descname">vpn</code><span> </span>strong<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.vpn" title="Permalink to this definition">¶</a></dt>
+<dd><p>related VPN server id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.user">
+<code class="descname">user</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.user" title="Permalink to this definition">¶</a></dt>
+<dd><p>user login</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.authenticated">
+<code class="descname">authenticated</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.authenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the connection authenticated</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.auth_time">
+<code class="descname">auth_time</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.auth_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>timestamp of the authentication</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.src_ip">
+<code class="descname">src_ip</code><span> </span>ipv4<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.src_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>connection source IP address</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.src_port">
+<code class="descname">src_port</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.src_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>connection source port</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.local_ip">
+<code class="descname">local_ip</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.local_ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>attributed IP address from VPN adress pool</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.rx_bytes">
+<code class="descname">rx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.rx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>rx bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="VPNConnection.tx_bytes">
+<code class="descname">tx_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#VPNConnection.tx_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>tx bytes</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-the-list-of-connections">
+<h3>Get the list of connections<a class="headerlink" href="#get-the-list-of-connections" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-connection-">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/connection/</code><a class="headerlink" href="#get--api-v4-vpn-connection-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/user/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;rx_bytes&quot;</span><span class="o">:</span> <span class="mi">94</span><span class="p">,</span>
+            <span class="s2">&quot;authenticated&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;tx_bytes&quot;</span><span class="o">:</span> <span class="mi">94</span><span class="p">,</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp-2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;vpn&quot;</span><span class="o">:</span> <span class="s2">&quot;pptp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;src_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;93.184.216.119&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;auth_time&quot;</span><span class="o">:</span> <span class="mi">1392895603</span><span class="p">,</span>
+            <span class="s2">&quot;local_ip&quot;</span><span class="o">:</span> <span class="s2">&quot;192.168.27.65&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="close-a-given-connection">
+<h3>Close a given connection<a class="headerlink" href="#close-a-given-connection" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-vpn-connection-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/vpn/connection/{id}</code><a class="headerlink" href="#delete--api-v4-vpn-connection-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#VPNUser" title="VPNUser"><code class="xref json json-object docutils literal"><span class="pre">VPNUser</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/vpn/connection/pptp-2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="vpn-user-configuration-file-api">
+<h2>VPN User configuration file API<a class="headerlink" href="#vpn-user-configuration-file-api" title="Permalink to this headline">¶</a></h2>
+<p>For OpenVPN server, you can download a configuration file that will be
+used to configure the VPN client</p>
+<div class="section" id="donwload-a-user-configuration-file">
+<h3>Donwload a user configuration file<a class="headerlink" href="#donwload-a-user-configuration-file" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-vpn-download_config-server_name-login">
+<code class="descname">GET </code><code class="descname">/api/v4/vpn/download_config/{server_name}/{login}</code><a class="headerlink" href="#get--api-v4-vpn-download_config-server_name-login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download an OpenVPN configuration file for the given server and login</p>
+<p>WARNING: each time you download a new configuration file for a particular user,
+you invalidate previous configuration file emitted for this user</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/vpn/connection/pptp-2</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="o">:</span> <span class="l">Thu, 20 Feb 2014 13:14:01 GMT</span>
+<span class="na">Server</span><span class="o">:</span> <span class="l">nginx</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-openvpn-profile</span>
+<span class="na">Content-Disposition</span><span class="o">:</span> <span class="l">attachment; filename=&quot;config_openvpn_routed_test.ovpn&quot;</span>
+<span class="na">Keep-Alive</span><span class="o">:</span> <span class="l">timeout=5, max=99</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Keep-Alive</span>
+<span class="na">Transfer-Encoding</span><span class="o">:</span> <span class="l">chunked</span>
+
+[ ... ]
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

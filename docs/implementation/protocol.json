@@ -1,0 +1,149 @@
+{
+  "format_version": 1,
+  "group": "protocol",
+  "target_api_version": "16.0",
+  "modules": [
+    "00_index",
+    "login",
+    "camera",
+    "notif"
+  ],
+  "implemented_operations": [
+    {
+      "module": "login",
+      "method": "POST",
+      "documented_path": "/api/v8/login/authorize/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-",
+      "relative_path": "login/authorize/",
+      "client_member": "Authentication.AuthorizeAsync"
+    },
+    {
+      "module": "login",
+      "method": "GET",
+      "documented_path": "/api/v8/login/authorize/{track_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id",
+      "relative_path": "login/authorize/{track_id}/",
+      "client_member": "Authentication.TrackAuthorizationAsync"
+    },
+    {
+      "module": "login",
+      "method": "GET",
+      "documented_path": "/api/v8/login/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-",
+      "relative_path": "login/",
+      "client_member": "Authentication.GetLoginAsync"
+    },
+    {
+      "module": "login",
+      "method": "POST",
+      "documented_path": "/api/v8/login/session/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+      "relative_path": "login/session/",
+      "client_member": "Authentication.OpenSessionAsync"
+    },
+    {
+      "module": "login",
+      "method": "POST",
+      "documented_path": "/api/v8/login/logout/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-logout-",
+      "relative_path": "login/logout/",
+      "client_member": "Authentication.CloseSessionAsync"
+    },
+    {
+      "module": "camera",
+      "method": "GET",
+      "documented_path": "/api/v8/camera/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-",
+      "relative_path": "camera/",
+      "client_member": "Cameras.ListAsync"
+    },
+    {
+      "module": "camera",
+      "method": "GET",
+      "documented_path": "/api/v8/camera/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-id",
+      "relative_path": "camera/{id}",
+      "client_member": "Cameras.Camera().GetAsync"
+    },
+    {
+      "module": "notif",
+      "method": "GET",
+      "documented_path": "/api/v11/notif/targets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets",
+      "relative_path": "notif/targets",
+      "client_member": "Notifications.ListTargetsAsync"
+    },
+    {
+      "module": "notif",
+      "method": "GET",
+      "documented_path": "/api/v11/notif/targets/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id",
+      "relative_path": "notif/targets/{id}",
+      "client_member": "Notifications.Target().GetAsync"
+    },
+    {
+      "module": "notif",
+      "method": "DELETE",
+      "documented_path": "/api/v11/notif/targets/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v11-notif-targets-id",
+      "relative_path": "notif/targets/{id}",
+      "client_member": "Notifications.Target().DeleteAsync"
+    },
+    {
+      "module": "notif",
+      "method": "PUT",
+      "documented_path": "/api/v11/notif/targets/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+      "relative_path": "notif/targets/{id}",
+      "client_member": "Notifications.Target().UpdateAsync"
+    },
+    {
+      "module": "notif",
+      "method": "POST",
+      "documented_path": "/api/v11/notif/targets/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+      "relative_path": "notif/targets/",
+      "client_member": "Notifications.CreateTargetAsync"
+    }
+  ],
+  "unsupported_operations": [],
+  "contract_models": [],
+  "consumer_callback_contracts": [
+    "NotificationRegistrationCallback",
+    "NotificationDeliveryCallback",
+    "NotificationDeliveryResult"
+  ],
+  "callback_policy": "/register, /register/{box_id}/{device_id} and /send belong to a consumer push server; they are not outbound Freebox operations.",
+  "version_policy": "Historical major numbers in active examples are normalized to the selected current API major; explicit deprecations are excluded at their declared scope.",
+  "wire_policies": [
+    "Authentication uses documented HMAC-SHA1 challenge response without automatic business request replay.",
+    "Notification target writes use only the six fields attested by request examples; callbacks remain separate contracts.",
+    "A target result preserves its documented object-or-array JSON kind."
+  ],
+  "evidence_files": [
+    {
+      "path": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Protocol/FreeboxCamerasApi.cs",
+      "sha256": "5a9ddbeb351713cf5627efb1358567488deb0da3fe64710a3af711d32585f331"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/Domains/Protocol/FreeboxNotificationsApi.cs",
+      "sha256": "425c2d3495e2d09ac695520a048893d9aad29bc634ab3453a0f8d7949418fcf3"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Client/FreeboxAuthenticationApi.cs",
+      "sha256": "d6fca124d768e3439a049d5dfc05a0719ea76211d80e3d191a89f2516ff65dad"
+    },
+    {
+      "path": "Libs/Freenaute.Freebox.Mapper/Serialization/ProtocolJsonSerializerContext.cs",
+      "sha256": "6567fc98ed7c8e188b8856af8b562c526b72bb7e5defea8488455c64223732a3"
+    }
+  ],
+  "validation": {
+    "live_server_calls": false,
+    "full_sdk_implemented": false
+  }
+}

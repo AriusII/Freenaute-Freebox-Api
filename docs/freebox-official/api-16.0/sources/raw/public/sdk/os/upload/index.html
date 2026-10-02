@@ -1,0 +1,643 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>File Upload &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="AirMedia API" href="../airmedia/" />
+    <link rel="prev" title="File Sharing Link" href="../share/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="file-upload">
+<h1>File Upload<a class="headerlink" href="#file-upload" title="Permalink to this headline">¶</a></h1>
+<p>This API allows you to upload files to the Freebox Server.</p>
+<p>NOTE: for large transfer files, you should prefer FTP over HTTP
+transfer</p>
+<p><em>WARNING</em> the previous http upload method is now deprecated since api v4,
+you must now use the new WebSocket upload Api. If you can&#8217;t support WebSocket,
+you must use ftp for file transfer</p>
+<div class="section" id="file-upload-errors">
+<h2>File Upload Errors<a class="headerlink" href="#file-upload-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the file upload API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>invalid_request</td>
+<td>Invalid request</td>
+</tr>
+<tr class="row-odd"><td>path_not_found</td>
+<td>File or folder not found</td>
+</tr>
+<tr class="row-even"><td>access_denied</td>
+<td>Write permission denied in the destination folder</td>
+</tr>
+<tr class="row-odd"><td>destination_conflict</td>
+<td>A file with same name already exists</td>
+</tr>
+<tr class="row-even"><td>invalid_id</td>
+<td>Invalid file upload id</td>
+</tr>
+<tr class="row-odd"><td>cancelled</td>
+<td>Someone on a side channel as cancelled the upload</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="file-upload-object">
+<h2>File Upload object<a class="headerlink" href="#file-upload-object" title="Permalink to this headline">¶</a></h2>
+<p>File uploads have the following attributes:</p>
+<dl class="object">
+<dt id="FileUpload">
+<code class="descname">FileUpload</code><a class="headerlink" href="#FileUpload" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FileUpload.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>upload id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.size">
+<code class="descname">size</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file size in bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.uploaded">
+<code class="descname">uploaded</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.uploaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploaded bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.status">
+<code class="descname">status</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>upload status can have the following values</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>authorized</td>
+<td>Upload authorization is valid, upload has not started yet</td>
+</tr>
+<tr class="row-odd"><td>in_progress</td>
+<td>Upload in progress</td>
+</tr>
+<tr class="row-even"><td>done</td>
+<td>Upload done</td>
+</tr>
+<tr class="row-odd"><td>failed</td>
+<td>Upload failed</td>
+</tr>
+<tr class="row-even"><td>conflict</td>
+<td>Destination file conflict</td>
+</tr>
+<tr class="row-odd"><td>timeout</td>
+<td>Upload authorization is no longer valid</td>
+</tr>
+<tr class="row-even"><td>cancelled</td>
+<td>Upload cancelled by user</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.start_date">
+<code class="descname">start_date</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.start_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>upload start date</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.last_update">
+<code class="descname">last_update</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.last_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>last update of file upload object</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.upload_name">
+<code class="descname">upload_name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.upload_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>name of the file uploaded</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUpload.dirname">
+<code class="descname">dirname</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FileUpload.dirname" title="Permalink to this definition">¶</a></dt>
+<dd><p>upload destination directory</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="websocket-file-upload-api">
+<span id="ws-upload-api"></span><h2>WebSocket File Upload API<a class="headerlink" href="#websocket-file-upload-api" title="Permalink to this headline">¶</a></h2>
+<p>The file upload WebSocket path is /api/v4/ws/upload</p>
+<p>With this new API, the need for creating a &#8216;file upload authorization&#8217;
+has now been removed.</p>
+<p>To be able to upload a file to the Freebox, you must open a WebSocket
+connection to the upload api, then for each file you want to upload
+you must :</p>
+<ul>
+<li><p class="first">send a <a class="reference internal" href="#FileUploadStartAction" title="FileUploadStartAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadStartAction</span></code></a> with the action &#8216;upload_start&#8217;</p>
+</li>
+<li><p class="first">wait for the associated <a class="reference internal" href="../#WebSocketResponse" title="WebSocketResponse"><code class="xref json json-object docutils literal"><span class="pre">WebSocketResponse</span></code></a> that indicates
+success, then start transferring the file content by chunks,
+each chunk being a binary WebSocket frame.</p>
+<p>For each chunk you send, you&#8217;ll get a WsUploadProgress response indicating that
+the associated chunk has been received and processed. Note that you should not
+wait for this response before sending the next data chunk in order to get
+good bandwidth performance.</p>
+</li>
+<li><p class="first">once all chunks have been transferred, you should send a
+<a class="reference internal" href="#FileUploadFinalizeAction" title="FileUploadFinalizeAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadFinalizeAction</span></code></a> with the action &#8216;upload_finalize&#8217; and wait
+for the associated <a class="reference internal" href="../#WebSocketResponse" title="WebSocketResponse"><code class="xref json json-object docutils literal"><span class="pre">WebSocketResponse</span></code></a> indicating success</p>
+</li>
+</ul>
+<p>Note that if you have multiple files to send, you should reuse the same
+WebSocket connection, and repeat the upload steps again.</p>
+<p>If for any reason the WebSocket is closed during upload, the partially sent
+file will be left as-is on the Freebox to allow resuming upload at a later point.</p>
+<p>If you want to cancel an ongoing upload ou can send a
+<a class="reference internal" href="#FileUploadCancelAction" title="FileUploadCancelAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadCancelAction</span></code></a>. The partially uploaded
+file will then be deleted</p>
+<div class="section" id="file-upload-start-action">
+<h3>File Upload Start Action<a class="headerlink" href="#file-upload-start-action" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="FileUploadStartAction">
+<code class="descname">FileUploadStartAction</code><a class="headerlink" href="#FileUploadStartAction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FileUploadStartAction.request_id">
+<code class="descname">request_id</code><span> </span>int<a class="headerlink" href="#FileUploadStartAction.request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional request_id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadStartAction.action">
+<code class="descname">action</code><span> </span>string<a class="headerlink" href="#FileUploadStartAction.action" title="Permalink to this definition">¶</a></dt>
+<dd><p>must be &#8216;upload_start&#8217;</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadStartAction.size">
+<code class="descname">size</code><span> </span>int<a class="headerlink" href="#FileUploadStartAction.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional file size</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadStartAction.dirname">
+<code class="descname">dirname</code><span> </span>string<a class="headerlink" href="#FileUploadStartAction.dirname" title="Permalink to this definition">¶</a></dt>
+<dd><p>the destination directory (encoded value)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadStartAction.filename">
+<code class="descname">filename</code><span> </span>string<a class="headerlink" href="#FileUploadStartAction.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>the destination filename</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadStartAction.force">
+<code class="descname">force</code><span> </span>enum<a class="headerlink" href="#FileUploadStartAction.force" title="Permalink to this definition">¶</a></dt>
+<dd><p>select the way conflicts are handled</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Force mode</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><em>missing</em></td>
+<td>The response to the FileUploadStartAction will
+be an error with &#8216;destination_conflict&#8217; if the
+destination file already exists. The response will
+also contain a file_size attribute containing the
+existing file length (useful for resuming upload)</td>
+</tr>
+<tr class="row-odd"><td>overwrite</td>
+<td>If the target file already exists it will
+be overridden</td>
+</tr>
+<tr class="row-even"><td>resume</td>
+<td>The upload will resume, all sent chunks will then
+be appended to the existing file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="file-upload-finalize-action">
+<h3>File Upload Finalize action<a class="headerlink" href="#file-upload-finalize-action" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="FileUploadFinalizeAction">
+<code class="descname">FileUploadFinalizeAction</code><a class="headerlink" href="#FileUploadFinalizeAction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FileUploadFinalizeAction.request_id">
+<code class="descname">request_id</code><span> </span>int<a class="headerlink" href="#FileUploadFinalizeAction.request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional request_id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadFinalizeAction.action">
+<code class="descname">action</code><span> </span>string<a class="headerlink" href="#FileUploadFinalizeAction.action" title="Permalink to this definition">¶</a></dt>
+<dd><p>must be &#8216;upload_finalize&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="file-upload-cancel-action">
+<h3>File Upload Cancel action<a class="headerlink" href="#file-upload-cancel-action" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="FileUploadCancelAction">
+<code class="descname">FileUploadCancelAction</code><a class="headerlink" href="#FileUploadCancelAction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FileUploadCancelAction.request_id">
+<code class="descname">request_id</code><span> </span>int<a class="headerlink" href="#FileUploadCancelAction.request_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>optional request_id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadCancelAction.action">
+<code class="descname">action</code><span> </span>string<a class="headerlink" href="#FileUploadCancelAction.action" title="Permalink to this definition">¶</a></dt>
+<dd><p>must be &#8216;upload_cancel&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="file-upload-chunk">
+<h3>File Upload Chunk<a class="headerlink" href="#file-upload-chunk" title="Permalink to this headline">¶</a></h3>
+<p>File upload chunk are just Binary WebSocket frames containing raw file
+content.</p>
+</div>
+<div class="section" id="file-upload-chunk-response">
+<h3>File Upload Chunk Response<a class="headerlink" href="#file-upload-chunk-response" title="Permalink to this headline">¶</a></h3>
+<p>For each received chunk, the Freebox will send a chunk response containing
+upload progress information the request_id used in response will be
+the one from the <a class="reference internal" href="#FileUploadStartAction" title="FileUploadStartAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadStartAction</span></code></a>, and &#8216;action&#8217; value
+will be &#8216;upload_data&#8217;</p>
+<dl class="object">
+<dt id="FileUploadChunkResponse">
+<code class="descname">FileUploadChunkResponse</code><a class="headerlink" href="#FileUploadChunkResponse" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FileUploadChunkResponse.total_len">
+<code class="descname">total_len</code><span> </span>int<a class="headerlink" href="#FileUploadChunkResponse.total_len" title="Permalink to this definition">¶</a></dt>
+<dd><p>target file current length</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadChunkResponse.complete">
+<code class="descname">complete</code><span> </span>bool<a class="headerlink" href="#FileUploadChunkResponse.complete" title="Permalink to this definition">¶</a></dt>
+<dd><p>will be true in a reply to <a class="reference internal" href="#FileUploadFinalizeAction" title="FileUploadFinalizeAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadFinalizeAction</span></code></a>
+or <a class="reference internal" href="#FileUploadCancelAction" title="FileUploadCancelAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadCancelAction</span></code></a></p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileUploadChunkResponse.cancelled">
+<code class="descname">cancelled</code><span> </span>bool<a class="headerlink" href="#FileUploadChunkResponse.cancelled" title="Permalink to this definition">¶</a></dt>
+<dd><p>will be true in a reply <a class="reference internal" href="#FileUploadCancelAction" title="FileUploadCancelAction"><code class="xref json json-object docutils literal"><span class="pre">FileUploadCancelAction</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="file-upload-example">
+<h3>File Upload example<a class="headerlink" href="#file-upload-example" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-ws-upload">
+<code class="descname">GET </code><code class="descname">/api/v4/ws/upload</code><a class="headerlink" href="#get--api-v4-ws-upload" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Start the WebSocket handshake</strong>:</p>
+<blockquote>
+<div>Client ==&gt; Freebox</div></blockquote>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">ws://mafreebox.freebox.fr/api/v4/ws/upload</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">Upgrade</span>
+<span class="na">Upgrade</span><span class="o">:</span> <span class="l">websocket</span>
+<span class="na">Sec-WebSocket-Version</span><span class="o">:</span> <span class="l">13</span>
+<span class="na">Sec-WebSocket-Key</span><span class="o">:</span> <span class="l">LhYCx4FBJE6pqrIL3tDC3g==</span>
+<span class="na">X-Fbx-App-Auth</span><span class="o">:</span> <span class="l">35JYdQSvkcBYK84IFMU7H86clfhS75OzwlQrKlQN1gBch\/Dd62RGzDpgC7YB9jB2</span>
+</pre></div>
+</div>
+<p><strong>Handshake response</strong>:</p>
+<blockquote>
+<div>Client &lt;== Freebox</div></blockquote>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">101</span> <span class="ne">Switching Protocols</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">upgrade</span>
+<span class="na">Upgrade</span><span class="o">:</span> <span class="l">websocket</span>
+<span class="na">Sec-WebSocket-Accept</span><span class="o">:</span> <span class="l">IqwCz8z8sON/eWQqkYKLu6iLkzo=</span>
+</pre></div>
+</div>
+<p><strong>Start upload</strong>:</p>
+<blockquote>
+<div>Client ==&gt; Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_start&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">3615</span><span class="p">,</span>
+  <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">8526224</span><span class="p">,</span>
+  <span class="s2">&quot;dirname&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvMF91cGxvYWRfdGVzdA==&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;test_file.bin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Start upload response</strong>:</p>
+<blockquote>
+<div>Client &lt;== Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_start&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">3615</span><span class="p">,</span>
+  <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;Le fichier existe déjà&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;file_size&quot;</span><span class="o">:</span> <span class="mi">8526224</span><span class="p">,</span>
+  <span class="s2">&quot;error_code&quot;</span><span class="o">:</span> <span class="s2">&quot;conflict&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Start upload with overwrite force mode</strong>:</p>
+<blockquote>
+<div>Client ==&gt; Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_start&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">6969</span><span class="p">,</span>
+  <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">8526224</span><span class="p">,</span>
+  <span class="s2">&quot;dirname&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvMF91cGxvYWRfdGVzdA==&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;filename&quot;</span><span class="o">:</span> <span class="s2">&quot;test_file.bin&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;force&quot;</span><span class="o">:</span> <span class="s2">&quot;overwrite&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Start upload response</strong>:</p>
+<blockquote>
+<div>Client &lt;== Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_start&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">6969</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Send data chunk</strong>:</p>
+<blockquote>
+<div><p>Client ==&gt; Freebox</p>
+<p>[ BINARY WEBSOCKET FRAME MESSAGE containing file offset: 0, length: 512k ]</p>
+<p>[ BINARY WEBSOCKET FRAME MESSAGE containing file offset: 512k, length: 512k ]</p>
+<p>[ BINARY WEBSOCKET FRAME MESSAGE containing file offset: 1024k, length: 512k ]</p>
+<p>[ ... ]</p>
+</div></blockquote>
+<p><strong>Receive upload response</strong>:</p>
+<blockquote>
+<div>Client &lt;== Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">6969</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_data&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;total_len&quot;</span><span class="o">:</span> <span class="mi">524288</span><span class="p">,</span>
+          <span class="s2">&quot;complete&quot;</span><span class="o">:</span> <span class="kc">false</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">6969</span><span class="p">,</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_data&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;total_len&quot;</span><span class="o">:</span> <span class="mi">1048576</span><span class="p">,</span>
+          <span class="s2">&quot;complete&quot;</span><span class="o">:</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>This will be received for each sent data chunk</p>
+<p><strong>Send upload finalize</strong>:</p>
+<blockquote>
+<div>Client ==&gt; Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_finalize&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span><span class="mi">3615</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Receive upload finalize confirmation</strong>:</p>
+<blockquote>
+<div>Client &lt;== Freebox</div></blockquote>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;request_id&quot;</span><span class="o">:</span> <span class="mi">3615</span><span class="p">,</span>
+  <span class="s2">&quot;action&quot;</span><span class="o">:</span> <span class="s2">&quot;upload_finalize&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;total_len&quot;</span><span class="o">:</span> <span class="mi">8526224</span><span class="p">,</span>
+    <span class="s2">&quot;complete&quot;</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p>At this point you can start uploading a new file by repeating the previous
+steps starting from <em>Start upload</em> step</p>
+</div>
+</div>
+<div class="section" id="upload-progress-tracking-api">
+<h2>Upload Progress tracking API<a class="headerlink" href="#upload-progress-tracking-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-list-of-uploads">
+<h3>Get the list of uploads<a class="headerlink" href="#get-the-list-of-uploads" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-upload-">
+<code class="descname">GET </code><code class="descname">/api/v4/upload/</code><a class="headerlink" href="#get--api-v4-upload-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/upload/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1678139709</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">54960</span><span class="p">,</span>
+            <span class="s2">&quot;uploaded&quot;</span><span class="o">:</span> <span class="mi">54960</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1361465608</span><span class="p">,</span>
+            <span class="s2">&quot;start_date&quot;</span><span class="o">:</span> <span class="mi">1361465608</span><span class="p">,</span>
+            <span class="s2">&quot;upload_name&quot;</span><span class="o">:</span> <span class="s2">&quot;playlist.m3u&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;dirname&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque 1&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="track-an-upload-status">
+<h3>Track an upload status<a class="headerlink" href="#track-an-upload-status" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-upload-id">
+<code class="descname">GET </code><code class="descname">/api/v4/upload/{id}</code><a class="headerlink" href="#get--api-v4-upload-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>With this API you can track the progress of your
+<a class="reference internal" href="#FileUpload" title="FileUpload"><code class="xref json json-object docutils literal"><span class="pre">FileUpload</span></code></a> task</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/upload/1678139709</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">1678139709</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">54960</span><span class="p">,</span>
+        <span class="s2">&quot;uploaded&quot;</span><span class="o">:</span> <span class="mi">54960</span><span class="p">,</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_update&quot;</span><span class="o">:</span> <span class="mi">1361465608</span><span class="p">,</span>
+        <span class="s2">&quot;start_date&quot;</span><span class="o">:</span> <span class="mi">1361465608</span><span class="p">,</span>
+        <span class="s2">&quot;upload_name&quot;</span><span class="o">:</span> <span class="s2">&quot;playlist.m3u&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dirname&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque 1&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cancel-an-upload">
+<h3>Cancel an upload<a class="headerlink" href="#cancel-an-upload" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-upload-id-cancel">
+<code class="descname">DELETE </code><code class="descname">/api/v4/upload/{id}/cancel</code><a class="headerlink" href="#delete--api-v4-upload-id-cancel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancel the given <a class="reference internal" href="#FileUpload" title="FileUpload"><code class="xref json json-object docutils literal"><span class="pre">FileUpload</span></code></a> closing the connection
+The upload status must be in_progress</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/upload/136419941/cancel</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-an-upload">
+<h3>Delete an upload<a class="headerlink" href="#delete-an-upload" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-upload-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/upload/{id}</code><a class="headerlink" href="#delete--api-v4-upload-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the given <a class="reference internal" href="#FileUpload" title="FileUpload"><code class="xref json json-object docutils literal"><span class="pre">FileUpload</span></code></a> closing the connection
+if needed</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/upload/136419941</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cleanup-all-terminated-uploads">
+<h3>Cleanup all terminated uploads<a class="headerlink" href="#cleanup-all-terminated-uploads" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-upload-clean">
+<code class="descname">DELETE </code><code class="descname">/api/v4/upload/clean</code><a class="headerlink" href="#delete--api-v4-upload-clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all the <a class="reference internal" href="#FileUpload" title="FileUpload"><code class="xref json json-object docutils literal"><span class="pre">FileUpload</span></code></a> not in_progress</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/upload/clean</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

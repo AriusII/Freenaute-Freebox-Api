@@ -1,0 +1,111 @@
+{
+  "module": {
+    "module": "rrd",
+    "title": "RRD [UNSTABLE]",
+    "category": "stockage-vm",
+    "path": "docs/reference/stockage-vm/rrd.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 5,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#rrd-unstable",
+    "source_pre_blocks": 3,
+    "markdown_code_blocks": 3,
+    "source_tables": 5
+  },
+  "endpoints": [
+    {
+      "module": "rrd",
+      "method": "POST",
+      "documented_path": "/api/v8/rrd/",
+      "path_template": "/api/v{major}/rrd/",
+      "documented_major": 8,
+      "title": "Get RRD stats [UNSTABLE]",
+      "id": "post--api-v8-rrd-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-rrd-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/rrd.md#post--api-v8-rrd-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-rrd-"
+    },
+    {
+      "module": "rrd",
+      "method": "GET",
+      "documented_path": "/api/v8/rrd/",
+      "path_template": "/api/v{major}/rrd/",
+      "documented_major": 8,
+      "title": "Get RRD stats [UNSTABLE]",
+      "id": "get--api-v8-rrd-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-rrd-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/rrd.md#get--api-v8-rrd-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-rrd-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "rrd",
+      "name": "RRDFetch",
+      "id": "RRDFetch",
+      "properties": [
+        "RRDFetch.db",
+        "RRDFetch.date_start",
+        "RRDFetch.date_end",
+        "RRDFetch.precision",
+        "RRDFetch.fields"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch",
+      "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch"
+    }
+  ],
+  "properties": [
+    {
+      "module": "rrd",
+      "id": "RRDFetch.db",
+      "signature": "db enum",
+      "description": "Name of the rrd database to read. It can take one of the following values Db Description net network stats temp temperature stats dsl xDSL stats switch switch stats",
+      "source_id": "RRDFetch.db",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch.db",
+      "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch.db"
+    },
+    {
+      "module": "rrd",
+      "id": "RRDFetch.date_start",
+      "signature": "date_start int Optionnal",
+      "description": "The requested start timestamp of the stats to get NOTE: this can be adjusted to fit the best available resolution",
+      "source_id": "RRDFetch.date_start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch.date_start",
+      "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch.date_start"
+    },
+    {
+      "module": "rrd",
+      "id": "RRDFetch.date_end",
+      "signature": "date_end int Optionnal",
+      "description": "The requested end timestamp of the stats to get NOTE: this can be adjusted to fit the best available resolution",
+      "source_id": "RRDFetch.date_end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch.date_end",
+      "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch.date_end"
+    },
+    {
+      "module": "rrd",
+      "id": "RRDFetch.precision",
+      "signature": "precision int Optionnal",
+      "description": "By default all values are cast to int, if you need floating point precision you can provide a precision factor that will be applied to all values before being returned. For instance if you want 2 digit precision you should use a precision of 100, and divide the obtained results by 100.",
+      "source_id": "RRDFetch.precision",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch.precision",
+      "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch.precision"
+    },
+    {
+      "module": "rrd",
+      "id": "RRDFetch.fields",
+      "signature": "fields [] array of string Optionnal",
+      "description": "If you are only interested in getting some fields you can provide the list of fields you want to get.",
+      "source_id": "RRDFetch.fields",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RRDFetch.fields",
+      "markdown": "docs/reference/stockage-vm/rrd.md#RRDFetch.fields"
+    }
+  ],
+  "events": []
+}

@@ -1,0 +1,609 @@
+{
+  "module": {
+    "module": "storage",
+    "title": "Storage API [UNSTABLE]",
+    "category": "stockage-vm",
+    "path": "docs/reference/stockage-vm/storage.md",
+    "http_signatures": 11,
+    "objects": 4,
+    "properties": 37,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#storage-api-unstable",
+    "source_pre_blocks": 38,
+    "markdown_code_blocks": 38,
+    "source_tables": 8
+  },
+  "endpoints": [
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/disk/",
+      "path_template": "/api/v{major}/storage/disk/",
+      "documented_major": 8,
+      "title": "Get the list of disks",
+      "id": "get--api-v8-storage-disk-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#get--api-v8-storage-disk-",
+      "referenced_objects": [
+        "StorageDisk"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-disk-"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/disk/{id}",
+      "path_template": "/api/v{major}/storage/disk/{id}",
+      "documented_major": 8,
+      "title": "Get a given disk info",
+      "id": "get--api-v8-storage-disk-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#get--api-v8-storage-disk-id",
+      "referenced_objects": [
+        "StorageDisk"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-disk-id"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/disk/{id}",
+      "path_template": "/api/v{major}/storage/disk/{id}",
+      "documented_major": 8,
+      "title": "Update a disk state",
+      "id": "put--api-v8-storage-disk-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-disk-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#put--api-v8-storage-disk-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-disk-id"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/disk/{disk_id}/fsadvice?partition_id={partition_id}\u0026dedicated_disk={bool}",
+      "path_template": "/api/v{major}/storage/disk/{disk_id}/fsadvice?partition_id={partition_id}\u0026dedicated_disk={bool}",
+      "documented_major": 8,
+      "title": "Get FS advices",
+      "id": "get--api-v8-storage-disk-disk_id-fsadvice?partition_id=partition_id\u0026dedicated_disk=bool",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-disk_id-fsadvice?partition_id=partition_id\u0026dedicated_disk=bool",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#get--api-v8-storage-disk-disk_id-fsadvice?partition_id=partition_id\u0026dedicated_disk=bool",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-disk-disk_id-fsadvice?partition_id=partition_id\u0026dedicated_disk=bool"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/disk/{id}/format/",
+      "path_template": "/api/v{major}/storage/disk/{id}/format/",
+      "documented_major": 8,
+      "title": "Format a disk",
+      "id": "put--api-v8-storage-disk-id-format-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-disk-id-format-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#put--api-v8-storage-disk-id-format-",
+      "referenced_objects": [
+        "StorageDisk"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-disk-id-format-"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/partition/",
+      "path_template": "/api/v{major}/storage/partition/",
+      "documented_major": 8,
+      "title": "Get the list of partitions",
+      "id": "get--api-v8-storage-partition-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-partition-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#get--api-v8-storage-partition-",
+      "referenced_objects": [
+        "DiskPartition"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-partition-"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/partition/{id}",
+      "path_template": "/api/v{major}/storage/partition/{id}",
+      "documented_major": 8,
+      "title": "Get a given partition info",
+      "id": "get--api-v8-storage-partition-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-partition-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#get--api-v8-storage-partition-id",
+      "referenced_objects": [
+        "DiskPartition"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-partition-id"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/partition/{id}",
+      "path_template": "/api/v{major}/storage/partition/{id}",
+      "documented_major": 8,
+      "title": "Update a partition state",
+      "id": "put--api-v8-storage-partition-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-partition-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#put--api-v8-storage-partition-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-partition-id"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/partition/{id}/check/",
+      "path_template": "/api/v{major}/storage/partition/{id}/check/",
+      "documented_major": 8,
+      "title": "Check a partition",
+      "id": "put--api-v8-storage-partition-id-check-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-partition-id-check-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#put--api-v8-storage-partition-id-check-",
+      "referenced_objects": [
+        "DiskPartition"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-partition-id-check-"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/config/",
+      "path_template": "/api/v{major}/storage/config/",
+      "documented_major": 8,
+      "title": "Get the current storage configuration",
+      "id": "get--api-v8-storage-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#get--api-v8-storage-config-",
+      "referenced_objects": [
+        "StorageConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-config-"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/config/",
+      "path_template": "/api/v{major}/storage/config/",
+      "documented_major": 8,
+      "title": "Update the External Storage configuration",
+      "id": "put--api-v8-storage-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-config-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/storage.md#put--api-v8-storage-config-",
+      "referenced_objects": [
+        "StorageConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "storage",
+      "name": "OperationProgress",
+      "id": "OperationProgress",
+      "properties": [
+        "OperationProgress.done_steps",
+        "OperationProgress.max_steps",
+        "OperationProgress.percent"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#OperationProgress",
+      "markdown": "docs/reference/stockage-vm/storage.md#OperationProgress"
+    },
+    {
+      "module": "storage",
+      "name": "DiskPartition",
+      "id": "DiskPartition",
+      "properties": [
+        "DiskPartition.id",
+        "DiskPartition.disk_id",
+        "DiskPartition.state",
+        "DiskPartition.fstype",
+        "DiskPartition.label",
+        "DiskPartition.path",
+        "DiskPartition.total_bytes",
+        "DiskPartition.used_bytes",
+        "DiskPartition.free_bytes",
+        "DiskPartition.fsck_result",
+        "DiskPartition.operation_pct"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition"
+    },
+    {
+      "module": "storage",
+      "name": "StorageDisk",
+      "id": "StorageDisk",
+      "properties": [
+        "StorageDisk.id",
+        "StorageDisk.type",
+        "StorageDisk.state",
+        "StorageDisk.connector",
+        "StorageDisk.total_bytes",
+        "StorageDisk.table_type",
+        "StorageDisk.model",
+        "StorageDisk.serial",
+        "StorageDisk.firmware",
+        "StorageDisk.temp",
+        "StorageDisk.operation_pct",
+        "StorageDisk.partitions",
+        "StorageDisk.idle",
+        "StorageDisk.idle_duration",
+        "StorageDisk.spinning",
+        "StorageDisk.active_duration",
+        "StorageDisk.time_before_spindown",
+        "StorageDisk.read_requests",
+        "StorageDisk.read_error_requests",
+        "StorageDisk.write_requests",
+        "StorageDisk.write_error_requests"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk"
+    },
+    {
+      "module": "storage",
+      "name": "StorageConfig",
+      "id": "StorageConfig",
+      "properties": [
+        "StorageConfig.external_pm_enabled",
+        "StorageConfig.external_pm_idle_before_spindown"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageConfig",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "storage",
+      "id": "OperationProgress.done_steps",
+      "signature": "done_steps int Read-only",
+      "description": "number of steps done",
+      "source_id": "OperationProgress.done_steps",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#OperationProgress.done_steps",
+      "markdown": "docs/reference/stockage-vm/storage.md#OperationProgress.done_steps"
+    },
+    {
+      "module": "storage",
+      "id": "OperationProgress.max_steps",
+      "signature": "max_steps int Read-only",
+      "description": "total number of steps",
+      "source_id": "OperationProgress.max_steps",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#OperationProgress.max_steps",
+      "markdown": "docs/reference/stockage-vm/storage.md#OperationProgress.max_steps"
+    },
+    {
+      "module": "storage",
+      "id": "OperationProgress.percent",
+      "signature": "percent int Read-only",
+      "description": "current step progress",
+      "source_id": "OperationProgress.percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#OperationProgress.percent",
+      "markdown": "docs/reference/stockage-vm/storage.md#OperationProgress.percent"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.id",
+      "signature": "id int Read-only",
+      "description": "unique partition id",
+      "source_id": "DiskPartition.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.id",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.id"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.disk_id",
+      "signature": "disk_id int Read-only",
+      "description": "related disk id",
+      "source_id": "DiskPartition.disk_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.disk_id",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.disk_id"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.state",
+      "signature": "state enum",
+      "description": "state Description error Partition has error checking Partition check in progress formatting Partition format in progress mounting Partition mount in progress maintenance Partition is in maintenance mode mounted Partition is ready umounting Partition umount in progress umounted Partition is umounted ejecting Partition ejection in progress",
+      "source_id": "DiskPartition.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.state",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.state"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.fstype",
+      "signature": "fstype enum Read-only",
+      "description": "fstype empty unknown xfs ext4 vfat ntfs hf hfsplus swap exfat",
+      "source_id": "DiskPartition.fstype",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.fstype",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.fstype"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.label",
+      "signature": "label string",
+      "description": "partition name",
+      "source_id": "DiskPartition.label",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.label",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.label"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.path",
+      "signature": "path string Read-only",
+      "description": "partition mount point (encoded in base64 as explained in fs API)",
+      "source_id": "DiskPartition.path",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.path",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.path"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.total_bytes",
+      "signature": "total_bytes int Read-only",
+      "description": "partition size (in bytes)",
+      "source_id": "DiskPartition.total_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.total_bytes",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.total_bytes"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.used_bytes",
+      "signature": "used_bytes int Read-only",
+      "description": "partition used space (in bytes)",
+      "source_id": "DiskPartition.used_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.used_bytes",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.used_bytes"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.free_bytes",
+      "signature": "free_bytes int Read-only",
+      "description": "partition free space (in bytes)",
+      "source_id": "DiskPartition.free_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.free_bytes",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.free_bytes"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.fsck_result",
+      "signature": "fsck_result enum Read-only",
+      "description": "fsck result state Description no_run_yet Partition has not been checked yet running Check is in progress fs_clean File system is ok fs_corrected File system was corrected fs_needs_correction File system need correction failed File system has unrecoverable error",
+      "source_id": "DiskPartition.fsck_result",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.fsck_result",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.fsck_result"
+    },
+    {
+      "module": "storage",
+      "id": "DiskPartition.operation_pct",
+      "signature": "operation_pct OperationProgress Read-only",
+      "description": "partition operation progress",
+      "source_id": "DiskPartition.operation_pct",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition.operation_pct",
+      "markdown": "docs/reference/stockage-vm/storage.md#DiskPartition.operation_pct"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.id",
+      "signature": "id int Read-only",
+      "description": "the disk id",
+      "source_id": "StorageDisk.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.id",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.id"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.type",
+      "signature": "type enum Read-only",
+      "description": "type Description internal Freebox internal disk usb usb disk sata sata disk nvme nvme disk",
+      "source_id": "StorageDisk.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.type",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.type"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.state",
+      "signature": "state enum",
+      "description": "state Description error Disk has error disabled Disk is disabled enabled Disk is enabled formatting Disk is formatting",
+      "source_id": "StorageDisk.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.state",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.state"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.connector",
+      "signature": "connector int Read-only",
+      "description": "Disk physical connector id",
+      "source_id": "StorageDisk.connector",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.connector",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.connector"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.total_bytes",
+      "signature": "total_bytes int Read-only",
+      "description": "Disk size (in bytes)",
+      "source_id": "StorageDisk.total_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.total_bytes",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.total_bytes"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.table_type",
+      "signature": "table_type int Read-only",
+      "description": "table_type msdos gpt superfloppy empty",
+      "source_id": "StorageDisk.table_type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.table_type",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.table_type"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.model",
+      "signature": "model string Read-only",
+      "description": "Disk model",
+      "source_id": "StorageDisk.model",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.model",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.model"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.serial",
+      "signature": "serial string Read-only",
+      "description": "Disk serial number",
+      "source_id": "StorageDisk.serial",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.serial",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.serial"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.firmware",
+      "signature": "firmware string Read-only",
+      "description": "Disk firmware version",
+      "source_id": "StorageDisk.firmware",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.firmware",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.firmware"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.temp",
+      "signature": "temp int Read-only",
+      "description": "Disk temperature (when supported) in \u00B0C",
+      "source_id": "StorageDisk.temp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.temp",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.temp"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.operation_pct",
+      "signature": "operation_pct OperationProgress Read-only",
+      "description": "partition operation progress",
+      "source_id": "StorageDisk.operation_pct",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.operation_pct",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.operation_pct"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.partitions",
+      "signature": "partitions [] array of DiskPartition Read-only",
+      "description": "list of disk partitions",
+      "source_id": "StorageDisk.partitions",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.partitions",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.partitions"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.idle",
+      "signature": "idle bool Read-only",
+      "description": "is disk idle (when available)",
+      "source_id": "StorageDisk.idle",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.idle",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.idle"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.idle_duration",
+      "signature": "idle_duration int Read-only",
+      "description": "disk idle duration (in seconds) (when available)",
+      "source_id": "StorageDisk.idle_duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.idle_duration",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.idle_duration"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.spinning",
+      "signature": "spinning bool Read-only",
+      "description": "is disk spinning (when available)",
+      "source_id": "StorageDisk.spinning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.spinning",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.spinning"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.active_duration",
+      "signature": "active_duration int Read-only",
+      "description": "disk activity duration (in seconds) (when available)",
+      "source_id": "StorageDisk.active_duration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.active_duration",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.active_duration"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.time_before_spindown",
+      "signature": "time_before_spindown int Read-only",
+      "description": "seconds left before disk spin down (in seconds) (when available)",
+      "source_id": "StorageDisk.time_before_spindown",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.time_before_spindown",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.time_before_spindown"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.read_requests",
+      "signature": "read_requests int Read-only",
+      "description": "Number of read requests sent since to disk since boot (when available)",
+      "source_id": "StorageDisk.read_requests",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.read_requests",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.read_requests"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.read_error_requests",
+      "signature": "read_error_requests int Read-only",
+      "description": "Number of read requests in error since boot. Might indicate disk failure (when available)",
+      "source_id": "StorageDisk.read_error_requests",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.read_error_requests",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.read_error_requests"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.write_requests",
+      "signature": "write_requests int Read-only",
+      "description": "Number of write requests sent since to disk since boot (when available)",
+      "source_id": "StorageDisk.write_requests",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.write_requests",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.write_requests"
+    },
+    {
+      "module": "storage",
+      "id": "StorageDisk.write_error_requests",
+      "signature": "write_error_requests int Read-only",
+      "description": "Number of write requests in error since boot. Might indicate disk failure (when available)",
+      "source_id": "StorageDisk.write_error_requests",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk.write_error_requests",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageDisk.write_error_requests"
+    },
+    {
+      "module": "storage",
+      "id": "StorageConfig.external_pm_enabled",
+      "signature": "external_pm_enabled bool",
+      "description": "enable/disable external disk power management",
+      "source_id": "StorageConfig.external_pm_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageConfig.external_pm_enabled",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageConfig.external_pm_enabled"
+    },
+    {
+      "module": "storage",
+      "id": "StorageConfig.external_pm_idle_before_spindown",
+      "signature": "external_pm_idle_before_spindown int",
+      "description": "idle time in minutes to wait before spinning down an external disk",
+      "source_id": "StorageConfig.external_pm_idle_before_spindown",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageConfig.external_pm_idle_before_spindown",
+      "markdown": "docs/reference/stockage-vm/storage.md#StorageConfig.external_pm_idle_before_spindown"
+    }
+  ],
+  "events": []
+}

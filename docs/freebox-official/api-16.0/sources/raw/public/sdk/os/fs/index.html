@@ -1,0 +1,1517 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>File System &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="File Sharing Link" href="../share/" />
+    <link rel="prev" title="Download Configuration" href="../download_config/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="file-system">
+<h1>File System<a class="headerlink" href="#file-system" title="Permalink to this headline">¶</a></h1>
+<p>With the file system API you can access files on Freebox
+internal disk and disks connected to the Freebox.</p>
+<div class="section" id="path-encoding">
+<h2>Path encoding<a class="headerlink" href="#path-encoding" title="Permalink to this headline">¶</a></h2>
+<p id="id1"><code class="docutils literal"><span class="pre">NOTE:</span></code></p>
+<p>For maximum compatibility issues path are encoded in base64, you
+<em>should</em> use the path as it is returned by the ls API call.</p>
+<p>For instance this will solve problems with <a class="reference external" href="http://en.wikipedia.org/wiki/Unicode_equivalence">unicode equivalence</a> .</p>
+<p>Although &#8220;Spécial&#8221; (0x53 0x70 <strong>0xc3 0xa9</strong> 0x63 0x69 0x61 0x6c) and
+&#8220;Spécial&#8221; (0x53 0x70 <strong>0x65 0xcc 0x81</strong> 0x63 0x69 0x61 0x6c) are utf8
+equivalent, it is represents two different path.</p>
+<p>Some software/libraries will replace the original string with its
+normalized form, causing issues.  The use of base64 encoded path will
+ensure the original path will be preserved.</p>
+</div>
+<div class="section" id="file-system-errors">
+<h2>File System Errors<a class="headerlink" href="#file-system-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the file system API, you may encounter the
+following errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>invalid_id</td>
+<td>Invalid object id</td>
+</tr>
+<tr class="row-odd"><td>path_not_found</td>
+<td>File or folder not found</td>
+</tr>
+<tr class="row-even"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-odd"><td>disk_unavailable</td>
+<td>The disk is not mounted</td>
+</tr>
+<tr class="row-even"><td>invalid_request</td>
+<td>Invalid request</td>
+</tr>
+<tr class="row-odd"><td>invalid_conflict_mode</td>
+<td>The conflict mode specified is invalid (see below)</td>
+</tr>
+<tr class="row-even"><td>exec_failed</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-odd"><td>out_of_memory</td>
+<td>Out of memory</td>
+</tr>
+<tr class="row-even"><td>task_not_found</td>
+<td>Invalid task id</td>
+</tr>
+<tr class="row-odd"><td>invalid_state</td>
+<td>You tried to set an invalid state</td>
+</tr>
+<tr class="row-even"><td>invalid_task_type</td>
+<td>This operation cannot be performed on this task</td>
+</tr>
+<tr class="row-odd"><td>destination_conflict</td>
+<td>The destination file/folder already exists</td>
+</tr>
+<tr class="row-even"><td>access_denied</td>
+<td>Access to this file is denied</td>
+</tr>
+<tr class="row-odd"><td>disk_full</td>
+<td>The destination disk is full</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="task">
+<h2>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
+<p>File system tasks have the following attributes:</p>
+<dl class="object">
+<dt id="FsTask">
+<code class="descname">FsTask</code><a class="headerlink" href="#FsTask" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FsTask.id">
+<code class="descname">id</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>id</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.type">
+<code class="descname">type</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The valid task types are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cat</td>
+<td>Concatenate multiple files</td>
+</tr>
+<tr class="row-odd"><td>cp</td>
+<td>Copy files</td>
+</tr>
+<tr class="row-even"><td>mv</td>
+<td>Move files</td>
+</tr>
+<tr class="row-odd"><td>rm</td>
+<td>Remove files</td>
+</tr>
+<tr class="row-even"><td>archive</td>
+<td>Creates an archive</td>
+</tr>
+<tr class="row-odd"><td>extract</td>
+<td>Extract an archive</td>
+</tr>
+<tr class="row-even"><td>repair</td>
+<td>Check and repair files</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.state">
+<code class="descname">state</code><span> </span>enum<a class="headerlink" href="#FsTask.state" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">State</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queued</td>
+<td>Queued (only one task is active at a given time)</td>
+</tr>
+<tr class="row-odd"><td>running</td>
+<td>Running</td>
+</tr>
+<tr class="row-even"><td>paused</td>
+<td>Paused (user suspended)</td>
+</tr>
+<tr class="row-odd"><td>done</td>
+<td>Done</td>
+</tr>
+<tr class="row-even"><td>failed</td>
+<td>Failed (see error)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.error">
+<code class="descname">error</code><span> </span>enum<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.error" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>none</td>
+<td>No error</td>
+</tr>
+<tr class="row-odd"><td>archive_read_failed</td>
+<td>Error reading archive</td>
+</tr>
+<tr class="row-even"><td>archive_open_failed</td>
+<td>Error opening archive</td>
+</tr>
+<tr class="row-odd"><td>archive_write_failed</td>
+<td>Error writing archive</td>
+</tr>
+<tr class="row-even"><td>chdir_failed</td>
+<td>Error changing directory</td>
+</tr>
+<tr class="row-odd"><td>dest_is_not_dir</td>
+<td>The destination is not a directory</td>
+</tr>
+<tr class="row-even"><td>file_exists</td>
+<td>File already exists</td>
+</tr>
+<tr class="row-odd"><td>file_not_found</td>
+<td>File not found</td>
+</tr>
+<tr class="row-even"><td>mkdir_failed</td>
+<td>Unable to create directory</td>
+</tr>
+<tr class="row-odd"><td>open_input_failed</td>
+<td>Error opening input file</td>
+</tr>
+<tr class="row-even"><td>open_output_failed</td>
+<td>Error opening output file</td>
+</tr>
+<tr class="row-odd"><td>opendir_failed</td>
+<td>Error opening directory</td>
+</tr>
+<tr class="row-even"><td>overwrite_failed</td>
+<td>Error overwriting file</td>
+</tr>
+<tr class="row-odd"><td>path_too_big</td>
+<td>Path is too long</td>
+</tr>
+<tr class="row-even"><td>repair_failed</td>
+<td>Failed to repair corrupted files</td>
+</tr>
+<tr class="row-odd"><td>rmdir_failed</td>
+<td>Error removing directory</td>
+</tr>
+<tr class="row-even"><td>same_file</td>
+<td>Source and Destination are the same file</td>
+</tr>
+<tr class="row-odd"><td>unlink_failed</td>
+<td>Error removing file</td>
+</tr>
+<tr class="row-even"><td>unsupported_file_type</td>
+<td>This file type is not supported</td>
+</tr>
+<tr class="row-odd"><td>write_failed</td>
+<td>Error writing file</td>
+</tr>
+<tr class="row-even"><td>disk_full</td>
+<td>Disk is full</td>
+</tr>
+<tr class="row-odd"><td>internal</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-even"><td>invalid_format</td>
+<td>Invalid file format (corrupted ?)</td>
+</tr>
+<tr class="row-odd"><td>incorrect_password</td>
+<td>Invalid or missing password for extraction</td>
+</tr>
+<tr class="row-even"><td>permission_denied</td>
+<td>Permission denied</td>
+</tr>
+<tr class="row-odd"><td>readlink_failed</td>
+<td>Failed to read the target of a symbolic link</td>
+</tr>
+<tr class="row-even"><td>symlink_failed</td>
+<td>Failed to create a symbolic link</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.created_ts">
+<code class="descname">created_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.created_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>task creation timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.started_ts">
+<code class="descname">started_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.started_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>task start timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.done_ts">
+<code class="descname">done_ts</code><span> </span>timestamp<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.done_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>task end timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.duration">
+<code class="descname">duration</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>task duration in seconds</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.progress">
+<code class="descname">progress</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>task progress in percent (scaled by 100)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.eta">
+<code class="descname">eta</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.eta" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimated time remaining before the task completion (in seconds)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.from">
+<code class="descname">from</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.from" title="Permalink to this definition">¶</a></dt>
+<dd><p>current source file (if available)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.to">
+<code class="descname">to</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.to" title="Permalink to this definition">¶</a></dt>
+<dd><p>current destination file (if available)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.nfiles">
+<code class="descname">nfiles</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.nfiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of files to process</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.nfiles_done">
+<code class="descname">nfiles_done</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.nfiles_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of files processed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.total_bytes">
+<code class="descname">total_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.total_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>total bytes to process</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.total_bytes_done">
+<code class="descname">total_bytes_done</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.total_bytes_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of bytes processed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.curr_bytes">
+<code class="descname">curr_bytes</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.curr_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>size of the file currently processed</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.curr_bytes_done">
+<code class="descname">curr_bytes_done</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.curr_bytes_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of bytes processed for the current file</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FsTask.rate">
+<code class="descname">rate</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FsTask.rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>processing rate in byte/s</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="list-every-tasks">
+<h3>List every tasks<a class="headerlink" href="#list-every-tasks" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fs-tasks-">
+<code class="descname">GET </code><code class="descname">/api/v4/fs/tasks/</code><a class="headerlink" href="#get--api-v4-fs-tasks-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the collection of all <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> tasks</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fs/tasks/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+         <span class="nx">curr_bytes_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">total_bytes</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">nfiles_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">started_ts</span><span class="o">:</span> <span class="mi">1355834253</span><span class="p">,</span>
+         <span class="nx">duration</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+         <span class="nx">done_ts</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">curr_bytes</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;extract&quot;</span><span class="p">,</span>
+         <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;oxygennosvg/128x128/mimetypes/application_x_nzb.png&quot;</span><span class="p">,</span>
+         <span class="nx">id</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+         <span class="nx">nfiles</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">created_ts</span><span class="o">:</span> <span class="mi">1355834253</span><span class="p">,</span>
+         <span class="nx">state</span><span class="o">:</span> <span class="s2">&quot;paused&quot;</span><span class="p">,</span>
+         <span class="nx">total_bytes_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/tests/oxygennosvg.tar.gz&quot;</span><span class="p">,</span>
+         <span class="nx">rate</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">eta</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+         <span class="nx">progress</span><span class="o">:</span> <span class="mi">0</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+         <span class="nx">id</span><span class="o">:</span> <span class="mi">11</span><span class="p">,</span>
+         <span class="nx">curr_bytes_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">total_bytes</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">nfiles_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">started_ts</span><span class="o">:</span> <span class="mi">1355834187</span><span class="p">,</span>
+         <span class="nx">duration</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">done_ts</span><span class="o">:</span> <span class="mi">1355834187</span><span class="p">,</span>
+         <span class="nx">curr_bytes</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;rm&quot;</span><span class="p">,</span>
+         <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+         <span class="nx">nfiles</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">created_ts</span><span class="o">:</span> <span class="mi">1355834187</span><span class="p">,</span>
+         <span class="nx">state</span><span class="o">:</span> <span class="s2">&quot;done&quot;</span><span class="p">,</span>
+         <span class="nx">total_bytes_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/test/testiso.1.iso&quot;</span><span class="p">,</span>
+         <span class="nx">rate</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">eta</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+         <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+         <span class="nx">progress</span><span class="o">:</span> <span class="mi">100</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="list-a-task">
+<h3>List a task<a class="headerlink" href="#list-a-task" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fs-tasks-id">
+<code class="descname">GET </code><code class="descname">/api/v4/fs/tasks/{id}</code><a class="headerlink" href="#get--api-v4-fs-tasks-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fs/tasks/12</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">success</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">result</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">curr_bytes_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">total_bytes</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">nfiles_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">started_ts</span><span class="o">:</span> <span class="mi">1355834253</span><span class="p">,</span>
+      <span class="nx">duration</span><span class="o">:</span> <span class="mi">268</span><span class="p">,</span>
+      <span class="nx">done_ts</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">curr_bytes</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;extract&quot;</span><span class="p">,</span>
+      <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;oxygennosvg/16x16/actions/format_stroke_color.png&quot;</span><span class="p">,</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="nx">nfiles</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">created_ts</span><span class="o">:</span> <span class="mi">1355834253</span><span class="p">,</span>
+      <span class="nx">state</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+      <span class="nx">total_bytes_done</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">from</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/tests/oxygennosvg.tar.gz&quot;</span><span class="p">,</span>
+      <span class="nx">rate</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">eta</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nx">error</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+      <span class="nx">progress</span><span class="o">:</span> <span class="mi">0</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="delete-a-task">
+<h3>Delete a task<a class="headerlink" href="#delete-a-task" title="Permalink to this headline">¶</a></h3>
+<dl class="delete">
+<dt id="delete--api-v4-fs-tasks-id">
+<code class="descname">DELETE </code><code class="descname">/api/v4/fs/tasks/{id}</code><a class="headerlink" href="#delete--api-v4-fs-tasks-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> task with the given id, if the
+task was running, stop it.</p>
+<p>No rollback is done, if a file as already been processed it will be
+left as is.</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">DELETE</span> <span class="nn">/api/v4/fs/tasks/12</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-a-task">
+<h3>Update a task<a class="headerlink" href="#update-a-task" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-fs-tasks-id">
+<code class="descname">PUT </code><code class="descname">/api/v4/fs/tasks/{id}</code><a class="headerlink" href="#put--api-v4-fs-tasks-id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> task with the given id</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/fs/tasks/15</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;paused&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">2410125312</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355835094</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">27</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;cp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/old_hdd/testiso.1.iso&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355835094</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;paused&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">595591168</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/old_hdd/testiso.iso&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">85</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">24</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="listing">
+<h2>Listing<a class="headerlink" href="#listing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="file-info">
+<h3>File info<a class="headerlink" href="#file-info" title="Permalink to this headline">¶</a></h3>
+<dl class="object">
+<dt id="FileInfo">
+<code class="descname">FileInfo</code><a class="headerlink" href="#FileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FileInfo.path">
+<code class="descname">path</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>file path (encoded in base64 as explained in <a class="reference internal" href="#id1">Path Encoding</a>)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.name">
+<code class="descname">name</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>file name (in clear text)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.mimetype">
+<code class="descname">mimetype</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.mimetype" title="Permalink to this definition">¶</a></dt>
+<dd><p>file mimetype</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.type">
+<code class="descname">type</code><span> </span>enum<a class="headerlink" href="#FileInfo.type" title="Permalink to this definition">¶</a></dt>
+<dd><table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>dir</td>
+<td>Directory</td>
+</tr>
+<tr class="row-odd"><td>file</td>
+<td>Regular file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.size">
+<code class="descname">size</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>file size in bytes</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.modification">
+<code class="descname">modification</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.modification" title="Permalink to this definition">¶</a></dt>
+<dd><p>file modification timestamp</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.index">
+<code class="descname">index</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>display order for natural sort</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.link">
+<code class="descname">link</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>is this file a link</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.target">
+<code class="descname">target</code><span> </span>string<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.target" title="Permalink to this definition">¶</a></dt>
+<dd><p>symlink target path (encoded in base64 as explained in <a class="reference internal" href="#id1">Path Encoding</a>)
+(only present when link is set to true)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.hidden">
+<code class="descname">hidden</code><span> </span>boolean<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.hidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>should the file be hidden to user</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.foldercount">
+<code class="descname">foldercount</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.foldercount" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of subfolders</p>
+<p>only relevant for dir, only provided if &#8220;countSubFolder&#8221;
+parameter is set</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FileInfo.filecount">
+<code class="descname">filecount</code><span> </span>int<em class="property"> Read-only</em><a class="headerlink" href="#FileInfo.filecount" title="Permalink to this definition">¶</a></dt>
+<dd><p>number of files inside directory</p>
+<p>only relevant for dir, only provided if &#8220;countSubFolder&#8221;
+parameter is set</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="list-files">
+<h3>List files<a class="headerlink" href="#list-files" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fs-ls-path">
+<code class="descname">GET </code><code class="descname">/api/v4/fs/ls/{path}</code><a class="headerlink" href="#get--api-v4-fs-ls-path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the list of <code class="xref json json-object docutils literal"><span class="pre">FileInfos</span></code> for the given path</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>onlyFolder</strong> (<em>bool</em>) &#8211; Only list folders</li>
+<li><strong>countSubFolder</strong> (<em>bool</em>) &#8211; Return files and subfolder count for folders</li>
+<li><strong>removeHidden</strong> (<em>bool</em>) &#8211; Don&#8217;t return hidden files in directory listing</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fs/ls/L0Rpc3F1ZSBkdXI=</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvRW5yZWdpc3RyZW1lbnRz&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filecount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;modification&quot;</span><span class="o">:</span> <span class="mi">1362005535</span><span class="p">,</span>
+            <span class="s2">&quot;foldercount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Enregistrements&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;inode/directory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hidden&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">4096</span>
+        <span class="p">},</span>
+
+        <span class="cm">/* Note: for the two following folders path are different, but name is utf8 equivalent */</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvTGUgU3DDqWNpYWwgMg==&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filecount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;modification&quot;</span><span class="o">:</span> <span class="mi">1362492511</span><span class="p">,</span>
+            <span class="s2">&quot;foldercount&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Le Spécial 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;inode/directory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hidden&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">4096</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvTGUgU3BlzIFjaWFsIDI=&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filecount&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;modification&quot;</span><span class="o">:</span> <span class="mi">1361995307</span><span class="p">,</span>
+            <span class="s2">&quot;foldercount&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Le Spécial 2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;inode/directory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hidden&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">4096</span>
+        <span class="p">},</span>
+
+         <span class="p">[</span> <span class="p">...</span> <span class="p">]</span>
+
+        <span class="p">{</span>
+            <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvVmlkw6lvcw==&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;filecount&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;modification&quot;</span><span class="o">:</span> <span class="mi">1361887598</span><span class="p">,</span>
+            <span class="s2">&quot;foldercount&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Vidéos&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;index&quot;</span><span class="o">:</span> <span class="mi">16</span><span class="p">,</span>
+            <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;inode/directory&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;hidden&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">4096</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="get-file-information">
+<h3>Get file information<a class="headerlink" href="#get-file-information" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-fs-info-path">
+<code class="descname">GET </code><code class="descname">/api/v4/fs/info/{path}</code><a class="headerlink" href="#get--api-v4-fs-info-path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the <code class="xref json json-object docutils literal"><span class="pre">FileInfos</span></code> for the given path</p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fs/info/L0Rpc3F1ZSBkdXIvdG90bw==</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;dir&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;link&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;parent&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXI=&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;modification&quot;</span><span class="o">:</span> <span class="mi">1370354349</span><span class="p">,</span>
+        <span class="s2">&quot;hidden&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;mimetype&quot;</span><span class="o">:</span> <span class="s2">&quot;inode/directory&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;toto&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;target&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9z&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;path&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvdG90bw==&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="o">:</span> <span class="mi">4096</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="operations">
+<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<p>Each time you want to perform a modification on the file system you
+will have to create a new <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> that you will be
+able to monitor.</p>
+<p>NOTE: The requested operation may be en-queued to avoid performance
+drop because of excessive disk io</p>
+<div class="section" id="conflict-resolution">
+<h3>Conflict resolution<a class="headerlink" href="#conflict-resolution" title="Permalink to this headline">¶</a></h3>
+<p>For certain file operations where a file name conflict can happen,
+you must specify a conflict resolution mode.</p>
+<p>Valid resolution modes are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Conflict mode</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>overwrite</td>
+<td>Overwrite the destination file</td>
+</tr>
+<tr class="row-odd"><td>both</td>
+<td>Keep both files (rename the file adding a suffix)</td>
+</tr>
+<tr class="row-even"><td>recent</td>
+<td>Only overwrite if newer than destination file</td>
+</tr>
+<tr class="row-odd"><td>skip</td>
+<td>Keep the destination file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="move-files">
+<h3>Move files<a class="headerlink" href="#move-files" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-mv-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/mv/</code><a class="headerlink" href="#post--api-v4-fs-mv-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>files</strong> (<em>string[]</em>) &#8211; The list of files to move</li>
+<li><strong>dst</strong> (<em>string</em>) &#8211; The destination</li>
+<li><strong>mode</strong> (<em>enum</em>) &#8211; The conflict resolution mode</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request for moving files</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/mv/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;files&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0RTQ18zNDkxLmpwZw==&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/DSC_3491.jpg */</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0RTQ18zNTAwLmpwZw==&quot;</span> <span class="cm">/* /Disque dur/Photos/DSC_3500.jpg */</span>
+      <span class="p">],</span>
+    <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZA==&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/Launchpad */</span>
+    <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;overwrite&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355840585</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;mv&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">39</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355840585</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="copy-files">
+<h3>Copy files<a class="headerlink" href="#copy-files" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-cp-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/cp/</code><a class="headerlink" href="#post--api-v4-fs-cp-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>files</strong> (<em>string[]</em>) &#8211; The list of files to copy</li>
+<li><strong>dst</strong> (<em>string</em>) &#8211; The destination</li>
+<li><strong>mode</strong> (<em>enum</em>) &#8211; The conflict resolution mode</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/cp/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;files&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzQ5MS5qcGcK&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/Launchpad/DSC_3491.jpg */</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzUwMC5qcGcK&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/Launchpad/DSC_3500.jpg */</span>
+      <span class="p">],</span>
+    <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMK&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/Rockets */</span>
+    <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;both&quot;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355840943</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;cp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">43</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355840943</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="remove-files">
+<h3>Remove files<a class="headerlink" href="#remove-files" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-rm-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/rm/</code><a class="headerlink" href="#post--api-v4-fs-rm-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>files</strong> (<em>string[]</em>) &#8211; The list of files to remove</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/rm/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;files&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM0OTEuanBnCg==&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/Rockets/DSC_3491.jpg */</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL1JvY2tldHMvRFNDXzM1MDAuanBnCg==&quot;</span> <span class="cm">/* /Disque dur/Photos/Rockets/DSC_3500.jpg */</span>
+      <span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355841064</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;rm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">45</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355841064</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/Photos/Rockets/DSC_3491.jpg&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cat-files">
+<h3>Cat files<a class="headerlink" href="#cat-files" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-cat-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/cat/</code><a class="headerlink" href="#post--api-v4-fs-cat-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>files</strong> (<em>string[]</em>) &#8211; The list of files to concatenate</li>
+<li><strong>dst</strong> (<em>string</em>) &#8211; The destination</li>
+<li><strong>multi_volumes</strong> (<em>bool</em>) &#8211; Enable multi-volumes mode, it will start at XXX001 and concatenate XXX002, XXX003, ...</li>
+<li><strong>delete_files</strong> (<em>bool</em>) &#8211; Deletes source files</li>
+<li><strong>overwrite</strong> (<em>bool</em>) &#8211; Overwrites the destination</li>
+<li><strong>append</strong> (<em>bool</em>) &#8211; Append to the destination</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/cat/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;files&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvZmlsZTE=&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/file1 */</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvZmlsZTI=&quot;</span>  <span class="cm">/* /Disque dur/file2 */</span>
+      <span class="p">],</span>
+    <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvZmlsZTEy&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/file12 */</span>
+    <span class="s2">&quot;multi_volumes&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;delete_files&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;append&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;overwrite&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Or if you want to do a multi-volumes concatenation:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;files&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+         <span class="c1">// You don&#39;t need to specify file002, file003, ...</span>
+         <span class="c1">// They&#39;ll be found by cat.</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvZmlsZTAwMQ==&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/file001 */</span>
+      <span class="p">],</span>
+    <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvZmlsZQ==&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/file */</span>
+    <span class="s2">&quot;multi_volumes&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;delete_files&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;append&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;overwrite&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355840943</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">43</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355840943</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="create-an-archive">
+<h3>Create an archive<a class="headerlink" href="#create-an-archive" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-archive-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/archive/</code><a class="headerlink" href="#post--api-v4-fs-archive-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>files</strong> (<em>string[]</em>) &#8211; The list of files to archive</li>
+<li><strong>dst</strong> (<em>string</em>) &#8211; The destination</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/archive/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;files&quot;</span><span class="o">:</span>
+      <span class="p">[</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzQ5MS5qcGc=&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/Photos/Launchpad/DSC_3491.jpg */</span>
+         <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL0xhdW5jaHBhZC9EU0NfMzUwMC5qcGc=&quot;</span>  <span class="cm">/* /Disque dur/Photos/Launchpad/DSC_3500.jpg */</span>
+      <span class="p">],</span>
+    <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvUGhvdG9zL3JvY2tldHMuemlw&quot;</span> <span class="cm">/* /Disque dur/Photos/rockets.zip */</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355840943</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;archive&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">42</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355840943</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="extract-a-file">
+<h3>Extract a file<a class="headerlink" href="#extract-a-file" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-extract-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/extract/</code><a class="headerlink" href="#post--api-v4-fs-extract-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> (<em>string</em>) &#8211; The archive file</li>
+<li><strong>dst</strong> (<em>string</em>) &#8211; The destination folder</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; The archive password</li>
+<li><strong>delete_archive</strong> (<em>boolean</em>) &#8211; Delete archive after extraction</li>
+<li><strong>overwrite</strong> (<em>boolean</em>) &#8211; Overwrite files on conflict</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/extract/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvb2xkX2hkZC90ZXN0aXNvLjEuaXNv&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/old_hdd/testiso.1.iso */</span>
+   <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvb2xkX2hkZA==&quot;</span> <span class="cm">/* /Disque dur/old_hdd */</span>
+   <span class="s2">&quot;password&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;delete_archive&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="s2">&quot;overwrite&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355842252</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;extract&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/old_hdd&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">48</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355842252</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/old_hdd/testiso.1.iso&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="repair-a-file">
+<h3>Repair a file<a class="headerlink" href="#repair-a-file" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-repair-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/repair/</code><a class="headerlink" href="#post--api-v4-fs-repair-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> (<em>string</em>) &#8211; The .par2 file</li>
+<li><strong>delete_archive</strong> (<em>boolean</em>) &#8211; Delete par2 files after repair</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/repair/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvdGVzdHMvcGFyMi9saWNlbnNlLnR4dC5wYXIy&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/tests/par2/license.txt.par2 */</span>
+   <span class="s2">&quot;delete_archive&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355842559</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;repair&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355842559</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="hash-a-file">
+<h3>Hash a file<a class="headerlink" href="#hash-a-file" title="Permalink to this headline">¶</a></h3>
+<dl class="post">
+<dt id="post--api-v4-fs-hash-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/hash/</code><a class="headerlink" href="#post--api-v4-fs-hash-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> (<em>string</em>) &#8211; The file to hash</li>
+<li><strong>hash_type</strong> (<em>string</em>) &#8211; The type of hash (md5, sha1, ...)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/hash/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvbXlfZmlsZQ==&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/my_file */</span>
+   <span class="s2">&quot;hash_type&quot;</span><span class="o">:</span> <span class="s2">&quot;md5&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;curr_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;started_ts&quot;</span><span class="o">:</span> <span class="mi">1355842559</span><span class="p">,</span>
+        <span class="s2">&quot;duration&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;done_ts&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;curr_bytes&quot;</span><span class="o">:</span> <span class="mi">4242</span><span class="p">,</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;hash&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;to&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s2">&quot;nfiles&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;created_ts&quot;</span><span class="o">:</span> <span class="mi">1355842559</span><span class="p">,</span>
+        <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;total_bytes_done&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;from&quot;</span><span class="o">:</span> <span class="s2">&quot;/Disque dur/my_file&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;rate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;eta&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;progress&quot;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="get-the-hash-value">
+<h4>Get the hash value<a class="headerlink" href="#get-the-hash-value" title="Permalink to this headline">¶</a></h4>
+<p>To get the hash, the task must have succeed and be in the state
+&#8220;done&#8221;.</p>
+<dl class="get">
+<dt id="get--api-v4-fs-tasks-id-hash">
+<code class="descname">GET </code><code class="descname">/api/v4/fs/tasks/{id}/hash</code><a class="headerlink" href="#get--api-v4-fs-tasks-id-hash" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/fs/tasks/50/hash</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;hash&quot;</span><span class="o">:</span> <span class="s2">&quot;94baaad4d1347ec6e15ae35c88ee8bc8&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="create-a-directory">
+<h3>Create a directory<a class="headerlink" href="#create-a-directory" title="Permalink to this headline">¶</a></h3>
+<p>Contrary to other file system tasks, this operation is done
+synchronously.</p>
+<p>Instead of a returning a <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> a call to this API
+will only return success status</p>
+<dl class="post">
+<dt id="post--api-v4-fs-mkdir-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/mkdir/</code><a class="headerlink" href="#post--api-v4-fs-mkdir-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>parent</strong> (<em>string</em>) &#8211; The parent directory path (base64 encoded)</li>
+<li><strong>dirname</strong> (<em>string</em>) &#8211; The name of the directory to create</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/mkdir/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;parent&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXI=&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur */</span>
+   <span class="s2">&quot;dirname&quot;</span><span class="o">:</span> <span class="s2">&quot;Test&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="rename-a-file-folder">
+<h3>Rename a file/folder<a class="headerlink" href="#rename-a-file-folder" title="Permalink to this headline">¶</a></h3>
+<p>Contrary to other file system tasks, this operation is done
+synchronously.</p>
+<p>Instead of a returning a <a class="reference internal" href="#FsTask" title="FsTask"><code class="xref json json-object docutils literal"><span class="pre">FsTask</span></code></a> a call to this API
+will only return success status and the new path as a result</p>
+<dl class="post">
+<dt id="post--api-v4-fs-rename-">
+<code class="descname">POST </code><code class="descname">/api/v4/fs/rename/</code><a class="headerlink" href="#post--api-v4-fs-rename-" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>src</strong> (<em>string</em>) &#8211; The source file path (base64 encoded)</li>
+<li><strong>dst</strong> (<em>string</em>) &#8211; The new name of the file (clear text, without path)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/fs/rename/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;src&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvdGVzdC50eHQ=&quot;</span><span class="p">,</span> <span class="cm">/* /Disque dur/test.txt */</span>
+   <span class="s2">&quot;dst&quot;</span><span class="o">:</span> <span class="s2">&quot;plop.txt&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="s2">&quot;L0Rpc3F1ZSBkdXIvcGxvcC50eHQ=&quot;</span> <span class="cm">/* /Disque dur/plop.txt */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="download-a-file">
+<h3>Download a file<a class="headerlink" href="#download-a-file" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-dl-path">
+<code class="descname">GET </code><code class="descname">/api/v4/dl/{path}</code><a class="headerlink" href="#get--api-v4-dl-path" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/dl/L0Rpc3F1ZSBkdXIvUGhvdG9zL1BsYW5zIHNlY3JldHMuanBn</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">image/jpeg</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">600864</span>
+<span class="na">Content-Disposition</span><span class="o">:</span> <span class="l">attachment; filename=&quot;Plans secrets.jpg&quot;</span>
+
+[ ... ]
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

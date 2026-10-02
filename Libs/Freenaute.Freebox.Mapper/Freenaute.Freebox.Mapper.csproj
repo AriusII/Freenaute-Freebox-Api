@@ -1,34 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
-        <LangVersion>13</LangVersion>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <Compile Update="Common\Routes\FreeboxRoute.Authentication.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Common\Routes\FreeboxRoutes.Account.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Common\Routes\FreeboxRoutes.AirMedia.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Common\Routes\FreeboxRoutes.Call.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Common\Routes\FreeboxRoutes.Contacts.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Common\Routes\FreeboxRoutes.Voicemail.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-        <Compile Update="Common\Routes\FreeboxRoutes.WebSocket.cs">
-            <DependentUpon>FreeboxRoutes.cs</DependentUpon>
-        </Compile>
-    </ItemGroup>
-
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsAotCompatible>true</IsAotCompatible>
+    <Description>Strongly typed Freebox Server wire contracts and source-generated JSON metadata.</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,234 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+========
+UPnP IGD
+========
+
+The UPnP IGD API allow you to control the settings of the Universal
+Plug n' Play Internet Gateway Device service.  This service allow
+hosts on your local network to manage nat redirections.
+
+UPnP IGD Errors
+===============
+
+When attempting to access the UPnP IGD API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+disabled                         the service is disabled
+noent                            invalid rule id
+======================           ======================
+
+UPnP IGD Config
+===============
+
+UPnPIGDConfig has the following attributes:
+
+.. json:object:: UPnPIGDConfig
+
+   .. json:property:: enabled bool
+
+       is the UPnP IGD service enabled
+
+   .. json:property:: version int
+
+       UPnP IGD protocol version
+       Supported values are 1 / 2
+
+
+UPnP IGD config API
+===================
+
+Get the current UPnP IGD configuration
+--------------------------------------
+
+.. http:get:: /api/v4/upnpigd/config/
+
+   Get the :json:object:`UPnPIGDConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/upnpigd/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false,
+              "version": 1
+          }
+      }
+
+
+Update the UPnP IGD configuration
+---------------------------------
+
+.. http:put:: /api/v4/upnpigd/config/
+
+   Update the :json:object:`UPnPIGDConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/upnpigd/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "enabled": true,
+         "version": 2
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true,
+              "version": 2
+          }
+      }
+
+
+UPnP IGD Redirection
+====================
+
+UPnPRedir has the following attributes:
+
+.. json:object:: UPnPRedir
+
+   .. json:property:: id string [ro]
+
+      the redirection id
+
+   .. json:property:: enabled bool [ro]
+
+      is the redirection enabled
+
+   .. json:property:: ext_src_ip string [ro]
+
+      source IP
+
+   .. json:property:: ext_port int [ro]
+
+      external port
+
+   .. json:property:: int_ip string [ro]
+
+      the target IP on your LAN
+
+   .. json:property:: int_port int [ro]
+
+      the target port on your LAN
+
+   .. json:property:: proto string [ro]
+
+      the IP protocol to redirect
+
+   .. json:property:: desc string [ro]
+
+      a description
+
+   .. json:property:: remaining int [ro]
+
+      seconds remaining before redirection expire
+
+   .. json:property:: host LanHost [ro]
+
+      lan host if available
+
+UPnP IGD Redirection API
+========================
+
+Get the list of current redirection
+-----------------------------------
+
+.. http:get:: /api/v4/upnpigd/redir/
+
+   Get the list of :json:object:`UPnPRedir` redirections
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/upnpigd/redir/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "enabled": true,
+                  "proto": "udp",
+                  "id": "0.0.0.0-53644-udp",
+                  "desc": "iC53644",
+                  "remaining": 0,
+                  "ext_src_ip": "0.0.0.0",
+                  "int_port": 16402,
+                  "int_ip": "192.168.1.44",
+                  "ext_port": 53644
+              }
+          ]
+      }
+
+
+Delete a redirection
+--------------------
+
+.. http:delete:: /api/v4/upnpigd/redir/{id}
+
+   Deletes the given :json:object:`UPnPRedir`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/upnpigd/redir/0.0.0.0-53644-udp HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+..  LocalWords:  UPnP IGD redirections UPnP IGD noent UPnPIGDConfig
+..  LocalWords:  UPnPRedir src ip lan proto desc udp iC

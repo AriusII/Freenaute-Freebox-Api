@@ -1,0 +1,176 @@
+{
+  "format_version": 1,
+  "group": "websockets",
+  "modules": [
+    "websocket",
+    "upload",
+    "vm"
+  ],
+  "implemented_operations": [
+    {
+      "module": "websocket",
+      "method": "GET",
+      "documented_path": "/api/v8/ws/event",
+      "relative_path": "ws/event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-event",
+      "client_member": "FreeboxEventSubscriptionCommand.OpenAsync",
+      "io": "websocket_handshake"
+    },
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/ws/upload",
+      "relative_path": "ws/upload",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-upload",
+      "client_member": "FreeboxUploadCommand.OpenAsync",
+      "io": "websocket_handshake"
+    }
+  ],
+  "unsupported_operations": [
+    {
+      "module": "vm",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id-console",
+      "reason": "No specialized QEMU text/character-console client; generic handshake alone does not assert JSON console semantics."
+    },
+    {
+      "module": "vm",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id-vnc",
+      "reason": "No specialized VNC binary client. JSON event/upload receive API does not represent a VNC stream."
+    }
+  ],
+  "contract_models": [
+    {
+      "module": "websocket",
+      "name": "RegisterEventsRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction"
+    },
+    {
+      "module": "websocket",
+      "name": "FreeboxWebSocketMessage",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadStartRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadFinalizeRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadFinalizeAction"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadCancelRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadCancelAction"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadChunkResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadChunkResponse"
+    },
+    {
+      "module": "upload",
+      "name": "FileUploadControlResponse",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-upload"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "docs/freebox-official/reviews/protocol.json",
+      "sha256": "c8ba89c8a0dc2ed9f8ff3b21cbc70cccd82bba2807e9afee4419b7037b0a9ae7"
+    },
+    {
+      "path": "docs/freebox-official/reviews/files-storage.json",
+      "sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf"
+    }
+  ],
+  "raw_source": {
+    "url": "http://mafreebox.freebox.fr/doc/index.html",
+    "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+  },
+  "control_operations": [
+    {
+      "action": "register",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction",
+      "client_member": "FreeboxEventSubscriptionCommand.OpenAsync"
+    },
+    {
+      "action": "upload_start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadStartAction",
+      "client_member": "FreeboxUploadCommand.OpenAsync"
+    },
+    {
+      "action": "upload_data",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-upload",
+      "client_member": "FreeboxUploadSession.SendAsync / SendChunkAsync",
+      "outgoing_kind": "binary_file_bytes",
+      "incoming_kind": "JSON_progress"
+    },
+    {
+      "action": "upload_finalize",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadFinalizeAction",
+      "client_member": "FreeboxUploadSession.FinalizeAsync / SendAsync"
+    },
+    {
+      "action": "upload_cancel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUploadCancelAction",
+      "client_member": "FreeboxUploadSession.CancelAsync",
+      "destructive": true
+    }
+  ],
+  "event_names": [
+    "vm_state_changed",
+    "vm_disk_task_done",
+    "lan_host_l3addr_reachable",
+    "lan_host_l3addr_unreachable"
+  ],
+  "typed_event_payloads": [
+    {
+      "qualified_event": "vm_state_changed",
+      "model": "VmStateChange",
+      "context": "FilesJsonSerializerContext"
+    },
+    {
+      "qualified_event": "vm_disk_task_done",
+      "model": "VmDiskTask",
+      "context": "FilesJsonSerializerContext"
+    },
+    {
+      "qualified_event": "lan_host_l3addr_reachable / lan_host_l3addr_unreachable",
+      "model": "LanHost",
+      "context": "NetworkJsonSerializerContext"
+    }
+  ],
+  "policies": {
+    "maximum_message_bytes": 1000000,
+    "default_upload_chunk_bytes": 524288,
+    "authentication": "Supplied root transport owns origin/TLS/handler/session handshake; facades never forge token headers.",
+    "outer_version": "Runtime root uses discovered current major; literal v8 is provenance.",
+    "upload_pipeline": "Start ACK before binaries; one continuous reader accepts progress while serial writer pipelines chunks without per-chunk ACK. Final correlated ACK with complete=true/total_len is required.",
+    "correlation": "Fresh socket request IDs 1=start/data, 2=finalize, 3=explicit cancel; registration ID1. Request_id/action mismatches fail protocol. No mutation replay.",
+    "resume": "Only explicitly sets force=resume. Never reads Length/Position or seeks the caller stream; size optional and caller supplied.",
+    "ownership": "High-level SendAsync owns socket/session and leaves source stream open. OpenAsync transfers session ownership to caller. Event enumeration/disposal closes subscription.",
+    "cancellation": "Token cancellation, stream failure and disposal close/abort without upload_cancel, retaining partial file. Explicit CancelAsync is destructive.",
+    "generic_result": "Common event envelope explicitly documents extensible result; JsonElement may be retained and deserialized with caller source-generated metadata. Known payloads use established model contexts.",
+    "registration": "OpenAsync sends register; reader validates ACK if received and supports direct subsequent notification, without inventing mandatory ACK ordering.",
+    "source_event_split": "Typed LAN matching reconstructs exact qualified source_event rather than guessing the underscore split boundary."
+  },
+  "validation": {
+    "status": "pending_root_integration_build",
+    "tests_file": "Tests/Freenaute.Freebox.Client.Tests/WebSocketApiTests.cs",
+    "real_device_execution": false
+  },
+  "exclusions": [
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#file-upload",
+      "reason": "Deprecated former HTTP file-transfer mechanism is never used."
+    }
+  ],
+  "limitations": [
+    "Each high-level file upload gets its own socket; no connection pooling/multiple sequential files API.",
+    "No automatic reconnect, resubscription or resume policy.",
+    "No inferred server chunk window, timeout, response ordering guarantee or bytes-normalization.",
+    "Server source names and unknown event tokens are preserved; outgoing builder exposes only four documented event registrations."
+  ]
+}

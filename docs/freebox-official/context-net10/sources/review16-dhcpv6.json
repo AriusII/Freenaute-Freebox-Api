@@ -1,0 +1,95 @@
+{
+  "module": {
+    "module": "dhcpv6",
+    "title": "DHCPv6",
+    "category": "reseau",
+    "path": "docs/reference/reseau/dhcpv6.md",
+    "http_signatures": 2,
+    "objects": 1,
+    "properties": 3,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#dhcpv6",
+    "source_pre_blocks": 6,
+    "markdown_code_blocks": 6,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "dhcpv6",
+      "method": "GET",
+      "documented_path": "/api/v8/dhcpv6/config/",
+      "path_template": "/api/v{major}/dhcpv6/config/",
+      "documented_major": 8,
+      "title": "Get the current DHCPv6 configuration",
+      "id": "get--api-v8-dhcpv6-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-dhcpv6-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcpv6.md#get--api-v8-dhcpv6-config-",
+      "referenced_objects": [
+        "DHCPv6Config"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-dhcpv6-config-"
+    },
+    {
+      "module": "dhcpv6",
+      "method": "PUT",
+      "documented_path": "/api/v8/dhcpv6/config/",
+      "path_template": "/api/v{major}/dhcpv6/config/",
+      "documented_major": 8,
+      "title": "Update the current DHCPv6 configuration",
+      "id": "put--api-v8-dhcpv6-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-dhcpv6-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/dhcpv6.md#put--api-v8-dhcpv6-config-",
+      "referenced_objects": [
+        "DHCPv6Config"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-dhcpv6-config-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "dhcpv6",
+      "name": "DHCPv6Config",
+      "id": "DHCPv6Config",
+      "properties": [
+        "DHCPv6Config.enabled",
+        "DHCPv6Config.use_custom_dns",
+        "DHCPv6Config.dns"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DHCPv6Config",
+      "markdown": "docs/reference/reseau/dhcpv6.md#DHCPv6Config"
+    }
+  ],
+  "properties": [
+    {
+      "module": "dhcpv6",
+      "id": "DHCPv6Config.enabled",
+      "signature": "enabled bool",
+      "description": "Enable/Disable the DHCPv6 server NOTE: on some Android devices, enabling the DHCPv6 server may cause IPv6 to stop working on those devices",
+      "source_id": "DHCPv6Config.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DHCPv6Config.enabled",
+      "markdown": "docs/reference/reseau/dhcpv6.md#DHCPv6Config.enabled"
+    },
+    {
+      "module": "dhcpv6",
+      "id": "DHCPv6Config.use_custom_dns",
+      "signature": "use_custom_dns bool",
+      "description": "if set to true, the user provided IPv6 dns servers will be used instead of Free default IPv6 dns servers NOTE: even if DHCPv6 server is disabled the custom dns can be used to replace Free dns in RA RDNSS",
+      "source_id": "DHCPv6Config.use_custom_dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DHCPv6Config.use_custom_dns",
+      "markdown": "docs/reference/reseau/dhcpv6.md#DHCPv6Config.use_custom_dns"
+    },
+    {
+      "module": "dhcpv6",
+      "id": "DHCPv6Config.dns",
+      "signature": "dns [] array of ipv6 Read-only",
+      "description": "list of ipv6 dns servers to use instead of Free dns servers in case use_custom_dns is set to true",
+      "source_id": "DHCPv6Config.dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DHCPv6Config.dns",
+      "markdown": "docs/reference/reseau/dhcpv6.md#DHCPv6Config.dns"
+    }
+  ],
+  "events": []
+}

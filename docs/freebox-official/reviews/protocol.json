@@ -1,0 +1,2848 @@
+{
+  "task_id": "protocol",
+  "verdict": "reviewed",
+  "review_scope": [
+    "00_index",
+    "login",
+    "websocket",
+    "notif",
+    "camera"
+  ],
+  "target_api_version": "16.0",
+  "provenance": {
+    "kind": "user_provided_official_snapshot",
+    "live_reacquired_in_this_environment": false,
+    "raw_file": "/workspace/.cloud-setup/freebox-upload-20261002/Freebox-Server-API-16.0/sources/raw/embedded/doc/index.html",
+    "source_manifest": "/workspace/.cloud-setup/freebox-upload-20261002/Freebox-Server-API-16.0/sources/manifest.json",
+    "acquisition_claim": "Supplied manifest reports local embedded source GET 200 on2026-10-02; bytes independently hash-verified here. No live protocol operations performed."
+  },
+  "sources": [
+    {
+      "url": "http://mafreebox.freebox.fr/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03",
+      "anchors": [
+        "APIResponse",
+        "APIResponse.error_code",
+        "APIResponse.msg",
+        "APIResponse.result",
+        "APIResponse.success",
+        "CallEntry",
+        "Camera",
+        "Camera.id",
+        "Camera.lan_gid",
+        "Camera.name",
+        "Camera.node_id",
+        "Camera.stream_url",
+        "LanHost",
+        "NotificationTarget",
+        "NotificationTarget.api_url",
+        "NotificationTarget.id",
+        "NotificationTarget.last_use",
+        "NotificationTarget.message_type",
+        "NotificationTarget.name",
+        "NotificationTarget.subscriptions",
+        "NotificationTarget.type",
+        "RegisterAction",
+        "RegisterAction.action",
+        "RegisterAction.events",
+        "SessionStart",
+        "SessionStart.app_id",
+        "SessionStart.app_version",
+        "SessionStart.password",
+        "TokenRequest",
+        "TokenRequest.app_id",
+        "TokenRequest.app_name",
+        "TokenRequest.app_version",
+        "TokenRequest.device_name",
+        "VmDiskTask",
+        "VmStateChange",
+        "WebSocketNotification",
+        "WebSocketNotification.action",
+        "WebSocketNotification.event",
+        "WebSocketNotification.result",
+        "WebSocketNotification.source",
+        "WebSocketNotification.success",
+        "WebSocketRequest",
+        "WebSocketRequest.action",
+        "WebSocketRequest.request_id",
+        "WebSocketResponse",
+        "WebSocketResponse.action",
+        "WebSocketResponse.error_code",
+        "WebSocketResponse.msg",
+        "WebSocketResponse.request_id",
+        "WebSocketResponse.result",
+        "WebSocketResponse.success",
+        "api-conventions",
+        "api-version",
+        "authentication",
+        "authentication-errors",
+        "box_state",
+        "box_state.box_id",
+        "box_state.event",
+        "box_state.type",
+        "building-the-api-request-url",
+        "camera-errors",
+        "cameras",
+        "changed-api-v8-5",
+        "delete--api-v11-notif-targets-id",
+        "delete--register-box_id-device_id",
+        "deprecated-api-v8-0",
+        "discovery-using-http",
+        "discovery-using-mdns",
+        "downloader",
+        "downloader.box_id",
+        "downloader.data",
+        "downloader.event",
+        "downloader.type",
+        "get--api-v11-notif-targets",
+        "get--api-v11-notif-targets-id",
+        "get--api-v8-camera-",
+        "get--api-v8-camera-id",
+        "get--api-v8-login-",
+        "get--api-v8-login-authorize-track_id",
+        "get--api-v8-ws-event",
+        "https-access",
+        "lan_host",
+        "lan_host.box_id",
+        "lan_host.event",
+        "lan_host.host_id",
+        "lan_host.interface",
+        "lan_host.type",
+        "login",
+        "notification-errors",
+        "notification-server-specification",
+        "opening-a-session",
+        "password_change",
+        "password_change.box_id",
+        "password_change.ip",
+        "password_change.type",
+        "phone",
+        "phone.box_id",
+        "phone.data",
+        "phone.event",
+        "phone.type",
+        "post--api-v11-notif-targets-",
+        "post--api-v8-login-authorize-",
+        "post--api-v8-login-logout-",
+        "post--api-v8-login-session-",
+        "post--register",
+        "post--send",
+        "put--api-latest-tftp-config-",
+        "put--api-v11-notif-targets-id",
+        "remote-connection-port-change-discovery",
+        "track-authorization-progress",
+        "websocket-event-api",
+        "ws-api"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "module": "login",
+      "method": "POST",
+      "path": "/api/v8/login/authorize/",
+      "relative_path": "login/authorize/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-",
+      "request": {
+        "status": "documented",
+        "content_types": [
+          "application/json"
+        ],
+        "parameters": [],
+        "body": "TokenRequest",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "AuthorizeResult: app_token string, track_id integer",
+        "errors": [
+          "auth_required",
+          "invalid_token",
+          "pending_token",
+          "insufficient_rights",
+          "denied_from_external_ip",
+          "invalid_request",
+          "ratelimited",
+          "new_apps_denied",
+          "apps_denied",
+          "internal_error"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "not_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ],
+        "notes": "Initial authorization local network only, front-panel approval; tracking until non-pending is mandatory even after approval."
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/login/authorize/",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "login",
+      "method": "GET",
+      "path": "/api/v8/login/authorize/{track_id}",
+      "relative_path": "login/authorize/{track_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [
+          {
+            "name": "track_id",
+            "location": "path",
+            "required": "required_by_template",
+            "nullable": "not_documented"
+          }
+        ],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "AuthorizationTrackResult: status enum, challenge string",
+        "errors": [
+          "auth_required",
+          "invalid_token",
+          "pending_token",
+          "insufficient_rights",
+          "denied_from_external_ip",
+          "invalid_request",
+          "ratelimited",
+          "new_apps_denied",
+          "apps_denied",
+          "internal_error"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "not_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ],
+        "notes": "Initial authorization local network only, front-panel approval; tracking until non-pending is mandatory even after approval."
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/login/authorize/{track_id}",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [
+        {
+          "name": "AuthorizationStatus",
+          "values": [
+            "unknown",
+            "pending",
+            "timeout",
+            "granted",
+            "denied"
+          ],
+          "source": "http://mafreebox.freebox.fr/doc/index.html#track-authorization-progress",
+          "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+        }
+      ],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "login",
+      "method": "GET",
+      "path": "/api/v8/login/",
+      "relative_path": "login/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "LoginResult: logged_in boolean, challenge string",
+        "errors": [
+          "auth_required",
+          "invalid_token",
+          "pending_token",
+          "insufficient_rights",
+          "denied_from_external_ip",
+          "invalid_request",
+          "ratelimited",
+          "new_apps_denied",
+          "apps_denied",
+          "internal_error"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "not_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/login/",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "login",
+      "method": "POST",
+      "path": "/api/v8/login/session/",
+      "relative_path": "login/session/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+      "request": {
+        "status": "documented",
+        "content_types": [
+          "application/json"
+        ],
+        "parameters": [],
+        "body": "SessionStart",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "SessionResult: session_token string, challenge string, permissions string-to-boolean map",
+        "errors": [
+          "auth_required",
+          "invalid_token",
+          "pending_token",
+          "insufficient_rights",
+          "denied_from_external_ip",
+          "invalid_request",
+          "ratelimited",
+          "new_apps_denied",
+          "apps_denied",
+          "internal_error"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "not_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/login/session/",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [
+        {
+          "name": "app_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Same app_id used in TokenRequest to get the app_token",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_id",
+          "signature": "app_id string",
+          "deprecated": false
+        },
+        {
+          "name": "app_version",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "app version",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_version",
+          "signature": "app_version string",
+          "deprecated": false
+        },
+        {
+          "name": "password",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "The password computed using the challenge and the app_token To compute the password you have to compute the hmac-sha1 of the challenge and the app_token password = hmac-sha1(app_token, challenge)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.password",
+          "signature": "password string",
+          "deprecated": false
+        }
+      ],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "login",
+      "method": "POST",
+      "path": "/api/v8/login/logout/",
+      "relative_path": "login/logout/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-logout-",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-logout-"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "no result",
+        "errors": [
+          "auth_required",
+          "invalid_token",
+          "pending_token",
+          "insufficient_rights",
+          "denied_from_external_ip",
+          "invalid_request",
+          "ratelimited",
+          "new_apps_denied",
+          "apps_denied",
+          "internal_error"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-logout-"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/login/logout/",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-logout-"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "websocket",
+      "method": "GET",
+      "path": "/api/v8/ws/event",
+      "relative_path": "ws/event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-event",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-event"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "websocket UTF-8 JSON text"
+        ],
+        "envelope": "WebSocket message envelope",
+        "result": "WebSocket upgrade; response frames follow WebSocketResponse/WebSocketNotification, not HTTP JSON envelope",
+        "errors": "authentication errors and action-specific errors",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-event"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/ws/event",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-event"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [
+        {
+          "name": "RegisterAction.Action",
+          "values": [
+            "register"
+          ],
+          "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.action",
+          "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+        },
+        {
+          "name": "WebSocketNotification.Action",
+          "values": [
+            "notification"
+          ],
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.action",
+          "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+        },
+        {
+          "name": "WebSocketEvent",
+          "values": [
+            "vm_state_changed",
+            "vm_disk_task_done",
+            "lan_host_l3addr_reachable",
+            "lan_host_l3addr_unreachable"
+          ],
+          "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events",
+          "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+        }
+      ],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "One receive loop and serialized sends per socket; cancellation/disposal unblocks pending registrations. No automatic reconnect without resubscription policy."
+      },
+      "io": "websocket_handshake",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "camera",
+      "method": "GET",
+      "path": "/api/v8/camera/",
+      "relative_path": "camera/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "Camera[]",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication",
+          "http://mafreebox.freebox.fr/doc/index.html#changed-api-v8-5"
+        ],
+        "notes": "Camera permission no longer required to list since8.5; remains required for records/live streams, whose endpoints are not declared in this module."
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/camera/",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "camera",
+      "method": "GET",
+      "path": "/api/v8/camera/{id}",
+      "relative_path": "camera/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-id",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [
+          {
+            "name": "id",
+            "location": "path",
+            "required": "required_by_template",
+            "nullable": "not_documented"
+          }
+        ],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-id"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "Camera",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-id"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication",
+          "http://mafreebox.freebox.fr/doc/index.html#changed-api-v8-5"
+        ],
+        "notes": "Camera permission no longer required to list since8.5; remains required for records/live streams, whose endpoints are not declared in this module."
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v8/camera/{id}",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-camera-id"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "notif",
+      "method": "GET",
+      "path": "/api/v11/notif/targets",
+      "relative_path": "notif/targets",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "NotificationTarget[]",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v11/notif/targets",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "notif",
+      "method": "GET",
+      "path": "/api/v11/notif/targets/{id}",
+      "relative_path": "notif/targets/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [
+          {
+            "name": "id",
+            "location": "path",
+            "required": "required_by_template",
+            "nullable": "not_documented"
+          }
+        ],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "Source prose says NotificationTarget; example result is NotificationTarget[]. Preserve both evidence and normalize a singleton/list through an AOT-safe explicit reader.",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v11/notif/targets/{id}",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "notif",
+      "method": "DELETE",
+      "path": "/api/v11/notif/targets/{id}",
+      "relative_path": "notif/targets/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v11-notif-targets-id",
+      "request": {
+        "status": "none_or_path_parameters",
+        "content_types": [],
+        "parameters": [
+          {
+            "name": "id",
+            "location": "path",
+            "required": "required_by_template",
+            "nullable": "not_documented"
+          }
+        ],
+        "body": null,
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#delete--api-v11-notif-targets-id"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "no result",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#delete--api-v11-notif-targets-id"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v11/notif/targets/{id}",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v11-notif-targets-id"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "notif",
+      "method": "PUT",
+      "path": "/api/v11/notif/targets/{id}",
+      "relative_path": "notif/targets/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+      "request": {
+        "status": "documented",
+        "content_types": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "location": "path",
+            "required": "required_by_template",
+            "nullable": "not_documented"
+          }
+        ],
+        "body": "NotificationTargetWriteRequest",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "no result",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v11/notif/targets/{id}",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [
+        {
+          "name": "name",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+          "deprecated": false
+        },
+        {
+          "name": "token",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+          "deprecated": false
+        },
+        {
+          "name": "subscriptions",
+          "wire_type": "string[]",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+          "deprecated": false
+        },
+        {
+          "name": "api_url",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+          "deprecated": false
+        },
+        {
+          "name": "message_type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-notif-targets-id",
+          "deprecated": false
+        }
+      ],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    },
+    {
+      "module": "notif",
+      "method": "POST",
+      "path": "/api/v11/notif/targets/",
+      "relative_path": "notif/targets/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+      "request": {
+        "status": "documented",
+        "content_types": [
+          "application/json"
+        ],
+        "parameters": [],
+        "body": "NotificationTargetWriteRequest",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-"
+        ]
+      },
+      "response": {
+        "status": "documented",
+        "content_types": [
+          "application/json; charset=utf-8"
+        ],
+        "envelope": "APIResponse",
+        "result": "no result",
+        "errors": [
+          "noent",
+          "inval"
+        ],
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-"
+        ]
+      },
+      "permissions": {
+        "status": "not_documented",
+        "values": [],
+        "authentication": "session_header_required",
+        "sources": [
+          "http://mafreebox.freebox.fr/doc/index.html#authentication"
+        ]
+      },
+      "versions": [
+        {
+          "kind": "literal_signature",
+          "text": "/api/v11/notif/targets/",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-"
+        },
+        {
+          "kind": "current_version_convention",
+          "text": "Captured source declares API16.0; ordinary versioned resource requests use the discovered major version per building-the-api-request-url. Historical signature alone does not prove live compatibility.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url"
+        }
+      ],
+      "fields": [
+        {
+          "name": "name",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+          "deprecated": false
+        },
+        {
+          "name": "token",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+          "deprecated": false
+        },
+        {
+          "name": "subscriptions",
+          "wire_type": "string[]",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+          "deprecated": false
+        },
+        {
+          "name": "api_url",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+          "deprecated": false
+        },
+        {
+          "name": "message_type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "write",
+          "constraints": "Documented in operation request example; token is absent from the NotificationTarget declaration and must remain secret.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-notif-targets-",
+          "deprecated": false
+        }
+      ],
+      "enums": [],
+      "deprecated": false,
+      "concurrency": {
+        "server_guarantees": "not_documented",
+        "client_policy": "No automatic mutation replay; session opening synchronized across facades."
+      },
+      "io": "JSON request/response",
+      "validation": "Source review only; no live business request executed."
+    }
+  ],
+  "models": [
+    {
+      "module": "00_index",
+      "name": "APIResponse",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse",
+      "fields": [
+        {
+          "name": "success",
+          "wire_type": "boolean",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "indicates if the request was successful",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.success",
+          "signature": "success boolean Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "result",
+          "wire_type": "object",
+          "location": "body",
+          "required": "conditional",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "the result of the request. (It may be omitted if the request does not expect any result)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.result",
+          "signature": "result object Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "error_code",
+          "wire_type": "string",
+          "location": "body",
+          "required": "conditional_on_failure",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "In case of request error, this error_code provides information about the error. The possible error_code values are documented for each API.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.error_code",
+          "signature": "error_code string Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "msg",
+          "wire_type": "string",
+          "location": "body",
+          "required": "conditional_on_failure",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "In cas of error, provides a French error message relative to the error",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.msg",
+          "signature": "msg string Read-only",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "login",
+      "name": "TokenRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest",
+      "fields": [
+        {
+          "name": "app_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "A unique app_id string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.app_id",
+          "signature": "app_id string",
+          "deprecated": false
+        },
+        {
+          "name": "app_name",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "A descriptive application name (will be displayed on lcd)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.app_name",
+          "signature": "app_name string",
+          "deprecated": false
+        },
+        {
+          "name": "app_version",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "app version",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.app_version",
+          "signature": "app_version string",
+          "deprecated": false
+        },
+        {
+          "name": "device_name",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "The name of the device on which the app will be used",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#TokenRequest.device_name",
+          "signature": "device_name string",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "login",
+      "name": "SessionStart",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart",
+      "fields": [
+        {
+          "name": "app_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Same app_id used in TokenRequest to get the app_token",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_id",
+          "signature": "app_id string",
+          "deprecated": false
+        },
+        {
+          "name": "app_version",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "app version",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_version",
+          "signature": "app_version string",
+          "deprecated": false
+        },
+        {
+          "name": "password",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "The password computed using the challenge and the app_token To compute the password you have to compute the hmac-sha1 of the challenge and the app_token password = hmac-sha1(app_token, challenge)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.password",
+          "signature": "password string",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "websocket",
+      "name": "WebSocketRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest",
+      "fields": [
+        {
+          "name": "request_id",
+          "wire_type": "int",
+          "location": "body",
+          "required": "optional",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "if you specify a request_id in your request, it will be added in the corresponding reply, so that you can correlate responses to the request",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest.request_id",
+          "signature": "request_id int Optionnal",
+          "deprecated": false
+        },
+        {
+          "name": "action",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "the request ‘action’ (available actions are described in each api)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest.action",
+          "signature": "action string",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "websocket",
+      "name": "WebSocketResponse",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse",
+      "fields": [
+        {
+          "name": "request_id",
+          "wire_type": "int",
+          "location": "body",
+          "required": "conditional",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "if you set a request_id in your WebSocketRequest, the same request_id will be returned in the associated response",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.request_id",
+          "signature": "request_id int",
+          "deprecated": false
+        },
+        {
+          "name": "action",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "the action specified in the associated WebSocketRequest",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.action",
+          "signature": "action string",
+          "deprecated": false
+        },
+        {
+          "name": "success",
+          "wire_type": "boolean",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "indicates if the request was successful",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.success",
+          "signature": "success boolean Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "result",
+          "wire_type": "object",
+          "location": "body",
+          "required": "conditional",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "the result of the request. (It may be omitted if the request does not expect any result)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.result",
+          "signature": "result object Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "error_code",
+          "wire_type": "string",
+          "location": "body",
+          "required": "conditional_on_failure",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "In case of request error, this error_code provides information about the error. The possible error_code values are documented for each API.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.error_code",
+          "signature": "error_code string Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "msg",
+          "wire_type": "string",
+          "location": "body",
+          "required": "conditional_on_failure",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "In cas of error, provides a French error message relative to the error",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.msg",
+          "signature": "msg string Read-only",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "websocket",
+      "name": "WebSocketNotification",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification",
+      "fields": [
+        {
+          "name": "action",
+          "wire_type": "enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "The action will have the value ‘notification’",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.action",
+          "signature": "action enum Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "success",
+          "wire_type": "boolean",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "will be True",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.success",
+          "signature": "success boolean Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "source",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "The name of the source of the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.source",
+          "signature": "source string Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "event",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "The name of event that generated the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.event",
+          "signature": "event string Read-only",
+          "deprecated": false
+        },
+        {
+          "name": "result",
+          "wire_type": "object",
+          "location": "body",
+          "required": "conditional",
+          "nullable": "not_documented",
+          "access": "read_only",
+          "constraints": "the content of the notification (may be omitted if no data has to be transferred along with the notification)",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.result",
+          "signature": "result object Read-only",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "websocket",
+      "name": "RegisterAction",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction",
+      "fields": [
+        {
+          "name": "action",
+          "wire_type": "enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Value should be “register”",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.action",
+          "signature": "action enum",
+          "deprecated": false
+        },
+        {
+          "name": "events",
+          "wire_type": "[] array of enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "List of events to subscribe for. Possible values: event name event result object type Description vm_state_changed VmStateChange VM status has changed vm_disk_task_done VmDiskTask VM disk task done lan_host_l3addr_reachable LanHost LAN machine had an L3 address (IPv4 or IPv6) become reachable. Usually when a machine appears on the network, or changes IP. lan_host_l3addr_unreachable LanHost LAN machine had an L3 address (IPv4 or IPv6) become unreachable. Usually when a machine disappears from the network (after a timeout), or changes IP.",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events",
+          "signature": "events [] array of enum",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "event name",
+                "event result object type",
+                "Description"
+              ],
+              [
+                "vm_state_changed",
+                "VmStateChange",
+                "VM status has changed"
+              ],
+              [
+                "vm_disk_task_done",
+                "VmDiskTask",
+                "VM disk task done"
+              ],
+              [
+                "lan_host_l3addr_reachable",
+                "LanHost",
+                "LAN machine had an L3 address (IPv4 or IPv6) become reachable. Usually when a machine appears on the network, or changes IP."
+              ],
+              [
+                "lan_host_l3addr_unreachable",
+                "LanHost",
+                "LAN machine had an L3 address (IPv4 or IPv6) become unreachable. Usually when a machine disappears from the network (after a timeout), or changes IP."
+              ]
+            ]
+          ]
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "camera",
+      "name": "Camera",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Camera",
+      "fields": [
+        {
+          "name": "id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "camera id",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.id",
+          "signature": "id string",
+          "deprecated": false
+        },
+        {
+          "name": "node_id",
+          "wire_type": "int",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "camera node id",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.node_id",
+          "signature": "node_id int",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "camera name",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.name",
+          "signature": "name string",
+          "deprecated": false
+        },
+        {
+          "name": "stream_url",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "camera stream url",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.stream_url",
+          "signature": "stream_url string",
+          "deprecated": false
+        },
+        {
+          "name": "lan_gid",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "camera lan id",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#Camera.lan_gid",
+          "signature": "lan_gid string",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "notif",
+      "name": "NotificationTarget",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget",
+      "fields": [
+        {
+          "name": "id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "device unique id",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.id",
+          "signature": "id string",
+          "deprecated": false
+        },
+        {
+          "name": "last_use",
+          "wire_type": "int",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.last_use",
+          "signature": "last_use int",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ios | android | firebase",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.type",
+          "signature": "type string",
+          "deprecated": false
+        },
+        {
+          "name": "name",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "device name",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.name",
+          "signature": "name string",
+          "deprecated": false
+        },
+        {
+          "name": "api_url",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "url of the notification server used to handle communication with the devices",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.api_url",
+          "signature": "api_url string",
+          "deprecated": false
+        },
+        {
+          "name": "message_type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "notification message type Type Description data only send the notification payload to the device notification send the notification payload along a notification title and body to the device",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.message_type",
+          "signature": "message_type string",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "Type",
+                "Description"
+              ],
+              [
+                "data",
+                "only send the notification payload to the device"
+              ],
+              [
+                "notification",
+                "send the notification payload along a notification title and body to the device"
+              ]
+            ]
+          ]
+        },
+        {
+          "name": "subscriptions",
+          "wire_type": "array",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "permission list array Type Description phone notification when missing call download notification when download is finished security notification when alarm is on box_state notification when box state changed lan_host notification related to lan events password_change notification when admin password is changed",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.subscriptions",
+          "signature": "subscriptions array",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "Type",
+                "Description"
+              ],
+              [
+                "phone",
+                "notification when missing call"
+              ],
+              [
+                "download",
+                "notification when download is finished"
+              ],
+              [
+                "security",
+                "notification when alarm is on"
+              ],
+              [
+                "box_state",
+                "notification when box state changed"
+              ],
+              [
+                "lan_host",
+                "notification related to lan events"
+              ],
+              [
+                "password_change",
+                "notification when admin password is changed"
+              ]
+            ]
+          ]
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "notif",
+      "name": "downloader",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader",
+      "fields": [
+        {
+          "name": "box_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the box that sent the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.box_id",
+          "signature": "box_id string",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Notification type : downloader",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.type",
+          "signature": "type string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "wire_type": "int",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the download task that triggered the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.data",
+          "signature": "data int",
+          "deprecated": false
+        },
+        {
+          "name": "event",
+          "wire_type": "enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Downloader event that triggered the notification event Description task_done The download task is complete task_error The download task has failed task_seeding_done The download task seeding is complete",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.event",
+          "signature": "event enum",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "event",
+                "Description"
+              ],
+              [
+                "task_done",
+                "The download task is complete"
+              ],
+              [
+                "task_error",
+                "The download task has failed"
+              ],
+              [
+                "task_seeding_done",
+                "The download task seeding is complete"
+              ]
+            ]
+          ]
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "notif",
+      "name": "phone",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone",
+      "fields": [
+        {
+          "name": "box_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the box that sent the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#phone.box_id",
+          "signature": "box_id string",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Notification type : phone",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#phone.type",
+          "signature": "type string",
+          "deprecated": false
+        },
+        {
+          "name": "data",
+          "wire_type": "CallEntry",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Call object that triggered the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#phone.data",
+          "signature": "data CallEntry",
+          "deprecated": false
+        },
+        {
+          "name": "event",
+          "wire_type": "enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Phone event that triggered the notification event Description missed_call A call has been missed",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#phone.event",
+          "signature": "event enum",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "event",
+                "Description"
+              ],
+              [
+                "missed_call",
+                "A call has been missed"
+              ]
+            ]
+          ]
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "notif",
+      "name": "box_state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#box_state",
+      "fields": [
+        {
+          "name": "box_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the box that sent the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.box_id",
+          "signature": "box_id string",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Notification type : box_state",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.type",
+          "signature": "type string",
+          "deprecated": false
+        },
+        {
+          "name": "event",
+          "wire_type": "enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Box state event that triggered the notification event Description pub_up Wan public connection went up enter_sleep Box will enter sleep mode shut_down Box will shut down reboot Box will reboot",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.event",
+          "signature": "event enum",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "event",
+                "Description"
+              ],
+              [
+                "pub_up",
+                "Wan public connection went up"
+              ],
+              [
+                "enter_sleep",
+                "Box will enter sleep mode"
+              ],
+              [
+                "shut_down",
+                "Box will shut down"
+              ],
+              [
+                "reboot",
+                "Box will reboot"
+              ]
+            ]
+          ]
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "notif",
+      "name": "lan_host",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host",
+      "fields": [
+        {
+          "name": "box_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the box that sent the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.box_id",
+          "signature": "box_id string",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Notification type : lan",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.type",
+          "signature": "type string",
+          "deprecated": false
+        },
+        {
+          "name": "host_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the host that triggered the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.host_id",
+          "signature": "host_id string",
+          "deprecated": false
+        },
+        {
+          "name": "interface",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "The LAN interface the host is connected to",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.interface",
+          "signature": "interface string",
+          "deprecated": false
+        },
+        {
+          "name": "event",
+          "wire_type": "enum",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "LAN host event that triggered the notification event Description first_connection The device is connected for the first time",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.event",
+          "signature": "event enum",
+          "deprecated": false,
+          "tables": [
+            [
+              [
+                "event",
+                "Description"
+              ],
+              [
+                "first_connection",
+                "The device is connected for the first time"
+              ]
+            ]
+          ]
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    },
+    {
+      "module": "notif",
+      "name": "password_change",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#password_change",
+      "fields": [
+        {
+          "name": "box_id",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "ID of the box that sent the notification",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#password_change.box_id",
+          "signature": "box_id string",
+          "deprecated": false
+        },
+        {
+          "name": "type",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "Notification type : password_change",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#password_change.type",
+          "signature": "type string",
+          "deprecated": false
+        },
+        {
+          "name": "ip",
+          "wire_type": "string",
+          "location": "body",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "not_documented",
+          "constraints": "IP of the lan host that requested password change",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#password_change.ip",
+          "signature": "ip string",
+          "deprecated": false
+        }
+      ],
+      "deprecated": false,
+      "nullability_policy": "Source distinguishes optionality in a few fields; explicit JSON null acceptance is otherwise not documented."
+    }
+  ],
+  "enums": [
+    {
+      "name": "AuthorizationStatus",
+      "values": [
+        "unknown",
+        "pending",
+        "timeout",
+        "granted",
+        "denied"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#track-authorization-progress",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "AuthenticationError",
+      "values": [
+        "auth_required",
+        "invalid_token",
+        "pending_token",
+        "insufficient_rights",
+        "denied_from_external_ip",
+        "invalid_request",
+        "ratelimited",
+        "new_apps_denied",
+        "apps_denied",
+        "internal_error"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#authentication-errors",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "RegisterAction.Action",
+      "values": [
+        "register"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.action",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "WebSocketNotification.Action",
+      "values": [
+        "notification"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.action",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "WebSocketEvent",
+      "values": [
+        "vm_state_changed",
+        "vm_disk_task_done",
+        "lan_host_l3addr_reachable",
+        "lan_host_l3addr_unreachable"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "NotificationTarget.Type",
+      "values": [
+        "ios",
+        "android",
+        "firebase"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.type",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "NotificationTarget.MessageType",
+      "values": [
+        "data",
+        "notification"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.message_type",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "NotificationTarget.Subscription",
+      "values": [
+        "phone",
+        "download",
+        "security",
+        "box_state",
+        "lan_host",
+        "password_change"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.subscriptions",
+      "unknown_value_policy": "Documented table says download; examples also contain downloader. Keep known table values and permit raw incoming strings; do not rewrite downloader silently."
+    },
+    {
+      "name": "DownloaderNotification.Event",
+      "values": [
+        "task_done",
+        "task_error",
+        "task_seeding_done"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#downloader.event",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "PhoneNotification.Event",
+      "values": [
+        "missed_call"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#phone.event",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "BoxStateNotification.Event",
+      "values": [
+        "pub_up",
+        "enter_sleep",
+        "shut_down",
+        "reboot"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#box_state.event",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "LanHostNotification.Event",
+      "values": [
+        "first_connection"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#lan_host.event",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "CameraError",
+      "values": [
+        "noent",
+        "inval"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#camera-errors",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    },
+    {
+      "name": "NotificationError",
+      "values": [
+        "noent",
+        "inval"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#notification-errors",
+      "unknown_value_policy": "Preserve documented values; reject invalid outgoing commands; retain raw unknown incoming strings where forward extensibility is needed."
+    }
+  ],
+  "exclusions": [
+    {
+      "kind": "operation",
+      "module": "notif",
+      "method": "POST",
+      "path": "/register",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--register",
+      "scope": "outbound Freebox HTTP client only",
+      "reason": "Reverse-direction notification-server contract. The Freebox invokes the server configured in NotificationTarget.api_url; this is not a Freebox-origin client endpoint.",
+      "classification": "external_callback_contract",
+      "deprecated": false
+    },
+    {
+      "kind": "operation",
+      "module": "notif",
+      "method": "DELETE",
+      "path": "/register/{box_id}/{device_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--register-box_id-device_id",
+      "scope": "outbound Freebox HTTP client only",
+      "reason": "Reverse-direction notification-server contract. The Freebox invokes the server configured in NotificationTarget.api_url; this is not a Freebox-origin client endpoint.",
+      "classification": "external_callback_contract",
+      "deprecated": false
+    },
+    {
+      "kind": "operation",
+      "module": "notif",
+      "method": "POST",
+      "path": "/send",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--send",
+      "scope": "outbound Freebox HTTP client only",
+      "reason": "Reverse-direction notification-server contract. The Freebox invokes the server configured in NotificationTarget.api_url; this is not a Freebox-origin client endpoint.",
+      "classification": "external_callback_contract",
+      "deprecated": false
+    },
+    {
+      "kind": "field",
+      "name": "device_type",
+      "scope": "Discovery mDNS/API version metadata only",
+      "reason": "Explicit DEPRECATED: use box_model in discovery table. Does not apply to external notification-server device_type.",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-mdns",
+      "deprecated": true
+    },
+    {
+      "kind": "permission",
+      "name": "parental",
+      "scope": "Session permissions",
+      "reason": "Access to parental control (obsolete).",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#opening-a-session",
+      "deprecated": true
+    },
+    {
+      "kind": "module",
+      "name": "parental control",
+      "scope": "Legacy parental control API",
+      "reason": "No longer usable; replaced by Profile API. Exact legacy endpoints delegated to their owning review.",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#deprecated-api-v8-0",
+      "deprecated": true
+    }
+  ],
+  "external_contracts": [
+    {
+      "method": "POST",
+      "path": "/register",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--register",
+      "source_text": "POST /register ¶ A new target has been registered { \"box_id\":\"\", //uuid of the box that is sending the request \"device_type\":\"ios|android|firebase\", //notification service type of the target \"token\":\"\", //the notification service token \"device_name\":\"\", \"device_id\":\"\" //the target id }",
+      "classification": "Freebox-to-consumer notification server",
+      "send_freebox_session_token": false
+    },
+    {
+      "method": "DELETE",
+      "path": "/register/{box_id}/{device_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--register-box_id-device_id",
+      "source_text": "DELETE /register/{box_id}/{device_id} ¶ A target has been deleted",
+      "classification": "Freebox-to-consumer notification server",
+      "send_freebox_session_token": false
+    },
+    {
+      "method": "POST",
+      "path": "/send",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--send",
+      "source_text": "POST /send ¶ Send a notification { \"devices\":[\"\", \"\", \"\", ...], //an array of target id \"title\":\"\", //notification title (optional - only sent if target message type is \"notification\") \"body\":\"\", //notification body (optional - only sent if target message type is \"notification\") \"payload\": {}, //json payload to send as notification data \"box_id\":\"\" //uuid of the box that is sending the request } Response : This API send back the device ids in two lists : failure and success { \"failureIds\": [\"device_id_1\", \"device_id_2\", ...], \"successIds\": [\"device_id_3\", ...] }",
+      "classification": "Freebox-to-consumer notification server",
+      "send_freebox_session_token": false
+    }
+  ],
+  "shared_contracts": [
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#api-version",
+      "decision": "Current API version is16.0; major16; unstable may change/disappear; undocumented APIs should not be used.",
+      "source_excerpt": "API Version ¶ Api version will always use the following format : “major.minor” where major and minor are integers Current API version is “16.0” Current major API version is: 16 When an API is marked as unstable , you can use it but it may change or disappear at any time! When an API is not documented you should not use it! Other API will be maintained for at least 1 Freebox release."
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#building-the-api-request-url",
+      "decision": "Ordinary API root is api_base_url+v<discovered major>/; local HTTPS origin or explicitly configured remote api_domain/https_port. Prefix example v16/login.",
+      "source_excerpt": "Building the API request URL ¶ Once you’ve discovered a Freebox on the local network you can access the API at the following URL: https : // [ api_domain ]:[ freebox_port ] / [ api_base_url ] / v [ major_api_version ] / [ api_url ] or for local access https://mafreebox.freebox.fr/[api_base_url]/v[major_api_version]/[api_url ] Example : https : // example . fbxos . fr : 3615 / api / v16 / login /"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#https-access",
+      "decision": "All applications MUST use HTTPS and validate the chain against Freebox ECC Root CA or Freebox Root CA. Italian variant roots are also published. Never bypass hostname or chain validation.",
+      "source_excerpt": "HTTPS Access ¶ Each Freebox is now automatically assigned a random domain name (api_domain), and an associated TLS certificate to enable secure access to API. This is enabled by default and all applications MUST now use HTTPS to access the api. Unsecure access will be removed at some point. Certificates used for HTTPS access are emitted by either ‘Freebox ECC Root CA’ in case of ECDSA access, or ‘Freebox Root CA’ in case of RSA. You must validate the certificate chain, by using the following Root CA certificates: Freebox ECC Root CA -----BEGIN CERTIFICATE----- MIICWTCCAd + gAwIBAgIJAMaRcLnIgyukMAoGCCqGSM49BAMCMGExCzAJBgNVBAYT AkZSMQ8wDQYDVQQIDAZGcmFuY2UxDjAMBgNVBAcMBVBhcmlzMRMwEQYDVQQKDApG cmVlYm94IFNBMRwwGgYDVQQDDBNGcmVlYm94IEVDQyBSb290IENBMB4XDTE1MDkw MTE4MDIwN1oXDTM1MDgyNzE4MDIwN1owYTELMAkGA1UEBhMCRlIxDzANBgNVBAgM BkZyYW5jZTEOMAwGA1UEBwwFUGFyaXMxEzARBgNVBAoMCkZyZWVib3ggU0ExHDAa BgNVBA"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-mdns",
+      "decision": "Preferred _fbx-api._tcp mDNS discovery; runtime optional component/injection point, not a required transport dependency.",
+      "source_excerpt": "Discovery using mDNS ¶ This is the preferred method since it does not require to know the Freebox IP address. The Freebox broadcasts the “_fbx-api._tcp” service On iOS devices, you can use a NSNetServiceBrowser On Android devices, you can use Network Service Discovery or JmDNS On the TXT record you can obtain the following information: Key Description api_version The current API version on the Freebox device_type (DEPRECATED: use box_model) api_base_url The API root path on the HTTP server uid The device unique id api_domain The domain to use in place of hardcoded Freebox ip https_available Tells if https has been configured on the Freebox https_port Port to use for remote https access to the Freebox Api box_model_name Box model display name box_model Box model Currently the existing box models are box_model Description fbxgw-r1/full Freebox Server (v6) revision 1 fbxgw-r2/full Freebox S"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+      "decision": "Unauthenticated remote discovery exposes only fields needed to build the URL; device identity/model/name may be absent.",
+      "source_excerpt": "Discovery using HTTP ¶ If you can, avoid this method because it requires to use a hardcoded address to retrieve API information. If you make a HTTP get request on http://mafreebox.freebox.fr/api_version you can get the same API information as provided in mDNS. Example request : GET /api_version HTTP / 1.1 Host : mafreebox.freebox.fr Example response : { \"uid\" : \"23b86ec8091013d668829fe12791fdab\" , \"device_name\" : \"Freebox Server\" , \"box_model\" : \"fbxgw7-r1/full\" , \"box_model_name\" : \"Freebox v7 (r1)\" , \"api_version\" : \"16.0\" , \"api_base_url\" : \"/api/\" , \"api_domain\" : \"example.fbxos.fr\" , \"https_available\" : true , \"https_port\" : 3615 } Only the fields available to build the API request URL (see below) are available if you connect remotely."
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#remote-connection-port-change-discovery",
+      "decision": "Remote port fallback uses only port of _https._tcp.<api_domain> SRV; must not silently send credentials to a different hostname.",
+      "source_excerpt": "Remote connection port change discovery ¶ When the https connection fails to a previously recorded https://[api_domain]:[https_port ], you should attempt to discover if https_port has changed. This can happen either automatically (port is no longer valid), or manually if the user decided to change the port. The https port is announced in a DNS “_https._tcp” SRV record. For example, for domain [example.fbxos.fr], the SRV record will be: # _service._proto.name. TTL class SRV priority weight port target _https . _tcp . example . fbxos . fr 300 IN SRV 13 37 12345 example . fbxos . fr Here, only the “port” field of the SRV record is relevant, i.e 12345 . The SRV field is only populated for the https port, and only for the [api_domain] field of the API information. Port change discovery is important to maintain remote connectability."
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#api-conventions",
+      "decision": "JSON UTF8 unless operation states otherwise; body Content-Type application/json; check HTTP status and success flag; result may be absent.",
+      "source_excerpt": "API conventions ¶ Most API uses the REST architecture , pay attention to the http methods used for each request. For requests with a body, you must use “application/json” content-type unless otherwise stated. The API response is always a JSON object using utf8 encoding. APIResponse ¶ success boolean Read-only ¶ indicates if the request was successful result object Read-only ¶ the result of the request. (It may be omitted if the request does not expect any result) error_code string Read-only ¶ In case of request error, this error_code provides information about the error. The possible error_code values are documented for each API. msg string Read-only ¶ In cas of error, provides a French error message relative to the error Successful response example { success: true, result: { logged_in: false, challenge: \"WpsbHdkBpRpHLMGQHZ1ri1uUqa4ce6Dw\" } } Error response example { msg: \"Requête invali"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#opening-a-session",
+      "decision": "Absent permission means false. Settings read is generally permitted, but sensitive Wifi/VPN credentials may be denied/obfuscated. Check UID on session failure to verify expected box.",
+      "source_excerpt": "Opening a session ¶ Once you have the challenge you just need use the following API to get a session_token NOTE: in case of session opening failure, ensure that the box you’re connected is the one you expect by checking the uid returned in the answer. In the response you get your app permissions. App permissions are: App permission Description settings Allow modifying the Freebox settings (reading settings is always allowed) contacts Access to contact list calls Access to call logs explorer Access to filesystem downloader Access to downloader parental Access to parental control (obsolete) pvr Access personal video recorder profile Access to user profile management NOTE: A permission not listed in app permissions is equivalent to having this permission set to false. NOTE: There is no “privileged read” for the “settings” permission. This means that, by default, any allowed application can "
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SessionStart.password",
+      "decision": "HMAC-SHA1 key=app_token message=challenge, lowercase hex exemplified. Challenge changes frequently and has limited validity; no token expiry duration is specified.",
+      "source_excerpt": "password string ¶ The password computed using the challenge and the app_token To compute the password you have to compute the hmac-sha1 of the challenge and the app_token password = hmac-sha1(app_token, challenge)"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest.request_id",
+      "decision": "Correlation key is request_id optional integer, not req_id. Response echoes it conditionally.",
+      "source_excerpt": "request_id int Optionnal ¶ if you specify a request_id in your request, it will be added in the corresponding reply, so that you can correlate responses to the request"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ws-api",
+      "decision": "Authenticated socket upgrade reuses X-Fbx-App-Auth; maximum accepted frame size1 MB. Use conservative byte limit, do not describe source as explicitly binary MiB.",
+      "source_excerpt": "WebSocket allow bidirectional communication between your api client and the Freebox. This allow more interactivity without the need of frequently polling data from the Freebox."
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events",
+      "decision": "Four exact event values only; split wire notification source/event and decode result with generated metadata supplied by owning VM/LAN models.",
+      "source_excerpt": "events [] array of enum ¶ List of events to subscribe for. Possible values: event name event result object type Description vm_state_changed VmStateChange VM status has changed vm_disk_task_done VmDiskTask VM disk task done lan_host_l3addr_reachable LanHost LAN machine had an L3 address (IPv4 or IPv6) become reachable. Usually when a machine appears on the network, or changes IP. lan_host_l3addr_unreachable LanHost LAN machine had an L3 address (IPv4 or IPv6) become unreachable. Usually when a machine disappears from the network (after a timeout), or changes IP."
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#notification-server-specification",
+      "decision": "POST/register DELETE/register/... POST/send describe inbound consumer-server contract invoked by Freebox, not outgoing Freebox routes.",
+      "source_excerpt": "Notification server specification ¶ When a notification should be sent, the Freebox will use this API on the address specified in the notification target. Your server must implement this API contract : POST /register ¶ A new target has been registered { \"box_id\":\"\", //uuid of the box that is sending the request \"device_type\":\"ios|android|firebase\", //notification service type of the target \"token\":\"\", //the notification service token \"device_name\":\"\", \"device_id\":\"\" //the target id } DELETE /register/{box_id}/{device_id} ¶ A target has been deleted POST /send ¶ Send a notification { \"devices\":[\"\", \"\", \"\", ...], //an array of target id \"title\":\"\", //notification title (optional - only sent if target message type is \"notification\") \"body\":\"\", //notification body (optional - only sent if target message type is \"notification\") \"payload\": {}, //json payload to send as notification data \"box_i"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-latest-tftp-config-",
+      "decision": "Global versioning cross-check: TFTP signature /api/latest/tftp/config/ while same operation example uses /api/v16/tftp/config/. No /api/vlatest alias is present.",
+      "source_excerpt": "PUT /api/latest/tftp/config/ ¶ Update the TftpConfig Example request : PUT /api/v16/tftp/config/ HTTP / 1.1 Host : mafreebox.freebox.fr { \"enabled\" : true } Example response : HTTP / 1.1 200 OK Content-Type : application/json; charset=utf-8 { \"success\" : true , \"result\" : { \"enabled\" : true , \"root\" : \"/ssd2\" } }"
+    },
+    {
+      "source": "http://mafreebox.freebox.fr/doc/index.html#changed-api-v8-5",
+      "decision": "camera permission remains needed for live/records despite not appearing in login permission table.",
+      "source_excerpt": "Changed API (v8.5) ¶ Camera API does not require “camera” permission any more to list cameras. The permission is still needed to access camera records and live stream. Add camera lan id in camera API result to find the corresponding lan host in lan browser API. Add API to retrieve channel survey history"
+    }
+  ],
+  "dependencies": [
+    {
+      "task_id": "to_resolve_by_orchestrator:vm",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmStateChange",
+      "reason": "vm_state_changed result",
+      "required_for": "typed WebSocket event result"
+    },
+    {
+      "task_id": "to_resolve_by_orchestrator:vm",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask",
+      "reason": "vm_disk_task_done result",
+      "required_for": "typed WebSocket event result"
+    },
+    {
+      "task_id": "to_resolve_by_orchestrator:lan",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanHost",
+      "reason": "LAN event result",
+      "required_for": "typed WebSocket event result"
+    },
+    {
+      "task_id": "to_resolve_by_orchestrator:call",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#CallEntry",
+      "reason": "phone callback payload data",
+      "required_for": "typed reverse-notification payload contract"
+    },
+    {
+      "task_id": "to_resolve_by_orchestrator:home",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#cameras",
+      "reason": "Delete camera through Home Node by node_id, no camera DELETE operation documented",
+      "required_for": "camera deletion capability"
+    }
+  ],
+  "unknowns": [
+    {
+      "question": "Notification target detail response is singular in prose but an array in its example.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets-id"
+      ],
+      "impact": "nonblocking if explicit object-or-singleton-array reader accepts both documented shapes and rejects multi-target result for singular convenience API; no live verification claimed.",
+      "owner": "notifications implementer",
+      "next_action": "Add AOT-safe reader and fixtures for both source shapes; validate live only on authorized test box."
+    },
+    {
+      "question": "Notification subscriptions table uses download while examples contain downloader.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.subscriptions",
+        "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-notif-targets"
+      ],
+      "impact": "nonblocking with string-preserving read representation and exact documented write values; no silent rename.",
+      "owner": "notifications implementer",
+      "next_action": "Keep known-value constants plus raw strings; document discrepancy."
+    },
+    {
+      "question": "SessionStart.app_version field declared but omitted by opening-session example.",
+      "status": "not_documented",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#SessionStart.app_version",
+        "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-"
+      ],
+      "impact": "Requiredness is not stated. Add support for app_version without asserting it mandatory solely from declaration; send configured version when available.",
+      "owner": "transport/auth owner",
+      "next_action": "Support field and test optional omission/configured emission."
+    },
+    {
+      "question": "Exact session lifetime, renewal interval and WS reconnect/resubscribe guarantees.",
+      "status": "not_documented",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#login",
+        "http://mafreebox.freebox.fr/doc/index.html#websocket-event-api"
+      ],
+      "impact": "No expiry timer or automatic mutation replay inferred; invalidate on auth_required then open a new session for next explicit operation.",
+      "owner": "transport/WebSocket owners",
+      "next_action": "Expose explicit reconnect/session APIs, synchronize opens, test cancellation and invalidation."
+    },
+    {
+      "question": "Explicit null acceptance and per-field numeric units for unannotated fields such as NotificationTarget.last_use.",
+      "status": "not_documented",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#NotificationTarget.last_use"
+      ],
+      "impact": "Do not label seconds/timestamp units or nullable protocol rules without evidence.",
+      "owner": "DTO owners",
+      "next_action": "Retain wire integers and metadata not_documented."
+    },
+    {
+      "question": "Box model discovery example table uses fbxgw9-r1/full while supplied sanitized discovery captures fbxgw9-r1.",
+      "status": "unknown",
+      "sources": [
+        "http://mafreebox.freebox.fr/doc/index.html#discovery-using-mdns",
+        "http://mafreebox.freebox.fr/api_version"
+      ],
+      "impact": "nonblocking if raw model string retained, known classification optional; avoid closed-enum deserialization failure.",
+      "owner": "discovery owner",
+      "next_action": "Preserve incoming model and test unknown/new strings."
+    }
+  ],
+  "review_status": "Source sections fully read, retained schemas include explicit documentary ambiguities; implementation acceptance and independent review remain with orchestrator.",
+  "coverage": {
+    "catalogue_http_signatures": 16,
+    "retained_freebox_operations": 13,
+    "external_reverse_contract_operations": 3,
+    "formal_objects": 14,
+    "formal_properties": 57,
+    "live_business_operations_tested": 0
+  },
+  "validation_plan": [
+    "Fix request_id and app_version JSON metadata; generated JSON round trips with reflection disabled.",
+    "Discovery reduced fields and raw unknown box_model strings; relative/base/alias route origin tests.",
+    "TLS custom-root valid/invalid chain, hostname mismatch and untrusted certificate rejection; no bypass.",
+    "HMAC known fixture; authorizing tracking mandatory; absent permissions false including camera permission extension.",
+    "Concurrent session opening, stale-token invalidation without mutation replay, cancellation/logout isolation.",
+    "WebSocket fragmentation, UTF8 lines, request_id correlation, all four subscription values, unknown payload preservation and disposal.",
+    "Notification target shape contradiction object/list, known subscription raw strings, secret token omission from logs.",
+    "Camera typed GET list/detail; no invented stream/delete API; explicit camera permission for any authorized stream consumer.",
+    "Publish and execute representative native AOT paths after changes."
+  ],
+  "tls_trust_anchors": [
+    {
+      "subject": "Freebox ECC Root CA",
+      "region": "FR",
+      "der_sha256": "23cfb72636be665dbbf2fe3e0527904771a8dff1bace461d8bd69f34812c2444",
+      "not_after": "2035-08-27T18:02:07Z",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#https-access"
+    },
+    {
+      "subject": "Freebox Root CA",
+      "region": "FR",
+      "der_sha256": "2bd8b5be1a990e42ad1bd79c306eb519b637ee2475c0d931f257535610e9c3e7",
+      "not_after": "2035-07-25T15:09:20Z",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#https-access"
+    },
+    {
+      "subject": "Iliadbox ECC Root CA",
+      "region": "IT",
+      "der_sha256": "a210b1de8357927f133cf517bb63ac99fcea79975be51262bac9de0ea874ebde",
+      "not_after": "2040-11-22T09:38:13Z",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#https-access"
+    },
+    {
+      "subject": "Iliadbox RSA Root CA",
+      "region": "IT",
+      "der_sha256": "74f795bbd02f1cf0451422a3c6ee7226b2d3f7dd1eb5fcba8be5c21ba529a8f7",
+      "not_after": "2040-11-22T09:38:12Z",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#https-access"
+    }
+  ],
+  "supplemental_models": [
+    {
+      "name": "AuthorizeResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-",
+      "kind": "supplemental_shape_from_source_text_or_examples",
+      "note": "Shape shown in response example; token secret.",
+      "fields": [
+        {
+          "name": "app_token",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "track_id",
+          "wire_type": "integer",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-authorize-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        }
+      ]
+    },
+    {
+      "name": "AuthorizationTrackResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id",
+      "kind": "supplemental_shape_from_source_text_or_examples",
+      "note": "Tracking until not pending mandatory.",
+      "fields": [
+        {
+          "name": "status",
+          "wire_type": "enum unknown|pending|timeout|granted|denied",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "challenge",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-authorize-track_id",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        }
+      ]
+    },
+    {
+      "name": "LoginResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-",
+      "kind": "supplemental_shape_from_source_text_or_examples",
+      "note": "Current challenge getter.",
+      "fields": [
+        {
+          "name": "logged_in",
+          "wire_type": "boolean",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "challenge",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-login-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        }
+      ]
+    },
+    {
+      "name": "SessionResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+      "kind": "supplemental_shape_from_source_text_or_examples",
+      "note": "Absent permission false per opening-a-session. Known table is not exhaustive; camera exists in changelog.",
+      "fields": [
+        {
+          "name": "session_token",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "challenge",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "permissions",
+          "wire_type": "map<string,boolean>",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        }
+      ]
+    },
+    {
+      "name": "SessionFailureResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+      "kind": "supplemental_shape_from_source_text_or_examples",
+      "note": "Shown in error result; uid top-level shown in error, not success model.",
+      "fields": [
+        {
+          "name": "challenge",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-login-session-",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        }
+      ]
+    },
+    {
+      "name": "ApiVersionMetadata",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+      "kind": "supplemental_shape_from_source_text_or_examples",
+      "note": "Unversioned GET /api_version response is raw metadata, not APIResponse. Device metadata may be absent remotely; box_model must accept unknown raw values.",
+      "fields": [
+        {
+          "name": "api_version",
+          "wire_type": "string major.minor",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "api_base_url",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "api_domain",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "https_available",
+          "wire_type": "boolean",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "https_port",
+          "wire_type": "integer",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "uid",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "device_name",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "box_model",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        },
+        {
+          "name": "box_model_name",
+          "wire_type": "string",
+          "source": "http://mafreebox.freebox.fr/doc/index.html#discovery-using-http",
+          "required": "not_documented",
+          "nullable": "not_documented",
+          "access": "read_only"
+        }
+      ]
+    }
+  ],
+  "supplemental_evidence": [
+    {
+      "url": "http://mafreebox.freebox.fr/api_version",
+      "local_file": "/workspace/.cloud-setup/freebox-upload-20261002/Freebox-Server-API-16.0/sources/api-version.json",
+      "sha256": "1f6bcbb74eb1a7c7d4bdf0ad955b6e12ad9432976f38e16fb93846ce4cbc2284",
+      "kind": "user_provided_sanitized_discovery_capture",
+      "raw_http_response_preserved": false,
+      "observations": {
+        "api_version": "16.0",
+        "api_base_url": "/api/",
+        "box_model": "fbxgw9-r1"
+      },
+      "limitations": "Capture wrapper lists omitted metadata; no absent-field optionality claim is inferred from sanitization."
+    }
+  ]
+}

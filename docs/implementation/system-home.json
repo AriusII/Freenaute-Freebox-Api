@@ -1,0 +1,930 @@
+{
+  "format_version": 1,
+  "group": "system-home",
+  "modules": [
+    "lang",
+    "lcd",
+    "ledstrip",
+    "slowness",
+    "standby",
+    "system",
+    "update",
+    "home",
+    "profile"
+  ],
+  "target_api_version": "16.0",
+  "target_version_scope": "Supplied embedded snapshot; runtime prefix uses discovered major version, no historical compatibility branch.",
+  "client_namespace": "Freenaute.Freebox.Client.Domains.SystemHome",
+  "public_api": "FreeboxSystemHomeApi / IFreeboxSystemHomeApi",
+  "implemented_operations": [
+    {
+      "module": "lang",
+      "method": "GET",
+      "documented_path": "/api/v8/lang/",
+      "relative_path": "lang/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lang-",
+      "review_operation_id": "GetLanguage",
+      "client_member": "Language.GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lang-",
+      "catalogue_endpoint_id": "get--api-v8-lang-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "lang",
+      "method": "POST",
+      "documented_path": "/api/v8/lang/",
+      "relative_path": "lang/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-lang-",
+      "review_operation_id": "SetLanguage",
+      "client_member": "Language.Set(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-lang-",
+      "catalogue_endpoint_id": "post--api-v8-lang-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "lcd",
+      "method": "GET",
+      "documented_path": "/api/v8/lcd/config/",
+      "relative_path": "lcd/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lcd-config-",
+      "review_operation_id": "GetLcd",
+      "client_member": "Lcd.GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-lcd-config-",
+      "catalogue_endpoint_id": "get--api-v8-lcd-config-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "lcd",
+      "method": "PUT",
+      "documented_path": "/api/v8/lcd/config/",
+      "relative_path": "lcd/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-lcd-config-",
+      "review_operation_id": "UpdateLcd",
+      "client_member": "Lcd.Configure().UseFields(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-lcd-config-",
+      "catalogue_endpoint_id": "put--api-v8-lcd-config-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "ledstrip",
+      "method": "GET",
+      "documented_path": "/api/v16/ledstrip/status",
+      "relative_path": "ledstrip/status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-ledstrip-status",
+      "review_operation_id": "GetLedstripStatus",
+      "client_member": "Ledstrip.GetStatusAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v16-ledstrip-status",
+      "catalogue_endpoint_id": "get--api-v16-ledstrip-status",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "ledstrip",
+      "method": "GET",
+      "documented_path": "/api/v16/ledstrip/planning/",
+      "relative_path": "ledstrip/planning/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get-ledstrip-planning",
+      "review_operation_id": "GetLedstripPlanning",
+      "client_member": "Ledstrip.GetPlanningAsync",
+      "evidence_kind": "HTTP_example_only",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-ledstrip-planning",
+      "documentation_kind": "example_only_documented"
+    },
+    {
+      "module": "ledstrip",
+      "method": "PUT",
+      "documented_path": "/api/v16/ledstrip/planning",
+      "relative_path": "ledstrip/planning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-ledstrip-planning",
+      "review_operation_id": "UpdateLedstripPlanning",
+      "client_member": "Ledstrip.ConfigurePlanning().UseFields(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v16-ledstrip-planning",
+      "catalogue_endpoint_id": "put--api-v16-ledstrip-planning",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "standby",
+      "method": "GET",
+      "documented_path": "/api/v11/standby/status",
+      "relative_path": "standby/status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-standby-status",
+      "review_operation_id": "GetStandbyStatus",
+      "client_member": "Standby.GetStatusAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-standby-status",
+      "catalogue_endpoint_id": "get--api-v11-standby-status",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "standby",
+      "method": "GET",
+      "documented_path": "/api/v11/standby/config/",
+      "relative_path": "standby/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get-standby-config",
+      "review_operation_id": "GetStandbyConfig",
+      "client_member": "Standby.GetConfigurationAsync",
+      "evidence_kind": "HTTP_example_only",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-standby-config",
+      "documentation_kind": "example_only_documented"
+    },
+    {
+      "module": "standby",
+      "method": "PUT",
+      "documented_path": "/api/v11/standby/config",
+      "relative_path": "standby/config",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-standby-config",
+      "review_operation_id": "UpdateStandbyConfig",
+      "client_member": "Standby.Configure().UseFields(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-standby-config",
+      "catalogue_endpoint_id": "put--api-v11-standby-config",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "system",
+      "method": "GET",
+      "documented_path": "/api/v8/system/",
+      "relative_path": "system/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-system-",
+      "review_operation_id": "GetSystem",
+      "client_member": "System.GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#current-version-api-v6",
+      "catalogue_endpoint_id": "get--api-v8-system-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "system",
+      "method": "POST",
+      "documented_path": "/api/v8/system/reboot/",
+      "relative_path": "system/reboot/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-system-reboot-",
+      "review_operation_id": "RebootSystem",
+      "client_member": "System.RebootAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-system-reboot-",
+      "catalogue_endpoint_id": "post--api-v8-system-reboot-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "system",
+      "method": "POST",
+      "documented_path": "/api/v11/system/shutdown/",
+      "relative_path": "system/shutdown/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-system-shutdown-",
+      "review_operation_id": "ShutdownSystem",
+      "client_member": "System.ShutdownAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v11-system-shutdown-",
+      "catalogue_endpoint_id": "post--api-v11-system-shutdown-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "update",
+      "method": "GET",
+      "documented_path": "/api/v11/update/",
+      "relative_path": "update/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-update-",
+      "review_operation_id": "GetFirmwareUpdate",
+      "client_member": "Updates.GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-update-",
+      "catalogue_endpoint_id": "get--api-v11-update-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/adapters",
+      "relative_path": "home/adapters",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-adapters",
+      "review_operation_id": "ListHomeAdapters",
+      "client_member": "Home.Adapters.ListAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-home-adapters-list",
+      "catalogue_endpoint_id": "get--api-v8-home-adapters",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/adapters/{id}",
+      "relative_path": "home/adapters/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-adapters-id",
+      "review_operation_id": "GetHomeAdapter",
+      "client_member": "Home.Adapter(id).GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-a-home-adapter",
+      "catalogue_endpoint_id": "get--api-v8-home-adapters-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "PUT",
+      "documented_path": "/api/v8/home/adapters/{id}",
+      "relative_path": "home/adapters/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-home-adapters-id",
+      "review_operation_id": "SetHomeAdapterStatus",
+      "client_member": "Home.Adapter(id).SetStatus(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#change-a-home-adapter-status",
+      "catalogue_endpoint_id": "put--api-v8-home-adapters-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "POST",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "relative_path": "home/pairing/{adapter_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-home-pairing-adapter_id",
+      "review_operation_id": "StartHomePairing",
+      "client_member": "Home.Adapter(id).Pairing.Start(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#start-pairing",
+      "catalogue_endpoint_id": "post--api-v8-home-pairing-adapter_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "relative_path": "home/pairing/{adapter_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-pairing-adapter_id",
+      "review_operation_id": "GetHomePairingStep",
+      "client_member": "Home.Adapter(id).Pairing.GetStepAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#current-pairing-step",
+      "catalogue_endpoint_id": "get--api-v8-home-pairing-adapter_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "POST",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "relative_path": "home/pairing/{adapter_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-home-pairing-adapter_id",
+      "review_operation_id": "AdvanceHomePairing",
+      "client_member": "Home.Adapter(id).Pairing.Next(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#next-step",
+      "catalogue_endpoint_id": "post--api-v8-home-pairing-adapter_id--variante-2",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "POST",
+      "documented_path": "/api/v8/home/pairing/{adapter_id}",
+      "relative_path": "home/pairing/{adapter_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-home-pairing-adapter_id",
+      "review_operation_id": "StopHomePairing",
+      "client_member": "Home.Adapter(id).Pairing.Stop(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#stop-pairing",
+      "catalogue_endpoint_id": "post--api-v8-home-pairing-adapter_id--variante-3",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/nodes",
+      "relative_path": "home/nodes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-nodes",
+      "review_operation_id": "ListHomeNodes",
+      "client_member": "Home.Nodes.ListAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-home-nodes",
+      "catalogue_endpoint_id": "get--api-v8-home-nodes",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/nodes/{id}",
+      "relative_path": "home/nodes/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-nodes-id",
+      "review_operation_id": "GetHomeNode",
+      "client_member": "Home.Node(id).GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-a-home-node",
+      "catalogue_endpoint_id": "get--api-v8-home-nodes-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "PUT",
+      "documented_path": "/api/v8/home/nodes/{id}",
+      "relative_path": "home/nodes/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-home-nodes-id",
+      "review_operation_id": "RenameHomeNode",
+      "client_member": "Home.Node(id).Rename(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#rename-a-home-node",
+      "catalogue_endpoint_id": "put--api-v8-home-nodes-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "DELETE",
+      "documented_path": "/api/v8/home/nodes/{id}",
+      "relative_path": "home/nodes/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-home-nodes-id",
+      "review_operation_id": "RemoveHomeNode",
+      "client_member": "Home.Node(id).DeleteAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#delete-a-home-node",
+      "catalogue_endpoint_id": "delete--api-v8-home-nodes-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/endpoints/{node_id}/{endpoint_id}",
+      "relative_path": "home/endpoints/{node_id}/{endpoint_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-endpoints-node_id-endpoint_id",
+      "review_operation_id": "GetHomeEndpointValue",
+      "client_member": "Home.Node(id).Endpoint(id).GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#fetch-endpoint-value",
+      "catalogue_endpoint_id": "get--api-v8-home-endpoints-node_id-endpoint_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "PUT",
+      "documented_path": "/api/v8/home/endpoints/{node_id}/{endpoint_id}",
+      "relative_path": "home/endpoints/{node_id}/{endpoint_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-home-endpoints-node_id-endpoint_id",
+      "review_operation_id": "SetHomeEndpointValue",
+      "client_member": "Home.Node(id).Endpoint(id).Set(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#change-endpoint-value",
+      "catalogue_endpoint_id": "put--api-v8-home-endpoints-node_id-endpoint_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/tileset/all",
+      "relative_path": "home/tileset/all",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-tileset-all",
+      "review_operation_id": "ListHomeTiles",
+      "client_member": "Home.Tiles.ListAllAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#list-all-tiles",
+      "catalogue_endpoint_id": "get--api-v8-home-tileset-all",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "home",
+      "method": "GET",
+      "documented_path": "/api/v8/home/tileset/{node_id}",
+      "relative_path": "home/tileset/{node_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-home-tileset-node_id",
+      "review_operation_id": "GetHomeSubTileset",
+      "client_member": "Home.Tiles.ForNodeAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#list-a-node-sub-tileset",
+      "catalogue_endpoint_id": "get--api-v8-home-tileset-node_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/profile",
+      "relative_path": "profile",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-profile",
+      "review_operation_id": "ListProfiles",
+      "client_member": "Profiles.ListAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-the-list-of-profiles",
+      "catalogue_endpoint_id": "get--api-v8-profile",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/profile/{id}",
+      "relative_path": "profile/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-profile-id",
+      "review_operation_id": "GetProfile",
+      "client_member": "Profiles.For(id).GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-a-profile",
+      "catalogue_endpoint_id": "get--api-v8-profile-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "POST",
+      "documented_path": "/api/v8/profile/",
+      "relative_path": "profile/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-profile-",
+      "review_operation_id": "CreateProfile",
+      "client_member": "Profiles.Create(...).UseFields(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#add-a-profile",
+      "catalogue_endpoint_id": "post--api-v8-profile-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "DELETE",
+      "documented_path": "/api/v8/profile/{id}",
+      "relative_path": "profile/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-profile-id",
+      "review_operation_id": "DeleteProfile",
+      "client_member": "Profiles.For(id).DeleteAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#delete-a-profile",
+      "catalogue_endpoint_id": "delete--api-v8-profile-id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/{profile_id}",
+      "relative_path": "network_control/{profile_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-profile_id",
+      "review_operation_id": "GetNetworkControl",
+      "client_member": "Profiles.For(id).NetworkControl.GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-network-control-for-a-profile",
+      "catalogue_endpoint_id": "get--api-v8-network_control-profile_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "PUT",
+      "documented_path": "/api/v8/network_control/{profile_id}",
+      "relative_path": "network_control/{profile_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-network_control-profile_id",
+      "review_operation_id": "UpdateNetworkControl",
+      "client_member": "Profiles.For(id).NetworkControl.Configure().UseFields(...).SendAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#update-network-control-for-a-profile",
+      "catalogue_endpoint_id": "put--api-v8-network_control-profile_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/migrate",
+      "relative_path": "network_control/migrate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-migrate",
+      "review_operation_id": "GetDefaultModeMigration",
+      "client_member": "Profiles.GetMigrationStatusAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-migration-to-new-default-mode-status",
+      "catalogue_endpoint_id": "get--api-v8-network_control-migrate",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "POST",
+      "documented_path": "/api/v8/network_control/migrate",
+      "relative_path": "network_control/migrate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-network_control-migrate",
+      "review_operation_id": "MigrateDefaultMode",
+      "client_member": "Profiles.MigrateDefaultModeAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#migrate-to-new-default-mode",
+      "catalogue_endpoint_id": "post--api-v8-network_control-migrate",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/{profile_id}/rules",
+      "relative_path": "network_control/{profile_id}/rules",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-profile_id-rules",
+      "review_operation_id": "ListNetworkControlRules",
+      "client_member": "Profiles.For(id).NetworkControl.Rules.ListAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-network-control-rules-for-a-profile",
+      "catalogue_endpoint_id": "get--api-v8-network_control-profile_id-rules",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control/{profile_id}/rules/{rule_id}",
+      "relative_path": "network_control/{profile_id}/rules/{rule_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control-profile_id-rules-rule_id",
+      "review_operation_id": "GetNetworkControlRule",
+      "client_member": "Profiles.For(id).NetworkControl.Rules.GetAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "reviewed_result_or_success_only",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-a-network-control-rule",
+      "catalogue_endpoint_id": "get--api-v8-network_control-profile_id-rules-rule_id",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "DELETE",
+      "documented_path": "/api/v8/network_control/{id}/rules/{rule_id}",
+      "relative_path": "network_control/{id}/rules/{rule_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-network_control-id-rules-rule_id",
+      "review_operation_id": "DeleteNetworkControlRule",
+      "client_member": "Profiles.For(id).NetworkControl.Rules.DeleteAsync",
+      "evidence_kind": "reviewed_HTTP_signature",
+      "result_policy": "success_only_ignores_unspecified_result",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#delete-a-network-control-rule",
+      "catalogue_endpoint_id": "delete--api-v8-network_control-id-rules-rule_id",
+      "documentation_kind": "formal_signature"
+    }
+  ],
+  "unsupported_operations": [
+    {
+      "module": "profile",
+      "method": "PUT",
+      "documented_path": "/api/v8/profile/3",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-profile-3",
+      "review_operation_id": "UpdateProfile",
+      "reason": "Concrete /profile/3 signature conflicts with collection example; no canonical generic update route established.",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#update-a-profile",
+      "catalogue_endpoint_id": "put--api-v8-profile-3",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "GET",
+      "documented_path": "/api/v8/network_control",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-network_control",
+      "review_operation_id": "ListNetworkControls",
+      "reason": "Result shape absent; neither an array nor a keyed map is established.",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#get-network-control-for-all-profiles",
+      "catalogue_endpoint_id": "get--api-v8-network_control",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "POST",
+      "documented_path": "/api/v8/network_controlr/{profile_id}/rules/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-network_controlr-profile_id-rules-",
+      "review_operation_id": "CreateNetworkControlRule",
+      "reason": "Literal network_controlr path and request/result schemas unresolved; no mutation fallback.",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#create-a-network-control-rule",
+      "catalogue_endpoint_id": "post--api-v8-network_controlr-profile_id-rules-",
+      "documentation_kind": "formal_signature"
+    },
+    {
+      "module": "profile",
+      "method": "PUT",
+      "documented_path": "/api/v8/network_control/{id}/rules/{rule_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-network_control-id-rules-rule_id",
+      "review_operation_id": "UpdateNetworkControlRule",
+      "reason": "Operation body binding and result not defined; read model is not used as a guessed write DTO.",
+      "review_scope_source": "http://mafreebox.freebox.fr/doc/index.html#update-a-network-control-rule",
+      "catalogue_endpoint_id": "put--api-v8-network_control-id-rules-rule_id",
+      "documentation_kind": "formal_signature"
+    }
+  ],
+  "documentation_gaps": [
+    {
+      "module": "slowness",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#slowness",
+      "reason": "No HTTP method/path/request/response is defined; no endpoint or stub invented.",
+      "counts_as_documented_operation": false
+    }
+  ],
+  "unsupported_fields": [
+    {
+      "module": "home",
+      "model": "HomeNode",
+      "fields": [
+        "signal_links",
+        "slot_links"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode.signal_links",
+      "reason": "HomeNodeLink is referenced but undefined. Known HomeNode fields are typed; link members are explicitly not exposed."
+    },
+    {
+      "module": "home",
+      "model": "HomeNodeType",
+      "fields": [
+        "anonymous label name declaration"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType",
+      "reason": "Technical field wire name/type are unknown; display label is exposed once."
+    },
+    {
+      "module": "home",
+      "model": "HomeAdapterType",
+      "fields": [
+        "members beyond example name"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get-home-adapters-list",
+      "reason": "AdapterType has no definition. Only the name field shown by examples is projected; no other member schema claimed."
+    }
+  ],
+  "contract_models": [
+    {
+      "module": "lang",
+      "name": "LanguageSupport",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LanguageSupport",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "lcd",
+      "name": "LcdConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LcdConfig",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "ledstrip",
+      "name": "LedstripPlanning",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripPlanning",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "ledstrip",
+      "name": "LedstripStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LedstripStatus",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "standby",
+      "name": "StandbyConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyConfig",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "standby",
+      "name": "StandbyStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StandbyStatus",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfig",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "system",
+      "name": "SystemModelInfo",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemModelInfo",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfigSensor",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigSensor",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfigFan",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigFan",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "system",
+      "name": "SystemConfigExpansion",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SystemConfigExpansion",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "update",
+      "name": "UpdateStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpdateStatus",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "update",
+      "name": "UpgradeState",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#UpgradeState",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeAdapter",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeAdapter",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomePairingStep",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStep",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomePairingStepField",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomePairingStepField",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeNode",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNode",
+      "read_contract_only": true,
+      "completeness": "known_fields_projection"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeEndpoint",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpoint",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeType",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeType",
+      "read_contract_only": true,
+      "completeness": "known_fields_projection"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeEndpointUi",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointUi",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeEndpointValue",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeEndpointValue",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeTile",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTile",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeNodeGroup",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeNodeGroup",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "home",
+      "name": "HomeTileData",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#HomeTileData",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "profile",
+      "name": "Profile",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Profile",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "profile",
+      "name": "NetworkControl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControl",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    },
+    {
+      "module": "profile",
+      "name": "NetworkControlRule",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NetworkControlRule",
+      "read_contract_only": true,
+      "completeness": "reviewed_declarations_and_explicit_example_fields"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    }
+  ],
+  "review_file": "docs/freebox-official/reviews/system-home.json",
+  "source_origin": "user_supplied_archive_not_independently_reacquired",
+  "request_policy": {
+    "presence": "Optional<T>: absent differs from false/zero. Null patches rejected unless explicitly evidenced.",
+    "access": "Distinct read and write records; read-only fields are not sent.",
+    "planning_resolution": "Read-only resolution is omitted from planning updates. Existing mapping is snapshotted immutably.",
+    "replay": "No mutation replay or alternate-route probing."
+  },
+  "wire_policies": [
+    {
+      "fields": [
+        "SystemConfig.sensors",
+        "SystemConfig.expansions"
+      ],
+      "decision": "Current example separates sensors and Expansion[]; accepted narrow erratum resolves duplicate expansions declarations."
+    },
+    {
+      "fields": [
+        "HomeTileData.history"
+      ],
+      "decision": "History key from official examples; literal duplicate value declaration remains source evidence."
+    },
+    {
+      "fields": [
+        "Profile.icon",
+        "Profile.url",
+        "LcdConfig.hide_status_led",
+        "LcdConfig.hide_led"
+      ],
+      "decision": "Separate read members preserve keys; creation uses explicit example url; LCD patch only exposes declared hide_status_led."
+    },
+    {
+      "fields": [
+        "NetworkControl.hosts"
+      ],
+      "decision": "Explicit Empty/Names/Hosts union; typed LanHost comes from Network contract/context."
+    },
+    {
+      "fields": [
+        "HomeNodeEndpointValue.value",
+        "HomeTileData.value"
+      ],
+      "decision": "HomeIoValue retains null/Boolean/Int64/float/string JSON kind and float numeric lexemes. No object/dynamic fallback."
+    },
+    {
+      "fields": [
+        "HomePairingNextRequest.session",
+        "HomePairingNextRequest.pageid"
+      ],
+      "decision": "StringOrInteger preserves string/integer kind; Start/Next/Stop are distinct bodies on one route."
+    },
+    {
+      "fields": [
+        "HomeAdapter.props"
+      ],
+      "decision": "ImmutableDictionary<string,JsonElement> is limited to the genuinely open documented Map property, not undefined HomeNodeLink or missing operation results."
+    }
+  ],
+  "validation": {
+    "tests": "Tests/Freenaute.Freebox.Client.Tests/SystemHomeApiTests.cs",
+    "status": "written_awaiting_integrator_serialized_build_and_tests",
+    "native_aot": "Domain context and closed typed converters are registered; runtime NativeAOT verification belongs to integrator."
+  },
+  "coverage": {
+    "reviewed_semantic_operations": 44,
+    "implemented_semantic_operations": 40,
+    "unsupported_semantic_operations": 4,
+    "additional_gap_without_operation": "Slowness",
+    "global_sdk_complete_claim": false
+  }
+}

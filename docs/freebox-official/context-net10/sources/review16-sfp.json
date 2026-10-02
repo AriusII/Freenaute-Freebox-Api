@@ -1,0 +1,200 @@
+{
+  "module": {
+    "module": "sfp",
+    "title": "SFP",
+    "category": "reseau",
+    "path": "docs/reference/reseau/sfp.md",
+    "http_signatures": 2,
+    "objects": 2,
+    "properties": 13,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#sfp-788",
+    "source_pre_blocks": 10,
+    "markdown_code_blocks": 10,
+    "source_tables": 2
+  },
+  "endpoints": [
+    {
+      "module": "sfp",
+      "method": "GET",
+      "documented_path": "/api/v11/sfp/status",
+      "path_template": "/api/v{major}/sfp/status",
+      "documented_major": 11,
+      "title": "Get SFP status",
+      "id": "get--api-v11-sfp-status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-sfp-status",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/sfp.md#get--api-v11-sfp-status",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-sfp-status"
+    },
+    {
+      "module": "sfp",
+      "method": "PUT",
+      "documented_path": "/api/v11/sfp/config",
+      "path_template": "/api/v{major}/sfp/config",
+      "documented_major": 11,
+      "title": "Update SFP config",
+      "id": "put--api-v11-sfp-config",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-sfp-config",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/sfp.md#put--api-v11-sfp-config",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-sfp-config"
+    }
+  ],
+  "objects": [
+    {
+      "module": "sfp",
+      "name": "SfpConfig",
+      "id": "SfpConfig",
+      "properties": [
+        "SfpConfig.sfp_type_forced",
+        "SfpConfig.sfp_type_forced_value",
+        "SfpConfig.available_sfp_types"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpConfig",
+      "markdown": "docs/reference/reseau/sfp.md#SfpConfig"
+    },
+    {
+      "module": "sfp",
+      "name": "SfpStatus",
+      "id": "SfpStatus",
+      "properties": [
+        "SfpStatus.present",
+        "SfpStatus.eeprom_valid",
+        "SfpStatus.supported",
+        "SfpStatus.type",
+        "SfpStatus.power_good",
+        "SfpStatus.link",
+        "SfpStatus.vendor_name",
+        "SfpStatus.part_number",
+        "SfpStatus.hardware_rev",
+        "SfpStatus.serial_number"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus"
+    }
+  ],
+  "properties": [
+    {
+      "module": "sfp",
+      "id": "SfpConfig.sfp_type_forced",
+      "signature": "sfp_type_forced bool",
+      "description": "Indicate whether the SFP type is forced",
+      "source_id": "SfpConfig.sfp_type_forced",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpConfig.sfp_type_forced",
+      "markdown": "docs/reference/reseau/sfp.md#SfpConfig.sfp_type_forced"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpConfig.sfp_type_forced_value",
+      "signature": "sfp_type_forced_value enum",
+      "description": "What SFP type is forced (valid only when sfp_type_forced is true). Valid values are provided in available_sfp_types",
+      "source_id": "SfpConfig.sfp_type_forced_value",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpConfig.sfp_type_forced_value",
+      "markdown": "docs/reference/reseau/sfp.md#SfpConfig.sfp_type_forced_value"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpConfig.available_sfp_types",
+      "signature": "available_sfp_types [] array of enum Read-only",
+      "description": "array containing what SFP types can be configured on the LAN SFP port. Possible values are listed in the following table: Type Description p2p_1g 1000BASE-X p2p_2d5g_no_aneg 2500BASE-X p2p_10g 10GBASE-R copper_1g 1000BASE-T copper_sgmii_1g SGMII copper_sgmii_10g USXGMII",
+      "source_id": "SfpConfig.available_sfp_types",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpConfig.available_sfp_types",
+      "markdown": "docs/reference/reseau/sfp.md#SfpConfig.available_sfp_types"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.present",
+      "signature": "present bool Read-only",
+      "description": "Indicates whether an SFP module present in the port",
+      "source_id": "SfpStatus.present",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.present",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.present"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.eeprom_valid",
+      "signature": "eeprom_valid bool Read-only",
+      "description": "Indicates whether the SFP module has a valid EEPROM",
+      "source_id": "SfpStatus.eeprom_valid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.eeprom_valid",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.eeprom_valid"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.supported",
+      "signature": "supported bool Read-only",
+      "description": "Indicates whether the SFP module is supported",
+      "source_id": "SfpStatus.supported",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.supported",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.supported"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.type",
+      "signature": "type enum Read-only",
+      "description": "SFP type read from EEPROM",
+      "source_id": "SfpStatus.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.type",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.type"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.power_good",
+      "signature": "power_good bool Read-only",
+      "description": "SFP port is powered",
+      "source_id": "SfpStatus.power_good",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.power_good",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.power_good"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.link",
+      "signature": "link bool Read-only",
+      "description": "link status",
+      "source_id": "SfpStatus.link",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.link",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.link"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.vendor_name",
+      "signature": "vendor_name string Read-only",
+      "description": "vendor name",
+      "source_id": "SfpStatus.vendor_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.vendor_name",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.vendor_name"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.part_number",
+      "signature": "part_number string Read-only",
+      "description": "part number",
+      "source_id": "SfpStatus.part_number",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.part_number",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.part_number"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.hardware_rev",
+      "signature": "hardware_rev string Read-only",
+      "description": "hardware revision",
+      "source_id": "SfpStatus.hardware_rev",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.hardware_rev",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.hardware_rev"
+    },
+    {
+      "module": "sfp",
+      "id": "SfpStatus.serial_number",
+      "signature": "serial_number string Read-only",
+      "description": "serial number",
+      "source_id": "SfpStatus.serial_number",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#SfpStatus.serial_number",
+      "markdown": "docs/reference/reseau/sfp.md#SfpStatus.serial_number"
+    }
+  ],
+  "events": []
+}

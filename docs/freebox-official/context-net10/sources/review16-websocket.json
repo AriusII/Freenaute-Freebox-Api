@@ -1,0 +1,248 @@
+{
+  "module": {
+    "module": "websocket",
+    "title": "WebSocket API",
+    "category": "fondamentaux",
+    "path": "docs/reference/fondamentaux/websocket.md",
+    "http_signatures": 1,
+    "objects": 4,
+    "properties": 15,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#ws-api",
+    "source_pre_blocks": 1,
+    "markdown_code_blocks": 1,
+    "source_tables": 1
+  },
+  "endpoints": [
+    {
+      "module": "websocket",
+      "method": "GET",
+      "documented_path": "/api/v8/ws/event",
+      "path_template": "/api/v{major}/ws/event",
+      "documented_major": 8,
+      "title": "WebSocket event API",
+      "id": "get--api-v8-ws-event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-event",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/fondamentaux/websocket.md#get--api-v8-ws-event",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-ws-event"
+    }
+  ],
+  "objects": [
+    {
+      "module": "websocket",
+      "name": "WebSocketRequest",
+      "id": "WebSocketRequest",
+      "properties": [
+        "WebSocketRequest.request_id",
+        "WebSocketRequest.action"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketRequest"
+    },
+    {
+      "module": "websocket",
+      "name": "WebSocketResponse",
+      "id": "WebSocketResponse",
+      "properties": [
+        "WebSocketResponse.request_id",
+        "WebSocketResponse.action",
+        "WebSocketResponse.success",
+        "WebSocketResponse.result",
+        "WebSocketResponse.error_code",
+        "WebSocketResponse.msg"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse"
+    },
+    {
+      "module": "websocket",
+      "name": "WebSocketNotification",
+      "id": "WebSocketNotification",
+      "properties": [
+        "WebSocketNotification.action",
+        "WebSocketNotification.success",
+        "WebSocketNotification.source",
+        "WebSocketNotification.event",
+        "WebSocketNotification.result"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification"
+    },
+    {
+      "module": "websocket",
+      "name": "RegisterAction",
+      "id": "RegisterAction",
+      "properties": [
+        "RegisterAction.action",
+        "RegisterAction.events"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction",
+      "markdown": "docs/reference/fondamentaux/websocket.md#RegisterAction"
+    }
+  ],
+  "properties": [
+    {
+      "module": "websocket",
+      "id": "WebSocketRequest.request_id",
+      "signature": "request_id int Optionnal",
+      "description": "if you specify a request_id in your request, it will be added in the corresponding reply, so that you can correlate responses to the request",
+      "source_id": "WebSocketRequest.request_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest.request_id",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketRequest.request_id"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketRequest.action",
+      "signature": "action string",
+      "description": "the request \u2018action\u2019 (available actions are described in each api)",
+      "source_id": "WebSocketRequest.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketRequest.action",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketRequest.action"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketResponse.request_id",
+      "signature": "request_id int",
+      "description": "if you set a request_id in your WebSocketRequest, the same request_id will be returned in the associated response",
+      "source_id": "WebSocketResponse.request_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.request_id",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse.request_id"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketResponse.action",
+      "signature": "action string",
+      "description": "the action specified in the associated WebSocketRequest",
+      "source_id": "WebSocketResponse.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.action",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse.action"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketResponse.success",
+      "signature": "success boolean Read-only",
+      "description": "indicates if the request was successful",
+      "source_id": "WebSocketResponse.success",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.success",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse.success"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketResponse.result",
+      "signature": "result object Read-only",
+      "description": "the result of the request. (It may be omitted if the request does not expect any result)",
+      "source_id": "WebSocketResponse.result",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.result",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse.result"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketResponse.error_code",
+      "signature": "error_code string Read-only",
+      "description": "In case of request error, this error_code provides information about the error. The possible error_code values are documented for each API.",
+      "source_id": "WebSocketResponse.error_code",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.error_code",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse.error_code"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketResponse.msg",
+      "signature": "msg string Read-only",
+      "description": "In cas of error, provides a French error message relative to the error",
+      "source_id": "WebSocketResponse.msg",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketResponse.msg",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketResponse.msg"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketNotification.action",
+      "signature": "action enum Read-only",
+      "description": "The action will have the value \u2018notification\u2019",
+      "source_id": "WebSocketNotification.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.action",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification.action"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketNotification.success",
+      "signature": "success boolean Read-only",
+      "description": "will be True",
+      "source_id": "WebSocketNotification.success",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.success",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification.success"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketNotification.source",
+      "signature": "source string Read-only",
+      "description": "The name of the source of the notification",
+      "source_id": "WebSocketNotification.source",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.source",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification.source"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketNotification.event",
+      "signature": "event string Read-only",
+      "description": "The name of event that generated the notification",
+      "source_id": "WebSocketNotification.event",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.event",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification.event"
+    },
+    {
+      "module": "websocket",
+      "id": "WebSocketNotification.result",
+      "signature": "result object Read-only",
+      "description": "the content of the notification (may be omitted if no data has to be transferred along with the notification)",
+      "source_id": "WebSocketNotification.result",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#WebSocketNotification.result",
+      "markdown": "docs/reference/fondamentaux/websocket.md#WebSocketNotification.result"
+    },
+    {
+      "module": "websocket",
+      "id": "RegisterAction.action",
+      "signature": "action enum",
+      "description": "Value should be \u201Cregister\u201D",
+      "source_id": "RegisterAction.action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.action",
+      "markdown": "docs/reference/fondamentaux/websocket.md#RegisterAction.action"
+    },
+    {
+      "module": "websocket",
+      "id": "RegisterAction.events",
+      "signature": "events [] array of enum",
+      "description": "List of events to subscribe for. Possible values: event name event result object type Description vm_state_changed VmStateChange VM status has changed vm_disk_task_done VmDiskTask VM disk task done lan_host_l3addr_reachable LanHost LAN machine had an L3 address (IPv4 or IPv6) become reachable. Usually when a machine appears on the network, or changes IP. lan_host_l3addr_unreachable LanHost LAN machine had an L3 address (IPv4 or IPv6) become unreachable. Usually when a machine disappears from the network (after a timeout), or changes IP.",
+      "source_id": "RegisterAction.events",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events",
+      "markdown": "docs/reference/fondamentaux/websocket.md#RegisterAction.events"
+    }
+  ],
+  "events": [
+    {
+      "name": "vm_state_changed",
+      "result_object": "VmStateChange",
+      "description": "VM status has changed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+    },
+    {
+      "name": "vm_disk_task_done",
+      "result_object": "VmDiskTask",
+      "description": "VM disk task done",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+    },
+    {
+      "name": "lan_host_l3addr_reachable",
+      "result_object": "LanHost",
+      "description": "LAN machine had an L3 address (IPv4 or IPv6) become reachable. Usually when a machine appears on the network, or changes IP.",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+    },
+    {
+      "name": "lan_host_l3addr_unreachable",
+      "result_object": "LanHost",
+      "description": "LAN machine had an L3 address (IPv4 or IPv6) become unreachable. Usually when a machine disappears from the network (after a timeout), or changes IP.",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RegisterAction.events"
+    }
+  ]
+}

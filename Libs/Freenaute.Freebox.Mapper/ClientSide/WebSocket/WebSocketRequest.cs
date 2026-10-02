@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Freenaute.Freebox.Mapper.ClientSide.WebSocket;
 
@@ -11,5 +11,7 @@ namespace Freenaute.Freebox.Mapper.ClientSide.WebSocket;
 /// </param>
 /// <param name="Action">The action of the request.</param>
 public sealed record WebSocketRequest(
-    [property: JsonPropertyName("req_id")] int RequestId,
+    [property: JsonPropertyName("request_id")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    int? RequestId,
     [property: JsonPropertyName("action")] string Action);

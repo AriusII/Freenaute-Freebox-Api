@@ -1,0 +1,70 @@
+{
+  "module": {
+    "module": "00_index",
+    "title": "Developer API Documentation",
+    "category": "fondamentaux",
+    "path": "docs/reference/fondamentaux/00_index.md",
+    "http_signatures": 0,
+    "objects": 1,
+    "properties": 4,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#developer-api-documentation",
+    "source_pre_blocks": 11,
+    "markdown_code_blocks": 11,
+    "source_tables": 2
+  },
+  "endpoints": [],
+  "objects": [
+    {
+      "module": "00_index",
+      "name": "APIResponse",
+      "id": "APIResponse",
+      "properties": [
+        "APIResponse.success",
+        "APIResponse.result",
+        "APIResponse.error_code",
+        "APIResponse.msg"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse",
+      "markdown": "docs/reference/fondamentaux/00_index.md#APIResponse"
+    }
+  ],
+  "properties": [
+    {
+      "module": "00_index",
+      "id": "APIResponse.success",
+      "signature": "success boolean Read-only",
+      "description": "indicates if the request was successful",
+      "source_id": "APIResponse.success",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.success",
+      "markdown": "docs/reference/fondamentaux/00_index.md#APIResponse.success"
+    },
+    {
+      "module": "00_index",
+      "id": "APIResponse.result",
+      "signature": "result object Read-only",
+      "description": "the result of the request. (It may be omitted if the request does not expect any result)",
+      "source_id": "APIResponse.result",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.result",
+      "markdown": "docs/reference/fondamentaux/00_index.md#APIResponse.result"
+    },
+    {
+      "module": "00_index",
+      "id": "APIResponse.error_code",
+      "signature": "error_code string Read-only",
+      "description": "In case of request error, this error_code provides information about the error. The possible error_code values are documented for each API.",
+      "source_id": "APIResponse.error_code",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.error_code",
+      "markdown": "docs/reference/fondamentaux/00_index.md#APIResponse.error_code"
+    },
+    {
+      "module": "00_index",
+      "id": "APIResponse.msg",
+      "signature": "msg string Read-only",
+      "description": "In cas of error, provides a French error message relative to the error",
+      "source_id": "APIResponse.msg",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#APIResponse.msg",
+      "markdown": "docs/reference/fondamentaux/00_index.md#APIResponse.msg"
+    }
+  ],
+  "events": []
+}

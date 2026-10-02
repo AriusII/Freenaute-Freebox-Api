@@ -1,0 +1,87 @@
+{
+  "audit": "hidden-sources-local-v16",
+  "performed_at": "2026-10-02T19:12:00+02:00",
+  "method": "HTTP GET only",
+  "canonical_document": {
+    "url": "http://mafreebox.freebox.fr/doc/index.html",
+    "status": 200,
+    "server": "nginx",
+    "api_version": "16.0",
+    "api_major_version": 16,
+    "sphinx_build": "b'c1fd8795'",
+    "last_modified": "2026-07-17T13:51:53Z",
+    "etag": "W/\"6a5a3379-282b1\"",
+    "snapshot": {
+      "path": "sources/seed/local-doc.html",
+      "bytes": 1816775,
+      "sha256": "CAB9F9512F5DF0C8C7857EFDE19790B99DCE92FB5C189DD7B87AEC1011E3AE03"
+    }
+  },
+  "directory_url": {
+    "url": "http://mafreebox.freebox.fr/doc/",
+    "status": 403
+  },
+  "structure": {
+    "model": "single-page Sphinx document",
+    "id_attributes": 2729,
+    "section_divs": 830,
+    "operation_anchors": {
+      "raw_occurrences": 340,
+      "unique_anchor_ids": 335,
+      "GET": { "raw_occurrences": 169, "unique_anchor_ids": 168 },
+      "POST": { "raw_occurrences": 69, "unique_anchor_ids": 66 },
+      "PUT": { "raw_occurrences": 69, "unique_anchor_ids": 68 },
+      "DELETE": { "raw_occurrences": 33, "unique_anchor_ids": 33 },
+      "path_versions": [8, 9, 10, 11, 13, 14, 15, 16]
+    },
+    "migration_history_sections": 27
+  },
+  "sphinx_resources": {
+    "documentation_options": {
+      "url": "http://mafreebox.freebox.fr/doc/_static/documentation_options.js",
+      "status": 200,
+      "has_source": true,
+      "source_link_suffix": ".txt"
+    },
+    "fbx_javascript": {
+      "url": "http://mafreebox.freebox.fr/doc/_static/fbx.js",
+      "status": 200,
+      "purpose": "fragment-anchor display helper"
+    },
+    "unavailable_by_get": [
+      "/doc/searchindex.js",
+      "/doc/objects.inv",
+      "/doc/search.html",
+      "/doc/genindex.html",
+      "/doc/_static/searchtools.js",
+      "/doc/_sources/index.txt",
+      "/doc/_sources/document-api/00_index.txt",
+      "/doc/_sources/document-api/00_index.rst.txt",
+      "/doc/robots.txt",
+      "/doc/sitemap.xml"
+    ]
+  },
+  "deprecated_markers": [
+    {
+      "anchor": "deprecated-api-v4",
+      "subject": "legacy v3 upload API; use WebSocket upload"
+    },
+    {
+      "anchor": "deprecated-api-v5-0",
+      "subject": "legacy v3 upload API reminder"
+    },
+    {
+      "anchor": "deprecated-api-v8-0",
+      "subject": "parental-control API replaced by Profile API"
+    },
+    {
+      "anchor": "deprecated-api-v10-0",
+      "subject": "xDSL/4G aggregation Connection API replaced by separate LTE and aggregation status endpoints"
+    },
+    {
+      "anchor": "system-config-v5-deprecated",
+      "subject": "SystemConfigV5 contract"
+    }
+  ],
+  "unstable_anchor_count": 21
+}

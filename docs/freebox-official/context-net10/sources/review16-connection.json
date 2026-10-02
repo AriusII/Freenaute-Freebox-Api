@@ -1,0 +1,1636 @@
+{
+  "module": {
+    "module": "connection",
+    "title": "Connection API",
+    "category": "reseau",
+    "path": "docs/reference/reseau/connection.md",
+    "http_signatures": 13,
+    "objects": 17,
+    "properties": 124,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#connection-api",
+    "source_pre_blocks": 37,
+    "markdown_code_blocks": 37,
+    "source_tables": 9
+  },
+  "endpoints": [
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/",
+      "path_template": "/api/v{major}/connection/",
+      "documented_major": 11,
+      "title": "Get the current Connection status",
+      "id": "get--api-v11-connection-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-",
+      "referenced_objects": [
+        "ConnectionStatus"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/config/",
+      "path_template": "/api/v{major}/connection/config/",
+      "documented_major": 11,
+      "title": "Get the current Connection configuration",
+      "id": "get--api-v11-connection-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-config-",
+      "referenced_objects": [
+        "ConnectionConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-config-"
+    },
+    {
+      "module": "connection",
+      "method": "PUT",
+      "documented_path": "/api/v11/connection/config/",
+      "path_template": "/api/v{major}/connection/config/",
+      "documented_major": 11,
+      "title": "Update the Connection configuration",
+      "id": "put--api-v11-connection-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-connection-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#put--api-v11-connection-config-",
+      "referenced_objects": [
+        "ConnectionConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-connection-config-"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/ipv6/config/",
+      "path_template": "/api/v{major}/connection/ipv6/config/",
+      "documented_major": 11,
+      "title": "Get the current IPv6 Connection configuration",
+      "id": "get--api-v11-connection-ipv6-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-ipv6-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-ipv6-config-",
+      "referenced_objects": [
+        "ConnectionIpv6Configuration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-ipv6-config-"
+    },
+    {
+      "module": "connection",
+      "method": "PUT",
+      "documented_path": "/api/v11/connection/ipv6/config/",
+      "path_template": "/api/v{major}/connection/ipv6/config/",
+      "documented_major": 11,
+      "title": "Update the IPv6 Connection configuration",
+      "id": "put--api-v11-connection-ipv6-config-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-connection-ipv6-config-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#put--api-v11-connection-ipv6-config-",
+      "referenced_objects": [
+        "ConnectionIpv6Configuration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-connection-ipv6-config-"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/xdsl/",
+      "path_template": "/api/v{major}/connection/xdsl/",
+      "documented_major": 11,
+      "title": "Get the current xDSL infos",
+      "id": "get--api-v11-connection-xdsl-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-xdsl-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-xdsl-",
+      "referenced_objects": [
+        "XdslInfos"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-xdsl-"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/lte/{id}",
+      "path_template": "/api/v{major}/connection/lte/{id}",
+      "documented_major": 11,
+      "title": "Get the current LTE infos",
+      "id": "get--api-v11-connection-lte-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-lte-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-lte-id",
+      "referenced_objects": [
+        "LteConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-lte-id"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/aggregation",
+      "path_template": "/api/v{major}/connection/aggregation",
+      "documented_major": 11,
+      "title": "Get the current xDSL/LTE aggregation infos",
+      "id": "get--api-v11-connection-aggregation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-aggregation",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-aggregation",
+      "referenced_objects": [
+        "LteTunnel"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-aggregation"
+    },
+    {
+      "module": "connection",
+      "method": "PUT",
+      "documented_path": "/api/v11/connection/aggregation",
+      "path_template": "/api/v{major}/connection/aggregation",
+      "documented_major": 11,
+      "title": "Update the xDSL/LTE aggregation configuration",
+      "id": "put--api-v11-connection-aggregation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-connection-aggregation",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/reseau/connection.md#put--api-v11-connection-aggregation",
+      "referenced_objects": [
+        "LteConfiguration"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-connection-aggregation"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/ftth/",
+      "path_template": "/api/v{major}/connection/ftth/",
+      "documented_major": 11,
+      "title": "Get the current FTTH status",
+      "id": "get--api-v11-connection-ftth-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-ftth-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-ftth-",
+      "referenced_objects": [
+        "FtthStatus"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-ftth-"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/ddns/{provider}/status/",
+      "path_template": "/api/v{major}/connection/ddns/{provider}/status/",
+      "documented_major": 11,
+      "title": "Get the status of a DynDNS service",
+      "id": "get--api-v11-connection-ddns-provider-status-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-ddns-provider-status-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-ddns-provider-status-",
+      "referenced_objects": [
+        "DDNSStatus"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-ddns-provider-status-"
+    },
+    {
+      "module": "connection",
+      "method": "GET",
+      "documented_path": "/api/v11/connection/ddns/{provider}/",
+      "path_template": "/api/v{major}/connection/ddns/{provider}/",
+      "documented_major": 11,
+      "title": "Get the config of a DynDNS service",
+      "id": "get--api-v11-connection-ddns-provider-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v11-connection-ddns-provider-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#get--api-v11-connection-ddns-provider-",
+      "referenced_objects": [
+        "DDNSConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v11-connection-ddns-provider-"
+    },
+    {
+      "module": "connection",
+      "method": "PUT",
+      "documented_path": "/api/v11/connection/ddns/{provider}/",
+      "path_template": "/api/v{major}/connection/ddns/{provider}/",
+      "documented_major": 11,
+      "title": "Set the config of a DynDNS service",
+      "id": "put--api-v11-connection-ddns-provider-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v11-connection-ddns-provider-",
+      "stability": "not_marked_unstable",
+      "markdown": "docs/reference/reseau/connection.md#put--api-v11-connection-ddns-provider-",
+      "referenced_objects": [
+        "DDNSConfig"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v11-connection-ddns-provider-"
+    }
+  ],
+  "objects": [
+    {
+      "module": "connection",
+      "name": "ConnectionStatus",
+      "id": "ConnectionStatus",
+      "properties": [
+        "ConnectionStatus.state",
+        "ConnectionStatus.type",
+        "ConnectionStatus.media",
+        "ConnectionStatus.ipv4",
+        "ConnectionStatus.ipv6",
+        "ConnectionStatus.rate_up",
+        "ConnectionStatus.rate_down",
+        "ConnectionStatus.bandwidth_up",
+        "ConnectionStatus.bandwidth_down",
+        "ConnectionStatus.bytes_up",
+        "ConnectionStatus.bytes_down",
+        "ConnectionStatus.ipv4_port_range"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus"
+    },
+    {
+      "module": "connection",
+      "name": "ConnectionConfiguration",
+      "id": "ConnectionConfiguration",
+      "properties": [
+        "ConnectionConfiguration.ping",
+        "ConnectionConfiguration.is_secure_pass",
+        "ConnectionConfiguration.remote_access",
+        "ConnectionConfiguration.remote_access_port",
+        "ConnectionConfiguration.remote_access_min_port",
+        "ConnectionConfiguration.remote_access_max_port",
+        "ConnectionConfiguration.remote_access_ip",
+        "ConnectionConfiguration.api_remote_access",
+        "ConnectionConfiguration.wol",
+        "ConnectionConfiguration.adblock",
+        "ConnectionConfiguration.adblock_not_set",
+        "ConnectionConfiguration.allow_token_request",
+        "ConnectionConfiguration.sip_alg"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration"
+    },
+    {
+      "module": "connection",
+      "name": "ConnectionIpv6Delegation",
+      "id": "ConnectionIpv6Delegation",
+      "properties": [
+        "ConnectionIpv6Delegation.prefix",
+        "ConnectionIpv6Delegation.next_hop"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Delegation",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Delegation"
+    },
+    {
+      "module": "connection",
+      "name": "ConnectionIpv6Configuration",
+      "id": "ConnectionIpv6Configuration",
+      "properties": [
+        "ConnectionIpv6Configuration.ipv6_enabled",
+        "ConnectionIpv6Configuration.ipv6_firewall",
+        "ConnectionIpv6Configuration.ipv6_prefix_firewall",
+        "ConnectionIpv6Configuration.ipv6ll",
+        "propriete-sans-ancre-connection-32",
+        "ConnectionIpv6Configuration.delegations"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration"
+    },
+    {
+      "module": "connection",
+      "name": "XdslStatus",
+      "id": "XdslStatus",
+      "properties": [
+        "XdslStatus.status",
+        "XdslStatus.protocol",
+        "XdslStatus.modulation",
+        "XdslStatus.uptime"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStatus",
+      "markdown": "docs/reference/reseau/connection.md#XdslStatus"
+    },
+    {
+      "module": "connection",
+      "name": "XdslStats",
+      "id": "XdslStats",
+      "properties": [
+        "XdslStats.maxrate",
+        "XdslStats.rate",
+        "XdslStats.snr",
+        "XdslStats.attn",
+        "XdslStats.snr_10",
+        "XdslStats.attn_10",
+        "XdslStats.fec",
+        "XdslStats.crc",
+        "XdslStats.hec",
+        "XdslStats.es",
+        "XdslStats.ses",
+        "XdslStats.phyr",
+        "XdslStats.ginp",
+        "XdslStats.nitro",
+        "XdslStats.rxmt",
+        "XdslStats.rxmt_corr",
+        "XdslStats.rxmt_uncorr",
+        "XdslStats.rtx_tx",
+        "XdslStats.rtx_c",
+        "XdslStats.rtx_uc"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats"
+    },
+    {
+      "module": "connection",
+      "name": "XdslInfos",
+      "id": "XdslInfos",
+      "properties": [
+        "XdslInfos.status",
+        "XdslInfos.down",
+        "XdslInfos.up"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslInfos",
+      "markdown": "docs/reference/reseau/connection.md#XdslInfos"
+    },
+    {
+      "module": "connection",
+      "name": "LteRadioBand",
+      "id": "LteRadioBand",
+      "properties": [
+        "LteRadioBand.enabled",
+        "LteRadioBand.bandwidth",
+        "LteRadioBand.rsrq",
+        "LteRadioBand.rsrp",
+        "LteRadioBand.rssi",
+        "LteRadioBand.band",
+        "LteRadioBand.pci"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand"
+    },
+    {
+      "module": "connection",
+      "name": "LteRadio",
+      "id": "LteRadio",
+      "properties": [
+        "LteRadio.associated",
+        "LteRadio.plmn",
+        "LteRadio.signal_level",
+        "LteRadio.gcid",
+        "LteRadio.bands",
+        "LteRadio.ue_active"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio"
+    },
+    {
+      "module": "connection",
+      "name": "LteNetwork",
+      "id": "LteNetwork",
+      "properties": [
+        "LteNetwork.pdn_up",
+        "LteNetwork.has_ipv6",
+        "LteNetwork.ipv6_dns",
+        "LteNetwork.ipv6",
+        "LteNetwork.ipv6_netmask",
+        "LteNetwork.has_ipv4",
+        "LteNetwork.ipv4_dns",
+        "LteNetwork.ipv4",
+        "LteNetwork.ipv4_netmask"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork"
+    },
+    {
+      "module": "connection",
+      "name": "LteSim",
+      "id": "LteSim",
+      "properties": [
+        "LteSim.present",
+        "LteSim.pin_locked",
+        "LteSim.puk_remaining",
+        "LteSim.iccid",
+        "LteSim.puk_locked",
+        "LteSim.pin_remaining"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim",
+      "markdown": "docs/reference/reseau/connection.md#LteSim"
+    },
+    {
+      "module": "connection",
+      "name": "LteTunnelDetails",
+      "id": "LteTunnelDetails",
+      "properties": [
+        "LteTunnelDetails.connected",
+        "LteTunnelDetails.last_error",
+        "LteTunnelDetails.tx_flows_rate",
+        "LteTunnelDetails.tx_max_rate",
+        "LteTunnelDetails.tx_used_rate",
+        "LteTunnelDetails.rx_flows_rate",
+        "LteTunnelDetails.rx_max_rate",
+        "LteTunnelDetails.rx_used_rate"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails"
+    },
+    {
+      "module": "connection",
+      "name": "LteTunnel",
+      "id": "LteTunnel",
+      "properties": [
+        "LteTunnel.lte",
+        "LteTunnel.xdsl"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnel",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnel"
+    },
+    {
+      "module": "connection",
+      "name": "LteConfiguration",
+      "id": "LteConfiguration",
+      "properties": [
+        "LteConfiguration.enabled",
+        "LteConfiguration.radio",
+        "LteConfiguration.state",
+        "LteConfiguration.network",
+        "LteConfiguration.fsm_state",
+        "LteConfiguration.sim"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration"
+    },
+    {
+      "module": "connection",
+      "name": "FtthStatus",
+      "id": "FtthStatus",
+      "properties": [
+        "FtthStatus.sfp_present",
+        "FtthStatus.sfp_alim_ok",
+        "FtthStatus.sfp_has_power_report",
+        "FtthStatus.sfp_has_signal",
+        "FtthStatus.link",
+        "FtthStatus.sfp_serial",
+        "FtthStatus.sfp_model",
+        "FtthStatus.sfp_vendor",
+        "propriete-sans-ancre-connection-113",
+        "FtthStatus.sfp_pwr_tx",
+        "FtthStatus.sfp_pwr_rx"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus"
+    },
+    {
+      "module": "connection",
+      "name": "DDNSStatus",
+      "id": "DDNSStatus",
+      "properties": [
+        "DDNSStatus.status",
+        "DDNSStatus.next_refresh",
+        "DDNSStatus.last_refresh",
+        "DDNSStatus.next_retry",
+        "DDNSStatus.last_error"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus",
+      "markdown": "docs/reference/reseau/connection.md#DDNSStatus"
+    },
+    {
+      "module": "connection",
+      "name": "DDNSConfig",
+      "id": "DDNSConfig",
+      "properties": [
+        "DDNSConfig.enabled",
+        "DDNSConfig.hostname",
+        "DDNSConfig.password",
+        "DDNSConfig.user"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSConfig",
+      "markdown": "docs/reference/reseau/connection.md#DDNSConfig"
+    }
+  ],
+  "properties": [
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.state",
+      "signature": "state enum Read-only",
+      "description": "State Description going_up connection is initializing up connection is active going_down connection is about to become inactive down connection is inactive",
+      "source_id": "ConnectionStatus.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.state",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.state"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.type",
+      "signature": "type enum Read-only",
+      "description": "Type Description ethernet FTTH/ethernet rfc2684 xDSL (unbundled) pppoatm xDSL",
+      "source_id": "ConnectionStatus.type",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.type",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.type"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.media",
+      "signature": "media enum Read-only",
+      "description": "Media Description ftth FTTH ethernet ethernet xdsl xDSL backup_4g Internet Backup",
+      "source_id": "ConnectionStatus.media",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.media",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.media"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.ipv4",
+      "signature": "ipv4 string Read-only",
+      "description": "Freebox IPv4 address NOTE: this field is only available when connection state is up",
+      "source_id": "ConnectionStatus.ipv4",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.ipv4",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.ipv4"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.ipv6",
+      "signature": "ipv6 string Read-only",
+      "description": "Freebox IPv6 address NOTE: this field is only available when connection state is up",
+      "source_id": "ConnectionStatus.ipv6",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.ipv6",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.ipv6"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.rate_up",
+      "signature": "rate_up int Read-only",
+      "description": "current upload rate in byte/s",
+      "source_id": "ConnectionStatus.rate_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.rate_up",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.rate_up"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.rate_down",
+      "signature": "rate_down int Read-only",
+      "description": "current download rate in byte/s",
+      "source_id": "ConnectionStatus.rate_down",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.rate_down",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.rate_down"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.bandwidth_up",
+      "signature": "bandwidth_up int Read-only",
+      "description": "available upload bandwidth in bit/s",
+      "source_id": "ConnectionStatus.bandwidth_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.bandwidth_up",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.bandwidth_up"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.bandwidth_down",
+      "signature": "bandwidth_down int Read-only",
+      "description": "available download bandwidth in bit/s",
+      "source_id": "ConnectionStatus.bandwidth_down",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.bandwidth_down",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.bandwidth_down"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.bytes_up",
+      "signature": "bytes_up int Read-only",
+      "description": "total uploaded bytes since last connection",
+      "source_id": "ConnectionStatus.bytes_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.bytes_up",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.bytes_up"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.bytes_down",
+      "signature": "bytes_down int Read-only",
+      "description": "total downloaded bytes since last connection",
+      "source_id": "ConnectionStatus.bytes_down",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.bytes_down",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.bytes_down"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionStatus.ipv4_port_range",
+      "signature": "ipv4_port_range int[2] Read-only",
+      "description": "Some customers share the same IPv4 and each customer is then assigned a port range. The first value is the first port of the assigned range and the second value is the last port (inclusive). All PortForwardingConfig must use ports in this range to be effective.",
+      "source_id": "ConnectionStatus.ipv4_port_range",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionStatus.ipv4_port_range",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionStatus.ipv4_port_range"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.ping",
+      "signature": "ping bool",
+      "description": "should the Freebox respond to external ping requests",
+      "source_id": "ConnectionConfiguration.ping",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.ping",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.ping"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.is_secure_pass",
+      "signature": "is_secure_pass bool Read-only",
+      "description": "is the admin password secure enough to enable remote access",
+      "source_id": "ConnectionConfiguration.is_secure_pass",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.is_secure_pass",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.is_secure_pass"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.remote_access",
+      "signature": "remote_access bool",
+      "description": "enable/disable HTTP remote access",
+      "source_id": "ConnectionConfiguration.remote_access",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.remote_access",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.remote_access"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.remote_access_port",
+      "signature": "remote_access_port int",
+      "description": "port number to use for remote HTTP access",
+      "source_id": "ConnectionConfiguration.remote_access_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.remote_access_port",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.remote_access_port"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.remote_access_min_port",
+      "signature": "remote_access_min_port int Read-only",
+      "description": "This field indicate the minimum possible value for remote_access_port (see ConnectionStatus ipv4_port_range)",
+      "source_id": "ConnectionConfiguration.remote_access_min_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.remote_access_min_port",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.remote_access_min_port"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.remote_access_max_port",
+      "signature": "remote_access_max_port int Read-only",
+      "description": "This field indicate the maximum possible value for remote_access_port (see ConnectionStatus ipv4_port_range)",
+      "source_id": "ConnectionConfiguration.remote_access_max_port",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.remote_access_max_port",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.remote_access_max_port"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.remote_access_ip",
+      "signature": "remote_access_ip string Read-only",
+      "description": "IPv4 to use for remote access (can be missing if connection is down)",
+      "source_id": "ConnectionConfiguration.remote_access_ip",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.remote_access_ip",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.remote_access_ip"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.api_remote_access",
+      "signature": "api_remote_access bool Read-only",
+      "description": "is remote access enabled for apps, or share link",
+      "source_id": "ConnectionConfiguration.api_remote_access",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.api_remote_access",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.api_remote_access"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.wol",
+      "signature": "wol bool",
+      "description": "enable/disable Wake-on-lan proxy",
+      "source_id": "ConnectionConfiguration.wol",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.wol",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.wol"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.adblock",
+      "signature": "adblock bool",
+      "description": "is ads blocking feature enabled",
+      "source_id": "ConnectionConfiguration.adblock",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.adblock",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.adblock"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.adblock_not_set",
+      "signature": "adblock_not_set bool Read-only",
+      "description": "if set to true adblock setting has never been set by the user",
+      "source_id": "ConnectionConfiguration.adblock_not_set",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.adblock_not_set",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.adblock_not_set"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.allow_token_request",
+      "signature": "allow_token_request bool",
+      "description": "if false, user has disabled new token request. New apps can\u2019t request a new token. Apps that already have a token are still allowed",
+      "source_id": "ConnectionConfiguration.allow_token_request",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.allow_token_request",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.allow_token_request"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionConfiguration.sip_alg",
+      "signature": "sip_alg enum",
+      "description": "Status Description disabled Fully disable SIP ALG direct_media Enable SIP ALG, RTP only allowed between SIP UA any_media Enable SIP ALG, RTP allowed between any host (dangerous for untrusted hosts)",
+      "source_id": "ConnectionConfiguration.sip_alg",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionConfiguration.sip_alg",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionConfiguration.sip_alg"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Delegation.prefix",
+      "signature": "prefix string",
+      "description": "IPv6 prefix",
+      "source_id": "ConnectionIpv6Delegation.prefix",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Delegation.prefix",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Delegation.prefix"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Delegation.next_hop",
+      "signature": "next_hop ipv6",
+      "description": "the next hop for the prefix",
+      "source_id": "ConnectionIpv6Delegation.next_hop",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Delegation.next_hop",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Delegation.next_hop"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Configuration.ipv6_enabled",
+      "signature": "ipv6_enabled bool",
+      "description": "is IPv6 enabled",
+      "source_id": "ConnectionIpv6Configuration.ipv6_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration.ipv6_enabled",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration.ipv6_enabled"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Configuration.ipv6_firewall",
+      "signature": "ipv6_firewall bool",
+      "description": "is IPv6 firewall enabled",
+      "source_id": "ConnectionIpv6Configuration.ipv6_firewall",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration.ipv6_firewall",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration.ipv6_firewall"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Configuration.ipv6_prefix_firewall",
+      "signature": "ipv6_prefix_firewall bool",
+      "description": "is IPv6 firewall enabled on secondary prefixes",
+      "source_id": "ConnectionIpv6Configuration.ipv6_prefix_firewall",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration.ipv6_prefix_firewall",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration.ipv6_prefix_firewall"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Configuration.ipv6ll",
+      "signature": "ipv6ll string Read-only",
+      "description": "Freebox IPv6 link local address",
+      "source_id": "ConnectionIpv6Configuration.ipv6ll",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration.ipv6ll",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration.ipv6ll"
+    },
+    {
+      "module": "connection",
+      "id": "propriete-sans-ancre-connection-32",
+      "signature": "ipv6_prefix_firewall bool",
+      "description": "is IPv6 firewall enabled for delegated prefixes",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#connection-ipv6-configuration-object",
+      "markdown": "docs/reference/reseau/connection.md#propriete-sans-ancre-connection-32"
+    },
+    {
+      "module": "connection",
+      "id": "ConnectionIpv6Configuration.delegations",
+      "signature": "delegations ConnectionIpv6Delegation[8]",
+      "description": "list of IPv6 delegations",
+      "source_id": "ConnectionIpv6Configuration.delegations",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ConnectionIpv6Configuration.delegations",
+      "markdown": "docs/reference/reseau/connection.md#ConnectionIpv6Configuration.delegations"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStatus.status",
+      "signature": "status enum Read-only",
+      "description": "Status Description down unsynchronized training synchronizing step 1/4 started synchronizing step 2/4 chan_analysis synchronizing step 3/4 msg_exchange synchronizing step 4/4 showtime Ready disabled Disabled",
+      "source_id": "XdslStatus.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStatus.status",
+      "markdown": "docs/reference/reseau/connection.md#XdslStatus.status"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStatus.protocol",
+      "signature": "protocol enum Read-only",
+      "description": "Protocol Description t1413 T1.413 adsl1_a ADSL adsl2_a ADSL2 adsl2plus_a ADSL2\u002B readsl2 ReachDSL adsl2_m ADSL2 annex M adsl2plus_m ADSL2\u002B annex M unknown Unknown",
+      "source_id": "XdslStatus.protocol",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStatus.protocol",
+      "markdown": "docs/reference/reseau/connection.md#XdslStatus.protocol"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStatus.modulation",
+      "signature": "modulation enum Read-only",
+      "description": "Protocol Description adsl ADSL vdsl VDSL",
+      "source_id": "XdslStatus.modulation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStatus.modulation",
+      "markdown": "docs/reference/reseau/connection.md#XdslStatus.modulation"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStatus.uptime",
+      "signature": "uptime int Read-only",
+      "description": "uptime in seconds",
+      "source_id": "XdslStatus.uptime",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStatus.uptime",
+      "markdown": "docs/reference/reseau/connection.md#XdslStatus.uptime"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.maxrate",
+      "signature": "maxrate int Read-only",
+      "description": "ATM max rate in kbit/s",
+      "source_id": "XdslStats.maxrate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.maxrate",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.maxrate"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rate",
+      "signature": "rate int Read-only",
+      "description": "ATM rate in kbit/s",
+      "source_id": "XdslStats.rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rate",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rate"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.snr",
+      "signature": "snr int Read-only",
+      "description": "in dB",
+      "source_id": "XdslStats.snr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.snr",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.snr"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.attn",
+      "signature": "attn int Read-only",
+      "description": "in dB",
+      "source_id": "XdslStats.attn",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.attn",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.attn"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.snr_10",
+      "signature": "snr_10 int Read-only",
+      "description": "in dB/10",
+      "source_id": "XdslStats.snr_10",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.snr_10",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.snr_10"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.attn_10",
+      "signature": "attn_10 int Read-only",
+      "description": "in dB/10",
+      "source_id": "XdslStats.attn_10",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.attn_10",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.attn_10"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.fec",
+      "signature": "fec int Read-only",
+      "description": "",
+      "source_id": "XdslStats.fec",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.fec",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.fec"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.crc",
+      "signature": "crc int Read-only",
+      "description": "",
+      "source_id": "XdslStats.crc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.crc",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.crc"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.hec",
+      "signature": "hec int Read-only",
+      "description": "",
+      "source_id": "XdslStats.hec",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.hec",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.hec"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.es",
+      "signature": "es int Read-only",
+      "description": "",
+      "source_id": "XdslStats.es",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.es",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.es"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.ses",
+      "signature": "ses int Read-only",
+      "description": "",
+      "source_id": "XdslStats.ses",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.ses",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.ses"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.phyr",
+      "signature": "phyr bool Read-only",
+      "description": "",
+      "source_id": "XdslStats.phyr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.phyr",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.phyr"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.ginp",
+      "signature": "ginp bool Read-only",
+      "description": "",
+      "source_id": "XdslStats.ginp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.ginp",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.ginp"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.nitro",
+      "signature": "nitro bool Read-only",
+      "description": "",
+      "source_id": "XdslStats.nitro",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.nitro",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.nitro"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rxmt",
+      "signature": "rxmt int Read-only",
+      "description": "only available when phyr is on",
+      "source_id": "XdslStats.rxmt",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rxmt",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rxmt"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rxmt_corr",
+      "signature": "rxmt_corr int Read-only",
+      "description": "only available when phyr is on",
+      "source_id": "XdslStats.rxmt_corr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rxmt_corr",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rxmt_corr"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rxmt_uncorr",
+      "signature": "rxmt_uncorr int Read-only",
+      "description": "only available when phyr is on",
+      "source_id": "XdslStats.rxmt_uncorr",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rxmt_uncorr",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rxmt_uncorr"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rtx_tx",
+      "signature": "rtx_tx int Read-only",
+      "description": "only available when ginp is on",
+      "source_id": "XdslStats.rtx_tx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rtx_tx",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rtx_tx"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rtx_c",
+      "signature": "rtx_c int Read-only",
+      "description": "only available when ginp is on",
+      "source_id": "XdslStats.rtx_c",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rtx_c",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rtx_c"
+    },
+    {
+      "module": "connection",
+      "id": "XdslStats.rtx_uc",
+      "signature": "rtx_uc int Read-only",
+      "description": "only available when ginp is on",
+      "source_id": "XdslStats.rtx_uc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslStats.rtx_uc",
+      "markdown": "docs/reference/reseau/connection.md#XdslStats.rtx_uc"
+    },
+    {
+      "module": "connection",
+      "id": "XdslInfos.status",
+      "signature": "status XdslStatus",
+      "description": "",
+      "source_id": "XdslInfos.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslInfos.status",
+      "markdown": "docs/reference/reseau/connection.md#XdslInfos.status"
+    },
+    {
+      "module": "connection",
+      "id": "XdslInfos.down",
+      "signature": "down XdslStats",
+      "description": "",
+      "source_id": "XdslInfos.down",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslInfos.down",
+      "markdown": "docs/reference/reseau/connection.md#XdslInfos.down"
+    },
+    {
+      "module": "connection",
+      "id": "XdslInfos.up",
+      "signature": "up XdslStats",
+      "description": "",
+      "source_id": "XdslInfos.up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#XdslInfos.up",
+      "markdown": "docs/reference/reseau/connection.md#XdslInfos.up"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.enabled",
+      "signature": "enabled bool",
+      "description": "",
+      "source_id": "LteRadioBand.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.enabled",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.enabled"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.bandwidth",
+      "signature": "bandwidth int",
+      "description": "",
+      "source_id": "LteRadioBand.bandwidth",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.bandwidth",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.bandwidth"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.rsrq",
+      "signature": "rsrq int",
+      "description": "",
+      "source_id": "LteRadioBand.rsrq",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.rsrq",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.rsrq"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.rsrp",
+      "signature": "rsrp int",
+      "description": "",
+      "source_id": "LteRadioBand.rsrp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.rsrp",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.rsrp"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.rssi",
+      "signature": "rssi int",
+      "description": "",
+      "source_id": "LteRadioBand.rssi",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.rssi",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.rssi"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.band",
+      "signature": "band int",
+      "description": "",
+      "source_id": "LteRadioBand.band",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.band",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.band"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadioBand.pci",
+      "signature": "pci int",
+      "description": "",
+      "source_id": "LteRadioBand.pci",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadioBand.pci",
+      "markdown": "docs/reference/reseau/connection.md#LteRadioBand.pci"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadio.associated",
+      "signature": "associated bool",
+      "description": "",
+      "source_id": "LteRadio.associated",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio.associated",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio.associated"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadio.plmn",
+      "signature": "plmn int",
+      "description": "",
+      "source_id": "LteRadio.plmn",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio.plmn",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio.plmn"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadio.signal_level",
+      "signature": "signal_level int",
+      "description": "",
+      "source_id": "LteRadio.signal_level",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio.signal_level",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio.signal_level"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadio.gcid",
+      "signature": "gcid string",
+      "description": "",
+      "source_id": "LteRadio.gcid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio.gcid",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio.gcid"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadio.bands",
+      "signature": "bands [ro]",
+      "description": "",
+      "source_id": "LteRadio.bands",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio.bands",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio.bands"
+    },
+    {
+      "module": "connection",
+      "id": "LteRadio.ue_active",
+      "signature": "ue_active bool",
+      "description": "",
+      "source_id": "LteRadio.ue_active",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteRadio.ue_active",
+      "markdown": "docs/reference/reseau/connection.md#LteRadio.ue_active"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.pdn_up",
+      "signature": "pdn_up bool",
+      "description": "",
+      "source_id": "LteNetwork.pdn_up",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.pdn_up",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.pdn_up"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.has_ipv6",
+      "signature": "has_ipv6 bool",
+      "description": "",
+      "source_id": "LteNetwork.has_ipv6",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.has_ipv6",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.has_ipv6"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.ipv6_dns",
+      "signature": "ipv6_dns string",
+      "description": "",
+      "source_id": "LteNetwork.ipv6_dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.ipv6_dns",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.ipv6_dns"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.ipv6",
+      "signature": "ipv6 string",
+      "description": "",
+      "source_id": "LteNetwork.ipv6",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.ipv6",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.ipv6"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.ipv6_netmask",
+      "signature": "ipv6_netmask string",
+      "description": "",
+      "source_id": "LteNetwork.ipv6_netmask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.ipv6_netmask",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.ipv6_netmask"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.has_ipv4",
+      "signature": "has_ipv4 bool",
+      "description": "",
+      "source_id": "LteNetwork.has_ipv4",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.has_ipv4",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.has_ipv4"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.ipv4_dns",
+      "signature": "ipv4_dns string",
+      "description": "",
+      "source_id": "LteNetwork.ipv4_dns",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.ipv4_dns",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.ipv4_dns"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.ipv4",
+      "signature": "ipv4 string",
+      "description": "",
+      "source_id": "LteNetwork.ipv4",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.ipv4",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.ipv4"
+    },
+    {
+      "module": "connection",
+      "id": "LteNetwork.ipv4_netmask",
+      "signature": "ipv4_netmask string",
+      "description": "",
+      "source_id": "LteNetwork.ipv4_netmask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteNetwork.ipv4_netmask",
+      "markdown": "docs/reference/reseau/connection.md#LteNetwork.ipv4_netmask"
+    },
+    {
+      "module": "connection",
+      "id": "LteSim.present",
+      "signature": "present bool",
+      "description": "",
+      "source_id": "LteSim.present",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim.present",
+      "markdown": "docs/reference/reseau/connection.md#LteSim.present"
+    },
+    {
+      "module": "connection",
+      "id": "LteSim.pin_locked",
+      "signature": "pin_locked bool",
+      "description": "",
+      "source_id": "LteSim.pin_locked",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim.pin_locked",
+      "markdown": "docs/reference/reseau/connection.md#LteSim.pin_locked"
+    },
+    {
+      "module": "connection",
+      "id": "LteSim.puk_remaining",
+      "signature": "puk_remaining int",
+      "description": "",
+      "source_id": "LteSim.puk_remaining",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim.puk_remaining",
+      "markdown": "docs/reference/reseau/connection.md#LteSim.puk_remaining"
+    },
+    {
+      "module": "connection",
+      "id": "LteSim.iccid",
+      "signature": "iccid string",
+      "description": "",
+      "source_id": "LteSim.iccid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim.iccid",
+      "markdown": "docs/reference/reseau/connection.md#LteSim.iccid"
+    },
+    {
+      "module": "connection",
+      "id": "LteSim.puk_locked",
+      "signature": "puk_locked bool",
+      "description": "",
+      "source_id": "LteSim.puk_locked",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim.puk_locked",
+      "markdown": "docs/reference/reseau/connection.md#LteSim.puk_locked"
+    },
+    {
+      "module": "connection",
+      "id": "LteSim.pin_remaining",
+      "signature": "pin_remaining int",
+      "description": "",
+      "source_id": "LteSim.pin_remaining",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteSim.pin_remaining",
+      "markdown": "docs/reference/reseau/connection.md#LteSim.pin_remaining"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.connected",
+      "signature": "connected bool",
+      "description": "",
+      "source_id": "LteTunnelDetails.connected",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.connected",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.connected"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.last_error",
+      "signature": "last_error string",
+      "description": "",
+      "source_id": "LteTunnelDetails.last_error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.last_error",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.last_error"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.tx_flows_rate",
+      "signature": "tx_flows_rate int",
+      "description": "",
+      "source_id": "LteTunnelDetails.tx_flows_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.tx_flows_rate",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.tx_flows_rate"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.tx_max_rate",
+      "signature": "tx_max_rate int",
+      "description": "",
+      "source_id": "LteTunnelDetails.tx_max_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.tx_max_rate",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.tx_max_rate"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.tx_used_rate",
+      "signature": "tx_used_rate int",
+      "description": "",
+      "source_id": "LteTunnelDetails.tx_used_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.tx_used_rate",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.tx_used_rate"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.rx_flows_rate",
+      "signature": "rx_flows_rate int",
+      "description": "",
+      "source_id": "LteTunnelDetails.rx_flows_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.rx_flows_rate",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.rx_flows_rate"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.rx_max_rate",
+      "signature": "rx_max_rate int",
+      "description": "",
+      "source_id": "LteTunnelDetails.rx_max_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.rx_max_rate",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.rx_max_rate"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnelDetails.rx_used_rate",
+      "signature": "rx_used_rate int",
+      "description": "",
+      "source_id": "LteTunnelDetails.rx_used_rate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnelDetails.rx_used_rate",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnelDetails.rx_used_rate"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnel.lte",
+      "signature": "lte LteTunnelDetails",
+      "description": "",
+      "source_id": "LteTunnel.lte",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnel.lte",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnel.lte"
+    },
+    {
+      "module": "connection",
+      "id": "LteTunnel.xdsl",
+      "signature": "xdsl LteTunnelDetails",
+      "description": "",
+      "source_id": "LteTunnel.xdsl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteTunnel.xdsl",
+      "markdown": "docs/reference/reseau/connection.md#LteTunnel.xdsl"
+    },
+    {
+      "module": "connection",
+      "id": "LteConfiguration.enabled",
+      "signature": "enabled bool",
+      "description": "",
+      "source_id": "LteConfiguration.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration.enabled",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration.enabled"
+    },
+    {
+      "module": "connection",
+      "id": "LteConfiguration.radio",
+      "signature": "radio LteRadio",
+      "description": "",
+      "source_id": "LteConfiguration.radio",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration.radio",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration.radio"
+    },
+    {
+      "module": "connection",
+      "id": "LteConfiguration.state",
+      "signature": "state string",
+      "description": "",
+      "source_id": "LteConfiguration.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration.state",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration.state"
+    },
+    {
+      "module": "connection",
+      "id": "LteConfiguration.network",
+      "signature": "network LteNetwork",
+      "description": "",
+      "source_id": "LteConfiguration.network",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration.network",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration.network"
+    },
+    {
+      "module": "connection",
+      "id": "LteConfiguration.fsm_state",
+      "signature": "fsm_state string",
+      "description": "",
+      "source_id": "LteConfiguration.fsm_state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration.fsm_state",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration.fsm_state"
+    },
+    {
+      "module": "connection",
+      "id": "LteConfiguration.sim",
+      "signature": "sim LteSim",
+      "description": "",
+      "source_id": "LteConfiguration.sim",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#LteConfiguration.sim",
+      "markdown": "docs/reference/reseau/connection.md#LteConfiguration.sim"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_present",
+      "signature": "sfp_present boolean Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_present",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_present",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_present"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_alim_ok",
+      "signature": "sfp_alim_ok boolean Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_alim_ok",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_alim_ok",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_alim_ok"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_has_power_report",
+      "signature": "sfp_has_power_report boolean Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_has_power_report",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_has_power_report",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_has_power_report"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_has_signal",
+      "signature": "sfp_has_signal boolean Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_has_signal",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_has_signal",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_has_signal"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.link",
+      "signature": "link boolean Read-only",
+      "description": "",
+      "source_id": "FtthStatus.link",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.link",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.link"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_serial",
+      "signature": "sfp_serial string Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_serial",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_serial",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_serial"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_model",
+      "signature": "sfp_model string Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_model",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_model",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_model"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_vendor",
+      "signature": "sfp_vendor string Read-only",
+      "description": "",
+      "source_id": "FtthStatus.sfp_vendor",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_vendor",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_vendor"
+    },
+    {
+      "module": "connection",
+      "id": "propriete-sans-ancre-connection-113",
+      "signature": "sfp_vendor string Read-only",
+      "description": "",
+      "source_id": null,
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ftth-status-object-unstable",
+      "markdown": "docs/reference/reseau/connection.md#propriete-sans-ancre-connection-113"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_pwr_tx",
+      "signature": "sfp_pwr_tx int Read-only",
+      "description": "scaled by 100 (in dBm)",
+      "source_id": "FtthStatus.sfp_pwr_tx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_pwr_tx",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_pwr_tx"
+    },
+    {
+      "module": "connection",
+      "id": "FtthStatus.sfp_pwr_rx",
+      "signature": "sfp_pwr_rx int Read-only",
+      "description": "scaled by 100 (in dBm)",
+      "source_id": "FtthStatus.sfp_pwr_rx",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FtthStatus.sfp_pwr_rx",
+      "markdown": "docs/reference/reseau/connection.md#FtthStatus.sfp_pwr_rx"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSStatus.status",
+      "signature": "status enum",
+      "description": "Status Description disabled Disabled ok Ok wait Updating reqfail Request failed authfail Authentication error nocredential Invalid credential ipinval Invalid IP hostinval Invalid hostname abuse Blocked because of abuse dnserror DNS error unavailable Service unavailable nowan Unable to get wan IP unknown Unknown",
+      "source_id": "DDNSStatus.status",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus.status",
+      "markdown": "docs/reference/reseau/connection.md#DDNSStatus.status"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSStatus.next_refresh",
+      "signature": "next_refresh int",
+      "description": "next refresh timestamp",
+      "source_id": "DDNSStatus.next_refresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus.next_refresh",
+      "markdown": "docs/reference/reseau/connection.md#DDNSStatus.next_refresh"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSStatus.last_refresh",
+      "signature": "last_refresh int",
+      "description": "last refresh timestamp",
+      "source_id": "DDNSStatus.last_refresh",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus.last_refresh",
+      "markdown": "docs/reference/reseau/connection.md#DDNSStatus.last_refresh"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSStatus.next_retry",
+      "signature": "next_retry int",
+      "description": "next retry timestamp",
+      "source_id": "DDNSStatus.next_retry",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus.next_retry",
+      "markdown": "docs/reference/reseau/connection.md#DDNSStatus.next_retry"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSStatus.last_error",
+      "signature": "last_error int",
+      "description": "last error timestamp",
+      "source_id": "DDNSStatus.last_error",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSStatus.last_error",
+      "markdown": "docs/reference/reseau/connection.md#DDNSStatus.last_error"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSConfig.enabled",
+      "signature": "enabled bool",
+      "description": "",
+      "source_id": "DDNSConfig.enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSConfig.enabled",
+      "markdown": "docs/reference/reseau/connection.md#DDNSConfig.enabled"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSConfig.hostname",
+      "signature": "hostname string",
+      "description": "dns name to use to register",
+      "source_id": "DDNSConfig.hostname",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSConfig.hostname",
+      "markdown": "docs/reference/reseau/connection.md#DDNSConfig.hostname"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSConfig.password",
+      "signature": "password string Write-only",
+      "description": "password to use to register",
+      "source_id": "DDNSConfig.password",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSConfig.password",
+      "markdown": "docs/reference/reseau/connection.md#DDNSConfig.password"
+    },
+    {
+      "module": "connection",
+      "id": "DDNSConfig.user",
+      "signature": "user string",
+      "description": "username to use to register",
+      "source_id": "DDNSConfig.user",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DDNSConfig.user",
+      "markdown": "docs/reference/reseau/connection.md#DDNSConfig.user"
+    }
+  ],
+  "events": []
+}

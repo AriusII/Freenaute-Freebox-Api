@@ -1,0 +1,102 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+=======
+UPnP AV
+=======
+
+The UPnP AV API allow you to control the settings of the Freebox UPnP
+AV service.
+
+UPnP AV Errors
+==============
+
+When attempting to access the UPnP AV API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+internal_error                   internal error
+======================           ======================
+
+UPnP AV Config
+==============
+
+UPnPAVConfig has the following attributes:
+
+.. json:object:: UPnPAVConfig
+
+   .. json:property:: enabled bool
+
+       is the UPnP AV service enabled
+
+UPnP AV config API
+==================
+
+Get the current UPnP AV configuration
+-------------------------------------
+
+.. http:get:: /api/v4/upnpav/config/
+
+   Get the :json:object:`UPnPAVConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/upnpav/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": true
+          }
+      }
+
+Update the UPnP AV configuration
+--------------------------------
+
+.. http:put:: /api/v4/upnpav/config/
+
+   Update the :json:object:`UPnPAVConfig`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      PUT /api/v4/upnpigd/config/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   .. sourcecode:: javascript
+
+      {
+         "enabled": false
+      }
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "enabled": false
+          }
+      }
+
+..  LocalWords:  UPnP UPnP IGD UPnPAVConfig

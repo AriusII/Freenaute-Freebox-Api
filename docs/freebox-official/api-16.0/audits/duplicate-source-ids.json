@@ -1,0 +1,51 @@
+{
+  "raw_duplicate_ids": [
+    {
+      "id": "id1",
+      "occurrences": 6
+    },
+    {
+      "id": "put--api-v9-wifi-config-",
+      "occurrences": 2
+    },
+    {
+      "id": "get--api-v8-system-",
+      "occurrences": 2
+    },
+    {
+      "id": "post--api-v8-downloads-add",
+      "occurrences": 2
+    },
+    {
+      "id": "post--api-v8-home-pairing-adapter_id",
+      "occurrences": 3
+    }
+  ],
+  "remaining_cross_module_ids": [
+    {
+      "id": "id1",
+      "first": "docs/reference/fondamentaux/00_index.md",
+      "other": "docs/reference/reseau/lan.md"
+    },
+    {
+      "id": "id1",
+      "first": "docs/reference/fondamentaux/00_index.md",
+      "other": "docs/reference/reseau/nat.md"
+    },
+    {
+      "id": "id1",
+      "first": "docs/reference/fondamentaux/00_index.md",
+      "other": "docs/reference/fichiers-telechargements/fs.md"
+    },
+    {
+      "id": "id1",
+      "first": "docs/reference/fondamentaux/00_index.md",
+      "other": "docs/reference/maison-profils/home.md"
+    },
+    {
+      "id": "id1",
+      "first": "docs/reference/fondamentaux/00_index.md",
+      "other": "docs/reference/multimedia/player.md"
+    }
+  ]
+}

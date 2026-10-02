@@ -1,0 +1,259 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+========
+Freeplug
+========
+
+The freeplug API allow you to list the freeplugs on the Freebox
+network and get stats
+
+Freeplug Errors
+===============
+
+When attempting to access the freeplug API, you may encounter the
+following errors:
+
+======================           ======================
+error_code                       Description
+======================           ======================
+inval                            Invalid request
+nomem                            Internal error
+nosta                            No freeplug with this id
+nopeer                           No freeplug with this id
+======================           ======================
+
+Freeplug Network
+================
+
+FreeplugNetwork has the following attributes:
+
+.. json:object:: FreeplugNetwork
+
+   .. json:property:: id string [ro]
+
+       Network unique id
+
+   .. json:property:: members Freeplug[] [ro]
+
+       List of freeplugs member of this network
+
+Freeplug Object
+===============
+
+Freeplug has the following attributes:
+
+.. json:object:: Freeplug
+
+   .. json:property:: id string [ro]
+
+       Freeplug unique id
+
+   .. json:property:: local bool [ro]
+
+      if true the Freeplug is connected directly to the Freebox
+
+   .. json:property:: net_role enum [ro]
+
+       Freeplug network role
+
+      ===============   =====================================
+      Type              Description
+      ===============   =====================================
+      sta               Freeplug Station
+      pco               Freeplug proxy coordinator
+      cco               Central coordinator
+      ===============   =====================================
+
+   .. json:property:: model string [ro]
+
+       Freebox Server netbios name
+
+   .. json:property:: eth_port_status enum [ro]
+
+      ===============   =====================================
+      Type              Description
+      ===============   =====================================
+      up                The ethernet port is up
+      down              The ethernet port is down
+      unknown           The ethernet port state is unknown
+      ===============   =====================================
+
+   .. json:property:: eth_full_duplex bool [ro]
+
+      ethernet link is full duplex
+
+   .. json:property:: has_network bool [ro]
+
+      is connected to the network
+
+   .. json:property:: eth_speed int [ro]
+
+      ethernet port speed
+
+   .. json:property:: inactive int [ro]
+
+      seconds since last activity
+
+   .. json:property:: net_id string [ro]
+
+      network id
+
+   .. json:property:: rx_rate int [ro]
+
+      rx rate (from the freeplugs to the "cco" freeplug) (in Mb/s)
+      -1 if not available
+
+   .. json:property:: tx_rate int [ro]
+
+      tx rate (from the "cco" freeplug to the freeplugs) (in Mb/s)
+      -1 if not available
+
+Freeplug API
+============
+
+Get the current Freeplugs networks
+----------------------------------
+
+.. http:get:: /api/v4/freeplug/
+
+   Returns the list of :json:object:`FreeplugNetwork`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/freeplug/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "id": "c8:f7:b9:83:f5:10:01",
+                  "members": [
+                      {
+                          "id": "00:24:D4:36:4C:CF",
+                          "tx_rate": 148,
+                          "eth_port_status": "up",
+                          "rx_rate": 148,
+                          "net_role": "sta",
+                          "inactive": 1,
+                          "net_id": "c8:f7:b9:83:f5:10:01",
+                          "model": "int6400",
+                          "eth_speed": 100,
+                          "local": true,
+                          "eth_full_duplex": true,
+                          "has_network": true
+                      },
+                      {
+                          "id": "F4:CA:E5:1D:46:AE",
+                          "tx_rate": 149,
+                          "eth_port_status": "up",
+                          "rx_rate": 148,
+                          "net_role": "sta",
+                          "inactive": 1,
+                          "net_id": "c8:f7:b9:83:f5:10:01",
+                          "model": "int6400",
+                          "eth_speed": 100,
+                          "local": true,
+                          "eth_full_duplex": true,
+                          "has_network": true
+                      },
+                      {
+                          "id": "00:24:D4:1B:15:D0",
+                          "tx_rate": -1,
+                          "eth_port_status": "up",
+                          "rx_rate": -1,
+                          "net_role": "cco",
+                          "inactive": 1,
+                          "net_id": "c8:f7:b9:83:f5:10:01",
+                          "model": "int6400",
+                          "eth_speed": 100,
+                          "local": false,
+                          "eth_full_duplex": true,
+                          "has_network": true
+                      }
+                  ]
+              }
+          ]
+      }
+
+Get a particular Freeplug information
+-------------------------------------
+
+.. http:get:: /api/v4/freeplug/{id}/
+
+   Returns the list of :json:object:`Freeplug`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/freeplug/F4:CA:E5:1D:46:AE/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": "00:24:D4:36:4C:CF",
+              "tx_rate": -1,
+              "eth_port_status": "up",
+              "rx_rate": -1,
+              "net_role": "sta",
+              "inactive": 1,
+              "net_id": "c8:f7:b9:83:f5:10:01",
+              "model": "int6400",
+              "eth_speed": 100,
+              "local": true,
+              "eth_full_duplex": true,
+              "has_network": true
+          }
+      }
+
+Reset a Freeplug
+----------------
+
+.. http:post:: /api/v4/freeplug/{id}/reset/
+
+   reset the given :json:object:`Freeplug`
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      POST /api/v4/freeplug/F4:CA:E5:1D:46:AE/reset/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+         "success":true,
+      }
+
+..  LocalWords:  Freeplug freeplug freeplugs inval nomem nosta nopeer
+..  LocalWords:  FreeplugNetwork sta pco cco netbios eth rx tx

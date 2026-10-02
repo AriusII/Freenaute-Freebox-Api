@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Freenaute.Freebox.Mapper.ClientSide.Authentication.Login;
 
@@ -7,8 +7,12 @@ namespace Freenaute.Freebox.Mapper.ClientSide.Authentication.Login;
 /// </summary>
 /// <param name="AppId">The application ID used in TokenRequest to get the app_token.</param>
 /// <param name="Password">The password computed using the challenge and the app_token.</param>
+/// <param name="AppVersion">The optional application version supplied by the client.</param>
 public sealed record SessionStartRequest(
     [property: JsonPropertyName("app_id")] string AppId,
     [property: JsonPropertyName("password")]
-    string Password
+    string Password,
+    [property: JsonPropertyName("app_version")]
+    [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    string? AppVersion = null
 );

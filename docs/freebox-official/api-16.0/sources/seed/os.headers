@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Fri, 02 Oct 2026 17:10:28 GMT
+Server: Apache/2.4.65 (Debian)
+Last-Modified: Tue, 28 Mar 2017 14:13:34 GMT
+ETag: "7ea7-54bcb10b07f80"
+Accept-Ranges: bytes
+Content-Length: 32423
+Vary: Accept-Encoding
+Content-Type: text/html
+

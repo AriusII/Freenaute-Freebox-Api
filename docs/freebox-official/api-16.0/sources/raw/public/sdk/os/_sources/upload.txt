@@ -1,0 +1,546 @@
+.. -*- mode: rst; coding: utf-8 -*-
+
+===========
+File Upload
+===========
+
+This API allows you to upload files to the Freebox Server.
+
+NOTE: for large transfer files, you should prefer FTP over HTTP
+transfer
+
+*WARNING* the previous http upload method is now deprecated since api v4,
+you must now use the new WebSocket upload Api. If you can't support WebSocket,
+you must use ftp for file transfer
+
+File Upload Errors
+==================
+
+When attempting to access the file upload API, you may encounter the
+following errors:
+
+======================  ==============================================
+error_code              Description
+======================  ==============================================
+invalid_request         Invalid request
+path_not_found          File or folder not found
+access_denied           Write permission denied in the destination folder
+destination_conflict    A file with same name already exists
+invalid_id              Invalid file upload id
+cancelled               Someone on a side channel as cancelled the upload
+======================  ==============================================
+
+File Upload object
+==================
+
+File uploads have the following attributes:
+
+.. json:object:: FileUpload
+
+   .. json:property:: id int [ro]
+
+       upload id
+
+   .. json:property:: size int [ro]
+
+      Upload file size in bytes
+
+   .. json:property:: uploaded int [ro]
+
+      Uploaded bytes
+
+   .. json:property:: status enum [ro]
+
+      upload status can have the following values
+
+      ============== ==============================================
+      status         Description
+      ============== ==============================================
+      authorized     Upload authorization is valid, upload has not started yet
+      in_progress    Upload in progress
+      done           Upload done
+      failed         Upload failed
+      conflict       Destination file conflict
+      timeout        Upload authorization is no longer valid
+      cancelled      Upload cancelled by user
+      ============== ==============================================
+
+   .. json:property:: start_date timestamp [ro]
+
+      upload start date
+
+   .. json:property:: last_update timestamp [ro]
+
+      last update of file upload object
+
+   .. json:property:: upload_name string [ro]
+
+      name of the file uploaded
+
+   .. json:property:: dirname string [ro]
+
+      upload destination directory
+
+.. _ws_upload_api:
+
+WebSocket File Upload API
+=========================
+
+The file upload WebSocket path is /api/v4/ws/upload
+
+With this new API, the need for creating a 'file upload authorization'
+has now been removed.
+
+To be able to upload a file to the Freebox, you must open a WebSocket
+connection to the upload api, then for each file you want to upload
+you must :
+
+- send a :json:object:`FileUploadStartAction` with the action 'upload_start'
+
+- wait for the associated :json:object:`WebSocketResponse` that indicates
+  success, then start transferring the file content by chunks,
+  each chunk being a binary WebSocket frame.
+
+  For each chunk you send, you'll get a WsUploadProgress response indicating that
+  the associated chunk has been received and processed. Note that you should not
+  wait for this response before sending the next data chunk in order to get
+  good bandwidth performance.
+
+- once all chunks have been transferred, you should send a
+  :json:object:`FileUploadFinalizeAction` with the action 'upload_finalize' and wait
+  for the associated :json:object:`WebSocketResponse` indicating success
+
+Note that if you have multiple files to send, you should reuse the same
+WebSocket connection, and repeat the upload steps again.
+
+If for any reason the WebSocket is closed during upload, the partially sent
+file will be left as-is on the Freebox to allow resuming upload at a later point.
+
+If you want to cancel an ongoing upload ou can send a
+:json:object:`FileUploadCancelAction`. The partially uploaded
+file will then be deleted
+
+File Upload Start Action
+------------------------
+
+.. json:object:: FileUploadStartAction
+
+   .. json:property:: request_id int
+
+      optional request_id
+
+   .. json:property:: action string
+
+      must be 'upload_start'
+
+   .. json:property:: size int
+
+      optional file size
+
+   .. json:property:: dirname string
+
+      the destination directory (encoded value)
+
+   .. json:property:: filename string
+
+      the destination filename
+
+   .. json:property:: force enum
+
+      select the way conflicts are handled
+
+      ============== ===================================================
+      Force mode     Description
+      ============== ===================================================
+      *missing*      The response to the FileUploadStartAction will
+                     be an error with 'destination_conflict' if the
+                     destination file already exists. The response will
+                     also contain a file_size attribute containing the
+                     existing file length (useful for resuming upload)
+      overwrite      If the target file already exists it will
+                     be overridden
+      resume         The upload will resume, all sent chunks will then
+                     be appended to the existing file.
+      ============== ===================================================
+
+File Upload Finalize action
+---------------------------
+
+.. json:object:: FileUploadFinalizeAction
+
+   .. json:property:: request_id int
+
+      optional request_id
+
+   .. json:property:: action string
+
+      must be 'upload_finalize'
+
+File Upload Cancel action
+-------------------------
+
+.. json:object:: FileUploadCancelAction
+
+   .. json:property:: request_id int
+
+      optional request_id
+
+   .. json:property:: action string
+
+      must be 'upload_cancel'
+
+File Upload Chunk
+-----------------
+
+File upload chunk are just Binary WebSocket frames containing raw file
+content.
+
+File Upload Chunk Response
+--------------------------
+
+For each received chunk, the Freebox will send a chunk response containing
+upload progress information the request_id used in response will be
+the one from the :json:object:`FileUploadStartAction`, and 'action' value
+will be 'upload_data'
+
+.. json:object:: FileUploadChunkResponse
+
+   .. json:property:: total_len int
+
+      target file current length
+
+   .. json:property:: complete bool
+
+      will be true in a reply to :json:object:`FileUploadFinalizeAction`
+      or :json:object:`FileUploadCancelAction`
+
+   .. json:property:: cancelled bool
+
+      will be true in a reply :json:object:`FileUploadCancelAction`
+
+
+File Upload example
+-------------------
+
+.. http:get:: /api/v4/ws/upload
+
+   **Start the WebSocket handshake**:
+
+      Client ==> Freebox
+
+   .. sourcecode:: http
+
+      GET ws://mafreebox.freebox.fr/api/v4/ws/upload HTTP/1.1
+      Host: mafreebox.freebox.fr
+      Connection: Upgrade
+      Upgrade: websocket
+      Sec-WebSocket-Version: 13
+      Sec-WebSocket-Key: LhYCx4FBJE6pqrIL3tDC3g==
+      X-Fbx-App-Auth: 35JYdQSvkcBYK84IFMU7H86clfhS75OzwlQrKlQN1gBch\/Dd62RGzDpgC7YB9jB2
+
+   **Handshake response**:
+
+      Client <== Freebox
+
+   .. sourcecode:: http
+
+      HTTP/1.1 101 Switching Protocols
+      Connection: upgrade
+      Upgrade: websocket
+      Sec-WebSocket-Accept: IqwCz8z8sON/eWQqkYKLu6iLkzo=
+
+   **Start upload**:
+
+      Client ==> Freebox
+
+   .. sourcecode:: javascript
+
+      {
+	"action": "upload_start",
+	"request_id": 3615,
+	"size": 8526224,
+	"dirname": "L0Rpc3F1ZSBkdXIvMF91cGxvYWRfdGVzdA==",
+	"filename": "test_file.bin"
+      }
+
+   **Start upload response**:
+
+      Client <== Freebox
+
+   .. sourcecode:: javascript
+
+      {
+	"success": false,
+	"action": "upload_start",
+	"request_id": 3615,
+	"msg": "Le fichier existe déjà",
+	"file_size": 8526224,
+	"error_code": "conflict"
+      }
+
+   **Start upload with overwrite force mode**:
+
+      Client ==> Freebox
+
+   .. sourcecode:: javascript
+
+      {
+	"action": "upload_start",
+	"request_id": 6969,
+	"size": 8526224,
+	"dirname": "L0Rpc3F1ZSBkdXIvMF91cGxvYWRfdGVzdA==",
+	"filename": "test_file.bin",
+	"force": "overwrite"
+      }
+
+   **Start upload response**:
+
+      Client <== Freebox
+
+   .. sourcecode:: javascript
+
+      {
+	"action": "upload_start",
+	"success": true,
+	"request_id": 6969
+      }
+
+   **Send data chunk**:
+
+      Client ==> Freebox
+
+      [ BINARY WEBSOCKET FRAME MESSAGE containing file offset: 0, length: 512k ]
+
+      [ BINARY WEBSOCKET FRAME MESSAGE containing file offset: 512k, length: 512k ]
+
+      [ BINARY WEBSOCKET FRAME MESSAGE containing file offset: 1024k, length: 512k ]
+
+      [ ... ]
+
+   **Receive upload response**:
+
+      Client <== Freebox
+
+   .. sourcecode:: javascript
+
+      {
+	"request_id": 6969
+	"action": "upload_data",
+	"success": true,
+	"result": {
+		"total_len": 524288,
+		"complete": false
+	},
+      }
+
+      {
+	"request_id": 6969,
+	"action": "upload_data",
+	"success": true,
+	"result": {
+		"total_len": 1048576,
+		"complete": false
+	}
+      }
+
+      [ ... ]
+
+   This will be received for each sent data chunk
+
+
+   **Send upload finalize**:
+
+      Client ==> Freebox
+
+   .. sourcecode:: javascript
+
+      {
+        "action": "upload_finalize",
+        "request_id":3615
+      }
+
+
+   **Receive upload finalize confirmation**:
+
+      Client <== Freebox
+
+   .. sourcecode:: javascript
+
+      {
+        "request_id": 3615,
+        "action": "upload_finalize",
+        "success": true,
+        "result": {
+          "total_len": 8526224,
+          "complete": true
+        }
+      }
+
+At this point you can start uploading a new file by repeating the previous
+steps starting from *Start upload* step
+
+
+Upload Progress tracking API
+============================
+
+Get the list of uploads
+-----------------------
+
+.. http:get:: /api/v4/upload/
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/upload/ HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": [
+              {
+                  "id": 1678139709,
+                  "size": 54960,
+                  "uploaded": 54960,
+                  "status": "done",
+                  "last_update": 1361465608,
+                  "start_date": 1361465608,
+                  "upload_name": "playlist.m3u",
+                  "dirname": "/Disque 1"
+              }
+          ]
+      }
+
+Track an upload status
+----------------------
+
+.. http:get:: /api/v4/upload/{id}
+
+   With this API you can track the progress of your
+   :json:object:`FileUpload` task
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      GET /api/v4/upload/1678139709 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true,
+          "result": {
+              "id": 1678139709,
+              "size": 54960,
+              "uploaded": 54960,
+              "status": "done",
+              "last_update": 1361465608,
+              "start_date": 1361465608,
+              "upload_name": "playlist.m3u",
+              "dirname": "/Disque 1"
+          }
+      }
+
+Cancel an upload
+----------------
+
+.. http:delete:: /api/v4/upload/{id}/cancel
+
+   Cancel the given :json:object:`FileUpload` closing the connection
+   The upload status must be in_progress
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/upload/136419941/cancel HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+
+Delete an upload
+----------------
+
+.. http:delete:: /api/v4/upload/{id}
+
+   Delete the given :json:object:`FileUpload` closing the connection
+   if needed
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/upload/136419941 HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+
+Cleanup all terminated uploads
+------------------------------
+
+.. http:delete:: /api/v4/upload/clean
+
+   Deletes all the :json:object:`FileUpload` not in_progress
+
+   **Example request**:
+
+   .. sourcecode:: http
+
+      DELETE /api/v4/upload/clean HTTP/1.1
+      Host: mafreebox.freebox.fr
+
+   **Example response**:
+
+   .. sourcecode:: http
+
+      HTTP/1.1 200 OK
+      Content-Type: application/json; charset=utf-8
+
+   .. sourcecode:: javascript
+
+      {
+          "success": true
+      }
+
+..  LocalWords:  FileUpload cancelled ZSAx txt multipart png playlist

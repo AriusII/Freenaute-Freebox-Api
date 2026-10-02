@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Ftp &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="NAT" href="../nat/" />
+    <link rel="prev" title="DHCP" href="../dhcp/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ftp">
+<h1>Ftp<a class="headerlink" href="#ftp" title="Permalink to this headline">¶</a></h1>
+<p>The FTP API allow you to control the Freebox ftp server settings</p>
+<div class="section" id="ftp-errors">
+<h2>Ftp Errors<a class="headerlink" href="#ftp-errors" title="Permalink to this headline">¶</a></h2>
+<p>When attempting to access the FTP API, you may encounter the following
+errors:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">error_code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+<tr class="row-odd"><td>weak_password</td>
+<td>Password is too weak for remote access</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ftp-config">
+<h2>Ftp Config<a class="headerlink" href="#ftp-config" title="Permalink to this headline">¶</a></h2>
+<p>FtpConfig has the following attributes:</p>
+<dl class="object">
+<dt id="FtpConfig">
+<code class="descname">FtpConfig</code><a class="headerlink" href="#FtpConfig" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="FtpConfig.enabled">
+<code class="descname">enabled</code><span> </span>bool<a class="headerlink" href="#FtpConfig.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the FTP server enabled</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.allow_anonymous">
+<code class="descname">allow_anonymous</code><span> </span>bool<a class="headerlink" href="#FtpConfig.allow_anonymous" title="Permalink to this definition">¶</a></dt>
+<dd><p>can anonymous user log in</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.allow_anonymous_write">
+<code class="descname">allow_anonymous_write</code><span> </span>bool<a class="headerlink" href="#FtpConfig.allow_anonymous_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>can anonymous user write data</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.password">
+<code class="descname">password</code><span> </span>string<em class="property"> Write-only</em><a class="headerlink" href="#FtpConfig.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>user password</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.allow_remote_access">
+<code class="descname">allow_remote_access</code><span> </span>bool<a class="headerlink" href="#FtpConfig.allow_remote_access" title="Permalink to this definition">¶</a></dt>
+<dd><p>enable ftp server remote access</p>
+<p>NOTE: to be able to enable the remote
+access the password must be strong enough</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.weak_password">
+<code class="descname">weak_password</code><span> </span>bool<em class="property"> Read-only</em><a class="headerlink" href="#FtpConfig.weak_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the ftp password weak (in this case
+remote access is disabled)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.port_ctrl">
+<code class="descname">port_ctrl</code><span> </span>int<a class="headerlink" href="#FtpConfig.port_ctrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>ftp control port to use for remote access</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.port_data">
+<code class="descname">port_data</code><span> </span>int<a class="headerlink" href="#FtpConfig.port_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>ftp data port to use for remote access</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="FtpConfig.remote_domain">
+<code class="descname">remote_domain</code><span> </span>string<a class="headerlink" href="#FtpConfig.remote_domain" title="Permalink to this definition">¶</a></dt>
+<dd><p>domain name to use for remote access</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="ftp-config-api">
+<h2>Ftp config API<a class="headerlink" href="#ftp-config-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-the-current-ftp-configuration">
+<h3>Get the current Ftp configuration<a class="headerlink" href="#get-the-current-ftp-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="get">
+<dt id="get--api-v4-ftp-config-">
+<code class="descname">GET </code><code class="descname">/api/v4/ftp/config/</code><a class="headerlink" href="#get--api-v4-ftp-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the <a class="reference internal" href="#FtpConfig" title="FtpConfig"><code class="xref json json-object docutils literal"><span class="pre">FtpConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/ftp/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;allow_anonymous&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;allow_remote_access&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;port_ctrl&quot;</span><span class="o">:</span> <span class="mi">3615</span><span class="p">,</span>
+        <span class="s2">&quot;port_data&quot;</span><span class="o">:</span> <span class="mi">1337</span><span class="p">,</span>
+        <span class="s2">&quot;weak_password&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;allow_anonymous_write&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="update-the-ftp-configuration">
+<h3>Update the FTP configuration<a class="headerlink" href="#update-the-ftp-configuration" title="Permalink to this headline">¶</a></h3>
+<dl class="put">
+<dt id="put--api-v4-ftp-config-">
+<code class="descname">PUT </code><code class="descname">/api/v4/ftp/config/</code><a class="headerlink" href="#put--api-v4-ftp-config-" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the <a class="reference internal" href="#FtpConfig" title="FtpConfig"><code class="xref json json-object docutils literal"><span class="pre">FtpConfig</span></code></a></p>
+<p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">PUT</span> <span class="nn">/api/v4/ftp/config/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">&quot;allow_anonymous&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;allow_anonymous_write&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

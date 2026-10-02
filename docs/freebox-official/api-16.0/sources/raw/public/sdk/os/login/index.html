@@ -1,0 +1,477 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Login &mdash; FreeboxOS Gateway api 9ba63963 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '9ba63963',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/fbx.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="top" title="FreeboxOS Gateway api 9ba63963 documentation" href="../" />
+    <link rel="next" title="Download" href="../download/" />
+    <link rel="prev" title="Api changes from version 3.0 to 4.0" href="../api_changes_3_0_to_4_0/" /> 
+  </head>
+  <body role="document">
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="login">
+<h1>Login<a class="headerlink" href="#login" title="Permalink to this headline">¶</a></h1>
+<p>Each application identified with an <em>app_name</em> must gain access to
+Freebox API before being able to use the api.  This procedure can only
+be initiated from the local network, and the user must have access to
+the Freebox front panel to grant access to the app.</p>
+<p>Once the user authorize the app, the app will be provided with a
+unique <em>app_token</em> associated with a set of default permissions.</p>
+<p>This <em>app_token</em> must be store securely by the app, and will not be
+exchanged in clear text for the following requests.</p>
+<p>Note that the user can revoke the <em>app_token</em>, or edit its permissions
+afterwards. For instance if the user resets the admin password, app
+permissions will be reset.</p>
+<p>Then the app will need to open a <em>session</em> to get an <em>auth_token</em>. The
+app will then be authenticated by adding this session_token in HTTP
+headers of the following requests. The validity of the <em>auth_token</em> is
+limited in time and the app will have to renew this <em>auth_token</em> once
+in a while.</p>
+<div class="section" id="obtaining-an-app-token">
+<h2>Obtaining an <em>app_token</em><a class="headerlink" href="#obtaining-an-app-token" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tokenrequest-object">
+<h3>TokenRequest object<a class="headerlink" href="#tokenrequest-object" title="Permalink to this headline">¶</a></h3>
+<p>Download objects have the following attributes</p>
+<dl class="object">
+<dt id="TokenRequest">
+<code class="descname">TokenRequest</code><a class="headerlink" href="#TokenRequest" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="TokenRequest.app_id">
+<code class="descname">app_id</code><span> </span>string<a class="headerlink" href="#TokenRequest.app_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A unique app_id string</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="TokenRequest.app_name">
+<code class="descname">app_name</code><span> </span>string<a class="headerlink" href="#TokenRequest.app_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A descriptive application name (will be displayed on lcd)</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="TokenRequest.app_version">
+<code class="descname">app_version</code><span> </span>string<a class="headerlink" href="#TokenRequest.app_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>app version</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="TokenRequest.device_name">
+<code class="descname">device_name</code><span> </span>string<a class="headerlink" href="#TokenRequest.device_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the device on which the app will be used</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="request-authorization">
+<h3>Request authorization<a class="headerlink" href="#request-authorization" title="Permalink to this headline">¶</a></h3>
+<p>This is the first step, the app will ask for an <em>app_token</em> using the
+following call.  A message will be displayed on the Freebox LCD asking
+the user to grant/deny access to the requesting app.</p>
+<p>Once the app has obtained a valid app_token, it will not have to do
+this procedure again unless the user revokes the app_token.</p>
+<dl class="post">
+<dt id="post--api-v4-login-authorize-">
+<code class="descname">POST </code><code class="descname">/api/v4/login/authorize/</code><a class="headerlink" href="#post--api-v4-login-authorize-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/login/authorize/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;app_id&quot;</span><span class="p">:</span> <span class="s2">&quot;fr.freebox.testapp&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;app_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Test App&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;app_version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.7&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;device_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Pc de Xavier&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;app_token&quot;</span><span class="o">:</span> <span class="s2">&quot;dyNYgfK0Ya6FWGqq83sBHa7TwzWo+pg4fDFUJHShcjVYzTfaRrZzm93p7OTAfH/0&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;track_id&quot;</span><span class="o">:</span> <span class="mi">42</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="track-authorization-progress">
+<h3>Track authorization progress<a class="headerlink" href="#track-authorization-progress" title="Permalink to this headline">¶</a></h3>
+<p>Once the authorization request has been made, the app should monitor
+the token status by using the following API and using the <em>track_id</em>
+returned by the previous call.</p>
+<p>The status can have one of the following values:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>unknown</td>
+<td>the app_token is invalid or has been revoked</td>
+</tr>
+<tr class="row-odd"><td>pending</td>
+<td>the user has not confirmed the authorization request yet</td>
+</tr>
+<tr class="row-even"><td>timeout</td>
+<td>the user did not confirmed the authorization within the given time</td>
+</tr>
+<tr class="row-odd"><td>granted</td>
+<td>the app_token is valid and can be used to open a session</td>
+</tr>
+<tr class="row-even"><td>denied</td>
+<td>the user denied the authorization request</td>
+</tr>
+</tbody>
+</table>
+<p>The app should monitor the status until it is different from pending.</p>
+<dl class="get">
+<dt id="get--api-v4-login-authorize-track_id">
+<code class="descname">GET </code><code class="descname">/api/v4/login/authorize/{track_id}</code><a class="headerlink" href="#get--api-v4-login-authorize-track_id" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/login/authorize/42</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;pending&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;challenge&quot;</span><span class="o">:</span> <span class="s2">&quot;Bj6xMqoe+DCHD44KqBljJ579seOXNWr2&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response once the user has validated the request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;granted&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;challenge&quot;</span><span class="o">:</span> <span class="s2">&quot;Bj6xMqoe+DCHD44KqBljJ579seOXNWr2&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="obtaining-a-session-token">
+<h2>Obtaining a <em>session_token</em><a class="headerlink" href="#obtaining-a-session-token" title="Permalink to this headline">¶</a></h2>
+<p>To protect the <em>app_token</em> secret, it will never be used directly to
+authenticate the application, instead the API will provide a challenge
+the app will combine to its <em>app_token</em> to open a session and get a
+<em>session_token</em></p>
+<p>The app will then have to include the <em>session_token</em> in the HTTP
+headers of the following requests</p>
+<div class="section" id="sessionstart-object">
+<h3>SessionStart object<a class="headerlink" href="#sessionstart-object" title="Permalink to this headline">¶</a></h3>
+<p>Download objects have the following attributes:</p>
+<dl class="object">
+<dt id="SessionStart">
+<code class="descname">SessionStart</code><a class="headerlink" href="#SessionStart" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="property">
+<dt id="SessionStart.app_id">
+<code class="descname">app_id</code><span> </span>string<a class="headerlink" href="#SessionStart.app_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same app_id used in <a class="reference internal" href="#TokenRequest" title="TokenRequest"><code class="xref json json-object docutils literal"><span class="pre">TokenRequest</span></code></a> to get the <em>app_token</em></p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SessionStart.app_version">
+<code class="descname">app_version</code><span> </span>string<a class="headerlink" href="#SessionStart.app_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>app version</p>
+</dd></dl>
+
+<dl class="property">
+<dt id="SessionStart.password">
+<code class="descname">password</code><span> </span>string<a class="headerlink" href="#SessionStart.password" title="Permalink to this definition">¶</a></dt>
+<dd><p>The password computed using the <em>challenge</em> and the <em>app_token</em></p>
+<p>To compute the password you have to compute the hmac-sha1 of the
+challenge and the app_token</p>
+<p>password = hmac-sha1(app_token, challenge)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="getting-the-challenge-value">
+<h3>Getting the challenge value<a class="headerlink" href="#getting-the-challenge-value" title="Permalink to this headline">¶</a></h3>
+<p>The challenge returned by the API will change frequently and have a
+limited time validity.</p>
+<p>There are several ways of getting the current challenge value, it will
+always be included in response requesting the app authentication. It
+is also included in the authorization tracking API response.</p>
+<p>You can also explicitly request a challenge with the following API</p>
+<dl class="get">
+<dt id="get--api-v4-login-">
+<code class="descname">GET </code><code class="descname">/api/v4/login/</code><a class="headerlink" href="#get--api-v4-login-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/login/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;logged_in&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;challenge&quot;</span><span class="o">:</span> <span class="s2">&quot;VzhbtpR4r8CLaJle2QgJBEkyd8JPb0zL&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="opening-a-session">
+<h3>Opening a session<a class="headerlink" href="#opening-a-session" title="Permalink to this headline">¶</a></h3>
+<p>Once you have the challenge you just need use the following API to get
+a <em>session_token</em></p>
+<p>NOTE: in case of session opening failure, ensure that the box you&#8217;re
+connected is the one you expect by checking the uid returned in the
+answer.</p>
+<p>In the response you get your app permissions. App permissions are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">App permission</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>settings</td>
+<td>Allow modifying the Freebox settings (reading settings is always allowed)</td>
+</tr>
+<tr class="row-odd"><td>contacts</td>
+<td>Access to contact list</td>
+</tr>
+<tr class="row-even"><td>calls</td>
+<td>Access to call logs</td>
+</tr>
+<tr class="row-odd"><td>explorer</td>
+<td>Access to filesystem</td>
+</tr>
+<tr class="row-even"><td>downloader</td>
+<td>Access to downloader</td>
+</tr>
+<tr class="row-odd"><td>parental</td>
+<td>Access to parental control</td>
+</tr>
+<tr class="row-even"><td>pvr</td>
+<td>Access personal video recorder</td>
+</tr>
+</tbody>
+</table>
+<p>NOTE: A permission not listed in app permissions is equivalent to having this permission set
+to false.</p>
+<dl class="post">
+<dt id="post--api-v4-login-session-">
+<code class="descname">POST </code><code class="descname">/api/v4/login/session/</code><a class="headerlink" href="#post--api-v4-login-session-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/login/session/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+
+<span class="p">{</span>
+   <span class="nt">&quot;app_id&quot;</span><span class="p">:</span> <span class="s2">&quot;fr.freebox.testapp&quot;</span><span class="p">,</span>
+   <span class="nt">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;d4da8517c2c25b1b145f2e5ba91bd0589fc0053d&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="s2">&quot;result&quot;</span> <span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;session_token&quot;</span> <span class="o">:</span> <span class="s2">&quot;35JYdQSvkcBYK84IFMU7H86clfhS75OzwlQrKlQN1gBch\/Dd62RGzDpgC7YB9jB2&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;challenge&quot;</span><span class="o">:</span><span class="s2">&quot;jdGL6CtuJ3Dm7p9nkcIQ8pjB+eLwr4Ya&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;permissions&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="s2">&quot;downloader&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example response with invalid password</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;msg&quot;</span><span class="o">:</span> <span class="s2">&quot;Erreur d&#39;authentification de l&#39;application&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">&quot;uid&quot;</span><span class="o">:</span> <span class="s2">&quot;23b86ec8091013d668829fe12791fdab&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;error_code&quot;</span><span class="o">:</span> <span class="s2">&quot;invalid_token&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;result&quot;</span><span class="o">:</span> <span class="p">{</span>
+         <span class="s2">&quot;challenge&quot;</span><span class="o">:</span> <span class="s2">&quot;DLjXFEf1kaDwAEn6xRUnEVPU++gnjiSn&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="closing-the-current-session">
+<h2>Closing the current session<a class="headerlink" href="#closing-the-current-session" title="Permalink to this headline">¶</a></h2>
+<p>to close the current session you can use the following call</p>
+<dl class="post">
+<dt id="post--api-v4-login-logout-">
+<code class="descname">POST </code><code class="descname">/api/v4/login/logout/</code><a class="headerlink" href="#post--api-v4-login-logout-" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">POST</span> <span class="nn">/api/v4/login/logout/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="make-an-authenticated-call-to-the-api">
+<h2>Make an authenticated call to the API<a class="headerlink" href="#make-an-authenticated-call-to-the-api" title="Permalink to this headline">¶</a></h2>
+<p>Once you have a valid <em>session_token</em> you should use it by add the the
+HTTP header <strong>X-Fbx-App-Auth</strong></p>
+<blockquote>
+<div><p><strong>Example request</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="nf">GET</span> <span class="nn">/api/v4/login/session/</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">mafreebox.freebox.fr</span>
+<span class="na">X-Fbx-App-Auth</span><span class="o">:</span> <span class="l">35JYdQSvkcBYK84IFMU7H86clfhS75OzwlQrKlQN1gBch\/Dd62RGzDpgC7YB9jB2</span>
+</pre></div>
+</div>
+<p><strong>Example response</strong>:</p>
+<div class="highlight-http"><div class="highlight"><pre><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/json; charset=utf-8</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s2">&quot;success&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="s2">&quot;result&quot;</span> <span class="o">:</span> <span class="p">{</span>
+         <span class="p">[</span>
+            <span class="p">...</span>
+         <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="section" id="authentication-errors">
+<h3>Authentication errors<a class="headerlink" href="#authentication-errors" title="Permalink to this headline">¶</a></h3>
+<p>When attempting to access the API, you may encounter the following
+authentication errors:</p>
+<p>NOTE that in this case the HTTP 403 return code will be used as well</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Error</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>auth_required</td>
+<td>Invalid session token, or not session token sent</td>
+</tr>
+<tr class="row-odd"><td>invalid_token</td>
+<td>The app token you are trying to use is invalid or has been revoked</td>
+</tr>
+<tr class="row-even"><td>pending_token</td>
+<td>The app token you are trying to use has not been validated by user yet</td>
+</tr>
+<tr class="row-odd"><td>insufficient_rights</td>
+<td>Your app permissions does not allow accessing this API</td>
+</tr>
+<tr class="row-even"><td>denied_from_external_ip</td>
+<td>You are trying to get an app_token from a remote IP</td>
+</tr>
+<tr class="row-odd"><td>invalid_request</td>
+<td>Your request is invalid</td>
+</tr>
+<tr class="row-even"><td>ratelimited</td>
+<td>Too many auth error have been made from your IP</td>
+</tr>
+<tr class="row-odd"><td>new_apps_denied</td>
+<td>New application token request has been disabled</td>
+</tr>
+<tr class="row-even"><td>apps_denied</td>
+<td>API access from apps has been disabled</td>
+</tr>
+<tr class="row-odd"><td>internal_error</td>
+<td>Internal error</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,548 @@
+{
+  "module": {
+    "module": "raid",
+    "title": "RAID API [UNSTABLE]",
+    "category": "stockage-vm",
+    "path": "docs/reference/stockage-vm/raid.md",
+    "http_signatures": 9,
+    "objects": 3,
+    "properties": 36,
+    "source": "http://mafreebox.freebox.fr/doc/index.html#raid-api-unstable",
+    "source_pre_blocks": 6,
+    "markdown_code_blocks": 6,
+    "source_tables": 6
+  },
+  "endpoints": [
+    {
+      "module": "raid",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/raid/",
+      "path_template": "/api/v{major}/storage/raid/",
+      "documented_major": 8,
+      "title": "Get the list of RAID arrays",
+      "id": "get--api-v8-storage-raid-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-raid-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#get--api-v8-storage-raid-",
+      "referenced_objects": [
+        "RaidArray"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-raid-"
+    },
+    {
+      "module": "raid",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/raid/{id}",
+      "path_template": "/api/v{major}/storage/raid/{id}",
+      "documented_major": 8,
+      "title": "Get a given RAID array info",
+      "id": "get--api-v8-storage-raid-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-raid-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#get--api-v8-storage-raid-id",
+      "referenced_objects": [
+        "RaidArray"
+      ],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "get--api-v8-storage-raid-id"
+    },
+    {
+      "module": "raid",
+      "method": "POST",
+      "documented_path": "/api/v8/storage/raid/",
+      "path_template": "/api/v{major}/storage/raid/",
+      "documented_major": 8,
+      "title": "Create a RAID array",
+      "id": "post--api-v8-storage-raid-",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#post--api-v8-storage-raid-",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-storage-raid-"
+    },
+    {
+      "module": "raid",
+      "method": "DELETE",
+      "documented_path": "/api/v8/storage/raid/{id}",
+      "path_template": "/api/v{major}/storage/raid/{id}",
+      "documented_major": 8,
+      "title": "Delete a RAID array",
+      "id": "delete--api-v8-storage-raid-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-storage-raid-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#delete--api-v8-storage-raid-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-storage-raid-id"
+    },
+    {
+      "module": "raid",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/raid/{id}",
+      "path_template": "/api/v{major}/storage/raid/{id}",
+      "documented_major": 8,
+      "title": "Start or stop a RAID array",
+      "id": "put--api-v8-storage-raid-id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-raid-id",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#put--api-v8-storage-raid-id",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-raid-id"
+    },
+    {
+      "module": "raid",
+      "method": "POST",
+      "documented_path": "/api/v8/storage/raid/{id}/forcestart",
+      "path_template": "/api/v{major}/storage/raid/{id}/forcestart",
+      "documented_major": 8,
+      "title": "Force start a RAID array",
+      "id": "post--api-v8-storage-raid-id-forcestart",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-id-forcestart",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#post--api-v8-storage-raid-id-forcestart",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-storage-raid-id-forcestart"
+    },
+    {
+      "module": "raid",
+      "method": "DELETE",
+      "documented_path": "/api/v8/storage/raid/{id}/members/faulty",
+      "path_template": "/api/v{major}/storage/raid/{id}/members/faulty",
+      "documented_major": 8,
+      "title": "Remove faulty members from RAID array",
+      "id": "delete--api-v8-storage-raid-id-members-faulty",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-storage-raid-id-members-faulty",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#delete--api-v8-storage-raid-id-members-faulty",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "delete--api-v8-storage-raid-id-members-faulty"
+    },
+    {
+      "module": "raid",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/raid/{id}/members",
+      "path_template": "/api/v{major}/storage/raid/{id}/members",
+      "documented_major": 8,
+      "title": "Add members to an existing array that has missing members",
+      "id": "put--api-v8-storage-raid-id-members",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-raid-id-members",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#put--api-v8-storage-raid-id-members",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "put--api-v8-storage-raid-id-members"
+    },
+    {
+      "module": "raid",
+      "method": "POST",
+      "documented_path": "/api/v8/storage/raid/{id}/members/addspares",
+      "path_template": "/api/v{major}/storage/raid/{id}/members/addspares",
+      "documented_major": 8,
+      "title": "Re-add out-of-sync members that appear as spares",
+      "id": "post--api-v8-storage-raid-id-members-addspares",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-id-members-addspares",
+      "stability": "UNSTABLE",
+      "markdown": "docs/reference/stockage-vm/raid.md#post--api-v8-storage-raid-id-members-addspares",
+      "referenced_objects": [],
+      "validation": "documented-only; no operational request performed",
+      "source_id": "post--api-v8-storage-raid-id-members-addspares"
+    }
+  ],
+  "objects": [
+    {
+      "module": "raid",
+      "name": "RaidArray",
+      "id": "RaidArray",
+      "properties": [
+        "RaidArray.id",
+        "RaidArray.state",
+        "RaidArray.name",
+        "RaidArray.level",
+        "RaidArray.disk_id",
+        "RaidArray.uuid",
+        "RaidArray.sync_action",
+        "RaidArray.sysfs_state",
+        "RaidArray.array_size",
+        "RaidArray.raid_disks",
+        "RaidArray.sync_speed",
+        "RaidArray.sync_completed_pos",
+        "RaidArray.sync_completed_end",
+        "RaidArray.sync_completed_percent",
+        "RaidArray.check_interval",
+        "RaidArray.last_check",
+        "RaidArray.next_check",
+        "RaidArray.degraded",
+        "RaidArray.members"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray"
+    },
+    {
+      "module": "raid",
+      "name": "RaidMember",
+      "id": "RaidMember",
+      "properties": [
+        "RaidMember.id",
+        "RaidMember.array_id",
+        "RaidMember.role",
+        "RaidMember.set_name",
+        "RaidMember.set_uuid",
+        "RaidMember.dev_uuid",
+        "RaidMember.device_location",
+        "RaidMember.total_bytes",
+        "RaidMember.active_device",
+        "RaidMember.corrected_read_errors",
+        "RaidMember.sct_erc_supported",
+        "RaidMember.sct_erc_enabled",
+        "RaidMember.disk"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember"
+    },
+    {
+      "module": "raid",
+      "name": "RaidDisk",
+      "id": "RaidDisk",
+      "properties": [
+        "RaidDisk.model",
+        "RaidDisk.serial",
+        "RaidDisk.firmware",
+        "RaidDisk.temp"
+      ],
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidDisk"
+    }
+  ],
+  "properties": [
+    {
+      "module": "raid",
+      "id": "RaidArray.id",
+      "signature": "id int Read-only",
+      "description": "unique id of this array. Used as a reference for API calls.",
+      "source_id": "RaidArray.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.id",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.id"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.state",
+      "signature": "state enum",
+      "description": "state Description stopped Array is stopped running Array is running error Array is in error",
+      "source_id": "RaidArray.state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.state",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.state"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.name",
+      "signature": "name string",
+      "description": "The array name",
+      "source_id": "RaidArray.name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.name",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.name"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.level",
+      "signature": "level enum",
+      "description": "level Description basic Basic RAID level, like a single drive raid1 array raid0 RAID 0 raid1 RAID 1 raid5 RAID 5 raid10 RAID 10",
+      "source_id": "RaidArray.level",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.level",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.level"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.disk_id",
+      "signature": "disk_id int Read-only",
+      "description": "The disk id of the array, for use with the disk format API.",
+      "source_id": "RaidArray.disk_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.disk_id",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.disk_id"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.uuid",
+      "signature": "uuid string Read-only",
+      "description": "The array unique id. Only this id is guaranteed to stay stable across reboots.",
+      "source_id": "RaidArray.uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.uuid",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.uuid"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.sync_action",
+      "signature": "sync_action enum Read-only",
+      "description": "sync_action Description idle Array is idle resync Sync operation in progress recover Recover operation in progress check Array is being checked repair Repair operation in progress reshape Array growth in progress frozen Array is frozen",
+      "source_id": "RaidArray.sync_action",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.sync_action",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.sync_action"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.sysfs_state",
+      "signature": "sysfs_state enum Read-only",
+      "description": "Low-level Linux-specific md state value read in sysfs array_state property . sysfs_state clear inactive suspended readonly read_auto clean active write_pending active_idle",
+      "source_id": "RaidArray.sysfs_state",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.sysfs_state",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.sysfs_state"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.array_size",
+      "signature": "array_size int Read-only",
+      "description": "Size of array in bytes.",
+      "source_id": "RaidArray.array_size",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.array_size",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.array_size"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.raid_disks",
+      "signature": "raid_disks int Read-only",
+      "description": "Number of members that should be in this array.",
+      "source_id": "RaidArray.raid_disks",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.raid_disks",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.raid_disks"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.sync_speed",
+      "signature": "sync_speed int Read-only",
+      "description": "Sync speed in bytes per second",
+      "source_id": "RaidArray.sync_speed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.sync_speed",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.sync_speed"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.sync_completed_pos",
+      "signature": "sync_completed_pos int Read-only",
+      "description": "Current position of sync process.",
+      "source_id": "RaidArray.sync_completed_pos",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.sync_completed_pos",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.sync_completed_pos"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.sync_completed_end",
+      "signature": "sync_completed_end int Read-only",
+      "description": "End position of sync process: total of bytes to sync.",
+      "source_id": "RaidArray.sync_completed_end",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.sync_completed_end",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.sync_completed_end"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.sync_completed_percent",
+      "signature": "sync_completed_percent int Read-only",
+      "description": "Percentage of sync completion.",
+      "source_id": "RaidArray.sync_completed_percent",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.sync_completed_percent",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.sync_completed_percent"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.check_interval",
+      "signature": "check_interval int Read-only",
+      "description": "Check interval in seconds.",
+      "source_id": "RaidArray.check_interval",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.check_interval",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.check_interval"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.last_check",
+      "signature": "last_check int Read-only",
+      "description": "Unix timestamp of last check in seconds.",
+      "source_id": "RaidArray.last_check",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.last_check",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.last_check"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.next_check",
+      "signature": "next_check int Read-only",
+      "description": "Unix timestamp of next check in seconds. Might be 0 if check_interval is 0.",
+      "source_id": "RaidArray.next_check",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.next_check",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.next_check"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.degraded",
+      "signature": "degraded bool Read-only",
+      "description": "Whether the array is degraded or not.",
+      "source_id": "RaidArray.degraded",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.degraded",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.degraded"
+    },
+    {
+      "module": "raid",
+      "id": "RaidArray.members",
+      "signature": "members [] array of RaidMember",
+      "description": "List of members of this array",
+      "source_id": "RaidArray.members",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray.members",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidArray.members"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.id",
+      "signature": "id int Read-only",
+      "description": "unique id of this member. This corresponds to the disk id, usable with the Storage Disk API.",
+      "source_id": "RaidMember.id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.id",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.id"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.array_id",
+      "signature": "array_id int Read-only",
+      "description": "id of the array this member is in",
+      "source_id": "RaidMember.array_id",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.array_id",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.array_id"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.role",
+      "signature": "role enum Read-only",
+      "description": "role Description active Active member of the array faulty Faulty member spare Member kept as spare missing Missing (removed or dead) member of the array",
+      "source_id": "RaidMember.role",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.role",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.role"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.set_name",
+      "signature": "set_name string Read-only",
+      "description": "name of the array this member is into",
+      "source_id": "RaidMember.set_name",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.set_name",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.set_name"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.set_uuid",
+      "signature": "set_uuid string Read-only",
+      "description": "uuid of the array this member is into",
+      "source_id": "RaidMember.set_uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.set_uuid",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.set_uuid"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.dev_uuid",
+      "signature": "dev_uuid string Read-only",
+      "description": "uuid of this member",
+      "source_id": "RaidMember.dev_uuid",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.dev_uuid",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.dev_uuid"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.device_location",
+      "signature": "device_location enum Read-only",
+      "description": "internal location of this member. Possible slot values: sata-internal-p0, sata-internal-p1, sata-internal-p2, sata-internal-p4",
+      "source_id": "RaidMember.device_location",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.device_location",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.device_location"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.total_bytes",
+      "signature": "total_bytes int Read-only",
+      "description": "size of this member in bytes",
+      "source_id": "RaidMember.total_bytes",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.total_bytes",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.total_bytes"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.active_device",
+      "signature": "active_device int Read-only",
+      "description": "device number inside the array",
+      "source_id": "RaidMember.active_device",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.active_device",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.active_device"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.corrected_read_errors",
+      "signature": "corrected_read_errors int Read-only",
+      "description": "Device read errors count",
+      "source_id": "RaidMember.corrected_read_errors",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.corrected_read_errors",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.corrected_read_errors"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.sct_erc_supported",
+      "signature": "sct_erc_supported bool Read-only",
+      "description": "Whether SCT_ERC is supported by the device according to its S.M.A.R.T. data.",
+      "source_id": "RaidMember.sct_erc_supported",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.sct_erc_supported",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.sct_erc_supported"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.sct_erc_enabled",
+      "signature": "sct_erc_enabled bool Read-only",
+      "description": "Whether SCT_ERC is enabled on the device according to its S.M.A.R.T. data.",
+      "source_id": "RaidMember.sct_erc_enabled",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.sct_erc_enabled",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.sct_erc_enabled"
+    },
+    {
+      "module": "raid",
+      "id": "RaidMember.disk",
+      "signature": "disk RaidDisk Read-only",
+      "description": "A few properties of the disk.",
+      "source_id": "RaidMember.disk",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember.disk",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidMember.disk"
+    },
+    {
+      "module": "raid",
+      "id": "RaidDisk.model",
+      "signature": "model string Read-only",
+      "description": "Disk model.",
+      "source_id": "RaidDisk.model",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk.model",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidDisk.model"
+    },
+    {
+      "module": "raid",
+      "id": "RaidDisk.serial",
+      "signature": "serial string Read-only",
+      "description": "Disk serial number.",
+      "source_id": "RaidDisk.serial",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk.serial",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidDisk.serial"
+    },
+    {
+      "module": "raid",
+      "id": "RaidDisk.firmware",
+      "signature": "firmware string Read-only",
+      "description": "Disk firmware revision",
+      "source_id": "RaidDisk.firmware",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk.firmware",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidDisk.firmware"
+    },
+    {
+      "module": "raid",
+      "id": "RaidDisk.temp",
+      "signature": "temp int Read-only",
+      "description": "Disk temperature in \u00B0C.",
+      "source_id": "RaidDisk.temp",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk.temp",
+      "markdown": "docs/reference/stockage-vm/raid.md#RaidDisk.temp"
+    }
+  ],
+  "events": []
+}

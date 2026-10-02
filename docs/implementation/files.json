@@ -1,0 +1,1301 @@
+{
+  "format_version": 1,
+  "group": "files-storage",
+  "target_documentary_api": "16.0",
+  "version_policy": "server_major; original prefixes retained as provenance",
+  "modules": [
+    "download",
+    "download_feeds",
+    "download_config",
+    "fs",
+    "share",
+    "upload",
+    "rrd",
+    "storage",
+    "raid",
+    "vm"
+  ],
+  "implemented_operations": [
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/",
+      "relative_path": "downloads/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-",
+      "client_member": "FreeboxDownloadsApi.GetAllAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{id}",
+      "relative_path": "downloads/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-id",
+      "client_member": "FreeboxDownloadsApi.GetAsync"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{id}",
+      "relative_path": "downloads/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-id",
+      "client_member": "FreeboxDownloadsApi.DeleteAsync"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{id}/erase",
+      "relative_path": "downloads/{id}/erase",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-id-erase",
+      "client_member": "FreeboxDownloadsApi.EraseAsync"
+    },
+    {
+      "module": "download",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/{id}",
+      "relative_path": "downloads/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-id",
+      "client_member": "FreeboxDownloadsApi.UpdateAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{id}/log",
+      "relative_path": "downloads/{id}/log",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-id-log",
+      "client_member": "FreeboxDownloadsApi.GetLogAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/stats",
+      "relative_path": "downloads/stats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-stats",
+      "client_member": "FreeboxDownloadsApi.GetStatisticsAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/files",
+      "relative_path": "downloads/{task_id}/files",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-files",
+      "client_member": "FreeboxDownloadsApi.GetFilesAsync"
+    },
+    {
+      "module": "download",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/{task_id}/files/{file_id}",
+      "relative_path": "downloads/{task_id}/files/{file_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-task_id-files-file_id",
+      "client_member": "FreeboxDownloadsApi.SetFilePriorityAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers",
+      "relative_path": "downloads/{task_id}/trackers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-trackers",
+      "client_member": "FreeboxDownloadsApi.GetTrackersAsync"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers",
+      "relative_path": "downloads/{task_id}/trackers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-task_id-trackers",
+      "client_member": "FreeboxDownloadsApi.AddTrackerAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/peers",
+      "relative_path": "downloads/{task_id}/peers",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-peers",
+      "client_member": "FreeboxDownloadsApi.GetPeersAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/pieces",
+      "relative_path": "downloads/{task_id}/pieces",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-pieces",
+      "client_member": "FreeboxDownloadsApi.GetPiecesAsync"
+    },
+    {
+      "module": "download",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/{task_id}/blacklist",
+      "relative_path": "downloads/{task_id}/blacklist",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-task_id-blacklist",
+      "client_member": "FreeboxDownloadsApi.GetBlacklistAsync"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{task_id}/blacklist/empty",
+      "relative_path": "downloads/{task_id}/blacklist/empty",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-task_id-blacklist-empty",
+      "client_member": "FreeboxDownloadsApi.ClearBlacklistAsync"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/blacklist",
+      "relative_path": "downloads/blacklist",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-blacklist",
+      "client_member": "FreeboxDownloadsApi.AddToBlacklistAsync"
+    },
+    {
+      "module": "download_config",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/config/",
+      "relative_path": "downloads/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-config-",
+      "client_member": "FreeboxDownloadsApi.GetConfigurationAsync"
+    },
+    {
+      "module": "download_config",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/config/",
+      "relative_path": "downloads/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-config-",
+      "client_member": "FreeboxDownloadsApi.UpdateConfigurationAsync"
+    },
+    {
+      "module": "download_config",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/throttling",
+      "relative_path": "downloads/throttling",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-throttling",
+      "client_member": "FreeboxDownloadsApi.SetThrottlingAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/feeds/",
+      "relative_path": "downloads/feeds/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-feeds-",
+      "client_member": "FreeboxDownloadFeedsApi.GetAllAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/feeds/{id}",
+      "relative_path": "downloads/feeds/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-feeds-id",
+      "client_member": "FreeboxDownloadFeedsApi.GetAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/",
+      "relative_path": "downloads/feeds/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-",
+      "client_member": "FreeboxDownloadFeedsApi.CreateAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/feeds/{id}",
+      "relative_path": "downloads/feeds/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-feeds-id",
+      "client_member": "FreeboxDownloadFeedsApi.DeleteAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/feeds/{id}",
+      "relative_path": "downloads/feeds/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-feeds-id",
+      "client_member": "FreeboxDownloadFeedsApi.UpdateAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/{id}/fetch",
+      "relative_path": "downloads/feeds/{id}/fetch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-id-fetch",
+      "client_member": "FreeboxDownloadFeedsApi.FetchAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/fetch",
+      "relative_path": "downloads/feeds/fetch",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-fetch",
+      "client_member": "FreeboxDownloadFeedsApi.FetchAllAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "GET",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/",
+      "relative_path": "downloads/feeds/{feed_id}/items/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-downloads-feeds-feed_id-items-",
+      "client_member": "FreeboxDownloadFeedsApi.GetItemsAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/{item_id}",
+      "relative_path": "downloads/feeds/{feed_id}/items/{item_id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-feeds-feed_id-items-item_id",
+      "client_member": "FreeboxDownloadFeedsApi.MarkItemAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/{item_id}/download",
+      "relative_path": "downloads/feeds/{feed_id}/items/{item_id}/download",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-feed_id-items-item_id-download",
+      "client_member": "FreeboxDownloadFeedsApi.DownloadItemAsync"
+    },
+    {
+      "module": "download_feeds",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/feeds/{feed_id}/items/mark_all_as_read",
+      "relative_path": "downloads/feeds/{feed_id}/items/mark_all_as_read",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-feed_id-items-mark_all_as_read",
+      "client_member": "FreeboxDownloadFeedsApi.MarkAllAsReadAsync"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/tasks/",
+      "relative_path": "fs/tasks/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-",
+      "client_member": "FreeboxFileSystemApi.GetTasksAsync"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/tasks/{id}",
+      "relative_path": "fs/tasks/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-id",
+      "client_member": "FreeboxFileSystemApi.GetTaskAsync"
+    },
+    {
+      "module": "fs",
+      "method": "DELETE",
+      "documented_path": "/api/v15/fs/tasks/{id}",
+      "relative_path": "fs/tasks/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v15-fs-tasks-id",
+      "client_member": "FreeboxFileSystemApi.DeleteTaskAsync"
+    },
+    {
+      "module": "fs",
+      "method": "PUT",
+      "documented_path": "/api/v15/fs/tasks/{id}",
+      "relative_path": "fs/tasks/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v15-fs-tasks-id",
+      "client_member": "FreeboxFileSystemApi.SetTaskStateAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/info",
+      "relative_path": "fs/info",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-info",
+      "client_member": "FreeboxFileSystemApi.GetInformationAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/mv/",
+      "relative_path": "fs/mv/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-mv-",
+      "client_member": "FreeboxFileSystemApi.MoveAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/cp/",
+      "relative_path": "fs/cp/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-cp-",
+      "client_member": "FreeboxFileSystemApi.CopyAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/rm/",
+      "relative_path": "fs/rm/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-rm-",
+      "client_member": "FreeboxFileSystemApi.RemoveAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/cat/",
+      "relative_path": "fs/cat/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-cat-",
+      "client_member": "FreeboxFileSystemApi.ConcatenateAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/archive/",
+      "relative_path": "fs/archive/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-archive-",
+      "client_member": "FreeboxFileSystemApi.ArchiveAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/extract/",
+      "relative_path": "fs/extract/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-extract-",
+      "client_member": "FreeboxFileSystemApi.ExtractAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/repair/",
+      "relative_path": "fs/repair/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-repair-",
+      "client_member": "FreeboxFileSystemApi.RepairAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/hash/",
+      "relative_path": "fs/hash/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-hash-",
+      "client_member": "FreeboxFileSystemApi.HashAsync"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/tasks/{id}/hash",
+      "relative_path": "fs/tasks/{id}/hash",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-id-hash",
+      "client_member": "FreeboxFileSystemApi.GetHashAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/mkdir/",
+      "relative_path": "fs/mkdir/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-mkdir-",
+      "client_member": "FreeboxFileSystemApi.CreateDirectoryAsync"
+    },
+    {
+      "module": "fs",
+      "method": "POST",
+      "documented_path": "/api/v15/fs/rename/",
+      "relative_path": "fs/rename/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-rename-",
+      "client_member": "FreeboxFileSystemApi.RenameAsync"
+    },
+    {
+      "module": "share",
+      "method": "GET",
+      "documented_path": "/api/v8/share_link/",
+      "relative_path": "share_link/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-share_link-",
+      "client_member": "FreeboxSharesApi.GetAllAsync"
+    },
+    {
+      "module": "share",
+      "method": "POST",
+      "documented_path": "/api/v8/share_link/",
+      "relative_path": "share_link/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-share_link-",
+      "client_member": "FreeboxSharesApi.CreateAsync"
+    },
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/upload/",
+      "relative_path": "upload/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upload-",
+      "client_member": "FreeboxUploadsApi.GetAllAsync"
+    },
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/upload/{id}",
+      "relative_path": "upload/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-upload-id",
+      "client_member": "FreeboxUploadsApi.GetAsync"
+    },
+    {
+      "module": "upload",
+      "method": "DELETE",
+      "documented_path": "/api/v8/upload/{id}/cancel",
+      "relative_path": "upload/{id}/cancel",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-upload-id-cancel",
+      "client_member": "FreeboxUploadsApi.CancelAsync"
+    },
+    {
+      "module": "upload",
+      "method": "DELETE",
+      "documented_path": "/api/v8/upload/{id}",
+      "relative_path": "upload/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-upload-id",
+      "client_member": "FreeboxUploadsApi.DeleteAsync"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/disk/",
+      "relative_path": "storage/disk/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-",
+      "client_member": "FreeboxStorageApi.GetDisksAsync"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/disk/{id}",
+      "relative_path": "storage/disk/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-id",
+      "client_member": "FreeboxStorageApi.GetDiskAsync"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/disk/{id}",
+      "relative_path": "storage/disk/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-disk-id",
+      "client_member": "FreeboxStorageApi.SetDiskStateAsync"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/disk/{id}/format/",
+      "relative_path": "storage/disk/{id}/format/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-disk-id-format-",
+      "client_member": "FreeboxStorageApi.FormatDiskAsync"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/partition/",
+      "relative_path": "storage/partition/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-partition-",
+      "client_member": "FreeboxStorageApi.GetPartitionsAsync"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/partition/{id}",
+      "relative_path": "storage/partition/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-partition-id",
+      "client_member": "FreeboxStorageApi.GetPartitionAsync"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/partition/{id}",
+      "relative_path": "storage/partition/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-partition-id",
+      "client_member": "FreeboxStorageApi.SetPartitionStateAsync"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/partition/{id}/check/",
+      "relative_path": "storage/partition/{id}/check/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-partition-id-check-",
+      "client_member": "FreeboxStorageApi.CheckPartitionAsync"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/config/",
+      "relative_path": "storage/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-config-",
+      "client_member": "FreeboxStorageApi.GetConfigurationAsync"
+    },
+    {
+      "module": "storage",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/config/",
+      "relative_path": "storage/config/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-config-",
+      "client_member": "FreeboxStorageApi.UpdateConfigurationAsync"
+    },
+    {
+      "module": "raid",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/raid/",
+      "relative_path": "storage/raid/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-raid-",
+      "client_member": "FreeboxRaidApi.GetAllAsync"
+    },
+    {
+      "module": "raid",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/raid/{id}",
+      "relative_path": "storage/raid/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-raid-id",
+      "client_member": "FreeboxRaidApi.GetAsync"
+    },
+    {
+      "module": "raid",
+      "method": "POST",
+      "documented_path": "/api/v8/storage/raid/",
+      "relative_path": "storage/raid/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-",
+      "client_member": "FreeboxRaidApi.CreateAsync"
+    },
+    {
+      "module": "raid",
+      "method": "DELETE",
+      "documented_path": "/api/v8/storage/raid/{id}",
+      "relative_path": "storage/raid/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-storage-raid-id",
+      "client_member": "FreeboxRaidApi.DeleteAsync"
+    },
+    {
+      "module": "raid",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/raid/{id}",
+      "relative_path": "storage/raid/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-raid-id",
+      "client_member": "FreeboxRaidApi.SetStateAsync"
+    },
+    {
+      "module": "raid",
+      "method": "POST",
+      "documented_path": "/api/v8/storage/raid/{id}/forcestart",
+      "relative_path": "storage/raid/{id}/forcestart",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-id-forcestart",
+      "client_member": "FreeboxRaidApi.ForceStartAsync"
+    },
+    {
+      "module": "raid",
+      "method": "DELETE",
+      "documented_path": "/api/v8/storage/raid/{id}/members/faulty",
+      "relative_path": "storage/raid/{id}/members/faulty",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-storage-raid-id-members-faulty",
+      "client_member": "FreeboxRaidApi.RemoveFaultyMembersAsync"
+    },
+    {
+      "module": "raid",
+      "method": "PUT",
+      "documented_path": "/api/v8/storage/raid/{id}/members",
+      "relative_path": "storage/raid/{id}/members",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-raid-id-members",
+      "client_member": "FreeboxRaidApi.UpdateMembersAsync"
+    },
+    {
+      "module": "raid",
+      "method": "POST",
+      "documented_path": "/api/v8/storage/raid/{id}/members/addspares",
+      "relative_path": "storage/raid/{id}/members/addspares",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-id-members-addspares",
+      "client_member": "FreeboxRaidApi.AddSpareMembersAsync"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/info/",
+      "relative_path": "vm/info/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-info-",
+      "client_member": "FreeboxVirtualMachinesApi.GetSystemInformationAsync"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/distros/",
+      "relative_path": "vm/distros/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-distros-",
+      "client_member": "FreeboxVirtualMachinesApi.GetDistributionsAsync"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/",
+      "relative_path": "vm/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-",
+      "client_member": "FreeboxVirtualMachinesApi.GetAllAsync"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/{id}",
+      "relative_path": "vm/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id",
+      "client_member": "FreeboxVirtualMachinesApi.GetAsync"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/",
+      "relative_path": "vm/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-",
+      "client_member": "FreeboxVirtualMachinesApi.CreateAsync"
+    },
+    {
+      "module": "vm",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vm/{id}",
+      "relative_path": "vm/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vm-id",
+      "client_member": "FreeboxVirtualMachinesApi.DeleteAsync"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/start",
+      "relative_path": "vm/{id}/start",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-start",
+      "client_member": "FreeboxVirtualMachinesApi.StartAsync"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/powerbutton",
+      "relative_path": "vm/{id}/powerbutton",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-powerbutton",
+      "client_member": "FreeboxVirtualMachinesApi.PressPowerButtonAsync"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/stop",
+      "relative_path": "vm/{id}/stop",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-stop",
+      "client_member": "FreeboxVirtualMachinesApi.StopAsync"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/{id}/restart",
+      "relative_path": "vm/{id}/restart",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-id-restart",
+      "client_member": "FreeboxVirtualMachinesApi.RestartAsync"
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/disk/info",
+      "relative_path": "vm/disk/info",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-info",
+      "client_member": "FreeboxVirtualMachinesApi.GetDiskInformationAsync"
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/disk/task/{id}",
+      "relative_path": "vm/disk/task/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-disk-task-id",
+      "client_member": "FreeboxVirtualMachinesApi.GetDiskTaskAsync"
+    },
+    {
+      "module": "vm",
+      "method": "DELETE",
+      "documented_path": "/api/v8/vm/disk/task/{id}",
+      "relative_path": "vm/disk/task/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-vm-disk-task-id",
+      "client_member": "FreeboxVirtualMachinesApi.DeleteDiskTaskAsync"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/add",
+      "relative_path": "downloads/add",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-add",
+      "client_member": "FreeboxDownloadsApi.AddUrlAsync"
+    },
+    {
+      "module": "download",
+      "method": "POST",
+      "documented_path": "/api/v8/downloads/add",
+      "relative_path": "downloads/add",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-add",
+      "client_member": "FreeboxDownloadsApi.AddFileAsync"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers/{announce}",
+      "relative_path": "downloads/{task_id}/trackers/{announce}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-task_id-trackers-announce",
+      "client_member": "FreeboxDownloadsApi.DeleteTrackerAsync"
+    },
+    {
+      "module": "download",
+      "method": "PUT",
+      "documented_path": "/api/v8/downloads/{task_id}/trackers/{announce}",
+      "relative_path": "downloads/{task_id}/trackers/{announce}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-task_id-trackers-announce",
+      "client_member": "FreeboxDownloadsApi.UpdateTrackerAsync"
+    },
+    {
+      "module": "download",
+      "method": "DELETE",
+      "documented_path": "/api/v8/downloads/blacklist/{host}",
+      "relative_path": "downloads/blacklist/{host}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-downloads-blacklist-host",
+      "client_member": "FreeboxDownloadsApi.RemoveFromBlacklistAsync"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/ls/{path}",
+      "relative_path": "fs/ls/{path}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-ls-path",
+      "client_member": "FreeboxFileSystemApi.ListAsync"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/fs/info/{path}",
+      "relative_path": "fs/info/{path}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-info-path",
+      "client_member": "FreeboxFileSystemApi.GetInformationAsync"
+    },
+    {
+      "module": "fs",
+      "method": "GET",
+      "documented_path": "/api/v15/dl/{path}",
+      "relative_path": "dl/{path}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-dl-path",
+      "client_member": "FreeboxFileSystemApi.DownloadAsync"
+    },
+    {
+      "module": "share",
+      "method": "GET",
+      "documented_path": "/api/v8/share_link/{token}",
+      "relative_path": "share_link/{token}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-share_link-token",
+      "client_member": "FreeboxSharesApi.GetAsync"
+    },
+    {
+      "module": "share",
+      "method": "DELETE",
+      "documented_path": "/api/v8/share_link/{token}",
+      "relative_path": "share_link/{token}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#delete--api-v8-share_link-token",
+      "client_member": "FreeboxSharesApi.DeleteAsync"
+    },
+    {
+      "module": "rrd",
+      "method": "POST",
+      "documented_path": "/api/v8/rrd/",
+      "relative_path": "rrd/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-rrd-",
+      "client_member": "FreeboxStatisticsApi.FetchAsync"
+    },
+    {
+      "module": "storage",
+      "method": "GET",
+      "documented_path": "/api/v8/storage/disk/{disk_id}/fsadvice?partition_id={partition_id}&dedicated_disk={bool}",
+      "relative_path": "storage/disk/{disk_id}/fsadvice?partition_id={partition_id}&dedicated_disk={bool}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-disk_id-fsadvice?partition_id=partition_id&dedicated_disk=bool",
+      "client_member": "FreeboxStorageApi.GetFileSystemAdviceAsync"
+    }
+  ],
+  "unsupported_operations": [
+    {
+      "module": "upload",
+      "method": "GET",
+      "documented_path": "/api/v8/ws/upload",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-ws-upload",
+      "reason": "WebSocket upload transfer protocol is not implemented by this HTTP domain. HTTP upload transfer is deprecated; only tracking endpoints are implemented."
+    },
+    {
+      "module": "rrd",
+      "method": "GET",
+      "documented_path": "/api/v8/rrd/",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-rrd-",
+      "reason": "GET RRD parameter placement (body versus query) is not documented; POST is implemented."
+    },
+    {
+      "module": "vm",
+      "method": "PUT",
+      "documented_path": "/api/v8/vm/{id}",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-vm-id",
+      "reason": "VM update request body and partial update semantics are unspecified. Reading, creation, deletion and explicit state actions are implemented."
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/{id}/console",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id-console",
+      "reason": "VM console uses a QEMU WebSocket protocol, outside this typed HTTP domain."
+    },
+    {
+      "module": "vm",
+      "method": "GET",
+      "documented_path": "/api/v8/vm/{id}/vnc",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-vm-id-vnc",
+      "reason": "VM VNC uses a QEMU WebSocket protocol, outside this typed HTTP domain."
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/disk/create",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-create",
+      "reason": "Disk create task-id JSON result shape is unspecified; no invented int or {id} response contract."
+    },
+    {
+      "module": "vm",
+      "method": "POST",
+      "documented_path": "/api/v8/vm/disk/resize",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-resize",
+      "reason": "Disk resize task-id JSON result shape is unspecified; no invented int or {id} response contract."
+    }
+  ],
+  "contract_models": [
+    {
+      "module": "download",
+      "name": "Download",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download"
+    },
+    {
+      "module": "download",
+      "name": "NzbConfigStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#NzbConfigStatus"
+    },
+    {
+      "module": "download",
+      "name": "DhtStats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DhtStats"
+    },
+    {
+      "module": "download",
+      "name": "DownloadStats",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadStats"
+    },
+    {
+      "module": "download",
+      "name": "DownloadFile",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFile"
+    },
+    {
+      "module": "download",
+      "name": "DownloadTracker",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadTracker"
+    },
+    {
+      "module": "download",
+      "name": "DownloadPeer",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadPeer"
+    },
+    {
+      "module": "download",
+      "name": "DownloadBlacklistEntry",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadBlacklistEntry"
+    },
+    {
+      "module": "download_feeds",
+      "name": "DownloadFeed",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeed"
+    },
+    {
+      "module": "download_feeds",
+      "name": "DownloadFeedItem",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadFeedItem"
+    },
+    {
+      "module": "download_config",
+      "name": "DownloadConfiguration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DownloadConfiguration"
+    },
+    {
+      "module": "download_config",
+      "name": "DlThrottlingConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlRate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlRate"
+    },
+    {
+      "module": "download_config",
+      "name": "DlNewsConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlBtConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "DlFeedConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlFeedConfig"
+    },
+    {
+      "module": "fs",
+      "name": "FsTask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FsTask"
+    },
+    {
+      "module": "fs",
+      "name": "FileEntry",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo"
+    },
+    {
+      "module": "share",
+      "name": "ShareLink",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#ShareLink"
+    },
+    {
+      "module": "upload",
+      "name": "FileUpload",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileUpload"
+    },
+    {
+      "module": "storage",
+      "name": "OperationProgress",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#OperationProgress"
+    },
+    {
+      "module": "storage",
+      "name": "DiskPartition",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DiskPartition"
+    },
+    {
+      "module": "storage",
+      "name": "StorageDisk",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageDisk"
+    },
+    {
+      "module": "storage",
+      "name": "StorageConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#StorageConfig"
+    },
+    {
+      "module": "raid",
+      "name": "RaidArray",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidArray"
+    },
+    {
+      "module": "raid",
+      "name": "RaidMember",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidMember"
+    },
+    {
+      "module": "raid",
+      "name": "RaidDisk",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#RaidDisk"
+    },
+    {
+      "module": "vm",
+      "name": "VirtualMachine",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VM"
+    },
+    {
+      "module": "vm",
+      "name": "VmSystemInfo",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmSystemInfo"
+    },
+    {
+      "module": "vm",
+      "name": "VmDistribution",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDistribution"
+    },
+    {
+      "module": "vm",
+      "name": "VmDiskInfo",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskInfo"
+    },
+    {
+      "module": "vm",
+      "name": "VmDiskTask",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmDiskTask"
+    },
+    {
+      "module": "vm",
+      "name": "VmStateChange",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#VmStateChange"
+    },
+    {
+      "module": "download",
+      "name": "UpdateDownloadRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-id"
+    },
+    {
+      "module": "download",
+      "name": "DownloadFilePriorityRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-task_id-files-file_id"
+    },
+    {
+      "module": "download",
+      "name": "AddDownloadTrackerRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-task_id-trackers"
+    },
+    {
+      "module": "download",
+      "name": "UpdateDownloadTrackerRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-task_id-trackers-announce"
+    },
+    {
+      "module": "download",
+      "name": "AddDownloadBlacklistRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-blacklist"
+    },
+    {
+      "module": "download_feeds",
+      "name": "CreateDownloadFeedRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-"
+    },
+    {
+      "module": "download_feeds",
+      "name": "UpdateDownloadFeedRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-feeds-id"
+    },
+    {
+      "module": "download_feeds",
+      "name": "MarkDownloadFeedItemRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-feeds-feed_id-items-item_id"
+    },
+    {
+      "module": "download_config",
+      "name": "UpdateDownloadConfiguration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-config-"
+    },
+    {
+      "module": "download_config",
+      "name": "UpdateDlRate",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlRate"
+    },
+    {
+      "module": "download_config",
+      "name": "UpdateDlThrottlingConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlThrottlingConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "UpdateDlNewsConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlNewsConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "UpdateDlBtConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBtConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "UpdateDlFeedConfig",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlFeedConfig"
+    },
+    {
+      "module": "download_config",
+      "name": "SetDownloadThrottlingRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-throttling"
+    },
+    {
+      "module": "fs",
+      "name": "SetFileTaskStateRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v15-fs-tasks-id"
+    },
+    {
+      "module": "fs",
+      "name": "FileTransferRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-cp-"
+    },
+    {
+      "module": "fs",
+      "name": "RemoveFilesRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-rm-"
+    },
+    {
+      "module": "fs",
+      "name": "ConcatenateFilesRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-cat-"
+    },
+    {
+      "module": "fs",
+      "name": "ArchiveFilesRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-archive-"
+    },
+    {
+      "module": "fs",
+      "name": "ExtractFilesRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-extract-"
+    },
+    {
+      "module": "fs",
+      "name": "RepairFilesRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-repair-"
+    },
+    {
+      "module": "fs",
+      "name": "HashFileRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-hash-"
+    },
+    {
+      "module": "fs",
+      "name": "CreateDirectoryRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-mkdir-"
+    },
+    {
+      "module": "fs",
+      "name": "RenameFileRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v15-fs-rename-"
+    },
+    {
+      "module": "share",
+      "name": "CreateShareLinkRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-share_link-"
+    },
+    {
+      "module": "storage",
+      "name": "SetStorageDiskStateRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-disk-id"
+    },
+    {
+      "module": "storage",
+      "name": "FormatStorageDiskRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-disk-id-format-"
+    },
+    {
+      "module": "storage",
+      "name": "SetPartitionStateRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-partition-id"
+    },
+    {
+      "module": "storage",
+      "name": "CheckPartitionRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-partition-id-check-"
+    },
+    {
+      "module": "storage",
+      "name": "UpdateStorageConfiguration",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-config-"
+    },
+    {
+      "module": "raid",
+      "name": "CreateRaidRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-"
+    },
+    {
+      "module": "raid",
+      "name": "SetRaidStateRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-raid-id"
+    },
+    {
+      "module": "raid",
+      "name": "UpdateRaidMembersRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-storage-raid-id-members"
+    },
+    {
+      "module": "vm",
+      "name": "VmDiskInformationRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-disk-info"
+    },
+    {
+      "module": "rrd",
+      "name": "FetchRrdRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-rrd-"
+    },
+    {
+      "module": "vm",
+      "name": "CreateVirtualMachineRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-vm-"
+    },
+    {
+      "module": "download",
+      "name": "AddedDownloads",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-add"
+    },
+    {
+      "module": "download",
+      "name": "DownloadUrlRequest",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-add"
+    },
+    {
+      "module": "download_feeds",
+      "name": "DownloadFeedMutation",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-downloads-feeds-"
+    },
+    {
+      "module": "fs",
+      "name": "FileListing",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-ls-path"
+    },
+    {
+      "module": "fs",
+      "name": "FileHash",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-tasks-id-hash"
+    },
+    {
+      "module": "fs",
+      "name": "FileListingOptions",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v15-fs-ls-path"
+    },
+    {
+      "module": "storage",
+      "name": "FileSystemAdvice",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#get--api-v8-storage-disk-disk_id-fsadvice?partition_id=partition_id&dedicated_disk=bool"
+    },
+    {
+      "module": "raid",
+      "name": "RaidMemberId",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-storage-raid-"
+    },
+    {
+      "module": "rrd",
+      "name": "RrdResult",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-rrd-"
+    },
+    {
+      "module": "download_config",
+      "name": "DownloadThrottlingStatus",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#put--api-v8-downloads-throttling"
+    }
+  ],
+  "evidence_files": [
+    {
+      "path": "docs/freebox-official/reviews/files-storage.json",
+      "sha256": "d3fa9cb12d61f92bc4e5fc202fe5176d12c4b1817ee14d226ff2a8f8577e06cf"
+    },
+    {
+      "path": "docs/freebox-official/api-16.0/sources/raw/embedded/doc/index.html",
+      "sha256": "cab9f9512f5df0c8c7857efde19790b99dce92fb5c189dd7b87aec1011e3ae03"
+    }
+  ],
+  "coverage": {
+    "reviewed_operation_variants": 103,
+    "implemented_operation_variants": 96,
+    "implemented_distinct_method_paths": 95,
+    "unsupported_operation_variants": 7
+  },
+  "localized_contract_limits": [
+    {
+      "module": "download_config",
+      "field": "DlBlockListConfig.sources[]",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#DlBlockListConfig",
+      "reason": "Exact JSON property name is unspecified. Read blocklist as localized JsonElement; omit blocklist from typed config writes until clarified."
+    },
+    {
+      "module": "download",
+      "field": "Download.info_hash / Download.piece_length",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#Download",
+      "reason": "Read fields retained; no speculative setters for torrent identity/layout metadata. Update DTO limits writes to status/queue_pos/io_priority/archive_password."
+    },
+    {
+      "module": "share",
+      "field": "Create ShareLink.fullurl",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#post--api-v8-share_link-",
+      "reason": "Read field retained; creation DTO includes proven path/expire and excludes anomalous readonly fullurl from writes."
+    },
+    {
+      "module": "fs",
+      "field": "FileInfo.exif",
+      "source": "http://mafreebox.freebox.fr/doc/index.html#FileInfo.exif",
+      "reason": "Exif schema is genuinely open, represented by JsonElement."
+    }
+  ],
+  "compatibility_decisions": [
+    "Download collection uses ObjectOrArray<Download>, preserving documented object and array shapes.",
+    "DownloadFeed mutation exposes feed_id and id separately without coalescing.",
+    "StorageDisk.table_type, DownloadFile.task_id and DlNewsConfig.port preserve documented integer/string variants via StringOrInteger; no global number coercion.",
+    "DownloadPeer.requests accepts integer array or exactly empty object; arbitrary nonempty objects fail.",
+    "Unknown response enum strings remain strings; writes use declared typed enums validated before HTTP.",
+    "Unset Optional<T> fields omit from requests; explicit false/zero remain. Null clearing is rejected because undocumented.",
+    "Encoded paths and cursor retain exact bytes/value; no Unicode normalization, Base64URL conversion or recursive unescaping.",
+    "Plural tracker routes follow formal declaration despite singular request examples; no fallback/retry.",
+    "Success-only RAID/VM mutations discard unspecified result without fabricating models; no automatic polling/replay.",
+    "RRD POST retains scaled numeric values and dynamic numeric field names; no deprecated temp1/temp2/temp3 selectors.",
+    "Multipart descriptor stream is caller-owned by default; leaveOpen=false transfers ownership."
+  ],
+  "validation": {
+    "tests": "Tests/Freenaute.Freebox.Client.Tests/FilesApiTests.cs",
+    "status": "ready for root integration build; no concurrent dotnet build run by this worker",
+    "physical_freebox_operations_executed": false
+  }
+}
